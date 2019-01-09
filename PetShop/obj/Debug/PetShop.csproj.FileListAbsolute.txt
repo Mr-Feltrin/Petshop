@@ -1,0 +1,10 @@
+C:\Users\teusi\source\repos\PetShop\PetShop\bin\Debug\PetShop.exe.config
+C:\Users\teusi\source\repos\PetShop\PetShop\bin\Debug\PetShop.exe
+C:\Users\teusi\source\repos\PetShop\PetShop\bin\Debug\PetShop.pdb
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.Form1.resources
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.Properties.Resources.resources
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.csproj.GenerateResource.cache
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.exe
+C:\Users\teusi\source\repos\PetShop\PetShop\obj\Debug\PetShop.pdb

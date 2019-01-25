@@ -55,11 +55,11 @@
     <Compile Include="Adicionar_cliente.Designer.cs">
       <DependentUpon>Adicionar_cliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaPrincipal.cs">
+    <Compile Include="Tela_Principal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaPrincipal.Designer.cs">
-      <DependentUpon>TelaPrincipal.cs</DependentUpon>
+    <Compile Include="Tela_Principal.Designer.cs">
+      <DependentUpon>Tela_Principal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +72,8 @@
     <EmbeddedResource Include="Adicionar_cliente.resx">
       <DependentUpon>Adicionar_cliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaPrincipal.resx">
-      <DependentUpon>TelaPrincipal.cs</DependentUpon>
+    <EmbeddedResource Include="Tela_Principal.resx">
+      <DependentUpon>Tela_Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

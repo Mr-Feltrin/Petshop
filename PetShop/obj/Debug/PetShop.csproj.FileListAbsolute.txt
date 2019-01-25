@@ -15,7 +15,6 @@ C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\PetShop.exe
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\PetShop.pdb
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Adicionar_cliente.resources
-C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.TelaPrincipal.resources
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Properties.Resources.resources
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Usuarios.resources
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.GenerateResource.cache
@@ -25,3 +24,4 @@ C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.pdb
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
+C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Tela_Principal.resources

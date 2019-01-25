@@ -16,7 +16,7 @@ namespace PetShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Adicionar_cliente());
+            Application.Run(new Tela_Principal());
         }
     }
 }

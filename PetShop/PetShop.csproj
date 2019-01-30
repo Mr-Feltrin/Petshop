@@ -83,6 +83,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Usuarios.resx">
       <DependentUpon>Usuarios.cs</DependentUpon>
@@ -99,6 +100,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\clientes_icone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\tela_principal_background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\fornecedor_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\agenda_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\produtos_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\administrador_sistema.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\computador_sistema.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

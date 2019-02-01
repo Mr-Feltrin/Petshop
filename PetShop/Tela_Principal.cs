@@ -17,8 +17,6 @@ namespace PetShop
             InitializeComponent();
         }
 
-
-
         private void Tela_Principal_Load(object sender, EventArgs e)
         {
             // Verificação de data em formato completo
@@ -45,11 +43,9 @@ namespace PetShop
             toolStripStatus_data.Text = DateTime.Now.ToString("dd/MM/yyyy");
             // Exibição nome de usuário do sistema
             toolStripStatus_nome_administrador.Text = Environment.UserName;
-
-
         }
 
-        private void botao_clientes_Click(object sender, EventArgs e)
+        private void Botao_clientes_Click(object sender, EventArgs e)
         {
             Adicionar_cliente add = new Adicionar_cliente();
             add.ShowDialog();
@@ -84,7 +80,7 @@ namespace PetShop
 
         }
         // Display de horário atual
-        private void horario_atual_Tick(object sender, EventArgs e)
+        private void Horario_atual_Tick(object sender, EventArgs e)
         {
             this.toolStripStatus_horario.Text = DateTime.Now.ToString("HH:mm:ss");
         }

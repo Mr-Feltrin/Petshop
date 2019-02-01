@@ -15,51 +15,43 @@ namespace PetShop
         public Adicionar_cliente()
         {
             InitializeComponent();
+            
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void Adicionar_cliente_Load(object sender, EventArgs e)
         {
-
+            
         }
 
-        private void cadastrar_label_Click(object sender, EventArgs e)
+        private void Cadastro_cliente_cep_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_cep.SelectionStart = 0;
         }
 
-        private void rectangleShape1_Click(object sender, EventArgs e)
+        private void Cadastro_cliente_telefone_primario_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_telefone_primario.SelectionStart = 0;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Cadastro_cliente_telefone_secundario_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_telefone_secundario.SelectionStart = 0;
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        private void Cadastro_cliente_celular_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_celular.SelectionStart = 0;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Cadastro_cliente_cpf_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_cpf.SelectionStart = 0;
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void Cadastro_cliente_cnpj_Click(object sender, EventArgs e)
         {
-
+            cadastro_cliente_cnpj.SelectionStart = 0;
         }
     }
 }

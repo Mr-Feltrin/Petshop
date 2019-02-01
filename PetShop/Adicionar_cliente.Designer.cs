@@ -1,4 +1,6 @@
-﻿namespace PetShop
+﻿using System;
+
+namespace PetShop
 {
     partial class Adicionar_cliente
     {
@@ -28,55 +30,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Adicionar_cliente));
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
-            this.nome_completo_cliente = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_nome_completo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.tipo_cliente = new System.Windows.Forms.ComboBox();
+            this.cadastro_cliente_tipo = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.enderecos_contato = new System.Windows.Forms.TabPage();
+            this.cadastro_cliente_cep = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_celular = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_telefone_secundario = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_telefone_primario = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_cnpj = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_cpf = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.email_cliente = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_email = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.complemento = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_complemento = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.uf = new System.Windows.Forms.ComboBox();
+            this.cadastro_cliente_uf = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.cidade = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_cidade = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.bairro = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_bairro = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.nome_endereco = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_endereco = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nome_apelido_cliente = new System.Windows.Forms.TextBox();
+            this.cadastro_cliente_nome_apelido = new System.Windows.Forms.TextBox();
             this.name_label = new System.Windows.Forms.Label();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.numero_cpf = new System.Windows.Forms.MaskedTextBox();
-            this.numero_cpnj = new System.Windows.Forms.MaskedTextBox();
-            this.numero_telefone_primario = new System.Windows.Forms.MaskedTextBox();
-            this.numero_telefone_secundario = new System.Windows.Forms.MaskedTextBox();
-            this.numero_celular = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.cadastro_cliente_observacoes = new System.Windows.Forms.RichTextBox();
+            this.cadastro_cliente_adicionar = new System.Windows.Forms.Button();
+            this.cadastro_cliente_cancelar = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.enderecos_contato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // label1
             // 
@@ -88,15 +82,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Nome / Razão Completo";
             // 
-            // nome_completo_cliente
+            // cadastro_cliente_nome_completo
             // 
-            this.nome_completo_cliente.BackColor = System.Drawing.SystemColors.Info;
-            this.nome_completo_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome_completo_cliente.Location = new System.Drawing.Point(34, 47);
-            this.nome_completo_cliente.Name = "nome_completo_cliente";
-            this.nome_completo_cliente.Size = new System.Drawing.Size(332, 22);
-            this.nome_completo_cliente.TabIndex = 1;
-            this.nome_completo_cliente.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.cadastro_cliente_nome_completo.BackColor = System.Drawing.SystemColors.Info;
+            this.cadastro_cliente_nome_completo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_nome_completo.Location = new System.Drawing.Point(34, 47);
+            this.cadastro_cliente_nome_completo.Name = "cadastro_cliente_nome_completo";
+            this.cadastro_cliente_nome_completo.Size = new System.Drawing.Size(332, 22);
+            this.cadastro_cliente_nome_completo.TabIndex = 1;
             // 
             // label2
             // 
@@ -108,19 +101,21 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Segmento do Cliente ou Tipo";
             // 
-            // tipo_cliente
+            // cadastro_cliente_tipo
             // 
-            this.tipo_cliente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.tipo_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipo_cliente.FormattingEnabled = true;
-            this.tipo_cliente.Items.AddRange(new object[] {
-            "Cliente Fixo",
-            "Fornecedor",
-            "Funcionário"});
-            this.tipo_cliente.Location = new System.Drawing.Point(456, 47);
-            this.tipo_cliente.Name = "tipo_cliente";
-            this.tipo_cliente.Size = new System.Drawing.Size(243, 24);
-            this.tipo_cliente.TabIndex = 3;
+            this.cadastro_cliente_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cadastro_cliente_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_tipo.FormattingEnabled = true;
+            this.cadastro_cliente_tipo.Items.AddRange(new object[] {
+            "Cliente comum",
+            "Cliente fixo",
+            "Cliente especial",
+            "Funcionário",
+            "Não atender"});
+            this.cadastro_cliente_tipo.Location = new System.Drawing.Point(456, 47);
+            this.cadastro_cliente_tipo.Name = "cadastro_cliente_tipo";
+            this.cadastro_cliente_tipo.Size = new System.Drawing.Size(243, 24);
+            this.cadastro_cliente_tipo.TabIndex = 3;
             // 
             // tabControl1
             // 
@@ -136,31 +131,31 @@
             // enderecos_contato
             // 
             this.enderecos_contato.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.enderecos_contato.Controls.Add(this.maskedTextBox1);
-            this.enderecos_contato.Controls.Add(this.numero_celular);
-            this.enderecos_contato.Controls.Add(this.numero_telefone_secundario);
-            this.enderecos_contato.Controls.Add(this.numero_telefone_primario);
-            this.enderecos_contato.Controls.Add(this.numero_cpnj);
-            this.enderecos_contato.Controls.Add(this.numero_cpf);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_cep);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_celular);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_telefone_secundario);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_telefone_primario);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_cnpj);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_cpf);
             this.enderecos_contato.Controls.Add(this.label14);
             this.enderecos_contato.Controls.Add(this.label13);
-            this.enderecos_contato.Controls.Add(this.email_cliente);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_email);
             this.enderecos_contato.Controls.Add(this.label12);
-            this.enderecos_contato.Controls.Add(this.complemento);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_complemento);
             this.enderecos_contato.Controls.Add(this.label11);
             this.enderecos_contato.Controls.Add(this.label10);
             this.enderecos_contato.Controls.Add(this.label9);
             this.enderecos_contato.Controls.Add(this.label8);
             this.enderecos_contato.Controls.Add(this.label7);
-            this.enderecos_contato.Controls.Add(this.uf);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_uf);
             this.enderecos_contato.Controls.Add(this.label6);
-            this.enderecos_contato.Controls.Add(this.cidade);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_cidade);
             this.enderecos_contato.Controls.Add(this.label5);
-            this.enderecos_contato.Controls.Add(this.bairro);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_bairro);
             this.enderecos_contato.Controls.Add(this.label4);
-            this.enderecos_contato.Controls.Add(this.nome_endereco);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_endereco);
             this.enderecos_contato.Controls.Add(this.label3);
-            this.enderecos_contato.Controls.Add(this.nome_apelido_cliente);
+            this.enderecos_contato.Controls.Add(this.cadastro_cliente_nome_apelido);
             this.enderecos_contato.Controls.Add(this.name_label);
             this.enderecos_contato.Location = new System.Drawing.Point(4, 22);
             this.enderecos_contato.Name = "enderecos_contato";
@@ -168,6 +163,78 @@
             this.enderecos_contato.Size = new System.Drawing.Size(657, 300);
             this.enderecos_contato.TabIndex = 0;
             this.enderecos_contato.Text = "Endereços e Contato";
+            // 
+            // cadastro_cliente_cep
+            // 
+            this.cadastro_cliente_cep.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_cep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_cep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_cep.Location = new System.Drawing.Point(550, 138);
+            this.cadastro_cliente_cep.Mask = "00000-000";
+            this.cadastro_cliente_cep.Name = "cadastro_cliente_cep";
+            this.cadastro_cliente_cep.Size = new System.Drawing.Size(87, 22);
+            this.cadastro_cliente_cep.TabIndex = 31;
+            this.cadastro_cliente_cep.Click += new System.EventHandler(this.Cadastro_cliente_cep_Click);
+            // 
+            // cadastro_cliente_celular
+            // 
+            this.cadastro_cliente_celular.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_celular.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_celular.Location = new System.Drawing.Point(328, 191);
+            this.cadastro_cliente_celular.Mask = "(00)90000-0000";
+            this.cadastro_cliente_celular.Name = "cadastro_cliente_celular";
+            this.cadastro_cliente_celular.Size = new System.Drawing.Size(125, 22);
+            this.cadastro_cliente_celular.TabIndex = 30;
+            this.cadastro_cliente_celular.Click += new System.EventHandler(this.Cadastro_cliente_celular_Click);
+            // 
+            // cadastro_cliente_telefone_secundario
+            // 
+            this.cadastro_cliente_telefone_secundario.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_telefone_secundario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_telefone_secundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_telefone_secundario.Location = new System.Drawing.Point(172, 193);
+            this.cadastro_cliente_telefone_secundario.Mask = "(00)0000-0000";
+            this.cadastro_cliente_telefone_secundario.Name = "cadastro_cliente_telefone_secundario";
+            this.cadastro_cliente_telefone_secundario.Size = new System.Drawing.Size(125, 22);
+            this.cadastro_cliente_telefone_secundario.TabIndex = 29;
+            this.cadastro_cliente_telefone_secundario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_secundario_Click);
+            // 
+            // cadastro_cliente_telefone_primario
+            // 
+            this.cadastro_cliente_telefone_primario.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_telefone_primario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_telefone_primario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_telefone_primario.Location = new System.Drawing.Point(18, 191);
+            this.cadastro_cliente_telefone_primario.Mask = "(00)0000-0000";
+            this.cadastro_cliente_telefone_primario.Name = "cadastro_cliente_telefone_primario";
+            this.cadastro_cliente_telefone_primario.Size = new System.Drawing.Size(125, 22);
+            this.cadastro_cliente_telefone_primario.TabIndex = 28;
+            this.cadastro_cliente_telefone_primario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
+            // 
+            // cadastro_cliente_cnpj
+            // 
+            this.cadastro_cliente_cnpj.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_cnpj.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_cnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_cnpj.Location = new System.Drawing.Point(537, 244);
+            this.cadastro_cliente_cnpj.Mask = "00.000.000/0000-00";
+            this.cadastro_cliente_cnpj.Name = "cadastro_cliente_cnpj";
+            this.cadastro_cliente_cnpj.Size = new System.Drawing.Size(100, 22);
+            this.cadastro_cliente_cnpj.TabIndex = 27;
+            this.cadastro_cliente_cnpj.Click += new System.EventHandler(this.Cadastro_cliente_cnpj_Click);
+            // 
+            // cadastro_cliente_cpf
+            // 
+            this.cadastro_cliente_cpf.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cadastro_cliente_cpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cadastro_cliente_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_cpf.Location = new System.Drawing.Point(366, 245);
+            this.cadastro_cliente_cpf.Mask = "000.000.000-00";
+            this.cadastro_cliente_cpf.Name = "cadastro_cliente_cpf";
+            this.cadastro_cliente_cpf.Size = new System.Drawing.Size(100, 22);
+            this.cadastro_cliente_cpf.TabIndex = 26;
+            this.cadastro_cliente_cpf.Click += new System.EventHandler(this.Cadastro_cliente_cpf_Click);
             // 
             // label14
             // 
@@ -189,13 +256,13 @@
             this.label13.TabIndex = 22;
             this.label13.Text = "N° CPF";
             // 
-            // email_cliente
+            // cadastro_cliente_email
             // 
-            this.email_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.email_cliente.Location = new System.Drawing.Point(18, 244);
-            this.email_cliente.Name = "email_cliente";
-            this.email_cliente.Size = new System.Drawing.Size(293, 22);
-            this.email_cliente.TabIndex = 21;
+            this.cadastro_cliente_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_email.Location = new System.Drawing.Point(18, 244);
+            this.cadastro_cliente_email.Name = "cadastro_cliente_email";
+            this.cadastro_cliente_email.Size = new System.Drawing.Size(293, 22);
+            this.cadastro_cliente_email.TabIndex = 21;
             // 
             // label12
             // 
@@ -207,13 +274,13 @@
             this.label12.TabIndex = 20;
             this.label12.Text = "E-mail";
             // 
-            // complemento
+            // cadastro_cliente_complemento
             // 
-            this.complemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.complemento.Location = new System.Drawing.Point(481, 191);
-            this.complemento.Name = "complemento";
-            this.complemento.Size = new System.Drawing.Size(156, 22);
-            this.complemento.TabIndex = 19;
+            this.cadastro_cliente_complemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_complemento.Location = new System.Drawing.Point(481, 191);
+            this.cadastro_cliente_complemento.Name = "cadastro_cliente_complemento";
+            this.cadastro_cliente_complemento.Size = new System.Drawing.Size(156, 22);
+            this.cadastro_cliente_complemento.TabIndex = 19;
             // 
             // label11
             // 
@@ -265,15 +332,15 @@
             this.label7.TabIndex = 10;
             this.label7.Text = "CEP";
             // 
-            // uf
+            // cadastro_cliente_uf
             // 
-            this.uf.DropDownHeight = 85;
-            this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uf.FormattingEnabled = true;
-            this.uf.IntegralHeight = false;
-            this.uf.ItemHeight = 16;
-            this.uf.Items.AddRange(new object[] {
+            this.cadastro_cliente_uf.DropDownHeight = 85;
+            this.cadastro_cliente_uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cadastro_cliente_uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_uf.FormattingEnabled = true;
+            this.cadastro_cliente_uf.IntegralHeight = false;
+            this.cadastro_cliente_uf.ItemHeight = 16;
+            this.cadastro_cliente_uf.Items.AddRange(new object[] {
             "AC",
             "AL",
             "AP",
@@ -301,10 +368,10 @@
             "SP",
             "SE",
             "TO"});
-            this.uf.Location = new System.Drawing.Point(450, 137);
-            this.uf.Name = "uf";
-            this.uf.Size = new System.Drawing.Size(62, 24);
-            this.uf.TabIndex = 9;
+            this.cadastro_cliente_uf.Location = new System.Drawing.Point(450, 137);
+            this.cadastro_cliente_uf.Name = "cadastro_cliente_uf";
+            this.cadastro_cliente_uf.Size = new System.Drawing.Size(62, 24);
+            this.cadastro_cliente_uf.TabIndex = 9;
             // 
             // label6
             // 
@@ -316,13 +383,13 @@
             this.label6.TabIndex = 8;
             this.label6.Text = "UF";
             // 
-            // cidade
+            // cadastro_cliente_cidade
             // 
-            this.cidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cidade.Location = new System.Drawing.Point(281, 138);
-            this.cidade.Name = "cidade";
-            this.cidade.Size = new System.Drawing.Size(140, 22);
-            this.cidade.TabIndex = 7;
+            this.cadastro_cliente_cidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_cidade.Location = new System.Drawing.Point(281, 138);
+            this.cadastro_cliente_cidade.Name = "cadastro_cliente_cidade";
+            this.cadastro_cliente_cidade.Size = new System.Drawing.Size(140, 22);
+            this.cadastro_cliente_cidade.TabIndex = 7;
             // 
             // label5
             // 
@@ -334,14 +401,13 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "Cidade";
             // 
-            // bairro
+            // cadastro_cliente_bairro
             // 
-            this.bairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bairro.Location = new System.Drawing.Point(18, 138);
-            this.bairro.Name = "bairro";
-            this.bairro.Size = new System.Drawing.Size(241, 22);
-            this.bairro.TabIndex = 5;
-            this.bairro.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.cadastro_cliente_bairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_bairro.Location = new System.Drawing.Point(18, 138);
+            this.cadastro_cliente_bairro.Name = "cadastro_cliente_bairro";
+            this.cadastro_cliente_bairro.Size = new System.Drawing.Size(241, 22);
+            this.cadastro_cliente_bairro.TabIndex = 5;
             // 
             // label4
             // 
@@ -353,14 +419,14 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Bairro";
             // 
-            // nome_endereco
+            // cadastro_cliente_endereco
             // 
-            this.nome_endereco.BackColor = System.Drawing.SystemColors.Window;
-            this.nome_endereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome_endereco.Location = new System.Drawing.Point(18, 86);
-            this.nome_endereco.Name = "nome_endereco";
-            this.nome_endereco.Size = new System.Drawing.Size(619, 22);
-            this.nome_endereco.TabIndex = 3;
+            this.cadastro_cliente_endereco.BackColor = System.Drawing.SystemColors.Window;
+            this.cadastro_cliente_endereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_endereco.Location = new System.Drawing.Point(18, 86);
+            this.cadastro_cliente_endereco.Name = "cadastro_cliente_endereco";
+            this.cadastro_cliente_endereco.Size = new System.Drawing.Size(619, 22);
+            this.cadastro_cliente_endereco.TabIndex = 3;
             // 
             // label3
             // 
@@ -372,14 +438,14 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "Nome da Rua / AV";
             // 
-            // nome_apelido_cliente
+            // cadastro_cliente_nome_apelido
             // 
-            this.nome_apelido_cliente.BackColor = System.Drawing.SystemColors.Window;
-            this.nome_apelido_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome_apelido_cliente.Location = new System.Drawing.Point(18, 37);
-            this.nome_apelido_cliente.Name = "nome_apelido_cliente";
-            this.nome_apelido_cliente.Size = new System.Drawing.Size(619, 22);
-            this.nome_apelido_cliente.TabIndex = 1;
+            this.cadastro_cliente_nome_apelido.BackColor = System.Drawing.SystemColors.Window;
+            this.cadastro_cliente_nome_apelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_nome_apelido.Location = new System.Drawing.Point(18, 37);
+            this.cadastro_cliente_nome_apelido.Name = "cadastro_cliente_nome_apelido";
+            this.cadastro_cliente_nome_apelido.Size = new System.Drawing.Size(619, 22);
+            this.cadastro_cliente_nome_apelido.TabIndex = 1;
             // 
             // name_label
             // 
@@ -393,7 +459,7 @@
             // 
             // informacoes_observacoes
             // 
-            this.informacoes_observacoes.Controls.Add(this.richTextBox1);
+            this.informacoes_observacoes.Controls.Add(this.cadastro_cliente_observacoes);
             this.informacoes_observacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.informacoes_observacoes.Location = new System.Drawing.Point(4, 22);
             this.informacoes_observacoes.Name = "informacoes_observacoes";
@@ -403,109 +469,54 @@
             this.informacoes_observacoes.Text = "Informações / Observações";
             this.informacoes_observacoes.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
+            // cadastro_cliente_observacoes
             // 
-            this.richTextBox1.BackColor = System.Drawing.SystemColors.Info;
-            this.richTextBox1.Location = new System.Drawing.Point(6, 6);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(645, 288);
-            this.richTextBox1.TabIndex = 0;
-            this.richTextBox1.Text = "";
+            this.cadastro_cliente_observacoes.BackColor = System.Drawing.SystemColors.Info;
+            this.cadastro_cliente_observacoes.Location = new System.Drawing.Point(6, 6);
+            this.cadastro_cliente_observacoes.Name = "cadastro_cliente_observacoes";
+            this.cadastro_cliente_observacoes.Size = new System.Drawing.Size(645, 288);
+            this.cadastro_cliente_observacoes.TabIndex = 0;
+            this.cadastro_cliente_observacoes.Text = "";
             // 
-            // button1
+            // cadastro_cliente_adicionar
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(519, 424);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(176, 52);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Adicionar";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
+            this.cadastro_cliente_adicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_adicionar.Image = ((System.Drawing.Image)(resources.GetObject("cadastro_cliente_adicionar.Image")));
+            this.cadastro_cliente_adicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cadastro_cliente_adicionar.Location = new System.Drawing.Point(519, 424);
+            this.cadastro_cliente_adicionar.Name = "cadastro_cliente_adicionar";
+            this.cadastro_cliente_adicionar.Size = new System.Drawing.Size(176, 52);
+            this.cadastro_cliente_adicionar.TabIndex = 2;
+            this.cadastro_cliente_adicionar.Text = "Adicionar";
+            this.cadastro_cliente_adicionar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cadastro_cliente_adicionar.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // cadastro_cliente_cancelar
             // 
-            this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(34, 424);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 52);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Cancelar";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // numero_cpf
-            // 
-            this.numero_cpf.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.numero_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero_cpf.Location = new System.Drawing.Point(366, 245);
-            this.numero_cpf.Mask = "000.000.000-00";
-            this.numero_cpf.Name = "numero_cpf";
-            this.numero_cpf.Size = new System.Drawing.Size(100, 22);
-            this.numero_cpf.TabIndex = 26;
-            // 
-            // numero_cpnj
-            // 
-            this.numero_cpnj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero_cpnj.Location = new System.Drawing.Point(537, 244);
-            this.numero_cpnj.Mask = "00.000.000/0000-00";
-            this.numero_cpnj.Name = "numero_cpnj";
-            this.numero_cpnj.Size = new System.Drawing.Size(100, 22);
-            this.numero_cpnj.TabIndex = 27;
-            // 
-            // numero_telefone_primario
-            // 
-            this.numero_telefone_primario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero_telefone_primario.Location = new System.Drawing.Point(18, 191);
-            this.numero_telefone_primario.Mask = "(00)0000-0000";
-            this.numero_telefone_primario.Name = "numero_telefone_primario";
-            this.numero_telefone_primario.Size = new System.Drawing.Size(125, 22);
-            this.numero_telefone_primario.TabIndex = 28;
-            // 
-            // numero_telefone_secundario
-            // 
-            this.numero_telefone_secundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero_telefone_secundario.Location = new System.Drawing.Point(172, 193);
-            this.numero_telefone_secundario.Mask = "(00)0000-0000";
-            this.numero_telefone_secundario.Name = "numero_telefone_secundario";
-            this.numero_telefone_secundario.Size = new System.Drawing.Size(125, 22);
-            this.numero_telefone_secundario.TabIndex = 29;
-            // 
-            // numero_celular
-            // 
-            this.numero_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numero_celular.Location = new System.Drawing.Point(328, 191);
-            this.numero_celular.Mask = "(00)90000-0000";
-            this.numero_celular.Name = "numero_celular";
-            this.numero_celular.Size = new System.Drawing.Size(125, 22);
-            this.numero_celular.TabIndex = 30;
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(550, 138);
-            this.maskedTextBox1.Mask = "00000-000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(87, 22);
-            this.maskedTextBox1.TabIndex = 31;
+            this.cadastro_cliente_cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cadastro_cliente_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cadastro_cliente_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("cadastro_cliente_cancelar.Image")));
+            this.cadastro_cliente_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cadastro_cliente_cancelar.Location = new System.Drawing.Point(34, 424);
+            this.cadastro_cliente_cancelar.Name = "cadastro_cliente_cancelar";
+            this.cadastro_cliente_cancelar.Size = new System.Drawing.Size(176, 52);
+            this.cadastro_cliente_cancelar.TabIndex = 3;
+            this.cadastro_cliente_cancelar.Text = "Cancelar";
+            this.cadastro_cliente_cancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cadastro_cliente_cancelar.UseVisualStyleBackColor = true;
             // 
             // Adicionar_cliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.button2;
+            this.CancelButton = this.cadastro_cliente_cancelar;
             this.ClientSize = new System.Drawing.Size(750, 496);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cadastro_cliente_cancelar);
+            this.Controls.Add(this.cadastro_cliente_adicionar);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.tipo_cliente);
+            this.Controls.Add(this.cadastro_cliente_tipo);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.nome_completo_cliente);
+            this.Controls.Add(this.cadastro_cliente_nome_completo);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -521,51 +532,47 @@
             this.enderecos_contato.ResumeLayout(false);
             this.enderecos_contato.PerformLayout();
             this.informacoes_observacoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox nome_completo_cliente;
+        private System.Windows.Forms.TextBox cadastro_cliente_nome_completo;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox tipo_cliente;
+        private System.Windows.Forms.ComboBox cadastro_cliente_tipo;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage enderecos_contato;
         private System.Windows.Forms.TabPage informacoes_observacoes;
         private System.Windows.Forms.Label name_label;
-        private System.Windows.Forms.TextBox nome_apelido_cliente;
-        private System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox cadastro_cliente_nome_apelido;
+        private System.Windows.Forms.Button cadastro_cliente_adicionar;
+        private System.Windows.Forms.Button cadastro_cliente_cancelar;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox email_cliente;
+        private System.Windows.Forms.TextBox cadastro_cliente_email;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox complemento;
+        private System.Windows.Forms.TextBox cadastro_cliente_complemento;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox uf;
+        private System.Windows.Forms.ComboBox cadastro_cliente_uf;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox cidade;
+        private System.Windows.Forms.TextBox cadastro_cliente_cidade;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox bairro;
+        private System.Windows.Forms.TextBox cadastro_cliente_bairro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox nome_endereco;
+        private System.Windows.Forms.TextBox cadastro_cliente_endereco;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.MaskedTextBox numero_cpf;
-        private System.Windows.Forms.MaskedTextBox numero_cpnj;
-        private System.Windows.Forms.MaskedTextBox numero_telefone_secundario;
-        private System.Windows.Forms.MaskedTextBox numero_telefone_primario;
-        private System.Windows.Forms.MaskedTextBox numero_celular;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.RichTextBox cadastro_cliente_observacoes;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_cpf;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_cnpj;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_telefone_secundario;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_telefone_primario;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_celular;
+        private System.Windows.Forms.MaskedTextBox cadastro_cliente_cep;
     }
 }

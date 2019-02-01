@@ -39,6 +39,7 @@
             this.botao_produtos = new System.Windows.Forms.ToolStripButton();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus_data_completa = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatus_agendamentos_atuais = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_num_lock = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_caps_lock = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_data = new System.Windows.Forms.ToolStripStatusLabel();
@@ -46,7 +47,6 @@
             this.toolStripStatus_nome_administrador = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_nome_sistema = new System.Windows.Forms.ToolStripStatusLabel();
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
-            this.toolStripStatus_agendamentos_atuais = new System.Windows.Forms.ToolStripStatusLabel();
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -80,7 +80,7 @@
             this.botao_clientes.Text = "Clientes";
             this.botao_clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.botao_clientes.Click += new System.EventHandler(this.botao_clientes_Click);
+            this.botao_clientes.Click += new System.EventHandler(this.Botao_clientes_Click);
             // 
             // botao_fornecedores
             // 
@@ -166,9 +166,23 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(727, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(729, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripStatus_agendamentos_atuais
+            // 
+            this.toolStripStatus_agendamentos_atuais.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatus_agendamentos_atuais.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatus_agendamentos_atuais.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
+            this.toolStripStatus_agendamentos_atuais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripStatus_agendamentos_atuais.Image = global::PetShop.Properties.Resources.agenda_icon;
+            this.toolStripStatus_agendamentos_atuais.Name = "toolStripStatus_agendamentos_atuais";
+            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(208, 22);
+            this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: 0";
+            this.toolStripStatus_agendamentos_atuais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripStatus_num_lock
             // 
@@ -252,21 +266,7 @@
             // 
             this.horario_atual.Enabled = true;
             this.horario_atual.Interval = 1000;
-            this.horario_atual.Tick += new System.EventHandler(this.horario_atual_Tick);
-            // 
-            // toolStripStatus_agendamentos_atuais
-            // 
-            this.toolStripStatus_agendamentos_atuais.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripStatus_agendamentos_atuais.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatus_agendamentos_atuais.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
-            this.toolStripStatus_agendamentos_atuais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatus_agendamentos_atuais.Image = global::PetShop.Properties.Resources.agenda_icon;
-            this.toolStripStatus_agendamentos_atuais.Name = "toolStripStatus_agendamentos_atuais";
-            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(208, 22);
-            this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: 0";
-            this.toolStripStatus_agendamentos_atuais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.horario_atual.Tick += new System.EventHandler(this.Horario_atual_Tick);
             // 
             // Tela_Principal
             // 
@@ -282,7 +282,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Tela_Principal";
-            this.Text = "Pet Shop";
+            this.Text = "Pet Shop Cãopanheiro";
             this.Load += new System.EventHandler(this.Tela_Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tela_Principal_KeyDown);
             this.menu_principal.ResumeLayout(false);

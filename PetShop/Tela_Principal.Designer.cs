@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tela_Principal));
             this.menu_principal = new System.Windows.Forms.ToolStrip();
-            this.botao_clientes = new System.Windows.Forms.ToolStripButton();
+            this.btn_menu_pesquisa_clientes = new System.Windows.Forms.ToolStripButton();
             this.botao_fornecedores = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.botao_agenda = new System.Windows.Forms.ToolStripButton();
@@ -55,7 +55,7 @@
             // 
             this.menu_principal.AllowMerge = false;
             this.menu_principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.botao_clientes,
+            this.btn_menu_pesquisa_clientes,
             this.botao_fornecedores,
             this.toolStripSeparator,
             this.botao_agenda,
@@ -67,20 +67,20 @@
             this.menu_principal.TabIndex = 0;
             this.menu_principal.Text = "toolStrip1";
             // 
-            // botao_clientes
+            // btn_menu_pesquisa_clientes
             // 
-            this.botao_clientes.BackColor = System.Drawing.Color.Transparent;
-            this.botao_clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.botao_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botao_clientes.Image = ((System.Drawing.Image)(resources.GetObject("botao_clientes.Image")));
-            this.botao_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.botao_clientes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.botao_clientes.Name = "botao_clientes";
-            this.botao_clientes.Size = new System.Drawing.Size(63, 49);
-            this.botao_clientes.Text = "Clientes";
-            this.botao_clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.botao_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.botao_clientes.Click += new System.EventHandler(this.Botao_clientes_Click);
+            this.btn_menu_pesquisa_clientes.BackColor = System.Drawing.Color.Transparent;
+            this.btn_menu_pesquisa_clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_menu_pesquisa_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_menu_pesquisa_clientes.Image = ((System.Drawing.Image)(resources.GetObject("btn_menu_pesquisa_clientes.Image")));
+            this.btn_menu_pesquisa_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btn_menu_pesquisa_clientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_menu_pesquisa_clientes.Name = "btn_menu_pesquisa_clientes";
+            this.btn_menu_pesquisa_clientes.Size = new System.Drawing.Size(63, 49);
+            this.btn_menu_pesquisa_clientes.Text = "Clientes";
+            this.btn_menu_pesquisa_clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btn_menu_pesquisa_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btn_menu_pesquisa_clientes.Click += new System.EventHandler(this.Botao_clientes_Click);
             // 
             // botao_fornecedores
             // 
@@ -282,6 +282,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Tela_Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pet Shop Cãopanheiro";
             this.Load += new System.EventHandler(this.Tela_Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Tela_Principal_KeyDown);
@@ -297,7 +298,7 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip menu_principal;
-        private System.Windows.Forms.ToolStripButton botao_clientes;
+        private System.Windows.Forms.ToolStripButton btn_menu_pesquisa_clientes;
         private System.Windows.Forms.ToolStripButton botao_fornecedores;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripButton botao_agenda;

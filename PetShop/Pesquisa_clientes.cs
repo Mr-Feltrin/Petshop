@@ -14,10 +14,11 @@ namespace PetShop
 {
     public partial class Pesquisa_clientes : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\rasou\Downloads\PetShop\PetShop\Database.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
+        
         public Pesquisa_clientes()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
 
         public void exibir_dados_lista()
@@ -33,7 +34,6 @@ namespace PetShop
                 SqlDataAdapter dataadp = new SqlDataAdapter(comando);
                 dataadp.Fill(dta);
                 dataGridView_lista_usuarios.DataSource = dta;
-                connection.Close();
                 dataGridView_lista_usuarios.Columns[0].HeaderText = "Número";
                 dataGridView_lista_usuarios.Columns[1].HeaderText = "Nome completo";
                 dataGridView_lista_usuarios.Columns[2].HeaderText = "Tipo de cliente";
@@ -51,14 +51,13 @@ namespace PetShop
                 dataGridView_lista_usuarios.Columns[14].HeaderText = "CPF";
                 dataGridView_lista_usuarios.Columns[15].HeaderText = "CNPJ";
                 dataGridView_lista_usuarios.Columns[16].HeaderText = "Observações";
-                //this.dataGridView1.Sort(this.dataGridView1.Columns["Name"], ListSortDirection.Ascending);
                 dataGridView_lista_usuarios.Sort(this.dataGridView_lista_usuarios.Columns[0], ListSortDirection.Descending);
-
+                connection.Close();
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Erro ao carregar os dados da tabela, por favor verifique a base de dados e tente novamente", "Erro de exibição", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }          
         }
 
         private void btn_adicionar_cliente_Click(object sender, EventArgs e)
@@ -72,14 +71,16 @@ namespace PetShop
             exibir_dados_lista();
         }
 
-        private void Pesquisa_clientes_Activated(object sender, EventArgs e)
-        {
-            exibir_dados_lista();
-        }
 
         private void btn_excluir_cliente_Click(object sender, EventArgs e)
         {
+            
+   
+        }
 
+        private void Pesquisa_clientes_Activated(object sender, EventArgs e)
+        {
+            exibir_dados_lista();
         }
     }
 }

@@ -13,17 +13,17 @@ namespace PetShop
 {
     public partial class Adicionar_cliente : Form
     {
-        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\rasou\Downloads\PetShop\PetShop\Database.mdf;Integrated Security=True");
+        SqlConnection connection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True");
 
         public Adicionar_cliente()
         {
-            InitializeComponent();  
+            InitializeComponent();
         }
+    
 
         private void Adicionar_cliente_Load(object sender, EventArgs e)
         {     
             cadastro_cliente_tipo.SelectedIndex = 0;
-
         }
 
         private void Cadastro_cliente_cep_Click(object sender, EventArgs e)
@@ -104,47 +104,44 @@ namespace PetShop
                 try
                 {
                     connection.Open();
-                    ConnectionState status_connection = connection.State;
-                    if (status_connection != ConnectionState.Open)
+                    SqlCommand comando = connection.CreateCommand();
+                    comando.CommandType = CommandType.Text;
+                    comando.CommandText = "insert into [clientes] (nome_completo,tipo,nome_apelido,endereco,bairro,cidade,uf,cep,telefone_primario,telefone_secundario,celular,complemento,email,cpf,cnpj,observacoes) values ('" + cadastro_cliente_nome_completo.Text + "','" + cadastro_cliente_tipo.Text + "','" + cadastro_cliente_nome_apelido.Text + "','" + cadastro_cliente_endereco.Text + "','" + cadastro_cliente_bairro.Text + "','" + cadastro_cliente_cidade.Text + "','" + cadastro_cliente_uf.Text + "','" + cadastro_cliente_cep.Text + "','" + cadastro_cliente_telefone_primario.Text + "','" + cadastro_cliente_telefone_secundario.Text + "','" + cadastro_cliente_celular.Text + "','" + cadastro_cliente_complemento.Text + "','" + cadastro_cliente_email.Text + "','" + cadastro_cliente_cpf.Text + "','" + cadastro_cliente_cnpj.Text + "','" + cadastro_cliente_observacoes.Text + "')";
+                    int query_check = comando.ExecuteNonQuery();
+                    connection.Close();
+                    if (query_check != 0)
                     {
-                        MessageBox.Show("A conexão com a base de dados não foi estabelecida, tentando reconectar", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        connection.Open();
-                        if (status_connection != ConnectionState.Open)
+                        MessageBox.Show("Cadastro de cliente realizado com sucesso.", "Cadastro concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        if (query_check < 0)
                         {
-                            MessageBox.Show("Falha ao reconectar com a base de dados, por favor reinicie a aplicação e tente novamente.", "Erro de conexão", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            this.Close();
+                            MessageBox.Show("caralho");
                         }
+                        this.Close();
                     }
-                    else if (status_connection == ConnectionState.Open)
+                    else
                     {
-                        SqlCommand comando = connection.CreateCommand();
-                        comando.CommandType = CommandType.Text;
-                        comando.CommandText = "insert into [clientes] (nome_completo,tipo,nome_apelido,endereco,bairro,cidade,uf,cep,telefone_primario,telefone_secundario,celular,complemento,email,cpf,cnpj,observacoes) values ('" + cadastro_cliente_nome_completo.Text + "','" + cadastro_cliente_tipo.Text + "','" + cadastro_cliente_nome_apelido.Text + "','" + cadastro_cliente_endereco.Text + "','" + cadastro_cliente_bairro.Text + "','" + cadastro_cliente_cidade.Text + "','" + cadastro_cliente_uf.Text + "','" + cadastro_cliente_cep.Text + "','" + cadastro_cliente_telefone_primario.Text + "','" + cadastro_cliente_telefone_secundario.Text + "','" + cadastro_cliente_celular.Text + "','" + cadastro_cliente_complemento.Text + "','" + cadastro_cliente_email.Text + "','" + cadastro_cliente_cpf.Text + "','" + cadastro_cliente_cnpj.Text + "','" + cadastro_cliente_observacoes.Text + "')";
-                        int query_check = comando.ExecuteNonQuery();
-                        connection.Close();
-                        if (query_check == 0)
+                        MessageBox.Show("Falha ao cadastrar cliente, por favor reinicie a aplicação e tente novamente.", "Erro ao cadastrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (connection.State == ConnectionState.Open)
                         {
-                            MessageBox.Show("Falha ao cadastrar cliente, por favor reinicie a aplicação e tente novamente.","Erro ao cadastrar Cliente",MessageBoxButtons.OK, MessageBoxIcon.Error);
                             connection.Close();
-                            this.Close();
-                            
                         }
-                        else
-                        {
-                            MessageBox.Show("Cadastro de cliente realizado com sucesso.", "Cadastro concluído", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            connection.Close();
-                            this.Close();
-
-                        }
-                    }
+                        this.Close();
+                    }                  
                 }
-                catch
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Falha ao cadastrar cliente, por favor reinicie a aplicação e tente novamente.", "Erro ao cadastrar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Ocorreu um erro ao cadastrar o cliente: " + ex.Message, "Erro no cadastro",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    if (connection.State == ConnectionState.Open)
+                    {
+                        connection.Close();
+                    }
                     this.Close();
                 }
-
             }
+        }
+        private void cadastro_cliente_cancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

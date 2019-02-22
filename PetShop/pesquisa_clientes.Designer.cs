@@ -64,7 +64,8 @@
             // 
             this.dataGridView_lista_usuarios.AllowUserToAddRows = false;
             this.dataGridView_lista_usuarios.AllowUserToDeleteRows = false;
-            this.dataGridView_lista_usuarios.AllowUserToOrderColumns = true;
+            this.dataGridView_lista_usuarios.AllowUserToResizeColumns = false;
+            this.dataGridView_lista_usuarios.AllowUserToResizeRows = false;
             this.dataGridView_lista_usuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView_lista_usuarios.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -84,6 +85,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_lista_usuarios.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_lista_usuarios.Location = new System.Drawing.Point(6, 19);
+            this.dataGridView_lista_usuarios.MultiSelect = false;
             this.dataGridView_lista_usuarios.Name = "dataGridView_lista_usuarios";
             this.dataGridView_lista_usuarios.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -94,6 +96,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView_lista_usuarios.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView_lista_usuarios.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView_lista_usuarios.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_lista_usuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;

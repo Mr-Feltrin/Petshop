@@ -26,21 +26,11 @@ namespace PetShop.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;password=;database=db_caopanheiro")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=127.0.0.1;user id=root;persistsecurityinfo=True;database=db_caopanheiro;ss" +
+            "lmode=none")]
         public string db_caopanheiroConnectionString {
             get {
                 return ((string)(this["db_caopanheiroConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Database.mdf;" +
-            "Integrated Security=True")]
-        public string DatabaseConnectionString {
-            get {
-                return ((string)(this["DatabaseConnectionString"]));
             }
         }
     }

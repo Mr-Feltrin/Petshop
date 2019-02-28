@@ -14,7 +14,6 @@ C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\PetShop.exe.config
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\PetShop.exe
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\PetShop.pdb
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
-C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Adicionar_cliente.resources
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Properties.Resources.resources
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.GenerateResource.cache
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
@@ -23,10 +22,6 @@ C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.pdb
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
-C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.Tela_Principal.resources
-C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.pesquisa_clientes.resources
-C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Database.mdf
-C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Database_log.ldf
 C:\Users\rasou\Desktop\PetShop\PetShop\bin\Debug\Database.mdf
 C:\Users\rasou\Desktop\PetShop\PetShop\bin\Debug\Database_log.ldf
 C:\Users\rasou\Desktop\PetShop\PetShop\bin\Debug\PetShop.exe.config
@@ -61,7 +56,9 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCom
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.pdb
-C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\PetShop.exe.manifest
-C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\PetShop.application
-C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.exe.manifest
-C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.application
+C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\MySql.Data.dll
+C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\Google.Protobuf.dll
+C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\MySql.Data.xml
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.PesquisaClientes.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarCliente.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.TelaPrincipal.resources

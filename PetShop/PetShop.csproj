@@ -57,14 +57,21 @@
     <ManifestKeyFile>PetShop_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <GenerateManifests>true</GenerateManifests>
+    <GenerateManifests>false</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -79,36 +86,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adicionar_cliente.cs">
+    <Compile Include="AdicionarEditarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Adicionar_cliente.Designer.cs">
-      <DependentUpon>Adicionar_cliente.cs</DependentUpon>
+    <Compile Include="AdicionarEditarCliente.Designer.cs">
+      <DependentUpon>AdicionarEditarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="caopanheiro_clientes.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>caopanheiro_clientes.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Tela_Principal.cs">
+    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Tela_Principal.Designer.cs">
-      <DependentUpon>Tela_Principal.cs</DependentUpon>
+    <Compile Include="TelaPrincipal.Designer.cs">
+      <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Pesquisa_clientes.cs">
+    <Compile Include="PesquisaClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pesquisa_clientes.Designer.cs">
-      <DependentUpon>Pesquisa_clientes.cs</DependentUpon>
+    <Compile Include="PesquisaClientes.Designer.cs">
+      <DependentUpon>PesquisaClientes.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Adicionar_cliente.resx">
-      <DependentUpon>Adicionar_cliente.cs</DependentUpon>
+    <EmbeddedResource Include="AdicionarEditarCliente.resx">
+      <DependentUpon>AdicionarEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Tela_Principal.resx">
-      <DependentUpon>Tela_Principal.cs</DependentUpon>
+    <EmbeddedResource Include="TelaPrincipal.resx">
+      <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -120,21 +123,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Pesquisa_clientes.resx">
-      <DependentUpon>Pesquisa_clientes.cs</DependentUpon>
+    <EmbeddedResource Include="PesquisaClientes.resx">
+      <DependentUpon>PesquisaClientes.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="caopanheiro_clientes.xsc">
-      <DependentUpon>caopanheiro_clientes.xsd</DependentUpon>
-    </None>
-    <None Include="caopanheiro_clientes.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>caopanheiro_clientes.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="caopanheiro_clientes.xss">
-      <DependentUpon>caopanheiro_clientes.xsd</DependentUpon>
-    </None>
-    <None Include="PetShop_TemporaryKey.pfx" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -170,13 +162,6 @@
     <None Include="images\computador_sistema.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Database.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Database_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>Database.mdf</DependentUpon>
-    </Content>
     <None Include="images\splash_screen_background.jpg" />
     <None Include="images\pesquisar_list_icon.png" />
     <None Include="images\imprimir_list_icon.png" />

@@ -124,34 +124,43 @@
   <data name="administrador_sistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\administrador_sistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="agenda_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="agenda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\agenda_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="deletar_list_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="deletar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\deletar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fornecedor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="fornecedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\fornecedor_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tela_principal_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\tela_principal_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pesquisar_list_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="pesquisar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\pesquisar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="produtos_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="produtos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\produtos_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="adicionar_list_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="adicionar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\adicionar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clientes_icone" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\clientes_icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imprimir_list_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imprimir_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\imprimir_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="editar_list_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="editar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\editar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="animal_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\icons\animal_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fornecedor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\icons\fornecedorIco.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usuarios_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\icons\usuarios.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

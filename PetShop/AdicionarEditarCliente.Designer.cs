@@ -460,9 +460,9 @@ namespace PetShop
             this.label_adicionar_cliente_nome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_nome.Location = new System.Drawing.Point(15, 16);
             this.label_adicionar_cliente_nome.Name = "label_adicionar_cliente_nome";
-            this.label_adicionar_cliente_nome.Size = new System.Drawing.Size(190, 17);
+            this.label_adicionar_cliente_nome.Size = new System.Drawing.Size(183, 17);
             this.label_adicionar_cliente_nome.TabIndex = 0;
-            this.label_adicionar_cliente_nome.Text = "Nome Fantasia / Apelido*";
+            this.label_adicionar_cliente_nome.Text = "Nome Fantasia / Apelido";
             // 
             // informacoes_observacoes
             // 

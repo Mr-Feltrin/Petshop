@@ -31,8 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPrincipal));
             this.menu_principal = new System.Windows.Forms.ToolStrip();
-            this.btn_menu_pesquisa_clientes = new System.Windows.Forms.ToolStripButton();
-            this.botao_fornecedores = new System.Windows.Forms.ToolStripButton();
+            this.btnMenuPesquisaClientes = new System.Windows.Forms.ToolStripButton();
+            this.btnMenuFornecedores = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.botao_agenda = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,8 +55,8 @@
             // 
             this.menu_principal.AllowMerge = false;
             this.menu_principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btn_menu_pesquisa_clientes,
-            this.botao_fornecedores,
+            this.btnMenuPesquisaClientes,
+            this.btnMenuFornecedores,
             this.toolStripSeparator,
             this.botao_agenda,
             this.toolStripSeparator1,
@@ -67,34 +67,35 @@
             this.menu_principal.TabIndex = 0;
             this.menu_principal.Text = "toolStrip1";
             // 
-            // btn_menu_pesquisa_clientes
+            // btnMenuPesquisaClientes
             // 
-            this.btn_menu_pesquisa_clientes.BackColor = System.Drawing.Color.Transparent;
-            this.btn_menu_pesquisa_clientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_menu_pesquisa_clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_menu_pesquisa_clientes.Image = ((System.Drawing.Image)(resources.GetObject("btn_menu_pesquisa_clientes.Image")));
-            this.btn_menu_pesquisa_clientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btn_menu_pesquisa_clientes.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_menu_pesquisa_clientes.Name = "btn_menu_pesquisa_clientes";
-            this.btn_menu_pesquisa_clientes.Size = new System.Drawing.Size(63, 49);
-            this.btn_menu_pesquisa_clientes.Text = "Clientes";
-            this.btn_menu_pesquisa_clientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_menu_pesquisa_clientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btn_menu_pesquisa_clientes.Click += new System.EventHandler(this.Botao_clientes_Click);
+            this.btnMenuPesquisaClientes.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuPesquisaClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMenuPesquisaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuPesquisaClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuPesquisaClientes.Image")));
+            this.btnMenuPesquisaClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnMenuPesquisaClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMenuPesquisaClientes.Name = "btnMenuPesquisaClientes";
+            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuPesquisaClientes.Text = "Clientes";
+            this.btnMenuPesquisaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMenuPesquisaClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMenuPesquisaClientes.Click += new System.EventHandler(this.btnMenuPesquisaClientes_Click);
             // 
-            // botao_fornecedores
+            // btnMenuFornecedores
             // 
-            this.botao_fornecedores.BackColor = System.Drawing.Color.Transparent;
-            this.botao_fornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.botao_fornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botao_fornecedores.Image = ((System.Drawing.Image)(resources.GetObject("botao_fornecedores.Image")));
-            this.botao_fornecedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.botao_fornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.botao_fornecedores.Name = "botao_fornecedores";
-            this.botao_fornecedores.Size = new System.Drawing.Size(63, 49);
-            this.botao_fornecedores.Text = "Fornece";
-            this.botao_fornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.botao_fornecedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMenuFornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.btnMenuFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnMenuFornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuFornecedores.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuFornecedores.Image")));
+            this.btnMenuFornecedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnMenuFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnMenuFornecedores.Name = "btnMenuFornecedores";
+            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuFornecedores.Text = "Fornece";
+            this.btnMenuFornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnMenuFornecedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnMenuFornecedores.Click += new System.EventHandler(this.btnMenuFornecedores_Click);
             // 
             // toolStripSeparator
             // 
@@ -178,7 +179,7 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatus_agendamentos_atuais.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_agendamentos_atuais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatus_agendamentos_atuais.Image = global::PetShop.Properties.Resources.agenda_icon;
+            this.toolStripStatus_agendamentos_atuais.Image = global::PetShop.Properties.Resources.agenda;
             this.toolStripStatus_agendamentos_atuais.Name = "toolStripStatus_agendamentos_atuais";
             this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(208, 22);
             this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: 0";
@@ -268,7 +269,7 @@
             this.horario_atual.Interval = 1000;
             this.horario_atual.Tick += new System.EventHandler(this.Horario_atual_Tick);
             // 
-            // Tela_Principal
+            // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -281,7 +282,7 @@
             this.Controls.Add(this.menu_principal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Tela_Principal";
+            this.Name = "TelaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pet Shop Cãopanheiro";
             this.Load += new System.EventHandler(this.Tela_Principal_Load);
@@ -298,8 +299,8 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip menu_principal;
-        private System.Windows.Forms.ToolStripButton btn_menu_pesquisa_clientes;
-        private System.Windows.Forms.ToolStripButton botao_fornecedores;
+        private System.Windows.Forms.ToolStripButton btnMenuPesquisaClientes;
+        private System.Windows.Forms.ToolStripButton btnMenuFornecedores;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripButton botao_agenda;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

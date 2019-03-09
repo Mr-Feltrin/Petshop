@@ -6,9 +6,8 @@ namespace PetShop
 {
     public partial class AdicionarEditarCliente : Form
     {
-        private bool Operacao { get; set; }
-        private string IdCliente { get; set; }
-
+        private readonly bool Operacao;
+        private readonly string IdCliente;
 
         public AdicionarEditarCliente(bool operacao)
         {
@@ -110,10 +109,6 @@ namespace PetShop
             {
                 MessageBox.Show("Selecione o tipo de cliente", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(cadastro_cliente_nome_apelido.Text))
-            {
-                MessageBox.Show("Preencha o campo de Nome Fantasia / Apelido", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else if (string.IsNullOrWhiteSpace(cadastro_cliente_endereco.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome da Rua / AV", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -167,9 +162,9 @@ namespace PetShop
                         comando.CommandText = "UPDATE cliente SET nome_completo = @nome_completo, tipo = @tipo, nome_apelido = @nome_apelido, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone_primario = @telefone_primario, telefone_secundario = @telefone_secundario, celular = @celular, complemento = @complemento, email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
                     }
                     comando.Parameters.AddWithValue("@id", IdCliente);
-                    comando.Parameters.AddWithValue("@nome_completo", cadastro_cliente_nome_completo.Text.ToUpper());
+                    comando.Parameters.AddWithValue("@nome_completo", cadastro_cliente_nome_completo.Text);
                     comando.Parameters.AddWithValue("@tipo", cadastro_cliente_tipo.Text);
-                    comando.Parameters.AddWithValue("@nome_apelido", cadastro_cliente_nome_apelido.Text.ToUpper());
+                    comando.Parameters.AddWithValue("@nome_apelido", cadastro_cliente_nome_apelido.Text);
                     comando.Parameters.AddWithValue("@endereco", cadastro_cliente_endereco.Text);
                     comando.Parameters.AddWithValue("@bairro", cadastro_cliente_bairro.Text);
                     comando.Parameters.AddWithValue("@cidade", cadastro_cliente_cidade.Text);

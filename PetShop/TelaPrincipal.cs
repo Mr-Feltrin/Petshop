@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -20,7 +13,7 @@ namespace PetShop
 
         private void Tela_Principal_Load(object sender, EventArgs e)
         {
-            this.Focus();
+            Focus();
             // Verificação de data em formato completo
             toolStripStatus_data_completa.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
             // Verificação de tecla Caps Lock ativa/inativa
@@ -48,10 +41,10 @@ namespace PetShop
         }
 
 
-        private void Botao_clientes_Click(object sender, EventArgs e)
+        private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            PesquisaClientes show_Pesquisa_clientes = new PesquisaClientes();
-            show_Pesquisa_clientes.ShowDialog();
+            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(0);
+            pesquisaClientes.Show();
         }
 
         private void Tela_Principal_KeyDown(object sender, KeyEventArgs e)
@@ -80,12 +73,22 @@ namespace PetShop
                     toolStripStatus_num_lock.ForeColor = SystemColors.InactiveCaption;
                 }
             }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
 
         }
         // Display de horário atual
         private void Horario_atual_Tick(object sender, EventArgs e)
         {
-            this.toolStripStatus_horario.Text = DateTime.Now.ToString("HH:mm:ss");
+            toolStripStatus_horario.Text = DateTime.Now.ToString("HH:mm:ss");
+        }
+
+        private void btnMenuFornecedores_Click(object sender, EventArgs e)
+        {
+            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(1);
+            pesquisaFornecedores.Show();
         }
     }
 }

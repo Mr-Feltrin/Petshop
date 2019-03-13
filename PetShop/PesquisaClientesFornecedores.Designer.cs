@@ -105,7 +105,6 @@
             this.dataGridViewListaClientesFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewListaClientesFornecedores.Size = new System.Drawing.Size(898, 455);
             this.dataGridViewListaClientesFornecedores.TabIndex = 0;
-            this.dataGridViewListaClientesFornecedores.Sorted += new System.EventHandler(this.dataGridView_lista_usuarios_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
             // 
@@ -247,7 +246,6 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
-            this.Activated += new System.EventHandler(this.PesquisaClientesFornecedores_Activated);
             this.Load += new System.EventHandler(this.PesquisaClientesFornecedores_Load);
             this.groupBox_tabela_usuarios.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewListaClientesFornecedores)).EndInit();

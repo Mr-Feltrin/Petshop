@@ -30,7 +30,6 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarEditarCliente));
             this.label1 = new System.Windows.Forms.Label();
             this.cadastro_cliente_nome_completo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -491,7 +490,7 @@ namespace PetShop
             this.BtnAdicionarEditarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnAdicionarEditarCliente.AutoSize = true;
             this.BtnAdicionarEditarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdicionarEditarCliente.Image = ((System.Drawing.Image)(resources.GetObject("BtnAdicionarEditarCliente.Image")));
+            this.BtnAdicionarEditarCliente.Image = global::PetShop.Properties.Resources.adicionar;
             this.BtnAdicionarEditarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnAdicionarEditarCliente.Location = new System.Drawing.Point(649, 424);
             this.BtnAdicionarEditarCliente.Name = "BtnAdicionarEditarCliente";
@@ -507,7 +506,7 @@ namespace PetShop
             this.cadastro_cliente_cancelar.AutoSize = true;
             this.cadastro_cliente_cancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cadastro_cliente_cancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cadastro_cliente_cancelar.Image = ((System.Drawing.Image)(resources.GetObject("cadastro_cliente_cancelar.Image")));
+            this.cadastro_cliente_cancelar.Image = global::PetShop.Properties.Resources.cancelar;
             this.cadastro_cliente_cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cadastro_cliente_cancelar.Location = new System.Drawing.Point(34, 424);
             this.cadastro_cliente_cancelar.Name = "cadastro_cliente_cancelar";

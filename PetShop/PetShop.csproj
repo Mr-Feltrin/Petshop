@@ -92,6 +92,12 @@
     <Compile Include="AdicionarEditarCliente.Designer.cs">
       <DependentUpon>AdicionarEditarCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarEditarFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarEditarFornecedor.Designer.cs">
+      <DependentUpon>AdicionarEditarFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="DGVPrinter.cs" />
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
@@ -109,6 +115,9 @@
     </Compile>
     <EmbeddedResource Include="AdicionarEditarCliente.resx">
       <DependentUpon>AdicionarEditarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarEditarFornecedor.resx">
+      <DependentUpon>AdicionarEditarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
@@ -188,6 +197,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\icons\fornecedorIco.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\cancel_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\add_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

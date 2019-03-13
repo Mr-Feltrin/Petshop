@@ -80,3 +80,4 @@ C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.csproj.CopyCompl
 C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.pdb
 C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.PesquisaClientesFornecedores.resources
+C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.AdicionarEditarFornecedor.resources

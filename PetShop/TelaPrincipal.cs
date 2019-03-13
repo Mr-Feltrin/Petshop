@@ -43,8 +43,8 @@ namespace PetShop
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(0);
-            pesquisaClientes.Show();
+            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(true);
+            pesquisaClientes.ShowDialog();
         }
 
         private void Tela_Principal_KeyDown(object sender, KeyEventArgs e)
@@ -87,8 +87,8 @@ namespace PetShop
 
         private void btnMenuFornecedores_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(1);
-            pesquisaFornecedores.Show();
+            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(false);
+            pesquisaFornecedores.ShowDialog();
         }
     }
 }

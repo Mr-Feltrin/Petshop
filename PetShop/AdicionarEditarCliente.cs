@@ -8,7 +8,6 @@ namespace PetShop
     {
         private readonly bool Operacao;
         private readonly string IdCliente;
-
         public AdicionarEditarCliente(bool operacao)
         {
             InitializeComponent();

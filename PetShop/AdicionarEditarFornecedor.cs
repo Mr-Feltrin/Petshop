@@ -8,12 +8,14 @@ namespace PetShop
     {
         private readonly bool Operacao; // Valor true = Adicionar, false = Editar
         private readonly string IdFornecedor;
-        public AdicionarEditarFornecedor(bool operacao)
+        private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+        public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
             InitializeComponent();
             Operacao = operacao;
+            _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
-        public AdicionarEditarFornecedor(bool operacao, string idFornecedor, string nomeFornecedor, string tipoFornecimento, string apelidoFornecedor, string enderecoFornecedor, string bairroFornecedor, string cidadeFornecedor, string ufFornecedor, string cepFornecedor, string telefoneFornecedor, string celularfornecedor, string emailFornecedor, string cpfFornecedor, string cnpjFornecedor, string observacoesFornecedor) : this(operacao)
+        public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idFornecedor, string nomeFornecedor, string tipoFornecimento, string apelidoFornecedor, string enderecoFornecedor, string bairroFornecedor, string cidadeFornecedor, string ufFornecedor, string cepFornecedor, string telefoneFornecedor, string celularfornecedor, string emailFornecedor, string cpfFornecedor, string cnpjFornecedor, string observacoesFornecedor) : this(operacao, pesquisaClientesFornecedores)
         {
             IdFornecedor = idFornecedor;
             CadastroFornecedorNome.Text = nomeFornecedor;
@@ -118,6 +120,8 @@ namespace PetShop
                     if (query_check != 0)
                     {
                         MessageBox.Show("Os dados do fornecedor foram salvos.", "Cadastro de fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _PesquisaClientesFornecedores.ExibirDadosLista("SELECT * FROM fornecedor");
+                        
                     }
                 }
                 catch (Exception ex)

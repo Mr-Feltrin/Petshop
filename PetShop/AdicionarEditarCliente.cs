@@ -6,15 +6,16 @@ namespace PetShop
 {
     public partial class AdicionarEditarCliente : Form
     {
-        private readonly bool Operacao;
+        private readonly bool Operacao; // Valor true == Adicionar , False == Editar
         private readonly string IdCliente;
-        public AdicionarEditarCliente(bool operacao)
+        private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+        public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
             InitializeComponent();
             Operacao = operacao;
+            _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
-
-        public AdicionarEditarCliente(bool operacao, string idCliente, string nomeCompleto, string tipoCliente, string nomeApelido, string enderecoCliente, string bairroCliente, string cidadeCliente, string ufCliente, string cepCliente, string telefonePrimarioCliente, string telefoneSecundarioCliente, string celularCliente, string complementoCliente, string emailCliente, string cpfCliente, string cnpjCliente, string observacoesClientes) : this(operacao)
+        public AdicionarEditarCliente(bool operacao,PesquisaClientesFornecedores pesquisaClientesFornecedores ,string idCliente, string nomeCompleto, string tipoCliente, string nomeApelido, string enderecoCliente, string bairroCliente, string cidadeCliente, string ufCliente, string cepCliente, string telefonePrimarioCliente, string telefoneSecundarioCliente, string celularCliente, string complementoCliente, string emailCliente, string cpfCliente, string cnpjCliente, string observacoesClientes) :this(operacao, pesquisaClientesFornecedores)
         {
             IdCliente = idCliente;
             cadastro_cliente_nome_completo.Text = nomeCompleto;
@@ -181,6 +182,7 @@ namespace PetShop
                     if (query_check != 0)
                     {
                         MessageBox.Show("Os dados do cliente foram salvos.", "Cadastro de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _PesquisaClientesFornecedores.ExibirDadosLista("SELECT * FROM cliente");
                     }
                 }
                 catch (Exception ex)

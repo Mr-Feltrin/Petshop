@@ -12,9 +12,7 @@ namespace PetShop
 
     public partial class PesquisaClientesFornecedores : Form
     {
-
         private readonly bool TipoPesquisa; // Valor true = Clientes, Valor false = Fornecedores
-
         public PesquisaClientesFornecedores(bool tipoPesquisa)
         {
             InitializeComponent();
@@ -90,12 +88,12 @@ namespace PetShop
         {
             if (TipoPesquisa == true)
             {
-                AdicionarEditarCliente AdicionarCliente = new AdicionarEditarCliente(true);
+                AdicionarEditarCliente AdicionarCliente = new AdicionarEditarCliente(true, this);
                 AdicionarCliente.ShowDialog();
             }
             else
             {
-                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(true);
+                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(true, this);
                 AdicionarFornecedor.ShowDialog();
             }
         }
@@ -180,12 +178,12 @@ namespace PetShop
                 DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
                 if (TipoPesquisa == true)
                 {
-                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(false, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString(), row.Cells[15].Value.ToString(), row.Cells[16].Value.ToString());
+                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(false, this, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString(), row.Cells[15].Value.ToString(), row.Cells[16].Value.ToString());
                     EditarCliente.ShowDialog();
                 }
                 else
                 {
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(false, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString());
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(false, this, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString());
                     EditarFornecedor.ShowDialog();
                 }
                 

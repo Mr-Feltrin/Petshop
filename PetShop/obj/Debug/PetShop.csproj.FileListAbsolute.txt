@@ -19,7 +19,6 @@ C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.GenerateResour
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.pdb
-C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
 C:\Users\rasou\Downloads\PetShop\PetShop\bin\Debug\Microsoft.VisualBasic.PowerPacks.xml
 C:\Users\rasou\Downloads\PetShop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Desktop\PetShop\PetShop\bin\Debug\Database.mdf
@@ -56,7 +55,6 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCom
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.pdb
-C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\MySql.Data.dll
 C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\Google.Protobuf.dll
 C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\MySql.Data.xml
 C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarCliente.resources
@@ -82,3 +80,5 @@ C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.PesquisaClientes
 C:\Users\rasou\Desktop\Petshop_backup\PetShop\obj\Debug\PetShop.AdicionarEditarFornecedor.resources
 C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarFornecedor.resources
 C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.PesquisaClientesFornecedores.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.PesquisaProdutos.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarProdutos.resources

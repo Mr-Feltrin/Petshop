@@ -135,6 +135,7 @@
             this.botao_produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_produtos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.botao_produtos.ToolTipText = "Produtos";
+            this.botao_produtos.Click += new System.EventHandler(this.Botao_produtos_Click);
             // 
             // status_rodape_principal
             // 

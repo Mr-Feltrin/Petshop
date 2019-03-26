@@ -103,6 +103,7 @@ namespace PetShop
             // 
             // cadastro_cliente_tipo
             // 
+            this.cadastro_cliente_tipo.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cadastro_cliente_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastro_cliente_tipo.FormattingEnabled = true;
@@ -162,10 +163,11 @@ namespace PetShop
             this.enderecos_contato.Padding = new System.Windows.Forms.Padding(3);
             this.enderecos_contato.Size = new System.Drawing.Size(657, 300);
             this.enderecos_contato.TabIndex = 0;
-            this.enderecos_contato.Text = "Endereços e Contato";
+            this.enderecos_contato.Text = "Endereço e Contato";
             // 
             // cadastro_cliente_cep
             // 
+            this.cadastro_cliente_cep.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_cep.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.cadastro_cliente_cep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.cadastro_cliente_cep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -202,6 +204,7 @@ namespace PetShop
             // 
             // cadastro_cliente_telefone_primario
             // 
+            this.cadastro_cliente_telefone_primario.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_telefone_primario.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.cadastro_cliente_telefone_primario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.cadastro_cliente_telefone_primario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,6 +229,7 @@ namespace PetShop
             // 
             // cadastro_cliente_cpf
             // 
+            this.cadastro_cliente_cpf.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_cpf.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.cadastro_cliente_cpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.cadastro_cliente_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -239,20 +243,20 @@ namespace PetShop
             // label_adicionar_cliente_cnpj
             // 
             this.label_adicionar_cliente_cnpj.AutoSize = true;
-            this.label_adicionar_cliente_cnpj.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_cnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_cnpj.Location = new System.Drawing.Point(534, 224);
             this.label_adicionar_cliente_cnpj.Name = "label_adicionar_cliente_cnpj";
-            this.label_adicionar_cliente_cnpj.Size = new System.Drawing.Size(70, 17);
+            this.label_adicionar_cliente_cnpj.Size = new System.Drawing.Size(69, 18);
             this.label_adicionar_cliente_cnpj.TabIndex = 24;
             this.label_adicionar_cliente_cnpj.Text = "N° CNPJ";
             // 
             // label_adicionar_cliente_cpf
             // 
             this.label_adicionar_cliente_cpf.AutoSize = true;
-            this.label_adicionar_cliente_cpf.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_cpf.Location = new System.Drawing.Point(363, 224);
             this.label_adicionar_cliente_cpf.Name = "label_adicionar_cliente_cpf";
-            this.label_adicionar_cliente_cpf.Size = new System.Drawing.Size(66, 17);
+            this.label_adicionar_cliente_cpf.Size = new System.Drawing.Size(65, 18);
             this.label_adicionar_cliente_cpf.TabIndex = 22;
             this.label_adicionar_cliente_cpf.Text = "N° CPF*";
             // 
@@ -268,10 +272,10 @@ namespace PetShop
             // label_adicionar_cliente_email
             // 
             this.label_adicionar_cliente_email.AutoSize = true;
-            this.label_adicionar_cliente_email.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_email.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_email.Location = new System.Drawing.Point(15, 224);
             this.label_adicionar_cliente_email.Name = "label_adicionar_cliente_email";
-            this.label_adicionar_cliente_email.Size = new System.Drawing.Size(53, 17);
+            this.label_adicionar_cliente_email.Size = new System.Drawing.Size(50, 18);
             this.label_adicionar_cliente_email.TabIndex = 20;
             this.label_adicionar_cliente_email.Text = "E-mail";
             // 
@@ -287,55 +291,56 @@ namespace PetShop
             // label_adicionar_cliente_complemento
             // 
             this.label_adicionar_cliente_complemento.AutoSize = true;
-            this.label_adicionar_cliente_complemento.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_complemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_complemento.Location = new System.Drawing.Point(478, 171);
             this.label_adicionar_cliente_complemento.Name = "label_adicionar_cliente_complemento";
-            this.label_adicionar_cliente_complemento.Size = new System.Drawing.Size(108, 17);
+            this.label_adicionar_cliente_complemento.Size = new System.Drawing.Size(102, 18);
             this.label_adicionar_cliente_complemento.TabIndex = 18;
             this.label_adicionar_cliente_complemento.Text = "Complemento";
             // 
             // label_adicionar_cliente_celular
             // 
             this.label_adicionar_cliente_celular.AutoSize = true;
-            this.label_adicionar_cliente_celular.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_celular.Location = new System.Drawing.Point(325, 171);
             this.label_adicionar_cliente_celular.Name = "label_adicionar_cliente_celular";
-            this.label_adicionar_cliente_celular.Size = new System.Drawing.Size(82, 17);
+            this.label_adicionar_cliente_celular.Size = new System.Drawing.Size(75, 18);
             this.label_adicionar_cliente_celular.TabIndex = 16;
             this.label_adicionar_cliente_celular.Text = "N° Celular";
             // 
             // label_adicionar_cliente_telefone_secundario
             // 
             this.label_adicionar_cliente_telefone_secundario.AutoSize = true;
-            this.label_adicionar_cliente_telefone_secundario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_telefone_secundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.label_adicionar_cliente_telefone_secundario.Location = new System.Drawing.Point(169, 171);
             this.label_adicionar_cliente_telefone_secundario.Name = "label_adicionar_cliente_telefone_secundario";
-            this.label_adicionar_cliente_telefone_secundario.Size = new System.Drawing.Size(90, 17);
+            this.label_adicionar_cliente_telefone_secundario.Size = new System.Drawing.Size(83, 18);
             this.label_adicionar_cliente_telefone_secundario.TabIndex = 14;
             this.label_adicionar_cliente_telefone_secundario.Text = "2° Telefone";
             // 
             // label_adicionar_cliente_telefone_primario
             // 
             this.label_adicionar_cliente_telefone_primario.AutoSize = true;
-            this.label_adicionar_cliente_telefone_primario.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_telefone_primario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_telefone_primario.Location = new System.Drawing.Point(15, 171);
             this.label_adicionar_cliente_telefone_primario.Name = "label_adicionar_cliente_telefone_primario";
-            this.label_adicionar_cliente_telefone_primario.Size = new System.Drawing.Size(97, 17);
+            this.label_adicionar_cliente_telefone_primario.Size = new System.Drawing.Size(89, 18);
             this.label_adicionar_cliente_telefone_primario.TabIndex = 12;
             this.label_adicionar_cliente_telefone_primario.Text = "1° Telefone*";
             // 
             // label_adicionar_cliente_cep
             // 
             this.label_adicionar_cliente_cep.AutoSize = true;
-            this.label_adicionar_cliente_cep.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_cep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_cep.Location = new System.Drawing.Point(547, 118);
             this.label_adicionar_cliente_cep.Name = "label_adicionar_cliente_cep";
-            this.label_adicionar_cliente_cep.Size = new System.Drawing.Size(46, 17);
+            this.label_adicionar_cliente_cep.Size = new System.Drawing.Size(45, 18);
             this.label_adicionar_cliente_cep.TabIndex = 10;
             this.label_adicionar_cliente_cep.Text = "CEP*";
             // 
             // cadastro_cliente_uf
             // 
+            this.cadastro_cliente_uf.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_uf.DropDownHeight = 85;
             this.cadastro_cliente_uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cadastro_cliente_uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -378,15 +383,16 @@ namespace PetShop
             // label_adicionar_cliente_uf
             // 
             this.label_adicionar_cliente_uf.AutoSize = true;
-            this.label_adicionar_cliente_uf.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_uf.Location = new System.Drawing.Point(447, 118);
             this.label_adicionar_cliente_uf.Name = "label_adicionar_cliente_uf";
-            this.label_adicionar_cliente_uf.Size = new System.Drawing.Size(35, 17);
+            this.label_adicionar_cliente_uf.Size = new System.Drawing.Size(34, 18);
             this.label_adicionar_cliente_uf.TabIndex = 8;
             this.label_adicionar_cliente_uf.Text = "UF*";
             // 
             // cadastro_cliente_cidade
             // 
+            this.cadastro_cliente_cidade.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_cidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastro_cliente_cidade.Location = new System.Drawing.Point(281, 139);
             this.cadastro_cliente_cidade.MaxLength = 500;
@@ -397,15 +403,16 @@ namespace PetShop
             // label_adicionar_cliente_cidade
             // 
             this.label_adicionar_cliente_cidade.AutoSize = true;
-            this.label_adicionar_cliente_cidade.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_cidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_cidade.Location = new System.Drawing.Point(278, 118);
             this.label_adicionar_cliente_cidade.Name = "label_adicionar_cliente_cidade";
-            this.label_adicionar_cliente_cidade.Size = new System.Drawing.Size(66, 17);
+            this.label_adicionar_cliente_cidade.Size = new System.Drawing.Size(60, 18);
             this.label_adicionar_cliente_cidade.TabIndex = 6;
             this.label_adicionar_cliente_cidade.Text = "Cidade*";
             // 
             // cadastro_cliente_bairro
             // 
+            this.cadastro_cliente_bairro.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_bairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cadastro_cliente_bairro.Location = new System.Drawing.Point(18, 139);
             this.cadastro_cliente_bairro.MaxLength = 500;
@@ -416,10 +423,10 @@ namespace PetShop
             // label_adicionar_cliente_bairro
             // 
             this.label_adicionar_cliente_bairro.AutoSize = true;
-            this.label_adicionar_cliente_bairro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_bairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_bairro.Location = new System.Drawing.Point(15, 118);
             this.label_adicionar_cliente_bairro.Name = "label_adicionar_cliente_bairro";
-            this.label_adicionar_cliente_bairro.Size = new System.Drawing.Size(62, 17);
+            this.label_adicionar_cliente_bairro.Size = new System.Drawing.Size(54, 18);
             this.label_adicionar_cliente_bairro.TabIndex = 4;
             this.label_adicionar_cliente_bairro.Text = "Bairro*";
             // 
@@ -436,10 +443,10 @@ namespace PetShop
             // label_adicionar_cliente_endereco
             // 
             this.label_adicionar_cliente_endereco.AutoSize = true;
-            this.label_adicionar_cliente_endereco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_endereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_endereco.Location = new System.Drawing.Point(15, 66);
             this.label_adicionar_cliente_endereco.Name = "label_adicionar_cliente_endereco";
-            this.label_adicionar_cliente_endereco.Size = new System.Drawing.Size(145, 17);
+            this.label_adicionar_cliente_endereco.Size = new System.Drawing.Size(136, 18);
             this.label_adicionar_cliente_endereco.TabIndex = 2;
             this.label_adicionar_cliente_endereco.Text = "Nome da Rua / AV*";
             // 
@@ -456,10 +463,10 @@ namespace PetShop
             // label_adicionar_cliente_nome
             // 
             this.label_adicionar_cliente_nome.AutoSize = true;
-            this.label_adicionar_cliente_nome.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_adicionar_cliente_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_adicionar_cliente_nome.Location = new System.Drawing.Point(15, 16);
             this.label_adicionar_cliente_nome.Name = "label_adicionar_cliente_nome";
-            this.label_adicionar_cliente_nome.Size = new System.Drawing.Size(183, 17);
+            this.label_adicionar_cliente_nome.Size = new System.Drawing.Size(169, 18);
             this.label_adicionar_cliente_nome.TabIndex = 0;
             this.label_adicionar_cliente_nome.Text = "Nome Fantasia / Apelido";
             // 
@@ -477,7 +484,7 @@ namespace PetShop
             // 
             // cadastro_cliente_observacoes
             // 
-            this.cadastro_cliente_observacoes.BackColor = System.Drawing.SystemColors.Info;
+            this.cadastro_cliente_observacoes.BackColor = System.Drawing.SystemColors.Window;
             this.cadastro_cliente_observacoes.Location = new System.Drawing.Point(6, 6);
             this.cadastro_cliente_observacoes.MaxLength = 500;
             this.cadastro_cliente_observacoes.Name = "cadastro_cliente_observacoes";

@@ -158,15 +158,15 @@
             this.enderecos_contato.Padding = new System.Windows.Forms.Padding(3);
             this.enderecos_contato.Size = new System.Drawing.Size(657, 281);
             this.enderecos_contato.TabIndex = 0;
-            this.enderecos_contato.Text = "Endereços e Contato";
+            this.enderecos_contato.Text = "Endereço e Contato";
             // 
             // labelFornecedorCelular
             // 
             this.labelFornecedorCelular.AutoSize = true;
-            this.labelFornecedorCelular.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCelular.Location = new System.Drawing.Point(192, 171);
             this.labelFornecedorCelular.Name = "labelFornecedorCelular";
-            this.labelFornecedorCelular.Size = new System.Drawing.Size(61, 17);
+            this.labelFornecedorCelular.Size = new System.Drawing.Size(54, 18);
             this.labelFornecedorCelular.TabIndex = 33;
             this.labelFornecedorCelular.Text = "Celular";
             // 
@@ -196,6 +196,7 @@
             // 
             // CadastroFornecedorTelefone
             // 
+            this.CadastroFornecedorTelefone.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorTelefone.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.CadastroFornecedorTelefone.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.CadastroFornecedorTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -220,6 +221,7 @@
             // 
             // CadastroFornecedorCpf
             // 
+            this.CadastroFornecedorCpf.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorCpf.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.CadastroFornecedorCpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.CadastroFornecedorCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,20 +235,20 @@
             // labelFornecedorCnpj
             // 
             this.labelFornecedorCnpj.AutoSize = true;
-            this.labelFornecedorCnpj.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCnpj.Location = new System.Drawing.Point(379, 171);
             this.labelFornecedorCnpj.Name = "labelFornecedorCnpj";
-            this.labelFornecedorCnpj.Size = new System.Drawing.Size(70, 17);
+            this.labelFornecedorCnpj.Size = new System.Drawing.Size(69, 18);
             this.labelFornecedorCnpj.TabIndex = 24;
             this.labelFornecedorCnpj.Text = "N° CNPJ";
             // 
             // labelFornecedorCpf
             // 
             this.labelFornecedorCpf.AutoSize = true;
-            this.labelFornecedorCpf.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCpf.Location = new System.Drawing.Point(534, 171);
             this.labelFornecedorCpf.Name = "labelFornecedorCpf";
-            this.labelFornecedorCpf.Size = new System.Drawing.Size(66, 17);
+            this.labelFornecedorCpf.Size = new System.Drawing.Size(65, 18);
             this.labelFornecedorCpf.TabIndex = 22;
             this.labelFornecedorCpf.Text = "N° CPF*";
             // 
@@ -262,35 +264,36 @@
             // labelFornecedorEmail
             // 
             this.labelFornecedorEmail.AutoSize = true;
-            this.labelFornecedorEmail.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorEmail.Location = new System.Drawing.Point(15, 225);
             this.labelFornecedorEmail.Name = "labelFornecedorEmail";
-            this.labelFornecedorEmail.Size = new System.Drawing.Size(53, 17);
+            this.labelFornecedorEmail.Size = new System.Drawing.Size(50, 18);
             this.labelFornecedorEmail.TabIndex = 20;
             this.labelFornecedorEmail.Text = "E-mail";
             // 
             // labelFornecedorTelefone
             // 
             this.labelFornecedorTelefone.AutoSize = true;
-            this.labelFornecedorTelefone.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorTelefone.Location = new System.Drawing.Point(15, 171);
             this.labelFornecedorTelefone.Name = "labelFornecedorTelefone";
-            this.labelFornecedorTelefone.Size = new System.Drawing.Size(78, 17);
+            this.labelFornecedorTelefone.Size = new System.Drawing.Size(71, 18);
             this.labelFornecedorTelefone.TabIndex = 12;
             this.labelFornecedorTelefone.Text = "Telefone*";
             // 
             // labelFornecedorCep
             // 
             this.labelFornecedorCep.AutoSize = true;
-            this.labelFornecedorCep.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCep.Location = new System.Drawing.Point(547, 118);
             this.labelFornecedorCep.Name = "labelFornecedorCep";
-            this.labelFornecedorCep.Size = new System.Drawing.Size(39, 17);
+            this.labelFornecedorCep.Size = new System.Drawing.Size(39, 18);
             this.labelFornecedorCep.TabIndex = 10;
             this.labelFornecedorCep.Text = "CEP";
             // 
             // CadastroFornecedorUf
             // 
+            this.CadastroFornecedorUf.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorUf.DropDownHeight = 85;
             this.CadastroFornecedorUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CadastroFornecedorUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -333,15 +336,16 @@
             // labelFornecedorUf
             // 
             this.labelFornecedorUf.AutoSize = true;
-            this.labelFornecedorUf.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorUf.Location = new System.Drawing.Point(447, 118);
             this.labelFornecedorUf.Name = "labelFornecedorUf";
-            this.labelFornecedorUf.Size = new System.Drawing.Size(35, 17);
+            this.labelFornecedorUf.Size = new System.Drawing.Size(34, 18);
             this.labelFornecedorUf.TabIndex = 8;
             this.labelFornecedorUf.Text = "UF*";
             // 
             // CadastroFornecedorCidade
             // 
+            this.CadastroFornecedorCidade.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadastroFornecedorCidade.Location = new System.Drawing.Point(281, 139);
             this.CadastroFornecedorCidade.MaxLength = 500;
@@ -352,15 +356,16 @@
             // labelFornecedorCidade
             // 
             this.labelFornecedorCidade.AutoSize = true;
-            this.labelFornecedorCidade.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCidade.Location = new System.Drawing.Point(278, 118);
             this.labelFornecedorCidade.Name = "labelFornecedorCidade";
-            this.labelFornecedorCidade.Size = new System.Drawing.Size(66, 17);
+            this.labelFornecedorCidade.Size = new System.Drawing.Size(60, 18);
             this.labelFornecedorCidade.TabIndex = 6;
             this.labelFornecedorCidade.Text = "Cidade*";
             // 
             // CadastroFornecedorBairro
             // 
+            this.CadastroFornecedorBairro.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CadastroFornecedorBairro.Location = new System.Drawing.Point(18, 139);
             this.CadastroFornecedorBairro.MaxLength = 500;
@@ -371,10 +376,10 @@
             // labelFornecedorBairro
             // 
             this.labelFornecedorBairro.AutoSize = true;
-            this.labelFornecedorBairro.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorBairro.Location = new System.Drawing.Point(15, 118);
             this.labelFornecedorBairro.Name = "labelFornecedorBairro";
-            this.labelFornecedorBairro.Size = new System.Drawing.Size(62, 17);
+            this.labelFornecedorBairro.Size = new System.Drawing.Size(54, 18);
             this.labelFornecedorBairro.TabIndex = 4;
             this.labelFornecedorBairro.Text = "Bairro*";
             // 
@@ -391,10 +396,10 @@
             // labelFornecedorEndereco
             // 
             this.labelFornecedorEndereco.AutoSize = true;
-            this.labelFornecedorEndereco.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorEndereco.Location = new System.Drawing.Point(15, 66);
             this.labelFornecedorEndereco.Name = "labelFornecedorEndereco";
-            this.labelFornecedorEndereco.Size = new System.Drawing.Size(145, 17);
+            this.labelFornecedorEndereco.Size = new System.Drawing.Size(136, 18);
             this.labelFornecedorEndereco.TabIndex = 2;
             this.labelFornecedorEndereco.Text = "Nome da Rua / AV*";
             // 
@@ -411,10 +416,10 @@
             // labelFornecedorApelido
             // 
             this.labelFornecedorApelido.AutoSize = true;
-            this.labelFornecedorApelido.Font = new System.Drawing.Font("Arial Rounded MT Bold", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorApelido.Location = new System.Drawing.Point(15, 16);
             this.labelFornecedorApelido.Name = "labelFornecedorApelido";
-            this.labelFornecedorApelido.Size = new System.Drawing.Size(183, 17);
+            this.labelFornecedorApelido.Size = new System.Drawing.Size(169, 18);
             this.labelFornecedorApelido.TabIndex = 0;
             this.labelFornecedorApelido.Text = "Nome Fantasia / Apelido";
             // 
@@ -432,7 +437,7 @@
             // 
             // CadastroFornecedorObservacoes
             // 
-            this.CadastroFornecedorObservacoes.BackColor = System.Drawing.SystemColors.Info;
+            this.CadastroFornecedorObservacoes.BackColor = System.Drawing.SystemColors.Window;
             this.CadastroFornecedorObservacoes.Location = new System.Drawing.Point(6, 6);
             this.CadastroFornecedorObservacoes.MaxLength = 500;
             this.CadastroFornecedorObservacoes.Name = "CadastroFornecedorObservacoes";
@@ -481,6 +486,7 @@
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = " ";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AdicionarEditarFornecedor_Load);
             this.tabControl1.ResumeLayout(false);

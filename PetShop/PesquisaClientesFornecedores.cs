@@ -248,9 +248,36 @@ namespace PetShop
                 {
                     ExibirDadosLista($"SELECT * FROM fornecedor WHERE nome_fornecedor LIKE '%{textBoxPesquisarPeloNome.Text}%'");
                 }
-
+            }
+            else
+            {
+                if (TipoPesquisa == true)
+                {
+                    ExibirDadosLista($"SELECT * FROM cliente WHERE nome_completo LIKE '%{textBoxPesquisarPeloNome.Text}%'");
+                }
+                else
+                {
+                    ExibirDadosLista($"SELECT * FROM fornecedor WHERE nome_fornecedor LIKE '%{textBoxPesquisarPeloNome.Text}%'");
+                }
             }
         }
 
+        private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
+            {
+                DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
+                if (TipoPesquisa == true)
+                {
+                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(false, this, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString(), row.Cells[15].Value.ToString(), row.Cells[16].Value.ToString());
+                    EditarCliente.ShowDialog();
+                }
+                else
+                {
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(false, this, row.Cells[0].Value.ToString(), row.Cells[1].Value.ToString(), row.Cells[2].Value.ToString(), row.Cells[3].Value.ToString(), row.Cells[4].Value.ToString(), row.Cells[5].Value.ToString(), row.Cells[6].Value.ToString(), row.Cells[7].Value.ToString(), row.Cells[8].Value.ToString(), row.Cells[9].Value.ToString(), row.Cells[10].Value.ToString(), row.Cells[11].Value.ToString(), row.Cells[12].Value.ToString(), row.Cells[13].Value.ToString(), row.Cells[14].Value.ToString());
+                    EditarFornecedor.ShowDialog();
+                }
+            }
+        }
     }
 }

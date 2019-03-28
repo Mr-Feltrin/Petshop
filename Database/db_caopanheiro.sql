@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Mar-2019 às 01:57
+-- Generation Time: 28-Mar-2019 às 02:19
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -53,7 +53,7 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`id`, `nome_completo`, `tipo`, `nome_apelido`, `endereco`, `bairro`, `cidade`, `uf`, `cep`, `telefone_primario`, `telefone_secundario`, `celular`, `complemento`, `email`, `cpf`, `cnpj`, `observacoes`) VALUES
-(1, 'Jose luis da puta queo pariu', 'Cliente comum', 'joselito', 'Rua da amargura n° 666', 'Parque da tristeza', 'Ribeirão Pires', 'SP', '10101-066', '(00)0000-0000', '(  )    -', '(19)99334-4880', 'Caixão', 'ribeiraopericles@gmail.com', '000,000,000-00', '  ,   ,   /    -', 'Busque conhecimento'),
+(1, 'Jose luis da puta queo pariu', 'Cliente Comum', 'joselito', 'Rua da amargura n° 666888', 'Parque da tristeza', 'Ribeirão Pires', 'SP', '10101-066', '(00)0000-0000', '(  )    -', '(19)99334-4880', 'Caixão', 'ribeiraopericles@gmail.com', '000,000,000-00', '  ,   ,   /    -', 'Busque conhecimento'),
 (3, 'asdadadadad', 'Cliente especial', 'asdasdasd', 'asdasdas', 'asdasdads', 'asdsadasd', 'AP', '00000-000', '(00)0000-0000', '(  )    -', '(  )     -', '', '', '000,000,000-00', '  ,   ,   /    -', ''),
 (5, 'fffdfdfrrrrrrrrrrrrrrrr', 'Cliente Especial', 'dfdf', 'dfdf', 'dfdf', 'dfdf', 'BA', '00000-000', '(00)0000-0000', '(  )    -', '(  )     -', '', '', '000,000,000-00', '  ,   ,   /    -', '');
 
@@ -86,8 +86,33 @@ CREATE TABLE `fornecedor` (
 --
 
 INSERT INTO `fornecedor` (`id`, `nome_fornecedor`, `tipo_fornecimento`, `apelido_fornecedor`, `endereco`, `bairro`, `cidade`, `uf`, `cep`, `telefone`, `celular`, `email`, `cpf`, `cnpj`, `observacoes`) VALUES
-(1, 'John Cena', 'Porrada', 'asdasdasdsad', 'asdasdasdasdasd', 'asdasdasda', 'asdasdasdasd', 'SC', '00000-000', '(10)1010-1010', '(  )     -', 'vaitomarnoseufiofó@gmail.com', '101,010,101-01', '  ,   ,   /    -', 'Proteina de soja é proteina de viado.'),
+(1, 'John Cena', 'Porrada', 'asdasdasdsad', 'asdasdasdasdasd', 'asdasdasda', 'asdasdasdasd', 'SC', '00000-000', '(10)1010-1010', '(  )     -', 'vaitomarnoseufiofó@gmail.com', '101,010,101-01', '  ,   ,   /    -', 'Proteina de soja é proteina de viado.\n\ncade a soja'),
 (2, 'Ana maria', 'Cu', '', 'Vrau', 'vrau', 'carai', 'DF', '     -', '(00)0000-0000', '(  )     -', '', '000,000,000-00', '  ,   ,   /    -', '');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `id` int(11) NOT NULL,
+  `nome_produto` varchar(300) NOT NULL,
+  `codigo_barras` varchar(300) DEFAULT NULL,
+  `unidade` varchar(100) NOT NULL,
+  `referencia` varchar(300) DEFAULT NULL,
+  `local_fisico` varchar(300) DEFAULT NULL,
+  `data_modificacao` date NOT NULL,
+  `marca` varchar(300) DEFAULT NULL,
+  `categoria` varchar(300) NOT NULL,
+  `estoque_minimo` int(255) DEFAULT NULL,
+  `estoque_atual` int(255) NOT NULL,
+  `data_validade` date DEFAULT NULL,
+  `valor_custo` decimal(22,2) DEFAULT NULL,
+  `margem_avista` int(11) DEFAULT NULL,
+  `valor_produto` decimal(22,2) NOT NULL,
+  `observacoes` varchar(300) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -106,6 +131,12 @@ ALTER TABLE `fornecedor`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -119,7 +150,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT for table `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `produto`
+--
+ALTER TABLE `produto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

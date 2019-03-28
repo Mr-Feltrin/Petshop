@@ -1,13 +1,13 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace PetShop
-{    
+{
     public partial class AdicionarEditarFornecedor : Form
     {
         private readonly bool Operacao; // Valor true = Adicionar, false = Editar
-        private readonly string IdFornecedor;
+        private readonly int IdFornecedor;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
         public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -15,23 +15,9 @@ namespace PetShop
             Operacao = operacao;
             _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
-        public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idFornecedor, string nomeFornecedor, string tipoFornecimento, string apelidoFornecedor, string enderecoFornecedor, string bairroFornecedor, string cidadeFornecedor, string ufFornecedor, string cepFornecedor, string telefoneFornecedor, string celularfornecedor, string emailFornecedor, string cpfFornecedor, string cnpjFornecedor, string observacoesFornecedor) : this(operacao, pesquisaClientesFornecedores)
+        public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idFornecedor) : this(operacao, pesquisaClientesFornecedores)
         {
-            IdFornecedor = idFornecedor;
-            CadastroFornecedorNome.Text = nomeFornecedor;
-            CadastroFornecedorTipoFornecimento.Text = tipoFornecimento;
-            CadastroFornecedorApelido.Text = apelidoFornecedor;
-            CadastroFornecedorEndereco.Text = enderecoFornecedor;
-            CadastroFornecedorBairro.Text = bairroFornecedor;
-            CadastroFornecedorCidade.Text = cidadeFornecedor;
-            CadastroFornecedorUf.Text = ufFornecedor;
-            CadastroFornecedorCep.Text = cepFornecedor;
-            CadastroFornecedorTelefone.Text = telefoneFornecedor;
-            CadastroFornecedorCelular.Text = celularfornecedor;
-            CadastroFornecedorEmail.Text = emailFornecedor;
-            CadastroFornecedorCpf.Text = cpfFornecedor;
-            CadastroFornecedorCnpj.Text = cnpjFornecedor;
-            CadastroFornecedorObservacoes.Text = observacoesFornecedor;
+            IdFornecedor = int.Parse(idFornecedor);
         }
         private void AdicionarEditarFornecedor_Load(object sender, EventArgs e)
         {
@@ -44,39 +30,80 @@ namespace PetShop
             {
                 Text = "Editar Fornecedor";
                 BtnAdicionarEditarFornecedor.Text = "Atualizar";
+                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+                        MySqlCommand comando = conn.CreateCommand();
+                        comando.CommandText = "SELECT * FROM fornecedor WHERE id = @id";
+                        comando.Parameters.AddWithValue("@id", IdFornecedor);
+                        MySqlDataReader reader = comando.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            nomeCompleto.Text = reader.GetString("nome_fornecedor");
+                            tipoFornecimento.Text = reader.GetString("tipo_fornecimento");
+                            apelido.Text = reader.GetString("apelido_fornecedor");
+                            endereco.Text = reader.GetString("endereco");
+                            bairro.Text = reader.GetString("bairro");
+                            cidade.Text = reader.GetString("cidade");
+                            uf.SelectedItem = reader.GetString("uf");
+                            cep.Text = reader.GetString("cep");
+                            telefone.Text = reader.GetString("telefone");
+                            celular.Text = reader.GetString("celular");
+                            email.Text = reader.GetString("email");
+                            cpf.Text = reader.GetString("cpf");
+                            cnpj.Text = reader.GetString("cnpj");
+                            observacoes.Text = reader.GetString("observacoes");
+                        }
+                        else
+                        {
+                            MessageBox.Show("O fornecedor a ser editado não se encontra mais na base de dados.", "Erro ao identificar Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao acessar o banco de dados: {ex.Message}", "Falha ao editar Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
             }
         }
         private void VerificaCamposObrigatórios()
         {
-            if (string.IsNullOrWhiteSpace(CadastroFornecedorNome.Text))
+            if (string.IsNullOrWhiteSpace(nomeCompleto.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome do Fornecedor", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(CadastroFornecedorTipoFornecimento.Text))
+            else if (string.IsNullOrWhiteSpace(tipoFornecimento.Text))
             {
                 MessageBox.Show("Preencha o campo de Tipo de Fornecimento", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(CadastroFornecedorEndereco.Text))
+            else if (string.IsNullOrWhiteSpace(endereco.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome da Rua / AV.", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(CadastroFornecedorBairro.Text))
+            else if (string.IsNullOrWhiteSpace(bairro.Text))
             {
                 MessageBox.Show("Preencha o campo de Bairro", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(CadastroFornecedorCidade.Text))
+            else if (string.IsNullOrWhiteSpace(cidade.Text))
             {
                 MessageBox.Show("Preencha o campo de Cidade", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrEmpty(CadastroFornecedorUf.Text))
+            else if (string.IsNullOrEmpty(uf.Text))
             {
                 MessageBox.Show("Selecione o campo de UF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!CadastroFornecedorTelefone.MaskCompleted)
+            else if (!telefone.MaskCompleted)
             {
                 MessageBox.Show("Preencha o campo de Telefone", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!CadastroFornecedorCpf.MaskCompleted)
+            else if (!cpf.MaskCompleted)
             {
                 MessageBox.Show("Preencha o campo de CPF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -102,26 +129,26 @@ namespace PetShop
                         comando.CommandText = "UPDATE fornecedor SET nome_fornecedor = @nome_fornecedor, tipo_fornecimento = @tipo_fornecimento, apelido_fornecedor = @apelido_fornecedor, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone, celular = @celular, email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
                         comando.Parameters.AddWithValue("@id", IdFornecedor);
                     }
-                    comando.Parameters.AddWithValue("@nome_fornecedor", CadastroFornecedorNome.Text);
-                    comando.Parameters.AddWithValue("@tipo_fornecimento", CadastroFornecedorTipoFornecimento.Text);
-                    comando.Parameters.AddWithValue("@apelido_fornecedor", CadastroFornecedorApelido.Text);
-                    comando.Parameters.AddWithValue("@endereco", CadastroFornecedorEndereco.Text);
-                    comando.Parameters.AddWithValue("@bairro", CadastroFornecedorBairro.Text);
-                    comando.Parameters.AddWithValue("@cidade", CadastroFornecedorCidade.Text);
-                    comando.Parameters.AddWithValue("@uf", CadastroFornecedorUf.Text);
-                    comando.Parameters.AddWithValue("@cep", CadastroFornecedorCep.Text);
-                    comando.Parameters.AddWithValue("@telefone", CadastroFornecedorTelefone.Text);
-                    comando.Parameters.AddWithValue("@celular", CadastroFornecedorCelular.Text);
-                    comando.Parameters.AddWithValue("@email", CadastroFornecedorEmail.Text);
-                    comando.Parameters.AddWithValue("@cpf", CadastroFornecedorCpf.Text);
-                    comando.Parameters.AddWithValue("@cnpj", CadastroFornecedorCnpj.Text);
-                    comando.Parameters.AddWithValue("@observacoes", CadastroFornecedorObservacoes.Text);
+                    comando.Parameters.AddWithValue("@nome_fornecedor", nomeCompleto.Text);
+                    comando.Parameters.AddWithValue("@tipo_fornecimento", tipoFornecimento.Text);
+                    comando.Parameters.AddWithValue("@apelido_fornecedor", apelido.Text);
+                    comando.Parameters.AddWithValue("@endereco", endereco.Text);
+                    comando.Parameters.AddWithValue("@bairro", bairro.Text);
+                    comando.Parameters.AddWithValue("@cidade", cidade.Text);
+                    comando.Parameters.AddWithValue("@uf", uf.Text);
+                    comando.Parameters.AddWithValue("@cep", cep.Text);
+                    comando.Parameters.AddWithValue("@telefone", telefone.Text);
+                    comando.Parameters.AddWithValue("@celular", celular.Text);
+                    comando.Parameters.AddWithValue("@email", email.Text);
+                    comando.Parameters.AddWithValue("@cpf", cpf.Text);
+                    comando.Parameters.AddWithValue("@cnpj", cnpj.Text);
+                    comando.Parameters.AddWithValue("@observacoes", observacoes.Text);
                     int query_check = comando.ExecuteNonQuery();
                     if (query_check != 0)
                     {
                         MessageBox.Show("Os dados do fornecedor foram salvos.", "Cadastro de fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _PesquisaClientesFornecedores.ExibirDadosLista("SELECT * FROM fornecedor");
-                        
+
                     }
                 }
                 catch (Exception ex)
@@ -145,7 +172,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                CadastroFornecedorTelefone.SelectionStart = 0;
+                telefone.SelectionStart = 0;
             }
         }
 
@@ -153,7 +180,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                CadastroFornecedorCep.SelectionStart = 0;
+                cep.SelectionStart = 0;
             }
         }
 
@@ -161,24 +188,24 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                CadastroFornecedorCelular.SelectionStart = 0;
-            }          
+                celular.SelectionStart = 0;
+            }
         }
 
         private void CadastroFornecedorCnpj_Click(object sender, EventArgs e)
         {
             if (Operacao == true)
             {
-                CadastroFornecedorCnpj.SelectionStart = 0;
-            }       
+                cnpj.SelectionStart = 0;
+            }
         }
 
         private void CadastroFornecedorCpf_Click(object sender, EventArgs e)
         {
             if (Operacao == true)
             {
-                CadastroFornecedorCpf.SelectionStart = 0;
-            }          
+                cpf.SelectionStart = 0;
+            }
         }
     }
 }

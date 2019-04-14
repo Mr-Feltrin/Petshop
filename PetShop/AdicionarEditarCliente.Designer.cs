@@ -97,9 +97,9 @@ namespace PetShop
             this.labelTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTipo.Location = new System.Drawing.Point(448, 20);
             this.labelTipo.Name = "labelTipo";
-            this.labelTipo.Size = new System.Drawing.Size(243, 22);
+            this.labelTipo.Size = new System.Drawing.Size(250, 22);
             this.labelTipo.TabIndex = 2;
-            this.labelTipo.Text = "Segmento do Cliente ou Tipo";
+            this.labelTipo.Text = "Segmento do Cliente ou Tipo*";
             // 
             // tipo
             // 

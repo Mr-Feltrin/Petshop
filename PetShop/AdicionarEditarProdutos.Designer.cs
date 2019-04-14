@@ -30,13 +30,15 @@ namespace PetShop
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.quantidadeProduto = new System.Windows.Forms.TextBox();
+            this.dataCadastroProduto = new System.Windows.Forms.DateTimePicker();
             this.categoriaProduto = new System.Windows.Forms.ComboBox();
             this.labelCategoriaProduto = new System.Windows.Forms.Label();
             this.marcaProduto = new System.Windows.Forms.ComboBox();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
-            this.dataCadastroAtualizacaoProduto = new System.Windows.Forms.TextBox();
             this.labelDataCadastroProduto = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.localizacaoProduto = new System.Windows.Forms.TextBox();
             this.labelLocalizacaoProduto = new System.Windows.Forms.Label();
             this.ReferenciaProduto = new System.Windows.Forms.TextBox();
             this.labelReferenciaProduto = new System.Windows.Forms.Label();
@@ -49,7 +51,7 @@ namespace PetShop
             this.codigoProduto = new System.Windows.Forms.TextBox();
             this.labelCodigoProduto = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataValidadeProduto = new System.Windows.Forms.TextBox();
+            this.dataValidadeProduto = new System.Windows.Forms.DateTimePicker();
             this.labelDataValidade = new System.Windows.Forms.Label();
             this.estoqueAtualProduto = new System.Windows.Forms.TextBox();
             this.labelEstoqueAtual = new System.Windows.Forms.Label();
@@ -73,13 +75,15 @@ namespace PetShop
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.quantidadeProduto);
+            this.groupBox1.Controls.Add(this.dataCadastroProduto);
             this.groupBox1.Controls.Add(this.categoriaProduto);
             this.groupBox1.Controls.Add(this.labelCategoriaProduto);
             this.groupBox1.Controls.Add(this.marcaProduto);
             this.groupBox1.Controls.Add(this.labelMarcaProduto);
-            this.groupBox1.Controls.Add(this.dataCadastroAtualizacaoProduto);
             this.groupBox1.Controls.Add(this.labelDataCadastroProduto);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.localizacaoProduto);
             this.groupBox1.Controls.Add(this.labelLocalizacaoProduto);
             this.groupBox1.Controls.Add(this.ReferenciaProduto);
             this.groupBox1.Controls.Add(this.labelReferenciaProduto);
@@ -96,6 +100,37 @@ namespace PetShop
             this.groupBox1.Size = new System.Drawing.Size(664, 248);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(543, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 18);
+            this.label1.TabIndex = 32;
+            this.label1.Text = "Quantidade*";
+            // 
+            // quantidadeProduto
+            // 
+            this.quantidadeProduto.BackColor = System.Drawing.SystemColors.Window;
+            this.quantidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidadeProduto.Location = new System.Drawing.Point(546, 42);
+            this.quantidadeProduto.MaxLength = 500;
+            this.quantidadeProduto.Name = "quantidadeProduto";
+            this.quantidadeProduto.Size = new System.Drawing.Size(92, 22);
+            this.quantidadeProduto.TabIndex = 31;
+            this.quantidadeProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuantidadeProduto_KeyPress);
+            // 
+            // dataCadastroProduto
+            // 
+            this.dataCadastroProduto.CustomFormat = "dd/MM/yyyy";
+            this.dataCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataCadastroProduto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dataCadastroProduto.Location = new System.Drawing.Point(487, 154);
+            this.dataCadastroProduto.Name = "dataCadastroProduto";
+            this.dataCadastroProduto.Size = new System.Drawing.Size(151, 22);
+            this.dataCadastroProduto.TabIndex = 20;
             // 
             // categoriaProduto
             // 
@@ -133,16 +168,6 @@ namespace PetShop
             this.labelMarcaProduto.TabIndex = 27;
             this.labelMarcaProduto.Text = "Marca do Produto";
             // 
-            // dataCadastroAtualizacaoProduto
-            // 
-            this.dataCadastroAtualizacaoProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.dataCadastroAtualizacaoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataCadastroAtualizacaoProduto.Location = new System.Drawing.Point(487, 154);
-            this.dataCadastroAtualizacaoProduto.MaxLength = 500;
-            this.dataCadastroAtualizacaoProduto.Name = "dataCadastroAtualizacaoProduto";
-            this.dataCadastroAtualizacaoProduto.Size = new System.Drawing.Size(151, 22);
-            this.dataCadastroAtualizacaoProduto.TabIndex = 26;
-            // 
             // labelDataCadastroProduto
             // 
             this.labelDataCadastroProduto.AutoSize = true;
@@ -153,15 +178,15 @@ namespace PetShop
             this.labelDataCadastroProduto.TabIndex = 25;
             this.labelDataCadastroProduto.Text = "Data de Cadastro*";
             // 
-            // textBox1
+            // localizacaoProduto
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(280, 154);
-            this.textBox1.MaxLength = 500;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 22);
-            this.textBox1.TabIndex = 24;
+            this.localizacaoProduto.BackColor = System.Drawing.SystemColors.Window;
+            this.localizacaoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.localizacaoProduto.Location = new System.Drawing.Point(280, 154);
+            this.localizacaoProduto.MaxLength = 500;
+            this.localizacaoProduto.Name = "localizacaoProduto";
+            this.localizacaoProduto.Size = new System.Drawing.Size(169, 22);
+            this.localizacaoProduto.TabIndex = 24;
             // 
             // labelLocalizacaoProduto
             // 
@@ -207,7 +232,7 @@ namespace PetShop
             // 
             this.labelCodigoBarras.AutoSize = true;
             this.labelCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigoBarras.Location = new System.Drawing.Point(167, 21);
+            this.labelCodigoBarras.Location = new System.Drawing.Point(157, 21);
             this.labelCodigoBarras.Name = "labelCodigoBarras";
             this.labelCodigoBarras.Size = new System.Drawing.Size(124, 18);
             this.labelCodigoBarras.TabIndex = 3;
@@ -226,34 +251,42 @@ namespace PetShop
             // tipoUnidadeProduto
             // 
             this.tipoUnidadeProduto.FormattingEnabled = true;
-            this.tipoUnidadeProduto.Location = new System.Drawing.Point(520, 42);
+            this.tipoUnidadeProduto.Items.AddRange(new object[] {
+            "Kg",
+            "Mg",
+            "g",
+            "L",
+            "Ml",
+            "Granel"});
+            this.tipoUnidadeProduto.Location = new System.Drawing.Point(417, 42);
             this.tipoUnidadeProduto.Name = "tipoUnidadeProduto";
-            this.tipoUnidadeProduto.Size = new System.Drawing.Size(118, 21);
+            this.tipoUnidadeProduto.Size = new System.Drawing.Size(94, 21);
             this.tipoUnidadeProduto.TabIndex = 18;
             // 
             // labelTipoUnidade
             // 
             this.labelTipoUnidade.AutoSize = true;
             this.labelTipoUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoUnidade.Location = new System.Drawing.Point(517, 21);
+            this.labelTipoUnidade.Location = new System.Drawing.Point(414, 21);
             this.labelTipoUnidade.Name = "labelTipoUnidade";
-            this.labelTipoUnidade.Size = new System.Drawing.Size(121, 18);
+            this.labelTipoUnidade.Size = new System.Drawing.Size(86, 18);
             this.labelTipoUnidade.TabIndex = 17;
-            this.labelTipoUnidade.Text = "Tipo de Unidade*";
+            this.labelTipoUnidade.Text = "Tipo de Un*";
             // 
             // codigoBarrasProduto
             // 
             this.codigoBarrasProduto.BackColor = System.Drawing.SystemColors.Info;
             this.codigoBarrasProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoBarrasProduto.Location = new System.Drawing.Point(170, 42);
+            this.codigoBarrasProduto.Location = new System.Drawing.Point(160, 42);
             this.codigoBarrasProduto.MaxLength = 500;
             this.codigoBarrasProduto.Name = "codigoBarrasProduto";
-            this.codigoBarrasProduto.Size = new System.Drawing.Size(314, 22);
+            this.codigoBarrasProduto.Size = new System.Drawing.Size(229, 22);
             this.codigoBarrasProduto.TabIndex = 16;
             // 
             // codigoProduto
             // 
             this.codigoProduto.BackColor = System.Drawing.SystemColors.Window;
+            this.codigoProduto.Enabled = false;
             this.codigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.codigoProduto.Location = new System.Drawing.Point(20, 42);
             this.codigoProduto.MaxLength = 500;
@@ -287,13 +320,13 @@ namespace PetShop
             // 
             // dataValidadeProduto
             // 
-            this.dataValidadeProduto.BackColor = System.Drawing.SystemColors.Window;
+            this.dataValidadeProduto.CustomFormat = "dd/MM/yyyy";
             this.dataValidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataValidadeProduto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataValidadeProduto.Location = new System.Drawing.Point(147, 98);
-            this.dataValidadeProduto.MaxLength = 500;
             this.dataValidadeProduto.Name = "dataValidadeProduto";
             this.dataValidadeProduto.Size = new System.Drawing.Size(164, 22);
-            this.dataValidadeProduto.TabIndex = 29;
+            this.dataValidadeProduto.TabIndex = 31;
             // 
             // labelDataValidade
             // 
@@ -314,6 +347,7 @@ namespace PetShop
             this.estoqueAtualProduto.Name = "estoqueAtualProduto";
             this.estoqueAtualProduto.Size = new System.Drawing.Size(164, 22);
             this.estoqueAtualProduto.TabIndex = 27;
+            this.estoqueAtualProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EstoqueAtualProduto_KeyPress);
             // 
             // labelEstoqueAtual
             // 
@@ -334,6 +368,7 @@ namespace PetShop
             this.estoqueMinimoProduto.Name = "estoqueMinimoProduto";
             this.estoqueMinimoProduto.Size = new System.Drawing.Size(164, 22);
             this.estoqueMinimoProduto.TabIndex = 25;
+            this.estoqueMinimoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EstoqueMinimoProduto_KeyPress);
             // 
             // labelEstoqueMinimo
             // 
@@ -378,6 +413,9 @@ namespace PetShop
             this.precoProduto.Name = "precoProduto";
             this.precoProduto.Size = new System.Drawing.Size(131, 22);
             this.precoProduto.TabIndex = 30;
+            this.precoProduto.Enter += new System.EventHandler(this.PrecoProduto_Enter);
+            this.precoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoProduto_KeyPress);
+            this.precoProduto.Leave += new System.EventHandler(this.PrecoProduto_Leave);
             // 
             // margemAvistaProduto
             // 
@@ -388,6 +426,7 @@ namespace PetShop
             this.margemAvistaProduto.Name = "margemAvistaProduto";
             this.margemAvistaProduto.Size = new System.Drawing.Size(131, 22);
             this.margemAvistaProduto.TabIndex = 29;
+            this.margemAvistaProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MargemAvistaProduto_KeyPress);
             // 
             // labelMargemAvista
             // 
@@ -418,9 +457,13 @@ namespace PetShop
             this.valorCustoProduto.Name = "valorCustoProduto";
             this.valorCustoProduto.Size = new System.Drawing.Size(131, 22);
             this.valorCustoProduto.TabIndex = 26;
+            this.valorCustoProduto.Enter += new System.EventHandler(this.ValorCustoProduto_Enter);
+            this.valorCustoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorCustoProduto_KeyPress_1);
+            this.valorCustoProduto.Leave += new System.EventHandler(this.ValorCustoProduto_Leave);
             // 
             // observacoesProduto
             // 
+            this.observacoesProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.observacoesProduto.Location = new System.Drawing.Point(12, 437);
             this.observacoesProduto.Name = "observacoesProduto";
             this.observacoesProduto.Size = new System.Drawing.Size(663, 184);
@@ -452,6 +495,7 @@ namespace PetShop
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
             // 
             // BtnAdicionarEditarFornecedor
             // 
@@ -467,6 +511,7 @@ namespace PetShop
             this.BtnAdicionarEditarFornecedor.TabIndex = 19;
             this.BtnAdicionarEditarFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnAdicionarEditarFornecedor.UseVisualStyleBackColor = true;
+            this.BtnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
             // 
             // AdicionarEditarProdutos
             // 
@@ -488,7 +533,6 @@ namespace PetShop
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.TopMost = true;
             this.Load += new System.EventHandler(this.AdicionarEditarProdutos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -518,11 +562,9 @@ namespace PetShop
         private System.Windows.Forms.Label labelCategoriaProduto;
         private System.Windows.Forms.ComboBox marcaProduto;
         private System.Windows.Forms.Label labelMarcaProduto;
-        private System.Windows.Forms.TextBox dataCadastroAtualizacaoProduto;
         private System.Windows.Forms.Label labelDataCadastroProduto;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox localizacaoProduto;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox dataValidadeProduto;
         private System.Windows.Forms.Label labelDataValidade;
         private System.Windows.Forms.TextBox estoqueAtualProduto;
         private System.Windows.Forms.Label labelEstoqueAtual;
@@ -539,5 +581,9 @@ namespace PetShop
         private System.Windows.Forms.Label labelObservacoes;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button BtnAdicionarEditarFornecedor;
+        private System.Windows.Forms.DateTimePicker dataCadastroProduto;
+        private System.Windows.Forms.DateTimePicker dataValidadeProduto;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox quantidadeProduto;
     }
 }

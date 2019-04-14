@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Mar-2019 às 02:19
+-- Generation Time: 14-Abr-2019 às 03:53
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -100,19 +100,29 @@ CREATE TABLE `produto` (
   `nome_produto` varchar(300) NOT NULL,
   `codigo_barras` varchar(300) DEFAULT NULL,
   `unidade` varchar(100) NOT NULL,
+  `quantidade` int(11) NOT NULL,
   `referencia` varchar(300) DEFAULT NULL,
   `local_fisico` varchar(300) DEFAULT NULL,
   `data_modificacao` date NOT NULL,
   `marca` varchar(300) DEFAULT NULL,
   `categoria` varchar(300) NOT NULL,
-  `estoque_minimo` int(255) DEFAULT NULL,
-  `estoque_atual` int(255) NOT NULL,
+  `estoque_minimo` double DEFAULT NULL,
+  `estoque_atual` double NOT NULL,
   `data_validade` date DEFAULT NULL,
   `valor_custo` decimal(22,2) DEFAULT NULL,
   `margem_avista` int(11) DEFAULT NULL,
   `valor_produto` decimal(22,2) NOT NULL,
   `observacoes` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `nome_produto`, `codigo_barras`, `unidade`, `quantidade`, `referencia`, `local_fisico`, `data_modificacao`, `marca`, `categoria`, `estoque_minimo`, `estoque_atual`, `data_validade`, `valor_custo`, `margem_avista`, `valor_produto`, `observacoes`) VALUES
+(1, 'Malathion', '436354343453', 'Mg', 0, '', 'Armario', '0000-00-00', 'MERL', 'Pesticida', 100, 800, '0000-00-00', '20.00', 10, '10.00', 'teste'),
+(2, 'Ração de Urubu', '40808080', 'Kg', 20, 'testando', 'inferno', '2019-08-04', 'Urubuzeiro', 'Rações', 20, 90, '2019-08-04', '10.00', 0, '50.00', 'isso é um teste'),
+(3, 'Ração para Capivara', '40089078895', 'Kg', 10, 'testando', 'na puta queo pariu', '2019-04-11', 'Capivaracitubaina', 'Rações', 50, 800, '2019-11-29', '10.00', 50, '30.00', 'testando essa tela');
 
 --
 -- Indexes for dumped tables
@@ -150,13 +160,13 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT for table `fornecedor`
 --
 ALTER TABLE `fornecedor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `produto`
 --
 ALTER TABLE `produto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

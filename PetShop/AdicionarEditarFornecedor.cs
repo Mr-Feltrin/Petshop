@@ -9,6 +9,7 @@ namespace PetShop
         private readonly bool Operacao; // Valor true = Adicionar, false = Editar
         private readonly int IdFornecedor;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+
         public AdicionarEditarFornecedor(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace PetShop
         }
         private void AdicionarEditarFornecedor_Load(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 Text = "Adicionar Fornecedor";
                 BtnAdicionarEditarFornecedor.Text = "Adicionar";
@@ -73,7 +74,7 @@ namespace PetShop
                 }
             }
         }
-        private void VerificaCamposObrigatórios()
+        private void VerificaCamposObrigatorios()
         {
             if (string.IsNullOrWhiteSpace(nomeCompleto.Text))
             {
@@ -120,11 +121,11 @@ namespace PetShop
                 {
                     conn.Open();
                     MySqlCommand comando = conn.CreateCommand();
-                    if (Operacao == true)
+                    if (Operacao)
                     {
                         comando.CommandText = "INSERT INTO fornecedor (nome_fornecedor, tipo_fornecimento, apelido_fornecedor, endereco, bairro, cidade, uf, cep, telefone, celular, email, cpf, cnpj, observacoes) VALUES (@nome_fornecedor, @tipo_fornecimento, @apelido_fornecedor, @endereco, @bairro, @cidade, @uf, @cep, @telefone, @celular, @email, @cpf, @cnpj, @observacoes)";
                     }
-                    else if (Operacao == false)
+                    else
                     {
                         comando.CommandText = "UPDATE fornecedor SET nome_fornecedor = @nome_fornecedor, tipo_fornecimento = @tipo_fornecimento, apelido_fornecedor = @apelido_fornecedor, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone = @telefone, celular = @celular, email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
                         comando.Parameters.AddWithValue("@id", IdFornecedor);
@@ -143,8 +144,7 @@ namespace PetShop
                     comando.Parameters.AddWithValue("@cpf", cpf.Text);
                     comando.Parameters.AddWithValue("@cnpj", cnpj.Text);
                     comando.Parameters.AddWithValue("@observacoes", observacoes.Text);
-                    int query_check = comando.ExecuteNonQuery();
-                    if (query_check != 0)
+                    if (comando.ExecuteNonQuery() != 0)
                     {
                         MessageBox.Show("Os dados do fornecedor foram salvos.", "Cadastro de fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         _PesquisaClientesFornecedores.ExibirDadosLista("SELECT * FROM fornecedor");
@@ -165,12 +165,12 @@ namespace PetShop
 
         private void BtnAdicionarEditarFornecedor_Click(object sender, EventArgs e)
         {
-            VerificaCamposObrigatórios();
+            VerificaCamposObrigatorios();
         }
 
         private void CadastroFornecedorTelefone_Click(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 telefone.SelectionStart = 0;
             }
@@ -178,7 +178,7 @@ namespace PetShop
 
         private void CadastroFornecedorCep_Click(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 cep.SelectionStart = 0;
             }
@@ -186,7 +186,7 @@ namespace PetShop
 
         private void CadastroFornecedorCelular_Click(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 celular.SelectionStart = 0;
             }
@@ -194,7 +194,7 @@ namespace PetShop
 
         private void CadastroFornecedorCnpj_Click(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 cnpj.SelectionStart = 0;
             }
@@ -202,7 +202,7 @@ namespace PetShop
 
         private void CadastroFornecedorCpf_Click(object sender, EventArgs e)
         {
-            if (Operacao == true)
+            if (Operacao)
             {
                 cpf.SelectionStart = 0;
             }

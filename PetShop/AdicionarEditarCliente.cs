@@ -9,19 +9,20 @@ namespace PetShop
         private readonly bool Operacao; // Valor true == Adicionar , False == Editar
         private readonly int IdCliente;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+
         public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
             InitializeComponent();
             Operacao = operacao;
             _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
+
         public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idCliente) :this(operacao, pesquisaClientesFornecedores)
         {
             IdCliente = int.Parse(idCliente);
         }
 
         // ======================== Inicio de eventos de click em campos do tipo maskedtextbox ========================
-
         private void Cadastro_cliente_cep_Click(object sender, EventArgs e)
         {
             if (Operacao == true)
@@ -71,7 +72,6 @@ namespace PetShop
         }
 
         // ======================== Termino de eventos de click em campos do tipo maskedtextbox ========================
-
         private void cadastro_cliente_cancelar_Click(object sender, EventArgs e)
         {
             Close();
@@ -126,7 +126,6 @@ namespace PetShop
                 InsereAtualizaCliente();
             }
         }
-
 
         private void InsereAtualizaCliente()
         {
@@ -237,5 +236,7 @@ namespace PetShop
                 }
             }
         }
+
+ 
     }
 }

@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisaProdutos));
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.listaProduto = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
             this.textBoxPesquisarMarcaProduto = new System.Windows.Forms.TextBox();
@@ -56,8 +57,8 @@
             this.groupBoxFiltrar = new System.Windows.Forms.GroupBox();
             this.comboBoxFiltrarLista = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listaProduto = new System.Windows.Forms.DataGridView();
             this.groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBaixoEstoque)).BeginInit();
@@ -65,7 +66,6 @@
             this.groupBoxLegendaCores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxFiltrar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox
@@ -76,6 +76,53 @@
             this.groupBox.Size = new System.Drawing.Size(1129, 585);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
+            // 
+            // listaProduto
+            // 
+            this.listaProduto.AllowUserToAddRows = false;
+            this.listaProduto.AllowUserToDeleteRows = false;
+            this.listaProduto.AllowUserToResizeColumns = false;
+            this.listaProduto.AllowUserToResizeRows = false;
+            this.listaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.listaProduto.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaProduto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.listaProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaProduto.DefaultCellStyle = dataGridViewCellStyle2;
+            this.listaProduto.Location = new System.Drawing.Point(9, 19);
+            this.listaProduto.MultiSelect = false;
+            this.listaProduto.Name = "listaProduto";
+            this.listaProduto.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaProduto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.listaProduto.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaProduto.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.listaProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.listaProduto.Size = new System.Drawing.Size(1114, 551);
+            this.listaProduto.TabIndex = 1;
             // 
             // groupBox_pesquisar_nome_cliente
             // 
@@ -177,6 +224,7 @@
             this.btnExcluirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluirClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluirClienteFornecedor.UseVisualStyleBackColor = false;
+            this.btnExcluirClienteFornecedor.Click += new System.EventHandler(this.BtnExcluirClienteFornecedor_Click);
             // 
             // btnImprimirClienteFornecedor
             // 
@@ -345,53 +393,6 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Filtrar Lista por:";
             // 
-            // listaProduto
-            // 
-            this.listaProduto.AllowUserToAddRows = false;
-            this.listaProduto.AllowUserToDeleteRows = false;
-            this.listaProduto.AllowUserToResizeColumns = false;
-            this.listaProduto.AllowUserToResizeRows = false;
-            this.listaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.listaProduto.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProduto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.listaProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaProduto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaProduto.Location = new System.Drawing.Point(9, 19);
-            this.listaProduto.MultiSelect = false;
-            this.listaProduto.Name = "listaProduto";
-            this.listaProduto.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProduto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.listaProduto.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaProduto.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.listaProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaProduto.Size = new System.Drawing.Size(1114, 551);
-            this.listaProduto.TabIndex = 1;
-            // 
             // PesquisaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -417,6 +418,7 @@
             this.Text = "Pesquisa de Produtos";
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
             this.groupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
             this.groupBox_pesquisar_nome_cliente.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).EndInit();
@@ -427,7 +429,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxFiltrar.ResumeLayout(false);
             this.groupBoxFiltrar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

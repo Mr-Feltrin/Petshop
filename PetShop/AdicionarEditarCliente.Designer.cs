@@ -558,7 +558,6 @@ namespace PetShop
 
         #endregion
         private System.Windows.Forms.Label labelNomeCompleto;
-        private System.Windows.Forms.TextBox nomeCompleto;
         private System.Windows.Forms.Label labelTipo;
         private System.Windows.Forms.ComboBox tipo;
         private System.Windows.Forms.TabControl tabDadosCliente;
@@ -593,5 +592,6 @@ namespace PetShop
         private System.Windows.Forms.MaskedTextBox telefonePrimario;
         private System.Windows.Forms.MaskedTextBox celular;
         private System.Windows.Forms.MaskedTextBox cep;
+        internal System.Windows.Forms.TextBox nomeCompleto;
     }
 }

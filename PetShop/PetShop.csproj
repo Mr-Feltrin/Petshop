@@ -86,6 +86,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarEditarAnimais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarEditarAnimais.Designer.cs">
+      <DependentUpon>AdicionarEditarAnimais.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarEditarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,7 +110,13 @@
     <Compile Include="AdicionarEditarProdutos.Designer.cs">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="DGVPrinter.cs" />
+    <Compile Include="PesquisaAnimais.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PesquisaAnimais.designer.cs">
+      <DependentUpon>PesquisaAnimais.cs</DependentUpon>
+    </Compile>
+    <Compile Include="tools\DGVPrinter.cs" />
     <Compile Include="PesquisaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -125,6 +137,9 @@
     <Compile Include="PesquisaClientesFornecedores.Designer.cs">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdicionarEditarAnimais.resx">
+      <DependentUpon>AdicionarEditarAnimais.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarEditarCliente.resx">
       <DependentUpon>AdicionarEditarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -133,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarEditarProdutos.resx">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PesquisaAnimais.resx">
+      <DependentUpon>PesquisaAnimais.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisaProdutos.resx">
       <DependentUpon>PesquisaProdutos.cs</DependentUpon>
@@ -224,6 +242,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\codigo_barras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\codigo_barras2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\animal_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\injecao.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

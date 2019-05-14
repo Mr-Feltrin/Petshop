@@ -113,6 +113,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap animal_small {
+            get {
+                object obj = ResourceManager.GetObject("animal_small", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancelar {
             get {
                 object obj = ResourceManager.GetObject("cancelar", resourceCulture);
@@ -136,6 +146,16 @@ namespace PetShop.Properties {
         internal static System.Drawing.Bitmap codigo_barras {
             get {
                 object obj = ResourceManager.GetObject("codigo_barras", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap codigo_barras2 {
+            get {
+                object obj = ResourceManager.GetObject("codigo_barras2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +216,16 @@ namespace PetShop.Properties {
         internal static System.Drawing.Bitmap imprimir_list {
             get {
                 object obj = ResourceManager.GetObject("imprimir_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap injecao {
+            get {
+                object obj = ResourceManager.GetObject("injecao", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

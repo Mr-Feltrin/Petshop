@@ -96,5 +96,11 @@ namespace PetShop
             PesquisaProdutos pesquisaProdutos = new PesquisaProdutos();
             pesquisaProdutos.ShowDialog();
         }
+
+        private void BtnAnimais_Click(object sender, EventArgs e)
+        {
+            PesquisaAnimais pesquisaAnimais = new PesquisaAnimais();
+            pesquisaAnimais.ShowDialog();
+        }
     }
 }

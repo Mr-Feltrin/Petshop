@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 14-Abr-2019 às 03:53
+-- Generation Time: 18-Maio-2019 às 20:53
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -21,6 +21,39 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_caopanheiro`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `animal`
+--
+
+CREATE TABLE `animal` (
+  `id` int(11) NOT NULL,
+  `nome_animal` varchar(255) NOT NULL,
+  `sexo` varchar(100) NOT NULL,
+  `cliente_id` int(11) NOT NULL,
+  `especie` varchar(255) NOT NULL,
+  `raca` varchar(255) NOT NULL,
+  `identificacao` varchar(255) NOT NULL,
+  `fobias` tinyint(1) NOT NULL,
+  `disponivel_tosa` tinyint(1) NOT NULL,
+  `pedigree` tinyint(1) NOT NULL,
+  `agressivo` tinyint(1) NOT NULL,
+  `hiperativo` tinyint(1) NOT NULL,
+  `anti_social` tinyint(1) NOT NULL,
+  `obcessivo` tinyint(1) NOT NULL,
+  `relacao_vacinas` varchar(300) NOT NULL,
+  `observacao_comportamentais` varchar(300) NOT NULL,
+  `observacao_rotina` varchar(300) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `animal`
+--
+
+INSERT INTO `animal` (`id`, `nome_animal`, `sexo`, `cliente_id`, `especie`, `raca`, `identificacao`, `fobias`, `disponivel_tosa`, `pedigree`, `agressivo`, `hiperativo`, `anti_social`, `obcessivo`, `relacao_vacinas`, `observacao_comportamentais`, `observacao_rotina`) VALUES
+(1, 'Jorge', 'Macho', 1, 'asdasda', 'dsadasdsa', 'asdasdsadsa', 1, 0, 0, 0, 0, 0, 0, 'sadasdasd', 'asdasdsad', 'sadsadasdasdsad');
 
 -- --------------------------------------------------------
 
@@ -120,13 +153,19 @@ CREATE TABLE `produto` (
 --
 
 INSERT INTO `produto` (`id`, `nome_produto`, `codigo_barras`, `unidade`, `quantidade`, `referencia`, `local_fisico`, `data_modificacao`, `marca`, `categoria`, `estoque_minimo`, `estoque_atual`, `data_validade`, `valor_custo`, `margem_avista`, `valor_produto`, `observacoes`) VALUES
-(1, 'Malathion', '436354343453', 'Mg', 0, '', 'Armario', '0000-00-00', 'MERL', 'Pesticida', 100, 800, '0000-00-00', '20.00', 10, '10.00', 'teste'),
-(2, 'Ração de Urubu', '40808080', 'Kg', 20, 'testando', 'inferno', '2019-08-04', 'Urubuzeiro', 'Rações', 20, 90, '2019-08-04', '10.00', 0, '50.00', 'isso é um teste'),
-(3, 'Ração para Capivara', '40089078895', 'Kg', 10, 'testando', 'na puta queo pariu', '2019-04-11', 'Capivaracitubaina', 'Rações', 50, 800, '2019-11-29', '10.00', 50, '30.00', 'testando essa tela');
+(2, 'Ração de Urubu', '40808080', 'Kg', 20, 'testando', 'inferno', '2019-08-04', 'Urubuzeiro', 'Rações', 30, 90, '2019-08-04', '1000.00', 0, '5000.00', 'isso é um teste'),
+(3, 'Ração pa', '40089078895', 'Kg', 10, 'testando', 'na puta queo pariu', '2019-04-11', 'Capivaracitubaina', 'Rações', 50, 800, '2019-11-29', '1000.00', 50, '3000.00', 'testando essa tela');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `animal`
+--
+ALTER TABLE `animal`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cliente_id_fk` (`cliente_id`);
 
 --
 -- Indexes for table `cliente`
@@ -151,6 +190,12 @@ ALTER TABLE `produto`
 --
 
 --
+-- AUTO_INCREMENT for table `animal`
+--
+ALTER TABLE `animal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `cliente`
 --
 ALTER TABLE `cliente`
@@ -167,6 +212,16 @@ ALTER TABLE `fornecedor`
 --
 ALTER TABLE `produto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `animal`
+--
+ALTER TABLE `animal`
+  ADD CONSTRAINT `pessoa_id_fk` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

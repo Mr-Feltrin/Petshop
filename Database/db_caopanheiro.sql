@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 18-Maio-2019 às 20:53
+-- Generation Time: 23-Maio-2019 às 19:52
 -- Versão do servidor: 10.1.38-MariaDB
 -- versão do PHP: 7.3.2
 
@@ -35,25 +35,26 @@ CREATE TABLE `animal` (
   `cliente_id` int(11) NOT NULL,
   `especie` varchar(255) NOT NULL,
   `raca` varchar(255) NOT NULL,
-  `identificacao` varchar(255) NOT NULL,
-  `fobias` tinyint(1) NOT NULL,
+  `identificacao` varchar(255) DEFAULT NULL,
+  `fobias` tinyint(1) DEFAULT NULL,
   `disponivel_tosa` tinyint(1) NOT NULL,
   `pedigree` tinyint(1) NOT NULL,
   `agressivo` tinyint(1) NOT NULL,
   `hiperativo` tinyint(1) NOT NULL,
   `anti_social` tinyint(1) NOT NULL,
   `obcessivo` tinyint(1) NOT NULL,
-  `relacao_vacinas` varchar(300) NOT NULL,
-  `observacao_comportamentais` varchar(300) NOT NULL,
-  `observacao_rotina` varchar(300) NOT NULL
+  `relacao_vacinas` varchar(300) DEFAULT NULL,
+  `observacao_comportamentais` varchar(300) DEFAULT NULL,
+  `observacao_rotina` varchar(300) DEFAULT NULL,
+  `imagem` mediumblob
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `animal`
 --
 
-INSERT INTO `animal` (`id`, `nome_animal`, `sexo`, `cliente_id`, `especie`, `raca`, `identificacao`, `fobias`, `disponivel_tosa`, `pedigree`, `agressivo`, `hiperativo`, `anti_social`, `obcessivo`, `relacao_vacinas`, `observacao_comportamentais`, `observacao_rotina`) VALUES
-(1, 'Jorge', 'Macho', 1, 'asdasda', 'dsadasdsa', 'asdasdsadsa', 1, 0, 0, 0, 0, 0, 0, 'sadasdasd', 'asdasdsad', 'sadsadasdasdsad');
+INSERT INTO `animal` (`id`, `nome_animal`, `sexo`, `cliente_id`, `especie`, `raca`, `identificacao`, `fobias`, `disponivel_tosa`, `pedigree`, `agressivo`, `hiperativo`, `anti_social`, `obcessivo`, `relacao_vacinas`, `observacao_comportamentais`, `observacao_rotina`, `imagem`) VALUES
+(1, 'Jorge', 'Macho', 1, 'asdasda', 'dsadasdsa', 'asdasdsadsa', 1, 0, 0, 0, 0, 0, 0, 'sadasdasd', 'asdasdsad', 'sadsadasdasdsad', NULL);
 
 -- --------------------------------------------------------
 

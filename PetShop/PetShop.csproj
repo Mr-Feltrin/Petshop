@@ -110,6 +110,12 @@
     <Compile Include="AdicionarEditarProdutos.Designer.cs">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Agenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agenda.Designer.cs">
+      <DependentUpon>Agenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="PesquisaAnimais.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,12 @@
     <Compile Include="PesquisaClientesFornecedores.Designer.cs">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
     </Compile>
+    <Compile Include="tools\SelecionarClienteLista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tools\SelecionarClienteLista.Designer.cs">
+      <DependentUpon>SelecionarClienteLista.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdicionarEditarAnimais.resx">
       <DependentUpon>AdicionarEditarAnimais.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarEditarProdutos.resx">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agenda.resx">
+      <DependentUpon>Agenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisaAnimais.resx">
       <DependentUpon>PesquisaAnimais.cs</DependentUpon>
@@ -170,6 +185,9 @@
     </Compile>
     <EmbeddedResource Include="PesquisaClientesFornecedores.resx">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tools\SelecionarClienteLista.resx">
+      <DependentUpon>SelecionarClienteLista.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -251,6 +269,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="images\injecao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\horario_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\horario_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\horario_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\printer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\exit.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

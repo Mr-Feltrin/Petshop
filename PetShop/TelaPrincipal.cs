@@ -102,5 +102,11 @@ namespace PetShop
             PesquisaAnimais pesquisaAnimais = new PesquisaAnimais();
             pesquisaAnimais.ShowDialog();
         }
+
+        private void Botao_agenda_Click(object sender, EventArgs e)
+        {
+            Agenda agenda = new Agenda();
+            agenda.ShowDialog();
+        }
     }
 }

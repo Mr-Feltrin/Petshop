@@ -85,3 +85,5 @@ C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarProdut
 C:\Users\rasou\Downloads\Petshop\PetShop\bin\Debug\MySql.Data.dll
 C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarAnimais.resources
 C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.PesquisaAnimais.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.Agenda.resources
+C:\Users\rasou\Downloads\Petshop\PetShop\obj\Debug\PetShop.tools.SelecionarClienteLista.resources

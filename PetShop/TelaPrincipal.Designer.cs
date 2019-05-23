@@ -41,6 +41,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAnimais = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus_data_completa = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_agendamentos_atuais = new System.Windows.Forms.ToolStripStatusLabel();
@@ -51,8 +53,6 @@
             this.toolStripStatus_nome_administrador = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_nome_sistema = new System.Windows.Forms.ToolStripStatusLabel();
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -127,6 +127,7 @@
             this.botao_agenda.Text = "Agenda";
             this.botao_agenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_agenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.botao_agenda.Click += new System.EventHandler(this.Botao_agenda_Click);
             // 
             // toolStripSeparator1
             // 
@@ -199,6 +200,26 @@
             this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.ToolTipText = "Produtos";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.toolStripButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(60, 49);
+            this.toolStripButton2.Text = "Atender";
+            this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButton2.ToolTipText = "Produtos";
             // 
             // status_rodape_principal
             // 
@@ -332,26 +353,6 @@
             this.horario_atual.Enabled = true;
             this.horario_atual.Interval = 1000;
             this.horario_atual.Tick += new System.EventHandler(this.Horario_atual_Tick);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toolStripButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(60, 49);
-            this.toolStripButton2.Text = "Atender";
-            this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.ToolTipText = "Produtos";
             // 
             // TelaPrincipal
             // 

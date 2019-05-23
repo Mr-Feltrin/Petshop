@@ -76,9 +76,6 @@
             // 
             // pesquisaNomeDono
             // 
-            this.pesquisaNomeDono.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pesquisaNomeDono.Location = new System.Drawing.Point(6, 30);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
             this.pesquisaNomeDono.Size = new System.Drawing.Size(367, 20);
@@ -86,9 +83,6 @@
             // 
             // pesquisaNomeAnimal
             // 
-            this.pesquisaNomeAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.pesquisaNomeAnimal.Location = new System.Drawing.Point(379, 30);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
             this.pesquisaNomeAnimal.Size = new System.Drawing.Size(427, 20);
@@ -225,7 +219,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listaAnimais.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaAnimais.Location = new System.Drawing.Point(6, 19);
+            this.listaAnimais.Location = new System.Drawing.Point(7, 19);
             this.listaAnimais.MultiSelect = false;
             this.listaAnimais.Name = "listaAnimais";
             this.listaAnimais.ReadOnly = true;
@@ -255,10 +249,16 @@
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.groupBox_tabela_usuarios);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "PesquisaAnimais";
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa de Animais Cadastrados";
+            this.Load += new System.EventHandler(this.PesquisaAnimais_Load);
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
             this.groupBox_pesquisar_nome_cliente.PerformLayout();
             this.groupBox_tabela_usuarios.ResumeLayout(false);

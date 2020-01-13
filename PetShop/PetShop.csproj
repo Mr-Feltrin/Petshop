@@ -116,13 +116,18 @@
     <Compile Include="Agenda.Designer.cs">
       <DependentUpon>Agenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\Agenda.cs" />
+    <Compile Include="Entities\Animal.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Enums\Sexo.cs" />
+    <Compile Include="Entities\Fornecedor.cs" />
+    <Compile Include="Entities\Produto.cs" />
     <Compile Include="PesquisaAnimais.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PesquisaAnimais.designer.cs">
       <DependentUpon>PesquisaAnimais.cs</DependentUpon>
     </Compile>
-    <Compile Include="tools\DGVPrinter.cs" />
     <Compile Include="PesquisaProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,12 +147,6 @@
     </Compile>
     <Compile Include="PesquisaClientesFornecedores.Designer.cs">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
-    </Compile>
-    <Compile Include="tools\SelecionarClienteLista.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="tools\SelecionarClienteLista.Designer.cs">
-      <DependentUpon>SelecionarClienteLista.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdicionarEditarAnimais.resx">
       <DependentUpon>AdicionarEditarAnimais.cs</DependentUpon>
@@ -185,9 +184,6 @@
     </Compile>
     <EmbeddedResource Include="PesquisaClientesFornecedores.resx">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="tools\SelecionarClienteLista.resx">
-      <DependentUpon>SelecionarClienteLista.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -285,5 +281,6 @@
   <ItemGroup>
     <None Include="images\exit.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

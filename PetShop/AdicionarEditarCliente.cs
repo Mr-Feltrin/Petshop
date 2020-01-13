@@ -127,7 +127,7 @@ namespace PetShop
             }
         }
 
-        private void InsereAtualizaCliente()
+        private void InsereAtualizaCliente() // Passar para controller
         {
             // Conexão com banco de dados e execução da Query
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
@@ -180,7 +180,7 @@ namespace PetShop
             }
         }
 
-        private void AdicionarEditarCliente_Load(object sender, EventArgs e)
+        private void AdicionarEditarCliente_Load(object sender, EventArgs e) // Passar para controller
         {
             if (Operacao == true)
             {
@@ -236,7 +236,5 @@ namespace PetShop
                 }
             }
         }
-
- 
     }
 }

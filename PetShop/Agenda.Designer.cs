@@ -285,7 +285,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 136);
+            this.dataGridView1.Location = new System.Drawing.Point(16, 136);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1101, 508);
             this.dataGridView1.TabIndex = 33;
@@ -319,6 +319,7 @@
             this.Controls.Add(this.dataInicial);
             this.Name = "Agenda";
             this.Text = "Agenda";
+            this.Load += new System.EventHandler(this.Agenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

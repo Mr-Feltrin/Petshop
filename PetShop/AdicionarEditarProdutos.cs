@@ -62,7 +62,7 @@ namespace PetShop
             }
         }
 
-        private void AdicionarEditarProdutos_Load(object sender, EventArgs e)
+        private void AdicionarEditarProdutos_Load(object sender, EventArgs e) // Passar pra controllers e usar linq para lista
         {
             if (Operacao == true)
             {
@@ -162,7 +162,7 @@ namespace PetShop
         }
 
 
-        private void InsereAtualizaProdutos()
+        private void InsereAtualizaProdutos() // Passar pra controller
         {
             try
             {

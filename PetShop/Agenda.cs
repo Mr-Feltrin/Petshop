@@ -16,5 +16,10 @@ namespace PetShop
         {
             InitializeComponent();
         }
+
+        private void Agenda_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

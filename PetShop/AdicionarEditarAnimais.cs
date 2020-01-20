@@ -49,8 +49,7 @@ namespace PetShop
 
         private void BtnPesquisarDono_Click(object sender, EventArgs e)
         {
-            tools.SelecionarClienteLista selecionarClienteLista = new tools.SelecionarClienteLista();
-            selecionarClienteLista.ShowDialog();
+
         }
     }
 }

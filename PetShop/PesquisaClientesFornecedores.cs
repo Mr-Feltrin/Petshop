@@ -4,7 +4,6 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using DGVPrinterHelper;
 
 namespace PetShop
 {
@@ -18,7 +17,8 @@ namespace PetShop
             TipoPesquisa = tipoPesquisa;
         }
 
-        public void ExibirDadosLista(string comandoSql)
+
+        public virtual void ExibirDadosLista(string comandoSql)
         {
             using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
             {
@@ -70,7 +70,6 @@ namespace PetShop
                         dataGridViewListaClientesFornecedores.Columns[13].HeaderText = "CNPJ";
                         dataGridViewListaClientesFornecedores.Columns[14].HeaderText = "Observações";
                     }
-
                     dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
                 }
                 catch (Exception ex)
@@ -83,6 +82,8 @@ namespace PetShop
                 }
             }
         }
+
+        
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
         {
             if (TipoPesquisa == true)
@@ -191,19 +192,6 @@ namespace PetShop
             {
                 MessageBox.Show("Selecione um item para ser editado.", "Item não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-        private void btn_imprimir_cliente_Click(object sender, EventArgs e)
-        {
-            // Classe de impressão da tabela datagridview
-            DGVPrinter printer = new DGVPrinter();
-            printer.Title = "Clientes Cadastrados";
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = "CãoPanheiro";
-            printer.FooterSpacing = 15;
-            printer.PrintDataGridView(dataGridViewListaClientesFornecedores);
         }
 
         private void PesquisaClientesFornecedores_Load(object sender, EventArgs e)

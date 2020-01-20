@@ -142,7 +142,7 @@ namespace PetShop
                     }
                     else if (Operacao == false)
                     {
-                        comando.CommandText = "UPDATE cliente SET nome_completo = @nome_completo, tipo = @tipo, nome_apelido = @nome_apelido, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone_primario = @telefone_primario, telefone_secundario = @telefone_secundario, celular = @celular, complemento = @complemento, email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
+                        comando.CommandText = $"UPDATE cliente SET nome_completo = @nome_completo, tipo = @tipo, nome_apelido = @nome_apelido, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone_primario = @telefone_primario, telefone_secundario = @telefone_secundario, celular = @celular, complemento = , email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
                     }
                     comando.Parameters.AddWithValue("@id", IdCliente);
                     comando.Parameters.AddWithValue("@nome_completo", nomeCompleto.Text);

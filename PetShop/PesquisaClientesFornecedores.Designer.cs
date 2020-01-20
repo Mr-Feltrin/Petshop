@@ -172,7 +172,6 @@
             this.btnImprimirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimirClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimirClienteFornecedor.UseVisualStyleBackColor = false;
-            this.btnImprimirClienteFornecedor.Click += new System.EventHandler(this.btn_imprimir_cliente_Click);
             // 
             // btnExcluirClienteFornecedor
             // 

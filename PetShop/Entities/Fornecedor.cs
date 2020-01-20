@@ -8,5 +8,6 @@ namespace PetShop.Entities
 {
     class Fornecedor
     {
+       
     }
 }

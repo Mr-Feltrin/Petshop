@@ -116,6 +116,7 @@
     <Compile Include="Agenda.Designer.cs">
       <DependentUpon>Agenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\MysqlConnection.cs" />
     <Compile Include="Entities\Agenda.cs" />
     <Compile Include="Entities\Animal.cs" />
     <Compile Include="Entities\Cliente.cs" />

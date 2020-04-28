@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+
 
 namespace PetShop
 {
@@ -21,7 +21,8 @@ namespace PetShop
 
         private void PesquisaAnimais_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+            /*
+            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
             {
                 try
                 {
@@ -93,6 +94,7 @@ namespace PetShop
                     conn.Close();
                 }
             }
+            */
         }
     }
 }

@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PetShop.Data;
+using System.Windows.Forms;
 
 namespace PetShop.Entities
 {
-    class Cliente
+    public class Cliente
     {
+        private static SqlCeConnection connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString);
         public int ClienteId { get; set; }
         public string NomeCliente { get; set; }
-        public string Segmento { get; set; }
+        public string Tipo { get; set; }
         public string Apelido { get; set; }
         public string Endereco { get; set; }
         public string Bairro { get; set; }
@@ -28,11 +31,10 @@ namespace PetShop.Entities
         public string Observacoes { get; set; }
         public List<Animal> Animais { get; set; }
 
-        public Cliente(int clienteId, string nomeCliente, string segmento, string apelido, string endereco, string bairro, string cidade, string uf, int cep, int telefonePrimario, int telefoneSecundario, int celular, string complemento, string email, int cpf, int cnpj, string observacoes)
+        public Cliente(string nomeCliente, string tipo, string apelido, string endereco, string bairro, string cidade, string uf, int cep, int telefonePrimario, int telefoneSecundario, int celular, string complemento, string email, int cpf, int cnpj, string observacoes)
         {
-            ClienteId = clienteId;
             NomeCliente = nomeCliente;
-            Segmento = segmento;
+            Tipo = tipo;
             Apelido = apelido;
             Endereco = endereco;
             Bairro = bairro;
@@ -49,9 +51,83 @@ namespace PetShop.Entities
             Observacoes = observacoes;
         }
 
-        public void AdicionarCliente()
+        public Cliente(int idCliente, string nomeCliente, string tipo, string apelido, string endereco, string bairro, string cidade, string uf, int cep, int telefonePrimario, int telefoneSecundario, int celular, string complemento, string email, int cpf, int cnpj, string observacoes) : this(nomeCliente, tipo, apelido, endereco, bairro, cidade, uf, cep, telefonePrimario, telefoneSecundario, celular, complemento, email, cpf, cnpj, observacoes)
         {
-            MysqlConnection mysqlConnection = new MysqlConnection($"INSERT INTO animais VALUES = 'nome = {NomeCliente}'");
+            ClienteId = idCliente;
+        }
+
+
+        public static DataTable ListarClientes()
+        {
+            DataTable dta = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlCeCommand comando = connection.CreateCommand();
+                comando.CommandText = "SELECT * FROM Clientes";
+                comando.ExecuteNonQuery();
+                SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
+                dataadp.Fill(dta);
+                dta.Columns["Endereco"].ColumnName = "Endereço";
+                dta.Columns["Cep"].ColumnName = "CEP";
+                dta.Columns["Telefone_Principal"].ColumnName = "Telefone Principal";
+                dta.Columns["Telefone_Secundario"].ColumnName = "Telefone Secundario";
+                dta.Columns["Cpf"].ColumnName = "CPF";
+                dta.Columns["Cnpj"].ColumnName = "CNPJ";
+                dta.Columns["Observacoes"].ColumnName = "Observações";
+            }
+            catch (SqlCeException ex)
+            {
+                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dta;
+        }
+
+        public bool AdicionarCliente()
+        {
+            bool result = false;
+            try
+            {
+                connection.Open();
+                SqlCeCommand command = new SqlCeCommand("INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes)");
+                command.Parameters.AddWithValue("@Nome", NomeCliente);
+                command.Parameters.AddWithValue("@Tipo", Tipo);
+                command.Parameters.AddWithValue("@Apelido", Apelido);
+                command.Parameters.AddWithValue("@Endereco", Endereco);
+                command.Parameters.AddWithValue("@Bairro", Bairro);
+                command.Parameters.AddWithValue("@Cidade", Cidade);
+                command.Parameters.AddWithValue("@Estado", Uf);
+                command.Parameters.AddWithValue("@Cep", Cep);
+                command.Parameters.AddWithValue("@Telefone_Principal", TelefonePrimario);
+                command.Parameters.AddWithValue("@Telefone_Secundario", TelefoneSecundario);
+                command.Parameters.AddWithValue("@Celular", Celular);
+                command.Parameters.AddWithValue("@Complemento", Complemento);
+                command.Parameters.AddWithValue("@Email", Email);
+                command.Parameters.AddWithValue("@Cpf", Cpf);
+                command.Parameters.AddWithValue("@Cnpj", Cnpj);
+                command.Parameters.AddWithValue("@Observacoes", Observacoes);   
+                if (command.ExecuteNonQuery() > 0)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
+            catch (SqlCeException ex)
+            {
+                MessageBox.Show("Erro ao salvar as informações do Cliente: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return result;
         }
         
     }

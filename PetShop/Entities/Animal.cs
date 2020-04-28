@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetShop.Entities
 {
-    class Animal
+    public class Animal
     {
         public int AnimalId { get; set; }
         public string NomeAnimal { get; set; }
@@ -15,7 +15,6 @@ namespace PetShop.Entities
         public string Especie { get; set; }
         public string Raca { get; set; }
         public string Identificacao { get; set; }
-        public int MyProperty { get; set; }
         public string FotoUrl { get; set; }
         public string Fobias { get; set; }
         public bool DisponivelTosa { get; set; }
@@ -37,8 +36,7 @@ namespace PetShop.Entities
             ProprietarioId = proprietarioId;
             Especie = especie;
             Raca = raca;
-            Identificacao = identificacao;
-            MyProperty = myProperty;
+            Identificacao = identificacao;          
             FotoUrl = fotoUrl;
             Fobias = fobias;
             DisponivelTosa = disponivelTosa;

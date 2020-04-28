@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using PetShop.Entities;
 
 namespace PetShop
 {
@@ -17,19 +18,19 @@ namespace PetShop
             TipoPesquisa = tipoPesquisa;
         }
 
-
-        public virtual void ExibirDadosLista(string comandoSql)
+        public void ExibirDadosLista(string comandoSql)
         {
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+            
+            using (SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
             {
                 try
                 {
                     conn.Open();
-                    MySqlCommand comando = conn.CreateCommand();
+                    SqlCeCommand comando = conn.CreateCommand();
                     comando.CommandText = comandoSql;
                     comando.ExecuteNonQuery();
                     DataTable dta = new DataTable();
-                    MySqlDataAdapter dataadp = new MySqlDataAdapter(comando);
+                    SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                     dataadp.Fill(dta);
                     dataGridViewListaClientesFornecedores.DataSource = dta;
                     if (TipoPesquisa == true)
@@ -72,7 +73,7 @@ namespace PetShop
                     }
                     dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
                 }
-                catch (Exception ex)
+                catch (SqlCeException ex)
                 {
                     MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -81,6 +82,7 @@ namespace PetShop
                     conn.Close();
                 }
             }
+            
         }
 
         
@@ -108,7 +110,8 @@ namespace PetShop
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este cliente?", "Remover Cliente", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+                        /*
+                        using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
                         {
                             try
                             {
@@ -132,6 +135,7 @@ namespace PetShop
                                 conn.Close();
                             }
                         }
+                        */
                     }
                 }
                 else
@@ -139,7 +143,7 @@ namespace PetShop
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este Fornecedor?", "Remover Fornecedor", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+                        /*using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
                         {
                             try
                             {
@@ -162,7 +166,8 @@ namespace PetShop
                             {
                                 conn.Close();
                             }
-                        }
+                        }*/
+
                     }
                 }
             }
@@ -200,13 +205,14 @@ namespace PetShop
             {
                 Text = "Pesquisa de Clientes";
                 Icon = Properties.Resources.usuarios_icon;
-                ExibirDadosLista("SELECT * FROM cliente");
+                dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
+                dataGridViewListaClientesFornecedores.
             }
             else
             {
                 Text = "Pesquisa de Fornecedores";
                 Icon = Properties.Resources.fornecedor_icon;
-                ExibirDadosLista("SELECT * FROM fornecedor");
+                
             }
         }
 

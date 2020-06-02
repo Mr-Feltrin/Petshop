@@ -34,7 +34,7 @@ namespace PetShop
             if (Operacao)
             {
                 Text = "Adicionar Animal";
-                txtDataRegistroAnimal.Text = DateTime.Now.ToShortDateString();
+                dataRegistroAnimal.Text = DateTime.Now.ToShortDateString();
             }
             else
             {

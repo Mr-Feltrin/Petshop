@@ -87,9 +87,6 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaAnimai
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaProdutos.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.TelaPrincipal.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaClientesFornecedores.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Google.Protobuf.dll
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\MySql.Data.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDatabase.mdf
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDatabase_log.ldf
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.Data.SqlServerCe.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDb.sdf

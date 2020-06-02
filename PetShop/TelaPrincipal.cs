@@ -9,7 +9,6 @@ namespace PetShop
         public TelaPrincipal()
         {
             InitializeComponent();
-
         }
 
         private void Tela_Principal_Load(object sender, EventArgs e)

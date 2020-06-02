@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
-
+using MySql.Data.MySqlClient;
 
 namespace PetShop
 {
     public partial class AdicionarEditarCliente : Form
     {
         private readonly bool Operacao; // Valor true == Adicionar , False == Editar
-        private readonly Entities.Cliente IdCliente;
+        private readonly int IdCliente;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
 
         public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
@@ -18,9 +17,9 @@ namespace PetShop
             _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
 
-        public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idCliente) : this(operacao, pesquisaClientesFornecedores)
+        public AdicionarEditarCliente(bool operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idCliente) :this(operacao, pesquisaClientesFornecedores)
         {
-            
+            IdCliente = int.Parse(idCliente);
         }
 
         // ======================== Inicio de eventos de click em campos do tipo maskedtextbox ========================
@@ -28,7 +27,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtCep.SelectionStart = 0;
+                cep.SelectionStart = 0;
             }
         }
 
@@ -36,7 +35,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtTelefonePrimario.SelectionStart = 0;
+                telefonePrimario.SelectionStart = 0;
             }
         }
 
@@ -44,7 +43,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtTelefoneSecundario.SelectionStart = 0;
+                telefoneSecundario.SelectionStart = 0;
             }
         }
 
@@ -52,7 +51,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtCelular.SelectionStart = 0;
+                celular.SelectionStart = 0;
             }
         }
 
@@ -60,7 +59,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtCpf.SelectionStart = 0;
+                cpf.SelectionStart = 0;
             }
         }
 
@@ -68,7 +67,7 @@ namespace PetShop
         {
             if (Operacao == true)
             {
-                txtCnpj.SelectionStart = 0;
+                cnpj.SelectionStart = 0;
             }
         }
 
@@ -86,39 +85,39 @@ namespace PetShop
         private void VerificaCamposObrigatorios()
         {
             // Verifica se campos de cadastro obrigatórios estao preenchidos
-            if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
+            if (string.IsNullOrWhiteSpace(nomeCompleto.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome / Razão Social", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrEmpty(combBoxTipo.Text))
+            else if (string.IsNullOrEmpty(tipo.Text))
             {
                 MessageBox.Show("Selecione o tipo de cliente", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(txtEndereco.Text))
+            else if (string.IsNullOrWhiteSpace(endereco.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome da Rua / AV", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(txtBairro.Text))
+            else if (string.IsNullOrWhiteSpace(bairro.Text))
             {
                 MessageBox.Show("Preencha o campo de Bairro", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrWhiteSpace(txtCidade.Text))
+            else if (string.IsNullOrWhiteSpace(cidade.Text))
             {
                 MessageBox.Show("Preencha o campo de Cidade", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (string.IsNullOrEmpty(combBoxUf.Text))
+            else if (string.IsNullOrEmpty(uf.Text))
             {
                 MessageBox.Show("Selecione o campo UF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!txtCep.MaskCompleted)
+            else if (!cep.MaskCompleted)
             {
                 MessageBox.Show("Preencha o campo de CEP", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!txtTelefonePrimario.MaskCompleted)
+            else if (!telefonePrimario.MaskCompleted)
             {
                 MessageBox.Show("Preencha o campo de 1° Telefone", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!txtCpf.MaskCompleted)
+            else if (!cpf.MaskCompleted)
             {
                 MessageBox.Show("Preencha o campo de CPF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -131,40 +130,52 @@ namespace PetShop
         private void InsereAtualizaCliente() // Passar para controller
         {
             // Conexão com banco de dados e execução da Query
-            using (SqlCeConnection conn = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
             {
                 try
                 {
                     conn.Open();
-                    SqlCeCommand cmd = conn.CreateCommand();
-                    cmd.CommandText = "INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes)";
-                    cmd.Parameters.AddWithValue("@Nome", txtNomeCompleto.Text);
-                    cmd.Parameters.AddWithValue("@Tipo", combBoxTipo.Text);
-                    cmd.Parameters.AddWithValue("@Apelido", txtApelido.Text);
-                    cmd.Parameters.AddWithValue("@Endereco", txtEndereco.Text);
-                    cmd.Parameters.AddWithValue("@Bairro", txtBairro.Text);
-                    cmd.Parameters.AddWithValue("@Cidade", txtCidade.Text);
-                    cmd.Parameters.AddWithValue("@Estado", combBoxUf.Text);
-                    cmd.Parameters.AddWithValue("@Cep", txtCep.Text);
-                    cmd.Parameters.AddWithValue("@Telefone_Principal", txtTelefonePrimario.Text);
-                    cmd.Parameters.AddWithValue("@Telefone_Secundario", txtTelefoneSecundario.Text);
-                    cmd.Parameters.AddWithValue("@Celular", txtCelular.Text);
-                    cmd.Parameters.AddWithValue("@Complemento", txtComplemento.Text);
-                    cmd.Parameters.AddWithValue("@Email", txtEmail.Text);
-                    cmd.Parameters.AddWithValue("@Cpf", txtCpf.Text);
-                    cmd.Parameters.AddWithValue("@Cnpj", txtCnpj.Text);
-                    cmd.Parameters.AddWithValue("@Observacoes", observacoes.Text);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Os dados do Cliente foram salvos.", "Cadastro de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    MySqlCommand comando = conn.CreateCommand();
+                    if (Operacao == true)
+                    {
+                        comando.CommandText = "INSERT INTO cliente (nome_completo,tipo,nome_apelido,endereco,bairro,cidade,uf,cep,telefone_primario,telefone_secundario,celular,complemento,email,cpf,cnpj,observacoes) VALUES (@nome_completo,@tipo,@nome_apelido,@endereco,@bairro,@cidade,@uf,@cep,@telefone_primario,@telefone_secundario,@celular,@complemento,@email,@cpf,@cnpj,@observacoes)";
+                    }
+                    else if (Operacao == false)
+                    {
+                        comando.CommandText = $"UPDATE cliente SET nome_completo = @nome_completo, tipo = @tipo, nome_apelido = @nome_apelido, endereco = @endereco, bairro = @bairro, cidade = @cidade, uf = @uf, cep = @cep, telefone_primario = @telefone_primario, telefone_secundario = @telefone_secundario, celular = @celular, complemento = , email = @email, cpf = @cpf, cnpj = @cnpj, observacoes = @observacoes WHERE id = @id";
+                    }
+                    comando.Parameters.AddWithValue("@id", IdCliente);
+                    comando.Parameters.AddWithValue("@nome_completo", nomeCompleto.Text);
+                    comando.Parameters.AddWithValue("@tipo", tipo.Text);
+                    comando.Parameters.AddWithValue("@nome_apelido", nomeApelido.Text);
+                    comando.Parameters.AddWithValue("@endereco", endereco.Text);
+                    comando.Parameters.AddWithValue("@bairro", bairro.Text);
+                    comando.Parameters.AddWithValue("@cidade", cidade.Text);
+                    comando.Parameters.AddWithValue("@uf", uf.Text);
+                    comando.Parameters.AddWithValue("@cep", cep.Text);
+                    comando.Parameters.AddWithValue("@telefone_primario", telefonePrimario.Text);
+                    comando.Parameters.AddWithValue("@telefone_secundario", telefoneSecundario.Text);
+                    comando.Parameters.AddWithValue("@celular", celular.Text);
+                    comando.Parameters.AddWithValue("@complemento", complemento.Text);
+                    comando.Parameters.AddWithValue("@email", email.Text);
+                    comando.Parameters.AddWithValue("@cpf", cpf.Text);
+                    comando.Parameters.AddWithValue("@cnpj", cnpj.Text);
+                    comando.Parameters.AddWithValue("@observacoes", observacoes.Text);
+                    int query_check = comando.ExecuteNonQuery();
+                    if (query_check != 0)
+                    {
+                        MessageBox.Show("Os dados do cliente foram salvos.", "Cadastro de cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _PesquisaClientesFornecedores.ExibirDadosLista("SELECT * FROM cliente");
+                    }
                 }
-                catch (SqlCeException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Erro ao salvar as informações do Cliente: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao salvar as informações do cliente: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
                     conn.Close();
+                    Close();
                 }
             }
         }
@@ -180,6 +191,49 @@ namespace PetShop
             {
                 BtnAdicionar.Text = "Atualizar";
                 Text = "Editar Cliente";
+                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+                {
+                    try
+                    {
+                        conn.Open();
+                        MySqlCommand comando = conn.CreateCommand();
+                        comando.CommandText = "SELECT * FROM cliente WHERE id = @id";
+                        comando.Parameters.AddWithValue("@id", IdCliente);
+                        MySqlDataReader reader = comando.ExecuteReader();
+                        if (reader.Read())
+                        {
+                            nomeCompleto.Text = reader.GetString("nome_completo");
+                            tipo.SelectedItem = reader.GetString("tipo");
+                            nomeApelido.Text = reader.GetString("nome_apelido");
+                            endereco.Text = reader.GetString("endereco");
+                            bairro.Text = reader.GetString("bairro");
+                            cidade.Text = reader.GetString("cidade");
+                            uf.SelectedItem = reader.GetString("uf");
+                            cep.Text = reader.GetString("cep");
+                            telefonePrimario.Text = reader.GetString("telefone_primario");
+                            telefoneSecundario.Text = reader.GetString("telefone_secundario");
+                            celular.Text = reader.GetString("celular");
+                            complemento.Text = reader.GetString("complemento");
+                            email.Text = reader.GetString("email");
+                            cpf.Text = reader.GetString("cpf");
+                            cnpj.Text = reader.GetString("cnpj");
+                            observacoes.Text = reader.GetString("observacoes");
+                        }
+                        else
+                        {
+                            MessageBox.Show("O cliente a ser editado não se encontra mais na base de dados.", "Erro ao identificar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            this.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Erro ao acessar o banco de dados: {ex.Message}", "Falha ao editar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                }
             }
         }
     }

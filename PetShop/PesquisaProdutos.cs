@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace PetShop
 {
@@ -40,8 +41,7 @@ namespace PetShop
 
         public void ListaProdutos(string comandoSql)
         {
-            /*
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
+            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
             {
                 try
                 {
@@ -80,7 +80,7 @@ namespace PetShop
                 {
                     conn.Close();
                 }          
-            }*/
+            }
         }
 
         private void BtnExcluirClienteFornecedor_Click(object sender, EventArgs e)
@@ -92,8 +92,7 @@ namespace PetShop
                 DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este Produto?", "Remover Produto", MessageBoxButtons.YesNo);
                 if (confirmar_delete == DialogResult.Yes)
                 {
-                    /*
-                    using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
+                    using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
                     {
                         try
                         {
@@ -117,7 +116,6 @@ namespace PetShop
                             conn.Close();
                         }
                     }
-                    */
                 }
             }
         }

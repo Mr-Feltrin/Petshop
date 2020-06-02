@@ -103,16 +103,6 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon agenda_icon {
-            get {
-                object obj = ResourceManager.GetObject("agenda_icon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
         internal static System.Drawing.Icon animal_icon {
             get {
                 object obj = ResourceManager.GetObject("animal_icon", resourceCulture);

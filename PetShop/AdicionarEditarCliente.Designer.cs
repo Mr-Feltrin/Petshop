@@ -31,36 +31,36 @@ namespace PetShop
         private void InitializeComponent()
         {
             this.labelNomeCompleto = new System.Windows.Forms.Label();
-            this.txtNomeCompleto = new System.Windows.Forms.TextBox();
+            this.nomeCompleto = new System.Windows.Forms.TextBox();
             this.labelTipo = new System.Windows.Forms.Label();
-            this.combBoxTipo = new System.Windows.Forms.ComboBox();
+            this.tipo = new System.Windows.Forms.ComboBox();
             this.tabDadosCliente = new System.Windows.Forms.TabControl();
             this.enderecosContato = new System.Windows.Forms.TabPage();
-            this.txtCep = new System.Windows.Forms.MaskedTextBox();
-            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefoneSecundario = new System.Windows.Forms.MaskedTextBox();
-            this.txtTelefonePrimario = new System.Windows.Forms.MaskedTextBox();
-            this.txtCnpj = new System.Windows.Forms.MaskedTextBox();
-            this.txtCpf = new System.Windows.Forms.MaskedTextBox();
+            this.cep = new System.Windows.Forms.MaskedTextBox();
+            this.celular = new System.Windows.Forms.MaskedTextBox();
+            this.telefoneSecundario = new System.Windows.Forms.MaskedTextBox();
+            this.telefonePrimario = new System.Windows.Forms.MaskedTextBox();
+            this.cnpj = new System.Windows.Forms.MaskedTextBox();
+            this.cpf = new System.Windows.Forms.MaskedTextBox();
             this.labelCnpj = new System.Windows.Forms.Label();
             this.labelCpf = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.email = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
-            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.complemento = new System.Windows.Forms.TextBox();
             this.labelComplemento = new System.Windows.Forms.Label();
             this.labelCelular = new System.Windows.Forms.Label();
             this.labelTelefoneSecundario = new System.Windows.Forms.Label();
             this.labelTelefonePrimario = new System.Windows.Forms.Label();
             this.labelCep = new System.Windows.Forms.Label();
-            this.combBoxUf = new System.Windows.Forms.ComboBox();
+            this.uf = new System.Windows.Forms.ComboBox();
             this.labelUf = new System.Windows.Forms.Label();
-            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.cidade = new System.Windows.Forms.TextBox();
             this.labelCidade = new System.Windows.Forms.Label();
-            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.bairro = new System.Windows.Forms.TextBox();
             this.labelBairro = new System.Windows.Forms.Label();
-            this.txtEndereco = new System.Windows.Forms.TextBox();
+            this.endereco = new System.Windows.Forms.TextBox();
             this.labelEndereco = new System.Windows.Forms.Label();
-            this.txtApelido = new System.Windows.Forms.TextBox();
+            this.nomeApelido = new System.Windows.Forms.TextBox();
             this.labelApelido = new System.Windows.Forms.Label();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
             this.observacoes = new System.Windows.Forms.RichTextBox();
@@ -81,15 +81,15 @@ namespace PetShop
             this.labelNomeCompleto.TabIndex = 0;
             this.labelNomeCompleto.Text = "Nome / Razão Completo*";
             // 
-            // txtNomeCompleto
+            // nomeCompleto
             // 
-            this.txtNomeCompleto.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeCompleto.Location = new System.Drawing.Point(34, 47);
-            this.txtNomeCompleto.MaxLength = 500;
-            this.txtNomeCompleto.Name = "txtNomeCompleto";
-            this.txtNomeCompleto.Size = new System.Drawing.Size(332, 22);
-            this.txtNomeCompleto.TabIndex = 1;
+            this.nomeCompleto.BackColor = System.Drawing.SystemColors.Info;
+            this.nomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeCompleto.Location = new System.Drawing.Point(34, 47);
+            this.nomeCompleto.MaxLength = 500;
+            this.nomeCompleto.Name = "nomeCompleto";
+            this.nomeCompleto.Size = new System.Drawing.Size(332, 22);
+            this.nomeCompleto.TabIndex = 1;
             // 
             // labelTipo
             // 
@@ -101,22 +101,22 @@ namespace PetShop
             this.labelTipo.TabIndex = 2;
             this.labelTipo.Text = "Segmento do Cliente ou Tipo*";
             // 
-            // combBoxTipo
+            // tipo
             // 
-            this.combBoxTipo.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxTipo.FormattingEnabled = true;
-            this.combBoxTipo.Items.AddRange(new object[] {
+            this.tipo.BackColor = System.Drawing.SystemColors.Window;
+            this.tipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tipo.FormattingEnabled = true;
+            this.tipo.Items.AddRange(new object[] {
             "Cliente Comum",
             "Cliente Fixo",
             "Cliente Especial",
             "Funcionário",
             "Não Atender"});
-            this.combBoxTipo.Location = new System.Drawing.Point(452, 45);
-            this.combBoxTipo.Name = "combBoxTipo";
-            this.combBoxTipo.Size = new System.Drawing.Size(243, 24);
-            this.combBoxTipo.TabIndex = 3;
+            this.tipo.Location = new System.Drawing.Point(452, 45);
+            this.tipo.Name = "tipo";
+            this.tipo.Size = new System.Drawing.Size(243, 24);
+            this.tipo.TabIndex = 3;
             // 
             // tabDadosCliente
             // 
@@ -132,31 +132,31 @@ namespace PetShop
             // enderecosContato
             // 
             this.enderecosContato.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.enderecosContato.Controls.Add(this.txtCep);
-            this.enderecosContato.Controls.Add(this.txtCelular);
-            this.enderecosContato.Controls.Add(this.txtTelefoneSecundario);
-            this.enderecosContato.Controls.Add(this.txtTelefonePrimario);
-            this.enderecosContato.Controls.Add(this.txtCnpj);
-            this.enderecosContato.Controls.Add(this.txtCpf);
+            this.enderecosContato.Controls.Add(this.cep);
+            this.enderecosContato.Controls.Add(this.celular);
+            this.enderecosContato.Controls.Add(this.telefoneSecundario);
+            this.enderecosContato.Controls.Add(this.telefonePrimario);
+            this.enderecosContato.Controls.Add(this.cnpj);
+            this.enderecosContato.Controls.Add(this.cpf);
             this.enderecosContato.Controls.Add(this.labelCnpj);
             this.enderecosContato.Controls.Add(this.labelCpf);
-            this.enderecosContato.Controls.Add(this.txtEmail);
+            this.enderecosContato.Controls.Add(this.email);
             this.enderecosContato.Controls.Add(this.labelEmail);
-            this.enderecosContato.Controls.Add(this.txtComplemento);
+            this.enderecosContato.Controls.Add(this.complemento);
             this.enderecosContato.Controls.Add(this.labelComplemento);
             this.enderecosContato.Controls.Add(this.labelCelular);
             this.enderecosContato.Controls.Add(this.labelTelefoneSecundario);
             this.enderecosContato.Controls.Add(this.labelTelefonePrimario);
             this.enderecosContato.Controls.Add(this.labelCep);
-            this.enderecosContato.Controls.Add(this.combBoxUf);
+            this.enderecosContato.Controls.Add(this.uf);
             this.enderecosContato.Controls.Add(this.labelUf);
-            this.enderecosContato.Controls.Add(this.txtCidade);
+            this.enderecosContato.Controls.Add(this.cidade);
             this.enderecosContato.Controls.Add(this.labelCidade);
-            this.enderecosContato.Controls.Add(this.txtBairro);
+            this.enderecosContato.Controls.Add(this.bairro);
             this.enderecosContato.Controls.Add(this.labelBairro);
-            this.enderecosContato.Controls.Add(this.txtEndereco);
+            this.enderecosContato.Controls.Add(this.endereco);
             this.enderecosContato.Controls.Add(this.labelEndereco);
-            this.enderecosContato.Controls.Add(this.txtApelido);
+            this.enderecosContato.Controls.Add(this.nomeApelido);
             this.enderecosContato.Controls.Add(this.labelApelido);
             this.enderecosContato.Location = new System.Drawing.Point(4, 22);
             this.enderecosContato.Name = "enderecosContato";
@@ -165,80 +165,80 @@ namespace PetShop
             this.enderecosContato.TabIndex = 0;
             this.enderecosContato.Text = "Endereço e Contato";
             // 
-            // txtCep
+            // cep
             // 
-            this.txtCep.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCep.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtCep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCep.Location = new System.Drawing.Point(550, 139);
-            this.txtCep.Mask = "00000-000";
-            this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(87, 22);
-            this.txtCep.TabIndex = 31;
-            this.txtCep.Click += new System.EventHandler(this.Cadastro_cliente_cep_Click);
+            this.cep.BackColor = System.Drawing.SystemColors.Window;
+            this.cep.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.Location = new System.Drawing.Point(550, 139);
+            this.cep.Mask = "00000-000";
+            this.cep.Name = "cep";
+            this.cep.Size = new System.Drawing.Size(87, 22);
+            this.cep.TabIndex = 31;
+            this.cep.Click += new System.EventHandler(this.Cadastro_cliente_cep_Click);
             // 
-            // txtCelular
+            // celular
             // 
-            this.txtCelular.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtCelular.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCelular.Location = new System.Drawing.Point(328, 191);
-            this.txtCelular.Mask = "(00)90000-0000";
-            this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(125, 22);
-            this.txtCelular.TabIndex = 30;
-            this.txtCelular.Click += new System.EventHandler(this.Cadastro_cliente_celular_Click);
+            this.celular.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.celular.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.celular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.celular.Location = new System.Drawing.Point(328, 191);
+            this.celular.Mask = "(00)90000-0000";
+            this.celular.Name = "celular";
+            this.celular.Size = new System.Drawing.Size(125, 22);
+            this.celular.TabIndex = 30;
+            this.celular.Click += new System.EventHandler(this.Cadastro_cliente_celular_Click);
             // 
-            // txtTelefoneSecundario
+            // telefoneSecundario
             // 
-            this.txtTelefoneSecundario.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtTelefoneSecundario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtTelefoneSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefoneSecundario.Location = new System.Drawing.Point(172, 191);
-            this.txtTelefoneSecundario.Mask = "(00)0000-0000";
-            this.txtTelefoneSecundario.Name = "txtTelefoneSecundario";
-            this.txtTelefoneSecundario.Size = new System.Drawing.Size(125, 22);
-            this.txtTelefoneSecundario.TabIndex = 29;
-            this.txtTelefoneSecundario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_secundario_Click);
+            this.telefoneSecundario.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.telefoneSecundario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.telefoneSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telefoneSecundario.Location = new System.Drawing.Point(172, 191);
+            this.telefoneSecundario.Mask = "(00)0000-0000";
+            this.telefoneSecundario.Name = "telefoneSecundario";
+            this.telefoneSecundario.Size = new System.Drawing.Size(125, 22);
+            this.telefoneSecundario.TabIndex = 29;
+            this.telefoneSecundario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_secundario_Click);
             // 
-            // txtTelefonePrimario
+            // telefonePrimario
             // 
-            this.txtTelefonePrimario.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTelefonePrimario.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtTelefonePrimario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtTelefonePrimario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefonePrimario.Location = new System.Drawing.Point(18, 191);
-            this.txtTelefonePrimario.Mask = "(00)0000-0000";
-            this.txtTelefonePrimario.Name = "txtTelefonePrimario";
-            this.txtTelefonePrimario.Size = new System.Drawing.Size(125, 22);
-            this.txtTelefonePrimario.TabIndex = 28;
-            this.txtTelefonePrimario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
+            this.telefonePrimario.BackColor = System.Drawing.SystemColors.Window;
+            this.telefonePrimario.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.telefonePrimario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.telefonePrimario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.telefonePrimario.Location = new System.Drawing.Point(18, 191);
+            this.telefonePrimario.Mask = "(00)0000-0000";
+            this.telefonePrimario.Name = "telefonePrimario";
+            this.telefonePrimario.Size = new System.Drawing.Size(125, 22);
+            this.telefonePrimario.TabIndex = 28;
+            this.telefonePrimario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
             // 
-            // txtCnpj
+            // cnpj
             // 
-            this.txtCnpj.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtCnpj.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCnpj.Location = new System.Drawing.Point(537, 244);
-            this.txtCnpj.Mask = "00.000.000/0000-00";
-            this.txtCnpj.Name = "txtCnpj";
-            this.txtCnpj.Size = new System.Drawing.Size(100, 22);
-            this.txtCnpj.TabIndex = 27;
-            this.txtCnpj.Click += new System.EventHandler(this.Cadastro_cliente_cnpj_Click);
+            this.cnpj.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cnpj.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cnpj.Location = new System.Drawing.Point(537, 244);
+            this.cnpj.Mask = "00.000.000/0000-00";
+            this.cnpj.Name = "cnpj";
+            this.cnpj.Size = new System.Drawing.Size(100, 22);
+            this.cnpj.TabIndex = 27;
+            this.cnpj.Click += new System.EventHandler(this.Cadastro_cliente_cnpj_Click);
             // 
-            // txtCpf
+            // cpf
             // 
-            this.txtCpf.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCpf.Culture = new System.Globalization.CultureInfo("pt-BR");
-            this.txtCpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCpf.Location = new System.Drawing.Point(366, 244);
-            this.txtCpf.Mask = "000.000.000-00";
-            this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(100, 22);
-            this.txtCpf.TabIndex = 26;
-            this.txtCpf.Click += new System.EventHandler(this.Cadastro_cliente_cpf_Click);
+            this.cpf.BackColor = System.Drawing.SystemColors.Window;
+            this.cpf.Culture = new System.Globalization.CultureInfo("pt-BR");
+            this.cpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.cpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cpf.Location = new System.Drawing.Point(366, 244);
+            this.cpf.Mask = "000.000.000-00";
+            this.cpf.Name = "cpf";
+            this.cpf.Size = new System.Drawing.Size(100, 22);
+            this.cpf.TabIndex = 26;
+            this.cpf.Click += new System.EventHandler(this.Cadastro_cliente_cpf_Click);
             // 
             // labelCnpj
             // 
@@ -256,18 +256,18 @@ namespace PetShop
             this.labelCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.labelCpf.Location = new System.Drawing.Point(363, 224);
             this.labelCpf.Name = "labelCpf";
-            this.labelCpf.Size = new System.Drawing.Size(59, 18);
+            this.labelCpf.Size = new System.Drawing.Size(65, 18);
             this.labelCpf.TabIndex = 22;
-            this.labelCpf.Text = "N° CPF";
+            this.labelCpf.Text = "N° CPF*";
             // 
-            // txtEmail
+            // email
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(18, 244);
-            this.txtEmail.MaxLength = 500;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(293, 22);
-            this.txtEmail.TabIndex = 21;
+            this.email.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.email.Location = new System.Drawing.Point(18, 244);
+            this.email.MaxLength = 500;
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(293, 22);
+            this.email.TabIndex = 21;
             // 
             // labelEmail
             // 
@@ -279,14 +279,14 @@ namespace PetShop
             this.labelEmail.TabIndex = 20;
             this.labelEmail.Text = "E-mail";
             // 
-            // txtComplemento
+            // complemento
             // 
-            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtComplemento.Location = new System.Drawing.Point(481, 191);
-            this.txtComplemento.MaxLength = 500;
-            this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(156, 22);
-            this.txtComplemento.TabIndex = 19;
+            this.complemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.complemento.Location = new System.Drawing.Point(481, 191);
+            this.complemento.MaxLength = 500;
+            this.complemento.Name = "complemento";
+            this.complemento.Size = new System.Drawing.Size(156, 22);
+            this.complemento.TabIndex = 19;
             // 
             // labelComplemento
             // 
@@ -338,16 +338,16 @@ namespace PetShop
             this.labelCep.TabIndex = 10;
             this.labelCep.Text = "CEP*";
             // 
-            // combBoxUf
+            // uf
             // 
-            this.combBoxUf.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxUf.DropDownHeight = 85;
-            this.combBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxUf.FormattingEnabled = true;
-            this.combBoxUf.IntegralHeight = false;
-            this.combBoxUf.ItemHeight = 16;
-            this.combBoxUf.Items.AddRange(new object[] {
+            this.uf.BackColor = System.Drawing.SystemColors.Window;
+            this.uf.DropDownHeight = 85;
+            this.uf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uf.FormattingEnabled = true;
+            this.uf.IntegralHeight = false;
+            this.uf.ItemHeight = 16;
+            this.uf.Items.AddRange(new object[] {
             "AC",
             "AL",
             "AP",
@@ -375,10 +375,10 @@ namespace PetShop
             "SP",
             "SE",
             "TO"});
-            this.combBoxUf.Location = new System.Drawing.Point(450, 139);
-            this.combBoxUf.Name = "combBoxUf";
-            this.combBoxUf.Size = new System.Drawing.Size(62, 24);
-            this.combBoxUf.TabIndex = 9;
+            this.uf.Location = new System.Drawing.Point(450, 139);
+            this.uf.Name = "uf";
+            this.uf.Size = new System.Drawing.Size(62, 24);
+            this.uf.TabIndex = 9;
             // 
             // labelUf
             // 
@@ -390,15 +390,15 @@ namespace PetShop
             this.labelUf.TabIndex = 8;
             this.labelUf.Text = "UF*";
             // 
-            // txtCidade
+            // cidade
             // 
-            this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCidade.Location = new System.Drawing.Point(281, 139);
-            this.txtCidade.MaxLength = 500;
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(140, 22);
-            this.txtCidade.TabIndex = 7;
+            this.cidade.BackColor = System.Drawing.SystemColors.Window;
+            this.cidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cidade.Location = new System.Drawing.Point(281, 139);
+            this.cidade.MaxLength = 500;
+            this.cidade.Name = "cidade";
+            this.cidade.Size = new System.Drawing.Size(140, 22);
+            this.cidade.TabIndex = 7;
             // 
             // labelCidade
             // 
@@ -410,15 +410,15 @@ namespace PetShop
             this.labelCidade.TabIndex = 6;
             this.labelCidade.Text = "Cidade*";
             // 
-            // txtBairro
+            // bairro
             // 
-            this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBairro.Location = new System.Drawing.Point(18, 139);
-            this.txtBairro.MaxLength = 500;
-            this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(241, 22);
-            this.txtBairro.TabIndex = 5;
+            this.bairro.BackColor = System.Drawing.SystemColors.Window;
+            this.bairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bairro.Location = new System.Drawing.Point(18, 139);
+            this.bairro.MaxLength = 500;
+            this.bairro.Name = "bairro";
+            this.bairro.Size = new System.Drawing.Size(241, 22);
+            this.bairro.TabIndex = 5;
             // 
             // labelBairro
             // 
@@ -430,15 +430,15 @@ namespace PetShop
             this.labelBairro.TabIndex = 4;
             this.labelBairro.Text = "Bairro*";
             // 
-            // txtEndereco
+            // endereco
             // 
-            this.txtEndereco.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndereco.Location = new System.Drawing.Point(18, 86);
-            this.txtEndereco.MaxLength = 500;
-            this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(619, 22);
-            this.txtEndereco.TabIndex = 3;
+            this.endereco.BackColor = System.Drawing.SystemColors.Window;
+            this.endereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endereco.Location = new System.Drawing.Point(18, 86);
+            this.endereco.MaxLength = 500;
+            this.endereco.Name = "endereco";
+            this.endereco.Size = new System.Drawing.Size(619, 22);
+            this.endereco.TabIndex = 3;
             // 
             // labelEndereco
             // 
@@ -450,15 +450,15 @@ namespace PetShop
             this.labelEndereco.TabIndex = 2;
             this.labelEndereco.Text = "Nome da Rua / AV*";
             // 
-            // txtApelido
+            // nomeApelido
             // 
-            this.txtApelido.BackColor = System.Drawing.SystemColors.Window;
-            this.txtApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApelido.Location = new System.Drawing.Point(18, 36);
-            this.txtApelido.MaxLength = 500;
-            this.txtApelido.Name = "txtApelido";
-            this.txtApelido.Size = new System.Drawing.Size(619, 22);
-            this.txtApelido.TabIndex = 1;
+            this.nomeApelido.BackColor = System.Drawing.SystemColors.Window;
+            this.nomeApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomeApelido.Location = new System.Drawing.Point(18, 36);
+            this.nomeApelido.MaxLength = 500;
+            this.nomeApelido.Name = "nomeApelido";
+            this.nomeApelido.Size = new System.Drawing.Size(619, 22);
+            this.nomeApelido.TabIndex = 1;
             // 
             // labelApelido
             // 
@@ -534,9 +534,9 @@ namespace PetShop
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.BtnAdicionar);
             this.Controls.Add(this.tabDadosCliente);
-            this.Controls.Add(this.combBoxTipo);
+            this.Controls.Add(this.tipo);
             this.Controls.Add(this.labelTipo);
-            this.Controls.Add(this.txtNomeCompleto);
+            this.Controls.Add(this.nomeCompleto);
             this.Controls.Add(this.labelNomeCompleto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -559,39 +559,39 @@ namespace PetShop
         #endregion
         private System.Windows.Forms.Label labelNomeCompleto;
         private System.Windows.Forms.Label labelTipo;
-        private System.Windows.Forms.ComboBox combBoxTipo;
+        private System.Windows.Forms.ComboBox tipo;
         private System.Windows.Forms.TabControl tabDadosCliente;
         private System.Windows.Forms.TabPage enderecosContato;
         private System.Windows.Forms.TabPage informacoes_observacoes;
         private System.Windows.Forms.Label labelApelido;
-        private System.Windows.Forms.TextBox txtApelido;
+        private System.Windows.Forms.TextBox nomeApelido;
         private System.Windows.Forms.Button BtnAdicionar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label labelCnpj;
         private System.Windows.Forms.Label labelCpf;
-        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.Label labelEmail;
-        private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.TextBox complemento;
         private System.Windows.Forms.Label labelComplemento;
         private System.Windows.Forms.Label labelCelular;
         private System.Windows.Forms.Label labelTelefoneSecundario;
         private System.Windows.Forms.Label labelTelefonePrimario;
         private System.Windows.Forms.Label labelCep;
-        private System.Windows.Forms.ComboBox combBoxUf;
+        private System.Windows.Forms.ComboBox uf;
         private System.Windows.Forms.Label labelUf;
-        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.TextBox cidade;
         private System.Windows.Forms.Label labelCidade;
-        private System.Windows.Forms.TextBox txtBairro;
+        private System.Windows.Forms.TextBox bairro;
         private System.Windows.Forms.Label labelBairro;
-        private System.Windows.Forms.TextBox txtEndereco;
+        private System.Windows.Forms.TextBox endereco;
         private System.Windows.Forms.Label labelEndereco;
         private System.Windows.Forms.RichTextBox observacoes;
-        private System.Windows.Forms.MaskedTextBox txtCpf;
-        private System.Windows.Forms.MaskedTextBox txtCnpj;
-        private System.Windows.Forms.MaskedTextBox txtTelefoneSecundario;
-        private System.Windows.Forms.MaskedTextBox txtTelefonePrimario;
-        private System.Windows.Forms.MaskedTextBox txtCelular;
-        private System.Windows.Forms.MaskedTextBox txtCep;
-        internal System.Windows.Forms.TextBox txtNomeCompleto;
+        private System.Windows.Forms.MaskedTextBox cpf;
+        private System.Windows.Forms.MaskedTextBox cnpj;
+        private System.Windows.Forms.MaskedTextBox telefoneSecundario;
+        private System.Windows.Forms.MaskedTextBox telefonePrimario;
+        private System.Windows.Forms.MaskedTextBox celular;
+        private System.Windows.Forms.MaskedTextBox cep;
+        internal System.Windows.Forms.TextBox nomeCompleto;
     }
 }

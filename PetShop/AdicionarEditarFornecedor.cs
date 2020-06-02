@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -30,7 +31,7 @@ namespace PetShop
             {
                 Text = "Editar Fornecedor";
                 BtnAdicionarEditarFornecedor.Text = "Atualizar";
-               /* using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
+                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
                 {
                     try
                     {
@@ -71,9 +72,7 @@ namespace PetShop
                         conn.Close();
                     }
                 }
-                */
             }
-            
         }
         private void VerificaCamposObrigatorios()
         {
@@ -116,8 +115,7 @@ namespace PetShop
         }
         private void InsereAtualizaFornecedor()
         {
-            /*
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
+            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
             {
                 try
                 {
@@ -163,7 +161,6 @@ namespace PetShop
                     Close();
                 }
             }
-            */
         }
 
         private void BtnAdicionarEditarFornecedor_Click(object sender, EventArgs e)

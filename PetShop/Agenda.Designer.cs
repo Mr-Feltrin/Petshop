@@ -30,7 +30,7 @@
         {
             this.dataInicial = new System.Windows.Forms.DateTimePicker();
             this.labelDataInicial = new System.Windows.Forms.Label();
-            this.dataFinal = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.labelDataFinal = new System.Windows.Forms.Label();
             this.pesquisaNomeDono = new System.Windows.Forms.TextBox();
             this.labelPesquisarPeloNomeDono = new System.Windows.Forms.Label();
@@ -40,21 +40,29 @@
             this.btnExcluirHorario = new System.Windows.Forms.Button();
             this.btnEditarHorario = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
-            this.ListaAgendamento = new System.Windows.Forms.DataGridView();
-            this.FiltroDisponibilidade = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).BeginInit();
+            this.filtroGeral = new System.Windows.Forms.CheckBox();
+            this.filtroDisponivel = new System.Windows.Forms.CheckBox();
+            this.filtroConfirmado = new System.Windows.Forms.CheckBox();
+            this.filtroAConfirmar = new System.Windows.Forms.CheckBox();
+            this.filtoCancelado = new System.Windows.Forms.CheckBox();
+            this.labelFiltrarProcedimento = new System.Windows.Forms.Label();
+            this.filtrarProcedimento = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.labelFiltrarVeterinario = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataInicial
             // 
             this.dataInicial.CustomFormat = "dd/MM/yyyy";
-            this.dataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dataInicial.Location = new System.Drawing.Point(12, 40);
             this.dataInicial.Name = "dataInicial";
-            this.dataInicial.Size = new System.Drawing.Size(101, 22);
+            this.dataInicial.Size = new System.Drawing.Size(100, 21);
             this.dataInicial.TabIndex = 10;
-            this.dataInicial.Value = new System.DateTime(2020, 2, 8, 0, 0, 0, 0);
+            this.dataInicial.Value = new System.DateTime(2019, 5, 16, 20, 33, 49, 0);
             // 
             // labelDataInicial
             // 
@@ -66,14 +74,14 @@
             this.labelDataInicial.TabIndex = 11;
             this.labelDataInicial.Text = "Data Inicial";
             // 
-            // dataFinal
+            // dateTimePicker1
             // 
-            this.dataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataFinal.Location = new System.Drawing.Point(132, 40);
-            this.dataFinal.Name = "dataFinal";
-            this.dataFinal.Size = new System.Drawing.Size(101, 22);
-            this.dataFinal.TabIndex = 12;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(132, 40);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(100, 21);
+            this.dateTimePicker1.TabIndex = 12;
             // 
             // labelDataFinal
             // 
@@ -181,34 +189,122 @@
             this.btnRelatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRelatorio.UseVisualStyleBackColor = true;
             // 
-            // ListaAgendamento
+            // filtroGeral
             // 
-            this.ListaAgendamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaAgendamento.Location = new System.Drawing.Point(16, 136);
-            this.ListaAgendamento.Name = "ListaAgendamento";
-            this.ListaAgendamento.Size = new System.Drawing.Size(1101, 508);
-            this.ListaAgendamento.TabIndex = 33;
+            this.filtroGeral.AutoSize = true;
+            this.filtroGeral.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroGeral.Location = new System.Drawing.Point(15, 80);
+            this.filtroGeral.Name = "filtroGeral";
+            this.filtroGeral.Size = new System.Drawing.Size(60, 20);
+            this.filtroGeral.TabIndex = 24;
+            this.filtroGeral.Text = "Geral";
+            this.filtroGeral.UseVisualStyleBackColor = true;
             // 
-            // FiltroDisponibilidade
+            // filtroDisponivel
             // 
-            this.FiltroDisponibilidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FiltroDisponibilidade.FormattingEnabled = true;
-            this.FiltroDisponibilidade.Items.AddRange(new object[] {
-            "Geral",
-            "Disponível",
-            "Confirmado"});
-            this.FiltroDisponibilidade.Location = new System.Drawing.Point(12, 81);
-            this.FiltroDisponibilidade.Name = "FiltroDisponibilidade";
-            this.FiltroDisponibilidade.Size = new System.Drawing.Size(144, 24);
-            this.FiltroDisponibilidade.TabIndex = 34;
+            this.filtroDisponivel.AutoSize = true;
+            this.filtroDisponivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroDisponivel.Location = new System.Drawing.Point(93, 80);
+            this.filtroDisponivel.Name = "filtroDisponivel";
+            this.filtroDisponivel.Size = new System.Drawing.Size(91, 20);
+            this.filtroDisponivel.TabIndex = 25;
+            this.filtroDisponivel.Text = "Disponível";
+            this.filtroDisponivel.UseVisualStyleBackColor = true;
+            // 
+            // filtroConfirmado
+            // 
+            this.filtroConfirmado.AutoSize = true;
+            this.filtroConfirmado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroConfirmado.Location = new System.Drawing.Point(93, 106);
+            this.filtroConfirmado.Name = "filtroConfirmado";
+            this.filtroConfirmado.Size = new System.Drawing.Size(96, 20);
+            this.filtroConfirmado.TabIndex = 26;
+            this.filtroConfirmado.Text = "Confirmado";
+            this.filtroConfirmado.UseVisualStyleBackColor = true;
+            // 
+            // filtroAConfirmar
+            // 
+            this.filtroAConfirmar.AutoSize = true;
+            this.filtroAConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtroAConfirmar.Location = new System.Drawing.Point(208, 80);
+            this.filtroAConfirmar.Name = "filtroAConfirmar";
+            this.filtroAConfirmar.Size = new System.Drawing.Size(94, 20);
+            this.filtroAConfirmar.TabIndex = 27;
+            this.filtroAConfirmar.Text = "A confirmar";
+            this.filtroAConfirmar.UseVisualStyleBackColor = true;
+            // 
+            // filtoCancelado
+            // 
+            this.filtoCancelado.AutoSize = true;
+            this.filtoCancelado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.filtoCancelado.Location = new System.Drawing.Point(209, 106);
+            this.filtoCancelado.Name = "filtoCancelado";
+            this.filtoCancelado.Size = new System.Drawing.Size(93, 20);
+            this.filtoCancelado.TabIndex = 28;
+            this.filtoCancelado.Text = "Cancelado";
+            this.filtoCancelado.UseVisualStyleBackColor = true;
+            // 
+            // labelFiltrarProcedimento
+            // 
+            this.labelFiltrarProcedimento.AutoSize = true;
+            this.labelFiltrarProcedimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFiltrarProcedimento.Location = new System.Drawing.Point(319, 81);
+            this.labelFiltrarProcedimento.Name = "labelFiltrarProcedimento";
+            this.labelFiltrarProcedimento.Size = new System.Drawing.Size(150, 16);
+            this.labelFiltrarProcedimento.TabIndex = 29;
+            this.labelFiltrarProcedimento.Text = "Filtrar por procedimento";
+            // 
+            // filtrarProcedimento
+            // 
+            this.filtrarProcedimento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.filtrarProcedimento.FormattingEnabled = true;
+            this.filtrarProcedimento.Location = new System.Drawing.Point(322, 105);
+            this.filtrarProcedimento.Name = "filtrarProcedimento";
+            this.filtrarProcedimento.Size = new System.Drawing.Size(193, 21);
+            this.filtrarProcedimento.TabIndex = 30;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(535, 106);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(213, 21);
+            this.comboBox2.TabIndex = 31;
+            // 
+            // labelFiltrarVeterinario
+            // 
+            this.labelFiltrarVeterinario.AutoSize = true;
+            this.labelFiltrarVeterinario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFiltrarVeterinario.Location = new System.Drawing.Point(532, 81);
+            this.labelFiltrarVeterinario.Name = "labelFiltrarVeterinario";
+            this.labelFiltrarVeterinario.Size = new System.Drawing.Size(132, 16);
+            this.labelFiltrarVeterinario.TabIndex = 32;
+            this.labelFiltrarVeterinario.Text = "Filtrar por Veterinário";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(16, 136);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1101, 508);
+            this.dataGridView1.TabIndex = 33;
             // 
             // Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 656);
-            this.Controls.Add(this.FiltroDisponibilidade);
-            this.Controls.Add(this.ListaAgendamento);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.labelFiltrarVeterinario);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.filtrarProcedimento);
+            this.Controls.Add(this.labelFiltrarProcedimento);
+            this.Controls.Add(this.filtoCancelado);
+            this.Controls.Add(this.filtroAConfirmar);
+            this.Controls.Add(this.filtroConfirmado);
+            this.Controls.Add(this.filtroDisponivel);
+            this.Controls.Add(this.filtroGeral);
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnEditarHorario);
             this.Controls.Add(this.btnExcluirHorario);
@@ -218,13 +314,13 @@
             this.Controls.Add(this.labelPesquisarPeloNomeDono);
             this.Controls.Add(this.pesquisaNomeDono);
             this.Controls.Add(this.labelDataFinal);
-            this.Controls.Add(this.dataFinal);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.labelDataInicial);
             this.Controls.Add(this.dataInicial);
             this.Name = "Agenda";
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Agenda_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,7 +330,7 @@
 
         private System.Windows.Forms.DateTimePicker dataInicial;
         private System.Windows.Forms.Label labelDataInicial;
-        private System.Windows.Forms.DateTimePicker dataFinal;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label labelDataFinal;
         private System.Windows.Forms.TextBox pesquisaNomeDono;
         private System.Windows.Forms.Label labelPesquisarPeloNomeDono;
@@ -244,7 +340,15 @@
         private System.Windows.Forms.Button btnExcluirHorario;
         private System.Windows.Forms.Button btnEditarHorario;
         private System.Windows.Forms.Button btnRelatorio;
-        private System.Windows.Forms.DataGridView ListaAgendamento;
-        private System.Windows.Forms.ComboBox FiltroDisponibilidade;
+        private System.Windows.Forms.CheckBox filtroGeral;
+        private System.Windows.Forms.CheckBox filtroDisponivel;
+        private System.Windows.Forms.CheckBox filtroConfirmado;
+        private System.Windows.Forms.CheckBox filtroAConfirmar;
+        private System.Windows.Forms.CheckBox filtoCancelado;
+        private System.Windows.Forms.Label labelFiltrarProcedimento;
+        private System.Windows.Forms.ComboBox filtrarProcedimento;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label labelFiltrarVeterinario;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

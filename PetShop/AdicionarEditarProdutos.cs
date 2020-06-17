@@ -1,5 +1,4 @@
-﻿using MySql.Data.MySqlClient;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -10,8 +9,6 @@ namespace PetShop
         private readonly bool Operacao; // True == adicionar, false == editar
         private readonly PesquisaProdutos _pesquisaProdutos;
         private readonly int IdProduto;
-        private MySqlCommand comando;
-        private MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString);
 
         public AdicionarEditarProdutos(bool operacao, PesquisaProdutos pesquisaProdutos)
         {
@@ -73,7 +70,7 @@ namespace PetShop
             {
                 Text = "Editar Produto";
                 BtnAdicionarEditarFornecedor.Text = "Atualizar";
-                using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.db_caopanheiroConnectionString))
+               /* using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
                 {
                     try
                     {
@@ -116,8 +113,9 @@ namespace PetShop
                     {
                         conn.Close();
                     }
+                    */
                 }
-            }
+            
         }
 
 
@@ -164,8 +162,10 @@ namespace PetShop
 
         private void InsereAtualizaProdutos() // Passar pra controller
         {
+            /*
             try
             {
+                
                 conn.Open();
                 comando = conn.CreateCommand();
                 if (Operacao)
@@ -208,6 +208,7 @@ namespace PetShop
                 conn.Close();
                 Close();           
             }
+            */
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)

@@ -75,7 +75,7 @@
             this.toolStripButton2});
             this.menu_principal.Location = new System.Drawing.Point(0, 0);
             this.menu_principal.Name = "menu_principal";
-            this.menu_principal.Size = new System.Drawing.Size(1184, 52);
+            this.menu_principal.Size = new System.Drawing.Size(1184, 54);
             this.menu_principal.TabIndex = 0;
             this.menu_principal.Text = "toolStrip1";
             // 
@@ -88,7 +88,7 @@
             this.btnMenuPesquisaClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuPesquisaClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuPesquisaClientes.Name = "btnMenuPesquisaClientes";
-            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 51);
             this.btnMenuPesquisaClientes.Text = "Clientes";
             this.btnMenuPesquisaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuPesquisaClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -103,7 +103,7 @@
             this.btnMenuFornecedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuFornecedores.Name = "btnMenuFornecedores";
-            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 51);
             this.btnMenuFornecedores.Text = "Fornece";
             this.btnMenuFornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuFornecedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -112,7 +112,7 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 54);
             // 
             // botao_agenda
             // 
@@ -123,7 +123,7 @@
             this.botao_agenda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.botao_agenda.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.botao_agenda.Name = "botao_agenda";
-            this.botao_agenda.Size = new System.Drawing.Size(59, 49);
+            this.botao_agenda.Size = new System.Drawing.Size(59, 51);
             this.botao_agenda.Text = "Agenda";
             this.botao_agenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_agenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -132,7 +132,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // botao_produtos
             // 
@@ -143,7 +143,7 @@
             this.botao_produtos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.botao_produtos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.botao_produtos.Name = "botao_produtos";
-            this.botao_produtos.Size = new System.Drawing.Size(68, 49);
+            this.botao_produtos.Size = new System.Drawing.Size(68, 51);
             this.botao_produtos.Text = "Produtos";
             this.botao_produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_produtos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -159,7 +159,7 @@
             this.btnConsultar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnConsultar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(72, 49);
+            this.btnConsultar.Size = new System.Drawing.Size(72, 51);
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -168,7 +168,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // btnAnimais
             // 
@@ -179,7 +179,7 @@
             this.btnAnimais.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnAnimais.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnAnimais.Name = "btnAnimais";
-            this.btnAnimais.Size = new System.Drawing.Size(62, 49);
+            this.btnAnimais.Size = new System.Drawing.Size(62, 51);
             this.btnAnimais.Text = "Animais";
             this.btnAnimais.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAnimais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -195,7 +195,7 @@
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(61, 49);
+            this.toolStripButton1.Size = new System.Drawing.Size(61, 51);
             this.toolStripButton1.Text = "Vacinas";
             this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -204,7 +204,7 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
             // 
             // toolStripButton2
             // 
@@ -215,7 +215,7 @@
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(60, 49);
+            this.toolStripButton2.Size = new System.Drawing.Size(60, 51);
             this.toolStripButton2.Text = "Atender";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -365,7 +365,6 @@
             this.ClientSize = new System.Drawing.Size(1184, 678);
             this.Controls.Add(this.status_rodape_principal);
             this.Controls.Add(this.menu_principal);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

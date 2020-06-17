@@ -15,10 +15,14 @@ namespace PetShop
         public Agenda()
         {
             InitializeComponent();
+            Icon = Properties.Resources.agenda_icon;
         }
 
         private void Agenda_Load(object sender, EventArgs e)
         {
+            FiltroDisponibilidade.SelectedText = "Geral";
+            dataInicial.Value = DateTime.Now;
+            dataFinal.Value = DateTime.Now.AddMonths(1);
 
         }
     }

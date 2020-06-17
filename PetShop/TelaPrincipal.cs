@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,6 +10,7 @@ namespace PetShop
         public TelaPrincipal()
         {
             InitializeComponent();
+
         }
 
         private void Tela_Principal_Load(object sender, EventArgs e)
@@ -43,7 +45,7 @@ namespace PetShop
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(true);
+            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(TipoPesquisa.Cliente);
             pesquisaClientes.ShowDialog();
         }
 
@@ -87,7 +89,7 @@ namespace PetShop
 
         private void btnMenuFornecedores_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(false);
+            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(TipoPesquisa.Fornecedor);
             pesquisaFornecedores.ShowDialog();
         }
 

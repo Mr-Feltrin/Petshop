@@ -26,7 +26,6 @@ namespace PetShop
                 dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
             }       
         }
-
         
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
         {
@@ -51,39 +50,13 @@ namespace PetShop
 
             if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
-                string row_dados = row.Cells[0].Value.ToString();
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este cliente?", "Remover Cliente", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        /*
-                        using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
-                        {
-                            try
-                            {
-                                conn.Open();
-                                MySqlCommand comando = conn.CreateCommand();
-                                comando.CommandText = "DELETE FROM cliente WHERE id = @id";
-                                comando.Parameters.AddWithValue("@id", row_dados);
-                                int query_check = comando.ExecuteNonQuery();
-                                if (query_check != 0)
-                                {
-                                    MessageBox.Show("Cliente removido", "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    ExibirDadosLista("SELECT * FROM cliente");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Erro ao remover Cliente: " + ex.Message, "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            finally
-                            {
-                                conn.Close();
-                            }
-                        }
-                        */
+                        Cliente.ExcluirCliente((int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                        AtualizarLista();
                     }
                 }
                 else
@@ -128,15 +101,10 @@ namespace PetShop
         {
             if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    // Corrigir essa coisa horrorosa logo depois de montar o metodo de editar na classe cliente
-
-                    /*
-                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(false, this, row.Cells[0].Value.ToString());
+                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarCliente.ShowDialog();
-                    */
                 }
                 else
                 { 
@@ -217,12 +185,8 @@ namespace PetShop
                 DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    // Refazer essa aberração logo depois de montar o metodo de editar na classe cliente
-
-                    /*
-                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(false, this, row.Cells[0].Value.ToString());
+                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarCliente.ShowDialog();
-                    */
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlServerCe;
@@ -86,13 +87,22 @@ namespace PetShop.Entities
             return dta;
         }
 
-        public void AdicionarCliente() // testar
+        public void AdicionarEditarCliente(TipoOperacao operacao)
         {
             try
             {
                 connection.Open();
                 SqlCeCommand command = connection.CreateCommand();
-                command.CommandText = "INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes)";
+                if (operacao == TipoOperacao.Adicionar)
+                {
+                    command.CommandText = "INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes)";
+                }
+                else
+                {
+                    command.CommandText = "UPDATE Clientes SET Nome = @Nome, Tipo = @Tipo, Apelido = @Apelido, Endereco = @Endereco, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado, Cep = @Cep, Telefone_Principal = @Telefone_Principal, Telefone_Secundario = @Telefone_Secundario, Celular = @Celular, Complemento = @Complemento, Email = @Email, Cpf = @Cpf, Cnpj = @Cnpj, Observacoes = @Observacoes WHERE Id = @Id";
+                    command.Parameters.AddWithValue("@Id", ClienteId);
+                }
+
                 command.Parameters.AddWithValue("@Nome", NomeCliente);
                 command.Parameters.AddWithValue("@Tipo", Tipo);
                 command.Parameters.AddWithValue("@Apelido", Apelido);
@@ -108,20 +118,42 @@ namespace PetShop.Entities
                 command.Parameters.AddWithValue("@Email", Email);
                 command.Parameters.AddWithValue("@Cpf", Cpf);
                 command.Parameters.AddWithValue("@Cnpj", Cnpj);
-                command.Parameters.AddWithValue("@Observacoes", Observacoes);   
+                command.Parameters.AddWithValue("@Observacoes", Observacoes);
                 if (command.ExecuteNonQuery() > 0)
                 {
                     MessageBox.Show("Os dados do Cliente foram salvos.", "Cadastro de Clientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (SqlCeException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Erro ao salvar as informações do Cliente: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 connection.Close();
-            }           
+            }
+        }
+
+        public static void ExcluirCliente(int idCliente)
+        {
+            try
+            {
+                connection.Open();
+                SqlCeCommand comando = connection.CreateCommand();
+                comando.CommandText = "DELETE FROM Clientes WHERE Id = @Id";
+                comando.Parameters.AddWithValue("@Id", idCliente);
+                comando.ExecuteNonQuery();
+                MessageBox.Show("Cliente removido", "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao remover Cliente: " + ex.Message, "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+
         }
 
         private void BuscarCliente(int idCliente)
@@ -129,12 +161,15 @@ namespace PetShop.Entities
             try
             {
                 connection.Open();
-                SqlCeCommand command = new SqlCeCommand("SELECT * FROM Clientes WHERE Id = @Id");
+
+                SqlCeCommand command = connection.CreateCommand();
+                command.CommandText = "SELECT * FROM Clientes WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", idCliente);
                 using (SqlCeDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
+                        ClienteId = (int)reader["Id"];
                         NomeCliente = reader["Nome"].ToString();
                         Tipo = reader["Tipo"].ToString();
                         Apelido = reader["Apelido"].ToString();
@@ -163,6 +198,5 @@ namespace PetShop.Entities
                 connection.Close();
             }
         }
-        
     }
 }

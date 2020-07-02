@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data.SqlServerCe;
 using PetShop.Entities.Enums;
 using PetShop.Entities;
+using System.Collections.Generic;
 
 namespace PetShop
 {
@@ -10,6 +11,7 @@ namespace PetShop
     {
         private TipoOperacao Operacao;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+        private Cliente _Cliente;
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -18,9 +20,9 @@ namespace PetShop
             _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
 
-        public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, string idCliente) : this(operacao, pesquisaClientesFornecedores)
+        public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, int idCliente) : this(operacao, pesquisaClientesFornecedores)
         {
-            
+            _Cliente = new Cliente(idCliente);
         }
 
         // ======================== Inicio de eventos de click em campos do tipo maskedtextbox ========================
@@ -120,14 +122,42 @@ namespace PetShop
             {
                 MessageBox.Show("Preencha o campo de 1° Telefone", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (!txtCpf.MaskCompleted)
-            {
-                MessageBox.Show("Preencha o campo de CPF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
             else
             {
-                Cliente cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
-                cliente.AdicionarCliente();
+                List<MaskedTextBox> CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
+                foreach (MaskedTextBox control in CamposMaskedOpcionais)
+                {
+                    if (!control.MaskCompleted)
+                    {
+                        control.Clear();
+                        control.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                    }
+                }
+                if (Operacao == TipoOperacao.Adicionar)
+                {
+                    _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
+                    _Cliente.AdicionarEditarCliente(Operacao);
+                }
+                else
+                {
+                    _Cliente.NomeCliente = txtNomeCompleto.Text;
+                    _Cliente.Tipo = combBoxTipo.Text;
+                    _Cliente.Apelido = txtApelido.Text;
+                    _Cliente.Endereco = txtEndereco.Text;
+                    _Cliente.Bairro = txtBairro.Text;
+                    _Cliente.Cidade = txtCidade.Text;
+                    _Cliente.Uf = combBoxUf.Text;
+                    _Cliente.Cep = txtCep.Text;
+                    _Cliente.TelefonePrimario = txtTelefonePrimario.Text;
+                    _Cliente.TelefoneSecundario = txtTelefoneSecundario.Text;
+                    _Cliente.Celular = txtCelular.Text;
+                    _Cliente.Complemento = txtComplemento.Text;
+                    _Cliente.Email = txtEmail.Text;
+                    _Cliente.Cpf = txtCpf.Text;
+                    _Cliente.Cnpj = txtCnpj.Text;
+                    _Cliente.Observacoes = observacoes.Text;
+                    _Cliente.AdicionarEditarCliente(Operacao);
+                }              
                 Close();
                 _PesquisaClientesFornecedores.AtualizarLista();
             }
@@ -144,6 +174,22 @@ namespace PetShop
             {
                 BtnAdicionar.Text = "Atualizar";
                 Text = "Editar Cliente";
+                txtNomeCompleto.Text = _Cliente.NomeCliente;
+                combBoxTipo.SelectedItem = _Cliente.Tipo;
+                txtApelido.Text = _Cliente.Apelido;
+                txtEndereco.Text = _Cliente.Endereco;
+                txtBairro.Text = _Cliente.Bairro;
+                txtCidade.Text = _Cliente.Cidade;
+                combBoxUf.SelectedItem = _Cliente.Uf;
+                txtCep.Text = _Cliente.Cep;
+                txtTelefonePrimario.Text = _Cliente.TelefonePrimario;
+                txtTelefoneSecundario.Text = _Cliente.TelefoneSecundario;
+                txtCelular.Text = _Cliente.Celular;
+                txtComplemento.Text = _Cliente.Complemento;
+                txtEmail.Text = _Cliente.Email;
+                txtCpf.Text = _Cliente.Cpf;
+                txtCnpj.Text = _Cliente.Cnpj;
+                observacoes.Text = _Cliente.Observacoes;
             }
         }
     }

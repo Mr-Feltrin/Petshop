@@ -175,7 +175,7 @@ namespace PetShop
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(87, 22);
-            this.txtCep.TabIndex = 31;
+            this.txtCep.TabIndex = 11;
             this.txtCep.Click += new System.EventHandler(this.Cadastro_cliente_cep_Click);
             // 
             // txtCelular
@@ -187,7 +187,7 @@ namespace PetShop
             this.txtCelular.Mask = "(00)90000-0000";
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(125, 22);
-            this.txtCelular.TabIndex = 30;
+            this.txtCelular.TabIndex = 17;
             this.txtCelular.Click += new System.EventHandler(this.Cadastro_cliente_celular_Click);
             // 
             // txtTelefoneSecundario
@@ -199,7 +199,7 @@ namespace PetShop
             this.txtTelefoneSecundario.Mask = "(00)0000-0000";
             this.txtTelefoneSecundario.Name = "txtTelefoneSecundario";
             this.txtTelefoneSecundario.Size = new System.Drawing.Size(125, 22);
-            this.txtTelefoneSecundario.TabIndex = 29;
+            this.txtTelefoneSecundario.TabIndex = 15;
             this.txtTelefoneSecundario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_secundario_Click);
             // 
             // txtTelefonePrimario
@@ -212,7 +212,7 @@ namespace PetShop
             this.txtTelefonePrimario.Mask = "(00)0000-0000";
             this.txtTelefonePrimario.Name = "txtTelefonePrimario";
             this.txtTelefonePrimario.Size = new System.Drawing.Size(125, 22);
-            this.txtTelefonePrimario.TabIndex = 28;
+            this.txtTelefonePrimario.TabIndex = 13;
             this.txtTelefonePrimario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
             // 
             // txtCnpj
@@ -224,7 +224,7 @@ namespace PetShop
             this.txtCnpj.Mask = "00.000.000/0000-00";
             this.txtCnpj.Name = "txtCnpj";
             this.txtCnpj.Size = new System.Drawing.Size(100, 22);
-            this.txtCnpj.TabIndex = 27;
+            this.txtCnpj.TabIndex = 25;
             this.txtCnpj.Click += new System.EventHandler(this.Cadastro_cliente_cnpj_Click);
             // 
             // txtCpf
@@ -237,7 +237,7 @@ namespace PetShop
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(100, 22);
-            this.txtCpf.TabIndex = 26;
+            this.txtCpf.TabIndex = 23;
             this.txtCpf.Click += new System.EventHandler(this.Cadastro_cliente_cpf_Click);
             // 
             // labelCnpj
@@ -503,7 +503,7 @@ namespace PetShop
             this.BtnAdicionar.Name = "BtnAdicionar";
             this.BtnAdicionar.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BtnAdicionar.Size = new System.Drawing.Size(50, 52);
-            this.BtnAdicionar.TabIndex = 2;
+            this.BtnAdicionar.TabIndex = 6;
             this.BtnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.BtnAdicionar.UseVisualStyleBackColor = true;
             this.BtnAdicionar.Click += new System.EventHandler(this.BtnAdicionarEditarCliente_Click);
@@ -518,7 +518,7 @@ namespace PetShop
             this.btnCancelar.Location = new System.Drawing.Point(34, 424);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(161, 52);
-            this.btnCancelar.TabIndex = 3;
+            this.btnCancelar.TabIndex = 5;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

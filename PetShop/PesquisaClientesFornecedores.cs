@@ -12,7 +12,7 @@ namespace PetShop
 
     public partial class PesquisaClientesFornecedores : Form
     {
-        private readonly TipoPesquisa _TipoPesquisa; // Valor true = Clientes, Valor false = Fornecedores
+        private readonly TipoPesquisa _TipoPesquisa;
         public PesquisaClientesFornecedores(TipoPesquisa tipoPesquisa)
         {
             InitializeComponent();
@@ -24,9 +24,18 @@ namespace PetShop
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
-            }       
+            }
+            else
+            {
+                dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
+            }
         }
-        
+
+        public void BuscarLista()
+        {
+            (dataGridViewListaClientesFornecedores.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + textBoxPesquisarPeloNome.Text + "%'");
+        }
+
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
@@ -36,17 +45,12 @@ namespace PetShop
             }
             else
             {
-                // Refazer essa merda com o padrão correto
-
-                /*
-                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(true, this);
+                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Adicionar, this);
                 AdicionarFornecedor.ShowDialog();
-                */
             }
         }
         private void btnExcluirClienteFornecedor_Click(object sender, EventArgs e)
         {
-            // Fazer as alterações na parte de excluir, seja la como for feita....
 
             if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
             {
@@ -64,31 +68,8 @@ namespace PetShop
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este Fornecedor?", "Remover Fornecedor", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        /*using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
-                        {
-                            try
-                            {
-                                conn.Open();
-                                MySqlCommand comando = conn.CreateCommand();
-                                comando.CommandText = "DELETE FROM fornecedor WHERE id = @id";
-                                comando.Parameters.AddWithValue("@id", row_dados);
-                                int query_check = comando.ExecuteNonQuery();
-                                if (query_check != 0)
-                                {
-                                    MessageBox.Show("Fornecedor removido", "Remover Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    ExibirDadosLista("SELECT * FROM fornecedor");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("Erro ao remover Fornecedor: " + ex.Message, "Remover Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            finally
-                            {
-                                conn.Close();
-                            }
-                        }*/
-
+                        Fornecedor.ExcluirFornecedor((int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                        AtualizarLista();
                     }
                 }
             }
@@ -107,15 +88,11 @@ namespace PetShop
                     EditarCliente.ShowDialog();
                 }
                 else
-                { 
-                    // Corrigir isso logo depois de ter montado a classe de fornecedor
-
-                    /*
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(false, this, row.Cells[0].Value.ToString());
+                {
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarFornecedor.ShowDialog();
-                    */
                 }
-                
+
             }
             else
             {
@@ -135,54 +112,19 @@ namespace PetShop
             {
                 Text = "Pesquisa de Fornecedores";
                 Icon = Properties.Resources.fornecedor_icon;
-                
+                dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
             }
         }
 
         private void BtnPesquisarNomeClienteFornecedor_Click(object sender, EventArgs e)
         {
-            if (_TipoPesquisa == TipoPesquisa.Cliente)
-            {
-                
-            }
-            else
-            {
-                
-            }
-
-        }
-
-        private void TextBoxPesquisarPeloNome_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (_TipoPesquisa == TipoPesquisa.Cliente)
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-            }
-            else
-            {
-                if (_TipoPesquisa == TipoPesquisa.Cliente)
-                {
-                    
-                }
-                else
-                {
-                    
-                }
-            }
+            BuscarLista();
         }
 
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
             {
-                DataGridViewRow row = dataGridViewListaClientesFornecedores.SelectedRows[0];
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
                     AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
@@ -190,14 +132,15 @@ namespace PetShop
                 }
                 else
                 {
-                    // Refazer isso logo depois de ter terminado de fazer pelo menos o básico da classe fornecedor
-
-                    /*
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(false, this, row.Cells[0].Value.ToString());
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarFornecedor.ShowDialog();
-                    */
                 }
             }
+        }
+
+        private void textBoxPesquisarPeloNome_TextChanged(object sender, EventArgs e)
+        {
+            BuscarLista();
         }
     }
 }

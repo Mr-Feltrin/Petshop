@@ -9,7 +9,7 @@ namespace PetShop
 {
     public partial class AdicionarEditarCliente : Form
     {
-        private TipoOperacao Operacao;
+        private readonly TipoOperacao Operacao;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
         private Cliente _Cliente;
 
@@ -25,57 +25,45 @@ namespace PetShop
             _Cliente = new Cliente(idCliente);
         }
 
-        // ======================== Inicio de eventos de click em campos do tipo maskedtextbox ========================
+        public static void EmptyMaskedTextBox(MaskedTextBox maskedTextBox)
+        {
+            maskedTextBox.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            if (string.IsNullOrWhiteSpace(maskedTextBox.Text))
+            {
+                maskedTextBox.SelectionStart = 0;
+            }
+            maskedTextBox.TextMaskFormat = MaskFormat.IncludeLiterals;
+        }
 
         private void Cadastro_cliente_cep_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtCep.MaskCompleted)
-            {
-                txtCep.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtCep);
         }
 
         private void Cadastro_cliente_telefone_primario_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtTelefonePrimario.MaskCompleted)
-            {
-                txtTelefonePrimario.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtTelefonePrimario);
         }
 
         private void Cadastro_cliente_telefone_secundario_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtTelefoneSecundario.MaskCompleted)
-            {
-                txtTelefoneSecundario.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtTelefoneSecundario);
         }
 
         private void Cadastro_cliente_celular_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtCelular.MaskCompleted)
-            {
-                txtCelular.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtCelular);
         }
 
         private void Cadastro_cliente_cpf_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtCpf.MaskCompleted)
-            {
-                txtCpf.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtCpf);
         }
 
         private void Cadastro_cliente_cnpj_Click(object sender, EventArgs e)
         {
-            if (Operacao == TipoOperacao.Adicionar && !txtCnpj.MaskCompleted)
-            {
-                txtCnpj.SelectionStart = 0;
-            }
+            EmptyMaskedTextBox(txtCnpj);
         }
-
-        // ======================== Termino de eventos de click em campos do tipo maskedtextbox ========================
 
         private void cadastro_cliente_cancelar_Click(object sender, EventArgs e)
         {
@@ -89,7 +77,6 @@ namespace PetShop
 
         private void VerificaCamposObrigatorios()
         {
-            // Verifica se campos de cadastro obrigatórios estao preenchidos
             if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
             {
                 MessageBox.Show("Preencha o campo de Nome / Razão Social", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -127,7 +114,7 @@ namespace PetShop
                 List<MaskedTextBox> CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
                 foreach (MaskedTextBox control in CamposMaskedOpcionais)
                 {
-                    if (!control.MaskCompleted)
+                    if (!control.MaskFull)
                     {
                         control.Clear();
                         control.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;

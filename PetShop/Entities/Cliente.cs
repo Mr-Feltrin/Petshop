@@ -153,7 +153,6 @@ namespace PetShop.Entities
             {
                 connection.Close();
             }
-
         }
 
         private void BuscarCliente(int idCliente)

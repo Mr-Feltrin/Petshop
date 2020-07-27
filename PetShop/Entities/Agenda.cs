@@ -10,6 +10,12 @@ namespace PetShop.Entities
     {
         public int IdAgenda { get; set; }
         public DateTime DataAgendamento { get; set; }
+        public string Procedimento { get; set; }
         public Cliente Cliente { get; set; }
+        public TimeSpan Horario { get; set; }
+
+
+
+
     }
 }

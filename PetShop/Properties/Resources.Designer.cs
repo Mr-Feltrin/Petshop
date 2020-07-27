@@ -263,6 +263,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Browse_Folder_20px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Browse_Folder_20px_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imprimir_list {
             get {
                 object obj = ResourceManager.GetObject("imprimir_list", resourceCulture);

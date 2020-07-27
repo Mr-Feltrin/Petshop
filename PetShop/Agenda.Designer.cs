@@ -42,8 +42,6 @@
             this.btnRelatorio = new System.Windows.Forms.Button();
             this.ListaAgendamento = new System.Windows.Forms.DataGridView();
             this.FiltroDisponibilidade = new System.Windows.Forms.ComboBox();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoProcedimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,6 +135,7 @@
             this.btnNovoHorario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovoHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNovoHorario.UseVisualStyleBackColor = true;
+            this.btnNovoHorario.Click += new System.EventHandler(this.btnNovoHorario_Click);
             // 
             // btnExcluirHorario
             // 
@@ -186,9 +185,6 @@
             // ListaAgendamento
             // 
             this.ListaAgendamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaAgendamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Data,
-            this.tipoProcedimento});
             this.ListaAgendamento.Location = new System.Drawing.Point(16, 136);
             this.ListaAgendamento.Name = "ListaAgendamento";
             this.ListaAgendamento.Size = new System.Drawing.Size(1101, 508);
@@ -206,16 +202,6 @@
             this.FiltroDisponibilidade.Name = "FiltroDisponibilidade";
             this.FiltroDisponibilidade.Size = new System.Drawing.Size(144, 24);
             this.FiltroDisponibilidade.TabIndex = 34;
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            // 
-            // tipoProcedimento
-            // 
-            this.tipoProcedimento.HeaderText = "Tipo de Procedimento";
-            this.tipoProcedimento.Name = "tipoProcedimento";
             // 
             // Agenda
             // 
@@ -261,7 +247,5 @@
         private System.Windows.Forms.Button btnRelatorio;
         private System.Windows.Forms.DataGridView ListaAgendamento;
         private System.Windows.Forms.ComboBox FiltroDisponibilidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoProcedimento;
     }
 }

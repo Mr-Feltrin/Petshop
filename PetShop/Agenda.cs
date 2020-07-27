@@ -25,5 +25,11 @@ namespace PetShop
             dataFinal.Value = DateTime.Now.AddMonths(1);
 
         }
+
+        private void btnNovoHorario_Click(object sender, EventArgs e)
+        {
+            AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento();
+            AdicionarAgendamento.ShowDialog();
+        }
     }
 }

@@ -124,7 +124,6 @@
             // btnNovoHorario
             // 
             this.btnNovoHorario.AutoSize = true;
-            this.btnNovoHorario.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnNovoHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovoHorario.Image = global::PetShop.Properties.Resources.horario_add;
             this.btnNovoHorario.Location = new System.Drawing.Point(771, 21);
@@ -140,7 +139,6 @@
             // btnExcluirHorario
             // 
             this.btnExcluirHorario.AutoSize = true;
-            this.btnExcluirHorario.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnExcluirHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirHorario.Image = global::PetShop.Properties.Resources.horario_delete;
             this.btnExcluirHorario.Location = new System.Drawing.Point(952, 21);
@@ -155,7 +153,6 @@
             // btnEditarHorario
             // 
             this.btnEditarHorario.AutoSize = true;
-            this.btnEditarHorario.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnEditarHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarHorario.Image = global::PetShop.Properties.Resources.horario_edit;
             this.btnEditarHorario.Location = new System.Drawing.Point(771, 79);
@@ -170,7 +167,6 @@
             // btnRelatorio
             // 
             this.btnRelatorio.AutoSize = true;
-            this.btnRelatorio.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorio.Image = global::PetShop.Properties.Resources.printer;
             this.btnRelatorio.Location = new System.Drawing.Point(952, 81);
@@ -222,7 +218,10 @@
             this.Controls.Add(this.dataFinal);
             this.Controls.Add(this.labelDataInicial);
             this.Controls.Add(this.dataInicial);
+            this.MaximizeBox = false;
             this.Name = "Agenda";
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Agenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).EndInit();

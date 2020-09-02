@@ -82,9 +82,10 @@
             // 
             this.labelDataDeRegistro.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelDataDeRegistro.AutoSize = true;
+            this.labelDataDeRegistro.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDataDeRegistro.Location = new System.Drawing.Point(11, 16);
             this.labelDataDeRegistro.Name = "labelDataDeRegistro";
-            this.labelDataDeRegistro.Size = new System.Drawing.Size(72, 13);
+            this.labelDataDeRegistro.Size = new System.Drawing.Size(99, 20);
             this.labelDataDeRegistro.TabIndex = 0;
             this.labelDataDeRegistro.Text = "Data Registro";
             // 
@@ -120,9 +121,10 @@
             // 
             this.labelNomeDono.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelNomeDono.AutoSize = true;
+            this.labelNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeDono.Location = new System.Drawing.Point(120, 16);
             this.labelNomeDono.Name = "labelNomeDono";
-            this.labelNomeDono.Size = new System.Drawing.Size(190, 13);
+            this.labelNomeDono.Size = new System.Drawing.Size(266, 20);
             this.labelNomeDono.TabIndex = 3;
             this.labelNomeDono.Text = "Nome do Dono / Proprietário / Cliente*";
             // 

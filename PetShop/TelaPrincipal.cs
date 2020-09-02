@@ -16,6 +16,7 @@ namespace PetShop
         private void Tela_Principal_Load(object sender, EventArgs e)
         {
             Focus();
+            menu_principal.GripStyle = ToolStripGripStyle.Hidden;
             // Verificação de data em formato completo
             toolStripStatus_data_completa.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
             // Verificação de tecla Caps Lock ativa/inativa

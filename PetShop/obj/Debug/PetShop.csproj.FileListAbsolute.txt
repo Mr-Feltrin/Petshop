@@ -117,3 +117,4 @@ C:\Users\rasou\Downloads\Petshop-3d52d892963d56ab2586215de32b2818e5639d0c\PetSho
 C:\Users\rasou\Downloads\Petshop-3d52d892963d56ab2586215de32b2818e5639d0c\PetShop\bin\Debug\System.Data.SqlServerCe.dll
 C:\Users\rasou\Downloads\Petshop-3d52d892963d56ab2586215de32b2818e5639d0c\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarAgendamento.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaDeClientesAnimais.resources

@@ -157,6 +157,7 @@
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnAdicionar
             // 
@@ -219,7 +220,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listaAnimais.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaAnimais.Location = new System.Drawing.Point(7, 19);
+            this.listaAnimais.Location = new System.Drawing.Point(6, 19);
             this.listaAnimais.MultiSelect = false;
             this.listaAnimais.Name = "listaAnimais";
             this.listaAnimais.ReadOnly = true;
@@ -236,7 +237,8 @@
             this.listaAnimais.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.listaAnimais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaAnimais.Size = new System.Drawing.Size(1088, 600);
-            this.listaAnimais.TabIndex = 0;
+            this.listaAnimais.TabIndex = 1;
+            this.listaAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellDoubleClick);
             // 
             // PesquisaAnimais
             // 
@@ -278,8 +280,8 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.GroupBox groupBox_tabela_usuarios;
-        private System.Windows.Forms.DataGridView listaAnimais;
         private System.Windows.Forms.Label labelPesquisaNomeAnimal;
         private System.Windows.Forms.TextBox pesquisaNomeAnimal;
+        private System.Windows.Forms.DataGridView listaAnimais;
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.SqlServer.Server;
+using PetShop.Entities;
+using PetShop.Entities.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +18,8 @@ namespace PetShop
     {
         ToolTip _toolTip = new ToolTip();
         Control _currentToolTipControl = null;
+        public Cliente cliente;
+        public Animal animal;
 
         public AdicionarEditarAgendamento()
         {
@@ -74,12 +78,13 @@ namespace PetShop
 
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            txtCliente.Text = "teste";
+            ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente);
+            listaDeClientes.ShowDialog();
         }
 
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
-            txtNomeAnimal.Text = "teste";
+            
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)
@@ -127,12 +132,12 @@ namespace PetShop
 
         private void btnSalvar_MouseEnter(object sender, EventArgs e)
         {
-            if (btnSalvar.Enabled) _toolTip.SetToolTip(btnSalvar, null);
+            if ((sender as Button).Enabled) _toolTip.SetToolTip((sender as Button), null);           
         }
 
         private void btnSalvar_MouseLeave(object sender, EventArgs e)
         {
-            _toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
+            _toolTip.SetToolTip((sender as Button), "Preencha todos os campos obrigatórios"); //Depois a gente ve isso aqui
         }
 
         private void btnSair_Click(object sender, EventArgs e)

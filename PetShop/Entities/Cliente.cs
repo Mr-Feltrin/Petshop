@@ -160,7 +160,6 @@ namespace PetShop.Entities
             try
             {
                 connection.Open();
-
                 SqlCeCommand command = connection.CreateCommand();
                 command.CommandText = "SELECT * FROM Clientes WHERE Id = @Id";
                 command.Parameters.AddWithValue("@Id", idCliente);
@@ -196,6 +195,7 @@ namespace PetShop.Entities
             {
                 connection.Close();
             }
-        }
+        }     
+        
     }
 }

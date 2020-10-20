@@ -63,6 +63,26 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addAnimal_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("addAnimal_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap addCliente_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("addCliente_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap adicionar {
             get {
                 object obj = ResourceManager.GetObject("adicionar", resourceCulture);
@@ -206,6 +226,16 @@ namespace PetShop.Properties {
         internal static System.Drawing.Bitmap deletar_list {
             get {
                 object obj = ResourceManager.GetObject("deletar_list", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap document32x32 {
+            get {
+                object obj = ResourceManager.GetObject("document32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

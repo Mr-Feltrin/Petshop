@@ -704,7 +704,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTipoProcedimento;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCliente;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label;
@@ -740,5 +739,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;
+        internal System.Windows.Forms.TextBox txtCliente;
     }
 }

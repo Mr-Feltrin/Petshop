@@ -11,6 +11,8 @@ namespace PetShop.Entities.Enums
         Cliente,
         Fornecedor,
         Animal,
-        Produto
+        Produto,
+        Raca,
+        Especie
     }
 }

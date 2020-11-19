@@ -116,11 +116,6 @@ namespace PetShop
             }
         }
 
-        private void BtnPesquisarNomeClienteFornecedor_Click(object sender, EventArgs e)
-        {
-            BuscarLista();
-        }
-
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)

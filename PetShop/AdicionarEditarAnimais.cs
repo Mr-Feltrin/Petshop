@@ -2,13 +2,10 @@
 using PetShop.Entities.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -19,7 +16,9 @@ namespace PetShop
         readonly TipoOperacao _Operacao;
         Animal animal;
         ToolTip _ToolTip = new ToolTip();
-        Control _currentToolTipControl;
+        List<Image> Fotografias = new List<Image>();
+        Dictionary<object, string> CamposObrigatorios;
+        CheckBox SexoSelecionado = new CheckBox();
 
         public AdicionarEditarAnimais(TipoOperacao operacao, PesquisaAnimais pesquisaAnimais)
         {
@@ -35,22 +34,34 @@ namespace PetShop
         }
 
         private void AdicionarEditarAnimais_Load(object sender, EventArgs e)
-        {          
+        {
+            tabPage1.MouseMove += AdicionarEditarAnimais_MouseMove;
+            tabControl1.MouseMove += AdicionarEditarAnimais_MouseMove;          
+            CamposObrigatorios = new Dictionary<object, string>()
+            {
+                { txtNomeDonoAnimal, "Selecione o dono do animal" },
+                { txtNomeAnimal, "Digite o nome do animal" },
+                { txtEspecie, "Preencha o campo de espécie" },
+                { txtRaca, "Preencha o campo de Raça" },
+                { SexoSelecionado, "Selecione o sexo do animal" }
+            };
             _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha os dados de Cadastro");
+            _ToolTip.SetToolTip(btnAdicionarFoto, "Numero máximo de fotos atingido (3)");
             if (_Operacao == TipoOperacao.Adicionar)
             {
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
             else
             {
-                txtDataRegistroAnimal.Text = animal.DataRegistro.ToString();
+                Text = "Editar Animal";
+                txtDataRegistroAnimal.Text = animal.DataRegistro.ToString("dd/MM/yyyy");
                 txtNomeDonoAnimal.Text = cliente.NomeCliente;
                 txtNomeAnimal.Text = animal.Nome;
-                if (animal.Sexo == "Macho")
+                if (string.Equals(animal.Sexo.Trim(), checkSexoMacho.Text))
                 {
                     checkSexoMacho.Checked = true;
                 }
-                else if (animal.Sexo == "Fêmea")
+                else if (string.Equals(animal.Sexo.Trim(), checkSexoFemea.Text))
                 {
                     checkSexoFemea.Checked = true;
                 }
@@ -86,9 +97,9 @@ namespace PetShop
                 }
             }
 
-            // Criação de botão de pesquisa no campo txtEspecie
 
-            Button btnPesquisarEspecie = new Button();
+            // Criação de botão de pesquisa no campo txtEspecie
+            NoFocusButton btnPesquisarEspecie = new NoFocusButton();
             btnPesquisarEspecie.Size = new Size(25, txtEspecie.ClientSize.Height);
             btnPesquisarEspecie.Dock = DockStyle.Right;
             btnPesquisarEspecie.Cursor = Cursors.Default;
@@ -101,7 +112,7 @@ namespace PetShop
             txtEspecie.Controls.Add(btnPesquisarEspecie);
             btnPesquisarEspecie.Click += new EventHandler(btnPesquisarEspecie_Click);
             // Criação de botão de pesquisa no campo txtRaça
-            Button btnPesquisarRaca = new Button();
+            NoFocusButton btnPesquisarRaca = new NoFocusButton();
             btnPesquisarRaca.Size = new Size(25, txtEspecie.ClientSize.Height);
             btnPesquisarRaca.Dock = DockStyle.Right;
             btnPesquisarRaca.Cursor = Cursors.Default;
@@ -127,22 +138,20 @@ namespace PetShop
         }
 
         private void btnSalvarCadastro_Click(object sender, EventArgs e)
-        {                     
+        {
             if (_Operacao == TipoOperacao.Adicionar)
             {
-                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtEnderecoFoto.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text));
+                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), Fotografias[0], Fotografias[1], Fotografias[2]);
                 animal.AdicionarEditarAnimal(_Operacao);
             }
             else
             {
-                Text = "Editar Animal";
                 animal.Nome = txtNomeAnimal.Text;
                 animal.Sexo = checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text;
                 animal.ClienteId = cliente.ClienteId;
                 animal.Especie = txtEspecie.Text;
                 animal.Raca = txtRaca.Text;
                 animal.Identificacao = txtIdentificacao.Text;
-                animal.Fotografia = txtEnderecoFoto.Text;
                 animal.Fobias = txtFobias.Text;
                 animal.DisponivelTosa = checkDisponivelTosa.Checked ? "Sim" : "Não";
                 animal.PossuiPedigree = checkPossuiPedigree.Checked ? "Sim" : "Não";
@@ -161,128 +170,183 @@ namespace PetShop
 
         private void btnPesquisarRaca_Click(object sender, EventArgs e)
         {
+            ListaEspecieRacaAnimais listaRaca = new ListaEspecieRacaAnimais(TipoPesquisa.Raca, this);
+            listaRaca.ShowDialog();
 
         }
 
         private void btnPesquisarEspecie_Click(object sender, EventArgs e)
         {
-
+            ListaEspecieRacaAnimais listaEspecie = new ListaEspecieRacaAnimais(TipoPesquisa.Especie, this);
+            listaEspecie.ShowDialog();
         }
 
-        private void VerificarCamposObrigatorios()
+        private void AdicionarEditarAnimais_MouseMove(object sender, MouseEventArgs e)
         {
-            List<object> camposObrigatorios = new List<object>() { txtNomeDonoAnimal, txtNomeAnimal, txtEspecie, txtRaca };
-            foreach (var t in camposObrigatorios.OfType<TextBox>())
+            Control controle = PesquisaControlePosicaoMouse.EncontrarControleNoCursor(this);
+            if (controle != null && !controle.Enabled)
             {
-                if (string.IsNullOrWhiteSpace(t.Text))
+                if (!_ToolTip.Active)
                 {
-                    btnSalvarCadastro.Enabled = false;
-                    switch (t.Name)
-                    {
-                        case "txtNomeDonoAnimal":
-                            _ToolTip.SetToolTip(btnSalvarCadastro, "Selecione o dono do animal");
-                            break;
-                        case "txtNomeAnimal":
-                            _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha o Nome do animal");
-                            break;
-                        case "txtEspecie":
-                            _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha o campo de Espécie");
-                            break;
-                        case "txtRaca":
-                            _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha o campo de Raça");
-                            break;
-                    }
-                    break;
-                }
-                else if (!checkSexoMacho.Checked && !checkSexoFemea.Checked)
+                    _ToolTip.Active = true;
+                    _ToolTip.Show(_ToolTip.GetToolTip(controle), controle, controle.Width / 2, controle.Height / 2);
+                }                        
+            }
+            else
+            {
+                if (_ToolTip.Active)
                 {
-                    _ToolTip.SetToolTip(btnSalvarCadastro, "Selecione o Sexo do Animal");
-                }
-                else
-                {
-                    btnSalvarCadastro.Enabled = true;
+                    _ToolTip.Active = false;
                 }
             }
         }
+
+        private void btnPesquisarDono_Validated(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+        private void txtNomeAnimal_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+        private void txtEspecie_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+        private void txtRaca_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+        private void txtNomeDonoAnimal_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+
+        private void btnSalvarCadastro_MouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as Button).Enabled)
+            {
+                if (_ToolTip.Active)
+                {
+                    _ToolTip.Active = false;
+                }             
+            }
+        }
+
+        private void btnAdicionarFoto_Click(object sender, EventArgs e)
+        {
+            if (Fotografias.Count >= 3 == false)
+            {
+                using (OpenFileDialog openFile = new OpenFileDialog())
+                {
+                    openFile.Filter = "Image Files(*.jpeg;*.bmp;*.png;*.jpg)|*.jpeg;*.bmp;*.png;*.jpg";
+                    if (openFile.ShowDialog() == DialogResult.OK)
+                    {
+                        Fotografias.Add(Image.FromFile(openFile.FileName));
+                        pictureBoxFotoAnimal.Image = Fotografias.Last();
+                        labelIndexFoto.Text = (Fotografias.IndexOf(Fotografias.Last()) + 1).ToString();
+                        if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
+                        {
+                            btnAvancarFoto.Enabled = false;
+                        }
+                    }
+                }
+            }
+        }
+
 
         private void checkSexoMacho_Click(object sender, EventArgs e)
         {
             (sender as CheckBox).Checked = true;
             checkSexoFemea.Checked = false;
+            SexoSelecionado.Checked = true; ;
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
         }
 
         private void checkSexoFemea_Click(object sender, EventArgs e)
         {
             (sender as CheckBox).Checked = true;
             checkSexoMacho.Checked = false;
+            SexoSelecionado.Checked = true;
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
         }
 
-        private void AdicionarEditarAnimais_MouseMove(object sender, MouseEventArgs e)
+        private void btnRemoverFoto_Click(object sender, EventArgs e)
         {
-            Control control = GetChildAtPoint(e.Location);
-            if (control != null)
+            DialogResult ConfirmarRemover = MessageBox.Show("Tem certeza que deseja remover esta foto?", "Remover foto", MessageBoxButtons.YesNo);
+            if (ConfirmarRemover == DialogResult.Yes)
             {
-                if (!control.Enabled && _currentToolTipControl == null)
+                Fotografias.Remove(pictureBoxFotoAnimal.Image);
+                if (Fotografias.Count() == 0)
                 {
-                    _ToolTip.Active = true;
-                    string toolTipString = _ToolTip.GetToolTip(control);
-                    _ToolTip.Show(toolTipString, control, control.Width / 2, control.Height / 2);
-                    _currentToolTipControl = control;
+                    pictureBoxFotoAnimal.Image = null;
+                    labelIndexFoto.Text = null;
                 }
-            }
-            else
-            {
-                if (_currentToolTipControl != null)
+                else
                 {
-                    _ToolTip.Active = false;
-                    _currentToolTipControl = null;
-                }
+                    pictureBoxFotoAnimal.Image = Fotografias.Last();
+                    labelIndexFoto.Text = (Fotografias.IndexOf(Fotografias.Last()) + 1).ToString();
+                }                
             }
         }
 
-        private void btnSair_MouseEnter(object sender, EventArgs e)
+        private void btnVoltarFoto_Click(object sender, EventArgs e)
         {
-            if ((sender as Button).Enabled) _ToolTip.SetToolTip((sender as Button), null);
+            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) > 0)
+            {
+                pictureBoxFotoAnimal.Image = Fotografias[Fotografias.IndexOf(pictureBoxFotoAnimal.Image) - 1];
+                labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
+                if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) <= 0)
+                {
+                    (sender as Button).Enabled = false;
+                }
+            }
         }
 
-        private void btnPesquisarDono_Validated(object sender, EventArgs e)
+        private void btnAvancarFoto_Click(object sender, EventArgs e)
         {
-            VerificarCamposObrigatorios();
+            if (Fotografias.Count > 0 && Fotografias.Last() != pictureBoxFotoAnimal.Image)
+            {
+                pictureBoxFotoAnimal.Image = Fotografias[Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1];
+                labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
+                if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
+                {
+                    (sender as Button).Enabled = false;
+                }
+            }
         }
 
-        private void txtNomeDonoAnimal_Enter(object sender, EventArgs e)
+        private void labelIndexFoto_TextChanged(object sender, EventArgs e)
         {
-            VerificarCamposObrigatorios();
-        }
-
-        private void txtNomeAnimal_TextChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
-        }
-
-        private void checkSexoMacho_CheckStateChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
-        }
-
-        private void checkSexoFemea_CheckedChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
-        }
-
-        private void txtEspecie_TextChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
-        }
-
-        private void txtRaca_TextChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
-        }
-
-        private void txtNomeDonoAnimal_TextChanged(object sender, EventArgs e)
-        {
-            VerificarCamposObrigatorios();
+            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) <= 0)
+            {
+                btnVoltarFoto.Enabled = false;
+            }
+            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) > 0)
+            {
+                btnVoltarFoto.Enabled = true;
+            }
+            if (Fotografias.Count > 0 && Fotografias.Last() != pictureBoxFotoAnimal.Image)
+            {
+                btnAvancarFoto.Enabled = true;  
+            }
+            if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
+            {
+                btnAdicionarFoto.Enabled = false;
+            }
+            if (Fotografias.Count == 3)
+            {
+                btnAdicionarFoto.Enabled = false;
+            }
+            if (Fotografias.Count < 3)
+            {
+                btnAdicionarFoto.Enabled = true;
+            }
         }
     }
 }

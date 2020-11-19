@@ -60,41 +60,44 @@
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.Label_pesquisar_cliente_nome);
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(14, 11);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
-            this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(812, 57);
+            this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(812, 65);
             this.groupBox_pesquisar_nome_cliente.TabIndex = 13;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
             // labelPesquisaNomeAnimal
             // 
             this.labelPesquisaNomeAnimal.AutoSize = true;
-            this.labelPesquisaNomeAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPesquisaNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPesquisaNomeAnimal.Location = new System.Drawing.Point(376, 11);
             this.labelPesquisaNomeAnimal.Name = "labelPesquisaNomeAnimal";
-            this.labelPesquisaNomeAnimal.Size = new System.Drawing.Size(202, 16);
+            this.labelPesquisaNomeAnimal.Size = new System.Drawing.Size(215, 20);
             this.labelPesquisaNomeAnimal.TabIndex = 9;
             this.labelPesquisaNomeAnimal.Text = "Pesquisar pelo Nome do Animal";
             // 
             // pesquisaNomeDono
             // 
-            this.pesquisaNomeDono.Location = new System.Drawing.Point(6, 30);
+            this.pesquisaNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pesquisaNomeDono.Location = new System.Drawing.Point(6, 34);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
             this.pesquisaNomeDono.Size = new System.Drawing.Size(367, 20);
             this.pesquisaNomeDono.TabIndex = 9;
+            this.pesquisaNomeDono.TextChanged += new System.EventHandler(this.pesquisaNomeDono_TextChanged);
             // 
             // pesquisaNomeAnimal
             // 
-            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(379, 30);
+            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(379, 34);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
             this.pesquisaNomeAnimal.Size = new System.Drawing.Size(427, 20);
             this.pesquisaNomeAnimal.TabIndex = 10;
+            this.pesquisaNomeAnimal.TextChanged += new System.EventHandler(this.pesquisaNomeAnimal_TextChanged);
             // 
             // Label_pesquisar_cliente_nome
             // 
             this.Label_pesquisar_cliente_nome.AutoSize = true;
-            this.Label_pesquisar_cliente_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_pesquisar_cliente_nome.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_pesquisar_cliente_nome.Location = new System.Drawing.Point(3, 11);
             this.Label_pesquisar_cliente_nome.Name = "Label_pesquisar_cliente_nome";
-            this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(194, 16);
+            this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(204, 20);
             this.Label_pesquisar_cliente_nome.TabIndex = 8;
             this.Label_pesquisar_cliente_nome.Text = "Pesquisar pelo Nome do Dono";
             // 
@@ -107,11 +110,11 @@
             this.btnImprimir.BackColor = System.Drawing.Color.Transparent;
             this.btnImprimir.FlatAppearance.BorderSize = 0;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimir.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.Image = global::PetShop.Properties.Resources.imprimir_list;
             this.btnImprimir.Location = new System.Drawing.Point(1043, 17);
             this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(71, 57);
+            this.btnImprimir.Size = new System.Drawing.Size(72, 59);
             this.btnImprimir.TabIndex = 12;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -127,16 +130,17 @@
             this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
             this.btnExcluir.FlatAppearance.BorderSize = 0;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::PetShop.Properties.Resources.deletar_list;
             this.btnExcluir.Location = new System.Drawing.Point(976, 17);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(61, 55);
+            this.btnExcluir.Size = new System.Drawing.Size(61, 57);
             this.btnExcluir.TabIndex = 10;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -147,11 +151,11 @@
             this.btnEditar.BackColor = System.Drawing.Color.Transparent;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Image = global::PetShop.Properties.Resources.editar_list;
             this.btnEditar.Location = new System.Drawing.Point(915, 17);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(55, 55);
+            this.btnEditar.Size = new System.Drawing.Size(56, 57);
             this.btnEditar.TabIndex = 11;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -168,11 +172,11 @@
             this.btnAdicionar.BackColor = System.Drawing.Color.Transparent;
             this.btnAdicionar.FlatAppearance.BorderSize = 0;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.Image = global::PetShop.Properties.Resources.adicionar_list;
             this.btnAdicionar.Location = new System.Drawing.Point(832, 17);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(77, 55);
+            this.btnAdicionar.Size = new System.Drawing.Size(79, 57);
             this.btnAdicionar.TabIndex = 9;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;

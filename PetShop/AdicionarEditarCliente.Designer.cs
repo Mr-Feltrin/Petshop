@@ -30,6 +30,7 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelNomeCompleto = new System.Windows.Forms.Label();
             this.txtNomeCompleto = new System.Windows.Forms.TextBox();
             this.labelTipo = new System.Windows.Forms.Label();
@@ -64,8 +65,9 @@ namespace PetShop
             this.labelApelido = new System.Windows.Forms.Label();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
             this.observacoes = new System.Windows.Forms.RichTextBox();
-            this.BtnAdicionar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabDadosCliente.SuspendLayout();
             this.enderecosContato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
@@ -74,30 +76,31 @@ namespace PetShop
             // labelNomeCompleto
             // 
             this.labelNomeCompleto.AutoSize = true;
-            this.labelNomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNomeCompleto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeCompleto.Location = new System.Drawing.Point(30, 22);
             this.labelNomeCompleto.Name = "labelNomeCompleto";
-            this.labelNomeCompleto.Size = new System.Drawing.Size(211, 22);
+            this.labelNomeCompleto.Size = new System.Drawing.Size(197, 21);
             this.labelNomeCompleto.TabIndex = 0;
             this.labelNomeCompleto.Text = "Nome / Razão Completo*";
             // 
             // txtNomeCompleto
             // 
             this.txtNomeCompleto.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNomeCompleto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeCompleto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCompleto.Location = new System.Drawing.Point(34, 47);
             this.txtNomeCompleto.MaxLength = 500;
             this.txtNomeCompleto.Name = "txtNomeCompleto";
             this.txtNomeCompleto.Size = new System.Drawing.Size(332, 22);
             this.txtNomeCompleto.TabIndex = 1;
+            this.txtNomeCompleto.TextChanged += new System.EventHandler(this.txtNomeCompleto_TextChanged);
             // 
             // labelTipo
             // 
             this.labelTipo.AutoSize = true;
-            this.labelTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTipo.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTipo.Location = new System.Drawing.Point(448, 20);
             this.labelTipo.Name = "labelTipo";
-            this.labelTipo.Size = new System.Drawing.Size(250, 22);
+            this.labelTipo.Size = new System.Drawing.Size(226, 21);
             this.labelTipo.TabIndex = 2;
             this.labelTipo.Text = "Segmento do Cliente ou Tipo*";
             // 
@@ -105,7 +108,7 @@ namespace PetShop
             // 
             this.combBoxTipo.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxTipo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxTipo.FormattingEnabled = true;
             this.combBoxTipo.Items.AddRange(new object[] {
             "Cliente Comum",
@@ -115,13 +118,16 @@ namespace PetShop
             "Não Atender"});
             this.combBoxTipo.Location = new System.Drawing.Point(452, 45);
             this.combBoxTipo.Name = "combBoxTipo";
-            this.combBoxTipo.Size = new System.Drawing.Size(243, 24);
+            this.combBoxTipo.Size = new System.Drawing.Size(243, 25);
             this.combBoxTipo.TabIndex = 3;
+            this.combBoxTipo.SelectedIndexChanged += new System.EventHandler(this.combBoxTipo_SelectedIndexChanged);
+            this.combBoxTipo.Click += new System.EventHandler(this.combBoxTipo_Click);
             // 
             // tabDadosCliente
             // 
             this.tabDadosCliente.Controls.Add(this.enderecosContato);
             this.tabDadosCliente.Controls.Add(this.informacoes_observacoes);
+            this.tabDadosCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabDadosCliente.Location = new System.Drawing.Point(34, 89);
             this.tabDadosCliente.Name = "tabDadosCliente";
             this.tabDadosCliente.SelectedIndex = 0;
@@ -158,10 +164,10 @@ namespace PetShop
             this.enderecosContato.Controls.Add(this.labelEndereco);
             this.enderecosContato.Controls.Add(this.txtApelido);
             this.enderecosContato.Controls.Add(this.labelApelido);
-            this.enderecosContato.Location = new System.Drawing.Point(4, 22);
+            this.enderecosContato.Location = new System.Drawing.Point(4, 25);
             this.enderecosContato.Name = "enderecosContato";
             this.enderecosContato.Padding = new System.Windows.Forms.Padding(3);
-            this.enderecosContato.Size = new System.Drawing.Size(657, 300);
+            this.enderecosContato.Size = new System.Drawing.Size(657, 297);
             this.enderecosContato.TabIndex = 0;
             this.enderecosContato.Text = "Endereço e Contato";
             // 
@@ -170,19 +176,20 @@ namespace PetShop
             this.txtCep.BackColor = System.Drawing.SystemColors.Window;
             this.txtCep.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCep.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCep.Location = new System.Drawing.Point(550, 139);
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
             this.txtCep.Size = new System.Drawing.Size(87, 22);
             this.txtCep.TabIndex = 11;
             this.txtCep.Click += new System.EventHandler(this.Cadastro_cliente_cep_Click);
+            this.txtCep.TextChanged += new System.EventHandler(this.txtCep_TextChanged);
             // 
             // txtCelular
             // 
             this.txtCelular.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCelular.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCelular.Location = new System.Drawing.Point(328, 191);
             this.txtCelular.Mask = "(00)90000-0000";
             this.txtCelular.Name = "txtCelular";
@@ -194,7 +201,7 @@ namespace PetShop
             // 
             this.txtTelefoneSecundario.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtTelefoneSecundario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtTelefoneSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefoneSecundario.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefoneSecundario.Location = new System.Drawing.Point(172, 191);
             this.txtTelefoneSecundario.Mask = "(00)0000-0000";
             this.txtTelefoneSecundario.Name = "txtTelefoneSecundario";
@@ -207,19 +214,20 @@ namespace PetShop
             this.txtTelefonePrimario.BackColor = System.Drawing.SystemColors.Window;
             this.txtTelefonePrimario.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtTelefonePrimario.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtTelefonePrimario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefonePrimario.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefonePrimario.Location = new System.Drawing.Point(18, 191);
             this.txtTelefonePrimario.Mask = "(00)0000-0000";
             this.txtTelefonePrimario.Name = "txtTelefonePrimario";
             this.txtTelefonePrimario.Size = new System.Drawing.Size(125, 22);
             this.txtTelefonePrimario.TabIndex = 13;
             this.txtTelefonePrimario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
+            this.txtTelefonePrimario.TextChanged += new System.EventHandler(this.txtTelefonePrimario_TextChanged);
             // 
             // txtCnpj
             // 
             this.txtCnpj.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCnpj.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCnpj.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCnpj.Location = new System.Drawing.Point(537, 244);
             this.txtCnpj.Mask = "00.000.000/0000-00";
             this.txtCnpj.Name = "txtCnpj";
@@ -232,7 +240,7 @@ namespace PetShop
             this.txtCpf.BackColor = System.Drawing.SystemColors.Window;
             this.txtCpf.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpf.Location = new System.Drawing.Point(366, 244);
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
@@ -243,26 +251,26 @@ namespace PetShop
             // labelCnpj
             // 
             this.labelCnpj.AutoSize = true;
-            this.labelCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelCnpj.Location = new System.Drawing.Point(534, 224);
+            this.labelCnpj.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCnpj.Location = new System.Drawing.Point(533, 221);
             this.labelCnpj.Name = "labelCnpj";
-            this.labelCnpj.Size = new System.Drawing.Size(69, 18);
+            this.labelCnpj.Size = new System.Drawing.Size(64, 20);
             this.labelCnpj.TabIndex = 24;
             this.labelCnpj.Text = "N° CNPJ";
             // 
             // labelCpf
             // 
             this.labelCpf.AutoSize = true;
-            this.labelCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelCpf.Location = new System.Drawing.Point(363, 224);
+            this.labelCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCpf.Location = new System.Drawing.Point(362, 221);
             this.labelCpf.Name = "labelCpf";
-            this.labelCpf.Size = new System.Drawing.Size(59, 18);
+            this.labelCpf.Size = new System.Drawing.Size(57, 20);
             this.labelCpf.TabIndex = 22;
             this.labelCpf.Text = "N° CPF";
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(18, 244);
             this.txtEmail.MaxLength = 500;
             this.txtEmail.Name = "txtEmail";
@@ -272,16 +280,16 @@ namespace PetShop
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelEmail.Location = new System.Drawing.Point(15, 224);
+            this.labelEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmail.Location = new System.Drawing.Point(14, 221);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(50, 18);
+            this.labelEmail.Size = new System.Drawing.Size(49, 20);
             this.labelEmail.TabIndex = 20;
             this.labelEmail.Text = "E-mail";
             // 
             // txtComplemento
             // 
-            this.txtComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComplemento.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComplemento.Location = new System.Drawing.Point(481, 191);
             this.txtComplemento.MaxLength = 500;
             this.txtComplemento.Name = "txtComplemento";
@@ -291,50 +299,50 @@ namespace PetShop
             // labelComplemento
             // 
             this.labelComplemento.AutoSize = true;
-            this.labelComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelComplemento.Location = new System.Drawing.Point(478, 171);
+            this.labelComplemento.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelComplemento.Location = new System.Drawing.Point(477, 168);
             this.labelComplemento.Name = "labelComplemento";
-            this.labelComplemento.Size = new System.Drawing.Size(102, 18);
+            this.labelComplemento.Size = new System.Drawing.Size(99, 20);
             this.labelComplemento.TabIndex = 18;
             this.labelComplemento.Text = "Complemento";
             // 
             // labelCelular
             // 
             this.labelCelular.AutoSize = true;
-            this.labelCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelCelular.Location = new System.Drawing.Point(325, 171);
+            this.labelCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCelular.Location = new System.Drawing.Point(324, 168);
             this.labelCelular.Name = "labelCelular";
-            this.labelCelular.Size = new System.Drawing.Size(75, 18);
+            this.labelCelular.Size = new System.Drawing.Size(77, 20);
             this.labelCelular.TabIndex = 16;
             this.labelCelular.Text = "N° Celular";
             // 
             // labelTelefoneSecundario
             // 
             this.labelTelefoneSecundario.AutoSize = true;
-            this.labelTelefoneSecundario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.labelTelefoneSecundario.Location = new System.Drawing.Point(169, 171);
+            this.labelTelefoneSecundario.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelefoneSecundario.Location = new System.Drawing.Point(168, 168);
             this.labelTelefoneSecundario.Name = "labelTelefoneSecundario";
-            this.labelTelefoneSecundario.Size = new System.Drawing.Size(83, 18);
+            this.labelTelefoneSecundario.Size = new System.Drawing.Size(87, 20);
             this.labelTelefoneSecundario.TabIndex = 14;
             this.labelTelefoneSecundario.Text = "2° Telefone";
             // 
             // labelTelefonePrimario
             // 
             this.labelTelefonePrimario.AutoSize = true;
-            this.labelTelefonePrimario.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTelefonePrimario.Location = new System.Drawing.Point(15, 171);
+            this.labelTelefonePrimario.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTelefonePrimario.Location = new System.Drawing.Point(14, 168);
             this.labelTelefonePrimario.Name = "labelTelefonePrimario";
-            this.labelTelefonePrimario.Size = new System.Drawing.Size(89, 18);
+            this.labelTelefonePrimario.Size = new System.Drawing.Size(96, 20);
             this.labelTelefonePrimario.TabIndex = 12;
             this.labelTelefonePrimario.Text = "1° Telefone*";
             // 
             // labelCep
             // 
             this.labelCep.AutoSize = true;
-            this.labelCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCep.Location = new System.Drawing.Point(547, 118);
+            this.labelCep.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCep.Location = new System.Drawing.Point(546, 116);
             this.labelCep.Name = "labelCep";
-            this.labelCep.Size = new System.Drawing.Size(45, 18);
+            this.labelCep.Size = new System.Drawing.Size(44, 20);
             this.labelCep.TabIndex = 10;
             this.labelCep.Text = "CEP*";
             // 
@@ -343,10 +351,10 @@ namespace PetShop
             this.combBoxUf.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxUf.DropDownHeight = 85;
             this.combBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxUf.FormattingEnabled = true;
             this.combBoxUf.IntegralHeight = false;
-            this.combBoxUf.ItemHeight = 16;
+            this.combBoxUf.ItemHeight = 17;
             this.combBoxUf.Items.AddRange(new object[] {
             "AC",
             "AL",
@@ -377,83 +385,88 @@ namespace PetShop
             "TO"});
             this.combBoxUf.Location = new System.Drawing.Point(450, 139);
             this.combBoxUf.Name = "combBoxUf";
-            this.combBoxUf.Size = new System.Drawing.Size(62, 24);
+            this.combBoxUf.Size = new System.Drawing.Size(62, 25);
             this.combBoxUf.TabIndex = 9;
+            this.combBoxUf.SelectedIndexChanged += new System.EventHandler(this.combBoxUf_SelectedIndexChanged);
+            this.combBoxUf.Click += new System.EventHandler(this.combBoxUf_Click);
             // 
             // labelUf
             // 
             this.labelUf.AutoSize = true;
-            this.labelUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelUf.Location = new System.Drawing.Point(447, 118);
+            this.labelUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUf.Location = new System.Drawing.Point(446, 116);
             this.labelUf.Name = "labelUf";
-            this.labelUf.Size = new System.Drawing.Size(34, 18);
+            this.labelUf.Size = new System.Drawing.Size(35, 20);
             this.labelUf.TabIndex = 8;
             this.labelUf.Text = "UF*";
             // 
             // txtCidade
             // 
             this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.Location = new System.Drawing.Point(281, 139);
             this.txtCidade.MaxLength = 500;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(140, 22);
             this.txtCidade.TabIndex = 7;
+            this.txtCidade.TextChanged += new System.EventHandler(this.txtCidade_TextChanged);
             // 
             // labelCidade
             // 
             this.labelCidade.AutoSize = true;
-            this.labelCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCidade.Location = new System.Drawing.Point(278, 118);
+            this.labelCidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCidade.Location = new System.Drawing.Point(277, 116);
             this.labelCidade.Name = "labelCidade";
-            this.labelCidade.Size = new System.Drawing.Size(60, 18);
+            this.labelCidade.Size = new System.Drawing.Size(63, 20);
             this.labelCidade.TabIndex = 6;
             this.labelCidade.Text = "Cidade*";
             // 
             // txtBairro
             // 
             this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairro.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.Location = new System.Drawing.Point(18, 139);
             this.txtBairro.MaxLength = 500;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(241, 22);
             this.txtBairro.TabIndex = 5;
+            this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             // 
             // labelBairro
             // 
             this.labelBairro.AutoSize = true;
-            this.labelBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBairro.Location = new System.Drawing.Point(15, 118);
+            this.labelBairro.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelBairro.Location = new System.Drawing.Point(14, 116);
             this.labelBairro.Name = "labelBairro";
-            this.labelBairro.Size = new System.Drawing.Size(54, 18);
+            this.labelBairro.Size = new System.Drawing.Size(57, 20);
             this.labelBairro.TabIndex = 4;
             this.labelBairro.Text = "Bairro*";
             // 
             // txtEndereco
             // 
             this.txtEndereco.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndereco.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.Location = new System.Drawing.Point(18, 86);
             this.txtEndereco.MaxLength = 500;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(619, 22);
             this.txtEndereco.TabIndex = 3;
+            this.txtEndereco.TextChanged += new System.EventHandler(this.txtEndereco_TextChanged);
             // 
             // labelEndereco
             // 
             this.labelEndereco.AutoSize = true;
-            this.labelEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEndereco.Location = new System.Drawing.Point(15, 66);
+            this.labelEndereco.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEndereco.Location = new System.Drawing.Point(14, 61);
             this.labelEndereco.Name = "labelEndereco";
-            this.labelEndereco.Size = new System.Drawing.Size(136, 18);
+            this.labelEndereco.Size = new System.Drawing.Size(137, 20);
             this.labelEndereco.TabIndex = 2;
             this.labelEndereco.Text = "Nome da Rua / AV*";
             // 
             // txtApelido
             // 
             this.txtApelido.BackColor = System.Drawing.SystemColors.Window;
-            this.txtApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApelido.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApelido.Location = new System.Drawing.Point(18, 36);
             this.txtApelido.MaxLength = 500;
             this.txtApelido.Name = "txtApelido";
@@ -463,10 +476,10 @@ namespace PetShop
             // labelApelido
             // 
             this.labelApelido.AutoSize = true;
-            this.labelApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelApelido.Location = new System.Drawing.Point(15, 16);
+            this.labelApelido.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelApelido.Location = new System.Drawing.Point(14, 13);
             this.labelApelido.Name = "labelApelido";
-            this.labelApelido.Size = new System.Drawing.Size(169, 18);
+            this.labelApelido.Size = new System.Drawing.Size(170, 20);
             this.labelApelido.TabIndex = 0;
             this.labelApelido.Text = "Nome Fantasia / Apelido";
             // 
@@ -474,10 +487,10 @@ namespace PetShop
             // 
             this.informacoes_observacoes.Controls.Add(this.observacoes);
             this.informacoes_observacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.informacoes_observacoes.Location = new System.Drawing.Point(4, 22);
+            this.informacoes_observacoes.Location = new System.Drawing.Point(4, 25);
             this.informacoes_observacoes.Name = "informacoes_observacoes";
             this.informacoes_observacoes.Padding = new System.Windows.Forms.Padding(3);
-            this.informacoes_observacoes.Size = new System.Drawing.Size(657, 300);
+            this.informacoes_observacoes.Size = new System.Drawing.Size(657, 297);
             this.informacoes_observacoes.TabIndex = 1;
             this.informacoes_observacoes.Text = "Informações / Observações";
             this.informacoes_observacoes.UseVisualStyleBackColor = true;
@@ -492,47 +505,51 @@ namespace PetShop
             this.observacoes.TabIndex = 0;
             this.observacoes.Text = "";
             // 
-            // BtnAdicionar
+            // btnAdicionar
             // 
-            this.BtnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdicionar.AutoSize = true;
-            this.BtnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdicionar.Image = global::PetShop.Properties.Resources.adicionar;
-            this.BtnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAdicionar.Location = new System.Drawing.Point(649, 424);
-            this.BtnAdicionar.Name = "BtnAdicionar";
-            this.BtnAdicionar.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnAdicionar.Size = new System.Drawing.Size(50, 52);
-            this.BtnAdicionar.TabIndex = 6;
-            this.BtnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnAdicionar.UseVisualStyleBackColor = true;
-            this.BtnAdicionar.Click += new System.EventHandler(this.BtnAdicionarEditarCliente_Click);
+            this.btnAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAdicionar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAdicionar.Enabled = false;
+            this.btnAdicionar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdicionar.Image = global::PetShop.Properties.Resources.confirm;
+            this.btnAdicionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdicionar.Location = new System.Drawing.Point(517, 421);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(178, 45);
+            this.btnAdicionar.TabIndex = 13;
+            this.btnAdicionar.Text = "Salvar";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.BtnAdicionarEditarCliente_Click);
+            this.btnAdicionar.MouseEnter += new System.EventHandler(this.btnAdicionar_MouseEnter);
             // 
-            // btnCancelar
+            // btnSair
             // 
-            this.btnCancelar.AutoSize = true;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::PetShop.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(34, 424);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(161, 52);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.cadastro_cliente_cancelar_Click);
+            this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.Image = global::PetShop.Properties.Resources.close;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.Location = new System.Drawing.Point(34, 421);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(178, 45);
+            this.btnSair.TabIndex = 16;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.cadastro_cliente_cancelar_Click);
             // 
             // AdicionarEditarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(728, 496);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.BtnAdicionar);
+            this.ClientSize = new System.Drawing.Size(728, 478);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.tabDadosCliente);
             this.Controls.Add(this.combBoxTipo);
             this.Controls.Add(this.labelTipo);
@@ -547,6 +564,7 @@ namespace PetShop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AdicionarEditarCliente_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdicionarEditarCliente_MouseMove);
             this.tabDadosCliente.ResumeLayout(false);
             this.enderecosContato.ResumeLayout(false);
             this.enderecosContato.PerformLayout();
@@ -565,8 +583,6 @@ namespace PetShop
         private System.Windows.Forms.TabPage informacoes_observacoes;
         private System.Windows.Forms.Label labelApelido;
         private System.Windows.Forms.TextBox txtApelido;
-        private System.Windows.Forms.Button BtnAdicionar;
-        private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Label labelCnpj;
         private System.Windows.Forms.Label labelCpf;
         private System.Windows.Forms.TextBox txtEmail;
@@ -593,5 +609,8 @@ namespace PetShop
         private System.Windows.Forms.MaskedTextBox txtCelular;
         private System.Windows.Forms.MaskedTextBox txtCep;
         internal System.Windows.Forms.TextBox txtNomeCompleto;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

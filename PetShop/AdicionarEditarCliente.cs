@@ -4,6 +4,7 @@ using System.Data.SqlServerCe;
 using PetShop.Entities.Enums;
 using PetShop.Entities;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PetShop
 {
@@ -12,6 +13,7 @@ namespace PetShop
         private readonly TipoOperacao Operacao;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
         private Cliente _Cliente;
+        Control _currentToolTipControl;
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -72,94 +74,130 @@ namespace PetShop
 
         private void BtnAdicionarEditarCliente_Click(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            List<MaskedTextBox> CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
+            foreach (MaskedTextBox control in CamposMaskedOpcionais)
+            {
+                if (!control.MaskFull)
+                {
+                    control.Clear();
+                    control.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                }
+            }
+            if (Operacao == TipoOperacao.Adicionar)
+            {
+                _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
+                _Cliente.AdicionarEditarCliente(Operacao);
+            }
+            else
+            {
+                _Cliente.NomeCliente = txtNomeCompleto.Text;
+                _Cliente.Tipo = combBoxTipo.Text;
+                _Cliente.Apelido = txtApelido.Text;
+                _Cliente.Endereco = txtEndereco.Text;
+                _Cliente.Bairro = txtBairro.Text;
+                _Cliente.Cidade = txtCidade.Text;
+                _Cliente.Uf = combBoxUf.Text;
+                _Cliente.Cep = txtCep.Text;
+                _Cliente.TelefonePrimario = txtTelefonePrimario.Text;
+                _Cliente.TelefoneSecundario = txtTelefoneSecundario.Text;
+                _Cliente.Celular = txtCelular.Text;
+                _Cliente.Complemento = txtComplemento.Text;
+                _Cliente.Email = txtEmail.Text;
+                _Cliente.Cpf = txtCpf.Text;
+                _Cliente.Cnpj = txtCnpj.Text;
+                _Cliente.Observacoes = observacoes.Text;
+                _Cliente.AdicionarEditarCliente(Operacao);
+            }
+            Close();
+            _PesquisaClientesFornecedores.AtualizarLista();
         }
 
         private void VerificaCamposObrigatorios()
         {
-            if (string.IsNullOrWhiteSpace(txtNomeCompleto.Text))
+            List<object> camposObrigatorios = new List<object>() { txtNomeCompleto, combBoxTipo, txtEndereco, txtBairro, txtCidade, combBoxUf, txtCep, txtTelefonePrimario };
+            foreach (object o in camposObrigatorios)
             {
-                MessageBox.Show("Preencha o campo de Nome / Razão Social", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrEmpty(combBoxTipo.Text))
-            {
-                MessageBox.Show("Selecione o tipo de cliente", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtEndereco.Text))
-            {
-                MessageBox.Show("Preencha o campo de Nome da Rua / AV", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtBairro.Text))
-            {
-                MessageBox.Show("Preencha o campo de Bairro", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtCidade.Text))
-            {
-                MessageBox.Show("Preencha o campo de Cidade", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrEmpty(combBoxUf.Text))
-            {
-                MessageBox.Show("Selecione o campo UF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!txtCep.MaskCompleted)
-            {
-                MessageBox.Show("Preencha o campo de CEP", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!txtTelefonePrimario.MaskCompleted)
-            {
-                MessageBox.Show("Preencha o campo de 1° Telefone", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                List<MaskedTextBox> CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
-                foreach (MaskedTextBox control in CamposMaskedOpcionais)
+                if (o.GetType() == typeof(TextBox))
                 {
-                    if (!control.MaskFull)
+                    if (string.IsNullOrWhiteSpace((o as TextBox).Text))
                     {
-                        control.Clear();
-                        control.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+                        btnAdicionar.Enabled = false;
+                        switch ((o as TextBox).Name)
+                        {
+                            case "txtNomeCompleto":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o nome completo do cliente");
+                                break;
+                            case "txtEndereco":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de endereço");
+                                break;
+                            case "txtBairro":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de bairro");
+                                break;
+                            case "txtCidade":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de cidade");
+                                break;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        btnAdicionar.Enabled = true;
                     }
                 }
-                if (Operacao == TipoOperacao.Adicionar)
+                if (o.GetType() == typeof(MaskedTextBox))
                 {
-                    _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
-                    _Cliente.AdicionarEditarCliente(Operacao);
+                    if (!(o as MaskedTextBox).MaskCompleted)
+                    {
+                        btnAdicionar.Enabled = false;
+                        switch ((o as MaskedTextBox).Name)
+                        {
+                            case "txtCep":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de CEP");
+                                break;
+                            case "txtTelefonePrimario":
+                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de Telefone Primário");
+                                break;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        btnAdicionar.Enabled = true;
+                    }
                 }
-                else
+                if (o.GetType() == typeof(ComboBox))
                 {
-                    _Cliente.NomeCliente = txtNomeCompleto.Text;
-                    _Cliente.Tipo = combBoxTipo.Text;
-                    _Cliente.Apelido = txtApelido.Text;
-                    _Cliente.Endereco = txtEndereco.Text;
-                    _Cliente.Bairro = txtBairro.Text;
-                    _Cliente.Cidade = txtCidade.Text;
-                    _Cliente.Uf = combBoxUf.Text;
-                    _Cliente.Cep = txtCep.Text;
-                    _Cliente.TelefonePrimario = txtTelefonePrimario.Text;
-                    _Cliente.TelefoneSecundario = txtTelefoneSecundario.Text;
-                    _Cliente.Celular = txtCelular.Text;
-                    _Cliente.Complemento = txtComplemento.Text;
-                    _Cliente.Email = txtEmail.Text;
-                    _Cliente.Cpf = txtCpf.Text;
-                    _Cliente.Cnpj = txtCnpj.Text;
-                    _Cliente.Observacoes = observacoes.Text;
-                    _Cliente.AdicionarEditarCliente(Operacao);
-                }              
-                Close();
-                _PesquisaClientesFornecedores.AtualizarLista();
+                    if ((o as ComboBox).SelectedIndex == -1)
+                    {
+                        btnAdicionar.Enabled = false;
+                        switch ((o as ComboBox).Name)
+                        {
+                            case "combBoxTipo":
+                                toolTip.SetToolTip(btnAdicionar, "Selecione o tipo de Cliente");
+                                break;
+                            case "combBoxUf":
+                                toolTip.SetToolTip(btnAdicionar, "Selecione o estado do endereço");
+                                break;
+                        }
+                        break;
+                    }
+                    else
+                    {
+                        btnAdicionar.Enabled = true;
+                    }                  
+                }
             }
         }
-    
+
         private void AdicionarEditarCliente_Load(object sender, EventArgs e)
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                BtnAdicionar.Text = "Adicionar";
                 Text = "Adicionar Cliente";
+                toolTip.SetToolTip(btnAdicionar, "Preencha todos os campos obrigatórios");
             }
             else
             {
-                BtnAdicionar.Text = "Atualizar";
                 Text = "Editar Cliente";
                 txtNomeCompleto.Text = _Cliente.NomeCliente;
                 combBoxTipo.SelectedItem = _Cliente.Tipo;
@@ -179,5 +217,87 @@ namespace PetShop
                 observacoes.Text = _Cliente.Observacoes;
             }
         }
+
+        private void AdicionarEditarCliente_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control control = GetChildAtPoint(e.Location);
+            if (control != null)
+            {
+                if (!control.Enabled && _currentToolTipControl == null)
+                {
+                    toolTip.Active = true;
+                    string toolTipString = toolTip.GetToolTip(control);
+                    toolTip.Show(toolTipString, control, control.Width / 2, control.Height / 2);
+                    _currentToolTipControl = control;
+                }
+            }
+            else
+            {
+                if (_currentToolTipControl != null)
+                {
+                    toolTip.Active = false;
+                    _currentToolTipControl = null;
+                }
+            }
+        }
+
+        private void txtNomeCompleto_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void txtEndereco_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void txtBairro_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void txtCidade_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void combBoxTipo_Click(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void combBoxUf_Click(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void txtCep_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void txtTelefonePrimario_TextChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void combBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void combBoxUf_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VerificaCamposObrigatorios();
+        }
+
+        private void btnAdicionar_MouseEnter(object sender, EventArgs e)
+        {
+            if ((sender as Button).Enabled)
+            {
+                toolTip.Active = false;
+            }
+        }
     }
 }
+

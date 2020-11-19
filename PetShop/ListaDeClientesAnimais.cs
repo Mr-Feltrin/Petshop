@@ -32,7 +32,7 @@ namespace PetShop
             Close();
         }
 
-        private void btnSelecionar_Click(object sender, EventArgs e)
+        private void Selecionar()
         {
             if (_tipoPesquisa == TipoPesquisa.Cliente)
             {
@@ -45,7 +45,7 @@ namespace PetShop
                 {
                     _adicionarEditarAnimais.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
                     _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
-                }              
+                }
             }
             else
             {
@@ -53,6 +53,11 @@ namespace PetShop
             }
 
             Close();
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            Selecionar();
         }
 
         private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
@@ -68,6 +73,11 @@ namespace PetShop
                 btnNovoClienteAnimal.Image = Resources.addAnimal_32x32;
                 dataListaClientesAnimais.DataSource = Animal.ListarAnimais();              
             }
+        }
+
+        private void dataListaClientesAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Selecionar();
         }
     }
 }

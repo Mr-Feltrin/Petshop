@@ -84,11 +84,11 @@
             this.btnMenuPesquisaClientes.BackColor = System.Drawing.Color.Transparent;
             this.btnMenuPesquisaClientes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMenuPesquisaClientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuPesquisaClientes.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuPesquisaClientes.Image")));
+            this.btnMenuPesquisaClientes.Image = global::PetShop.Properties.Resources.clientes;
             this.btnMenuPesquisaClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuPesquisaClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuPesquisaClientes.Name = "btnMenuPesquisaClientes";
-            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 51);
+            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 49);
             this.btnMenuPesquisaClientes.Text = "Clientes";
             this.btnMenuPesquisaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuPesquisaClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -99,11 +99,11 @@
             this.btnMenuFornecedores.BackColor = System.Drawing.Color.Transparent;
             this.btnMenuFornecedores.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnMenuFornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuFornecedores.Image = ((System.Drawing.Image)(resources.GetObject("btnMenuFornecedores.Image")));
+            this.btnMenuFornecedores.Image = global::PetShop.Properties.Resources.fornecedor;
             this.btnMenuFornecedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuFornecedores.Name = "btnMenuFornecedores";
-            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 51);
+            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 49);
             this.btnMenuFornecedores.Text = "Fornece";
             this.btnMenuFornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuFornecedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -112,7 +112,7 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 54);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 52);
             // 
             // botao_agenda
             // 
@@ -132,18 +132,18 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
             // 
             // botao_produtos
             // 
             this.botao_produtos.BackColor = System.Drawing.Color.Transparent;
             this.botao_produtos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.botao_produtos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botao_produtos.Image = global::PetShop.Properties.Resources.produtos;
+            this.botao_produtos.Image = global::PetShop.Properties.Resources.produtos30x30;
             this.botao_produtos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.botao_produtos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.botao_produtos.Name = "botao_produtos";
-            this.botao_produtos.Size = new System.Drawing.Size(68, 51);
+            this.botao_produtos.Size = new System.Drawing.Size(68, 49);
             this.botao_produtos.Text = "Produtos";
             this.botao_produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_produtos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -159,7 +159,7 @@
             this.btnConsultar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnConsultar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(72, 51);
+            this.btnConsultar.Size = new System.Drawing.Size(72, 49);
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -168,7 +168,7 @@
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
             // 
             // btnAnimais
             // 
@@ -191,7 +191,7 @@
             this.toolStripButton1.BackColor = System.Drawing.Color.Transparent;
             this.toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStripButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = global::PetShop.Properties.Resources.injecao;
+            this.toolStripButton1.Image = global::PetShop.Properties.Resources.vacina30x30;
             this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
@@ -204,14 +204,14 @@
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
             // 
             // toolStripButton2
             // 
             this.toolStripButton2.BackColor = System.Drawing.Color.Transparent;
             this.toolStripButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.toolStripButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.Image = global::PetShop.Properties.Resources.caixa30x30;
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
@@ -252,7 +252,7 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(729, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(777, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -264,9 +264,8 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatus_agendamentos_atuais.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_agendamentos_atuais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatus_agendamentos_atuais.Image = global::PetShop.Properties.Resources.agenda;
             this.toolStripStatus_agendamentos_atuais.Name = "toolStripStatus_agendamentos_atuais";
-            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(208, 22);
+            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(192, 22);
             this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: 0";
             this.toolStripStatus_agendamentos_atuais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -329,11 +328,10 @@
             this.toolStripStatus_nome_administrador.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_nome_administrador.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_nome_administrador.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.toolStripStatus_nome_administrador.Image = global::PetShop.Properties.Resources.administrador_sistema;
             this.toolStripStatus_nome_administrador.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripStatus_nome_administrador.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_nome_administrador.Name = "toolStripStatus_nome_administrador";
-            this.toolStripStatus_nome_administrador.Size = new System.Drawing.Size(20, 22);
+            this.toolStripStatus_nome_administrador.Size = new System.Drawing.Size(4, 22);
             // 
             // toolStripStatus_nome_sistema
             // 
@@ -342,9 +340,8 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.toolStripStatus_nome_sistema.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_nome_sistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripStatus_nome_sistema.Image = global::PetShop.Properties.Resources.computador_sistema;
             this.toolStripStatus_nome_sistema.Name = "toolStripStatus_nome_sistema";
-            this.toolStripStatus_nome_sistema.Size = new System.Drawing.Size(113, 22);
+            this.toolStripStatus_nome_sistema.Size = new System.Drawing.Size(97, 22);
             this.toolStripStatus_nome_sistema.Text = "Pet Shop 1.0";
             this.toolStripStatus_nome_sistema.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 

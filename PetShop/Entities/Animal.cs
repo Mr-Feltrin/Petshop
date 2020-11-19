@@ -4,6 +4,7 @@ using System.Data.SqlServerCe;
 using System.Windows.Forms;
 using PetShop.Entities.Enums;
 using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing;
 
 namespace PetShop.Entities
 {
@@ -17,7 +18,6 @@ namespace PetShop.Entities
         public string Especie { get; set; }
         public string Raca { get; set; }
         public string Identificacao { get; set; }
-        public string Fotografia { get; set; }
         public string Fobias { get; set; }
         public string DisponivelTosa { get; set; }
         public string PossuiPedigree { get; set; }
@@ -28,8 +28,11 @@ namespace PetShop.Entities
         public string ObservacaoComportamental { get; set; }
         public string ObservacaoRotina { get; set; }
         public DateTime DataRegistro { get; set; }
+        public Image Fotografia1 { get; set; }
+        public Image Fotografia2 { get; set; }
+        public Image Fotografia3 { get; set; }
 
-        public Animal(string nome, string sexo, int clienteId, string especie, string raca, string identificacao, string fotografia, string fobias, string disponivelTosa, string possuiPedigree, string agressivo, string hiperativo, string antiSocial, string obsessivo, string observacaoComportamental, string observacaoRotina, DateTime dataRegistro)
+        public Animal(string nome, string sexo, int clienteId, string especie, string raca, string identificacao, string fobias, string disponivelTosa, string possuiPedigree, string agressivo, string hiperativo, string antiSocial, string obsessivo, string observacaoComportamental, string observacaoRotina, DateTime dataRegistro, Image fotografia1, Image fotografia2, Image fotografia3)
         {
             Nome = nome;
             Sexo = sexo;
@@ -37,7 +40,6 @@ namespace PetShop.Entities
             Especie = especie;
             Raca = raca;
             Identificacao = identificacao;
-            Fotografia = fotografia;
             Fobias = fobias;
             DisponivelTosa = disponivelTosa;
             PossuiPedigree = possuiPedigree;
@@ -48,6 +50,9 @@ namespace PetShop.Entities
             ObservacaoComportamental = observacaoComportamental;
             ObservacaoRotina = observacaoRotina;
             DataRegistro = dataRegistro;
+            Fotografia1 = fotografia1;
+            Fotografia2 = fotografia2;
+            Fotografia3 = fotografia3;
         }
 
         public Animal(int IdAnimal)
@@ -63,22 +68,20 @@ namespace PetShop.Entities
                 SqlCeCommand command = connection.CreateCommand();
                 if (operacao == TipoOperacao.Adicionar)
                 {
-                    command.CommandText = "INSERT INTO Animal (Nome, Sexo, ClienteId, Especie, Raca, Identificacao, Fotografia, Fobias, Disponivel_tosa, Possui_pedigree, Agressivo, Hiperativo, Anti_social, Obsessivo, Observacao_comportamental, Observacao_rotina, Data_registro) VALUES (@Nome, @Sexo, @ClienteId, @Especie, @Raca, @Identificacao, @Fotografia, @Fobias, @Disponivel_tosa, @Possui_pedigree, @Agressivo, @Hiperativo, @Anti_social, @Obsessivo, @Observacao_comportamental, @Observacao_rotina, @Data_registro)";
+                    command.CommandText = "INSERT INTO Animal (Nome, Sexo, ClienteId, Especie, Raca, Identificacao, Fobias, Disponivel_tosa, Possui_pedigree, Agressivo, Hiperativo, Anti_social, Obsessivo, Observacao_comportamental, Observacao_rotina, Data_registro) VALUES (@Nome, @Sexo, @ClienteId, @Especie, @Raca, @Identificacao, @Fobias, @Disponivel_tosa, @Possui_pedigree, @Agressivo, @Hiperativo, @Anti_social, @Obsessivo, @Observacao_comportamental, @Observacao_rotina, @Data_registro)";
                     command.Parameters.AddWithValue("@Data_registro", DataRegistro);
                 }
                 else
                 {
-                    command.CommandText = "UPDATE Animal SET Nome = @Nome, Sexo = @Sexo, ClienteId = @ClienteId, Especie = @Especie, Raca = @Raca, Identificacao = @Identificacao, Fotografia = @Fotografia, Fobias = @Fobias, Disponivel_tosa = @Disponivel_tosa, Possui_pedigree = @Possui_pedigree, Agressivo = @Agressivo, Hiperativo = @Hiperativo, Anti_social = @Anti_social, Obsessivo = @Obsessivo, Observacao_comportamental = @Observacao_comportamental, Observacao_rotina = @Observacao_rotina WHERE Id = @Id";
+                    command.CommandText = "UPDATE Animal SET Nome = @Nome, Sexo = @Sexo, ClienteId = @ClienteId, Especie = @Especie, Raca = @Raca, Identificacao = @Identificacao, Fobias = @Fobias, Disponivel_tosa = @Disponivel_tosa, Possui_pedigree = @Possui_pedigree, Agressivo = @Agressivo, Hiperativo = @Hiperativo, Anti_social = @Anti_social, Obsessivo = @Obsessivo, Observacao_comportamental = @Observacao_comportamental, Observacao_rotina = @Observacao_rotina WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", AnimalId);
                 }
-
                 command.Parameters.AddWithValue("@Nome", Nome);
                 command.Parameters.AddWithValue("@Sexo", Sexo);
                 command.Parameters.AddWithValue("@ClienteId", ClienteId);
                 command.Parameters.AddWithValue("@Especie", Especie);
                 command.Parameters.AddWithValue("@Raca", Raca);
                 command.Parameters.AddWithValue("@Identificacao", Identificacao);
-                command.Parameters.AddWithValue("@Fotografia", Fotografia);
                 command.Parameters.AddWithValue("@Fobias", Fobias);
                 command.Parameters.AddWithValue("@Disponivel_tosa", DisponivelTosa);
                 command.Parameters.AddWithValue("@Possui_pedigree", PossuiPedigree);
@@ -96,7 +99,7 @@ namespace PetShop.Entities
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao salvar as informações do Animal: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao salvar as informações do Animal: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);                
             }
             finally
             {
@@ -133,6 +136,52 @@ namespace PetShop.Entities
             return dta;
         }
 
+        public static DataTable ListarRacas()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlCeCommand comando = connection.CreateCommand();
+                comando.CommandText = "SELECT Raca as Raça from Animal";
+                comando.ExecuteNonQuery();
+                SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(comando);
+                dataAdapter.Fill(table);
+            }
+            catch (SqlCeException ex)
+            {
+                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;         
+        }
+
+        public static DataTable ListarEspecies()
+        {
+            DataTable table = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlCeCommand comando = connection.CreateCommand();
+                comando.CommandText = "SELECT Especie as Espécie from Animal";
+                comando.ExecuteNonQuery();
+                SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(comando);
+                dataAdapter.Fill(table);
+            }
+            catch (SqlCeException ex)
+            {
+                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return table;
+        }
+
         private void BuscarAnimal(int id)
         {
             try
@@ -152,7 +201,6 @@ namespace PetShop.Entities
                         Especie = reader["Especie"].ToString();
                         Raca = reader["Raca"].ToString();
                         Identificacao = reader["Identificacao"].ToString();
-                        Fotografia = reader["Fotografia"].ToString();
                         Fobias = reader["Fobias"].ToString();
                         DisponivelTosa = reader["Disponivel_tosa"].ToString();
                         PossuiPedigree = reader["Possui_pedigree"].ToString();
@@ -185,11 +233,15 @@ namespace PetShop.Entities
                 comando.CommandText = "DELETE FROM Animal WHERE Id = @Id";
                 comando.Parameters.AddWithValue("@Id", id);
                 comando.ExecuteNonQuery();
-                MessageBox.Show("Cliente removido", "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Animal removido", "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (SqlCeException e)
             {
                 MessageBox.Show("Erro ao remover Animal: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

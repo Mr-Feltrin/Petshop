@@ -61,6 +61,10 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.txtObservacaoComportamental = new System.Windows.Forms.RichTextBox();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRemoverFoto = new System.Windows.Forms.Button();
+            this.btnAvancarFoto = new System.Windows.Forms.Button();
+            this.btnVoltarFoto = new System.Windows.Forms.Button();
+            this.btnAdicionarFoto = new System.Windows.Forms.Button();
             this.labelIndexFoto = new System.Windows.Forms.Label();
             this.txtEnderecoFoto = new System.Windows.Forms.TextBox();
             this.labelFobias = new System.Windows.Forms.Label();
@@ -69,10 +73,6 @@
             this.labelRaca = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.btnAdicionarFoto = new System.Windows.Forms.Button();
-            this.btnVoltarFoto = new System.Windows.Forms.Button();
-            this.btnAvancarFoto = new System.Windows.Forms.Button();
-            this.btnRemoverFoto = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -499,6 +499,57 @@
             this.tabPage1.Text = "Informação do Animal";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnRemoverFoto
+            // 
+            this.btnRemoverFoto.Enabled = false;
+            this.btnRemoverFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverFoto.Location = new System.Drawing.Point(531, 178);
+            this.btnRemoverFoto.Name = "btnRemoverFoto";
+            this.btnRemoverFoto.Size = new System.Drawing.Size(72, 23);
+            this.btnRemoverFoto.TabIndex = 29;
+            this.btnRemoverFoto.Text = "Remover";
+            this.btnRemoverFoto.UseVisualStyleBackColor = true;
+            this.btnRemoverFoto.Click += new System.EventHandler(this.btnRemoverFoto_Click);
+            // 
+            // btnAvancarFoto
+            // 
+            this.btnAvancarFoto.Enabled = false;
+            this.btnAvancarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAvancarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAvancarFoto.Location = new System.Drawing.Point(502, 178);
+            this.btnAvancarFoto.Name = "btnAvancarFoto";
+            this.btnAvancarFoto.Size = new System.Drawing.Size(23, 23);
+            this.btnAvancarFoto.TabIndex = 28;
+            this.btnAvancarFoto.Text = "→";
+            this.btnAvancarFoto.UseVisualStyleBackColor = true;
+            this.btnAvancarFoto.Click += new System.EventHandler(this.btnAvancarFoto_Click);
+            // 
+            // btnVoltarFoto
+            // 
+            this.btnVoltarFoto.Enabled = false;
+            this.btnVoltarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltarFoto.Location = new System.Drawing.Point(452, 178);
+            this.btnVoltarFoto.Name = "btnVoltarFoto";
+            this.btnVoltarFoto.Size = new System.Drawing.Size(23, 23);
+            this.btnVoltarFoto.TabIndex = 27;
+            this.btnVoltarFoto.Text = "←";
+            this.btnVoltarFoto.UseVisualStyleBackColor = true;
+            this.btnVoltarFoto.Click += new System.EventHandler(this.btnVoltarFoto_Click);
+            // 
+            // btnAdicionarFoto
+            // 
+            this.btnAdicionarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarFoto.Location = new System.Drawing.Point(356, 178);
+            this.btnAdicionarFoto.Name = "btnAdicionarFoto";
+            this.btnAdicionarFoto.Size = new System.Drawing.Size(90, 23);
+            this.btnAdicionarFoto.TabIndex = 26;
+            this.btnAdicionarFoto.Text = "Adicionar Foto";
+            this.btnAdicionarFoto.UseVisualStyleBackColor = true;
+            this.btnAdicionarFoto.Click += new System.EventHandler(this.btnAdicionarFoto_Click);
+            // 
             // labelIndexFoto
             // 
             this.labelIndexFoto.AutoSize = true;
@@ -507,7 +558,6 @@
             this.labelIndexFoto.Name = "labelIndexFoto";
             this.labelIndexFoto.Size = new System.Drawing.Size(0, 16);
             this.labelIndexFoto.TabIndex = 21;
-            this.labelIndexFoto.TextChanged += new System.EventHandler(this.labelIndexFoto_TextChanged);
             // 
             // txtEnderecoFoto
             // 
@@ -578,56 +628,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(627, 299);
             this.tabControl1.TabIndex = 3;
-            // 
-            // btnAdicionarFoto
-            // 
-            this.btnAdicionarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarFoto.Location = new System.Drawing.Point(356, 178);
-            this.btnAdicionarFoto.Name = "btnAdicionarFoto";
-            this.btnAdicionarFoto.Size = new System.Drawing.Size(90, 23);
-            this.btnAdicionarFoto.TabIndex = 26;
-            this.btnAdicionarFoto.Text = "Adicionar Foto";
-            this.btnAdicionarFoto.UseVisualStyleBackColor = true;
-            this.btnAdicionarFoto.Click += new System.EventHandler(this.btnAdicionarFoto_Click);
-            // 
-            // btnVoltarFoto
-            // 
-            this.btnVoltarFoto.Enabled = false;
-            this.btnVoltarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltarFoto.Location = new System.Drawing.Point(452, 178);
-            this.btnVoltarFoto.Name = "btnVoltarFoto";
-            this.btnVoltarFoto.Size = new System.Drawing.Size(23, 23);
-            this.btnVoltarFoto.TabIndex = 27;
-            this.btnVoltarFoto.Text = "←";
-            this.btnVoltarFoto.UseVisualStyleBackColor = true;
-            this.btnVoltarFoto.Click += new System.EventHandler(this.btnVoltarFoto_Click);
-            // 
-            // btnAvancarFoto
-            // 
-            this.btnAvancarFoto.Enabled = false;
-            this.btnAvancarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAvancarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAvancarFoto.Location = new System.Drawing.Point(502, 178);
-            this.btnAvancarFoto.Name = "btnAvancarFoto";
-            this.btnAvancarFoto.Size = new System.Drawing.Size(23, 23);
-            this.btnAvancarFoto.TabIndex = 28;
-            this.btnAvancarFoto.Text = "→";
-            this.btnAvancarFoto.UseVisualStyleBackColor = true;
-            this.btnAvancarFoto.Click += new System.EventHandler(this.btnAvancarFoto_Click);
-            // 
-            // btnRemoverFoto
-            // 
-            this.btnRemoverFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverFoto.Location = new System.Drawing.Point(531, 178);
-            this.btnRemoverFoto.Name = "btnRemoverFoto";
-            this.btnRemoverFoto.Size = new System.Drawing.Size(72, 23);
-            this.btnRemoverFoto.TabIndex = 29;
-            this.btnRemoverFoto.Text = "Remover";
-            this.btnRemoverFoto.UseVisualStyleBackColor = true;
-            this.btnRemoverFoto.Click += new System.EventHandler(this.btnRemoverFoto_Click);
             // 
             // AdicionarEditarAnimais
             // 

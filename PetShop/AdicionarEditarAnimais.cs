@@ -36,7 +36,7 @@ namespace PetShop
         private void AdicionarEditarAnimais_Load(object sender, EventArgs e)
         {
             tabPage1.MouseMove += AdicionarEditarAnimais_MouseMove;
-            tabControl1.MouseMove += AdicionarEditarAnimais_MouseMove;          
+            tabControl1.MouseMove += AdicionarEditarAnimais_MouseMove;
             CamposObrigatorios = new Dictionary<object, string>()
             {
                 { txtNomeDonoAnimal, "Selecione o dono do animal" },
@@ -190,7 +190,7 @@ namespace PetShop
                 {
                     _ToolTip.Active = true;
                     _ToolTip.Show(_ToolTip.GetToolTip(controle), controle, controle.Width / 2, controle.Height / 2);
-                }                        
+                }
             }
             else
             {
@@ -234,7 +234,47 @@ namespace PetShop
                 if (_ToolTip.Active)
                 {
                     _ToolTip.Active = false;
-                }             
+                }
+            }
+        }
+
+        private void ControleBotoesFotografia()
+        {
+            if (Fotografias.Count == 3)
+            {
+                btnAdicionarFoto.Enabled = false;
+            }
+            if (Fotografias.Count < 3)
+            {
+                btnAdicionarFoto.Enabled = true;
+            }
+            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) >= 3 || Fotografias.Count > 0 && Fotografias.Last() == pictureBoxFotoAnimal.Image)
+            {
+                btnAvancarFoto.Enabled = false;
+            }
+            else
+            {
+                btnAvancarFoto.Enabled = true;
+            }
+            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) <= 0)
+            {
+                btnVoltarFoto.Enabled = false;
+            }
+            else
+            {
+                btnVoltarFoto.Enabled = true;
+            }
+            if (Fotografias.Count == 0)
+            {
+                btnRemoverFoto.Enabled = false;
+                pictureBoxFotoAnimal.Image = null;
+                labelIndexFoto.Text = null;
+                btnAvancarFoto.Enabled = false;
+                btnVoltarFoto.Enabled = false;
+            }
+            else
+            {
+                btnRemoverFoto.Enabled = true;
             }
         }
 
@@ -250,15 +290,11 @@ namespace PetShop
                         Fotografias.Add(Image.FromFile(openFile.FileName));
                         pictureBoxFotoAnimal.Image = Fotografias.Last();
                         labelIndexFoto.Text = (Fotografias.IndexOf(Fotografias.Last()) + 1).ToString();
-                        if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
-                        {
-                            btnAvancarFoto.Enabled = false;
-                        }
+                        ControleBotoesFotografia();
                     }
                 }
             }
         }
-
 
         private void checkSexoMacho_Click(object sender, EventArgs e)
         {
@@ -282,16 +318,12 @@ namespace PetShop
             if (ConfirmarRemover == DialogResult.Yes)
             {
                 Fotografias.Remove(pictureBoxFotoAnimal.Image);
-                if (Fotografias.Count() == 0)
-                {
-                    pictureBoxFotoAnimal.Image = null;
-                    labelIndexFoto.Text = null;
-                }
-                else
+                if (Fotografias.Count > 0)
                 {
                     pictureBoxFotoAnimal.Image = Fotografias.Last();
                     labelIndexFoto.Text = (Fotografias.IndexOf(Fotografias.Last()) + 1).ToString();
-                }                
+                }
+                ControleBotoesFotografia();
             }
         }
 
@@ -301,10 +333,7 @@ namespace PetShop
             {
                 pictureBoxFotoAnimal.Image = Fotografias[Fotografias.IndexOf(pictureBoxFotoAnimal.Image) - 1];
                 labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
-                if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) <= 0)
-                {
-                    (sender as Button).Enabled = false;
-                }
+                ControleBotoesFotografia();
             }
         }
 
@@ -314,38 +343,7 @@ namespace PetShop
             {
                 pictureBoxFotoAnimal.Image = Fotografias[Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1];
                 labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
-                if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
-                {
-                    (sender as Button).Enabled = false;
-                }
-            }
-        }
-
-        private void labelIndexFoto_TextChanged(object sender, EventArgs e)
-        {
-            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) <= 0)
-            {
-                btnVoltarFoto.Enabled = false;
-            }
-            if (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) > 0)
-            {
-                btnVoltarFoto.Enabled = true;
-            }
-            if (Fotografias.Count > 0 && Fotografias.Last() != pictureBoxFotoAnimal.Image)
-            {
-                btnAvancarFoto.Enabled = true;  
-            }
-            if (Fotografias.Last() == pictureBoxFotoAnimal.Image)
-            {
-                btnAdicionarFoto.Enabled = false;
-            }
-            if (Fotografias.Count == 3)
-            {
-                btnAdicionarFoto.Enabled = false;
-            }
-            if (Fotografias.Count < 3)
-            {
-                btnAdicionarFoto.Enabled = true;
+                ControleBotoesFotografia();
             }
         }
     }

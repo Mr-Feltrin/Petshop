@@ -65,6 +65,7 @@ namespace PetShop
                 {
                     checkSexoFemea.Checked = true;
                 }
+                SexoSelecionado.Checked = true;
                 txtEspecie.Text = animal.Especie;
                 txtRaca.Text = animal.Raca;
                 txtIdentificacao.Text = animal.Identificacao;
@@ -95,6 +96,25 @@ namespace PetShop
                 {
                     checkObcessivo.Checked = true;
                 }
+                if (animal.Fotografia1 != null)
+                {
+                    Fotografias.Add(animal.Fotografia1);
+                }
+                if (animal.Fotografia2 != null)
+                {
+                    Fotografias.Add(animal.Fotografia2);
+                }
+                if (animal.Fotografia3 != null)
+                {
+                    Fotografias.Add(animal.Fotografia3);
+                }
+                if (Fotografias.Count > 0)
+                {
+                    pictureBoxFotoAnimal.Image = Fotografias.First();
+                    labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
+                    ControleBotoesFotografia();
+                }
+                SexoSelecionado.Checked = true;
             }
 
 
@@ -141,7 +161,7 @@ namespace PetShop
         {
             if (_Operacao == TipoOperacao.Adicionar)
             {
-                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), Fotografias[0], Fotografias[1], Fotografias[2]);
+                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
                 animal.AdicionarEditarAnimal(_Operacao);
             }
             else
@@ -161,6 +181,9 @@ namespace PetShop
                 animal.Obsessivo = checkObcessivo.Checked ? "Sim" : "Não";
                 animal.ObservacaoComportamental = txtObservacaoComportamental.Text;
                 animal.ObservacaoRotina = txtObservacaoRotina.Text;
+                animal.Fotografia1 = Fotografias.ElementAtOrDefault(0);
+                animal.Fotografia2 = Fotografias.ElementAtOrDefault(1);
+                animal.Fotografia3 = Fotografias.ElementAtOrDefault(2);
                 animal.AdicionarEditarAnimal(_Operacao);
             }
             _PesquisaAnimais.AtualizarLista();
@@ -276,6 +299,10 @@ namespace PetShop
             {
                 btnRemoverFoto.Enabled = true;
             }
+            if (labelIndexFoto.Text == "")
+            {
+                labelIndexFoto.Text = (Fotografias.IndexOf(pictureBoxFotoAnimal.Image) + 1).ToString();
+            }
         }
 
         private void btnAdicionarFoto_Click(object sender, EventArgs e)
@@ -300,7 +327,7 @@ namespace PetShop
         {
             (sender as CheckBox).Checked = true;
             checkSexoFemea.Checked = false;
-            SexoSelecionado.Checked = true; ;
+            SexoSelecionado.Checked = true;
             VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
         }
 
@@ -346,5 +373,6 @@ namespace PetShop
                 ControleBotoesFotografia();
             }
         }
+
     }
 }

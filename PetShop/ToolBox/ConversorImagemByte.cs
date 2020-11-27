@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Drawing;
 
@@ -10,25 +6,33 @@ namespace PetShop.ToolBox
 {
     public static class ConversorImagemByte
     {
-        public static byte[] ImageToStream(string filePath)
+        public static byte[] ImageToStream(Image image)
         {
             MemoryStream stream = new MemoryStream();
             try
             {
-                Bitmap image = new Bitmap(filePath);
-                image.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                Bitmap bitmapImage = new Bitmap(image);
+                bitmapImage.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             catch (Exception e)
             {
-                return null;
+                throw new Exception(e.Message);
             }
             return stream.ToArray();
         }
 
         public static Bitmap RetrieveImage(byte[] image)
         {
-            MemoryStream stream = new MemoryStream(image);
-            return new Bitmap(stream);
+            MemoryStream stream = new MemoryStream();
+            try
+            {
+                stream.Write(image, 0, image.Length);
+                return new Bitmap(stream);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

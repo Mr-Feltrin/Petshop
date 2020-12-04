@@ -62,11 +62,13 @@
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
             this.txtEspecie = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureFotosAnimal = new System.Windows.Forms.PictureBox();
+            this.pictureFotoAnimal = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.txtSexo = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
+            this.labelIndexFoto = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -85,9 +87,10 @@
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureFotosAnimal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureFotoAnimal)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.tableLayoutPanel15.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -336,6 +339,7 @@
             this.groupBox2.Controls.Add(this.tableLayoutPanel9);
             this.groupBox2.Controls.Add(this.tableLayoutPanel8);
             this.groupBox2.Controls.Add(this.tableLayoutPanel7);
+            this.groupBox2.Controls.Add(this.tableLayoutPanel15);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 236);
             this.groupBox2.Name = "groupBox2";
@@ -356,7 +360,7 @@
             this.tableLayoutPanel12.RowCount = 1;
             this.tableLayoutPanel12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel12.Size = new System.Drawing.Size(457, 31);
-            this.tableLayoutPanel12.TabIndex = 21;
+            this.tableLayoutPanel12.TabIndex = 7;
             // 
             // txtRaca
             // 
@@ -367,7 +371,7 @@
             this.txtRaca.Name = "txtRaca";
             this.txtRaca.ReadOnly = true;
             this.txtRaca.Size = new System.Drawing.Size(451, 25);
-            this.txtRaca.TabIndex = 8;
+            this.txtRaca.TabIndex = 0;
             // 
             // tableLayoutPanel17
             // 
@@ -388,6 +392,7 @@
             this.btnAvancarFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAvancarFoto.BackColor = System.Drawing.Color.Transparent;
+            this.btnAvancarFoto.Enabled = false;
             this.btnAvancarFoto.FlatAppearance.BorderSize = 0;
             this.btnAvancarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAvancarFoto.ForeColor = System.Drawing.Color.Transparent;
@@ -395,8 +400,9 @@
             this.btnAvancarFoto.Location = new System.Drawing.Point(3, 3);
             this.btnAvancarFoto.Name = "btnAvancarFoto";
             this.btnAvancarFoto.Size = new System.Drawing.Size(26, 23);
-            this.btnAvancarFoto.TabIndex = 10;
+            this.btnAvancarFoto.TabIndex = 0;
             this.btnAvancarFoto.UseVisualStyleBackColor = false;
+            this.btnAvancarFoto.Click += new System.EventHandler(this.btnAvancarFoto_Click);
             // 
             // tableLayoutPanel16
             // 
@@ -409,13 +415,14 @@
             this.tableLayoutPanel16.RowCount = 1;
             this.tableLayoutPanel16.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel16.Size = new System.Drawing.Size(32, 32);
-            this.tableLayoutPanel16.TabIndex = 17;
+            this.tableLayoutPanel16.TabIndex = 9;
             // 
             // btnVoltarFoto
             // 
             this.btnVoltarFoto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnVoltarFoto.BackColor = System.Drawing.Color.Transparent;
+            this.btnVoltarFoto.Enabled = false;
             this.btnVoltarFoto.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
             this.btnVoltarFoto.FlatAppearance.BorderSize = 0;
             this.btnVoltarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -426,6 +433,7 @@
             this.btnVoltarFoto.Size = new System.Drawing.Size(26, 23);
             this.btnVoltarFoto.TabIndex = 11;
             this.btnVoltarFoto.UseVisualStyleBackColor = false;
+            this.btnVoltarFoto.Click += new System.EventHandler(this.btnVoltarFoto_Click);
             // 
             // tableLayoutPanel14
             // 
@@ -438,7 +446,7 @@
             this.tableLayoutPanel14.RowCount = 1;
             this.tableLayoutPanel14.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel14.Size = new System.Drawing.Size(158, 20);
-            this.tableLayoutPanel14.TabIndex = 16;
+            this.tableLayoutPanel14.TabIndex = 2;
             // 
             // label6
             // 
@@ -449,7 +457,7 @@
             this.label6.Location = new System.Drawing.Point(3, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(152, 20);
-            this.label6.TabIndex = 6;
+            this.label6.TabIndex = 0;
             this.label6.Text = "Fotos";
             // 
             // tableLayoutPanel13
@@ -464,7 +472,7 @@
             this.tableLayoutPanel13.RowCount = 1;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(307, 20);
-            this.tableLayoutPanel13.TabIndex = 14;
+            this.tableLayoutPanel13.TabIndex = 6;
             // 
             // label11
             // 
@@ -475,7 +483,7 @@
             this.label11.Location = new System.Drawing.Point(3, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(301, 20);
-            this.label11.TabIndex = 1;
+            this.label11.TabIndex = 0;
             this.label11.Text = "Raça";
             // 
             // tableLayoutPanel11
@@ -488,7 +496,7 @@
             this.tableLayoutPanel11.RowCount = 1;
             this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel11.Size = new System.Drawing.Size(65, 20);
-            this.tableLayoutPanel11.TabIndex = 7;
+            this.tableLayoutPanel11.TabIndex = 4;
             // 
             // label7
             // 
@@ -499,7 +507,7 @@
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 20);
-            this.label7.TabIndex = 7;
+            this.label7.TabIndex = 0;
             this.label7.Text = "Espécie";
             // 
             // tableLayoutPanel10
@@ -515,7 +523,7 @@
             this.tableLayoutPanel10.RowCount = 1;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel10.Size = new System.Drawing.Size(308, 31);
-            this.tableLayoutPanel10.TabIndex = 6;
+            this.tableLayoutPanel10.TabIndex = 5;
             // 
             // txtEspecie
             // 
@@ -526,7 +534,7 @@
             this.txtEspecie.Name = "txtEspecie";
             this.txtEspecie.ReadOnly = true;
             this.txtEspecie.Size = new System.Drawing.Size(294, 25);
-            this.txtEspecie.TabIndex = 5;
+            this.txtEspecie.TabIndex = 0;
             // 
             // tableLayoutPanel9
             // 
@@ -534,23 +542,24 @@
             this.tableLayoutPanel9.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel9.ColumnCount = 1;
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.pictureFotosAnimal, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.pictureFotoAnimal, 0, 0);
             this.tableLayoutPanel9.Location = new System.Drawing.Point(315, 51);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 1;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.Size = new System.Drawing.Size(148, 91);
-            this.tableLayoutPanel9.TabIndex = 5;
+            this.tableLayoutPanel9.TabIndex = 8;
             // 
-            // pictureFotosAnimal
+            // pictureFotoAnimal
             // 
-            this.pictureFotosAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureFotosAnimal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureFotosAnimal.Location = new System.Drawing.Point(4, 4);
-            this.pictureFotosAnimal.Name = "pictureFotosAnimal";
-            this.pictureFotosAnimal.Size = new System.Drawing.Size(140, 83);
-            this.pictureFotosAnimal.TabIndex = 0;
-            this.pictureFotosAnimal.TabStop = false;
+            this.pictureFotoAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureFotoAnimal.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.pictureFotoAnimal.Location = new System.Drawing.Point(4, 4);
+            this.pictureFotoAnimal.Name = "pictureFotoAnimal";
+            this.pictureFotoAnimal.Size = new System.Drawing.Size(140, 83);
+            this.pictureFotoAnimal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureFotoAnimal.TabIndex = 0;
+            this.pictureFotoAnimal.TabStop = false;
             // 
             // tableLayoutPanel8
             // 
@@ -565,7 +574,7 @@
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel8.Size = new System.Drawing.Size(308, 31);
-            this.tableLayoutPanel8.TabIndex = 4;
+            this.tableLayoutPanel8.TabIndex = 3;
             // 
             // txtSexo
             // 
@@ -576,7 +585,7 @@
             this.txtSexo.Name = "txtSexo";
             this.txtSexo.ReadOnly = true;
             this.txtSexo.Size = new System.Drawing.Size(294, 25);
-            this.txtSexo.TabIndex = 5;
+            this.txtSexo.TabIndex = 0;
             // 
             // tableLayoutPanel7
             // 
@@ -601,8 +610,33 @@
             this.label5.Location = new System.Drawing.Point(3, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 20);
-            this.label5.TabIndex = 1;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Sexo";
+            // 
+            // tableLayoutPanel15
+            // 
+            this.tableLayoutPanel15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel15.ColumnCount = 1;
+            this.tableLayoutPanel15.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Controls.Add(this.labelIndexFoto, 0, 0);
+            this.tableLayoutPanel15.Location = new System.Drawing.Point(378, 151);
+            this.tableLayoutPanel15.Name = "tableLayoutPanel15";
+            this.tableLayoutPanel15.RowCount = 1;
+            this.tableLayoutPanel15.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel15.Size = new System.Drawing.Size(21, 19);
+            this.tableLayoutPanel15.TabIndex = 19;
+            // 
+            // labelIndexFoto
+            // 
+            this.labelIndexFoto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelIndexFoto.AutoSize = true;
+            this.labelIndexFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelIndexFoto.Location = new System.Drawing.Point(3, 0);
+            this.labelIndexFoto.Name = "labelIndexFoto";
+            this.labelIndexFoto.Size = new System.Drawing.Size(15, 19);
+            this.labelIndexFoto.TabIndex = 10;
             // 
             // btnSalvar
             // 
@@ -622,8 +656,6 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            this.btnSalvar.MouseEnter += new System.EventHandler(this.btnSalvar_MouseEnter);
-            this.btnSalvar.MouseLeave += new System.EventHandler(this.btnSalvar_MouseLeave);
             // 
             // btnSair
             // 
@@ -689,11 +721,13 @@
             this.tableLayoutPanel10.ResumeLayout(false);
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureFotosAnimal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureFotoAnimal)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.tableLayoutPanel15.ResumeLayout(false);
+            this.tableLayoutPanel15.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -707,7 +741,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label;
-        private System.Windows.Forms.TextBox txtNomeAnimal;
         private System.Windows.Forms.DateTimePicker dateDataAgendamento;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -724,7 +757,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
         private System.Windows.Forms.TextBox txtEspecie;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
-        private System.Windows.Forms.PictureBox pictureFotosAnimal;
+        private System.Windows.Forms.PictureBox pictureFotoAnimal;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnVoltarFoto;
         private System.Windows.Forms.Button btnAvancarFoto;
@@ -740,5 +773,8 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;
         internal System.Windows.Forms.TextBox txtCliente;
+        private System.Windows.Forms.Label labelIndexFoto;
+        public System.Windows.Forms.TextBox txtNomeAnimal;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
     }
 }

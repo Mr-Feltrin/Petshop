@@ -60,7 +60,7 @@
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.Label_pesquisar_cliente_nome);
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(14, 11);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
-            this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(812, 65);
+            this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(796, 65);
             this.groupBox_pesquisar_nome_cliente.TabIndex = 13;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
@@ -87,7 +87,7 @@
             // 
             this.pesquisaNomeAnimal.Location = new System.Drawing.Point(379, 34);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
-            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(427, 20);
+            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(411, 20);
             this.pesquisaNomeAnimal.TabIndex = 10;
             this.pesquisaNomeAnimal.TextChanged += new System.EventHandler(this.pesquisaNomeAnimal_TextChanged);
             // 
@@ -108,11 +108,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.AutoSize = true;
             this.btnImprimir.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimir.Enabled = false;
             this.btnImprimir.FlatAppearance.BorderSize = 0;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.Image = global::PetShop.Properties.Resources.imprimir_list;
-            this.btnImprimir.Location = new System.Drawing.Point(1043, 17);
+            this.btnImprimir.Location = new System.Drawing.Point(1042, 17);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(72, 59);
             this.btnImprimir.TabIndex = 12;
@@ -128,13 +129,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcluir.AutoSize = true;
             this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcluir.Enabled = false;
             this.btnExcluir.FlatAppearance.BorderSize = 0;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Image = global::PetShop.Properties.Resources.deletar_list;
-            this.btnExcluir.Location = new System.Drawing.Point(976, 17);
+            this.btnExcluir.Location = new System.Drawing.Point(975, 17);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(61, 57);
+            this.btnExcluir.Size = new System.Drawing.Size(61, 59);
             this.btnExcluir.TabIndex = 10;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -149,13 +151,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditar.AutoSize = true;
             this.btnEditar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditar.Enabled = false;
             this.btnEditar.FlatAppearance.BorderSize = 0;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.Image = global::PetShop.Properties.Resources.editar_list;
-            this.btnEditar.Location = new System.Drawing.Point(915, 17);
+            this.btnEditar.Location = new System.Drawing.Point(913, 17);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(56, 57);
+            this.btnEditar.Size = new System.Drawing.Size(56, 59);
             this.btnEditar.TabIndex = 11;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -174,9 +177,9 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.Image = global::PetShop.Properties.Resources.adicionar_list;
-            this.btnAdicionar.Location = new System.Drawing.Point(832, 17);
+            this.btnAdicionar.Location = new System.Drawing.Point(826, 17);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(79, 57);
+            this.btnAdicionar.Size = new System.Drawing.Size(79, 59);
             this.btnAdicionar.TabIndex = 9;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -242,18 +245,20 @@
             this.listaAnimais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaAnimais.Size = new System.Drawing.Size(1088, 600);
             this.listaAnimais.TabIndex = 1;
+            this.listaAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellClick);
             this.listaAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellDoubleClick);
+            this.listaAnimais.Sorted += new System.EventHandler(this.listaAnimais_Sorted);
             // 
             // PesquisaAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 716);
+            this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.btnEditar);
-            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.groupBox_tabela_usuarios);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

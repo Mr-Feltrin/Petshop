@@ -160,6 +160,35 @@ namespace PetShop.Entities
             return dta;
         }
 
+        public static DataTable ListarAnimais(int idCliente)
+        {
+            DataTable dta = new DataTable();
+            try
+            {
+                connection.Open();
+                SqlCeCommand comando = connection.CreateCommand();
+                comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id WHERE Animal.ClienteId = @ClienteId";
+                comando.Parameters.AddWithValue("@ClienteId", idCliente);
+                comando.ExecuteNonQuery();
+                SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
+                dataadp.Fill(dta);
+                dta.Columns["Especie"].ColumnName = "Espécie";
+                dta.Columns["Raca"].ColumnName = "Raça";
+                dta.Columns["Identificacao"].ColumnName = "Identificação";
+                dta.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
+                dta.Columns["Data_registro"].ColumnName = "Data de Registro";
+            }
+            catch (SqlCeException ex)
+            {
+                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return dta;
+        }
+
         public static DataTable ListarRacas()
         {
             DataTable table = new DataTable();

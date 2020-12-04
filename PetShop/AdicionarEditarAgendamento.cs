@@ -1,6 +1,7 @@
 ﻿using Microsoft.SqlServer.Server;
 using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,62 +18,68 @@ namespace PetShop
     public partial class AdicionarEditarAgendamento : Form
     {
         ToolTip _toolTip = new ToolTip();
-        Control _currentToolTipControl = null;
-        public Cliente cliente;
-        public Animal animal;
+        public Cliente cliente { get; set; }
+        public Animal animal { get; set; }
+        private Dictionary<object, string> CamposObrigatorios;
+        private List<Image> FotosAnimal = new List<Image>();
+        private Button BtnPesquisarAnimal;
+        private Button BtnPesquisarCliente;
+        private TipoOperacao Operacao;
+        private readonly Agenda _Agenda;
 
-        public AdicionarEditarAgendamento()
+        public AdicionarEditarAgendamento(TipoOperacao operacao, Agenda agenda)
         {
             InitializeComponent();
-            _toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
+            Operacao = operacao;
         }
 
         private void AdicionarEditarAgendamento_Load(object sender, EventArgs e)
         {
+            _toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
+            CamposObrigatorios = new Dictionary<object, string>()
+            {
+                { txtCliente, "Selecione o cliente" },
+                { txtTipoProcedimento, "Preencha o Tipo de Procedimento" },
+                { txtNomeAnimal, "Selecione o animal" }
+            };
+            tableLayoutPanel4.MouseMove += AdicionarEditarAgendamento_MouseMove;
+            tableLayoutPanel6.MouseMove += AdicionarEditarAgendamento_MouseMove;
             // Criação de botão na textbox txtCliente
-            Button btnPesquisarCliente = new Button();
-            btnPesquisarCliente.Size = new Size(25, txtCliente.ClientSize.Height);
-            btnPesquisarCliente.Dock = DockStyle.Right;
-            btnPesquisarCliente.Cursor = Cursors.Default;
-            btnPesquisarCliente.Image = Properties.Resources.icons8_Browse_Folder_20px_1;
-            btnPesquisarCliente.ImageAlign = ContentAlignment.MiddleCenter;
-            btnPesquisarCliente.FlatStyle = FlatStyle.Flat;
-            btnPesquisarCliente.ForeColor = Color.White;
-            btnPesquisarCliente.BackColor = Color.Transparent;
-            btnPesquisarCliente.FlatAppearance.BorderSize = 0;
-            txtCliente.Controls.Add(btnPesquisarCliente);
-            btnPesquisarCliente.Click += new EventHandler(btnPesquisarCliente_Click);
+            BtnPesquisarCliente = new Button();
+            BtnPesquisarCliente.Size = new Size(25, txtCliente.ClientSize.Height);
+            BtnPesquisarCliente.Dock = DockStyle.Right;
+            BtnPesquisarCliente.Cursor = Cursors.Default;
+            BtnPesquisarCliente.Image = Properties.Resources.icons8_Browse_Folder_20px_1;
+            BtnPesquisarCliente.ImageAlign = ContentAlignment.MiddleCenter;
+            BtnPesquisarCliente.FlatStyle = FlatStyle.Flat;
+            BtnPesquisarCliente.ForeColor = Color.White;
+            BtnPesquisarCliente.BackColor = Color.Transparent;
+            BtnPesquisarCliente.FlatAppearance.BorderSize = 0;
+            txtCliente.Controls.Add(BtnPesquisarCliente);
+            BtnPesquisarCliente.Click += new EventHandler(btnPesquisarCliente_Click);
             //
             // Criação de botão na textbox txtNomeAnimal
-            Button btnPesquisarAnimal = new Button();
-            btnPesquisarAnimal.Size = new Size(25, txtCliente.ClientSize.Height);
-            btnPesquisarAnimal.Dock = DockStyle.Right;
-            btnPesquisarAnimal.Cursor = Cursors.Default;
-            btnPesquisarAnimal.Image = Properties.Resources.search;
-            btnPesquisarAnimal.ImageAlign = ContentAlignment.MiddleCenter;
-            btnPesquisarAnimal.FlatStyle = FlatStyle.Flat;
-            btnPesquisarAnimal.ForeColor = Color.White;
-            btnPesquisarAnimal.BackColor = Color.Transparent;
-            btnPesquisarAnimal.FlatAppearance.BorderSize = 0;
-            txtNomeAnimal.Controls.Add(btnPesquisarAnimal);
-            btnPesquisarAnimal.Click += new EventHandler(btnPesquisarAnimal_Click);
+            BtnPesquisarAnimal = new Button();
+            BtnPesquisarAnimal.Size = new Size(25, txtCliente.ClientSize.Height);
+            BtnPesquisarAnimal.Dock = DockStyle.Right;
+            BtnPesquisarAnimal.Cursor = Cursors.Default;
+            BtnPesquisarAnimal.Image = Properties.Resources.search;
+            BtnPesquisarAnimal.ImageAlign = ContentAlignment.MiddleCenter;
+            BtnPesquisarAnimal.FlatStyle = FlatStyle.Flat;
+            BtnPesquisarAnimal.ForeColor = Color.White;
+            BtnPesquisarAnimal.BackColor = Color.Transparent;
+            BtnPesquisarAnimal.FlatAppearance.BorderSize = 0;
+            txtNomeAnimal.Controls.Add(BtnPesquisarAnimal);
+            BtnPesquisarAnimal.Enabled = false;
+            BtnPesquisarAnimal.Click += new EventHandler(btnPesquisarAnimal_Click);
             //
-        }
-
-        private void VerificarCamposObrigatorios()
-        {
-            List<Control> CamposObrigatorios = new List<Control>() { txtCliente, txtTipoProcedimento, txtNomeAnimal };
-            foreach (Control c in CamposObrigatorios)
+            if (Operacao == TipoOperacao.Adicionar)
             {
-                if (string.IsNullOrWhiteSpace(c.Text))
-                {
-                    btnSalvar.Enabled = false;
-                    break;
-                }
-                else
-                {
-                    btnSalvar.Enabled = true;
-                }
+                Text = "Adicionar agendamento";
+            }
+            else if (Operacao == TipoOperacao.Editar)
+            {
+                Text = "Editar agendamento";
             }
         }
 
@@ -84,60 +91,107 @@ namespace PetShop
 
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
-            
+            ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal);
+            listaDeAnimais.ShowDialog();
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)
         {
-            VerificarCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
+            BtnPesquisarAnimal.Enabled = true;
+            if (animal != null && animal.ClienteId != cliente.ClienteId)
+            {
+                animal = null;
+                txtNomeAnimal.Clear();
+                txtSexo.Clear();
+                txtEspecie.Clear();
+                txtRaca.Clear();
+            }
         }
 
         private void txtTipoProcedimento_TextChanged(object sender, EventArgs e)
         {
-            VerificarCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
         }
 
         private void txtNomeAnimal_TextChanged(object sender, EventArgs e)
         {
-            VerificarCamposObrigatorios();
-        }
-
-        void MostrarToolTipEmControleDesativado(MouseEventArgs args)
-        {
-            Control control = GetChildAtPoint(args.Location);
-            if (control != null)
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
+            if (animal != null)
             {
-                if (!control.Enabled && _currentToolTipControl == null)
+                txtSexo.Text = animal.Sexo;
+                txtEspecie.Text = animal.Especie;
+                txtRaca.Text = animal.Raca;
+                if (animal.Fotografia1 != null)
                 {
-                    _toolTip.Active = true;
-                    string toolTipString = _toolTip.GetToolTip(control);
-                    _toolTip.Show(toolTipString, control, control.Width / 2, control.Height / 2);
-                    _currentToolTipControl = control;
+                    FotosAnimal.Add(animal.Fotografia1);
                 }
-            }
-            else
-            {
-                if (_currentToolTipControl != null)
+                if (animal.Fotografia2 != null)
                 {
-                    _toolTip.Active = false;
-                    _currentToolTipControl = null;
+                    FotosAnimal.Add(animal.Fotografia2);
+                }
+                if (animal.Fotografia3 != null)
+                {
+                    FotosAnimal.Add(animal.Fotografia3);
+                }
+                if (FotosAnimal.Count > 0)
+                {
+                    pictureFotoAnimal.Image = FotosAnimal.First();
+                    labelIndexFoto.Text = (FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1).ToString();
+                    ControleFotografia();
                 }
             }
         }
 
         private void AdicionarEditarAgendamento_MouseMove(object sender, MouseEventArgs e)
         {
-            MostrarToolTipEmControleDesativado(e);
+            Control controle = PesquisaControlePosicaoMouse.EncontrarControleNoCursor(this);
+            if (controle != null && !controle.Enabled)
+            {
+                if (!_toolTip.Active)
+                {
+                    _toolTip.Active = true;
+                    _toolTip.Show(_toolTip.GetToolTip(controle), controle, controle.Width / 2, controle.Height / 2);
+                }
+            }
+            else
+            {
+                if (_toolTip.Active)
+                {
+                    _toolTip.Active = false;
+                }
+            }
         }
 
-        private void btnSalvar_MouseEnter(object sender, EventArgs e)
+        private void ControleFotografia()
         {
-            if ((sender as Button).Enabled) _toolTip.SetToolTip((sender as Button), null);           
-        }
-
-        private void btnSalvar_MouseLeave(object sender, EventArgs e)
-        {
-            _toolTip.SetToolTip((sender as Button), "Preencha todos os campos obrigatórios"); //Depois a gente ve isso aqui
+            if (FotosAnimal.IndexOf(pictureFotoAnimal.Image) >= 3 || FotosAnimal.Count > 0 && FotosAnimal.Last() == pictureFotoAnimal.Image)
+            {
+                btnAvancarFoto.Enabled = false;
+            }
+            else
+            {
+                btnAvancarFoto.Enabled = true;
+            }
+            if (FotosAnimal.IndexOf(pictureFotoAnimal.Image) <= 0)
+            {
+                btnVoltarFoto.Enabled = false;
+            }
+            else
+            {
+                btnVoltarFoto.Enabled = true;
+            }
+            if (FotosAnimal.Count == 0)
+            {
+                pictureFotoAnimal.Image = null;
+                labelIndexFoto.Text = null;
+                btnAvancarFoto.Enabled = false;
+                btnVoltarFoto.Enabled = false;
+            }
+            if (labelIndexFoto.Text == "")
+            {
+                labelIndexFoto.Text = (FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1).ToString();
+            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -148,6 +202,26 @@ namespace PetShop
         private void btnSalvar_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnVoltarFoto_Click(object sender, EventArgs e)
+        {
+            if (FotosAnimal.IndexOf(pictureFotoAnimal.Image) > 0)
+            {
+                pictureFotoAnimal.Image = FotosAnimal[FotosAnimal.IndexOf(pictureFotoAnimal.Image) - 1];
+                labelIndexFoto.Text = (FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1).ToString();
+                ControleFotografia();
+            }
+        }
+
+        private void btnAvancarFoto_Click(object sender, EventArgs e)
+        {
+            if (FotosAnimal.Count > 0 && FotosAnimal.Last() != pictureFotoAnimal.Image)
+            {
+                pictureFotoAnimal.Image = FotosAnimal[FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1];
+                labelIndexFoto.Text = (FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1).ToString();
+                ControleFotografia();
+            }
         }
     }
 

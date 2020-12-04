@@ -8,9 +8,9 @@ namespace PetShop
 {
     public partial class ListaDeClientesAnimais : Form
     {
-        private AdicionarEditarAgendamento _adicionarEditarAgendamento;
-        private AdicionarEditarAnimais _adicionarEditarAnimais;
-        private TipoPesquisa _tipoPesquisa;
+        public AdicionarEditarAgendamento _adicionarEditarAgendamento { get; private set; }
+        private AdicionarEditarAnimais _adicionarEditarAnimais { get; set; }
+        private TipoPesquisa _tipoPesquisa { get; set; }
         private ListaDeClientesAnimais()
         {
             InitializeComponent();
@@ -47,11 +47,14 @@ namespace PetShop
                     _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
                 }
             }
-            else
+            else if (_tipoPesquisa == TipoPesquisa.Animal)
             {
-                // Fazer o mesmo que a operação do cliente mas com a classe de animal
+                if (_adicionarEditarAgendamento != null)
+                {
+                    _adicionarEditarAgendamento.animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                    _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento.animal.Nome;
+                }
             }
-
             Close();
         }
 
@@ -60,24 +63,62 @@ namespace PetShop
             Selecionar();
         }
 
-        private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
+        public void AtualizarLista()
         {
             if (_tipoPesquisa == TipoPesquisa.Cliente)
             {
                 dataListaClientesAnimais.DataSource = Cliente.ListarClientes();
             }
-            else
+            else if (_tipoPesquisa == TipoPesquisa.Animal)
+            {
+                if (_adicionarEditarAgendamento != null)
+                {
+                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais(_adicionarEditarAgendamento.cliente.ClienteId);
+                }
+                else if (_adicionarEditarAnimais != null)
+                {
+                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais();
+                }
+            }
+            dataListaClientesAnimais.ClearSelection();
+        }
+
+        private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
+        {
+            if (_tipoPesquisa == TipoPesquisa.Cliente)
+            {
+                Text = "Lista de Clientes";
+            }
+            else if (_tipoPesquisa == TipoPesquisa.Animal)
             {
                 Text = "Lista de Animais";
                 Icon = Resources.animal_icon;
-                btnNovoClienteAnimal.Image = Resources.addAnimal_32x32;
-                dataListaClientesAnimais.DataSource = Animal.ListarAnimais();              
             }
+            AtualizarLista();
         }
 
         private void dataListaClientesAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Selecionar();
+        }
+
+        private void dataListaClientesAnimais_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSelecionar.Enabled = true;
+        }
+
+        private void btnNovoClienteAnimal_Click(object sender, EventArgs e)
+        {
+            if (_tipoPesquisa == TipoPesquisa.Animal)
+            {
+                AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar);
+                adicionarAnimal.Show();
+            }
+            else if (_tipoPesquisa == TipoPesquisa.Cliente)
+            {
+                AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this);
+                adicionarCliente.ShowDialog();
+            }
         }
     }
 }

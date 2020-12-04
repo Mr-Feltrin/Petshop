@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Agenda));
             this.dataInicial = new System.Windows.Forms.DateTimePicker();
             this.labelDataInicial = new System.Windows.Forms.Label();
             this.dataFinal = new System.Windows.Forms.DateTimePicker();
@@ -41,183 +42,192 @@
             this.btnEditarHorario = new System.Windows.Forms.Button();
             this.btnRelatorio = new System.Windows.Forms.Button();
             this.ListaAgendamento = new System.Windows.Forms.DataGridView();
-            this.FiltroDisponibilidade = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataInicial
             // 
             this.dataInicial.CustomFormat = "dd/MM/yyyy";
-            this.dataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataInicial.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataInicial.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dataInicial.Location = new System.Drawing.Point(12, 40);
+            this.dataInicial.Location = new System.Drawing.Point(10, 38);
             this.dataInicial.Name = "dataInicial";
-            this.dataInicial.Size = new System.Drawing.Size(101, 22);
-            this.dataInicial.TabIndex = 10;
-            this.dataInicial.Value = new System.DateTime(2020, 2, 8, 0, 0, 0, 0);
+            this.dataInicial.Size = new System.Drawing.Size(109, 25);
+            this.dataInicial.TabIndex = 1;
+            this.dataInicial.Value = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
             // 
             // labelDataInicial
             // 
             this.labelDataInicial.AutoSize = true;
-            this.labelDataInicial.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataInicial.Location = new System.Drawing.Point(12, 21);
+            this.labelDataInicial.BackColor = System.Drawing.Color.Transparent;
+            this.labelDataInicial.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataInicial.Location = new System.Drawing.Point(6, 16);
             this.labelDataInicial.Name = "labelDataInicial";
-            this.labelDataInicial.Size = new System.Drawing.Size(74, 16);
-            this.labelDataInicial.TabIndex = 11;
+            this.labelDataInicial.Size = new System.Drawing.Size(83, 20);
+            this.labelDataInicial.TabIndex = 1;
             this.labelDataInicial.Text = "Data Inicial";
             // 
             // dataFinal
             // 
-            this.dataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataFinal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dataFinal.Location = new System.Drawing.Point(132, 40);
+            this.dataFinal.Location = new System.Drawing.Point(142, 39);
             this.dataFinal.Name = "dataFinal";
-            this.dataFinal.Size = new System.Drawing.Size(101, 22);
-            this.dataFinal.TabIndex = 12;
+            this.dataFinal.Size = new System.Drawing.Size(109, 25);
+            this.dataFinal.TabIndex = 2;
             // 
             // labelDataFinal
             // 
             this.labelDataFinal.AutoSize = true;
-            this.labelDataFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataFinal.Location = new System.Drawing.Point(129, 20);
+            this.labelDataFinal.BackColor = System.Drawing.Color.Transparent;
+            this.labelDataFinal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataFinal.Location = new System.Drawing.Point(138, 16);
             this.labelDataFinal.Name = "labelDataFinal";
-            this.labelDataFinal.Size = new System.Drawing.Size(69, 16);
-            this.labelDataFinal.TabIndex = 13;
+            this.labelDataFinal.Size = new System.Drawing.Size(76, 20);
+            this.labelDataFinal.TabIndex = 2;
             this.labelDataFinal.Text = "Data Final";
             // 
             // pesquisaNomeDono
             // 
-            this.pesquisaNomeDono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pesquisaNomeDono.Location = new System.Drawing.Point(254, 39);
+            this.pesquisaNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pesquisaNomeDono.Location = new System.Drawing.Point(274, 39);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
-            this.pesquisaNomeDono.Size = new System.Drawing.Size(228, 22);
-            this.pesquisaNomeDono.TabIndex = 14;
+            this.pesquisaNomeDono.Size = new System.Drawing.Size(201, 25);
+            this.pesquisaNomeDono.TabIndex = 3;
             // 
             // labelPesquisarPeloNomeDono
             // 
             this.labelPesquisarPeloNomeDono.AutoSize = true;
-            this.labelPesquisarPeloNomeDono.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarPeloNomeDono.Location = new System.Drawing.Point(251, 20);
+            this.labelPesquisarPeloNomeDono.BackColor = System.Drawing.Color.Transparent;
+            this.labelPesquisarPeloNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPesquisarPeloNomeDono.Location = new System.Drawing.Point(268, 16);
             this.labelPesquisarPeloNomeDono.Name = "labelPesquisarPeloNomeDono";
-            this.labelPesquisarPeloNomeDono.Size = new System.Drawing.Size(194, 16);
-            this.labelPesquisarPeloNomeDono.TabIndex = 15;
+            this.labelPesquisarPeloNomeDono.Size = new System.Drawing.Size(204, 20);
+            this.labelPesquisarPeloNomeDono.TabIndex = 3;
             this.labelPesquisarPeloNomeDono.Text = "Pesquisar pelo Nome do Dono";
             // 
             // pesquisaNomeAnimal
             // 
-            this.pesquisaNomeAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(505, 39);
+            this.pesquisaNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(498, 39);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
-            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(243, 22);
-            this.pesquisaNomeAnimal.TabIndex = 16;
+            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(243, 25);
+            this.pesquisaNomeAnimal.TabIndex = 4;
             // 
             // labelPesquisarPeloNomeAnimal
             // 
             this.labelPesquisarPeloNomeAnimal.AutoSize = true;
-            this.labelPesquisarPeloNomeAnimal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarPeloNomeAnimal.Location = new System.Drawing.Point(502, 21);
+            this.labelPesquisarPeloNomeAnimal.BackColor = System.Drawing.Color.Transparent;
+            this.labelPesquisarPeloNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPesquisarPeloNomeAnimal.Location = new System.Drawing.Point(494, 16);
             this.labelPesquisarPeloNomeAnimal.Name = "labelPesquisarPeloNomeAnimal";
-            this.labelPesquisarPeloNomeAnimal.Size = new System.Drawing.Size(202, 16);
-            this.labelPesquisarPeloNomeAnimal.TabIndex = 17;
+            this.labelPesquisarPeloNomeAnimal.Size = new System.Drawing.Size(215, 20);
+            this.labelPesquisarPeloNomeAnimal.TabIndex = 4;
             this.labelPesquisarPeloNomeAnimal.Text = "Pesquisar pelo Nome do Animal";
             // 
             // btnNovoHorario
             // 
             this.btnNovoHorario.AutoSize = true;
-            this.btnNovoHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovoHorario.BackColor = System.Drawing.Color.Lime;
+            this.btnNovoHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNovoHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovoHorario.Image = global::PetShop.Properties.Resources.horario_add;
-            this.btnNovoHorario.Location = new System.Drawing.Point(771, 21);
+            this.btnNovoHorario.Location = new System.Drawing.Point(771, 18);
             this.btnNovoHorario.Name = "btnNovoHorario";
             this.btnNovoHorario.Size = new System.Drawing.Size(164, 47);
-            this.btnNovoHorario.TabIndex = 18;
+            this.btnNovoHorario.TabIndex = 1;
             this.btnNovoHorario.Text = "Novo Horário";
             this.btnNovoHorario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovoHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnNovoHorario.UseVisualStyleBackColor = true;
+            this.btnNovoHorario.UseVisualStyleBackColor = false;
             this.btnNovoHorario.Click += new System.EventHandler(this.btnNovoHorario_Click);
             // 
             // btnExcluirHorario
             // 
             this.btnExcluirHorario.AutoSize = true;
-            this.btnExcluirHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btnExcluirHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirHorario.Image = global::PetShop.Properties.Resources.horario_delete;
-            this.btnExcluirHorario.Location = new System.Drawing.Point(952, 21);
+            this.btnExcluirHorario.Location = new System.Drawing.Point(952, 18);
             this.btnExcluirHorario.Name = "btnExcluirHorario";
             this.btnExcluirHorario.Size = new System.Drawing.Size(164, 47);
-            this.btnExcluirHorario.TabIndex = 19;
-            this.btnExcluirHorario.Text = "Excluir Hoirário";
+            this.btnExcluirHorario.TabIndex = 2;
+            this.btnExcluirHorario.Text = "Excluir Horário";
             this.btnExcluirHorario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluirHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluirHorario.UseVisualStyleBackColor = true;
+            this.btnExcluirHorario.UseVisualStyleBackColor = false;
             // 
             // btnEditarHorario
             // 
             this.btnEditarHorario.AutoSize = true;
-            this.btnEditarHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarHorario.BackColor = System.Drawing.Color.Yellow;
+            this.btnEditarHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarHorario.Image = global::PetShop.Properties.Resources.horario_edit;
-            this.btnEditarHorario.Location = new System.Drawing.Point(771, 79);
+            this.btnEditarHorario.Location = new System.Drawing.Point(771, 71);
             this.btnEditarHorario.Name = "btnEditarHorario";
             this.btnEditarHorario.Size = new System.Drawing.Size(164, 49);
-            this.btnEditarHorario.TabIndex = 20;
+            this.btnEditarHorario.TabIndex = 3;
             this.btnEditarHorario.Text = "Alterar Horário";
             this.btnEditarHorario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEditarHorario.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEditarHorario.UseVisualStyleBackColor = true;
+            this.btnEditarHorario.UseVisualStyleBackColor = false;
             // 
             // btnRelatorio
             // 
             this.btnRelatorio.AutoSize = true;
-            this.btnRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorio.Image = global::PetShop.Properties.Resources.printer;
-            this.btnRelatorio.Location = new System.Drawing.Point(952, 81);
+            this.btnRelatorio.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorio.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorio.Image = global::PetShop.Properties.Resources.printer32x32;
+            this.btnRelatorio.Location = new System.Drawing.Point(952, 73);
             this.btnRelatorio.Name = "btnRelatorio";
-            this.btnRelatorio.Size = new System.Drawing.Size(164, 47);
-            this.btnRelatorio.TabIndex = 21;
+            this.btnRelatorio.Size = new System.Drawing.Size(166, 47);
+            this.btnRelatorio.TabIndex = 4;
             this.btnRelatorio.Text = "Emitir Relatório";
             this.btnRelatorio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRelatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnRelatorio.UseVisualStyleBackColor = true;
+            this.btnRelatorio.UseVisualStyleBackColor = false;
             // 
             // ListaAgendamento
             // 
             this.ListaAgendamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ListaAgendamento.Location = new System.Drawing.Point(16, 136);
+            this.ListaAgendamento.Location = new System.Drawing.Point(12, 126);
             this.ListaAgendamento.Name = "ListaAgendamento";
-            this.ListaAgendamento.Size = new System.Drawing.Size(1101, 508);
-            this.ListaAgendamento.TabIndex = 33;
+            this.ListaAgendamento.Size = new System.Drawing.Size(1104, 497);
+            this.ListaAgendamento.TabIndex = 5;
             // 
-            // FiltroDisponibilidade
+            // groupBox1
             // 
-            this.FiltroDisponibilidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FiltroDisponibilidade.FormattingEnabled = true;
-            this.FiltroDisponibilidade.Items.AddRange(new object[] {
-            "Geral",
-            "Disponível",
-            "Confirmado"});
-            this.FiltroDisponibilidade.Location = new System.Drawing.Point(12, 81);
-            this.FiltroDisponibilidade.Name = "FiltroDisponibilidade";
-            this.FiltroDisponibilidade.Size = new System.Drawing.Size(144, 24);
-            this.FiltroDisponibilidade.TabIndex = 34;
+            this.groupBox1.Controls.Add(this.pesquisaNomeAnimal);
+            this.groupBox1.Controls.Add(this.labelPesquisarPeloNomeAnimal);
+            this.groupBox1.Controls.Add(this.labelDataInicial);
+            this.groupBox1.Controls.Add(this.dataInicial);
+            this.groupBox1.Controls.Add(this.pesquisaNomeDono);
+            this.groupBox1.Controls.Add(this.labelPesquisarPeloNomeDono);
+            this.groupBox1.Controls.Add(this.dataFinal);
+            this.groupBox1.Controls.Add(this.labelDataFinal);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(753, 78);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
             // 
             // Agenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1128, 656);
-            this.Controls.Add(this.FiltroDisponibilidade);
             this.Controls.Add(this.ListaAgendamento);
             this.Controls.Add(this.btnRelatorio);
             this.Controls.Add(this.btnEditarHorario);
             this.Controls.Add(this.btnExcluirHorario);
             this.Controls.Add(this.btnNovoHorario);
-            this.Controls.Add(this.labelPesquisarPeloNomeAnimal);
-            this.Controls.Add(this.pesquisaNomeAnimal);
-            this.Controls.Add(this.labelPesquisarPeloNomeDono);
-            this.Controls.Add(this.pesquisaNomeDono);
-            this.Controls.Add(this.labelDataFinal);
-            this.Controls.Add(this.dataFinal);
-            this.Controls.Add(this.labelDataInicial);
-            this.Controls.Add(this.dataInicial);
+            this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Agenda";
             this.ShowInTaskbar = false;
@@ -225,6 +235,8 @@
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Agenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ListaAgendamento)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,6 +257,6 @@
         private System.Windows.Forms.Button btnEditarHorario;
         private System.Windows.Forms.Button btnRelatorio;
         private System.Windows.Forms.DataGridView ListaAgendamento;
-        private System.Windows.Forms.ComboBox FiltroDisponibilidade;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

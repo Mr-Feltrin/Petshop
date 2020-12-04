@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data.SqlServerCe;
 using PetShop.Entities.Enums;
 using PetShop.Entities;
 using System.Collections.Generic;
-using System.Linq;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -12,8 +11,9 @@ namespace PetShop
     {
         private readonly TipoOperacao Operacao;
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
-        private Cliente _Cliente;
-        Control _currentToolTipControl;
+        private Cliente _Cliente { get; set; }
+        private ListaDeClientesAnimais _listaDeCliente { get; set; }
+        private Dictionary<object, string> CamposObrigatorios;
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -25,6 +25,13 @@ namespace PetShop
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, int idCliente) : this(operacao, pesquisaClientesFornecedores)
         {
             _Cliente = new Cliente(idCliente);
+        }
+
+        public AdicionarEditarCliente(TipoOperacao operacao, ListaDeClientesAnimais listaDeClientes)
+        {
+            InitializeComponent();
+            Operacao = operacao;
+            _listaDeCliente = listaDeClientes;
         }
 
         public static void EmptyMaskedTextBox(MaskedTextBox maskedTextBox)
@@ -88,7 +95,7 @@ namespace PetShop
                 _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
                 _Cliente.AdicionarEditarCliente(Operacao);
             }
-            else
+            else if (Operacao == TipoOperacao.Editar && _PesquisaClientesFornecedores != null)
             {
                 _Cliente.NomeCliente = txtNomeCompleto.Text;
                 _Cliente.Tipo = combBoxTipo.Text;
@@ -108,95 +115,37 @@ namespace PetShop
                 _Cliente.Observacoes = observacoes.Text;
                 _Cliente.AdicionarEditarCliente(Operacao);
             }
-            Close();
-            _PesquisaClientesFornecedores.AtualizarLista();
-        }
-
-        private void VerificaCamposObrigatorios()
-        {
-            List<object> camposObrigatorios = new List<object>() { txtNomeCompleto, combBoxTipo, txtEndereco, txtBairro, txtCidade, combBoxUf, txtCep, txtTelefonePrimario };
-            foreach (object o in camposObrigatorios)
+            if (_PesquisaClientesFornecedores != null)
             {
-                if (o.GetType() == typeof(TextBox))
-                {
-                    if (string.IsNullOrWhiteSpace((o as TextBox).Text))
-                    {
-                        btnAdicionar.Enabled = false;
-                        switch ((o as TextBox).Name)
-                        {
-                            case "txtNomeCompleto":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o nome completo do cliente");
-                                break;
-                            case "txtEndereco":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de endereço");
-                                break;
-                            case "txtBairro":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de bairro");
-                                break;
-                            case "txtCidade":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de cidade");
-                                break;
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        btnAdicionar.Enabled = true;
-                    }
-                }
-                if (o.GetType() == typeof(MaskedTextBox))
-                {
-                    if (!(o as MaskedTextBox).MaskCompleted)
-                    {
-                        btnAdicionar.Enabled = false;
-                        switch ((o as MaskedTextBox).Name)
-                        {
-                            case "txtCep":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de CEP");
-                                break;
-                            case "txtTelefonePrimario":
-                                toolTip.SetToolTip(btnAdicionar, "Preencha o campo de Telefone Primário");
-                                break;
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        btnAdicionar.Enabled = true;
-                    }
-                }
-                if (o.GetType() == typeof(ComboBox))
-                {
-                    if ((o as ComboBox).SelectedIndex == -1)
-                    {
-                        btnAdicionar.Enabled = false;
-                        switch ((o as ComboBox).Name)
-                        {
-                            case "combBoxTipo":
-                                toolTip.SetToolTip(btnAdicionar, "Selecione o tipo de Cliente");
-                                break;
-                            case "combBoxUf":
-                                toolTip.SetToolTip(btnAdicionar, "Selecione o estado do endereço");
-                                break;
-                        }
-                        break;
-                    }
-                    else
-                    {
-                        btnAdicionar.Enabled = true;
-                    }                  
-                }
+                _PesquisaClientesFornecedores.AtualizarLista();
             }
+            else if (_listaDeCliente != null)
+            {
+                _listaDeCliente.AtualizarLista();
+            }
+            Close();
+            
         }
 
         private void AdicionarEditarCliente_Load(object sender, EventArgs e)
         {
+            CamposObrigatorios = new Dictionary<object, string>
+            {
+                { txtNomeCompleto, "Preencha o nome do cliente" },
+                { combBoxTipo, "Selecione o tipo de cliente" },
+                { txtEndereco, "Preencha o campo de endereço" },
+                { txtBairro, "Preencha o campo de bairro" },
+                { txtCidade, "Preencha o campo de cidade" },
+                { combBoxUf, "Selecione o estado" },
+                { txtCep, "Preencha o campo de CEP" },
+                { txtTelefonePrimario, "Preencha o campo de telefone" }
+            };
+            toolTip.SetToolTip(btnAdicionar, "Preencha todos os campos obrigatórios");
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar Cliente";
-                toolTip.SetToolTip(btnAdicionar, "Preencha todos os campos obrigatórios");
             }
-            else
+            else if (Operacao == TipoOperacao.Editar)
             {
                 Text = "Editar Cliente";
                 txtNomeCompleto.Text = _Cliente.NomeCliente;
@@ -220,75 +169,72 @@ namespace PetShop
 
         private void AdicionarEditarCliente_MouseMove(object sender, MouseEventArgs e)
         {
-            Control control = GetChildAtPoint(e.Location);
-            if (control != null)
+            Control control = PesquisaControlePosicaoMouse.EncontrarControleNoCursor(this);
+            if (control != null && !control.Enabled)
             {
-                if (!control.Enabled && _currentToolTipControl == null)
+                if (!toolTip.Active)
                 {
                     toolTip.Active = true;
-                    string toolTipString = toolTip.GetToolTip(control);
-                    toolTip.Show(toolTipString, control, control.Width / 2, control.Height / 2);
-                    _currentToolTipControl = control;
+                    toolTip.Show(toolTip.GetToolTip(control), control, control.Width / 2, control.Height / 2);
                 }
             }
             else
             {
-                if (_currentToolTipControl != null)
+                if (toolTip.Active)
                 {
                     toolTip.Active = false;
-                    _currentToolTipControl = null;
                 }
             }
         }
 
         private void txtNomeCompleto_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void txtEndereco_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void txtBairro_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void txtCidade_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void combBoxTipo_Click(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void combBoxUf_Click(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void txtCep_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void txtTelefonePrimario_TextChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void combBoxTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void combBoxUf_SelectedIndexChanged(object sender, EventArgs e)
         {
-            VerificaCamposObrigatorios();
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }
 
         private void btnAdicionar_MouseEnter(object sender, EventArgs e)

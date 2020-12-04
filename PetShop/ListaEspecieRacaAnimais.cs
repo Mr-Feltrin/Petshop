@@ -38,6 +38,7 @@ namespace PetShop
                 groupBoxPesquisa.Text = "Pesquisar Espécie";
                 dataListaEspecieRaca.DataSource = Animal.ListarEspecies();
             }
+            dataListaEspecieRaca.ClearSelection();
         }
 
         private void PesquisarEspecieRaca()
@@ -58,32 +59,37 @@ namespace PetShop
             Close();
         }
 
-        private void dataListaEspecieRaca_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //btnSelecionar.Enabled = true;
-        }
-
         private void dataListaEspecieRaca_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             btnSelecionar.Enabled = true;
         }
 
-        private void btnSelecionar_Click(object sender, EventArgs e)
+        private void EspecieRacaSelecionado()
         {
             if (_TipoPesquisa == TipoPesquisa.Raca)
             {
-                _AdicionarEditarAnimais.txtRaca.Text = dataListaEspecieRaca.Rows[0].Cells[0].Value.ToString();
+                _AdicionarEditarAnimais.txtRaca.Text = dataListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
             }
             else if (_TipoPesquisa == TipoPesquisa.Especie)
             {
-                _AdicionarEditarAnimais.txtEspecie.Text = dataListaEspecieRaca.Rows[0].Cells[0].Value.ToString();
+                _AdicionarEditarAnimais.txtEspecie.Text = dataListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
             }
-            Close();          
+            Close();
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            EspecieRacaSelecionado();
         }
 
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             PesquisarEspecieRaca();
+        }
+
+        private void dataListaEspecieRaca_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EspecieRacaSelecionado();
         }
     }
 }

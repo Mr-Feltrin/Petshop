@@ -11,8 +11,9 @@ namespace PetShop
 {
     public partial class AdicionarEditarAnimais : Form
     {
-        public Cliente cliente;
+        public Cliente cliente { get; set; }
         readonly PesquisaAnimais _PesquisaAnimais;
+        readonly ListaDeClientesAnimais _ListaDeClientesAnimais;
         readonly TipoOperacao _Operacao;
         Animal animal;
         ToolTip _ToolTip = new ToolTip();
@@ -33,6 +34,13 @@ namespace PetShop
             cliente = new Cliente(animal.ClienteId);
         }
 
+        public AdicionarEditarAnimais(ListaDeClientesAnimais listaDeClientesAnimais, TipoOperacao operacao)
+        {
+            InitializeComponent();
+            _ListaDeClientesAnimais = listaDeClientesAnimais;
+            _Operacao = operacao;
+        }
+
         private void AdicionarEditarAnimais_Load(object sender, EventArgs e)
         {
             tabPage1.MouseMove += AdicionarEditarAnimais_MouseMove;
@@ -49,9 +57,14 @@ namespace PetShop
             _ToolTip.SetToolTip(btnAdicionarFoto, "Numero máximo de fotos atingido (3)");
             if (_Operacao == TipoOperacao.Adicionar)
             {
+                if (_ListaDeClientesAnimais != null)
+                {
+                    cliente = (_ListaDeClientesAnimais._adicionarEditarAgendamento.cliente);
+                    txtNomeDonoAnimal.Text = cliente.NomeCliente;
+                }
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
-            else
+            else if (_Operacao == TipoOperacao.Editar)
             {
                 Text = "Editar Animal";
                 txtDataRegistroAnimal.Text = animal.DataRegistro.ToString("dd/MM/yyyy");
@@ -186,9 +199,15 @@ namespace PetShop
                 animal.Fotografia3 = Fotografias.ElementAtOrDefault(2);
                 animal.AdicionarEditarAnimal(_Operacao);
             }
-            _PesquisaAnimais.AtualizarLista();
+            if (_PesquisaAnimais != null)
+            {
+                _PesquisaAnimais.AtualizarLista();
+            }
+            if (_ListaDeClientesAnimais != null)
+            {
+                _ListaDeClientesAnimais.AtualizarLista();
+            }
             Close();
-
         }
 
         private void btnPesquisarRaca_Click(object sender, EventArgs e)

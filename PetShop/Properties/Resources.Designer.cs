@@ -363,6 +363,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap printer32x32 {
+            get {
+                object obj = ResourceManager.GetObject("printer32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap produtos30x30 {
             get {
                 object obj = ResourceManager.GetObject("produtos30x30", resourceCulture);

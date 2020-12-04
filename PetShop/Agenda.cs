@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
+using PetShop.Entities.Enums;
 
 namespace PetShop
 {
@@ -20,15 +15,13 @@ namespace PetShop
 
         private void Agenda_Load(object sender, EventArgs e)
         {
-            FiltroDisponibilidade.SelectedText = "Geral";
             dataInicial.Value = DateTime.Now;
             dataFinal.Value = DateTime.Now.AddMonths(1);
-
         }
 
         private void btnNovoHorario_Click(object sender, EventArgs e)
         {
-            AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento();
+            AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this);
             AdicionarAgendamento.ShowDialog();
         }
     }

@@ -100,12 +100,14 @@
             this.dataListaClientesAnimais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListaClientesAnimais.Size = new System.Drawing.Size(688, 489);
             this.dataListaClientesAnimais.TabIndex = 1;
+            this.dataListaClientesAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaClientesAnimais_CellClick);
             this.dataListaClientesAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaClientesAnimais_CellDoubleClick);
             // 
             // btnSelecionar
             // 
             this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSelecionar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnSelecionar.Enabled = false;
             this.btnSelecionar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
             this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelecionar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -154,6 +156,7 @@
             this.btnNovoClienteAnimal.TabIndex = 12;
             this.btnNovoClienteAnimal.Text = "Novo";
             this.btnNovoClienteAnimal.UseVisualStyleBackColor = false;
+            this.btnNovoClienteAnimal.Click += new System.EventHandler(this.btnNovoClienteAnimal_Click);
             // 
             // ListaDeClientesAnimais
             // 

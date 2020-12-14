@@ -102,8 +102,9 @@
             this.dataListaEspecieRaca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataListaEspecieRaca.Size = new System.Drawing.Size(688, 503);
             this.dataListaEspecieRaca.TabIndex = 1;
+            this.dataListaEspecieRaca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellClick);
             this.dataListaEspecieRaca.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellDoubleClick);
-            this.dataListaEspecieRaca.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellEnter);
+            this.dataListaEspecieRaca.Sorted += new System.EventHandler(this.dataListaEspecieRaca_Sorted);
             // 
             // btnSair
             // 

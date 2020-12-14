@@ -29,6 +29,8 @@ namespace PetShop
             {
                 dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
             }
+            dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
+            dataGridViewListaClientesFornecedores.ClearSelection();
         }
 
         public void BuscarLista()
@@ -104,16 +106,15 @@ namespace PetShop
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                Text = "Pesquisa de Clientes";
+                Text = "Lista de clientes";
                 Icon = Properties.Resources.usuarios_icon;
-                dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
             }
-            else
+            else if (_TipoPesquisa == TipoPesquisa.Fornecedor)
             {
-                Text = "Pesquisa de Fornecedores";
+                Text = "Lista de fornecedores";
                 Icon = Properties.Resources.fornecedor_icon;
-                dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
             }
+            AtualizarLista();
         }
 
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -136,6 +137,21 @@ namespace PetShop
         private void textBoxPesquisarPeloNome_TextChanged(object sender, EventArgs e)
         {
             BuscarLista();
+        }
+
+        private void dataGridViewListaClientesFornecedores_Sorted(object sender, EventArgs e)
+        {
+            dataGridViewListaClientesFornecedores.ClearSelection();
+            btnEditarClienteFornecedor.Enabled = false;
+            btnExcluirClienteFornecedor.Enabled = false;
+            btnImprimirClienteFornecedor.Enabled = false;
+        }
+
+        private void dataGridViewListaClientesFornecedores_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditarClienteFornecedor.Enabled = true;
+            btnExcluirClienteFornecedor.Enabled = true;
+            btnImprimirClienteFornecedor.Enabled = true;
         }
     }
 }

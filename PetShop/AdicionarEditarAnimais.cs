@@ -59,7 +59,7 @@ namespace PetShop
             {
                 if (_ListaDeClientesAnimais != null)
                 {
-                    cliente = (_ListaDeClientesAnimais._adicionarEditarAgendamento.cliente);
+                    cliente = (_ListaDeClientesAnimais._adicionarEditarAgendamento._Cliente);
                     txtNomeDonoAnimal.Text = cliente.NomeCliente;
                 }
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");

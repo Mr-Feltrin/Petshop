@@ -33,12 +33,6 @@ namespace PetShop
             listaAnimais.ClearSelection();
         }
 
-        private void listaAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
-            editarAnimais.ShowDialog();
-        }
-
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (listaAnimais.SelectedRows.Count != 0)
@@ -82,6 +76,15 @@ namespace PetShop
         {
             btnEditar.Enabled = true;
             btnExcluir.Enabled = true;
+        }
+
+        private void listaAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
+                editarAnimais.ShowDialog();
+            }
         }
     }
 }

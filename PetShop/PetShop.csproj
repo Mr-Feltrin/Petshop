@@ -121,11 +121,11 @@
     <Compile Include="AdicionarEditarProdutos.Designer.cs">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Agenda.cs">
+    <Compile Include="PesquisarAgendamento.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Agenda.Designer.cs">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <Compile Include="PesquisarAgendamento.Designer.cs">
+      <DependentUpon>PesquisarAgendamento.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Agenda.cs" />
     <Compile Include="Entities\Animal.cs" />
@@ -198,8 +198,8 @@
     <EmbeddedResource Include="AdicionarEditarProdutos.resx">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Agenda.resx">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <EmbeddedResource Include="PesquisarAgendamento.resx">
+      <DependentUpon>PesquisarAgendamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListaDeClientesAnimais.resx">
       <DependentUpon>ListaDeClientesAnimais.cs</DependentUpon>
@@ -319,13 +319,6 @@
     <None Include="images\icons\agenda_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\PetShopDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Data\PetShopDatabase_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>PetShopDatabase.mdf</DependentUpon>
-    </Content>
     <Content Include="Data\PetShopDb.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

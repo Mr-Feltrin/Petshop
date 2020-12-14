@@ -1,7 +1,7 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
-using PetShop.Properties;
 using System;
+using System.Data;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -38,8 +38,8 @@ namespace PetShop
             {
                 if (_adicionarEditarAgendamento != null)
                 {
-                    _adicionarEditarAgendamento.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                    _adicionarEditarAgendamento.txtCliente.Text = _adicionarEditarAgendamento.cliente.NomeCliente;
+                    _adicionarEditarAgendamento._Cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                    _adicionarEditarAgendamento.txtCliente.Text = _adicionarEditarAgendamento._Cliente.NomeCliente;
                 }
                 else if (_adicionarEditarAnimais != null)
                 {
@@ -51,8 +51,8 @@ namespace PetShop
             {
                 if (_adicionarEditarAgendamento != null)
                 {
-                    _adicionarEditarAgendamento.animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                    _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento.animal.Nome;
+                    _adicionarEditarAgendamento._Animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                    _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento._Animal.Nome;
                 }
             }
             Close();
@@ -73,7 +73,7 @@ namespace PetShop
             {
                 if (_adicionarEditarAgendamento != null)
                 {
-                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais(_adicionarEditarAgendamento.cliente.ClienteId);
+                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais(_adicionarEditarAgendamento._Cliente.ClienteId);
                 }
                 else if (_adicionarEditarAnimais != null)
                 {
@@ -92,14 +92,18 @@ namespace PetShop
             else if (_tipoPesquisa == TipoPesquisa.Animal)
             {
                 Text = "Lista de Animais";
-                Icon = Resources.animal_icon;
+                Icon = Properties.Resources.animal_icon;
+                btnNovoClienteAnimal.Image = Properties.Resources.addAnimal_32x32;
             }
             AtualizarLista();
         }
 
         private void dataListaClientesAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Selecionar();
+            if (e.RowIndex != -1)
+            {
+                Selecionar();
+            }
         }
 
         private void dataListaClientesAnimais_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -119,6 +123,17 @@ namespace PetShop
                 AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this);
                 adicionarCliente.ShowDialog();
             }
+        }
+
+        private void dataListaClientesAnimais_Sorted(object sender, EventArgs e)
+        {
+            btnSelecionar.Enabled = false;
+            dataListaClientesAnimais.ClearSelection();
+        }
+
+        private void txtPesquisarClienteAnimal_TextChanged(object sender, EventArgs e)
+        {
+            (dataListaClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarClienteAnimal.Text + "%'");
         }
     }
 }

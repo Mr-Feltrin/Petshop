@@ -82,15 +82,12 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEdita
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarCliente.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarFornecedor.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarProdutos.resources
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.Agenda.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaProdutos.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.TelaPrincipal.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisaClientesFornecedores.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCompileInputs.cache
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDatabase.mdf
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDatabase_log.ldf
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.Data.SqlServerCe.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Data\PetShopDb.sdf
 C:\Users\rasou\Downloads\Petshop-3d52d892963d56ab2586215de32b2818e5639d0c\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
@@ -119,3 +116,4 @@ C:\Users\rasou\Downloads\Petshop-3d52d892963d56ab2586215de32b2818e5639d0c\PetSho
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarAgendamento.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaDeClientesAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaEspecieRacaAnimais.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisarAgendamento.resources

@@ -1,21 +1,173 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlServerCe;
+using System.Windows.Forms;
+using PetShop.Entities.Enums;
 
 namespace PetShop.Entities
 {
     class Agenda
     {
+        private static SqlCeConnection Connection;
         public int IdAgenda { get; set; }
         public DateTime DataAgendamento { get; set; }
         public string Procedimento { get; set; }
-        public Cliente Cliente { get; set; }
-        public TimeSpan Horario { get; set; }
+        public Cliente ClienteId { get; set; }
+        public Animal AnimalId { get; set; }
+        public string Horario { get; set; }
 
+        public Agenda(DateTime dataAgendamento, string procedimento, Cliente clienteId, Animal animalId, string horario)
+        {
+            DataAgendamento = dataAgendamento;
+            Procedimento = procedimento;
+            ClienteId = clienteId;
+            AnimalId = animalId;
+            Horario = horario;
+        }
 
+        public Agenda(int id)
+        {
+            BuscarAgendamento(id);
+        }
 
+        private void BuscarAgendamento(int id)
+        {
+            using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+            {
+                try
+                {
+                    Connection.Open();
+                    SqlCeCommand Command = Connection.CreateCommand();
+                    Command.CommandText = "SELECT * FROM Agenda WHERE Id = @Id";
+                    Command.Parameters.AddWithValue("@Id", id);
+                    using (SqlCeDataReader Reader = Command.ExecuteReader())
+                    {
+                        while (Reader.Read())
+                        {
+                            IdAgenda = (int)Reader["Id"];
+                            DataAgendamento = DateTime.Parse(Reader["Data"].ToString());
+                            Procedimento = Reader["Procedimento"].ToString();
+                            ClienteId = new Cliente((int)Reader["ClienteId"]);
+                            AnimalId = new Animal((int)Reader["AnimalId"]);
+                            Horario = Reader["Horario"].ToString();
+                        }
+                    }
+                }
+                catch (SqlCeException sqlException)
+                {
+                    MessageBox.Show($"Falha no banco de dados: {sqlException.Message}");
+                }
+            }
+        }
 
+        public void AdicionarEditarAgendamento(TipoOperacao operacao)
+        {
+            using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+            {
+                try
+                {
+                    Connection.Open();
+                    SqlCeCommand Command = Connection.CreateCommand();
+                    if (operacao == TipoOperacao.Adicionar)
+                    {
+                        Command.CommandText = "INSERT INTO Agenda (Data, Procedimento, ClienteId, AnimalId, Horario) VALUES (@Data, @Procedimento, @ClienteId, @AnimalId, @Horario )";
+                    }
+                    else if (operacao == TipoOperacao.Editar)
+                    {
+                        Command.CommandText = "UPDATE Agenda SET Data = @Data, Procedimento = @Procedimento, ClienteId = @ClienteId, AnimalId = @AnimalId, Horario = @Horario WHERE Id = @Id";
+                        Command.Parameters.AddWithValue("@Id", IdAgenda);
+                    }
+                    Command.Parameters.AddWithValue("@Data", DataAgendamento);
+                    Command.Parameters.AddWithValue("@Procedimento", Procedimento);
+                    Command.Parameters.AddWithValue("@ClienteId", ClienteId.ClienteId);
+                    Command.Parameters.AddWithValue("@AnimalId", AnimalId.AnimalId);
+                    Command.Parameters.AddWithValue("@Horario", Horario);
+                    if (Command.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("O agendamento foi salvo", "Salvar Agendamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (SqlCeException e)
+                {
+                    MessageBox.Show($"Erro ao inserir no banco de dados: {e.Message}");
+                }
+            }
+        }
+
+        public static void RemoverAgendamento(int id)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Agenda WHERE Id = @Id";
+                    command.Parameters.AddWithValue("@Id", id);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        MessageBox.Show("Agendamento removido", "Remover agendamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Falha ao acessar o banco de dados: {e.Message}");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Falha na aplicação: {e.Message}");
+            }
+        }
+
+        public static DataTable ListarAgendamentos()
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal, Agenda.Horario FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id";
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter sqlCeData = new SqlCeDataAdapter(command);
+                    sqlCeData.Fill(data);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro ao acessar o banco de dados: {e.Message},", "Erro ao exibir agendamentos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return data;
+        }
+
+        public static DataTable ListarAgendamentos(DateTime dataInicial, DateTime DataFinal)
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal, Agenda.Horario FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
+                    command.Parameters.AddWithValue("@dataInicial", dataInicial.Date.ToString("dd/MM/yyyy"));
+                    command.Parameters.AddWithValue("@dataFinal", DataFinal.Date.ToString("dd/MM/yyyy"));
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    dataAdapter.Fill(data);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Falha ao listar agendamentos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Erro na aplicação: {e.Message}", "Ocorreu um erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return data;
+        }
     }
 }

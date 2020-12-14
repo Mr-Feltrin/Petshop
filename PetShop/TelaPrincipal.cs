@@ -108,7 +108,7 @@ namespace PetShop
 
         private void Botao_agenda_Click(object sender, EventArgs e)
         {
-            Agenda agenda = new Agenda();
+            PesquisarAgendamento agenda = new PesquisarAgendamento();
             agenda.ShowDialog();
         }
     }

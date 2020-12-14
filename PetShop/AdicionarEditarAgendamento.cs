@@ -1,16 +1,11 @@
-﻿using Microsoft.SqlServer.Server;
-using PetShop.Entities;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -18,19 +13,28 @@ namespace PetShop
     public partial class AdicionarEditarAgendamento : Form
     {
         ToolTip _toolTip = new ToolTip();
-        public Cliente cliente { get; set; }
-        public Animal animal { get; set; }
+        public Cliente _Cliente { get; set; }
+        public Animal _Animal { get; set; }
         private Dictionary<object, string> CamposObrigatorios;
         private List<Image> FotosAnimal = new List<Image>();
         private Button BtnPesquisarAnimal;
         private Button BtnPesquisarCliente;
-        private TipoOperacao Operacao;
-        private readonly Agenda _Agenda;
+        private TipoOperacao Operacao { get; set; }
+        private readonly PesquisarAgendamento PesquisaAgendamento;
+        private Agenda _Agenda { get; set; }
 
-        public AdicionarEditarAgendamento(TipoOperacao operacao, Agenda agenda)
+        public AdicionarEditarAgendamento(TipoOperacao operacao, PesquisarAgendamento agenda)
         {
             InitializeComponent();
             Operacao = operacao;
+            PesquisaAgendamento = agenda;
+        }
+
+        public AdicionarEditarAgendamento(TipoOperacao operacao, PesquisarAgendamento agenda, int idAgendamento) : this(operacao, agenda)
+        {
+            _Agenda = new Agenda(idAgendamento);
+            _Cliente = _Agenda.ClienteId;
+            _Animal = _Agenda.AnimalId;
         }
 
         private void AdicionarEditarAgendamento_Load(object sender, EventArgs e)
@@ -72,14 +76,44 @@ namespace PetShop
             txtNomeAnimal.Controls.Add(BtnPesquisarAnimal);
             BtnPesquisarAnimal.Enabled = false;
             BtnPesquisarAnimal.Click += new EventHandler(btnPesquisarAnimal_Click);
+            _toolTip.SetToolTip(BtnPesquisarAnimal, "Selecione o cliente");
+            txtNomeAnimal.MouseMove += AdicionarEditarAgendamento_MouseMove;
             //
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar agendamento";
+                dateHorario.Value = DateTime.Parse(DateTime.Now.ToString("HH:mm"));
+
             }
             else if (Operacao == TipoOperacao.Editar)
             {
                 Text = "Editar agendamento";
+                dateDataAgendamento.Value = _Agenda.DataAgendamento;
+                dateHorario.Value = DateTime.Parse(_Agenda.Horario, CultureInfo.InvariantCulture);
+                txtCliente.Text = _Agenda.ClienteId.NomeCliente;
+                txtTipoProcedimento.Text = _Agenda.Procedimento;
+                txtNomeAnimal.Text = _Agenda.AnimalId.Nome;
+                txtSexo.Text = _Agenda.AnimalId.Sexo;
+                txtEspecie.Text = _Agenda.AnimalId.Especie;
+                txtRaca.Text = _Agenda.AnimalId.Raca;
+                if (_Agenda.AnimalId.Fotografia1 != null)
+                {
+                    FotosAnimal.Add(_Agenda.AnimalId.Fotografia1);
+                }
+                if (_Agenda.AnimalId.Fotografia2 != null)
+                {
+                    FotosAnimal.Add(_Agenda.AnimalId.Fotografia2);
+                }
+                if (_Agenda.AnimalId.Fotografia3 != null)
+                {
+                    FotosAnimal.Add(_Agenda.AnimalId.Fotografia3);
+                }
+                if (FotosAnimal.Count > 0)
+                {
+                    pictureFotoAnimal.Image = FotosAnimal.First();
+                    labelIndexFoto.Text = (FotosAnimal.IndexOf(pictureFotoAnimal.Image) + 1).ToString();
+                    ControleFotografia();
+                }
             }
         }
 
@@ -99,9 +133,9 @@ namespace PetShop
         {
             VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
             BtnPesquisarAnimal.Enabled = true;
-            if (animal != null && animal.ClienteId != cliente.ClienteId)
+            if (_Animal != null && _Animal.ClienteId != _Cliente.ClienteId)
             {
-                animal = null;
+                _Animal = null;
                 txtNomeAnimal.Clear();
                 txtSexo.Clear();
                 txtEspecie.Clear();
@@ -117,22 +151,22 @@ namespace PetShop
         private void txtNomeAnimal_TextChanged(object sender, EventArgs e)
         {
             VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
-            if (animal != null)
+            if (_Animal != null)
             {
-                txtSexo.Text = animal.Sexo;
-                txtEspecie.Text = animal.Especie;
-                txtRaca.Text = animal.Raca;
-                if (animal.Fotografia1 != null)
+                txtSexo.Text = _Animal.Sexo;
+                txtEspecie.Text = _Animal.Especie;
+                txtRaca.Text = _Animal.Raca;
+                if (_Animal.Fotografia1 != null)
                 {
-                    FotosAnimal.Add(animal.Fotografia1);
+                    FotosAnimal.Add(_Animal.Fotografia1);
                 }
-                if (animal.Fotografia2 != null)
+                if (_Animal.Fotografia2 != null)
                 {
-                    FotosAnimal.Add(animal.Fotografia2);
+                    FotosAnimal.Add(_Animal.Fotografia2);
                 }
-                if (animal.Fotografia3 != null)
+                if (_Animal.Fotografia3 != null)
                 {
-                    FotosAnimal.Add(animal.Fotografia3);
+                    FotosAnimal.Add(_Animal.Fotografia3);
                 }
                 if (FotosAnimal.Count > 0)
                 {
@@ -201,7 +235,22 @@ namespace PetShop
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-
+            if (Operacao == TipoOperacao.Adicionar)
+            {
+                _Agenda = new Agenda(DateTime.Parse(dateDataAgendamento.Value.ToString("dd/MM/yyyy")), txtTipoProcedimento.Text, _Cliente, _Animal, dateHorario.Value.ToString("HH:mm"));
+                _Agenda.AdicionarEditarAgendamento(TipoOperacao.Adicionar);
+            }
+            else if (Operacao == TipoOperacao.Editar)
+            {
+                _Agenda.DataAgendamento = DateTime.Parse(dateDataAgendamento.Value.ToString("dd/MM/yyyy"));
+                _Agenda.Horario = dateHorario.Value.ToString("HH:mm");
+                _Agenda.ClienteId = _Cliente;
+                _Agenda.Procedimento = txtTipoProcedimento.Text;
+                _Agenda.AnimalId = _Animal;
+                _Agenda.AdicionarEditarAgendamento(Operacao);
+            }
+            PesquisaAgendamento.AtualizarLista();
+            Close();
         }
 
         private void btnVoltarFoto_Click(object sender, EventArgs e)

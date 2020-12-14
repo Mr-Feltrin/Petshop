@@ -59,11 +59,6 @@ namespace PetShop
             Close();
         }
 
-        private void dataListaEspecieRaca_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            btnSelecionar.Enabled = true;
-        }
-
         private void EspecieRacaSelecionado()
         {
             if (_TipoPesquisa == TipoPesquisa.Raca)
@@ -89,7 +84,21 @@ namespace PetShop
 
         private void dataListaEspecieRaca_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EspecieRacaSelecionado();
+            if (e.RowIndex != -1)
+            {
+                EspecieRacaSelecionado();
+            }
+        }
+
+        private void dataListaEspecieRaca_Sorted(object sender, EventArgs e)
+        {
+            dataListaEspecieRaca.ClearSelection();
+            btnSelecionar.Enabled = false;
+        }
+
+        private void dataListaEspecieRaca_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnSelecionar.Enabled = true;
         }
     }
 }

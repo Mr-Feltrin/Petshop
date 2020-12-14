@@ -323,6 +323,7 @@
             this.dateHorario.ShowUpDown = true;
             this.dateHorario.Size = new System.Drawing.Size(200, 25);
             this.dateHorario.TabIndex = 1;
+            this.dateHorario.Value = new System.DateTime(2020, 12, 8, 20, 23, 0, 0);
             // 
             // groupBox2
             // 

@@ -104,13 +104,15 @@
             this.dataGridViewListaClientesFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewListaClientesFornecedores.Size = new System.Drawing.Size(898, 455);
             this.dataGridViewListaClientesFornecedores.TabIndex = 0;
+            this.dataGridViewListaClientesFornecedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListaClientesFornecedores_CellClick);
             this.dataGridViewListaClientesFornecedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewListaClientesFornecedores_CellDoubleClick);
+            this.dataGridViewListaClientesFornecedores.Sorted += new System.EventHandler(this.dataGridViewListaClientesFornecedores_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
             // 
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.textBoxPesquisarPeloNome);
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.Label_pesquisar_cliente_nome);
-            this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(300, 10);
+            this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(12, 12);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(622, 61);
             this.groupBox_pesquisar_nome_cliente.TabIndex = 7;
@@ -141,11 +143,12 @@
             // 
             this.btnImprimirClienteFornecedor.AutoSize = true;
             this.btnImprimirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirClienteFornecedor.Enabled = false;
             this.btnImprimirClienteFornecedor.FlatAppearance.BorderSize = 0;
             this.btnImprimirClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimirClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimirClienteFornecedor.Image = global::PetShop.Properties.Resources.imprimir_list;
-            this.btnImprimirClienteFornecedor.Location = new System.Drawing.Point(223, 10);
+            this.btnImprimirClienteFornecedor.Location = new System.Drawing.Point(850, 14);
             this.btnImprimirClienteFornecedor.Name = "btnImprimirClienteFornecedor";
             this.btnImprimirClienteFornecedor.Size = new System.Drawing.Size(72, 59);
             this.btnImprimirClienteFornecedor.TabIndex = 4;
@@ -158,13 +161,14 @@
             // 
             this.btnExcluirClienteFornecedor.AutoSize = true;
             this.btnExcluirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirClienteFornecedor.Enabled = false;
             this.btnExcluirClienteFornecedor.FlatAppearance.BorderSize = 0;
             this.btnExcluirClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirClienteFornecedor.Image = global::PetShop.Properties.Resources.deletar_list;
-            this.btnExcluirClienteFornecedor.Location = new System.Drawing.Point(156, 12);
+            this.btnExcluirClienteFornecedor.Location = new System.Drawing.Point(787, 14);
             this.btnExcluirClienteFornecedor.Name = "btnExcluirClienteFornecedor";
-            this.btnExcluirClienteFornecedor.Size = new System.Drawing.Size(61, 57);
+            this.btnExcluirClienteFornecedor.Size = new System.Drawing.Size(61, 59);
             this.btnExcluirClienteFornecedor.TabIndex = 3;
             this.btnExcluirClienteFornecedor.Text = "Excluir";
             this.btnExcluirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -176,13 +180,14 @@
             // 
             this.btnEditarClienteFornecedor.AutoSize = true;
             this.btnEditarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditarClienteFornecedor.Enabled = false;
             this.btnEditarClienteFornecedor.FlatAppearance.BorderSize = 0;
             this.btnEditarClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarClienteFornecedor.Image = global::PetShop.Properties.Resources.editar_list;
-            this.btnEditarClienteFornecedor.Location = new System.Drawing.Point(95, 12);
+            this.btnEditarClienteFornecedor.Location = new System.Drawing.Point(725, 14);
             this.btnEditarClienteFornecedor.Name = "btnEditarClienteFornecedor";
-            this.btnEditarClienteFornecedor.Size = new System.Drawing.Size(56, 57);
+            this.btnEditarClienteFornecedor.Size = new System.Drawing.Size(56, 59);
             this.btnEditarClienteFornecedor.TabIndex = 3;
             this.btnEditarClienteFornecedor.Text = "Editar";
             this.btnEditarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -198,9 +203,9 @@
             this.btnAdicionarClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarClienteFornecedor.Image = global::PetShop.Properties.Resources.adicionar_list;
-            this.btnAdicionarClienteFornecedor.Location = new System.Drawing.Point(12, 12);
+            this.btnAdicionarClienteFornecedor.Location = new System.Drawing.Point(640, 14);
             this.btnAdicionarClienteFornecedor.Name = "btnAdicionarClienteFornecedor";
-            this.btnAdicionarClienteFornecedor.Size = new System.Drawing.Size(79, 57);
+            this.btnAdicionarClienteFornecedor.Size = new System.Drawing.Size(79, 59);
             this.btnAdicionarClienteFornecedor.TabIndex = 2;
             this.btnAdicionarClienteFornecedor.Text = "Adicionar";
             this.btnAdicionarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -213,12 +218,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 567);
-            this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
             this.Controls.Add(this.btnImprimirClienteFornecedor);
             this.Controls.Add(this.btnExcluirClienteFornecedor);
             this.Controls.Add(this.btnEditarClienteFornecedor);
             this.Controls.Add(this.btnAdicionarClienteFornecedor);
             this.Controls.Add(this.groupBox_tabela_usuarios);
+            this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

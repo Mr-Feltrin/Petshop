@@ -2,8 +2,9 @@
 using System.Windows.Forms;
 using PetShop.Entities.Enums;
 using PetShop.Entities;
-using System.ComponentModel;
 using System.Data;
+using System.Globalization;
+using System.Drawing;
 
 namespace PetShop
 {
@@ -25,6 +26,15 @@ namespace PetShop
             listaAgendamento.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Timer timer = new Timer();
+            timer.Interval = 3 * 60 * 1000;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
+        }
+
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            LegendaColoracaoLista();
         }
 
         private void btnNovoHorario_Click(object sender, EventArgs e)
@@ -37,6 +47,8 @@ namespace PetShop
         {
             listaAgendamento.DataSource = Agenda.ListarAgendamentos(dataInicial.Value.Date, dataFinal.Value.Date);
             listaAgendamento.ClearSelection();
+            listaAgendamento.Sort(listaAgendamento.Columns[1], System.ComponentModel.ListSortDirection.Ascending);  
+            listaAgendamento.Sort(listaAgendamento.Columns[5], System.ComponentModel.ListSortDirection.Descending);
         }
 
         private void listaAgendamento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -46,6 +58,27 @@ namespace PetShop
                 AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value);
                 editarAgendamento.ShowDialog();
             }
+        }
+
+        private void LegendaColoracaoLista()
+        {
+            foreach (DataGridViewRow row in listaAgendamento.Rows)
+            {
+                string date = $"{DateTime.Parse(row.Cells[1].Value.ToString()):dd/MM/yyyy} {row.Cells[5].Value}";
+                if (DateTime.Parse(date) <= DateTime.Now && DateTime.Parse(date).AddMinutes(15) > DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Yellow;
+                }
+                else if (DateTime.Parse(date) > DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Lime;
+                }
+                else if (DateTime.Parse(date) < DateTime.Now)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(250, 77, 77);
+                }
+                
+            }                       
         }
 
         private void listaAgendamento_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -102,6 +135,11 @@ namespace PetShop
         private void pesquisaNomeAnimal_TextChanged(object sender, EventArgs e)
         {
             (listaAgendamento.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeAnimal LIKE '%" + pesquisaNomeAnimal.Text + "%'");
+        }
+
+        private void listaAgendamento_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            LegendaColoracaoLista();
         }
     }
 }

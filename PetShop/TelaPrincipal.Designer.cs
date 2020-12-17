@@ -88,7 +88,7 @@
             this.btnMenuPesquisaClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuPesquisaClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuPesquisaClientes.Name = "btnMenuPesquisaClientes";
-            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuPesquisaClientes.Size = new System.Drawing.Size(63, 51);
             this.btnMenuPesquisaClientes.Text = "Clientes";
             this.btnMenuPesquisaClientes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuPesquisaClientes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -103,7 +103,7 @@
             this.btnMenuFornecedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnMenuFornecedores.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnMenuFornecedores.Name = "btnMenuFornecedores";
-            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 49);
+            this.btnMenuFornecedores.Size = new System.Drawing.Size(63, 51);
             this.btnMenuFornecedores.Text = "Fornece";
             this.btnMenuFornecedores.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMenuFornecedores.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -112,7 +112,7 @@
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator.Size = new System.Drawing.Size(6, 54);
             // 
             // botao_agenda
             // 
@@ -132,7 +132,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 54);
             // 
             // botao_produtos
             // 
@@ -143,7 +143,7 @@
             this.botao_produtos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.botao_produtos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.botao_produtos.Name = "botao_produtos";
-            this.botao_produtos.Size = new System.Drawing.Size(68, 49);
+            this.botao_produtos.Size = new System.Drawing.Size(68, 51);
             this.botao_produtos.Text = "Produtos";
             this.botao_produtos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.botao_produtos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -159,16 +159,16 @@
             this.btnConsultar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnConsultar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(72, 49);
+            this.btnConsultar.Size = new System.Drawing.Size(72, 51);
             this.btnConsultar.Text = "Consultar";
             this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnConsultar.ToolTipText = "Produtos";
+            this.btnConsultar.ToolTipText = "Consultar";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 54);
             // 
             // btnAnimais
             // 
@@ -183,7 +183,7 @@
             this.btnAnimais.Text = "Animais";
             this.btnAnimais.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAnimais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAnimais.ToolTipText = "Produtos";
+            this.btnAnimais.ToolTipText = "Animais";
             this.btnAnimais.Click += new System.EventHandler(this.BtnAnimais_Click);
             // 
             // toolStripButton1
@@ -199,12 +199,12 @@
             this.toolStripButton1.Text = "Vacinas";
             this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.ToolTipText = "Produtos";
+            this.toolStripButton1.ToolTipText = "Vacinas";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 52);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
             // 
             // toolStripButton2
             // 
@@ -219,7 +219,7 @@
             this.toolStripButton2.Text = "Atender";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton2.ToolTipText = "Produtos";
+            this.toolStripButton2.ToolTipText = "Atender";
             // 
             // status_rodape_principal
             // 

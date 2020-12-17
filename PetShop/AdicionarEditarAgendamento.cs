@@ -235,6 +235,21 @@ namespace PetShop
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            if (dateDataAgendamento.Value.Date < DateTime.Now.Date)
+            {
+                DialogResult add = MessageBox.Show("A data do agendamento selecionada é anterior a data atual, deseja agendar mesmo assim?", "Salvar Agendamento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (add == DialogResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    goto Salvar;
+                }
+            }
+
+        Salvar:
+
             if (Operacao == TipoOperacao.Adicionar)
             {
                 _Agenda = new Agenda(DateTime.Parse(dateDataAgendamento.Value.ToString("dd/MM/yyyy")), txtTipoProcedimento.Text, _Cliente, _Animal, dateHorario.Value.ToString("HH:mm"));

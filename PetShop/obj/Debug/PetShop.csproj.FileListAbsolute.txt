@@ -117,3 +117,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEdita
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaDeClientesAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaEspecieRacaAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisarAgendamento.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.FormNotificacao.resources

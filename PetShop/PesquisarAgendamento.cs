@@ -1,10 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
-using PetShop.Entities;
+using System;
 using System.Data;
-using System.Globalization;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -47,7 +46,7 @@ namespace PetShop
         {
             listaAgendamento.DataSource = Agenda.ListarAgendamentos(dataInicial.Value.Date, dataFinal.Value.Date);
             listaAgendamento.ClearSelection();
-            listaAgendamento.Sort(listaAgendamento.Columns[1], System.ComponentModel.ListSortDirection.Ascending);  
+            listaAgendamento.Sort(listaAgendamento.Columns[1], System.ComponentModel.ListSortDirection.Ascending);
             listaAgendamento.Sort(listaAgendamento.Columns[5], System.ComponentModel.ListSortDirection.Descending);
         }
 
@@ -77,8 +76,8 @@ namespace PetShop
                 {
                     row.DefaultCellStyle.BackColor = Color.FromArgb(250, 77, 77);
                 }
-                
-            }                       
+
+            }
         }
 
         private void listaAgendamento_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -140,6 +139,30 @@ namespace PetShop
         private void listaAgendamento_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             LegendaColoracaoLista();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormNotificacao notificacao = new FormNotificacao();
+            notificacao.ShowAlert("Teste de confirmar", TipoNotificacao.Confirmar);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormNotificacao notificacao = new FormNotificacao();
+            notificacao.ShowAlert("Teste de informação", TipoNotificacao.Informacao);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            FormNotificacao notificacao = new FormNotificacao();
+            notificacao.ShowAlert("Teste de agendamento", TipoNotificacao.Agendamento);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            FormNotificacao notificacao = new FormNotificacao();
+            notificacao.ShowAlert("Teste de erro", TipoNotificacao.Erro);
         }
     }
 }

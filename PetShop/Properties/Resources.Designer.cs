@@ -163,6 +163,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_25x25 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_25x25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cancelar {
             get {
                 object obj = ResourceManager.GetObject("cancelar", resourceCulture);
@@ -343,6 +353,36 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap information_45x45 {
+            get {
+                object obj = ResourceManager.GetObject("information_45x45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap notificacao_agendamento_45x45 {
+            get {
+                object obj = ResourceManager.GetObject("notificacao_agendamento_45x45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ok_45x45 {
+            get {
+                object obj = ResourceManager.GetObject("ok_45x45", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pesquisar_list {
             get {
                 object obj = ResourceManager.GetObject("pesquisar_list", resourceCulture);
@@ -416,6 +456,16 @@ namespace PetShop.Properties {
         internal static System.Drawing.Bitmap vacina30x30 {
             get {
                 object obj = ResourceManager.GetObject("vacina30x30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warning_45x45 {
+            get {
+                object obj = ResourceManager.GetObject("warning_45x45", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

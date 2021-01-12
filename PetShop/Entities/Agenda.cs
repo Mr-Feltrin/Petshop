@@ -14,15 +14,13 @@ namespace PetShop.Entities
         public string Procedimento { get; set; }
         public Cliente ClienteId { get; set; }
         public Animal AnimalId { get; set; }
-        public string Horario { get; set; }
 
-        public Agenda(DateTime dataAgendamento, string procedimento, Cliente clienteId, Animal animalId, string horario)
+        public Agenda(DateTime dataAgendamento, string procedimento, Cliente clienteId, Animal animalId)
         {
             DataAgendamento = dataAgendamento;
             Procedimento = procedimento;
             ClienteId = clienteId;
             AnimalId = animalId;
-            Horario = horario;
         }
 
         public Agenda(int id)
@@ -45,11 +43,10 @@ namespace PetShop.Entities
                         while (Reader.Read())
                         {
                             IdAgenda = (int)Reader["Id"];
-                            DataAgendamento = DateTime.Parse(Reader["Data"].ToString());
+                            DataAgendamento = (DateTime)Reader["Data"];
                             Procedimento = Reader["Procedimento"].ToString();
                             ClienteId = new Cliente((int)Reader["ClienteId"]);
                             AnimalId = new Animal((int)Reader["AnimalId"]);
-                            Horario = Reader["Horario"].ToString();
                         }
                     }
                 }
@@ -70,18 +67,17 @@ namespace PetShop.Entities
                     SqlCeCommand Command = Connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        Command.CommandText = "INSERT INTO Agenda (Data, Procedimento, ClienteId, AnimalId, Horario) VALUES (@Data, @Procedimento, @ClienteId, @AnimalId, @Horario )";
+                        Command.CommandText = "INSERT INTO Agenda (Data, Procedimento, ClienteId, AnimalId) VALUES (@Data, @Procedimento, @ClienteId, @AnimalId)";
                     }
                     else if (operacao == TipoOperacao.Editar)
                     {
-                        Command.CommandText = "UPDATE Agenda SET Data = @Data, Procedimento = @Procedimento, ClienteId = @ClienteId, AnimalId = @AnimalId, Horario = @Horario WHERE Id = @Id";
+                        Command.CommandText = "UPDATE Agenda SET Data = @Data, Procedimento = @Procedimento, ClienteId = @ClienteId, AnimalId = @AnimalId WHERE Id = @Id";
                         Command.Parameters.AddWithValue("@Id", IdAgenda);
                     }
                     Command.Parameters.AddWithValue("@Data", DataAgendamento);
                     Command.Parameters.AddWithValue("@Procedimento", Procedimento);
                     Command.Parameters.AddWithValue("@ClienteId", ClienteId.ClienteId);
                     Command.Parameters.AddWithValue("@AnimalId", AnimalId.AnimalId);
-                    Command.Parameters.AddWithValue("@Horario", Horario);
                     if (Command.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("O agendamento foi salvo", "Salvar Agendamento", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -129,10 +125,15 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal, Agenda.Horario FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id";
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id";
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter sqlCeData = new SqlCeDataAdapter(command);
                     sqlCeData.Fill(data);
+                    data.Columns.Add("Horario", typeof(TimeSpan));
+                    foreach (DataRow hora in data.Rows)
+                    {
+                        hora["Horario"] = new TimeSpan(((DateTime)hora["Data"]).Hour, ((DateTime)hora["Data"]).Minute, ((DateTime)hora["Data"]).Second);
+                    }
                 }
             }
             catch (SqlCeException e)
@@ -151,12 +152,17 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal, Agenda.Horario FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
-                    command.Parameters.AddWithValue("@dataInicial", dataInicial.Date.ToString("dd/MM/yyyy"));
-                    command.Parameters.AddWithValue("@dataFinal", DataFinal.Date.ToString("dd/MM/yyyy"));
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
+                    command.Parameters.AddWithValue("@dataInicial", dataInicial.Date);
+                    command.Parameters.AddWithValue("@dataFinal", DataFinal.Date + new TimeSpan(23,59,59));
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);
+                    data.Columns.Add("Horario", typeof(TimeSpan));
+                    foreach (DataRow hora in data.Rows)
+                    {
+                        hora["Horario"] = new TimeSpan(((DateTime)hora["Data"]).Hour, ((DateTime)hora["Data"]).Minute, ((DateTime)hora["Data"]).Second);
+                    }
                 }
             }
             catch (SqlCeException e)

@@ -3,6 +3,7 @@ using PetShop.Entities.Enums;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -25,9 +26,9 @@ namespace PetShop
             listaAgendamento.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Timer timer = new Timer();
+            listaAgendamento.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
+            listaAgendamento.Columns[5].DefaultCellStyle.Format = "hh\\:mm";
             timer.Interval = 3 * 60 * 1000;
-            timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
 
@@ -44,10 +45,9 @@ namespace PetShop
 
         public void AtualizarLista()
         {
-            listaAgendamento.DataSource = Agenda.ListarAgendamentos(dataInicial.Value.Date, dataFinal.Value.Date);
+            listaAgendamento.DataSource = Agenda.ListarAgendamentos(dataInicial.Value, dataFinal.Value);
             listaAgendamento.ClearSelection();
             listaAgendamento.Sort(listaAgendamento.Columns[1], System.ComponentModel.ListSortDirection.Ascending);
-            listaAgendamento.Sort(listaAgendamento.Columns[5], System.ComponentModel.ListSortDirection.Descending);
         }
 
         private void listaAgendamento_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -63,20 +63,18 @@ namespace PetShop
         {
             foreach (DataGridViewRow row in listaAgendamento.Rows)
             {
-                string date = $"{DateTime.Parse(row.Cells[1].Value.ToString()):dd/MM/yyyy} {row.Cells[5].Value}";
-                if (DateTime.Parse(date) <= DateTime.Now && DateTime.Parse(date).AddMinutes(15) > DateTime.Now)
+                if ((DateTime)row.Cells[1].Value <= DateTime.Now && ((DateTime)row.Cells[1].Value).AddMinutes(15) > DateTime.Now)
                 {
                     row.DefaultCellStyle.BackColor = Color.Yellow;
                 }
-                else if (DateTime.Parse(date) > DateTime.Now)
+                else if ((DateTime)row.Cells[1].Value > DateTime.Now)
                 {
                     row.DefaultCellStyle.BackColor = Color.Lime;
                 }
-                else if (DateTime.Parse(date) < DateTime.Now)
+                else if ((DateTime)row.Cells[1].Value < DateTime.Now)
                 {
                     row.DefaultCellStyle.BackColor = Color.FromArgb(250, 77, 77);
                 }
-
             }
         }
 
@@ -102,6 +100,10 @@ namespace PetShop
                 {
                     Agenda.RemoverAgendamento((int)listaAgendamento.SelectedRows[0].Cells[0].Value);
                     AtualizarLista();
+                    if (Application.OpenForms.OfType<TelaPrincipal>().Count() == 1)
+                    {
+                        Application.OpenForms.OfType<TelaPrincipal>().First().AtualizarAgendamentos();
+                    }
                 }
             }
         }
@@ -139,30 +141,6 @@ namespace PetShop
         private void listaAgendamento_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             LegendaColoracaoLista();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FormNotificacao notificacao = new FormNotificacao();
-            notificacao.ShowAlert("Teste de confirmar", TipoNotificacao.Confirmar);
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            FormNotificacao notificacao = new FormNotificacao();
-            notificacao.ShowAlert("Teste de informação", TipoNotificacao.Informacao);
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            FormNotificacao notificacao = new FormNotificacao();
-            notificacao.ShowAlert("Teste de agendamento", TipoNotificacao.Agendamento);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            FormNotificacao notificacao = new FormNotificacao();
-            notificacao.ShowAlert("Teste de erro", TipoNotificacao.Erro);
         }
     }
 }

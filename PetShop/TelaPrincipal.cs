@@ -1,26 +1,39 @@
 ﻿using PetShop.Entities.Enums;
 using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using PetShop.Entities;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace PetShop
 {
     public partial class TelaPrincipal : Form
     {
+        private List<DataRow> ListaAgendamentos { get; set; }
+        private DateTime DataAtual { get; set; }
+        private Dictionary<int,TimeSpan> DeployedNotificacao { get; set; }
+
         public TelaPrincipal()
         {
             InitializeComponent();
-
         }
 
         private void Tela_Principal_Load(object sender, EventArgs e)
         {
+            ListaAgendamentos = new List<DataRow>();
+            DeployedNotificacao = new Dictionary<int, TimeSpan>();
             Focus();
             menu_principal.GripStyle = ToolStripGripStyle.Hidden;
+            DataAtual = DateTime.Now.Date;
+            AtualizarAgendamentos();
+            TimerAgendamentos.Interval = 60 * 1000;
             // Verificação de data em formato completo
-            toolStripStatus_data_completa.Text = DateTime.Now.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+            toolStripStatus_data_completa.Text = DataAtual.ToString("dddd, dd 'de' MMMM 'de' yyyy");
             // Verificação de tecla Caps Lock ativa/inativa
-            if (Control.IsKeyLocked(Keys.CapsLock))
+            if (IsKeyLocked(Keys.CapsLock))
             {
                 toolStripStatus_caps_lock.ForeColor = SystemColors.ActiveCaptionText;
             }
@@ -29,7 +42,7 @@ namespace PetShop
                 toolStripStatus_caps_lock.ForeColor = SystemColors.InactiveCaption;
             }
             // Verificação de tecla Num Lock ativa/inativa
-            if (Control.IsKeyLocked(Keys.NumLock))
+            if (IsKeyLocked(Keys.NumLock))
             {
                 toolStripStatus_num_lock.ForeColor = SystemColors.ActiveCaptionText;
             }
@@ -43,6 +56,27 @@ namespace PetShop
             toolStripStatus_nome_administrador.Text = Environment.UserName;
         }
 
+        public void AtualizarAgendamentos()
+        {
+            ListaAgendamentos = Agenda.ListarAgendamentos(DateTime.Now, DateTime.Now).AsEnumerable().ToList();
+            List<int> DeleteIndex = new List<int>();
+            foreach (KeyValuePair<int, TimeSpan> dic in DeployedNotificacao)
+            {
+                if (!ListaAgendamentos.Any(value => (int)value["Id"] == dic.Key))
+                {
+                    DeleteIndex.Add(dic.Key);
+                }
+                else if (ListaAgendamentos.Any(value => (int)value["Id"] == dic.Key) && (TimeSpan)ListaAgendamentos.Where(v => (int)v["Id"] == dic.Key).Select(v => v["Horario"]).Single() != dic.Value)
+                {
+                    DeleteIndex.Add(dic.Key);
+                }
+            }
+            foreach (int key in DeleteIndex)
+            {
+                DeployedNotificacao.Remove(key);
+            }
+            toolStripStatus_agendamentos_atuais.Text = $"Agendamentos para hoje: {ListaAgendamentos.Where(data => ((DateTime)data["Data"]).Date == DateTime.Now.Date).Select(data => data).Count()}";
+        }
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
@@ -55,7 +89,7 @@ namespace PetShop
             // Verifica se tecla Caps Lock está ativa
             if ((e.KeyCode & Keys.KeyCode) == Keys.CapsLock)
             {
-                if (Control.IsKeyLocked(Keys.CapsLock))
+                if (IsKeyLocked(Keys.CapsLock))
                 {
                     toolStripStatus_caps_lock.ForeColor = SystemColors.ActiveCaptionText;
                 }
@@ -110,6 +144,33 @@ namespace PetShop
         {
             PesquisarAgendamento agenda = new PesquisarAgendamento();
             agenda.ShowDialog();
+        }
+
+        private void TimerAgendamentos_Tick(object sender, EventArgs e)
+        {
+            foreach (DataRow data in ListaAgendamentos)
+            {
+                if (!DeployedNotificacao.ContainsKey((int)data["Id"]))
+                {
+                    string dateString = $"{data["Data"]:dd/MM/yyyy} {data["Horario"]}";
+                    TimeSpan tempoRestante = DateTime.Parse(dateString) - DateTime.Now;
+                    if (tempoRestante.TotalMinutes <= 5 && tempoRestante.TotalMinutes > 0)
+                    {
+                        FormNotificacao notificacao = new FormNotificacao();
+                        notificacao.ShowAlert(((TimeSpan)data["Horario"]).ToString(@"hh\:mm"), TipoNotificacao.Agendamento);
+                        DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]) ;
+                    }
+                }           
+            }
+        }
+
+        private void timerDataAtual_Tick(object sender, EventArgs e)
+        {
+            if (DateTime.Now.Date != DataAtual.Date)
+            {
+                DataAtual = DateTime.Now.Date;
+                toolStripStatus_data_completa.Text = DataAtual.ToString("dddd, dd 'de' MMMM 'de' yyyy");
+            }
         }
     }
 }

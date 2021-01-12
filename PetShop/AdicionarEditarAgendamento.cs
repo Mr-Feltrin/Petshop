@@ -89,7 +89,7 @@ namespace PetShop
             {
                 Text = "Editar agendamento";
                 dateDataAgendamento.Value = _Agenda.DataAgendamento;
-                dateHorario.Value = DateTime.Parse(_Agenda.Horario, CultureInfo.InvariantCulture);
+                dateHorario.Value = DateTime.Parse(_Agenda.DataAgendamento.ToString("HH:mm"));
                 txtCliente.Text = _Agenda.ClienteId.NomeCliente;
                 txtTipoProcedimento.Text = _Agenda.Procedimento;
                 txtNomeAnimal.Text = _Agenda.AnimalId.Nome;
@@ -252,19 +252,22 @@ namespace PetShop
 
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Agenda = new Agenda(DateTime.Parse(dateDataAgendamento.Value.ToString("dd/MM/yyyy")), txtTipoProcedimento.Text, _Cliente, _Animal, dateHorario.Value.ToString("HH:mm"));
+                _Agenda = new Agenda(dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second), txtTipoProcedimento.Text, _Cliente, _Animal);
                 _Agenda.AdicionarEditarAgendamento(TipoOperacao.Adicionar);
             }
             else if (Operacao == TipoOperacao.Editar)
             {
-                _Agenda.DataAgendamento = DateTime.Parse(dateDataAgendamento.Value.ToString("dd/MM/yyyy"));
-                _Agenda.Horario = dateHorario.Value.ToString("HH:mm");
+                _Agenda.DataAgendamento = dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second);
                 _Agenda.ClienteId = _Cliente;
                 _Agenda.Procedimento = txtTipoProcedimento.Text;
                 _Agenda.AnimalId = _Animal;
                 _Agenda.AdicionarEditarAgendamento(Operacao);
             }
             PesquisaAgendamento.AtualizarLista();
+            if (Application.OpenForms.OfType<TelaPrincipal>().Count() == 1)
+            {
+                Application.OpenForms.OfType<TelaPrincipal>().First().AtualizarAgendamentos();
+            }
             Close();
         }
 

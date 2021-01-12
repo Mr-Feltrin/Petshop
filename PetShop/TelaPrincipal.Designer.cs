@@ -53,6 +53,8 @@
             this.toolStripStatus_nome_administrador = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_nome_sistema = new System.Windows.Forms.ToolStripStatusLabel();
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
+            this.TimerAgendamentos = new System.Windows.Forms.Timer(this.components);
+            this.timerDataAtual = new System.Windows.Forms.Timer(this.components);
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -252,7 +254,7 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(777, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(785, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -265,8 +267,8 @@
             this.toolStripStatus_agendamentos_atuais.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_agendamentos_atuais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_agendamentos_atuais.Name = "toolStripStatus_agendamentos_atuais";
-            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(192, 22);
-            this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: 0";
+            this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(184, 22);
+            this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: ";
             this.toolStripStatus_agendamentos_atuais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // toolStripStatus_num_lock
@@ -351,6 +353,16 @@
             this.horario_atual.Interval = 1000;
             this.horario_atual.Tick += new System.EventHandler(this.Horario_atual_Tick);
             // 
+            // TimerAgendamentos
+            // 
+            this.TimerAgendamentos.Enabled = true;
+            this.TimerAgendamentos.Tick += new System.EventHandler(this.TimerAgendamentos_Tick);
+            // 
+            // timerDataAtual
+            // 
+            this.timerDataAtual.Interval = 3600000;
+            this.timerDataAtual.Tick += new System.EventHandler(this.timerDataAtual_Tick);
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -402,6 +414,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.Timer TimerAgendamentos;
+        private System.Windows.Forms.Timer timerDataAtual;
     }
 }
 

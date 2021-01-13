@@ -24,7 +24,7 @@ namespace PetShop
             InitializeComponent();
         }
 
-        public void ShowAlert(string Message, TipoNotificacao tipoNotificacao)
+        public void ShowAlert(string Message, TipoNotificacao tipoNotificacao, string headerText = null)
         {
             Opacity = 0.0;
             StartPosition = FormStartPosition.Manual;
@@ -63,6 +63,7 @@ namespace PetShop
                     break;
             }
             labelNotificacao.Text = Message;
+            labelHeader.Text = headerText;
             Show();
             Notificacao = tipoNotificacao;
             Action = EnumAction.start;

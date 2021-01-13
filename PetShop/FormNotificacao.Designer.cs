@@ -34,6 +34,7 @@ namespace PetShop
             this.labelNotificacao = new System.Windows.Forms.Label();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.btnFechar = new NoFocusButton();
+            this.labelHeader = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,13 +49,13 @@ namespace PetShop
             // 
             // labelNotificacao
             // 
-            this.labelNotificacao.AutoSize = true;
-            this.labelNotificacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNotificacao.Location = new System.Drawing.Point(82, 35);
+            this.labelNotificacao.AutoEllipsis = true;
+            this.labelNotificacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNotificacao.Location = new System.Drawing.Point(73, 38);
             this.labelNotificacao.Name = "labelNotificacao";
-            this.labelNotificacao.Size = new System.Drawing.Size(87, 24);
+            this.labelNotificacao.Size = new System.Drawing.Size(257, 46);
             this.labelNotificacao.TabIndex = 5;
-            this.labelNotificacao.Text = "LabelText";
+            this.labelNotificacao.Text = "labelText";
             // 
             // timer
             // 
@@ -73,12 +74,22 @@ namespace PetShop
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // labelHeader
+            // 
+            this.labelHeader.AutoSize = true;
+            this.labelHeader.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeader.Location = new System.Drawing.Point(74, 9);
+            this.labelHeader.Name = "labelHeader";
+            this.labelHeader.Size = new System.Drawing.Size(0, 17);
+            this.labelHeader.TabIndex = 7;
+            // 
             // FormNotificacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(382, 93);
+            this.Controls.Add(this.labelHeader);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.labelNotificacao);
             this.Controls.Add(this.pictureBox);
@@ -100,5 +111,6 @@ namespace PetShop
         private System.Windows.Forms.Label labelNotificacao;
         private System.Windows.Forms.Timer timer;
         private NoFocusButton btnFechar;
+        private System.Windows.Forms.Label labelHeader;
     }
 }

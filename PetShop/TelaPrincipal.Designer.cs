@@ -254,7 +254,7 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(785, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(754, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -270,6 +270,7 @@
             this.toolStripStatus_agendamentos_atuais.Size = new System.Drawing.Size(184, 22);
             this.toolStripStatus_agendamentos_atuais.Text = "Agendamentos para hoje: ";
             this.toolStripStatus_agendamentos_atuais.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.toolStripStatus_agendamentos_atuais.Click += new System.EventHandler(this.toolStripStatus_agendamentos_atuais_Click);
             // 
             // toolStripStatus_num_lock
             // 

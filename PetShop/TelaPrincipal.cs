@@ -157,8 +157,10 @@ namespace PetShop
                     if (tempoRestante.TotalMinutes <= 5 && tempoRestante.TotalMinutes > 0)
                     {
                         FormNotificacao notificacao = new FormNotificacao();
-                        notificacao.ShowAlert(((TimeSpan)data["Horario"]).ToString(@"hh\:mm"), TipoNotificacao.Agendamento);
-                        DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]) ;
+                        notificacao.ShowAlert(data["Procedimento"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
+
+
+                         DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
                     }
                 }           
             }
@@ -171,6 +173,12 @@ namespace PetShop
                 DataAtual = DateTime.Now.Date;
                 toolStripStatus_data_completa.Text = DataAtual.ToString("dddd, dd 'de' MMMM 'de' yyyy");
             }
+        }
+
+        private void toolStripStatus_agendamentos_atuais_Click(object sender, EventArgs e)
+        {
+            PesquisarAgendamento agendamentos = new PesquisarAgendamento();
+            agendamentos.ShowDialog();
         }
     }
 }

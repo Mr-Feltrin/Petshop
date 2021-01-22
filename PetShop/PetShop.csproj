@@ -184,7 +184,10 @@
     <Compile Include="PesquisaClientesFornecedores.Designer.cs">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="ToolBox\BotaoNoFocus.cs">
+    <Compile Include="ToolBox\Controls\BotaoNoFocus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ToolBox\Controls\TextBoxBorderColored.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ToolBox\ConversorImagemByte.cs" />

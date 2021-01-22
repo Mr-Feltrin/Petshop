@@ -1,5 +1,6 @@
-﻿using System;
-using System.ComponentModel;
+﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
+using System;
 using System.Data;
 using System.Windows.Forms;
 
@@ -12,114 +13,81 @@ namespace PetShop
             InitializeComponent();
         }
 
-        private void BtnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
-        {
-            AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(true, this);
-            adicionarProdutos.ShowDialog();
-        }
-
         private void PesquisaProdutos_Load(object sender, EventArgs e)
         {
             comboBoxFiltrarLista.SelectedIndex = 4;
-            ListaProdutos("SELECT * FROM produto");
+            AtualizarLista();
+            DataGridListaProdutos.Columns["CodigoBarras"].HeaderText = "Código de Barras";
+            DataGridListaProdutos.Columns["TipoUnidade"].HeaderText = "Tipo de Unidade";
+            DataGridListaProdutos.Columns["Referencia"].HeaderText = "Referência";
+            DataGridListaProdutos.Columns["Localizacao"].HeaderText = "Localização";
+            DataGridListaProdutos.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            DataGridListaProdutos.Columns["EstoqueMinimo"].HeaderText = "Estoque Mínimo";
+            DataGridListaProdutos.Columns["EstoqueAtual"].HeaderText = "Estoque Atual";
+            DataGridListaProdutos.Columns["DataValidade"].HeaderText = "Data de Validade";
+            DataGridListaProdutos.Columns["ValorCusto"].HeaderText = "Valor de Custo";
+            DataGridListaProdutos.Columns["ValorProduto"].HeaderText = "Valor do Produto";
+            DataGridListaProdutos.Columns["observacoes"].HeaderText = "Observações";
         }
 
-        private void BtnEditarClienteFornecedor_Click(object sender, EventArgs e)
+        public void AtualizarLista()
         {
-            if (listaProduto.SelectedRows.Count != 0)
+            DataGridListaProdutos.DataSource = Produto.ListarProdutos();
+            DataGridListaProdutos.ClearSelection();
+        }
+
+        private void DataGridListaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnEditarProduto.Enabled = true;
+            btnExcluirProduto.Enabled = true;
+        }
+
+        private void btnAdicionarProduto_Click(object sender, EventArgs e)
+        {
+            AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar);
+            adicionarProdutos.ShowDialog();
+        }
+
+        private void btnEditarProduto_Click(object sender, EventArgs e)
+        {
+            AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
+            editarAgendamento.ShowDialog();
+        }
+
+        private void btnExcluirProduto_Click(object sender, EventArgs e)
+        {
+            DialogResult confirmarDelete = MessageBox.Show("Tem certeza que quer remover este produto?", "Remover produto", MessageBoxButtons.YesNo);
+            if (confirmarDelete == DialogResult.Yes)
             {
-                DataGridViewRow row = listaProduto.SelectedRows[0];
-                AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(false, this, row.Cells[0].Value.ToString());
+                Produto.RemoverProduto((int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
+                AtualizarLista();
+            }
+        }
+
+        private void DataGridListaProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (DataGridListaProdutos.SelectedRows.Count != 0)
+            {
+                AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
                 editarProdutos.ShowDialog();
             }
-            else
-            {
-                MessageBox.Show("Selecione um produto para ser editado.", "Produto não selecionado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
         }
 
-        public void ListaProdutos(string comandoSql)
+        private void DataGridListaProdutos_Sorted(object sender, EventArgs e)
         {
-            /*
-            using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    MySqlCommand comando = conn.CreateCommand();
-                    comando.CommandText = comandoSql;
-                    comando.ExecuteNonQuery();
-                    DataTable dta = new DataTable();
-                    MySqlDataAdapter dataadp = new MySqlDataAdapter(comando);
-                    dataadp.Fill(dta);
-                    dta.Columns[0].ColumnName = "Número";
-                    dta.Columns[1].ColumnName = "Nome do Produto";
-                    dta.Columns[2].ColumnName = "Código de Barras";
-                    dta.Columns[3].ColumnName = "Unidade";
-                    dta.Columns[4].ColumnName = "Quantidade";
-                    dta.Columns[5].ColumnName = "Referência";
-                    dta.Columns[6].ColumnName = "Local Físico";
-                    dta.Columns[7].ColumnName = "Data de Modificação";
-                    dta.Columns[8].ColumnName = "Marca";
-                    dta.Columns[9].ColumnName = "Categoria";
-                    dta.Columns[10].ColumnName = "Estoque Mínimo";
-                    dta.Columns[11].ColumnName = "Estoque Atual";
-                    dta.Columns[12].ColumnName = "Data de Validade";
-                    dta.Columns[13].ColumnName = "Valor de Custo";
-                    dta.Columns[14].ColumnName = "Margem A Vista";
-                    dta.Columns[15].ColumnName = "Valor do Produto";
-                    dta.Columns[16].ColumnName = "Observações";
-                    listaProduto.DataSource = dta;
-                    listaProduto.Sort(listaProduto.Columns[0], ListSortDirection.Descending);               
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                finally
-                {
-                    conn.Close();
-                }          
-            }*/
+            DataGridListaProdutos.ClearSelection();
+            btnEditarProduto.Enabled = false;
+            btnExcluirProduto.Enabled = false;
         }
 
-        private void BtnExcluirClienteFornecedor_Click(object sender, EventArgs e)
+        private void txtPesquisarNomeProduto_TextChanged(object sender, EventArgs e)
         {
-            if (listaProduto.SelectedRows.Count != 0)
-            {
-                DataGridViewRow row = listaProduto.SelectedRows[0];
-                string row_dados = row.Cells[0].Value.ToString();
-                DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este Produto?", "Remover Produto", MessageBoxButtons.YesNo);
-                if (confirmar_delete == DialogResult.Yes)
-                {
-                    /*
-                    using (MySqlConnection conn = new MySqlConnection(Properties.Settings.Default.PetShopConnectionString))
-                    {
-                        try
-                        {
-                            conn.Open();
-                            MySqlCommand comando = conn.CreateCommand();
-                            comando.CommandText = "DELETE FROM produto WHERE id = @id";
-                            comando.Parameters.AddWithValue("@id", row_dados);
-                            int query_check = comando.ExecuteNonQuery();
-                            if (query_check != 0)
-                            {
-                                MessageBox.Show("Produto removido", "Remover Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                ListaProdutos("SELECT * FROM produto");
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Erro ao remover Produto: " + ex.Message, "Remover Produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        finally
-                        {
-                            conn.Close();
-                        }
-                    }
-                    */
-                }
-            }
+            (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarNomeProduto.Text + "%'");
+        }
+
+        private void txtPesquisarMarcaProduto_TextChanged(object sender, EventArgs e)
+        {
+            (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Marca LIKE '%" + txtPesquisarMarcaProduto.Text + "%'");
         }
     }
 }

@@ -93,19 +93,17 @@ namespace PetShop
 
         private void btnExcluirHorario_Click(object sender, EventArgs e)
         {
-            if (listaAgendamento.SelectedRows.Count > 0)
+            DialogResult confirmarDelete = MessageBox.Show("Tem certeza que quer remover este agendamento?", "Remover agendamento", MessageBoxButtons.YesNo);
+            if (confirmarDelete == DialogResult.Yes)
             {
-                DialogResult confirmarDelete = MessageBox.Show("Tem certeza que quer remover este agendamento?", "Remover agendamento", MessageBoxButtons.YesNo);
-                if (confirmarDelete == DialogResult.Yes)
+                Agenda.RemoverAgendamento((int)listaAgendamento.SelectedRows[0].Cells[0].Value);
+                AtualizarLista();
+                if (Application.OpenForms.OfType<TelaPrincipal>().Count() == 1)
                 {
-                    Agenda.RemoverAgendamento((int)listaAgendamento.SelectedRows[0].Cells[0].Value);
-                    AtualizarLista();
-                    if (Application.OpenForms.OfType<TelaPrincipal>().Count() == 1)
-                    {
-                        Application.OpenForms.OfType<TelaPrincipal>().First().AtualizarAgendamentos();
-                    }
+                    Application.OpenForms.OfType<TelaPrincipal>().First().AtualizarAgendamentos();
                 }
             }
+
         }
 
         private void btnEditarHorario_Click(object sender, EventArgs e)

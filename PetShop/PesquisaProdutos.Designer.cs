@@ -34,15 +34,17 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisaProdutos));
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.listaProduto = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtPesquisarMarcaProduto = new System.Windows.Forms.TextBox();
+            this.txtPesquisarNomeProduto = new System.Windows.Forms.TextBox();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
             this.labelPesquisarProduto = new System.Windows.Forms.Label();
-            this.btnAdicionarClienteFornecedor = new System.Windows.Forms.Button();
-            this.btnEditarClienteFornecedor = new System.Windows.Forms.Button();
-            this.btnExcluirClienteFornecedor = new System.Windows.Forms.Button();
-            this.btnImprimirClienteFornecedor = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdicionarProduto = new System.Windows.Forms.Button();
+            this.btnEditarProduto = new System.Windows.Forms.Button();
+            this.btnExcluirProduto = new System.Windows.Forms.Button();
+            this.btnImprimirLista = new System.Windows.Forms.Button();
+            this.btnCodigoBarras = new System.Windows.Forms.Button();
             this.pictureBoxEmEstoque = new System.Windows.Forms.PictureBox();
             this.labelEmEstoque = new System.Windows.Forms.Label();
             this.labelBaixoEstoque = new System.Windows.Forms.Label();
@@ -55,19 +57,17 @@
             this.groupBoxFiltrar = new System.Windows.Forms.GroupBox();
             this.comboBoxFiltrarLista = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtPesquisarNomeProduto = new System.Windows.Forms.TextBox();
-            this.txtPesquisarMarcaProduto = new System.Windows.Forms.TextBox();
+            this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBaixoEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).BeginInit();
             this.groupBoxLegendaCores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxFiltrar.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox
@@ -75,59 +75,12 @@
             this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox.Controls.Add(this.listaProduto);
+            this.groupBox.Controls.Add(this.DataGridListaProdutos);
             this.groupBox.Location = new System.Drawing.Point(12, 89);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1129, 571);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
-            // 
-            // listaProduto
-            // 
-            this.listaProduto.AllowUserToAddRows = false;
-            this.listaProduto.AllowUserToDeleteRows = false;
-            this.listaProduto.AllowUserToResizeColumns = false;
-            this.listaProduto.AllowUserToResizeRows = false;
-            this.listaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaProduto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.listaProduto.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProduto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.listaProduto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaProduto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaProduto.Location = new System.Drawing.Point(6, 13);
-            this.listaProduto.MultiSelect = false;
-            this.listaProduto.Name = "listaProduto";
-            this.listaProduto.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProduto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.listaProduto.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaProduto.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.listaProduto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaProduto.Size = new System.Drawing.Size(1117, 552);
-            this.listaProduto.TabIndex = 1;
             // 
             // groupBox_pesquisar_nome_cliente
             // 
@@ -141,6 +94,45 @@
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(752, 71);
             this.groupBox_pesquisar_nome_cliente.TabIndex = 8;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 479F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 259F));
+            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarMarcaProduto, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarNomeProduto, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 36);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 26);
+            this.tableLayoutPanel1.TabIndex = 2;
+            // 
+            // txtPesquisarMarcaProduto
+            // 
+            this.txtPesquisarMarcaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisarMarcaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisarMarcaProduto.Location = new System.Drawing.Point(490, 3);
+            this.txtPesquisarMarcaProduto.Name = "txtPesquisarMarcaProduto";
+            this.txtPesquisarMarcaProduto.Size = new System.Drawing.Size(253, 21);
+            this.txtPesquisarMarcaProduto.TabIndex = 11;
+            this.txtPesquisarMarcaProduto.TextChanged += new System.EventHandler(this.txtPesquisarMarcaProduto_TextChanged);
+            // 
+            // txtPesquisarNomeProduto
+            // 
+            this.txtPesquisarNomeProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisarNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisarNomeProduto.Location = new System.Drawing.Point(3, 3);
+            this.txtPesquisarNomeProduto.Name = "txtPesquisarNomeProduto";
+            this.txtPesquisarNomeProduto.Size = new System.Drawing.Size(473, 21);
+            this.txtPesquisarNomeProduto.TabIndex = 10;
+            this.txtPesquisarNomeProduto.TextChanged += new System.EventHandler(this.txtPesquisarNomeProduto_TextChanged);
             // 
             // labelMarcaProduto
             // 
@@ -162,98 +154,100 @@
             this.labelPesquisarProduto.TabIndex = 8;
             this.labelPesquisarProduto.Text = "Pesquisar Nome do Produto";
             // 
-            // btnAdicionarClienteFornecedor
+            // btnAdicionarProduto
             // 
-            this.btnAdicionarClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionarClienteFornecedor.AutoSize = true;
-            this.btnAdicionarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionarClienteFornecedor.FlatAppearance.BorderSize = 0;
-            this.btnAdicionarClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionarClienteFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionarClienteFornecedor.Image = global::PetShop.Properties.Resources.adicionar_list;
-            this.btnAdicionarClienteFornecedor.Location = new System.Drawing.Point(853, 24);
-            this.btnAdicionarClienteFornecedor.Name = "btnAdicionarClienteFornecedor";
-            this.btnAdicionarClienteFornecedor.Size = new System.Drawing.Size(77, 57);
-            this.btnAdicionarClienteFornecedor.TabIndex = 9;
-            this.btnAdicionarClienteFornecedor.Text = "Adicionar";
-            this.btnAdicionarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionarClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdicionarClienteFornecedor.UseVisualStyleBackColor = false;
-            this.btnAdicionarClienteFornecedor.Click += new System.EventHandler(this.BtnAdicionarClienteFornecedor_Click);
+            this.btnAdicionarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionarProduto.AutoSize = true;
+            this.btnAdicionarProduto.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionarProduto.FlatAppearance.BorderSize = 0;
+            this.btnAdicionarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarProduto.Image = global::PetShop.Properties.Resources.adicionar_list;
+            this.btnAdicionarProduto.Location = new System.Drawing.Point(853, 24);
+            this.btnAdicionarProduto.Name = "btnAdicionarProduto";
+            this.btnAdicionarProduto.Size = new System.Drawing.Size(77, 57);
+            this.btnAdicionarProduto.TabIndex = 9;
+            this.btnAdicionarProduto.Text = "Adicionar";
+            this.btnAdicionarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdicionarProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdicionarProduto.UseVisualStyleBackColor = false;
+            this.btnAdicionarProduto.Click += new System.EventHandler(this.btnAdicionarProduto_Click);
             // 
-            // btnEditarClienteFornecedor
+            // btnEditarProduto
             // 
-            this.btnEditarClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarClienteFornecedor.AutoSize = true;
-            this.btnEditarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnEditarClienteFornecedor.FlatAppearance.BorderSize = 0;
-            this.btnEditarClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarClienteFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarClienteFornecedor.Image = global::PetShop.Properties.Resources.editar_list;
-            this.btnEditarClienteFornecedor.Location = new System.Drawing.Point(936, 24);
-            this.btnEditarClienteFornecedor.Name = "btnEditarClienteFornecedor";
-            this.btnEditarClienteFornecedor.Size = new System.Drawing.Size(55, 57);
-            this.btnEditarClienteFornecedor.TabIndex = 10;
-            this.btnEditarClienteFornecedor.Text = "Editar";
-            this.btnEditarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnEditarClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnEditarClienteFornecedor.UseVisualStyleBackColor = false;
-            this.btnEditarClienteFornecedor.Click += new System.EventHandler(this.BtnEditarClienteFornecedor_Click);
+            this.btnEditarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarProduto.AutoSize = true;
+            this.btnEditarProduto.BackColor = System.Drawing.Color.Transparent;
+            this.btnEditarProduto.Enabled = false;
+            this.btnEditarProduto.FlatAppearance.BorderSize = 0;
+            this.btnEditarProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarProduto.Image = global::PetShop.Properties.Resources.editar_list;
+            this.btnEditarProduto.Location = new System.Drawing.Point(936, 24);
+            this.btnEditarProduto.Name = "btnEditarProduto";
+            this.btnEditarProduto.Size = new System.Drawing.Size(55, 57);
+            this.btnEditarProduto.TabIndex = 10;
+            this.btnEditarProduto.Text = "Editar";
+            this.btnEditarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnEditarProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnEditarProduto.UseVisualStyleBackColor = false;
+            this.btnEditarProduto.Click += new System.EventHandler(this.btnEditarProduto_Click);
             // 
-            // btnExcluirClienteFornecedor
+            // btnExcluirProduto
             // 
-            this.btnExcluirClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluirClienteFornecedor.AutoSize = true;
-            this.btnExcluirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcluirClienteFornecedor.FlatAppearance.BorderSize = 0;
-            this.btnExcluirClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluirClienteFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluirClienteFornecedor.Image = global::PetShop.Properties.Resources.deletar_list;
-            this.btnExcluirClienteFornecedor.Location = new System.Drawing.Point(997, 24);
-            this.btnExcluirClienteFornecedor.Name = "btnExcluirClienteFornecedor";
-            this.btnExcluirClienteFornecedor.Size = new System.Drawing.Size(61, 57);
-            this.btnExcluirClienteFornecedor.TabIndex = 11;
-            this.btnExcluirClienteFornecedor.Text = "Excluir";
-            this.btnExcluirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcluirClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExcluirClienteFornecedor.UseVisualStyleBackColor = false;
-            this.btnExcluirClienteFornecedor.Click += new System.EventHandler(this.BtnExcluirClienteFornecedor_Click);
+            this.btnExcluirProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluirProduto.AutoSize = true;
+            this.btnExcluirProduto.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcluirProduto.Enabled = false;
+            this.btnExcluirProduto.FlatAppearance.BorderSize = 0;
+            this.btnExcluirProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluirProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluirProduto.Image = global::PetShop.Properties.Resources.deletar_list;
+            this.btnExcluirProduto.Location = new System.Drawing.Point(997, 24);
+            this.btnExcluirProduto.Name = "btnExcluirProduto";
+            this.btnExcluirProduto.Size = new System.Drawing.Size(61, 57);
+            this.btnExcluirProduto.TabIndex = 11;
+            this.btnExcluirProduto.Text = "Excluir";
+            this.btnExcluirProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluirProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExcluirProduto.UseVisualStyleBackColor = false;
+            this.btnExcluirProduto.Click += new System.EventHandler(this.btnExcluirProduto_Click);
             // 
-            // btnImprimirClienteFornecedor
+            // btnImprimirLista
             // 
-            this.btnImprimirClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnImprimirClienteFornecedor.AutoSize = true;
-            this.btnImprimirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnImprimirClienteFornecedor.FlatAppearance.BorderSize = 0;
-            this.btnImprimirClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirClienteFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirClienteFornecedor.Image = global::PetShop.Properties.Resources.imprimir_list;
-            this.btnImprimirClienteFornecedor.Location = new System.Drawing.Point(1064, 24);
-            this.btnImprimirClienteFornecedor.Name = "btnImprimirClienteFornecedor";
-            this.btnImprimirClienteFornecedor.Size = new System.Drawing.Size(71, 57);
-            this.btnImprimirClienteFornecedor.TabIndex = 12;
-            this.btnImprimirClienteFornecedor.Text = "Imprimir";
-            this.btnImprimirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImprimirClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImprimirClienteFornecedor.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnImprimirLista.AutoSize = true;
+            this.btnImprimirLista.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirLista.FlatAppearance.BorderSize = 0;
+            this.btnImprimirLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirLista.Image = global::PetShop.Properties.Resources.imprimir_list;
+            this.btnImprimirLista.Location = new System.Drawing.Point(1064, 24);
+            this.btnImprimirLista.Name = "btnImprimirLista";
+            this.btnImprimirLista.Size = new System.Drawing.Size(71, 57);
+            this.btnImprimirLista.TabIndex = 12;
+            this.btnImprimirLista.Text = "Imprimir";
+            this.btnImprimirLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnImprimirLista.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnCodigoBarras
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.AutoSize = true;
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::PetShop.Properties.Resources.codigo_barras;
-            this.button1.Location = new System.Drawing.Point(770, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(84, 57);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "CodBarras";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnCodigoBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCodigoBarras.AutoSize = true;
+            this.btnCodigoBarras.BackColor = System.Drawing.Color.Transparent;
+            this.btnCodigoBarras.FlatAppearance.BorderSize = 0;
+            this.btnCodigoBarras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCodigoBarras.Image = global::PetShop.Properties.Resources.codigo_barras;
+            this.btnCodigoBarras.Location = new System.Drawing.Point(770, 24);
+            this.btnCodigoBarras.Name = "btnCodigoBarras";
+            this.btnCodigoBarras.Size = new System.Drawing.Size(84, 57);
+            this.btnCodigoBarras.TabIndex = 13;
+            this.btnCodigoBarras.Text = "CodBarras";
+            this.btnCodigoBarras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCodigoBarras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCodigoBarras.UseVisualStyleBackColor = false;
             // 
             // pictureBoxEmEstoque
             // 
@@ -391,43 +385,56 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Filtrar Lista por:";
             // 
-            // tableLayoutPanel1
+            // DataGridListaProdutos
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DataGridListaProdutos.AllowUserToAddRows = false;
+            this.DataGridListaProdutos.AllowUserToDeleteRows = false;
+            this.DataGridListaProdutos.AllowUserToResizeColumns = false;
+            this.DataGridListaProdutos.AllowUserToResizeRows = false;
+            this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 479F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarMarcaProduto, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarNomeProduto, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 36);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 26);
-            this.tableLayoutPanel1.TabIndex = 2;
-            // 
-            // txtPesquisarNomeProduto
-            // 
-            this.txtPesquisarNomeProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisarNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarNomeProduto.Location = new System.Drawing.Point(3, 3);
-            this.txtPesquisarNomeProduto.Name = "txtPesquisarNomeProduto";
-            this.txtPesquisarNomeProduto.Size = new System.Drawing.Size(473, 21);
-            this.txtPesquisarNomeProduto.TabIndex = 10;
-            // 
-            // txtPesquisarMarcaProduto
-            // 
-            this.txtPesquisarMarcaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisarMarcaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarMarcaProduto.Location = new System.Drawing.Point(490, 3);
-            this.txtPesquisarMarcaProduto.Name = "txtPesquisarMarcaProduto";
-            this.txtPesquisarMarcaProduto.Size = new System.Drawing.Size(253, 21);
-            this.txtPesquisarMarcaProduto.TabIndex = 11;
+            this.DataGridListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DataGridListaProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataGridListaProdutos.Location = new System.Drawing.Point(6, 10);
+            this.DataGridListaProdutos.MultiSelect = false;
+            this.DataGridListaProdutos.Name = "DataGridListaProdutos";
+            this.DataGridListaProdutos.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridListaProdutos.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataGridListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.DataGridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 555);
+            this.DataGridListaProdutos.TabIndex = 3;
+            this.DataGridListaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
+            this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
+            this.DataGridListaProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
+            this.DataGridListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
             // 
             // PesquisaProdutos
             // 
@@ -436,11 +443,11 @@
             this.ClientSize = new System.Drawing.Size(1153, 716);
             this.Controls.Add(this.groupBoxFiltrar);
             this.Controls.Add(this.groupBoxLegendaCores);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnImprimirClienteFornecedor);
-            this.Controls.Add(this.btnExcluirClienteFornecedor);
-            this.Controls.Add(this.btnEditarClienteFornecedor);
-            this.Controls.Add(this.btnAdicionarClienteFornecedor);
+            this.Controls.Add(this.btnCodigoBarras);
+            this.Controls.Add(this.btnImprimirLista);
+            this.Controls.Add(this.btnExcluirProduto);
+            this.Controls.Add(this.btnEditarProduto);
+            this.Controls.Add(this.btnAdicionarProduto);
             this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
             this.Controls.Add(this.groupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -454,9 +461,10 @@
             this.Text = "Pesquisa de Produtos";
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
             this.groupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.listaProduto)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
             this.groupBox_pesquisar_nome_cliente.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBaixoEstoque)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).EndInit();
@@ -465,8 +473,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxFiltrar.ResumeLayout(false);
             this.groupBoxFiltrar.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -478,11 +485,11 @@
         private System.Windows.Forms.GroupBox groupBox_pesquisar_nome_cliente;
         private System.Windows.Forms.Label labelPesquisarProduto;
         private System.Windows.Forms.Label labelMarcaProduto;
-        private System.Windows.Forms.Button btnAdicionarClienteFornecedor;
-        private System.Windows.Forms.Button btnEditarClienteFornecedor;
-        private System.Windows.Forms.Button btnExcluirClienteFornecedor;
-        private System.Windows.Forms.Button btnImprimirClienteFornecedor;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdicionarProduto;
+        private System.Windows.Forms.Button btnEditarProduto;
+        private System.Windows.Forms.Button btnExcluirProduto;
+        private System.Windows.Forms.Button btnImprimirLista;
+        private System.Windows.Forms.Button btnCodigoBarras;
         private System.Windows.Forms.PictureBox pictureBoxEmEstoque;
         private System.Windows.Forms.Label labelEmEstoque;
         private System.Windows.Forms.Label labelBaixoEstoque;
@@ -495,9 +502,9 @@
         private System.Windows.Forms.GroupBox groupBoxFiltrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxFiltrarLista;
-        private System.Windows.Forms.DataGridView listaProduto;
         private System.Windows.Forms.TextBox txtPesquisarNomeProduto;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtPesquisarMarcaProduto;
+        private System.Windows.Forms.DataGridView DataGridListaProdutos;
     }
 }

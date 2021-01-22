@@ -29,72 +29,73 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.quantidadeProduto = new System.Windows.Forms.TextBox();
-            this.dataCadastroProduto = new System.Windows.Forms.DateTimePicker();
-            this.categoriaProduto = new System.Windows.Forms.ComboBox();
+            this.dateDataCadastro = new System.Windows.Forms.DateTimePicker();
+            this.CombBoxCategoria = new System.Windows.Forms.ComboBox();
             this.labelCategoriaProduto = new System.Windows.Forms.Label();
-            this.marcaProduto = new System.Windows.Forms.ComboBox();
+            this.combBoxMarcaProduto = new System.Windows.Forms.ComboBox();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
             this.labelDataCadastroProduto = new System.Windows.Forms.Label();
-            this.localizacaoProduto = new System.Windows.Forms.TextBox();
+            this.txtLocalizacao = new System.Windows.Forms.TextBox();
             this.labelLocalizacaoProduto = new System.Windows.Forms.Label();
-            this.referenciaProduto = new System.Windows.Forms.TextBox();
+            this.txtReferencia = new System.Windows.Forms.TextBox();
             this.labelReferenciaProduto = new System.Windows.Forms.Label();
-            this.nomeProduto = new System.Windows.Forms.TextBox();
+            this.txtNomeProduto = new System.Windows.Forms.TextBox();
             this.labelCodigoBarras = new System.Windows.Forms.Label();
             this.labelNomeProduto = new System.Windows.Forms.Label();
-            this.tipoUnidadeProduto = new System.Windows.Forms.ComboBox();
             this.labelTipoUnidade = new System.Windows.Forms.Label();
-            this.codigoBarrasProduto = new System.Windows.Forms.TextBox();
-            this.codigoProduto = new System.Windows.Forms.TextBox();
             this.labelCodigoProduto = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtQuantidade = new System.Windows.Forms.TextBox();
+            this.combBoxTipoUnidade = new System.Windows.Forms.ComboBox();
+            this.txtCodigoBarras = new System.Windows.Forms.TextBox();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dataValidadeProduto = new System.Windows.Forms.DateTimePicker();
+            this.dateDataValidade = new System.Windows.Forms.DateTimePicker();
             this.labelDataValidade = new System.Windows.Forms.Label();
-            this.estoqueAtualProduto = new System.Windows.Forms.TextBox();
+            this.txtEstoqueAtual = new System.Windows.Forms.TextBox();
             this.labelEstoqueAtual = new System.Windows.Forms.Label();
-            this.estoqueMinimoProduto = new System.Windows.Forms.TextBox();
+            this.txtEstoqueMinimo = new System.Windows.Forms.TextBox();
             this.labelEstoqueMinimo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.precoProduto = new System.Windows.Forms.TextBox();
-            this.valorCustoProduto = new System.Windows.Forms.TextBox();
+            this.txtPrecoProduto = new PetShop.ToolBox.Controls.TextBoxBorderColored();
+            this.txtValorCusto = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.labelPrecoProduto = new System.Windows.Forms.Label();
-            this.margemAvistaProduto = new System.Windows.Forms.TextBox();
-            this.labelMargemAvista = new System.Windows.Forms.Label();
             this.labelValorCusto = new System.Windows.Forms.Label();
-            this.observacoesProduto = new System.Windows.Forms.RichTextBox();
+            this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.labelObservacoes = new System.Windows.Forms.Label();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.BtnAdicionarEditarFornecedor = new System.Windows.Forms.Button();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.quantidadeProduto);
-            this.groupBox1.Controls.Add(this.dataCadastroProduto);
-            this.groupBox1.Controls.Add(this.categoriaProduto);
+            this.groupBox1.Controls.Add(this.dateDataCadastro);
+            this.groupBox1.Controls.Add(this.CombBoxCategoria);
             this.groupBox1.Controls.Add(this.labelCategoriaProduto);
-            this.groupBox1.Controls.Add(this.marcaProduto);
+            this.groupBox1.Controls.Add(this.combBoxMarcaProduto);
             this.groupBox1.Controls.Add(this.labelMarcaProduto);
             this.groupBox1.Controls.Add(this.labelDataCadastroProduto);
-            this.groupBox1.Controls.Add(this.localizacaoProduto);
+            this.groupBox1.Controls.Add(this.txtLocalizacao);
             this.groupBox1.Controls.Add(this.labelLocalizacaoProduto);
-            this.groupBox1.Controls.Add(this.referenciaProduto);
+            this.groupBox1.Controls.Add(this.txtReferencia);
             this.groupBox1.Controls.Add(this.labelReferenciaProduto);
-            this.groupBox1.Controls.Add(this.nomeProduto);
+            this.groupBox1.Controls.Add(this.txtNomeProduto);
             this.groupBox1.Controls.Add(this.labelCodigoBarras);
             this.groupBox1.Controls.Add(this.labelNomeProduto);
-            this.groupBox1.Controls.Add(this.tipoUnidadeProduto);
             this.groupBox1.Controls.Add(this.labelTipoUnidade);
-            this.groupBox1.Controls.Add(this.codigoBarrasProduto);
-            this.groupBox1.Controls.Add(this.codigoProduto);
             this.groupBox1.Controls.Add(this.labelCodigoProduto);
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(664, 248);
@@ -104,216 +105,257 @@ namespace PetShop
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(543, 21);
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(542, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 18);
+            this.label1.Size = new System.Drawing.Size(100, 21);
             this.label1.TabIndex = 32;
             this.label1.Text = "Quantidade*";
             // 
-            // quantidadeProduto
+            // dateDataCadastro
             // 
-            this.quantidadeProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.quantidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantidadeProduto.Location = new System.Drawing.Point(546, 42);
-            this.quantidadeProduto.MaxLength = 500;
-            this.quantidadeProduto.Name = "quantidadeProduto";
-            this.quantidadeProduto.Size = new System.Drawing.Size(92, 22);
-            this.quantidadeProduto.TabIndex = 31;
-            this.quantidadeProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.QuantidadeProduto_KeyPress);
+            this.dateDataCadastro.CustomFormat = "dd/MM/yyyy";
+            this.dateDataCadastro.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDataCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDataCadastro.Location = new System.Drawing.Point(487, 154);
+            this.dateDataCadastro.Name = "dateDataCadastro";
+            this.dateDataCadastro.Size = new System.Drawing.Size(151, 22);
+            this.dateDataCadastro.TabIndex = 20;
             // 
-            // dataCadastroProduto
+            // CombBoxCategoria
             // 
-            this.dataCadastroProduto.CustomFormat = "dd/MM/yyyy";
-            this.dataCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataCadastroProduto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dataCadastroProduto.Location = new System.Drawing.Point(487, 154);
-            this.dataCadastroProduto.Name = "dataCadastroProduto";
-            this.dataCadastroProduto.Size = new System.Drawing.Size(151, 22);
-            this.dataCadastroProduto.TabIndex = 20;
-            // 
-            // categoriaProduto
-            // 
-            this.categoriaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.categoriaProduto.FormattingEnabled = true;
-            this.categoriaProduto.Location = new System.Drawing.Point(369, 207);
-            this.categoriaProduto.Name = "categoriaProduto";
-            this.categoriaProduto.Size = new System.Drawing.Size(269, 24);
-            this.categoriaProduto.TabIndex = 30;
+            this.CombBoxCategoria.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CombBoxCategoria.FormattingEnabled = true;
+            this.CombBoxCategoria.Location = new System.Drawing.Point(369, 207);
+            this.CombBoxCategoria.Name = "CombBoxCategoria";
+            this.CombBoxCategoria.Size = new System.Drawing.Size(269, 25);
+            this.CombBoxCategoria.TabIndex = 30;
+            this.CombBoxCategoria.TextChanged += new System.EventHandler(this.CombBoxCategoria_TextChanged);
             // 
             // labelCategoriaProduto
             // 
             this.labelCategoriaProduto.AutoSize = true;
-            this.labelCategoriaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCategoriaProduto.Location = new System.Drawing.Point(366, 186);
+            this.labelCategoriaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCategoriaProduto.Location = new System.Drawing.Point(365, 183);
             this.labelCategoriaProduto.Name = "labelCategoriaProduto";
-            this.labelCategoriaProduto.Size = new System.Drawing.Size(210, 18);
+            this.labelCategoriaProduto.Size = new System.Drawing.Size(220, 21);
             this.labelCategoriaProduto.TabIndex = 29;
             this.labelCategoriaProduto.Text = "Grupo / Categoria do Produto*";
             // 
-            // marcaProduto
+            // combBoxMarcaProduto
             // 
-            this.marcaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.marcaProduto.FormattingEnabled = true;
-            this.marcaProduto.Location = new System.Drawing.Point(20, 207);
-            this.marcaProduto.Name = "marcaProduto";
-            this.marcaProduto.Size = new System.Drawing.Size(291, 24);
-            this.marcaProduto.TabIndex = 28;
+            this.combBoxMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxMarcaProduto.FormattingEnabled = true;
+            this.combBoxMarcaProduto.Location = new System.Drawing.Point(20, 207);
+            this.combBoxMarcaProduto.Name = "combBoxMarcaProduto";
+            this.combBoxMarcaProduto.Size = new System.Drawing.Size(291, 25);
+            this.combBoxMarcaProduto.TabIndex = 28;
             // 
             // labelMarcaProduto
             // 
             this.labelMarcaProduto.AutoSize = true;
-            this.labelMarcaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMarcaProduto.Location = new System.Drawing.Point(17, 186);
+            this.labelMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMarcaProduto.Location = new System.Drawing.Point(17, 183);
             this.labelMarcaProduto.Name = "labelMarcaProduto";
-            this.labelMarcaProduto.Size = new System.Drawing.Size(128, 18);
+            this.labelMarcaProduto.Size = new System.Drawing.Size(132, 21);
             this.labelMarcaProduto.TabIndex = 27;
             this.labelMarcaProduto.Text = "Marca do Produto";
             // 
             // labelDataCadastroProduto
             // 
             this.labelDataCadastroProduto.AutoSize = true;
-            this.labelDataCadastroProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataCadastroProduto.Location = new System.Drawing.Point(484, 133);
+            this.labelDataCadastroProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataCadastroProduto.Location = new System.Drawing.Point(483, 130);
             this.labelDataCadastroProduto.Name = "labelDataCadastroProduto";
-            this.labelDataCadastroProduto.Size = new System.Drawing.Size(130, 18);
+            this.labelDataCadastroProduto.Size = new System.Drawing.Size(129, 21);
             this.labelDataCadastroProduto.TabIndex = 25;
-            this.labelDataCadastroProduto.Text = "Data de Cadastro*";
+            this.labelDataCadastroProduto.Text = "Data de Cadastro";
             // 
-            // localizacaoProduto
+            // txtLocalizacao
             // 
-            this.localizacaoProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.localizacaoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.localizacaoProduto.Location = new System.Drawing.Point(280, 154);
-            this.localizacaoProduto.MaxLength = 500;
-            this.localizacaoProduto.Name = "localizacaoProduto";
-            this.localizacaoProduto.Size = new System.Drawing.Size(169, 22);
-            this.localizacaoProduto.TabIndex = 24;
+            this.txtLocalizacao.BackColor = System.Drawing.SystemColors.Window;
+            this.txtLocalizacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLocalizacao.Location = new System.Drawing.Point(280, 154);
+            this.txtLocalizacao.MaxLength = 500;
+            this.txtLocalizacao.Name = "txtLocalizacao";
+            this.txtLocalizacao.Size = new System.Drawing.Size(169, 22);
+            this.txtLocalizacao.TabIndex = 24;
             // 
             // labelLocalizacaoProduto
             // 
             this.labelLocalizacaoProduto.AutoSize = true;
-            this.labelLocalizacaoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLocalizacaoProduto.Location = new System.Drawing.Point(277, 133);
+            this.labelLocalizacaoProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLocalizacaoProduto.Location = new System.Drawing.Point(276, 130);
             this.labelLocalizacaoProduto.Name = "labelLocalizacaoProduto";
-            this.labelLocalizacaoProduto.Size = new System.Drawing.Size(88, 18);
+            this.labelLocalizacaoProduto.Size = new System.Drawing.Size(90, 21);
             this.labelLocalizacaoProduto.TabIndex = 23;
             this.labelLocalizacaoProduto.Text = "Localização";
             // 
-            // referenciaProduto
+            // txtReferencia
             // 
-            this.referenciaProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.referenciaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.referenciaProduto.Location = new System.Drawing.Point(20, 154);
-            this.referenciaProduto.MaxLength = 500;
-            this.referenciaProduto.Name = "referenciaProduto";
-            this.referenciaProduto.Size = new System.Drawing.Size(217, 22);
-            this.referenciaProduto.TabIndex = 22;
+            this.txtReferencia.BackColor = System.Drawing.SystemColors.Window;
+            this.txtReferencia.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReferencia.Location = new System.Drawing.Point(20, 154);
+            this.txtReferencia.MaxLength = 500;
+            this.txtReferencia.Name = "txtReferencia";
+            this.txtReferencia.Size = new System.Drawing.Size(217, 22);
+            this.txtReferencia.TabIndex = 22;
             // 
             // labelReferenciaProduto
             // 
             this.labelReferenciaProduto.AutoSize = true;
-            this.labelReferenciaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelReferenciaProduto.Location = new System.Drawing.Point(17, 133);
+            this.labelReferenciaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelReferenciaProduto.Location = new System.Drawing.Point(16, 130);
             this.labelReferenciaProduto.Name = "labelReferenciaProduto";
-            this.labelReferenciaProduto.Size = new System.Drawing.Size(157, 18);
+            this.labelReferenciaProduto.Size = new System.Drawing.Size(162, 21);
             this.labelReferenciaProduto.TabIndex = 21;
             this.labelReferenciaProduto.Text = "Referência do Produto";
             // 
-            // nomeProduto
+            // txtNomeProduto
             // 
-            this.nomeProduto.BackColor = System.Drawing.SystemColors.Info;
-            this.nomeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomeProduto.Location = new System.Drawing.Point(20, 98);
-            this.nomeProduto.MaxLength = 500;
-            this.nomeProduto.Name = "nomeProduto";
-            this.nomeProduto.Size = new System.Drawing.Size(618, 22);
-            this.nomeProduto.TabIndex = 20;
+            this.txtNomeProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomeProduto.BackColor = System.Drawing.SystemColors.Info;
+            this.txtNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeProduto.Location = new System.Drawing.Point(20, 98);
+            this.txtNomeProduto.MaxLength = 500;
+            this.txtNomeProduto.Name = "txtNomeProduto";
+            this.txtNomeProduto.Size = new System.Drawing.Size(618, 22);
+            this.txtNomeProduto.TabIndex = 20;
+            this.txtNomeProduto.TextChanged += new System.EventHandler(this.txtNomeProduto_TextChanged);
             // 
             // labelCodigoBarras
             // 
             this.labelCodigoBarras.AutoSize = true;
-            this.labelCodigoBarras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigoBarras.Location = new System.Drawing.Point(157, 21);
+            this.labelCodigoBarras.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCodigoBarras.Location = new System.Drawing.Point(156, 18);
             this.labelCodigoBarras.Name = "labelCodigoBarras";
-            this.labelCodigoBarras.Size = new System.Drawing.Size(124, 18);
+            this.labelCodigoBarras.Size = new System.Drawing.Size(126, 21);
             this.labelCodigoBarras.TabIndex = 3;
             this.labelCodigoBarras.Text = "Código de Barras";
             // 
             // labelNomeProduto
             // 
             this.labelNomeProduto.AutoSize = true;
-            this.labelNomeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNomeProduto.Location = new System.Drawing.Point(17, 77);
+            this.labelNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNomeProduto.Location = new System.Drawing.Point(16, 74);
             this.labelNomeProduto.Name = "labelNomeProduto";
-            this.labelNomeProduto.Size = new System.Drawing.Size(213, 18);
+            this.labelNomeProduto.Size = new System.Drawing.Size(219, 21);
             this.labelNomeProduto.TabIndex = 19;
             this.labelNomeProduto.Text = "Nome / Descrição do Produto*";
             // 
-            // tipoUnidadeProduto
+            // labelTipoUnidade
             // 
-            this.tipoUnidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tipoUnidadeProduto.FormattingEnabled = true;
-            this.tipoUnidadeProduto.Items.AddRange(new object[] {
+            this.labelTipoUnidade.AutoSize = true;
+            this.labelTipoUnidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTipoUnidade.Location = new System.Drawing.Point(413, 18);
+            this.labelTipoUnidade.Name = "labelTipoUnidade";
+            this.labelTipoUnidade.Size = new System.Drawing.Size(92, 21);
+            this.labelTipoUnidade.TabIndex = 17;
+            this.labelTipoUnidade.Text = "Tipo de Un*";
+            // 
+            // labelCodigoProduto
+            // 
+            this.labelCodigoProduto.AutoSize = true;
+            this.labelCodigoProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCodigoProduto.Location = new System.Drawing.Point(16, 18);
+            this.labelCodigoProduto.Name = "labelCodigoProduto";
+            this.labelCodigoProduto.Size = new System.Drawing.Size(73, 21);
+            this.labelCodigoProduto.TabIndex = 1;
+            this.labelCodigoProduto.Text = "Código Id";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 235F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
+            this.tableLayoutPanel1.Controls.Add(this.txtQuantidade, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.combBoxTipoUnidade, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtCodigoBarras, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtCodigo, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 39);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(624, 31);
+            this.tableLayoutPanel1.TabIndex = 6;
+            // 
+            // txtQuantidade
+            // 
+            this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtQuantidade.BackColor = System.Drawing.SystemColors.Window;
+            this.txtQuantidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidade.Location = new System.Drawing.Point(529, 3);
+            this.txtQuantidade.MaxLength = 500;
+            this.txtQuantidade.Name = "txtQuantidade";
+            this.txtQuantidade.Size = new System.Drawing.Size(92, 22);
+            this.txtQuantidade.TabIndex = 32;
+            this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
+            // 
+            // combBoxTipoUnidade
+            // 
+            this.combBoxTipoUnidade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.combBoxTipoUnidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxTipoUnidade.FormattingEnabled = true;
+            this.combBoxTipoUnidade.Items.AddRange(new object[] {
             "Kg",
             "Mg",
             "g",
             "L",
             "Ml",
             "Granel"});
-            this.tipoUnidadeProduto.Location = new System.Drawing.Point(417, 42);
-            this.tipoUnidadeProduto.Name = "tipoUnidadeProduto";
-            this.tipoUnidadeProduto.Size = new System.Drawing.Size(94, 24);
-            this.tipoUnidadeProduto.TabIndex = 18;
+            this.combBoxTipoUnidade.Location = new System.Drawing.Point(400, 3);
+            this.combBoxTipoUnidade.Name = "combBoxTipoUnidade";
+            this.combBoxTipoUnidade.Size = new System.Drawing.Size(94, 25);
+            this.combBoxTipoUnidade.TabIndex = 20;
+            this.combBoxTipoUnidade.TextChanged += new System.EventHandler(this.combBoxTipoUnidade_TextChanged);
             // 
-            // labelTipoUnidade
+            // txtCodigoBarras
             // 
-            this.labelTipoUnidade.AutoSize = true;
-            this.labelTipoUnidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTipoUnidade.Location = new System.Drawing.Point(414, 21);
-            this.labelTipoUnidade.Name = "labelTipoUnidade";
-            this.labelTipoUnidade.Size = new System.Drawing.Size(86, 18);
-            this.labelTipoUnidade.TabIndex = 17;
-            this.labelTipoUnidade.Text = "Tipo de Un*";
+            this.txtCodigoBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigoBarras.BackColor = System.Drawing.SystemColors.Info;
+            this.txtCodigoBarras.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoBarras.Location = new System.Drawing.Point(143, 3);
+            this.txtCodigoBarras.MaxLength = 500;
+            this.txtCodigoBarras.Name = "txtCodigoBarras";
+            this.txtCodigoBarras.Size = new System.Drawing.Size(229, 22);
+            this.txtCodigoBarras.TabIndex = 17;
             // 
-            // codigoBarrasProduto
+            // txtCodigo
             // 
-            this.codigoBarrasProduto.BackColor = System.Drawing.SystemColors.Info;
-            this.codigoBarrasProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoBarrasProduto.Location = new System.Drawing.Point(160, 42);
-            this.codigoBarrasProduto.MaxLength = 500;
-            this.codigoBarrasProduto.Name = "codigoBarrasProduto";
-            this.codigoBarrasProduto.Size = new System.Drawing.Size(229, 22);
-            this.codigoBarrasProduto.TabIndex = 16;
-            // 
-            // codigoProduto
-            // 
-            this.codigoProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.codigoProduto.Enabled = false;
-            this.codigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.codigoProduto.Location = new System.Drawing.Point(20, 42);
-            this.codigoProduto.MaxLength = 500;
-            this.codigoProduto.Name = "codigoProduto";
-            this.codigoProduto.Size = new System.Drawing.Size(112, 22);
-            this.codigoProduto.TabIndex = 2;
-            // 
-            // labelCodigoProduto
-            // 
-            this.labelCodigoProduto.AutoSize = true;
-            this.labelCodigoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCodigoProduto.Location = new System.Drawing.Point(17, 21);
-            this.labelCodigoProduto.Name = "labelCodigoProduto";
-            this.labelCodigoProduto.Size = new System.Drawing.Size(56, 18);
-            this.labelCodigoProduto.TabIndex = 1;
-            this.labelCodigoProduto.Text = "Código";
+            this.txtCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCodigo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(3, 3);
+            this.txtCodigo.MaxLength = 500;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(112, 22);
+            this.txtCodigo.TabIndex = 7;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dataValidadeProduto);
+            this.groupBox2.Controls.Add(this.dateDataValidade);
             this.groupBox2.Controls.Add(this.labelDataValidade);
-            this.groupBox2.Controls.Add(this.estoqueAtualProduto);
+            this.groupBox2.Controls.Add(this.txtEstoqueAtual);
             this.groupBox2.Controls.Add(this.labelEstoqueAtual);
-            this.groupBox2.Controls.Add(this.estoqueMinimoProduto);
+            this.groupBox2.Controls.Add(this.txtEstoqueMinimo);
             this.groupBox2.Controls.Add(this.labelEstoqueMinimo);
             this.groupBox2.Location = new System.Drawing.Point(12, 266);
             this.groupBox2.Name = "groupBox2";
@@ -321,75 +363,74 @@ namespace PetShop
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // dataValidadeProduto
+            // dateDataValidade
             // 
-            this.dataValidadeProduto.CustomFormat = "dd/MM/yyyy";
-            this.dataValidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataValidadeProduto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dataValidadeProduto.Location = new System.Drawing.Point(147, 98);
-            this.dataValidadeProduto.Name = "dataValidadeProduto";
-            this.dataValidadeProduto.Size = new System.Drawing.Size(164, 22);
-            this.dataValidadeProduto.TabIndex = 31;
+            this.dateDataValidade.CustomFormat = "dd/MM/yyyy";
+            this.dateDataValidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateDataValidade.Location = new System.Drawing.Point(155, 98);
+            this.dateDataValidade.Name = "dateDataValidade";
+            this.dateDataValidade.Size = new System.Drawing.Size(164, 22);
+            this.dateDataValidade.TabIndex = 31;
             // 
             // labelDataValidade
             // 
             this.labelDataValidade.AutoSize = true;
-            this.labelDataValidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDataValidade.Location = new System.Drawing.Point(17, 99);
+            this.labelDataValidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDataValidade.Location = new System.Drawing.Point(6, 100);
             this.labelDataValidade.Name = "labelDataValidade";
-            this.labelDataValidade.Size = new System.Drawing.Size(124, 18);
+            this.labelDataValidade.Size = new System.Drawing.Size(129, 21);
             this.labelDataValidade.TabIndex = 28;
-            this.labelDataValidade.Text = "Data de Validade*";
+            this.labelDataValidade.Text = "Data de Validade";
             // 
-            // estoqueAtualProduto
+            // txtEstoqueAtual
             // 
-            this.estoqueAtualProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.estoqueAtualProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueAtualProduto.Location = new System.Drawing.Point(147, 56);
-            this.estoqueAtualProduto.MaxLength = 500;
-            this.estoqueAtualProduto.Name = "estoqueAtualProduto";
-            this.estoqueAtualProduto.Size = new System.Drawing.Size(164, 22);
-            this.estoqueAtualProduto.TabIndex = 27;
-            this.estoqueAtualProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EstoqueAtualProduto_KeyPress);
+            this.txtEstoqueAtual.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEstoqueAtual.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoqueAtual.Location = new System.Drawing.Point(155, 56);
+            this.txtEstoqueAtual.MaxLength = 500;
+            this.txtEstoqueAtual.Name = "txtEstoqueAtual";
+            this.txtEstoqueAtual.Size = new System.Drawing.Size(164, 22);
+            this.txtEstoqueAtual.TabIndex = 27;
+            this.txtEstoqueAtual.TextChanged += new System.EventHandler(this.txtEstoqueAtual_TextChanged);
+            this.txtEstoqueAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueAtual_KeyPress);
             // 
             // labelEstoqueAtual
             // 
             this.labelEstoqueAtual.AutoSize = true;
-            this.labelEstoqueAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstoqueAtual.Location = new System.Drawing.Point(17, 57);
+            this.labelEstoqueAtual.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEstoqueAtual.Location = new System.Drawing.Point(6, 57);
             this.labelEstoqueAtual.Name = "labelEstoqueAtual";
-            this.labelEstoqueAtual.Size = new System.Drawing.Size(105, 18);
+            this.labelEstoqueAtual.Size = new System.Drawing.Size(115, 21);
             this.labelEstoqueAtual.TabIndex = 26;
             this.labelEstoqueAtual.Text = "Estoque Atual*";
             // 
-            // estoqueMinimoProduto
+            // txtEstoqueMinimo
             // 
-            this.estoqueMinimoProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.estoqueMinimoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.estoqueMinimoProduto.Location = new System.Drawing.Point(147, 15);
-            this.estoqueMinimoProduto.MaxLength = 500;
-            this.estoqueMinimoProduto.Name = "estoqueMinimoProduto";
-            this.estoqueMinimoProduto.Size = new System.Drawing.Size(164, 22);
-            this.estoqueMinimoProduto.TabIndex = 25;
-            this.estoqueMinimoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EstoqueMinimoProduto_KeyPress);
+            this.txtEstoqueMinimo.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEstoqueMinimo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoqueMinimo.Location = new System.Drawing.Point(155, 15);
+            this.txtEstoqueMinimo.MaxLength = 500;
+            this.txtEstoqueMinimo.Name = "txtEstoqueMinimo";
+            this.txtEstoqueMinimo.Size = new System.Drawing.Size(164, 22);
+            this.txtEstoqueMinimo.TabIndex = 25;
+            this.txtEstoqueMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueMinimo_KeyPress);
             // 
             // labelEstoqueMinimo
             // 
             this.labelEstoqueMinimo.AutoSize = true;
-            this.labelEstoqueMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstoqueMinimo.Location = new System.Drawing.Point(17, 16);
+            this.labelEstoqueMinimo.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEstoqueMinimo.Location = new System.Drawing.Point(6, 17);
             this.labelEstoqueMinimo.Name = "labelEstoqueMinimo";
-            this.labelEstoqueMinimo.Size = new System.Drawing.Size(116, 18);
+            this.labelEstoqueMinimo.Size = new System.Drawing.Size(121, 21);
             this.labelEstoqueMinimo.TabIndex = 2;
             this.labelEstoqueMinimo.Text = "Estoque Mínimo";
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.precoProduto);
-            this.groupBox3.Controls.Add(this.valorCustoProduto);
+            this.groupBox3.Controls.Add(this.txtPrecoProduto);
+            this.groupBox3.Controls.Add(this.txtValorCusto);
             this.groupBox3.Controls.Add(this.labelPrecoProduto);
-            this.groupBox3.Controls.Add(this.margemAvistaProduto);
-            this.groupBox3.Controls.Add(this.labelMargemAvista);
             this.groupBox3.Controls.Add(this.labelValorCusto);
             this.groupBox3.Location = new System.Drawing.Point(350, 266);
             this.groupBox3.Name = "groupBox3";
@@ -397,133 +438,120 @@ namespace PetShop
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             // 
-            // precoProduto
+            // txtPrecoProduto
             // 
-            this.precoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.precoProduto.Location = new System.Drawing.Point(169, 98);
-            this.precoProduto.Name = "precoProduto";
-            this.precoProduto.Size = new System.Drawing.Size(131, 22);
-            this.precoProduto.TabIndex = 33;
-            this.precoProduto.Enter += new System.EventHandler(this.PrecoProduto_Enter);
-            this.precoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PrecoProduto_KeyPress);
-            this.precoProduto.Leave += new System.EventHandler(this.PrecoProduto_Leave);
+            this.txtPrecoProduto.BorderColor = System.Drawing.SystemColors.GrayText;
+            this.txtPrecoProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecoProduto.Location = new System.Drawing.Point(176, 92);
+            this.txtPrecoProduto.Name = "txtPrecoProduto";
+            this.txtPrecoProduto.Size = new System.Drawing.Size(143, 22);
+            this.txtPrecoProduto.TabIndex = 32;
+            this.txtPrecoProduto.Text = "R$ 0,00";
+            this.txtPrecoProduto.Enter += new System.EventHandler(this.txtValorCusto_Enter);
+            this.txtPrecoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoProduto_KeyPress);
+            this.txtPrecoProduto.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrecoProduto_Validating);
             // 
-            // valorCustoProduto
+            // txtValorCusto
             // 
-            this.valorCustoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valorCustoProduto.Location = new System.Drawing.Point(169, 15);
-            this.valorCustoProduto.Name = "valorCustoProduto";
-            this.valorCustoProduto.Size = new System.Drawing.Size(131, 22);
-            this.valorCustoProduto.TabIndex = 32;
-            this.valorCustoProduto.Enter += new System.EventHandler(this.ValorCustoProduto_Enter);
-            this.valorCustoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorCustoProduto_KeyPress);
-            this.valorCustoProduto.Leave += new System.EventHandler(this.ValorCustoProduto_Leave);
+            this.txtValorCusto.BorderColor = System.Drawing.SystemColors.GrayText;
+            this.txtValorCusto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorCusto.Location = new System.Drawing.Point(176, 30);
+            this.txtValorCusto.Name = "txtValorCusto";
+            this.txtValorCusto.Size = new System.Drawing.Size(143, 22);
+            this.txtValorCusto.TabIndex = 12;
+            this.txtValorCusto.Text = "R$ 0,00";
+            this.txtValorCusto.Enter += new System.EventHandler(this.txtValorCusto_Enter);
+            this.txtValorCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorCustoProduto_KeyPress);
+            this.txtValorCusto.Validating += new System.ComponentModel.CancelEventHandler(this.txtValorCusto_Validating);
             // 
             // labelPrecoProduto
             // 
             this.labelPrecoProduto.AutoSize = true;
-            this.labelPrecoProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrecoProduto.Location = new System.Drawing.Point(8, 99);
+            this.labelPrecoProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrecoProduto.Location = new System.Drawing.Point(8, 92);
             this.labelPrecoProduto.Name = "labelPrecoProduto";
-            this.labelPrecoProduto.Size = new System.Drawing.Size(132, 18);
+            this.labelPrecoProduto.Size = new System.Drawing.Size(136, 21);
             this.labelPrecoProduto.TabIndex = 31;
             this.labelPrecoProduto.Text = "Preço do Produto*";
-            // 
-            // margemAvistaProduto
-            // 
-            this.margemAvistaProduto.BackColor = System.Drawing.SystemColors.Window;
-            this.margemAvistaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.margemAvistaProduto.Location = new System.Drawing.Point(169, 56);
-            this.margemAvistaProduto.MaxLength = 500;
-            this.margemAvistaProduto.Name = "margemAvistaProduto";
-            this.margemAvistaProduto.Size = new System.Drawing.Size(131, 22);
-            this.margemAvistaProduto.TabIndex = 29;
-            this.margemAvistaProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MargemAvistaProduto_KeyPress);
-            // 
-            // labelMargemAvista
-            // 
-            this.labelMargemAvista.AutoSize = true;
-            this.labelMargemAvista.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMargemAvista.Location = new System.Drawing.Point(8, 57);
-            this.labelMargemAvista.Name = "labelMargemAvista";
-            this.labelMargemAvista.Size = new System.Drawing.Size(138, 18);
-            this.labelMargemAvista.TabIndex = 28;
-            this.labelMargemAvista.Text = "Margem a Vista (%)";
             // 
             // labelValorCusto
             // 
             this.labelValorCusto.AutoSize = true;
-            this.labelValorCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelValorCusto.Location = new System.Drawing.Point(8, 17);
+            this.labelValorCusto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelValorCusto.Location = new System.Drawing.Point(8, 30);
             this.labelValorCusto.Name = "labelValorCusto";
-            this.labelValorCusto.Size = new System.Drawing.Size(106, 18);
+            this.labelValorCusto.Size = new System.Drawing.Size(108, 21);
             this.labelValorCusto.TabIndex = 27;
             this.labelValorCusto.Text = "Valor de Custo";
             // 
-            // observacoesProduto
+            // txtObservacoes
             // 
-            this.observacoesProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.observacoesProduto.Location = new System.Drawing.Point(12, 437);
-            this.observacoesProduto.Name = "observacoesProduto";
-            this.observacoesProduto.Size = new System.Drawing.Size(663, 184);
-            this.observacoesProduto.TabIndex = 3;
-            this.observacoesProduto.Text = "";
+            this.txtObservacoes.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacoes.Location = new System.Drawing.Point(12, 440);
+            this.txtObservacoes.Name = "txtObservacoes";
+            this.txtObservacoes.Size = new System.Drawing.Size(663, 184);
+            this.txtObservacoes.TabIndex = 3;
+            this.txtObservacoes.Text = "";
             // 
             // labelObservacoes
             // 
             this.labelObservacoes.AutoSize = true;
-            this.labelObservacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelObservacoes.Location = new System.Drawing.Point(12, 416);
+            this.labelObservacoes.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelObservacoes.Location = new System.Drawing.Point(8, 416);
             this.labelObservacoes.Name = "labelObservacoes";
-            this.labelObservacoes.Size = new System.Drawing.Size(263, 18);
+            this.labelObservacoes.Size = new System.Drawing.Size(270, 21);
             this.labelObservacoes.TabIndex = 4;
             this.labelObservacoes.Text = "Informações Adicionais / Observações";
             // 
-            // btnCancelar
+            // btnSalvar
             // 
-            this.btnCancelar.AutoSize = true;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::PetShop.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(12, 636);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(161, 52);
-            this.btnCancelar.TabIndex = 18;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.BtnCancelar_Click);
+            this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSalvar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSalvar.Image = global::PetShop.Properties.Resources.confirm;
+            this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalvar.Location = new System.Drawing.Point(513, 632);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(162, 45);
+            this.btnSalvar.TabIndex = 10;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = false;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // BtnAdicionarEditarFornecedor
+            // btnSair
             // 
-            this.BtnAdicionarEditarFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdicionarEditarFornecedor.AutoSize = true;
-            this.BtnAdicionarEditarFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdicionarEditarFornecedor.Image = global::PetShop.Properties.Resources.adicionar;
-            this.BtnAdicionarEditarFornecedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAdicionarEditarFornecedor.Location = new System.Drawing.Point(625, 636);
-            this.BtnAdicionarEditarFornecedor.Name = "BtnAdicionarEditarFornecedor";
-            this.BtnAdicionarEditarFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnAdicionarEditarFornecedor.Size = new System.Drawing.Size(50, 52);
-            this.BtnAdicionarEditarFornecedor.TabIndex = 19;
-            this.BtnAdicionarEditarFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnAdicionarEditarFornecedor.UseVisualStyleBackColor = true;
-            this.BtnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
+            this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.Image = global::PetShop.Properties.Resources.close;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.Location = new System.Drawing.Point(12, 632);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(162, 45);
+            this.btnSair.TabIndex = 11;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // AdicionarEditarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 709);
-            this.Controls.Add(this.BtnAdicionarEditarFornecedor);
-            this.Controls.Add(this.btnCancelar);
+            this.ClientSize = new System.Drawing.Size(688, 689);
+            this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.labelObservacoes);
-            this.Controls.Add(this.observacoesProduto);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.txtObservacoes);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -533,8 +561,11 @@ namespace PetShop
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.AdicionarEditarProdutos_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdicionarEditarProdutos_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -548,41 +579,41 @@ namespace PetShop
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label labelCodigoProduto;
         private System.Windows.Forms.Label labelCodigoBarras;
-        private System.Windows.Forms.TextBox codigoProduto;
         private System.Windows.Forms.Label labelTipoUnidade;
-        private System.Windows.Forms.TextBox codigoBarrasProduto;
-        private System.Windows.Forms.ComboBox tipoUnidadeProduto;
         private System.Windows.Forms.Label labelLocalizacaoProduto;
-        private System.Windows.Forms.TextBox referenciaProduto;
+        private System.Windows.Forms.TextBox txtReferencia;
         private System.Windows.Forms.Label labelReferenciaProduto;
-        private System.Windows.Forms.TextBox nomeProduto;
+        private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label labelNomeProduto;
-        private System.Windows.Forms.ComboBox categoriaProduto;
+        private System.Windows.Forms.ComboBox CombBoxCategoria;
         private System.Windows.Forms.Label labelCategoriaProduto;
-        private System.Windows.Forms.ComboBox marcaProduto;
+        private System.Windows.Forms.ComboBox combBoxMarcaProduto;
         private System.Windows.Forms.Label labelMarcaProduto;
         private System.Windows.Forms.Label labelDataCadastroProduto;
-        private System.Windows.Forms.TextBox localizacaoProduto;
+        private System.Windows.Forms.TextBox txtLocalizacao;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelDataValidade;
-        private System.Windows.Forms.TextBox estoqueAtualProduto;
+        private System.Windows.Forms.TextBox txtEstoqueAtual;
         private System.Windows.Forms.Label labelEstoqueAtual;
-        private System.Windows.Forms.TextBox estoqueMinimoProduto;
+        private System.Windows.Forms.TextBox txtEstoqueMinimo;
         private System.Windows.Forms.Label labelEstoqueMinimo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labelPrecoProduto;
-        private System.Windows.Forms.TextBox margemAvistaProduto;
-        private System.Windows.Forms.Label labelMargemAvista;
         private System.Windows.Forms.Label labelValorCusto;
-        private System.Windows.Forms.RichTextBox observacoesProduto;
+        private System.Windows.Forms.RichTextBox txtObservacoes;
         private System.Windows.Forms.Label labelObservacoes;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button BtnAdicionarEditarFornecedor;
-        private System.Windows.Forms.DateTimePicker dataCadastroProduto;
-        private System.Windows.Forms.DateTimePicker dataValidadeProduto;
+        private System.Windows.Forms.DateTimePicker dateDataCadastro;
+        private System.Windows.Forms.DateTimePicker dateDataValidade;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox quantidadeProduto;
-        private System.Windows.Forms.TextBox precoProduto;
-        private System.Windows.Forms.TextBox valorCustoProduto;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox txtQuantidade;
+        private System.Windows.Forms.ComboBox combBoxTipoUnidade;
+        private System.Windows.Forms.TextBox txtCodigoBarras;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.ToolTip toolTip;
+        private ToolBox.Controls.TextBoxBorderColored txtValorCusto;
+        private ToolBox.Controls.TextBoxBorderColored txtPrecoProduto;
     }
 }

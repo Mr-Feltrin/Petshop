@@ -130,7 +130,6 @@ namespace PetShop
                 SexoSelecionado.Checked = true;
             }
 
-
             // Criação de botão de pesquisa no campo txtEspecie
             NoFocusButton btnPesquisarEspecie = new NoFocusButton();
             btnPesquisarEspecie.Size = new Size(25, txtEspecie.ClientSize.Height);

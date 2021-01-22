@@ -36,6 +36,7 @@ namespace PetShop.ToolBox
                     else
                     {
                         button.Enabled = true;
+                        toolTip.SetToolTip(button, null);
                     }
                 }
                 else if (objeto.Key.GetType() == typeof(MaskedTextBox))
@@ -48,11 +49,12 @@ namespace PetShop.ToolBox
                     else
                     {
                         button.Enabled = true;
+                        toolTip.SetToolTip(button, null);
                     }
                 }
                 else if (objeto.Key.GetType() == typeof(ComboBox))
                 {
-                    if ((objeto.Key as ComboBox).SelectedIndex == -1)
+                    if (string.IsNullOrWhiteSpace((objeto.Key as ComboBox).Text))
                     {
                         DesativarBotao(objeto);
                         break;
@@ -60,6 +62,7 @@ namespace PetShop.ToolBox
                     else
                     {
                         button.Enabled = true;
+                        toolTip.SetToolTip(button, null);
                     }
                 }
                 
@@ -73,11 +76,11 @@ namespace PetShop.ToolBox
                     else
                     {
                         button.Enabled = true;
+                        toolTip.SetToolTip(button, null);
                     }
                 }               
             }
         }
-
 
         /// <summary>
         /// Limpa o texto dos controles MaskedTextBox opcionais que não estejam completos

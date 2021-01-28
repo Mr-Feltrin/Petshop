@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Enums;
 
 namespace PetShop.Entities
 {
@@ -19,7 +19,7 @@ namespace PetShop.Entities
         public DateTime DataCadastro { get; set; }
         public string Marca { get; set; }
         public string Categoria { get; set; }
-        public float EstoqueMinimo { get; set; }
+        public float? EstoqueMinimo { get; set; }
         public float EstoqueAtual { get; set; }
         public DateTime DataValidade { get; set; }
         public decimal ValorCusto { get; set; }
@@ -87,11 +87,11 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }           
+            }
             catch (Exception x)
             {
                 MessageBox.Show($"Falha na aplicação: {x.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }          
+            }
         }
 
         public void AdicionarEditarProduto(TipoOperacao operacao)
@@ -139,7 +139,7 @@ namespace PetShop.Entities
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }        
+            }
         }
 
         public static void RemoverProduto(int id)
@@ -178,6 +178,58 @@ namespace PetShop.Entities
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Produtos";
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    dataAdapter.Fill(data);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return data;
+        }
+
+        public static DataTable ListarMarcas()
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT DISTINCT Marca FROM Produtos";
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    dataAdapter.Fill(data);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return data;
+        }
+
+        public static DataTable ListarCategorias()
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT DISTINCT Categoria FROM Produtos";
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

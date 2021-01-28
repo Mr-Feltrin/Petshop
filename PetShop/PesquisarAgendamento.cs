@@ -28,7 +28,7 @@ namespace PetShop
             listaAgendamento.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaAgendamento.Columns[5].DefaultCellStyle.Format = "hh\\:mm";
-            timer.Interval = 3 * 60 * 1000;
+            timer.Interval = 60 * 1000;
             timer.Start();
         }
 

@@ -53,11 +53,11 @@ namespace PetShop
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtEstoqueAtual = new PetShop.ToolBox.Controls.TextBoxBorderColored();
+            this.txtEstoqueMinimo = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.dateDataValidade = new System.Windows.Forms.DateTimePicker();
             this.labelDataValidade = new System.Windows.Forms.Label();
-            this.txtEstoqueAtual = new System.Windows.Forms.TextBox();
             this.labelEstoqueAtual = new System.Windows.Forms.Label();
-            this.txtEstoqueMinimo = new System.Windows.Forms.TextBox();
             this.labelEstoqueMinimo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtPrecoProduto = new PetShop.ToolBox.Controls.TextBoxBorderColored();
@@ -69,6 +69,7 @@ namespace PetShop
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipEnabledControls = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -351,17 +352,40 @@ namespace PetShop
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.txtEstoqueAtual);
+            this.groupBox2.Controls.Add(this.txtEstoqueMinimo);
             this.groupBox2.Controls.Add(this.dateDataValidade);
             this.groupBox2.Controls.Add(this.labelDataValidade);
-            this.groupBox2.Controls.Add(this.txtEstoqueAtual);
             this.groupBox2.Controls.Add(this.labelEstoqueAtual);
-            this.groupBox2.Controls.Add(this.txtEstoqueMinimo);
             this.groupBox2.Controls.Add(this.labelEstoqueMinimo);
             this.groupBox2.Location = new System.Drawing.Point(12, 266);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(325, 138);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // txtEstoqueAtual
+            // 
+            this.txtEstoqueAtual.BorderColor = System.Drawing.SystemColors.GrayText;
+            this.txtEstoqueAtual.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoqueAtual.Location = new System.Drawing.Point(155, 57);
+            this.txtEstoqueAtual.Name = "txtEstoqueAtual";
+            this.txtEstoqueAtual.Size = new System.Drawing.Size(164, 22);
+            this.txtEstoqueAtual.TabIndex = 32;
+            this.txtEstoqueAtual.TextChanged += new System.EventHandler(this.txtEstoqueAtual_TextChanged);
+            this.txtEstoqueAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueAtual_KeyPress);
+            this.txtEstoqueAtual.Validating += new System.ComponentModel.CancelEventHandler(this.txtEstoqueAtual_Validating);
+            // 
+            // txtEstoqueMinimo
+            // 
+            this.txtEstoqueMinimo.BorderColor = System.Drawing.SystemColors.GrayText;
+            this.txtEstoqueMinimo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEstoqueMinimo.Location = new System.Drawing.Point(155, 16);
+            this.txtEstoqueMinimo.Name = "txtEstoqueMinimo";
+            this.txtEstoqueMinimo.Size = new System.Drawing.Size(164, 22);
+            this.txtEstoqueMinimo.TabIndex = 13;
+            this.txtEstoqueMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueMinimo_KeyPress);
+            this.txtEstoqueMinimo.Validating += new System.ComponentModel.CancelEventHandler(this.txtEstoqueMinimo_Validating);
             // 
             // dateDataValidade
             // 
@@ -383,18 +407,6 @@ namespace PetShop
             this.labelDataValidade.TabIndex = 28;
             this.labelDataValidade.Text = "Data de Validade";
             // 
-            // txtEstoqueAtual
-            // 
-            this.txtEstoqueAtual.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEstoqueAtual.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstoqueAtual.Location = new System.Drawing.Point(155, 56);
-            this.txtEstoqueAtual.MaxLength = 500;
-            this.txtEstoqueAtual.Name = "txtEstoqueAtual";
-            this.txtEstoqueAtual.Size = new System.Drawing.Size(164, 22);
-            this.txtEstoqueAtual.TabIndex = 27;
-            this.txtEstoqueAtual.TextChanged += new System.EventHandler(this.txtEstoqueAtual_TextChanged);
-            this.txtEstoqueAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueAtual_KeyPress);
-            // 
             // labelEstoqueAtual
             // 
             this.labelEstoqueAtual.AutoSize = true;
@@ -404,17 +416,6 @@ namespace PetShop
             this.labelEstoqueAtual.Size = new System.Drawing.Size(115, 21);
             this.labelEstoqueAtual.TabIndex = 26;
             this.labelEstoqueAtual.Text = "Estoque Atual*";
-            // 
-            // txtEstoqueMinimo
-            // 
-            this.txtEstoqueMinimo.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEstoqueMinimo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEstoqueMinimo.Location = new System.Drawing.Point(155, 15);
-            this.txtEstoqueMinimo.MaxLength = 500;
-            this.txtEstoqueMinimo.Name = "txtEstoqueMinimo";
-            this.txtEstoqueMinimo.Size = new System.Drawing.Size(164, 22);
-            this.txtEstoqueMinimo.TabIndex = 25;
-            this.txtEstoqueMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueMinimo_KeyPress);
             // 
             // labelEstoqueMinimo
             // 
@@ -460,6 +461,7 @@ namespace PetShop
             this.txtValorCusto.Size = new System.Drawing.Size(143, 22);
             this.txtValorCusto.TabIndex = 12;
             this.txtValorCusto.Text = "R$ 0,00";
+            this.toolTip.SetToolTip(this.txtValorCusto, "teste\r\n");
             this.txtValorCusto.Enter += new System.EventHandler(this.txtValorCusto_Enter);
             this.txtValorCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorCustoProduto_KeyPress);
             this.txtValorCusto.Validating += new System.ComponentModel.CancelEventHandler(this.txtValorCusto_Validating);
@@ -593,9 +595,7 @@ namespace PetShop
         private System.Windows.Forms.TextBox txtLocalizacao;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelDataValidade;
-        private System.Windows.Forms.TextBox txtEstoqueAtual;
         private System.Windows.Forms.Label labelEstoqueAtual;
-        private System.Windows.Forms.TextBox txtEstoqueMinimo;
         private System.Windows.Forms.Label labelEstoqueMinimo;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Label labelPrecoProduto;
@@ -615,5 +615,8 @@ namespace PetShop
         private System.Windows.Forms.ToolTip toolTip;
         private ToolBox.Controls.TextBoxBorderColored txtValorCusto;
         private ToolBox.Controls.TextBoxBorderColored txtPrecoProduto;
+        private ToolBox.Controls.TextBoxBorderColored txtEstoqueAtual;
+        private ToolBox.Controls.TextBoxBorderColored txtEstoqueMinimo;
+        private System.Windows.Forms.ToolTip toolTipEnabledControls;
     }
 }

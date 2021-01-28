@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisaProdutos));
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPesquisarMarcaProduto = new System.Windows.Forms.TextBox();
@@ -52,22 +53,18 @@
             this.labelSemEstoque = new System.Windows.Forms.Label();
             this.pictureBoxSemEstoque = new System.Windows.Forms.PictureBox();
             this.groupBoxLegendaCores = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.labelEstoqueIndefinido = new System.Windows.Forms.Label();
             this.groupBoxFiltrar = new System.Windows.Forms.GroupBox();
             this.comboBoxFiltrarLista = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBaixoEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).BeginInit();
             this.groupBoxLegendaCores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBoxFiltrar.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox
@@ -81,6 +78,57 @@
             this.groupBox.Size = new System.Drawing.Size(1129, 571);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
+            // 
+            // DataGridListaProdutos
+            // 
+            this.DataGridListaProdutos.AllowUserToAddRows = false;
+            this.DataGridListaProdutos.AllowUserToDeleteRows = false;
+            this.DataGridListaProdutos.AllowUserToResizeColumns = false;
+            this.DataGridListaProdutos.AllowUserToResizeRows = false;
+            this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DataGridListaProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataGridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DataGridListaProdutos.Location = new System.Drawing.Point(6, 10);
+            this.DataGridListaProdutos.MultiSelect = false;
+            this.DataGridListaProdutos.Name = "DataGridListaProdutos";
+            this.DataGridListaProdutos.ReadOnly = true;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DataGridListaProdutos.RowHeadersVisible = false;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DataGridListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.DataGridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 555);
+            this.DataGridListaProdutos.TabIndex = 3;
+            this.DataGridListaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
+            this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
+            this.DataGridListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
+            this.DataGridListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
             // 
@@ -312,8 +360,6 @@
             // groupBoxLegendaCores
             // 
             this.groupBoxLegendaCores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBoxLegendaCores.Controls.Add(this.pictureBox1);
-            this.groupBoxLegendaCores.Controls.Add(this.labelEstoqueIndefinido);
             this.groupBoxLegendaCores.Controls.Add(this.labelEmEstoque);
             this.groupBoxLegendaCores.Controls.Add(this.pictureBoxSemEstoque);
             this.groupBoxLegendaCores.Controls.Add(this.pictureBoxEmEstoque);
@@ -323,30 +369,10 @@
             this.groupBoxLegendaCores.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxLegendaCores.Location = new System.Drawing.Point(12, 666);
             this.groupBoxLegendaCores.Name = "groupBoxLegendaCores";
-            this.groupBoxLegendaCores.Size = new System.Drawing.Size(582, 39);
+            this.groupBoxLegendaCores.Size = new System.Drawing.Size(428, 39);
             this.groupBoxLegendaCores.TabIndex = 19;
             this.groupBoxLegendaCores.TabStop = false;
             this.groupBoxLegendaCores.Text = "Legenda";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(556, 16);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
-            // 
-            // labelEstoqueIndefinido
-            // 
-            this.labelEstoqueIndefinido.AutoSize = true;
-            this.labelEstoqueIndefinido.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEstoqueIndefinido.Location = new System.Drawing.Point(453, 13);
-            this.labelEstoqueIndefinido.Name = "labelEstoqueIndefinido";
-            this.labelEstoqueIndefinido.Size = new System.Drawing.Size(97, 20);
-            this.labelEstoqueIndefinido.TabIndex = 19;
-            this.labelEstoqueIndefinido.Text = "Não Definido:";
             // 
             // groupBoxFiltrar
             // 
@@ -361,6 +387,7 @@
             // 
             // comboBoxFiltrarLista
             // 
+            this.comboBoxFiltrarLista.DisplayMember = "1";
             this.comboBoxFiltrarLista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltrarLista.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxFiltrarLista.FormattingEnabled = true;
@@ -368,12 +395,12 @@
             "Em Estoque",
             "Baixo Estoque",
             "Sem Estoque",
-            "Não Definido",
             "Todos os Registros"});
             this.comboBoxFiltrarLista.Location = new System.Drawing.Point(110, 10);
             this.comboBoxFiltrarLista.Name = "comboBoxFiltrarLista";
             this.comboBoxFiltrarLista.Size = new System.Drawing.Size(211, 25);
             this.comboBoxFiltrarLista.TabIndex = 19;
+            this.comboBoxFiltrarLista.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltrarLista_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -384,57 +411,6 @@
             this.label1.Size = new System.Drawing.Size(93, 17);
             this.label1.TabIndex = 18;
             this.label1.Text = "Filtrar Lista por:";
-            // 
-            // DataGridListaProdutos
-            // 
-            this.DataGridListaProdutos.AllowUserToAddRows = false;
-            this.DataGridListaProdutos.AllowUserToDeleteRows = false;
-            this.DataGridListaProdutos.AllowUserToResizeColumns = false;
-            this.DataGridListaProdutos.AllowUserToResizeRows = false;
-            this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DataGridListaProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataGridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DataGridListaProdutos.Location = new System.Drawing.Point(6, 10);
-            this.DataGridListaProdutos.MultiSelect = false;
-            this.DataGridListaProdutos.Name = "DataGridListaProdutos";
-            this.DataGridListaProdutos.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DataGridListaProdutos.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DataGridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 555);
-            this.DataGridListaProdutos.TabIndex = 3;
-            this.DataGridListaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
-            this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
-            this.DataGridListaProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
-            this.DataGridListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
             // 
             // PesquisaProdutos
             // 
@@ -461,6 +437,7 @@
             this.Text = "Pesquisa de Produtos";
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
             this.groupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
             this.groupBox_pesquisar_nome_cliente.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -470,10 +447,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).EndInit();
             this.groupBoxLegendaCores.ResumeLayout(false);
             this.groupBoxLegendaCores.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBoxFiltrar.ResumeLayout(false);
             this.groupBoxFiltrar.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -497,8 +472,6 @@
         private System.Windows.Forms.Label labelSemEstoque;
         private System.Windows.Forms.PictureBox pictureBoxSemEstoque;
         private System.Windows.Forms.GroupBox groupBoxLegendaCores;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label labelEstoqueIndefinido;
         private System.Windows.Forms.GroupBox groupBoxFiltrar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxFiltrarLista;

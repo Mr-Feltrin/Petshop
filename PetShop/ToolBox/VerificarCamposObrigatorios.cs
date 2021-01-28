@@ -1,10 +1,6 @@
-﻿using System;
+﻿using PetShop.ToolBox.Controls;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace PetShop.ToolBox
 {
@@ -21,12 +17,12 @@ namespace PetShop.ToolBox
             void DesativarBotao(KeyValuePair<object, string> obj)
             {
                 button.Enabled = false;
-                toolTip.SetToolTip(button, obj.Value);             
+                toolTip.SetToolTip(button, obj.Value);
             }
 
             foreach (KeyValuePair<object, string> objeto in ListaControles)
             {
-                if (objeto.Key.GetType() == typeof(TextBox))
+                if (objeto.Key.GetType() == typeof(TextBox) || objeto.Key.GetType() == typeof(TextBoxBorderColored))
                 {
                     if (string.IsNullOrWhiteSpace((objeto.Key as TextBox).Text))
                     {
@@ -65,7 +61,7 @@ namespace PetShop.ToolBox
                         toolTip.SetToolTip(button, null);
                     }
                 }
-                
+
                 else if (objeto.Key.GetType() == typeof(CheckBox))
                 {
                     if (!(objeto.Key as CheckBox).Checked)
@@ -78,7 +74,7 @@ namespace PetShop.ToolBox
                         button.Enabled = true;
                         toolTip.SetToolTip(button, null);
                     }
-                }               
+                }
             }
         }
 

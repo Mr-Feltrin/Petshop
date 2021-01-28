@@ -2,6 +2,8 @@
 using PetShop.Entities.Enums;
 using System;
 using System.Data;
+using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -15,8 +17,8 @@ namespace PetShop
 
         private void PesquisaProdutos_Load(object sender, EventArgs e)
         {
-            comboBoxFiltrarLista.SelectedIndex = 4;
             AtualizarLista();
+            comboBoxFiltrarLista.SelectedIndex = 3;
             DataGridListaProdutos.Columns["CodigoBarras"].HeaderText = "Código de Barras";
             DataGridListaProdutos.Columns["TipoUnidade"].HeaderText = "Tipo de Unidade";
             DataGridListaProdutos.Columns["Referencia"].HeaderText = "Referência";
@@ -28,18 +30,50 @@ namespace PetShop
             DataGridListaProdutos.Columns["ValorCusto"].HeaderText = "Valor de Custo";
             DataGridListaProdutos.Columns["ValorProduto"].HeaderText = "Valor do Produto";
             DataGridListaProdutos.Columns["observacoes"].HeaderText = "Observações";
+            DataGridListaProdutos.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DataGridListaProdutos.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DataGridListaProdutos.Columns["ValorCusto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            DataGridListaProdutos.Columns["ValorCusto"].DefaultCellStyle.Format = string.Format("C2");
+            DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.Format = string.Format("C2");
         }
 
         public void AtualizarLista()
         {
             DataGridListaProdutos.DataSource = Produto.ListarProdutos();
+            foreach (DataRow row in (DataGridListaProdutos.DataSource as DataTable).Rows)
+            {
+                if (string.IsNullOrEmpty(row["CodigoBarras"].ToString()))
+                {
+                    row["CodigoBarras"] = "Sem Código";
+                }
+                if (string.IsNullOrEmpty(row["Referencia"].ToString()))
+                {
+                    row["Referencia"] = "Não Definido";
+                }
+                if (string.IsNullOrEmpty(row["Localizacao"].ToString()))
+                {
+                    row["Localizacao"] = "Não Definido";
+                }
+                if (string.IsNullOrEmpty(row["Marca"].ToString()))
+                {
+                    row["Marca"] = "Não Definido";
+                }
+                if (string.IsNullOrEmpty(row["Observacoes"].ToString()))
+                {
+                    row["Observacoes"] = "Não Definido";
+                }
+            }
             DataGridListaProdutos.ClearSelection();
+            DataGridListaProdutos.Sort(DataGridListaProdutos.Columns["EstoqueAtual"], System.ComponentModel.ListSortDirection.Descending);
         }
 
         private void DataGridListaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             btnEditarProduto.Enabled = true;
             btnExcluirProduto.Enabled = true;
+
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
@@ -88,6 +122,57 @@ namespace PetShop
         private void txtPesquisarMarcaProduto_TextChanged(object sender, EventArgs e)
         {
             (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Marca LIKE '%" + txtPesquisarMarcaProduto.Text + "%'");
+        }
+
+        private void DataGridListaProdutos_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            ColoracaoListaProdutos();
+        }
+
+        internal void ColoracaoListaProdutos()
+        {
+            foreach (DataGridViewRow row in DataGridListaProdutos.Rows)
+            {
+                if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > float.Parse(row.Cells["EstoqueMinimo"].Value.ToString()) && float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(172, 234, 105);
+                }
+                else if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0 && float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) <= float.Parse(row.Cells["EstoqueMinimo"].Value.ToString()))
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 128);
+                }
+                else if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) == 0)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(249, 115, 97);
+                }
+            }
+        }
+
+        private void comboBoxFiltrarLista_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((sender as ComboBox).SelectedIndex == 0)
+            {
+                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0";
+                DataGridListaProdutos.ClearSelection();
+            }
+            else if ((sender as ComboBox).SelectedIndex == 1)
+            {
+                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0 AND EstoqueAtual < EstoqueMinimo";
+                DataGridListaProdutos.ClearSelection();
+            }
+            else if ((sender as ComboBox).SelectedIndex == 2)
+            {
+                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual <= 0";
+                DataGridListaProdutos.ClearSelection();
+            }
+            else if ((sender as ComboBox).SelectedIndex == 3)
+            {
+                if ((DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter != null)
+                {
+                    (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
+                    DataGridListaProdutos.ClearSelection();
+                }
+            }
         }
     }
 }

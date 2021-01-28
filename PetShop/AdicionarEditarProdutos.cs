@@ -1,13 +1,13 @@
 ﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
 using PetShop.ToolBox;
 using PetShop.ToolBox.Controls;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
-using System.Windows.Forms;
-using PetShop.Entities.Enums;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -15,6 +15,8 @@ namespace PetShop
     {
         private decimal LastValorCusto;
         private decimal LastPrecoProduto;
+        private float LastEstoqueMinimo;
+        private float LastEstoqueAtual;
         private Dictionary<object, string> CamposObrigatorios;
         private readonly TipoOperacao _TipoOperacao;
         private Produto _Produto;
@@ -40,10 +42,16 @@ namespace PetShop
                 {CombBoxCategoria, "Insira a categoria do produto"},
                 {txtEstoqueAtual, "Digite a quantidade atual no estoque"}
             };
+            combBoxMarcaProduto.DataSource = Produto.ListarMarcas();
+            combBoxMarcaProduto.DisplayMember = "Marca";
+            CombBoxCategoria.DataSource = Produto.ListarCategorias();
+            CombBoxCategoria.DisplayMember = "Categoria";
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
                 toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
                 Text = "Adicionar produto";
+                combBoxMarcaProduto.SelectedIndex = -1;
+                CombBoxCategoria.SelectedIndex = -1;
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
             {
@@ -67,6 +75,22 @@ namespace PetShop
             }
             LastValorCusto = decimal.Parse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CreateSpecificCulture("pt-BR").NumberFormat);
             LastPrecoProduto = decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CreateSpecificCulture("pt-BR").NumberFormat);
+            try
+            {
+                LastEstoqueMinimo = float.Parse(txtEstoqueMinimo.Text);
+            }
+            catch (FormatException)
+            {
+                LastEstoqueMinimo = 0.0f;
+            }
+            try
+            {
+                LastEstoqueAtual = float.Parse(txtEstoqueAtual.Text);
+            }
+            catch (FormatException)
+            {
+                LastEstoqueAtual = default;
+            }
         }
 
 
@@ -154,6 +178,26 @@ namespace PetShop
             }
         }
 
+        private void EstoqueFloatValidation(object control, ref float LastValor)
+        {
+            if (float.TryParse((control as TextBox).Text, out float value))
+            {
+                (control as TextBox).Text = value.ToString();
+                LastValor = value;
+                if ((control as TextBoxBorderColored).BorderColor == Color.Red)
+                {
+                    (control as TextBoxBorderColored).BorderColor = SystemColors.GrayText;
+                    toolTipEnabledControls.SetToolTip(control as TextBoxBorderColored, null);
+                }
+            }
+            else
+            {
+                (control as TextBoxBorderColored).BorderColor = Color.Red;
+                toolTipEnabledControls.SetToolTip(control as TextBoxBorderColored, "O formato anterior não é válido");
+                (control as TextBoxBorderColored).Text = LastValor.ToString();
+            }
+        }
+
         private void txtPrecoProduto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             CurrencyDoubleValidation(sender, ref LastPrecoProduto);
@@ -221,7 +265,7 @@ namespace PetShop
         {
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
-                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, float.Parse(txtEstoqueMinimo.Text), float.Parse(txtEstoqueAtual.Text), dateDataValidade.Value, decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(",",".").Trim()), decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim()), txtObservacoes.Text);
+                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, float.TryParse(txtEstoqueMinimo.Text, out float minval) ? minval : default, float.TryParse(txtEstoqueAtual.Text, out float value) ? value : default, dateDataValidade.Value, decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim()), decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim()), txtObservacoes.Text);
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
@@ -248,6 +292,16 @@ namespace PetShop
                 Application.OpenForms.OfType<PesquisaProdutos>().First().AtualizarLista();
             }
             Close();
+        }
+
+        private void txtEstoqueMinimo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            EstoqueFloatValidation(sender, ref LastEstoqueMinimo);
+        }
+
+        private void txtEstoqueAtual_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            EstoqueFloatValidation(sender, ref LastEstoqueAtual);
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace PetShop
 {
@@ -171,6 +172,52 @@ namespace PetShop
                 {
                     (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
                     DataGridListaProdutos.ClearSelection();
+                }
+            }
+        }
+
+        private void btnImprimirLista_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Planilha do Excel (*xlsx)|*xlsx";
+                dialog.FilterIndex = 2;
+                dialog.RestoreDirectory = true;
+                dialog.AddExtension = true;
+                dialog.DefaultExt = "xlsx";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        DataTable data = (DataGridListaProdutos.DataSource as DataTable).Clone();
+                        foreach (DataRow row in (DataGridListaProdutos.DataSource as DataTable).Rows)
+                        {
+                            data.ImportRow(row);
+                            row["DataCadastro"] = ((DateTime)row["DataCadastro"]).ToString("dd/MM/yyyy");
+                        }
+                        if (comboBoxFiltrarLista.SelectedIndex == 0)
+                        {
+                            data = data.Select("EstoqueAtual > 0").CopyToDataTable();
+                        }
+                        else if (comboBoxFiltrarLista.SelectedIndex == 1)
+                        {
+                            data = data.Select("EstoqueAtual > 0 AND EstoqueAtual < EstoqueMinimo").CopyToDataTable();
+                        }
+                        else if (comboBoxFiltrarLista.SelectedIndex == 2)
+                        {
+                            data = data.Select("EstoqueAtual <= 0").CopyToDataTable();
+                        }
+                        IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Produtos");
+                        worksheets.Columns().AdjustToContents();
+                        worksheets.Rows().AdjustToContents();
+                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;                    
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 13, worksheets.LastRowUsed().RowNumber(), 13).Style.DateFormat.Format = "dd/MM/yyyy";
+
+
+
+                        workbook.SaveAs(dialog.FileName);
+                    }
                 }
             }
         }

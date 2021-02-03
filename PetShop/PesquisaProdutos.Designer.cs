@@ -278,6 +278,7 @@
             this.btnImprimirLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimirLista.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
             // 
             // btnCodigoBarras
             // 

@@ -4,12 +4,14 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 
 namespace PetShop
 {
     public partial class PesquisaAnimais : Form
     {
+
         public PesquisaAnimais()
         {
             InitializeComponent();
@@ -24,12 +26,33 @@ namespace PetShop
         private void PesquisaAnimais_Load(object sender, EventArgs e)
         {
             AtualizarLista();
+            listaAnimais.Columns["Especie"].HeaderText = "Espécie";
+            listaAnimais.Columns["Raca"].HeaderText = "Raça";
+            listaAnimais.Columns["Identificacao"].HeaderText = "Identificação";
+            listaAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
+            listaAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
+            listaAnimais.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         public void AtualizarLista()
         {
             listaAnimais.DataSource = Animal.ListarAnimais();
             listaAnimais.Sort(listaAnimais.Columns[0], ListSortDirection.Descending);
+            foreach (DataGridViewRow row in listaAnimais.Rows)
+            {
+                if (string.IsNullOrWhiteSpace((string)row.Cells["Identificacao"].Value))
+                {
+                    row.Cells["Identificacao"].Value = "Nenhuma";
+                }
+                if (string.IsNullOrWhiteSpace((string)row.Cells["Fobias"].Value))
+                {
+                    row.Cells["Fobias"].Value = "Nenhuma";
+                }
+                if (string.IsNullOrWhiteSpace((string)row.Cells["Observacao_rotina"].Value))
+                {
+                    row.Cells["Observacao_rotina"].Value = "Nenhuma";
+                }
+            }
             listaAnimais.ClearSelection();
         }
 
@@ -72,18 +95,76 @@ namespace PetShop
             btnExcluir.Enabled = false;
         }
 
-        private void listaAnimais_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEditar.Enabled = true;
-            btnExcluir.Enabled = true;
-        }
-
         private void listaAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex != -1)
             {
                 AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
                 editarAnimais.ShowDialog();
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Planilha do Excel (*xlsx)|*xlsx";
+                dialog.FilterIndex = 2;
+                dialog.RestoreDirectory = true;
+                dialog.AddExtension = true;
+                dialog.DefaultExt = "xlsx";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        DataTable data = (listaAnimais.DataSource as DataTable).Copy();
+                        data.Columns["Especie"].ColumnName = "Espécie";
+                        data.Columns["Raca"].ColumnName = "Raça";
+                        data.Columns["Identificacao"].ColumnName = "Identificação";
+                        data.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
+                        data.Columns["Data_registro"].ColumnName = "Data de Registro";
+                        IXLWorksheet worksheet = workbook.Worksheets.Add(data, "Lista de animais");
+                        worksheet.ColumnsUsed().AdjustToContents();
+                        worksheet.RowsUsed().AdjustToContents();
+                        worksheet.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        try
+                        {
+                            workbook.SaveAs(dialog.FileName);
+                            FormNotificacao notificacao = new FormNotificacao();
+                            notificacao.ShowAlert("A lista foi exportada", TipoNotificacao.Confirmar);
+                        }
+                        catch (System.IO.IOException)
+                        {
+                            MessageBox.Show("Não foi possível salvar o arquivo pois ele está em uso, feche o arquivo aberto e tente novamente", "Não Foi possível salvar o arquivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void listaAnimais_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (listaAnimais.Rows.Count > 0)
+            {
+                btnImprimir.Enabled = true;
+            }
+            else
+            {
+                btnImprimir.Enabled = false;
+            }
+        }
+
+        private void listaAnimais_SelectionChanged(object sender, EventArgs e)
+        {
+            if (listaAnimais.SelectedRows.Count > 0)
+            {
+                btnEditar.Enabled = true;
+                btnExcluir.Enabled = true;
+            }
+            else
+            {
+                btnEditar.Enabled = false;
+                btnExcluir.Enabled = false;
             }
         }
     }

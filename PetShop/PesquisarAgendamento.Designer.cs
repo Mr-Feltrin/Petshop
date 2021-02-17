@@ -158,7 +158,7 @@
             // 
             this.btnNovoHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNovoHorario.AutoSize = true;
-            this.btnNovoHorario.BackColor = System.Drawing.Color.Lime;
+            this.btnNovoHorario.BackColor = System.Drawing.Color.Transparent;
             this.btnNovoHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovoHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNovoHorario.Image = global::PetShop.Properties.Resources.horario_add;
@@ -176,7 +176,7 @@
             // 
             this.btnExcluirHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcluirHorario.AutoSize = true;
-            this.btnExcluirHorario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(77)))), ((int)(((byte)(77)))));
+            this.btnExcluirHorario.BackColor = System.Drawing.Color.Transparent;
             this.btnExcluirHorario.Enabled = false;
             this.btnExcluirHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,7 +195,7 @@
             // 
             this.btnEditarHorario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarHorario.AutoSize = true;
-            this.btnEditarHorario.BackColor = System.Drawing.Color.Yellow;
+            this.btnEditarHorario.BackColor = System.Drawing.Color.Transparent;
             this.btnEditarHorario.Enabled = false;
             this.btnEditarHorario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarHorario.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -214,18 +214,19 @@
             // 
             this.btnRelatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRelatorio.AutoSize = true;
-            this.btnRelatorio.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnRelatorio.BackColor = System.Drawing.Color.Transparent;
             this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRelatorio.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRelatorio.Image = global::PetShop.Properties.Resources.printer32x32;
+            this.btnRelatorio.Image = global::PetShop.Properties.Resources.export32px;
             this.btnRelatorio.Location = new System.Drawing.Point(952, 73);
             this.btnRelatorio.Name = "btnRelatorio";
             this.btnRelatorio.Size = new System.Drawing.Size(164, 47);
             this.btnRelatorio.TabIndex = 4;
-            this.btnRelatorio.Text = "Imprimir lista";
+            this.btnRelatorio.Text = "Exportar Lista";
             this.btnRelatorio.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRelatorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRelatorio.UseVisualStyleBackColor = false;
+            this.btnRelatorio.Click += new System.EventHandler(this.btnRelatorio_Click);
             // 
             // groupBox1
             // 
@@ -305,7 +306,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.listaAgendamento.DefaultCellStyle = dataGridViewCellStyle2;
-            this.listaAgendamento.Location = new System.Drawing.Point(6, 19);
+            this.listaAgendamento.Location = new System.Drawing.Point(6, 12);
             this.listaAgendamento.MultiSelect = false;
             this.listaAgendamento.Name = "listaAgendamento";
             this.listaAgendamento.ReadOnly = true;
@@ -321,11 +322,12 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaAgendamento.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.listaAgendamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaAgendamento.Size = new System.Drawing.Size(1092, 493);
+            this.listaAgendamento.Size = new System.Drawing.Size(1092, 500);
             this.listaAgendamento.TabIndex = 2;
-            this.listaAgendamento.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAgendamento_CellClick);
             this.listaAgendamento.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAgendamento_CellDoubleClick);
             this.listaAgendamento.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.listaAgendamento_RowPrePaint);
+            this.listaAgendamento.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaAgendamento_RowStateChanged);
+            this.listaAgendamento.SelectionChanged += new System.EventHandler(this.listaAgendamento_SelectionChanged);
             this.listaAgendamento.Sorted += new System.EventHandler(this.listaAgendamento_Sorted);
             // 
             // pictureBox1

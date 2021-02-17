@@ -12,15 +12,15 @@ namespace PetShop.Entities
         public int IdAgenda { get; set; }
         public DateTime DataAgendamento { get; set; }
         public string Procedimento { get; set; }
-        public Cliente ClienteId { get; set; }
         public Animal AnimalId { get; set; }
+        public Cliente ClienteId { get; set; }
 
-        public Agenda(DateTime dataAgendamento, string procedimento, Cliente clienteId, Animal animalId)
+        public Agenda(DateTime dataAgendamento, string procedimento, Animal animalId, Cliente clienteId)
         {
             DataAgendamento = dataAgendamento;
             Procedimento = procedimento;
-            ClienteId = clienteId;
             AnimalId = animalId;
+            ClienteId = clienteId;
         }
 
         public Agenda(int id)
@@ -45,10 +45,18 @@ namespace PetShop.Entities
                             IdAgenda = (int)Reader["Id"];
                             DataAgendamento = (DateTime)Reader["Data"];
                             Procedimento = Reader["Procedimento"].ToString();
-                            ClienteId = new Cliente((int)Reader["ClienteId"]);
                             AnimalId = new Animal((int)Reader["AnimalId"]);
                         }
                     }
+                    Command.CommandText = "SELECT Animal.ClienteId FROM Animal WHERE Animal.Id = @Id";
+                    Command.Parameters.AddWithValue("@Id", AnimalId.AnimalId);
+                    using (SqlCeDataReader reader = Command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            ClienteId = new Cliente((int)reader["ClienteId"]);
+                        }
+                    }                   
                 }
                 catch (SqlCeException sqlException)
                 {
@@ -67,16 +75,15 @@ namespace PetShop.Entities
                     SqlCeCommand Command = Connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        Command.CommandText = "INSERT INTO Agenda (Data, Procedimento, ClienteId, AnimalId) VALUES (@Data, @Procedimento, @ClienteId, @AnimalId)";
+                        Command.CommandText = "INSERT INTO Agenda (Data, Procedimento, AnimalId) VALUES (@Data, @Procedimento, @AnimalId)";
                     }
                     else if (operacao == TipoOperacao.Editar)
                     {
-                        Command.CommandText = "UPDATE Agenda SET Data = @Data, Procedimento = @Procedimento, ClienteId = @ClienteId, AnimalId = @AnimalId WHERE Id = @Id";
+                        Command.CommandText = "UPDATE Agenda SET Data = @Data, Procedimento = @Procedimento, AnimalId = @AnimalId WHERE Id = @Id";
                         Command.Parameters.AddWithValue("@Id", IdAgenda);
                     }
                     Command.Parameters.AddWithValue("@Data", DataAgendamento);
                     Command.Parameters.AddWithValue("@Procedimento", Procedimento);
-                    Command.Parameters.AddWithValue("@ClienteId", ClienteId.ClienteId);
                     Command.Parameters.AddWithValue("@AnimalId", AnimalId.AnimalId);
                     if (Command.ExecuteNonQuery() > 0)
                     {
@@ -125,7 +132,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id";
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id";
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter sqlCeData = new SqlCeDataAdapter(command);
                     sqlCeData.Fill(data);
@@ -152,7 +159,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Agenda.ClienteId = Clientes.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
+                    command.CommandText = "SELECT Agenda.Id, Agenda.Data, Agenda.Procedimento, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
                     command.Parameters.AddWithValue("@dataInicial", dataInicial.Date);
                     command.Parameters.AddWithValue("@dataFinal", DataFinal.Date + new TimeSpan(23,59,59));
                     command.ExecuteNonQuery();

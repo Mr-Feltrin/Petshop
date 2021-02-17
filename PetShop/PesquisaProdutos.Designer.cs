@@ -125,9 +125,10 @@
             this.DataGridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 555);
             this.DataGridListaProdutos.TabIndex = 3;
-            this.DataGridListaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellClick);
             this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
             this.DataGridListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
+            this.DataGridListaProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DataGridListaProdutos_RowStateChanged);
+            this.DataGridListaProdutos.SelectionChanged += new System.EventHandler(this.DataGridListaProdutos_SelectionChanged);
             this.DataGridListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
@@ -274,7 +275,7 @@
             this.btnImprimirLista.Name = "btnImprimirLista";
             this.btnImprimirLista.Size = new System.Drawing.Size(71, 57);
             this.btnImprimirLista.TabIndex = 12;
-            this.btnImprimirLista.Text = "Imprimir";
+            this.btnImprimirLista.Text = "Exportar";
             this.btnImprimirLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimirLista.UseVisualStyleBackColor = false;

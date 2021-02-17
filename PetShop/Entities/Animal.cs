@@ -143,11 +143,6 @@ namespace PetShop.Entities
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                 dataadp.Fill(dta);
-                dta.Columns["Especie"].ColumnName = "Espécie";
-                dta.Columns["Raca"].ColumnName = "Raça";
-                dta.Columns["Identificacao"].ColumnName = "Identificação";
-                dta.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
-                dta.Columns["Data_registro"].ColumnName = "Data de Registro";
             }
             catch (SqlCeException ex)
             {
@@ -172,11 +167,6 @@ namespace PetShop.Entities
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                 dataadp.Fill(dta);
-                dta.Columns["Especie"].ColumnName = "Espécie";
-                dta.Columns["Raca"].ColumnName = "Raça";
-                dta.Columns["Identificacao"].ColumnName = "Identificação";
-                dta.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
-                dta.Columns["Data_registro"].ColumnName = "Data de Registro";
             }
             catch (SqlCeException ex)
             {

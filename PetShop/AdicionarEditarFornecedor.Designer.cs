@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelTipoFornecimento = new System.Windows.Forms.Label();
             this.txtTipoFornecimento = new System.Windows.Forms.TextBox();
-            this.btnCancelar = new System.Windows.Forms.Button();
-            this.BtnAdicionarEditarFornecedor = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.enderecos_contato = new System.Windows.Forms.TabPage();
             this.labelFornecedorCelular = new System.Windows.Forms.Label();
@@ -60,6 +59,9 @@
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.txtNomeFornecedor = new System.Windows.Forms.TextBox();
             this.labelNome = new System.Windows.Forms.Label();
+            this.btnSair = new System.Windows.Forms.Button();
+            this.btnAdicionarEditarFornecedor = new System.Windows.Forms.Button();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl.SuspendLayout();
             this.enderecos_contato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
@@ -68,59 +70,29 @@
             // labelTipoFornecimento
             // 
             this.labelTipoFornecimento.AutoSize = true;
-            this.labelTipoFornecimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTipoFornecimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTipoFornecimento.Location = new System.Drawing.Point(423, 23);
             this.labelTipoFornecimento.Name = "labelTipoFornecimento";
-            this.labelTipoFornecimento.Size = new System.Drawing.Size(192, 22);
+            this.labelTipoFornecimento.Size = new System.Drawing.Size(176, 21);
             this.labelTipoFornecimento.TabIndex = 1;
             this.labelTipoFornecimento.Text = "Tipo de Fornecimento*";
             // 
             // txtTipoFornecimento
             // 
             this.txtTipoFornecimento.BackColor = System.Drawing.SystemColors.Window;
-            this.txtTipoFornecimento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTipoFornecimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipoFornecimento.Location = new System.Drawing.Point(427, 48);
             this.txtTipoFornecimento.MaxLength = 500;
             this.txtTipoFornecimento.Name = "txtTipoFornecimento";
             this.txtTipoFornecimento.Size = new System.Drawing.Size(270, 22);
             this.txtTipoFornecimento.TabIndex = 3;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.AutoSize = true;
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Image = global::PetShop.Properties.Resources.cancelar;
-            this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelar.Location = new System.Drawing.Point(36, 403);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(161, 52);
-            this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // BtnAdicionarEditarFornecedor
-            // 
-            this.BtnAdicionarEditarFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdicionarEditarFornecedor.AutoSize = true;
-            this.BtnAdicionarEditarFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnAdicionarEditarFornecedor.Image = global::PetShop.Properties.Resources.adicionar;
-            this.BtnAdicionarEditarFornecedor.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAdicionarEditarFornecedor.Location = new System.Drawing.Point(651, 403);
-            this.BtnAdicionarEditarFornecedor.Name = "BtnAdicionarEditarFornecedor";
-            this.BtnAdicionarEditarFornecedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.BtnAdicionarEditarFornecedor.Size = new System.Drawing.Size(50, 52);
-            this.BtnAdicionarEditarFornecedor.TabIndex = 6;
-            this.BtnAdicionarEditarFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.BtnAdicionarEditarFornecedor.UseVisualStyleBackColor = true;
-            this.BtnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
+            this.txtTipoFornecimento.TextChanged += new System.EventHandler(this.txtTipoFornecimento_TextChanged);
             // 
             // tabControl
             // 
             this.tabControl.Controls.Add(this.enderecos_contato);
             this.tabControl.Controls.Add(this.informacoes_observacoes);
+            this.tabControl.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(36, 90);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
@@ -153,20 +125,20 @@
             this.enderecos_contato.Controls.Add(this.labelFornecedorEndereco);
             this.enderecos_contato.Controls.Add(this.txtApelido);
             this.enderecos_contato.Controls.Add(this.labelFornecedorApelido);
-            this.enderecos_contato.Location = new System.Drawing.Point(4, 22);
+            this.enderecos_contato.Location = new System.Drawing.Point(4, 25);
             this.enderecos_contato.Name = "enderecos_contato";
             this.enderecos_contato.Padding = new System.Windows.Forms.Padding(3);
-            this.enderecos_contato.Size = new System.Drawing.Size(657, 281);
+            this.enderecos_contato.Size = new System.Drawing.Size(657, 278);
             this.enderecos_contato.TabIndex = 0;
             this.enderecos_contato.Text = "Endereço e Contato";
             // 
             // labelFornecedorCelular
             // 
             this.labelFornecedorCelular.AutoSize = true;
-            this.labelFornecedorCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorCelular.Location = new System.Drawing.Point(192, 171);
+            this.labelFornecedorCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCelular.Location = new System.Drawing.Point(191, 168);
             this.labelFornecedorCelular.Name = "labelFornecedorCelular";
-            this.labelFornecedorCelular.Size = new System.Drawing.Size(54, 18);
+            this.labelFornecedorCelular.Size = new System.Drawing.Size(55, 20);
             this.labelFornecedorCelular.TabIndex = 14;
             this.labelFornecedorCelular.Text = "Celular";
             // 
@@ -174,7 +146,7 @@
             // 
             this.txtCelular.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCelular.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCelular.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCelular.Location = new System.Drawing.Point(195, 191);
             this.txtCelular.Mask = "(00)90000-0000";
             this.txtCelular.Name = "txtCelular";
@@ -186,7 +158,7 @@
             // 
             this.txtCep.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCep.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCep.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCep.Location = new System.Drawing.Point(550, 139);
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
@@ -199,19 +171,20 @@
             this.txtTelefone.BackColor = System.Drawing.SystemColors.Window;
             this.txtTelefone.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtTelefone.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefone.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone.Location = new System.Drawing.Point(18, 191);
             this.txtTelefone.Mask = "(00)0000-0000";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(125, 22);
             this.txtTelefone.TabIndex = 13;
             this.txtTelefone.Click += new System.EventHandler(this.CadastroFornecedorTelefone_Click);
+            this.txtTelefone.TextChanged += new System.EventHandler(this.txtTelefone_TextChanged);
             // 
             // txtCnpj
             // 
             this.txtCnpj.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCnpj.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCnpj.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCnpj.Location = new System.Drawing.Point(382, 191);
             this.txtCnpj.Mask = "00.000.000/0000-00";
             this.txtCnpj.Name = "txtCnpj";
@@ -224,37 +197,38 @@
             this.txtCpf.BackColor = System.Drawing.SystemColors.Window;
             this.txtCpf.Culture = new System.Globalization.CultureInfo("pt-BR");
             this.txtCpf.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpf.Location = new System.Drawing.Point(537, 191);
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(100, 22);
             this.txtCpf.TabIndex = 19;
             this.txtCpf.Click += new System.EventHandler(this.CadastroFornecedorCpf_Click);
+            this.txtCpf.TextChanged += new System.EventHandler(this.txtCpf_TextChanged);
             // 
             // labelFornecedorCnpj
             // 
             this.labelFornecedorCnpj.AutoSize = true;
-            this.labelFornecedorCnpj.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorCnpj.Location = new System.Drawing.Point(379, 171);
+            this.labelFornecedorCnpj.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCnpj.Location = new System.Drawing.Point(378, 168);
             this.labelFornecedorCnpj.Name = "labelFornecedorCnpj";
-            this.labelFornecedorCnpj.Size = new System.Drawing.Size(69, 18);
+            this.labelFornecedorCnpj.Size = new System.Drawing.Size(64, 20);
             this.labelFornecedorCnpj.TabIndex = 16;
             this.labelFornecedorCnpj.Text = "N° CNPJ";
             // 
             // labelFornecedorCpf
             // 
             this.labelFornecedorCpf.AutoSize = true;
-            this.labelFornecedorCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorCpf.Location = new System.Drawing.Point(534, 171);
+            this.labelFornecedorCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCpf.Location = new System.Drawing.Point(533, 168);
             this.labelFornecedorCpf.Name = "labelFornecedorCpf";
-            this.labelFornecedorCpf.Size = new System.Drawing.Size(65, 18);
+            this.labelFornecedorCpf.Size = new System.Drawing.Size(66, 20);
             this.labelFornecedorCpf.TabIndex = 18;
             this.labelFornecedorCpf.Text = "N° CPF*";
             // 
             // txtEmail
             // 
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(18, 245);
             this.txtEmail.MaxLength = 500;
             this.txtEmail.Name = "txtEmail";
@@ -264,30 +238,30 @@
             // labelFornecedorEmail
             // 
             this.labelFornecedorEmail.AutoSize = true;
-            this.labelFornecedorEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorEmail.Location = new System.Drawing.Point(15, 225);
+            this.labelFornecedorEmail.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorEmail.Location = new System.Drawing.Point(14, 222);
             this.labelFornecedorEmail.Name = "labelFornecedorEmail";
-            this.labelFornecedorEmail.Size = new System.Drawing.Size(50, 18);
+            this.labelFornecedorEmail.Size = new System.Drawing.Size(49, 20);
             this.labelFornecedorEmail.TabIndex = 20;
             this.labelFornecedorEmail.Text = "E-mail";
             // 
             // labelFornecedorTelefone
             // 
             this.labelFornecedorTelefone.AutoSize = true;
-            this.labelFornecedorTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorTelefone.Location = new System.Drawing.Point(15, 171);
+            this.labelFornecedorTelefone.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorTelefone.Location = new System.Drawing.Point(14, 168);
             this.labelFornecedorTelefone.Name = "labelFornecedorTelefone";
-            this.labelFornecedorTelefone.Size = new System.Drawing.Size(71, 18);
+            this.labelFornecedorTelefone.Size = new System.Drawing.Size(74, 20);
             this.labelFornecedorTelefone.TabIndex = 12;
             this.labelFornecedorTelefone.Text = "Telefone*";
             // 
             // labelFornecedorCep
             // 
             this.labelFornecedorCep.AutoSize = true;
-            this.labelFornecedorCep.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorCep.Location = new System.Drawing.Point(547, 118);
+            this.labelFornecedorCep.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCep.Location = new System.Drawing.Point(546, 116);
             this.labelFornecedorCep.Name = "labelFornecedorCep";
-            this.labelFornecedorCep.Size = new System.Drawing.Size(39, 18);
+            this.labelFornecedorCep.Size = new System.Drawing.Size(35, 20);
             this.labelFornecedorCep.TabIndex = 10;
             this.labelFornecedorCep.Text = "CEP";
             // 
@@ -296,10 +270,10 @@
             this.CombBoxUf.BackColor = System.Drawing.SystemColors.Window;
             this.CombBoxUf.DropDownHeight = 85;
             this.CombBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CombBoxUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CombBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CombBoxUf.FormattingEnabled = true;
             this.CombBoxUf.IntegralHeight = false;
-            this.CombBoxUf.ItemHeight = 16;
+            this.CombBoxUf.ItemHeight = 17;
             this.CombBoxUf.Items.AddRange(new object[] {
             "AC",
             "AL",
@@ -330,83 +304,87 @@
             "TO"});
             this.CombBoxUf.Location = new System.Drawing.Point(450, 139);
             this.CombBoxUf.Name = "CombBoxUf";
-            this.CombBoxUf.Size = new System.Drawing.Size(62, 24);
+            this.CombBoxUf.Size = new System.Drawing.Size(62, 25);
             this.CombBoxUf.TabIndex = 9;
+            this.CombBoxUf.TextChanged += new System.EventHandler(this.CombBoxUf_TextChanged);
             // 
             // labelFornecedorUf
             // 
             this.labelFornecedorUf.AutoSize = true;
-            this.labelFornecedorUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorUf.Location = new System.Drawing.Point(447, 118);
+            this.labelFornecedorUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorUf.Location = new System.Drawing.Point(447, 116);
             this.labelFornecedorUf.Name = "labelFornecedorUf";
-            this.labelFornecedorUf.Size = new System.Drawing.Size(34, 18);
+            this.labelFornecedorUf.Size = new System.Drawing.Size(35, 20);
             this.labelFornecedorUf.TabIndex = 8;
             this.labelFornecedorUf.Text = "UF*";
             // 
             // txtCidade
             // 
             this.txtCidade.BackColor = System.Drawing.SystemColors.Window;
-            this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCidade.Location = new System.Drawing.Point(281, 139);
             this.txtCidade.MaxLength = 500;
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(140, 22);
             this.txtCidade.TabIndex = 7;
+            this.txtCidade.TextChanged += new System.EventHandler(this.txtCidade_TextChanged);
             // 
             // labelFornecedorCidade
             // 
             this.labelFornecedorCidade.AutoSize = true;
-            this.labelFornecedorCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorCidade.Location = new System.Drawing.Point(278, 118);
+            this.labelFornecedorCidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorCidade.Location = new System.Drawing.Point(277, 116);
             this.labelFornecedorCidade.Name = "labelFornecedorCidade";
-            this.labelFornecedorCidade.Size = new System.Drawing.Size(60, 18);
+            this.labelFornecedorCidade.Size = new System.Drawing.Size(63, 20);
             this.labelFornecedorCidade.TabIndex = 6;
             this.labelFornecedorCidade.Text = "Cidade*";
             // 
             // txtBairro
             // 
             this.txtBairro.BackColor = System.Drawing.SystemColors.Window;
-            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairro.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.Location = new System.Drawing.Point(18, 139);
             this.txtBairro.MaxLength = 500;
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(241, 22);
             this.txtBairro.TabIndex = 5;
+            this.txtBairro.TextChanged += new System.EventHandler(this.txtBairro_TextChanged);
             // 
             // labelFornecedorBairro
             // 
             this.labelFornecedorBairro.AutoSize = true;
-            this.labelFornecedorBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorBairro.Location = new System.Drawing.Point(15, 118);
+            this.labelFornecedorBairro.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorBairro.Location = new System.Drawing.Point(14, 116);
             this.labelFornecedorBairro.Name = "labelFornecedorBairro";
-            this.labelFornecedorBairro.Size = new System.Drawing.Size(54, 18);
+            this.labelFornecedorBairro.Size = new System.Drawing.Size(57, 20);
             this.labelFornecedorBairro.TabIndex = 4;
             this.labelFornecedorBairro.Text = "Bairro*";
             // 
             // txtEndereco
             // 
             this.txtEndereco.BackColor = System.Drawing.SystemColors.Window;
-            this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEndereco.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.Location = new System.Drawing.Point(18, 86);
             this.txtEndereco.MaxLength = 500;
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(619, 22);
             this.txtEndereco.TabIndex = 3;
+            this.txtEndereco.TextChanged += new System.EventHandler(this.txtEndereco_TextChanged);
             // 
             // labelFornecedorEndereco
             // 
             this.labelFornecedorEndereco.AutoSize = true;
-            this.labelFornecedorEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorEndereco.Location = new System.Drawing.Point(15, 66);
+            this.labelFornecedorEndereco.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorEndereco.Location = new System.Drawing.Point(14, 63);
             this.labelFornecedorEndereco.Name = "labelFornecedorEndereco";
-            this.labelFornecedorEndereco.Size = new System.Drawing.Size(78, 18);
+            this.labelFornecedorEndereco.Size = new System.Drawing.Size(78, 20);
             this.labelFornecedorEndereco.TabIndex = 2;
             this.labelFornecedorEndereco.Text = "Endereço*";
             // 
             // txtApelido
             // 
             this.txtApelido.BackColor = System.Drawing.SystemColors.Window;
-            this.txtApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApelido.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtApelido.Location = new System.Drawing.Point(18, 36);
             this.txtApelido.MaxLength = 500;
             this.txtApelido.Name = "txtApelido";
@@ -416,10 +394,10 @@
             // labelFornecedorApelido
             // 
             this.labelFornecedorApelido.AutoSize = true;
-            this.labelFornecedorApelido.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFornecedorApelido.Location = new System.Drawing.Point(15, 16);
+            this.labelFornecedorApelido.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFornecedorApelido.Location = new System.Drawing.Point(14, 13);
             this.labelFornecedorApelido.Name = "labelFornecedorApelido";
-            this.labelFornecedorApelido.Size = new System.Drawing.Size(169, 18);
+            this.labelFornecedorApelido.Size = new System.Drawing.Size(170, 20);
             this.labelFornecedorApelido.TabIndex = 0;
             this.labelFornecedorApelido.Text = "Nome Fantasia / Apelido";
             // 
@@ -427,10 +405,10 @@
             // 
             this.informacoes_observacoes.Controls.Add(this.txtObservacoes);
             this.informacoes_observacoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.informacoes_observacoes.Location = new System.Drawing.Point(4, 22);
+            this.informacoes_observacoes.Location = new System.Drawing.Point(4, 25);
             this.informacoes_observacoes.Name = "informacoes_observacoes";
             this.informacoes_observacoes.Padding = new System.Windows.Forms.Padding(3);
-            this.informacoes_observacoes.Size = new System.Drawing.Size(657, 281);
+            this.informacoes_observacoes.Size = new System.Drawing.Size(657, 278);
             this.informacoes_observacoes.TabIndex = 1;
             this.informacoes_observacoes.Text = "Informações / Observações";
             this.informacoes_observacoes.UseVisualStyleBackColor = true;
@@ -447,34 +425,71 @@
             // 
             // txtNomeFornecedor
             // 
-            this.txtNomeFornecedor.BackColor = System.Drawing.SystemColors.Info;
-            this.txtNomeFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeFornecedor.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNomeFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeFornecedor.Location = new System.Drawing.Point(40, 48);
             this.txtNomeFornecedor.MaxLength = 500;
             this.txtNomeFornecedor.Name = "txtNomeFornecedor";
             this.txtNomeFornecedor.Size = new System.Drawing.Size(332, 22);
             this.txtNomeFornecedor.TabIndex = 2;
+            this.txtNomeFornecedor.TextChanged += new System.EventHandler(this.txtNomeFornecedor_TextChanged);
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelNome.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNome.Location = new System.Drawing.Point(36, 23);
             this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(186, 22);
+            this.labelNome.Size = new System.Drawing.Size(172, 21);
             this.labelNome.TabIndex = 0;
             this.labelNome.Text = "Nome do Fornecedor*";
+            // 
+            // btnSair
+            // 
+            this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.Image = global::PetShop.Properties.Resources.close;
+            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSair.Location = new System.Drawing.Point(36, 411);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(178, 45);
+            this.btnSair.TabIndex = 17;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = false;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            // 
+            // btnAdicionarEditarFornecedor
+            // 
+            this.btnAdicionarEditarFornecedor.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnAdicionarEditarFornecedor.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnAdicionarEditarFornecedor.Enabled = false;
+            this.btnAdicionarEditarFornecedor.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnAdicionarEditarFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionarEditarFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionarEditarFornecedor.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnAdicionarEditarFornecedor.Image = global::PetShop.Properties.Resources.confirm;
+            this.btnAdicionarEditarFornecedor.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdicionarEditarFornecedor.Location = new System.Drawing.Point(519, 411);
+            this.btnAdicionarEditarFornecedor.Name = "btnAdicionarEditarFornecedor";
+            this.btnAdicionarEditarFornecedor.Size = new System.Drawing.Size(178, 45);
+            this.btnAdicionarEditarFornecedor.TabIndex = 18;
+            this.btnAdicionarEditarFornecedor.Text = "Salvar";
+            this.btnAdicionarEditarFornecedor.UseVisualStyleBackColor = false;
+            this.btnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
             // 
             // AdicionarEditarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(736, 479);
+            this.Controls.Add(this.btnAdicionarEditarFornecedor);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.labelTipoFornecimento);
             this.Controls.Add(this.txtTipoFornecimento);
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.BtnAdicionarEditarFornecedor);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtNomeFornecedor);
             this.Controls.Add(this.labelNome);
@@ -489,6 +504,7 @@
             this.Text = " ";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AdicionarEditarFornecedor_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AdicionarEditarFornecedor_MouseMove);
             this.tabControl.ResumeLayout(false);
             this.enderecos_contato.ResumeLayout(false);
             this.enderecos_contato.PerformLayout();
@@ -502,8 +518,6 @@
 
         private System.Windows.Forms.Label labelTipoFornecimento;
         private System.Windows.Forms.TextBox txtTipoFornecimento;
-        private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.Button BtnAdicionarEditarFornecedor;
         private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage enderecos_contato;
         private System.Windows.Forms.Label labelFornecedorCelular;
@@ -532,5 +546,8 @@
         private System.Windows.Forms.RichTextBox txtObservacoes;
         private System.Windows.Forms.TextBox txtNomeFornecedor;
         private System.Windows.Forms.Label labelNome;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnAdicionarEditarFornecedor;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

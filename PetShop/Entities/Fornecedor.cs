@@ -63,10 +63,6 @@ namespace PetShop.Entities
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                 dataadp.Fill(dta);
-                dta.Columns["Tipo_Fornecimento"].ColumnName = "Tipo de Fornecimento";
-                dta.Columns["Endereco"].ColumnName = "Endereço";
-                dta.Columns["Cep"].ColumnName.ToUpper();
-                dta.Columns["Observacoes"].ColumnName = "Observações";
             }
             catch (SqlCeException ex)
             {

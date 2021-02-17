@@ -252,7 +252,7 @@ namespace PetShop
 
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Agenda = new Agenda(dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second), txtTipoProcedimento.Text, _Cliente, _Animal);
+                _Agenda = new Agenda(dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second), txtTipoProcedimento.Text, _Animal, _Cliente);
                 _Agenda.AdicionarEditarAgendamento(TipoOperacao.Adicionar);
             }
             else if (Operacao == TipoOperacao.Editar)

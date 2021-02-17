@@ -108,7 +108,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimir.AutoSize = true;
             this.btnImprimir.BackColor = System.Drawing.Color.Transparent;
-            this.btnImprimir.Enabled = false;
             this.btnImprimir.FlatAppearance.BorderSize = 0;
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,6 +120,7 @@
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimir.UseVisualStyleBackColor = false;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExcluir
             // 
@@ -245,8 +245,9 @@
             this.listaAnimais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaAnimais.Size = new System.Drawing.Size(1088, 600);
             this.listaAnimais.TabIndex = 1;
-            this.listaAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellClick);
             this.listaAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellDoubleClick);
+            this.listaAnimais.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaAnimais_RowStateChanged);
+            this.listaAnimais.SelectionChanged += new System.EventHandler(this.listaAnimais_SelectionChanged);
             this.listaAnimais.Sorted += new System.EventHandler(this.listaAnimais_Sorted);
             // 
             // PesquisaAnimais

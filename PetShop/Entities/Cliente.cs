@@ -67,14 +67,7 @@ namespace PetShop.Entities
                 comando.CommandText = "SELECT * FROM Clientes";
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
-                dataadp.Fill(dta);
-                dta.Columns["Endereco"].ColumnName = "Endereço";
-                dta.Columns["Cep"].ColumnName = "CEP";
-                dta.Columns["Telefone_Principal"].ColumnName = "Telefone Principal";
-                dta.Columns["Telefone_Secundario"].ColumnName = "Telefone Secundario";
-                dta.Columns["Cpf"].ColumnName = "CPF";
-                dta.Columns["Cnpj"].ColumnName = "CNPJ";
-                dta.Columns["Observacoes"].ColumnName = "Observações";
+                dataadp.Fill(dta);               
             }
             catch (SqlCeException ex)
             {

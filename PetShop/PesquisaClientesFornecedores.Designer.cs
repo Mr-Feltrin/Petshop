@@ -37,7 +37,7 @@
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
             this.textBoxPesquisarPeloNome = new System.Windows.Forms.TextBox();
             this.Label_pesquisar_cliente_nome = new System.Windows.Forms.Label();
-            this.btnImprimirClienteFornecedor = new System.Windows.Forms.Button();
+            this.btnExportarClienteFornecedor = new System.Windows.Forms.Button();
             this.btnExcluirClienteFornecedor = new System.Windows.Forms.Button();
             this.btnEditarClienteFornecedor = new System.Windows.Forms.Button();
             this.btnAdicionarClienteFornecedor = new System.Windows.Forms.Button();
@@ -104,8 +104,9 @@
             this.dataGridViewListaClientesFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewListaClientesFornecedores.Size = new System.Drawing.Size(898, 455);
             this.dataGridViewListaClientesFornecedores.TabIndex = 0;
-            this.dataGridViewListaClientesFornecedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewListaClientesFornecedores_CellClick);
             this.dataGridViewListaClientesFornecedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewListaClientesFornecedores_CellDoubleClick);
+            this.dataGridViewListaClientesFornecedores.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewListaClientesFornecedores_RowStateChanged);
+            this.dataGridViewListaClientesFornecedores.SelectionChanged += new System.EventHandler(this.dataGridViewListaClientesFornecedores_SelectionChanged);
             this.dataGridViewListaClientesFornecedores.Sorted += new System.EventHandler(this.dataGridViewListaClientesFornecedores_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
@@ -139,23 +140,24 @@
             this.Label_pesquisar_cliente_nome.TabIndex = 8;
             this.Label_pesquisar_cliente_nome.Text = "Pesquisar pelo Nome";
             // 
-            // btnImprimirClienteFornecedor
+            // btnExportarClienteFornecedor
             // 
-            this.btnImprimirClienteFornecedor.AutoSize = true;
-            this.btnImprimirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
-            this.btnImprimirClienteFornecedor.Enabled = false;
-            this.btnImprimirClienteFornecedor.FlatAppearance.BorderSize = 0;
-            this.btnImprimirClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimirClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimirClienteFornecedor.Image = global::PetShop.Properties.Resources.imprimir_list;
-            this.btnImprimirClienteFornecedor.Location = new System.Drawing.Point(850, 14);
-            this.btnImprimirClienteFornecedor.Name = "btnImprimirClienteFornecedor";
-            this.btnImprimirClienteFornecedor.Size = new System.Drawing.Size(72, 59);
-            this.btnImprimirClienteFornecedor.TabIndex = 4;
-            this.btnImprimirClienteFornecedor.Text = "Imprimir";
-            this.btnImprimirClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnImprimirClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnImprimirClienteFornecedor.UseVisualStyleBackColor = false;
+            this.btnExportarClienteFornecedor.AutoSize = true;
+            this.btnExportarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
+            this.btnExportarClienteFornecedor.Enabled = false;
+            this.btnExportarClienteFornecedor.FlatAppearance.BorderSize = 0;
+            this.btnExportarClienteFornecedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarClienteFornecedor.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarClienteFornecedor.Image = global::PetShop.Properties.Resources.imprimir_list;
+            this.btnExportarClienteFornecedor.Location = new System.Drawing.Point(850, 14);
+            this.btnExportarClienteFornecedor.Name = "btnExportarClienteFornecedor";
+            this.btnExportarClienteFornecedor.Size = new System.Drawing.Size(72, 59);
+            this.btnExportarClienteFornecedor.TabIndex = 4;
+            this.btnExportarClienteFornecedor.Text = "Exportar";
+            this.btnExportarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExportarClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExportarClienteFornecedor.UseVisualStyleBackColor = false;
+            this.btnExportarClienteFornecedor.Click += new System.EventHandler(this.btnExportarClienteFornecedor_Click);
             // 
             // btnExcluirClienteFornecedor
             // 
@@ -218,7 +220,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(934, 567);
-            this.Controls.Add(this.btnImprimirClienteFornecedor);
+            this.Controls.Add(this.btnExportarClienteFornecedor);
             this.Controls.Add(this.btnExcluirClienteFornecedor);
             this.Controls.Add(this.btnEditarClienteFornecedor);
             this.Controls.Add(this.btnAdicionarClienteFornecedor);
@@ -247,7 +249,7 @@
         private System.Windows.Forms.Button btnAdicionarClienteFornecedor;
         private System.Windows.Forms.Button btnEditarClienteFornecedor;
         private System.Windows.Forms.Button btnExcluirClienteFornecedor;
-        private System.Windows.Forms.Button btnImprimirClienteFornecedor;
+        private System.Windows.Forms.Button btnExportarClienteFornecedor;
         private System.Windows.Forms.GroupBox groupBox_pesquisar_nome_cliente;
         private System.Windows.Forms.TextBox textBoxPesquisarPeloNome;
         private System.Windows.Forms.Label Label_pesquisar_cliente_nome;

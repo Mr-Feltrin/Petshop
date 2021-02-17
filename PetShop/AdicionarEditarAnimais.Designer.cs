@@ -66,9 +66,7 @@
             this.btnVoltarFoto = new System.Windows.Forms.Button();
             this.btnAdicionarFoto = new System.Windows.Forms.Button();
             this.labelIndexFoto = new System.Windows.Forms.Label();
-            this.txtEnderecoFoto = new System.Windows.Forms.TextBox();
             this.labelFobias = new System.Windows.Forms.Label();
-            this.labelEnderecoFoto = new System.Windows.Forms.Label();
             this.labelIdentificacao = new System.Windows.Forms.Label();
             this.labelRaca = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -259,7 +257,7 @@
             this.checkDisponivelTosa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkDisponivelTosa.AutoSize = true;
             this.checkDisponivelTosa.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkDisponivelTosa.Location = new System.Drawing.Point(16, 500);
+            this.checkDisponivelTosa.Location = new System.Drawing.Point(19, 461);
             this.checkDisponivelTosa.Name = "checkDisponivelTosa";
             this.checkDisponivelTosa.Size = new System.Drawing.Size(140, 21);
             this.checkDisponivelTosa.TabIndex = 4;
@@ -271,7 +269,7 @@
             this.checkPossuiPedigree.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkPossuiPedigree.AutoSize = true;
             this.checkPossuiPedigree.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkPossuiPedigree.Location = new System.Drawing.Point(16, 523);
+            this.checkPossuiPedigree.Location = new System.Drawing.Point(19, 484);
             this.checkPossuiPedigree.Name = "checkPossuiPedigree";
             this.checkPossuiPedigree.Size = new System.Drawing.Size(117, 21);
             this.checkPossuiPedigree.TabIndex = 5;
@@ -283,7 +281,7 @@
             this.checkAgressivo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkAgressivo.AutoSize = true;
             this.checkAgressivo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAgressivo.Location = new System.Drawing.Point(16, 545);
+            this.checkAgressivo.Location = new System.Drawing.Point(19, 506);
             this.checkAgressivo.Name = "checkAgressivo";
             this.checkAgressivo.Size = new System.Drawing.Size(81, 21);
             this.checkAgressivo.TabIndex = 8;
@@ -295,7 +293,7 @@
             this.checkHiperativo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkHiperativo.AutoSize = true;
             this.checkHiperativo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkHiperativo.Location = new System.Drawing.Point(159, 500);
+            this.checkHiperativo.Location = new System.Drawing.Point(162, 461);
             this.checkHiperativo.Name = "checkHiperativo";
             this.checkHiperativo.Size = new System.Drawing.Size(83, 21);
             this.checkHiperativo.TabIndex = 9;
@@ -307,7 +305,7 @@
             this.checkAntissocial.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkAntissocial.AutoSize = true;
             this.checkAntissocial.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAntissocial.Location = new System.Drawing.Point(159, 523);
+            this.checkAntissocial.Location = new System.Drawing.Point(162, 484);
             this.checkAntissocial.Name = "checkAntissocial";
             this.checkAntissocial.Size = new System.Drawing.Size(85, 21);
             this.checkAntissocial.TabIndex = 10;
@@ -319,7 +317,7 @@
             this.checkObcessivo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkObcessivo.AutoSize = true;
             this.checkObcessivo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkObcessivo.Location = new System.Drawing.Point(159, 546);
+            this.checkObcessivo.Location = new System.Drawing.Point(162, 507);
             this.checkObcessivo.Name = "checkObcessivo";
             this.checkObcessivo.Size = new System.Drawing.Size(83, 21);
             this.checkObcessivo.TabIndex = 11;
@@ -337,7 +335,7 @@
             this.btnSalvarCadastro.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSalvarCadastro.Image = global::PetShop.Properties.Resources.confirm;
             this.btnSalvarCadastro.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvarCadastro.Location = new System.Drawing.Point(461, 484);
+            this.btnSalvarCadastro.Location = new System.Drawing.Point(457, 449);
             this.btnSalvarCadastro.Name = "btnSalvarCadastro";
             this.btnSalvarCadastro.Size = new System.Drawing.Size(178, 43);
             this.btnSalvarCadastro.TabIndex = 12;
@@ -357,7 +355,7 @@
             this.btnEmitirFicha.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEmitirFicha.Image = global::PetShop.Properties.Resources.document32x32;
             this.btnEmitirFicha.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEmitirFicha.Location = new System.Drawing.Point(277, 533);
+            this.btnEmitirFicha.Location = new System.Drawing.Point(273, 498);
             this.btnEmitirFicha.Name = "btnEmitirFicha";
             this.btnEmitirFicha.Size = new System.Drawing.Size(178, 43);
             this.btnEmitirFicha.TabIndex = 13;
@@ -374,7 +372,7 @@
             this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSair.Image = global::PetShop.Properties.Resources.close;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.Location = new System.Drawing.Point(461, 533);
+            this.btnSair.Location = new System.Drawing.Point(457, 498);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(178, 43);
             this.btnSair.TabIndex = 15;
@@ -413,9 +411,9 @@
             this.txtFobias.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFobias.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFobias.Location = new System.Drawing.Point(24, 228);
+            this.txtFobias.Location = new System.Drawing.Point(25, 179);
             this.txtFobias.Name = "txtFobias";
-            this.txtFobias.Size = new System.Drawing.Size(579, 22);
+            this.txtFobias.Size = new System.Drawing.Size(325, 22);
             this.txtFobias.TabIndex = 6;
             // 
             // pictureBoxFotoAnimal
@@ -434,7 +432,7 @@
             this.tabPage5.Controls.Add(this.txtObservacaoRotina);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(619, 273);
+            this.tabPage5.Size = new System.Drawing.Size(619, 228);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Obs de Rotina";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -456,7 +454,7 @@
             this.tabPage4.Controls.Add(this.txtObservacaoComportamental);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(619, 273);
+            this.tabPage4.Size = new System.Drawing.Size(619, 228);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Obs Comportamental";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -480,10 +478,8 @@
             this.tabPage1.Controls.Add(this.btnVoltarFoto);
             this.tabPage1.Controls.Add(this.btnAdicionarFoto);
             this.tabPage1.Controls.Add(this.labelIndexFoto);
-            this.tabPage1.Controls.Add(this.txtEnderecoFoto);
             this.tabPage1.Controls.Add(this.pictureBoxFotoAnimal);
             this.tabPage1.Controls.Add(this.labelFobias);
-            this.tabPage1.Controls.Add(this.labelEnderecoFoto);
             this.tabPage1.Controls.Add(this.labelIdentificacao);
             this.tabPage1.Controls.Add(this.labelRaca);
             this.tabPage1.Controls.Add(this.label4);
@@ -494,7 +490,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(619, 273);
+            this.tabPage1.Size = new System.Drawing.Size(619, 228);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Informação do Animal";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -559,32 +555,15 @@
             this.labelIndexFoto.Size = new System.Drawing.Size(0, 16);
             this.labelIndexFoto.TabIndex = 21;
             // 
-            // txtEnderecoFoto
-            // 
-            this.txtEnderecoFoto.Location = new System.Drawing.Point(25, 181);
-            this.txtEnderecoFoto.Name = "txtEnderecoFoto";
-            this.txtEnderecoFoto.Size = new System.Drawing.Size(325, 20);
-            this.txtEnderecoFoto.TabIndex = 17;
-            // 
             // labelFobias
             // 
             this.labelFobias.AutoSize = true;
             this.labelFobias.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelFobias.Location = new System.Drawing.Point(21, 208);
+            this.labelFobias.Location = new System.Drawing.Point(22, 159);
             this.labelFobias.Name = "labelFobias";
             this.labelFobias.Size = new System.Drawing.Size(45, 17);
             this.labelFobias.TabIndex = 12;
             this.labelFobias.Text = "Fobias";
-            // 
-            // labelEnderecoFoto
-            // 
-            this.labelEnderecoFoto.AutoSize = true;
-            this.labelEnderecoFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEnderecoFoto.Location = new System.Drawing.Point(21, 160);
-            this.labelEnderecoFoto.Name = "labelEnderecoFoto";
-            this.labelEnderecoFoto.Size = new System.Drawing.Size(200, 17);
-            this.labelEnderecoFoto.TabIndex = 10;
-            this.labelEnderecoFoto.Text = "Endereço da Foto / Pesquisar Foto";
             // 
             // labelIdentificacao
             // 
@@ -614,7 +593,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Especie*";
+            this.label4.Text = "Espécie*";
             // 
             // tabControl1
             // 
@@ -626,14 +605,14 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 179);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(627, 299);
+            this.tabControl1.Size = new System.Drawing.Size(627, 254);
             this.tabControl1.TabIndex = 3;
             // 
             // AdicionarEditarAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 587);
+            this.ClientSize = new System.Drawing.Size(651, 553);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnEmitirFicha);
@@ -701,7 +680,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.PictureBox pictureBoxFotoAnimal;
         private System.Windows.Forms.Label labelFobias;
-        private System.Windows.Forms.Label labelEnderecoFoto;
         private System.Windows.Forms.Label labelIdentificacao;
         private System.Windows.Forms.Label labelRaca;
         private System.Windows.Forms.Label label4;
@@ -713,7 +691,6 @@
         internal System.Windows.Forms.TextBox txtNomeDonoAnimal;
         public System.Windows.Forms.TextBox txtRaca;
         public System.Windows.Forms.TextBox txtEspecie;
-        private System.Windows.Forms.TextBox txtEnderecoFoto;
         private System.Windows.Forms.Label labelIndexFoto;
         private System.Windows.Forms.CheckBox checkSexoMacho;
         private System.Windows.Forms.CheckBox checkSexoFemea;

@@ -1,38 +1,51 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace PetShop
 {
     public partial class AdicionarEditarFornecedor : Form
     {
         private readonly TipoOperacao Operacao;
-        private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
-        private Fornecedor _Fornecedor;
+        private Fornecedor _Fornecedor { get; set; }
+        private List<MaskedTextBox> CamposOpcionais { get; set; }
+        private Dictionary<object, string> CamposObrigatorios { get; set; }
 
-        public AdicionarEditarFornecedor(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
+        public AdicionarEditarFornecedor(TipoOperacao operacao)
         {
             InitializeComponent();
             Operacao = operacao;
-            _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
-        public AdicionarEditarFornecedor(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, int idFornecedor) : this(operacao, pesquisaClientesFornecedores)
+        public AdicionarEditarFornecedor(TipoOperacao operacao, int idFornecedor) : this(operacao)
         {
             _Fornecedor = new Fornecedor(idFornecedor);
         }
         private void AdicionarEditarFornecedor_Load(object sender, EventArgs e)
         {
+            CamposOpcionais = new List<MaskedTextBox>() { txtCep, txtCelular, txtCnpj };
+            CamposObrigatorios = new Dictionary<object, string>()
+            {
+                {txtNomeFornecedor, "Preencha o Nome do Fornecedor"},
+                {txtTipoFornecimento, "Preencha o Tipo de Fornecimento"},
+                {txtEndereco, "Preencha o campo de Endereço"},
+                {txtBairro, "Preencha o campo de Bairro"},
+                {txtCidade, "Preencha o campo de Cidade"},
+                {CombBoxUf, "Selecione o Estado"},
+                {txtTelefone, "Preencha o campo de Telefone"},
+                {txtCpf, "Preencha o campo de CPF"}
+            };
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar Fornecedor";
-                BtnAdicionarEditarFornecedor.Text = "Adicionar";
+                toolTip.SetToolTip(btnAdicionarEditarFornecedor, "Preencha os Campos Obrigatórios");
             }
             else
             {
                 Text = "Editar Fornecedor";
-                BtnAdicionarEditarFornecedor.Text = "Atualizar";
                 txtNomeFornecedor.Text = _Fornecedor.Nome;
                 txtTipoFornecimento.Text = _Fornecedor.Tipo_Fornecimento;
                 txtApelido.Text = _Fornecedor.Apelido;
@@ -46,8 +59,8 @@ namespace PetShop
                 txtCnpj.Text = _Fornecedor.Cnpj;
                 txtCpf.Text = _Fornecedor.Cpf;
                 txtEmail.Text = _Fornecedor.Email;
-                txtObservacoes.Text = _Fornecedor.Observacoes;            
-            }          
+                txtObservacoes.Text = _Fornecedor.Observacoes;
+            }
         }
 
         public static void EmptyMaskedTextBox(MaskedTextBox maskedTextBox)
@@ -60,82 +73,37 @@ namespace PetShop
             maskedTextBox.TextMaskFormat = MaskFormat.IncludeLiterals;
         }
 
-        private void VerificaCamposObrigatorios()
+        private void BtnAdicionarEditarFornecedor_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNomeFornecedor.Text))
+            VerificarCamposObrigatorios.LimparCamposOpcionais(CamposOpcionais);
+            if (Operacao == TipoOperacao.Adicionar)
             {
-                MessageBox.Show("Preencha o campo de Nome do Fornecedor", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtTipoFornecimento.Text))
-            {
-                MessageBox.Show("Preencha o campo de Tipo de Fornecimento", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtEndereco.Text))
-            {
-                MessageBox.Show("Preencha o campo de Nome da Rua / AV.", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtBairro.Text))
-            {
-                MessageBox.Show("Preencha o campo de Bairro", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrWhiteSpace(txtCidade.Text))
-            {
-                MessageBox.Show("Preencha o campo de Cidade", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (string.IsNullOrEmpty(CombBoxUf.Text))
-            {
-                MessageBox.Show("Selecione o campo de UF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!txtTelefone.MaskCompleted)
-            {
-                MessageBox.Show("Preencha o campo de Telefone", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (!txtCpf.MaskCompleted)
-            {
-                MessageBox.Show("Preencha o campo de CPF", "Campo Obrigatório", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _Fornecedor = new Fornecedor(txtNomeFornecedor.Text, txtTipoFornecimento.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, CombBoxUf.Text, txtCep.Text, txtTelefone.Text, txtCelular.Text, txtCnpj.Text, txtCpf.Text, txtEmail.Text, txtObservacoes.Text);
+                _Fornecedor.AdicionarEditarFornecedor(Operacao);
             }
             else
             {
-                List<MaskedTextBox> CamposOpcionais = new List<MaskedTextBox>() { txtCep, txtCelular, txtCnpj };
-                foreach (MaskedTextBox campo in CamposOpcionais)
-                {
-                    if (!campo.MaskFull)
-                    {
-                        campo.Clear();
-                        campo.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                    }
-                }
-                if (Operacao == TipoOperacao.Adicionar)
-                {
-                    _Fornecedor = new Fornecedor(txtNomeFornecedor.Text, txtTipoFornecimento.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, CombBoxUf.Text, txtCep.Text, txtTelefone.Text, txtCelular.Text, txtCnpj.Text, txtCpf.Text, txtEmail.Text, txtObservacoes.Text);
-                    _Fornecedor.AdicionarEditarFornecedor(Operacao);
-                }
-                else
-                {
-                    _Fornecedor.Nome = txtNomeFornecedor.Text;
-                    _Fornecedor.Tipo_Fornecimento = txtTipoFornecimento.Text;
-                    _Fornecedor.Apelido = txtApelido.Text;
-                    _Fornecedor.Endereco = txtEndereco.Text;
-                    _Fornecedor.Bairro = txtBairro.Text;
-                    _Fornecedor.Cidade = txtCidade.Text;
-                    _Fornecedor.Estado = CombBoxUf.Text;
-                    _Fornecedor.Cep = txtCep.Text;
-                    _Fornecedor.Telefone = txtTelefone.Text;
-                    _Fornecedor.Celular = txtCelular.Text;
-                    _Fornecedor.Cnpj = txtCnpj.Text;
-                    _Fornecedor.Cpf = txtCpf.Text;
-                    _Fornecedor.Email = txtEmail.Text;
-                    _Fornecedor.Observacoes = txtObservacoes.Text;
-                    _Fornecedor.AdicionarEditarFornecedor(Operacao);
-                }
-                _PesquisaClientesFornecedores.AtualizarLista();
-                Close();
+                _Fornecedor.Nome = txtNomeFornecedor.Text;
+                _Fornecedor.Tipo_Fornecimento = txtTipoFornecimento.Text;
+                _Fornecedor.Apelido = txtApelido.Text;
+                _Fornecedor.Endereco = txtEndereco.Text;
+                _Fornecedor.Bairro = txtBairro.Text;
+                _Fornecedor.Cidade = txtCidade.Text;
+                _Fornecedor.Estado = CombBoxUf.Text;
+                _Fornecedor.Cep = txtCep.Text;
+                _Fornecedor.Telefone = txtTelefone.Text;
+                _Fornecedor.Celular = txtCelular.Text;
+                _Fornecedor.Cnpj = txtCnpj.Text;
+                _Fornecedor.Cpf = txtCpf.Text;
+                _Fornecedor.Email = txtEmail.Text;
+                _Fornecedor.Observacoes = txtObservacoes.Text;
+                _Fornecedor.AdicionarEditarFornecedor(Operacao);
             }
-        }     
-
-        private void BtnAdicionarEditarFornecedor_Click(object sender, EventArgs e)
-        {
-            VerificaCamposObrigatorios();
+            if (Application.OpenForms.OfType<PesquisaClientesFornecedores>().Count() == 1)
+            {
+                Application.OpenForms.OfType<PesquisaClientesFornecedores>().First().AtualizarLista();
+            }
+            Close();
         }
 
         private void CadastroFornecedorTelefone_Click(object sender, EventArgs e)
@@ -161,6 +129,71 @@ namespace PetShop
         private void CadastroFornecedorCpf_Click(object sender, EventArgs e)
         {
             EmptyMaskedTextBox(txtCpf);
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void AdicionarEditarFornecedor_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control control = PesquisaControlePosicaoMouse.EncontrarControleNoCursor(this);
+            if (control != null && !control.Enabled)
+            {
+                if (!toolTip.Active)
+                {
+                    toolTip.Active = true;
+                    toolTip.Show(toolTip.GetToolTip(control), control, control.Width / 2, control.Height / 2);
+                }
+            }
+            else
+            {
+                if (toolTip.Active)
+                {
+                    toolTip.Active = false;
+                }
+            }
+        }
+
+        private void txtNomeFornecedor_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtTipoFornecimento_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtEndereco_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtBairro_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtCidade_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void CombBoxUf_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtTelefone_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtCpf_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
         }
     }
 }

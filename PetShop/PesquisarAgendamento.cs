@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace PetShop
 {
@@ -78,17 +79,9 @@ namespace PetShop
             }
         }
 
-        private void listaAgendamento_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnEditarHorario.Enabled = true;
-            btnExcluirHorario.Enabled = true;
-        }
-
         private void listaAgendamento_Sorted(object sender, EventArgs e)
         {
             listaAgendamento.ClearSelection();
-            btnEditarHorario.Enabled = false;
-            btnExcluirHorario.Enabled = false;
         }
 
         private void btnExcluirHorario_Click(object sender, EventArgs e)
@@ -103,7 +96,6 @@ namespace PetShop
                     Application.OpenForms.OfType<TelaPrincipal>().First().AtualizarAgendamentos();
                 }
             }
-
         }
 
         private void btnEditarHorario_Click(object sender, EventArgs e)
@@ -139,6 +131,69 @@ namespace PetShop
         private void listaAgendamento_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             LegendaColoracaoLista();
+        }
+
+        private void btnRelatorio_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Planilha do Excel (*xlsx)|*xlsx";
+                dialog.FilterIndex = 2;
+                dialog.RestoreDirectory = true;
+                dialog.AddExtension = true;
+                dialog.DefaultExt = "xlsx";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        DataTable data = (listaAgendamento.DataSource as DataTable).Copy();
+                        data.Columns["NomeAnimal"].ColumnName = "Nome do Animal";
+                        data.Columns["Horario"].ColumnName = "Horário";
+                        IXLWorksheet worksheet = workbook.Worksheets.Add(data, "Agendamentos");
+                        worksheet.ColumnsUsed().AdjustToContents();
+                        worksheet.RowsUsed().AdjustToContents();
+                        worksheet.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        worksheet.Range(worksheet.FirstRowUsed().RowBelow().RowNumber(), 2, worksheet.LastRowUsed().RowNumber(), 2).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheet.Range(worksheet.FirstRowUsed().RowBelow().RowNumber(), 6, worksheet.LastRowUsed().RowNumber(), 6).Style.DateFormat.Format = "HH:mm";
+                        try
+                        {
+                            workbook.SaveAs(dialog.FileName);
+                            FormNotificacao notificacao = new FormNotificacao();
+                            notificacao.ShowAlert("A lista foi exportada", TipoNotificacao.Confirmar);
+                        }
+                        catch (System.IO.IOException)
+                        {
+                            MessageBox.Show("Não foi possível salvar o arquivo pois ele está em uso, feche o arquivo aberto e tente novamente", "Não Foi possível salvar o arquivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void listaAgendamento_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+        {
+            if (listaAgendamento.Rows.Count > 0)
+            {
+                btnRelatorio.Enabled = true;
+            }
+            else
+            {
+                btnRelatorio.Enabled = false;
+            }
+        }
+
+        private void listaAgendamento_SelectionChanged(object sender, EventArgs e)
+        {
+            if (listaAgendamento.SelectedRows.Count > 0)
+            {
+                btnEditarHorario.Enabled = true;
+                btnExcluirHorario.Enabled = true;
+            }
+            else
+            {
+                btnEditarHorario.Enabled = false;
+                btnExcluirHorario.Enabled = false;
+            }
         }
     }
 }

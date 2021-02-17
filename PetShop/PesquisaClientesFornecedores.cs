@@ -1,11 +1,10 @@
-﻿using System;
+﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
-using System.Drawing;
 using System.Windows.Forms;
-using PetShop.Entities;
-using PetShop.Entities.Enums;
+using ClosedXML.Excel;
 
 namespace PetShop
 {
@@ -24,10 +23,78 @@ namespace PetShop
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
+                dataGridViewListaClientesFornecedores.ClearSelection();
+                dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
+                foreach (DataGridViewRow row in dataGridViewListaClientesFornecedores.Rows)
+                {
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Apelido"].Value))
+                    {
+                        row.Cells["Apelido"].Value = "Nenhum";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Telefone_Secundario"].Value))
+                    {
+                        row.Cells["Telefone_Secundario"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Celular"].Value))
+                    {
+                        row.Cells["Celular"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Complemento"].Value))
+                    {
+                        row.Cells["Complemento"].Value = "Nenhum";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Email"].Value))
+                    {
+                        row.Cells["Email"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Cpf"].Value))
+                    {
+                        row.Cells["Cpf"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Cnpj"].Value))
+                    {
+                        row.Cells["Cnpj"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Observacoes"].Value))
+                    {
+                        row.Cells["Observacoes"].Value = "Nenhuma";
+                    }
+                }
             }
             else
             {
                 dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
+                foreach (DataGridViewRow row in dataGridViewListaClientesFornecedores.Rows)
+                {
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Apelido"].Value))
+                    {
+                        row.Cells["Apelido"].Value = "Nenhum";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Cep"].Value))
+                    {
+                        row.Cells["Cep"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Celular"].Value))
+                    {
+                        row.Cells["Celular"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Cnpj"].Value))
+                    {
+                        row.Cells["Cnpj"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Cpf"].Value))
+                    {
+                        row.Cells["Cpf"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Email"].Value))
+                    {
+                        row.Cells["Email"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Observacoes"].Value))
+                    {
+                        row.Cells["Observacoes"].Value = "Nenhuma";
+                    }
+                }
             }
             dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
             dataGridViewListaClientesFornecedores.ClearSelection();
@@ -47,7 +114,7 @@ namespace PetShop
             }
             else
             {
-                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Adicionar, this);
+                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Adicionar);
                 AdicionarFornecedor.ShowDialog();
             }
         }
@@ -91,7 +158,7 @@ namespace PetShop
                 }
                 else
                 {
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarFornecedor.ShowDialog();
                 }
 
@@ -104,17 +171,25 @@ namespace PetShop
 
         private void PesquisaClientesFornecedores_Load(object sender, EventArgs e)
         {
+            AtualizarLista();
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 Text = "Lista de clientes";
                 Icon = Properties.Resources.usuarios_icon;
+                dataGridViewListaClientesFornecedores.Columns["Telefone_Principal"].HeaderText = "Telefone Principal";
+                dataGridViewListaClientesFornecedores.Columns["Telefone_Secundario"].HeaderText = "Telefone Secundário";
             }
             else if (_TipoPesquisa == TipoPesquisa.Fornecedor)
             {
                 Text = "Lista de fornecedores";
                 Icon = Properties.Resources.fornecedor_icon;
+                dataGridViewListaClientesFornecedores.Columns["Tipo_Fornecimento"].HeaderText = "Tipo de Fornecimento";
             }
-            AtualizarLista();
+            dataGridViewListaClientesFornecedores.Columns["Observacoes"].HeaderText = "Observações";
+            dataGridViewListaClientesFornecedores.Columns["Cpf"].HeaderText = "CPF";
+            dataGridViewListaClientesFornecedores.Columns["Cnpj"].HeaderText = "CNPJ";
+            dataGridViewListaClientesFornecedores.Columns["Cep"].HeaderText = "CEP";
+            dataGridViewListaClientesFornecedores.Columns["Endereco"].HeaderText = "Endereço";
         }
 
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -128,7 +203,7 @@ namespace PetShop
                 }
                 else
                 {
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                     EditarFornecedor.ShowDialog();
                 }
             }
@@ -142,16 +217,80 @@ namespace PetShop
         private void dataGridViewListaClientesFornecedores_Sorted(object sender, EventArgs e)
         {
             dataGridViewListaClientesFornecedores.ClearSelection();
-            btnEditarClienteFornecedor.Enabled = false;
-            btnExcluirClienteFornecedor.Enabled = false;
-            btnImprimirClienteFornecedor.Enabled = false;
         }
 
-        private void dataGridViewListaClientesFornecedores_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewListaClientesFornecedores_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            btnEditarClienteFornecedor.Enabled = true;
-            btnExcluirClienteFornecedor.Enabled = true;
-            btnImprimirClienteFornecedor.Enabled = true;
+            if (dataGridViewListaClientesFornecedores.Rows.Count > 0)
+            {
+                btnExportarClienteFornecedor.Enabled = true;
+            }
+            else
+            {
+                btnExportarClienteFornecedor.Enabled = false;
+            }
+        }
+
+        private void dataGridViewListaClientesFornecedores_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewListaClientesFornecedores.SelectedRows.Count > 0)
+            {
+                btnEditarClienteFornecedor.Enabled = true;
+                btnExcluirClienteFornecedor.Enabled = true;
+            }
+            else
+            {
+                btnExcluirClienteFornecedor.Enabled = false;
+                btnEditarClienteFornecedor.Enabled = false;
+            }
+        }
+
+        private void btnExportarClienteFornecedor_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dialog = new SaveFileDialog())
+            {
+                dialog.Filter = "Planilha do Excel (*xlsx)|*xlsx";
+                dialog.FilterIndex = 2;
+                dialog.RestoreDirectory = true;
+                dialog.AddExtension = true;
+                dialog.DefaultExt = "xlsx";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        DataTable data = (dataGridViewListaClientesFornecedores.DataSource as DataTable).Copy();
+                        if (_TipoPesquisa == TipoPesquisa.Cliente)
+                        {
+                            data.Columns["Telefone_Principal"].ColumnName = "Telefone";
+                            data.Columns["Telefone_Secundario"].ColumnName = "Telefone Secundário";
+                        }
+                        else
+                        {
+                            data.Columns["Tipo_Fornecimento"].ColumnName = "Tipo de Fornecimento";
+
+                        }
+                        data.Columns["Observacoes"].ColumnName = "Observações";
+                        data.Columns["Cpf"].ColumnName = "CPF";
+                        data.Columns["Cnpj"].ColumnName = "CNPJ";
+                        data.Columns["Cep"].ColumnName = "CEP";
+                        data.Columns["Endereco"].ColumnName = "Endereço";
+                        IXLWorksheet worksheet = workbook.Worksheets.Add(data, _TipoPesquisa == TipoPesquisa.Cliente ? "Lista de Clientes" : "Lista de Fornecedores");
+                        worksheet.ColumnsUsed().AdjustToContents();
+                        worksheet.RowsUsed().AdjustToContents();
+                        worksheet.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        try
+                        {
+                            workbook.SaveAs(dialog.FileName);
+                            FormNotificacao notificacao = new FormNotificacao();
+                            notificacao.ShowAlert("A lista foi exportada", TipoNotificacao.Confirmar);
+                        }
+                        catch (System.IO.IOException)
+                        {
+                            MessageBox.Show("Não foi possível salvar o arquivo pois ele está em uso, feche o arquivo aberto e tente novamente", "Não Foi possível salvar o arquivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
         }
     }
 }

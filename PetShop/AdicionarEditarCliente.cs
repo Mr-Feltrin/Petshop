@@ -13,7 +13,8 @@ namespace PetShop
         private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
         private Cliente _Cliente { get; set; }
         private ListaDeClientesAnimais _listaDeCliente { get; set; }
-        private Dictionary<object, string> CamposObrigatorios;
+        private Dictionary<object, string> CamposObrigatorios { get; set; }
+        List<MaskedTextBox> CamposMaskedOpcionais { get; set; }
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -81,15 +82,8 @@ namespace PetShop
 
         private void BtnAdicionarEditarCliente_Click(object sender, EventArgs e)
         {
-            List<MaskedTextBox> CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
-            foreach (MaskedTextBox control in CamposMaskedOpcionais)
-            {
-                if (!control.MaskFull)
-                {
-                    control.Clear();
-                    control.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-                }
-            }
+            VerificarCamposObrigatorios.LimparCamposOpcionais(CamposMaskedOpcionais);
+
             if (Operacao == TipoOperacao.Adicionar)
             {
                 _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
@@ -140,6 +134,7 @@ namespace PetShop
                 { txtCep, "Preencha o campo de CEP" },
                 { txtTelefonePrimario, "Preencha o campo de telefone" }
             };
+            CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
             toolTip.SetToolTip(btnAdicionar, "Preencha todos os campos obrigatórios");
             if (Operacao == TipoOperacao.Adicionar)
             {

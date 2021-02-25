@@ -50,6 +50,11 @@ namespace PetShop.Entities
             BuscarProduto(id);
         }
 
+        public Produto()
+        {
+
+        }
+
         private void BuscarProduto(int id)
         {
             try
@@ -244,6 +249,39 @@ namespace PetShop.Entities
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return data;
+        }
+
+        public static int? BuscarCodigoBarras(string codigoBarras)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT * FROM Produtos WHERE CodigoBarras = @CodigoBarras";
+                    command.Parameters.AddWithValue("@CodigoBarras", codigoBarras);
+                    object scalar = command.ExecuteScalar();
+                    if (scalar != null && scalar.GetType() != typeof(DBNull))
+                    {
+                        return (int)command.ExecuteScalar();
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Ocorreu um erro no banco de dados: {e.Message}", "Erro no banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
     }
 }

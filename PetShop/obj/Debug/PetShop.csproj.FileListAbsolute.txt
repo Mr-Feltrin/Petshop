@@ -127,3 +127,5 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ClosedXML.pdb
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ClosedXML.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ExcelNumberFormat.xml
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisarCodigoBarras.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisarVacinas.resources

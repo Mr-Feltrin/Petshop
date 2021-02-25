@@ -40,7 +40,7 @@
             this.btnConsultar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAnimais = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnVacinas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
@@ -72,7 +72,7 @@
             this.btnConsultar,
             this.toolStripSeparator2,
             this.btnAnimais,
-            this.toolStripButton1,
+            this.btnVacinas,
             this.toolStripSeparator3,
             this.toolStripButton2});
             this.menu_principal.Location = new System.Drawing.Point(0, 0);
@@ -166,6 +166,7 @@
             this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnConsultar.ToolTipText = "Consultar";
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // toolStripSeparator2
             // 
@@ -188,20 +189,21 @@
             this.btnAnimais.ToolTipText = "Animais";
             this.btnAnimais.Click += new System.EventHandler(this.BtnAnimais_Click);
             // 
-            // toolStripButton1
+            // btnVacinas
             // 
-            this.toolStripButton1.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.toolStripButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.toolStripButton1.Image = global::PetShop.Properties.Resources.vacina30x30;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(61, 51);
-            this.toolStripButton1.Text = "Vacinas";
-            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButton1.ToolTipText = "Vacinas";
+            this.btnVacinas.BackColor = System.Drawing.Color.Transparent;
+            this.btnVacinas.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVacinas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVacinas.Image = global::PetShop.Properties.Resources.vacina30x30;
+            this.btnVacinas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnVacinas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVacinas.Name = "btnVacinas";
+            this.btnVacinas.Size = new System.Drawing.Size(61, 51);
+            this.btnVacinas.Text = "Vacinas";
+            this.btnVacinas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVacinas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVacinas.ToolTipText = "Vacinas";
+            this.btnVacinas.Click += new System.EventHandler(this.btnVacinas_Click);
             // 
             // toolStripSeparator3
             // 
@@ -217,8 +219,8 @@
             this.toolStripButton2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(60, 51);
-            this.toolStripButton2.Text = "Atender";
+            this.toolStripButton2.Size = new System.Drawing.Size(47, 51);
+            this.toolStripButton2.Text = "Caixa";
             this.toolStripButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.toolStripButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton2.ToolTipText = "Atender";
@@ -254,7 +256,7 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(754, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(785, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -412,7 +414,7 @@
         private System.Windows.Forms.ToolStripButton btnConsultar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnAnimais;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnVacinas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Timer TimerAgendamentos;

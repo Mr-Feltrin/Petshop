@@ -249,5 +249,11 @@ namespace PetShop
                 btnExcluirProduto.Enabled = false;
             }
         }
+
+        private void btnCodigoBarras_Click(object sender, EventArgs e)
+        {
+            PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras();
+            pesquisarCodigoBarras.ShowDialog();
+        }
     }
 }

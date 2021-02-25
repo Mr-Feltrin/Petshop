@@ -298,6 +298,7 @@
             this.btnCodigoBarras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCodigoBarras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnCodigoBarras.UseVisualStyleBackColor = false;
+            this.btnCodigoBarras.Click += new System.EventHandler(this.btnCodigoBarras_Click);
             // 
             // pictureBoxEmEstoque
             // 

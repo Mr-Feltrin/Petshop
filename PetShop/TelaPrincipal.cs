@@ -180,5 +180,17 @@ namespace PetShop
             PesquisarAgendamento agendamentos = new PesquisarAgendamento();
             agendamentos.ShowDialog();
         }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras();
+            pesquisarCodigoBarras.ShowDialog();
+        }
+
+        private void btnVacinas_Click(object sender, EventArgs e)
+        {
+            PesquisarVacinas pesquisarVacinas = new PesquisarVacinas();
+            pesquisarVacinas.ShowDialog();
+        }
     }
 }

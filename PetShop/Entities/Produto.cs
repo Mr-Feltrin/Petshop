@@ -190,7 +190,7 @@ namespace PetShop.Entities
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception e)
             {

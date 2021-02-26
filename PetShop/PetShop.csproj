@@ -137,7 +137,14 @@
     <Compile Include="AdicionarEditarProdutos.Designer.cs">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarEditarVacina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarEditarVacina.Designer.cs">
+      <DependentUpon>AdicionarEditarVacina.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Enums\TipoNotificacao.cs" />
+    <Compile Include="Entities\Vacina.cs" />
     <Compile Include="FormNotificacao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -235,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdicionarEditarProdutos.resx">
       <DependentUpon>AdicionarEditarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarEditarVacina.resx">
+      <DependentUpon>AdicionarEditarVacina.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormNotificacao.resx">
       <DependentUpon>FormNotificacao.cs</DependentUpon>

@@ -88,7 +88,7 @@ namespace PetShop.Entities
                     }
                     else if (operacao == TipoOperacao.Editar)
                     {
-                        command.CommandText = "UPDATE Produtos SET Doses = @Doses, ConteudoML = @ConteudoML, Imunologia = @Imunologia, Lote = @Lote, Fabricante = @Fabricante, DataValidade = @DataValidade, DataCadastro = @DataCadastro, Quantidade = @Quantidade WHERE Id = @Id";
+                        command.CommandText = "UPDATE Vacinas SET Doses = @Doses, ConteudoML = @ConteudoML, Imunologia = @Imunologia, Lote = @Lote, Fabricante = @Fabricante, DataValidade = @DataValidade, DataCadastro = @DataCadastro, Quantidade = @Quantidade WHERE Id = @Id";
                         command.Parameters.AddWithValue("@Id", Id);
                     }
                     command.Parameters.AddWithValue("@Doses", Doses);
@@ -150,7 +150,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Vacinas";
+                    command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade FROM Vacinas";
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

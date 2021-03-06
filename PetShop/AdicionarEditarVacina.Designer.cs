@@ -136,7 +136,7 @@ namespace PetShop
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(304, 22);
+            this.label5.Location = new System.Drawing.Point(348, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 21);
             this.label5.TabIndex = 0;
@@ -191,7 +191,7 @@ namespace PetShop
             this.dateDataCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateDataCadastro.Location = new System.Drawing.Point(19, 46);
             this.dateDataCadastro.Name = "dateDataCadastro";
-            this.dateDataCadastro.Size = new System.Drawing.Size(155, 22);
+            this.dateDataCadastro.Size = new System.Drawing.Size(197, 22);
             this.dateDataCadastro.TabIndex = 1;
             // 
             // CombBoxImunologia
@@ -199,9 +199,9 @@ namespace PetShop
             this.CombBoxImunologia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CombBoxImunologia.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CombBoxImunologia.FormattingEnabled = true;
-            this.CombBoxImunologia.Location = new System.Drawing.Point(228, 46);
+            this.CombBoxImunologia.Location = new System.Drawing.Point(272, 46);
             this.CombBoxImunologia.Name = "CombBoxImunologia";
-            this.CombBoxImunologia.Size = new System.Drawing.Size(242, 25);
+            this.CombBoxImunologia.Size = new System.Drawing.Size(198, 25);
             this.CombBoxImunologia.TabIndex = 2;
             this.CombBoxImunologia.TextChanged += new System.EventHandler(this.CombBoxImunologia_TextChanged);
             // 
@@ -210,7 +210,7 @@ namespace PetShop
             this.labelImunologia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelImunologia.AutoSize = true;
             this.labelImunologia.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelImunologia.Location = new System.Drawing.Point(224, 22);
+            this.labelImunologia.Location = new System.Drawing.Point(268, 22);
             this.labelImunologia.Name = "labelImunologia";
             this.labelImunologia.Size = new System.Drawing.Size(87, 21);
             this.labelImunologia.TabIndex = 0;
@@ -255,7 +255,7 @@ namespace PetShop
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(410, 77);
+            this.label2.Location = new System.Drawing.Point(438, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 21);
             this.label2.TabIndex = 0;
@@ -266,7 +266,7 @@ namespace PetShop
             this.labelQuantidadeEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelQuantidadeEstoque.AutoSize = true;
             this.labelQuantidadeEstoque.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelQuantidadeEstoque.Location = new System.Drawing.Point(240, 77);
+            this.labelQuantidadeEstoque.Location = new System.Drawing.Point(268, 77);
             this.labelQuantidadeEstoque.Name = "labelQuantidadeEstoque";
             this.labelQuantidadeEstoque.Size = new System.Drawing.Size(176, 21);
             this.labelQuantidadeEstoque.TabIndex = 0;
@@ -276,9 +276,9 @@ namespace PetShop
             // 
             this.txtQuantidadeEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtQuantidadeEstoque.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidadeEstoque.Location = new System.Drawing.Point(242, 101);
+            this.txtQuantidadeEstoque.Location = new System.Drawing.Point(272, 101);
             this.txtQuantidadeEstoque.Name = "txtQuantidadeEstoque";
-            this.txtQuantidadeEstoque.Size = new System.Drawing.Size(228, 22);
+            this.txtQuantidadeEstoque.Size = new System.Drawing.Size(198, 22);
             this.txtQuantidadeEstoque.TabIndex = 4;
             this.txtQuantidadeEstoque.TextChanged += new System.EventHandler(this.txtQuantidadeEstoque_TextChanged);
             this.txtQuantidadeEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidadeEstoque_KeyPress);
@@ -298,7 +298,7 @@ namespace PetShop
             this.txtLote.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLote.Location = new System.Drawing.Point(19, 46);
             this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(193, 22);
+            this.txtLote.Size = new System.Drawing.Size(197, 22);
             this.txtLote.TabIndex = 1;
             this.txtLote.TextChanged += new System.EventHandler(this.txtLote_TextChanged);
             // 
@@ -343,7 +343,7 @@ namespace PetShop
             this.DateDataValidade.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DateDataValidade.Location = new System.Drawing.Point(19, 101);
             this.DateDataValidade.Name = "DateDataValidade";
-            this.DateDataValidade.Size = new System.Drawing.Size(167, 22);
+            this.DateDataValidade.Size = new System.Drawing.Size(197, 22);
             this.DateDataValidade.TabIndex = 3;
             // 
             // labelDataValidade

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -37,6 +38,7 @@ namespace PetShop
             DataGridListaProdutos.Columns["ValorCusto"].DefaultCellStyle.Format = string.Format("C2");
             DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
             DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.Format = string.Format("C2");
+            DataGridListaProdutos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
         public void AtualizarLista()
@@ -67,6 +69,10 @@ namespace PetShop
             }
             DataGridListaProdutos.ClearSelection();
             DataGridListaProdutos.Sort(DataGridListaProdutos.Columns["EstoqueAtual"], System.ComponentModel.ListSortDirection.Descending);
+            foreach (DataGridViewColumn column in DataGridListaProdutos.Columns)
+            {
+                column.Width = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+            }
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
@@ -254,6 +260,19 @@ namespace PetShop
         {
             PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras();
             pesquisarCodigoBarras.ShowDialog();
+        }
+
+        private void PesquisaProdutos_Resize(object sender, EventArgs e)
+        {
+            MaximumSize = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
+        }
+
+        private void DataGridListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            if (DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) < DataGridListaProdutos.Size.Width)
+            {
+                Size = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
+            }
         }
     }
 }

@@ -226,6 +226,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ToolBox\ConversorImagemByte.cs" />
+    <Compile Include="ToolBox\DataGridViewTools.cs" />
     <Compile Include="ToolBox\PesquisaControlePosicaoMouse.cs" />
     <Compile Include="ToolBox\VerificarCamposObrigatorios.cs" />
     <EmbeddedResource Include="AdicionarEditarAgendamento.resx">

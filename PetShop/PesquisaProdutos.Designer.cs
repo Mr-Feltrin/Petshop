@@ -36,11 +36,11 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
+            this.labelPesquisarProduto = new System.Windows.Forms.Label();
+            this.labelMarcaProduto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtPesquisarMarcaProduto = new System.Windows.Forms.TextBox();
             this.txtPesquisarNomeProduto = new System.Windows.Forms.TextBox();
-            this.labelMarcaProduto = new System.Windows.Forms.Label();
-            this.labelPesquisarProduto = new System.Windows.Forms.Label();
             this.btnAdicionarProduto = new System.Windows.Forms.Button();
             this.btnEditarProduto = new System.Windows.Forms.Button();
             this.btnExcluirProduto = new System.Windows.Forms.Button();
@@ -56,6 +56,7 @@
             this.groupBoxFiltrar = new System.Windows.Forms.GroupBox();
             this.comboBoxFiltrarLista = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
@@ -65,6 +66,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).BeginInit();
             this.groupBoxLegendaCores.SuspendLayout();
             this.groupBoxFiltrar.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
@@ -83,12 +85,10 @@
             // 
             this.DataGridListaProdutos.AllowUserToAddRows = false;
             this.DataGridListaProdutos.AllowUserToDeleteRows = false;
-            this.DataGridListaProdutos.AllowUserToResizeColumns = false;
             this.DataGridListaProdutos.AllowUserToResizeRows = false;
             this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridListaProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DataGridListaProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -107,7 +107,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataGridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DataGridListaProdutos.Location = new System.Drawing.Point(6, 10);
+            this.DataGridListaProdutos.Location = new System.Drawing.Point(10, 10);
             this.DataGridListaProdutos.MultiSelect = false;
             this.DataGridListaProdutos.Name = "DataGridListaProdutos";
             this.DataGridListaProdutos.ReadOnly = true;
@@ -126,6 +126,7 @@
             this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 555);
             this.DataGridListaProdutos.TabIndex = 3;
             this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
+            this.DataGridListaProdutos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.DataGridListaProdutos_ColumnWidthChanged);
             this.DataGridListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
             this.DataGridListaProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DataGridListaProdutos_RowStateChanged);
             this.DataGridListaProdutos.SelectionChanged += new System.EventHandler(this.DataGridListaProdutos_SelectionChanged);
@@ -135,30 +136,53 @@
             // 
             this.groupBox_pesquisar_nome_cliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox_pesquisar_nome_cliente.Controls.Add(this.tableLayoutPanel3);
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox_pesquisar_nome_cliente.Controls.Add(this.labelMarcaProduto);
-            this.groupBox_pesquisar_nome_cliente.Controls.Add(this.labelPesquisarProduto);
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(12, 12);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(752, 71);
             this.groupBox_pesquisar_nome_cliente.TabIndex = 8;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
+            // labelPesquisarProduto
+            // 
+            this.labelPesquisarProduto.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelPesquisarProduto.AutoSize = true;
+            this.labelPesquisarProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPesquisarProduto.Location = new System.Drawing.Point(3, 0);
+            this.labelPesquisarProduto.Name = "labelPesquisarProduto";
+            this.labelPesquisarProduto.Size = new System.Drawing.Size(189, 20);
+            this.labelPesquisarProduto.TabIndex = 8;
+            this.labelPesquisarProduto.Text = "Pesquisar Nome do Produto";
+            // 
+            // labelMarcaProduto
+            // 
+            this.labelMarcaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMarcaProduto.AutoSize = true;
+            this.labelMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMarcaProduto.Location = new System.Drawing.Point(486, 0);
+            this.labelMarcaProduto.Name = "labelMarcaProduto";
+            this.labelMarcaProduto.Size = new System.Drawing.Size(252, 21);
+            this.labelMarcaProduto.TabIndex = 9;
+            this.labelMarcaProduto.Text = "Pesquisar Marca do Produto";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 479F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.90515F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 259F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.09485F));
             this.tableLayoutPanel1.Controls.Add(this.txtPesquisarMarcaProduto, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtPesquisarNomeProduto, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 36);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 39);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(746, 26);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(740, 26);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // txtPesquisarMarcaProduto
@@ -166,9 +190,9 @@
             this.txtPesquisarMarcaProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisarMarcaProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarMarcaProduto.Location = new System.Drawing.Point(490, 3);
+            this.txtPesquisarMarcaProduto.Location = new System.Drawing.Point(486, 3);
             this.txtPesquisarMarcaProduto.Name = "txtPesquisarMarcaProduto";
-            this.txtPesquisarMarcaProduto.Size = new System.Drawing.Size(253, 21);
+            this.txtPesquisarMarcaProduto.Size = new System.Drawing.Size(251, 21);
             this.txtPesquisarMarcaProduto.TabIndex = 11;
             this.txtPesquisarMarcaProduto.TextChanged += new System.EventHandler(this.txtPesquisarMarcaProduto_TextChanged);
             // 
@@ -179,29 +203,9 @@
             this.txtPesquisarNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisarNomeProduto.Location = new System.Drawing.Point(3, 3);
             this.txtPesquisarNomeProduto.Name = "txtPesquisarNomeProduto";
-            this.txtPesquisarNomeProduto.Size = new System.Drawing.Size(473, 21);
+            this.txtPesquisarNomeProduto.Size = new System.Drawing.Size(469, 21);
             this.txtPesquisarNomeProduto.TabIndex = 10;
             this.txtPesquisarNomeProduto.TextChanged += new System.EventHandler(this.txtPesquisarNomeProduto_TextChanged);
-            // 
-            // labelMarcaProduto
-            // 
-            this.labelMarcaProduto.AutoSize = true;
-            this.labelMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMarcaProduto.Location = new System.Drawing.Point(489, 12);
-            this.labelMarcaProduto.Name = "labelMarcaProduto";
-            this.labelMarcaProduto.Size = new System.Drawing.Size(192, 20);
-            this.labelMarcaProduto.TabIndex = 9;
-            this.labelMarcaProduto.Text = "Pesquisar Marca do Produto";
-            // 
-            // labelPesquisarProduto
-            // 
-            this.labelPesquisarProduto.AutoSize = true;
-            this.labelPesquisarProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarProduto.Location = new System.Drawing.Point(2, 12);
-            this.labelPesquisarProduto.Name = "labelPesquisarProduto";
-            this.labelPesquisarProduto.Size = new System.Drawing.Size(189, 20);
-            this.labelPesquisarProduto.TabIndex = 8;
-            this.labelPesquisarProduto.Text = "Pesquisar Nome do Produto";
             // 
             // btnAdicionarProduto
             // 
@@ -267,6 +271,7 @@
             this.btnImprimirLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnImprimirLista.AutoSize = true;
             this.btnImprimirLista.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirLista.Enabled = false;
             this.btnImprimirLista.FlatAppearance.BorderSize = 0;
             this.btnImprimirLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimirLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -415,6 +420,23 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Filtrar Lista por:";
             // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.90515F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 35.09485F));
+            this.tableLayoutPanel3.Controls.Add(this.labelMarcaProduto, 2, 0);
+            this.tableLayoutPanel3.Controls.Add(this.labelPesquisarProduto, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(2, 15);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(741, 21);
+            this.tableLayoutPanel3.TabIndex = 4;
+            // 
             // PesquisaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -432,17 +454,17 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1106, 444);
+            this.MinimumSize = new System.Drawing.Size(998, 280);
             this.Name = "PesquisaProdutos";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa de Produtos";
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
+            this.Resize += new System.EventHandler(this.PesquisaProdutos_Resize);
             this.groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
-            this.groupBox_pesquisar_nome_cliente.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).EndInit();
@@ -452,6 +474,8 @@
             this.groupBoxLegendaCores.PerformLayout();
             this.groupBoxFiltrar.ResumeLayout(false);
             this.groupBoxFiltrar.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,5 +506,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtPesquisarMarcaProduto;
         private System.Windows.Forms.DataGridView DataGridListaProdutos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
     }
 }

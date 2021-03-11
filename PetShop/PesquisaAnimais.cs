@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using ClosedXML.Excel;
-
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -31,7 +31,7 @@ namespace PetShop
             listaAnimais.Columns["Identificacao"].HeaderText = "Identificação";
             listaAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
             listaAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
-            listaAnimais.Columns["Nome"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            listaAnimais.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
         public void AtualizarLista()
@@ -54,6 +54,7 @@ namespace PetShop
                 }
             }
             listaAnimais.ClearSelection();
+            listaAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -166,6 +167,11 @@ namespace PetShop
                 btnEditar.Enabled = false;
                 btnExcluir.Enabled = false;
             }
+        }
+
+        private void listaAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            MaximumSize = new System.Drawing.Size(listaAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 50, 100000);
         }
     }
 }

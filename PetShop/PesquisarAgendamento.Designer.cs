@@ -49,6 +49,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.listaAgendamento = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,6 +61,7 @@
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaAgendamento)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -117,18 +119,21 @@
             this.pesquisaNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pesquisaNomeDono.Location = new System.Drawing.Point(28, 3);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
-            this.pesquisaNomeDono.Size = new System.Drawing.Size(201, 25);
+            this.pesquisaNomeDono.Size = new System.Drawing.Size(216, 25);
             this.pesquisaNomeDono.TabIndex = 3;
             this.pesquisaNomeDono.TextChanged += new System.EventHandler(this.pesquisaNomeDono_TextChanged);
             // 
             // labelPesquisarPeloNomeDono
             // 
+            this.labelPesquisarPeloNomeDono.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPesquisarPeloNomeDono.AutoSize = true;
             this.labelPesquisarPeloNomeDono.BackColor = System.Drawing.Color.Transparent;
             this.labelPesquisarPeloNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarPeloNomeDono.Location = new System.Drawing.Point(275, 16);
+            this.labelPesquisarPeloNomeDono.Location = new System.Drawing.Point(26, 0);
             this.labelPesquisarPeloNomeDono.Name = "labelPesquisarPeloNomeDono";
-            this.labelPesquisarPeloNomeDono.Size = new System.Drawing.Size(204, 20);
+            this.labelPesquisarPeloNomeDono.Size = new System.Drawing.Size(218, 32);
             this.labelPesquisarPeloNomeDono.TabIndex = 3;
             this.labelPesquisarPeloNomeDono.Text = "Pesquisar pelo Nome do Dono";
             // 
@@ -137,20 +142,23 @@
             this.pesquisaNomeAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pesquisaNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(260, 3);
+            this.pesquisaNomeAnimal.Location = new System.Drawing.Point(275, 3);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
-            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(232, 25);
+            this.pesquisaNomeAnimal.Size = new System.Drawing.Size(217, 25);
             this.pesquisaNomeAnimal.TabIndex = 4;
             this.pesquisaNomeAnimal.TextChanged += new System.EventHandler(this.pesquisaNomeAnimal_TextChanged);
             // 
             // labelPesquisarPeloNomeAnimal
             // 
+            this.labelPesquisarPeloNomeAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPesquisarPeloNomeAnimal.AutoSize = true;
             this.labelPesquisarPeloNomeAnimal.BackColor = System.Drawing.Color.Transparent;
             this.labelPesquisarPeloNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarPeloNomeAnimal.Location = new System.Drawing.Point(507, 16);
+            this.labelPesquisarPeloNomeAnimal.Location = new System.Drawing.Point(274, 0);
             this.labelPesquisarPeloNomeAnimal.Name = "labelPesquisarPeloNomeAnimal";
-            this.labelPesquisarPeloNomeAnimal.Size = new System.Drawing.Size(215, 20);
+            this.labelPesquisarPeloNomeAnimal.Size = new System.Drawing.Size(218, 32);
             this.labelPesquisarPeloNomeAnimal.TabIndex = 4;
             this.labelPesquisarPeloNomeAnimal.Text = "Pesquisar pelo Nome do Animal";
             // 
@@ -215,6 +223,7 @@
             this.btnRelatorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRelatorio.AutoSize = true;
             this.btnRelatorio.BackColor = System.Drawing.Color.Transparent;
+            this.btnRelatorio.Enabled = false;
             this.btnRelatorio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRelatorio.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorio.Image = global::PetShop.Properties.Resources.export32px;
@@ -232,11 +241,10 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.labelPesquisarPeloNomeAnimal);
             this.groupBox1.Controls.Add(this.labelDataInicial);
             this.groupBox1.Controls.Add(this.dataInicial);
-            this.groupBox1.Controls.Add(this.labelPesquisarPeloNomeDono);
             this.groupBox1.Controls.Add(this.dataFinal);
             this.groupBox1.Controls.Add(this.labelDataFinal);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -251,12 +259,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 207F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.pesquisaNomeAnimal, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.pesquisaNomeDono, 1, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(252, 36);
@@ -278,16 +283,33 @@
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.ColumnCount = 4;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.labelPesquisarPeloNomeAnimal, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelPesquisarPeloNomeDono, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(249, 16);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(495, 20);
+            this.tableLayoutPanel2.TabIndex = 4;
+            // 
             // listaAgendamento
             // 
             this.listaAgendamento.AllowUserToAddRows = false;
             this.listaAgendamento.AllowUserToDeleteRows = false;
-            this.listaAgendamento.AllowUserToResizeColumns = false;
             this.listaAgendamento.AllowUserToResizeRows = false;
             this.listaAgendamento.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaAgendamento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.listaAgendamento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.listaAgendamento.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -413,7 +435,7 @@
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(1117, 39);
+            this.MinimumSize = new System.Drawing.Size(1137, 250);
             this.Name = "PesquisarAgendamento";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -424,6 +446,8 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaAgendamento)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -458,5 +482,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }

@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -98,6 +99,7 @@ namespace PetShop
             }
             dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
             dataGridViewListaClientesFornecedores.ClearSelection();
+            dataGridViewListaClientesFornecedores.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         public void BuscarLista()
@@ -190,6 +192,7 @@ namespace PetShop
             dataGridViewListaClientesFornecedores.Columns["Cnpj"].HeaderText = "CNPJ";
             dataGridViewListaClientesFornecedores.Columns["Cep"].HeaderText = "CEP";
             dataGridViewListaClientesFornecedores.Columns["Endereco"].HeaderText = "Endereço";
+            dataGridViewListaClientesFornecedores.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -291,6 +294,11 @@ namespace PetShop
                     }
                 }
             }
+        }
+
+        private void dataGridViewListaClientesFornecedores_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            MaximumSize = new System.Drawing.Size(dataGridViewListaClientesFornecedores.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
         }
     }
 }

@@ -69,10 +69,7 @@ namespace PetShop
             }
             DataGridListaProdutos.ClearSelection();
             DataGridListaProdutos.Sort(DataGridListaProdutos.Columns["EstoqueAtual"], System.ComponentModel.ListSortDirection.Descending);
-            foreach (DataGridViewColumn column in DataGridListaProdutos.Columns)
-            {
-                column.Width = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
-            }
+            DataGridListaProdutos.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
@@ -262,17 +259,9 @@ namespace PetShop
             pesquisarCodigoBarras.ShowDialog();
         }
 
-        private void PesquisaProdutos_Resize(object sender, EventArgs e)
-        {
-            MaximumSize = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
-        }
-
         private void DataGridListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            if (DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) < DataGridListaProdutos.Size.Width)
-            {
-                Size = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
-            }
+            MaximumSize = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
         }
     }
 }

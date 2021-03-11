@@ -3,6 +3,8 @@ using PetShop.Entities.Enums;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using PetShop.ToolBox;
+using System.Drawing;
 
 namespace PetShop
 {
@@ -132,6 +134,10 @@ namespace PetShop
                 }
             }
             dataListaClientesAnimais.ClearSelection();
+            foreach (DataGridViewColumn column in dataListaClientesAnimais.Columns)
+            {
+                column.Width = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
+            }
         }
 
         private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
@@ -198,6 +204,19 @@ namespace PetShop
         private void txtPesquisarClienteAnimal_TextChanged(object sender, EventArgs e)
         {
             (dataListaClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarClienteAnimal.Text + "%'");
+        }
+
+        private void ListaDeClientesAnimais_Resize(object sender, EventArgs e)
+        {
+            MaximumSize = new Size(dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
+        }
+
+        private void dataListaClientesAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            if (dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) < dataListaClientesAnimais.Size.Width)
+            {
+                Size = new Size(dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
+            }
         }
     }
 }

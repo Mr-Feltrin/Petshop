@@ -39,8 +39,8 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnNovoClienteAnimal = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.labelPesquisarClienteAnimal = new System.Windows.Forms.Label();
             this.txtPesquisarClienteAnimal = new System.Windows.Forms.TextBox();
+            this.labelPesquisarClienteAnimal = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataListaClientesAnimais)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,12 +62,10 @@
             // 
             this.dataListaClientesAnimais.AllowUserToAddRows = false;
             this.dataListaClientesAnimais.AllowUserToDeleteRows = false;
-            this.dataListaClientesAnimais.AllowUserToResizeColumns = false;
             this.dataListaClientesAnimais.AllowUserToResizeRows = false;
             this.dataListaClientesAnimais.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataListaClientesAnimais.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataListaClientesAnimais.BackgroundColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -106,6 +104,7 @@
             this.dataListaClientesAnimais.TabIndex = 1;
             this.dataListaClientesAnimais.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaClientesAnimais_CellClick);
             this.dataListaClientesAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaClientesAnimais_CellDoubleClick);
+            this.dataListaClientesAnimais.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataListaClientesAnimais_ColumnWidthChanged);
             this.dataListaClientesAnimais.Sorted += new System.EventHandler(this.dataListaClientesAnimais_Sorted);
             // 
             // btnSelecionar
@@ -165,6 +164,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.txtPesquisarClienteAnimal);
             this.groupBox2.Controls.Add(this.labelPesquisarClienteAnimal);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
@@ -172,6 +173,17 @@
             this.groupBox2.Size = new System.Drawing.Size(694, 74);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
+            // 
+            // txtPesquisarClienteAnimal
+            // 
+            this.txtPesquisarClienteAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisarClienteAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisarClienteAnimal.Location = new System.Drawing.Point(10, 39);
+            this.txtPesquisarClienteAnimal.Name = "txtPesquisarClienteAnimal";
+            this.txtPesquisarClienteAnimal.Size = new System.Drawing.Size(678, 25);
+            this.txtPesquisarClienteAnimal.TabIndex = 15;
+            this.txtPesquisarClienteAnimal.TextChanged += new System.EventHandler(this.txtPesquisarClienteAnimal_TextChanged);
             // 
             // labelPesquisarClienteAnimal
             // 
@@ -183,15 +195,6 @@
             this.labelPesquisarClienteAnimal.Size = new System.Drawing.Size(181, 20);
             this.labelPesquisarClienteAnimal.TabIndex = 14;
             this.labelPesquisarClienteAnimal.Text = "Pesquisar nome de cliente";
-            // 
-            // txtPesquisarClienteAnimal
-            // 
-            this.txtPesquisarClienteAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarClienteAnimal.Location = new System.Drawing.Point(10, 39);
-            this.txtPesquisarClienteAnimal.Name = "txtPesquisarClienteAnimal";
-            this.txtPesquisarClienteAnimal.Size = new System.Drawing.Size(678, 25);
-            this.txtPesquisarClienteAnimal.TabIndex = 15;
-            this.txtPesquisarClienteAnimal.TextChanged += new System.EventHandler(this.txtPesquisarClienteAnimal_TextChanged);
             // 
             // ListaDeClientesAnimais
             // 
@@ -206,12 +209,13 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(740, 623);
+            this.MinimumSize = new System.Drawing.Size(606, 283);
             this.Name = "ListaDeClientesAnimais";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Clientes";
             this.Load += new System.EventHandler(this.ListaDeClientesAnimais_Load);
+            this.Resize += new System.EventHandler(this.ListaDeClientesAnimais_Resize);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataListaClientesAnimais)).EndInit();
             this.groupBox2.ResumeLayout(false);

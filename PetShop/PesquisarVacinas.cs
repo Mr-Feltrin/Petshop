@@ -26,21 +26,20 @@ namespace PetShop
         {
             listaVacinas.DataSource = Vacina.ListarVacinas();
             listaVacinas.ClearSelection();
-            foreach (DataGridViewColumn column in listaVacinas.Columns)
-            {
-                column.Width = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
-            }
+            listaVacinas.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         private void PesquisarVacinas_Load(object sender, EventArgs e)
         {
+            listaVacinas.Font = new Font("Microsoft Sans Serif", 9.75F);
             AtualizarLista();
             listaVacinas.Columns["ConteudoML"].HeaderText = "Conteúdo (ML)";
             listaVacinas.Columns["DataValidade"].HeaderText = "Data de Validade";
             listaVacinas.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
             listaVacinas.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaVacinas.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            listaVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);        
+            listaVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            Size = new Size(915, 577);
         }
 
         private void listaVacinas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -147,17 +146,9 @@ namespace PetShop
             }
         }
 
-        private void PesquisarVacinas_Resize(object sender, EventArgs e)
-        {
-            MaximumSize = new Size(listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 10000);
-        }
-
         private void listaVacinas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            if (listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) < listaVacinas.Size.Width)
-            {
-                Size = new Size(listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
-            }
+            MaximumSize = new Size(listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
         }
     }
 }

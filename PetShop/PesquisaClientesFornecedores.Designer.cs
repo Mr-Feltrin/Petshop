@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox_tabela_usuarios = new System.Windows.Forms.GroupBox();
             this.dataGridViewListaClientesFornecedores = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
@@ -62,55 +62,56 @@
             // 
             this.dataGridViewListaClientesFornecedores.AllowUserToAddRows = false;
             this.dataGridViewListaClientesFornecedores.AllowUserToDeleteRows = false;
-            this.dataGridViewListaClientesFornecedores.AllowUserToResizeColumns = false;
             this.dataGridViewListaClientesFornecedores.AllowUserToResizeRows = false;
             this.dataGridViewListaClientesFornecedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewListaClientesFornecedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewListaClientesFornecedores.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaClientesFornecedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaClientesFornecedores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewListaClientesFornecedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewListaClientesFornecedores.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewListaClientesFornecedores.Location = new System.Drawing.Point(6, 19);
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewListaClientesFornecedores.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewListaClientesFornecedores.Location = new System.Drawing.Point(6, 14);
             this.dataGridViewListaClientesFornecedores.MultiSelect = false;
             this.dataGridViewListaClientesFornecedores.Name = "dataGridViewListaClientesFornecedores";
             this.dataGridViewListaClientesFornecedores.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewListaClientesFornecedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewListaClientesFornecedores.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewListaClientesFornecedores.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewListaClientesFornecedores.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewListaClientesFornecedores.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewListaClientesFornecedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewListaClientesFornecedores.Size = new System.Drawing.Size(898, 455);
+            this.dataGridViewListaClientesFornecedores.Size = new System.Drawing.Size(898, 460);
             this.dataGridViewListaClientesFornecedores.TabIndex = 0;
             this.dataGridViewListaClientesFornecedores.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewListaClientesFornecedores_CellDoubleClick);
+            this.dataGridViewListaClientesFornecedores.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewListaClientesFornecedores_ColumnWidthChanged);
             this.dataGridViewListaClientesFornecedores.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.dataGridViewListaClientesFornecedores_RowStateChanged);
             this.dataGridViewListaClientesFornecedores.SelectionChanged += new System.EventHandler(this.dataGridViewListaClientesFornecedores_SelectionChanged);
             this.dataGridViewListaClientesFornecedores.Sorted += new System.EventHandler(this.dataGridViewListaClientesFornecedores_Sorted);
             // 
             // groupBox_pesquisar_nome_cliente
             // 
+            this.groupBox_pesquisar_nome_cliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.textBoxPesquisarPeloNome);
             this.groupBox_pesquisar_nome_cliente.Controls.Add(this.Label_pesquisar_cliente_nome);
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(12, 12);
@@ -121,8 +122,7 @@
             // 
             // textBoxPesquisarPeloNome
             // 
-            this.textBoxPesquisarPeloNome.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxPesquisarPeloNome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxPesquisarPeloNome.Location = new System.Drawing.Point(6, 35);
             this.textBoxPesquisarPeloNome.Name = "textBoxPesquisarPeloNome";
@@ -142,6 +142,7 @@
             // 
             // btnExportarClienteFornecedor
             // 
+            this.btnExportarClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExportarClienteFornecedor.AutoSize = true;
             this.btnExportarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.btnExportarClienteFornecedor.Enabled = false;
@@ -161,6 +162,7 @@
             // 
             // btnExcluirClienteFornecedor
             // 
+            this.btnExcluirClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExcluirClienteFornecedor.AutoSize = true;
             this.btnExcluirClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.btnExcluirClienteFornecedor.Enabled = false;
@@ -180,6 +182,7 @@
             // 
             // btnEditarClienteFornecedor
             // 
+            this.btnEditarClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarClienteFornecedor.AutoSize = true;
             this.btnEditarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.btnEditarClienteFornecedor.Enabled = false;
@@ -199,6 +202,7 @@
             // 
             // btnAdicionarClienteFornecedor
             // 
+            this.btnAdicionarClienteFornecedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdicionarClienteFornecedor.AutoSize = true;
             this.btnAdicionarClienteFornecedor.BackColor = System.Drawing.Color.Transparent;
             this.btnAdicionarClienteFornecedor.FlatAppearance.BorderSize = 0;
@@ -226,9 +230,9 @@
             this.Controls.Add(this.btnAdicionarClienteFornecedor);
             this.Controls.Add(this.groupBox_tabela_usuarios);
             this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(608, 225);
             this.Name = "PesquisaClientesFornecedores";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

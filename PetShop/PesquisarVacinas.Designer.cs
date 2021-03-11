@@ -31,8 +31,6 @@ namespace PetShop
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarVacinas));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listaVacinas = new System.Windows.Forms.DataGridView();
@@ -63,7 +61,7 @@ namespace PetShop
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 95);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(848, 431);
+            this.groupBox1.Size = new System.Drawing.Size(875, 431);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
@@ -85,32 +83,16 @@ namespace PetShop
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.listaVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listaVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaVacinas.DefaultCellStyle = dataGridViewCellStyle2;
             this.listaVacinas.Location = new System.Drawing.Point(6, 13);
             this.listaVacinas.MultiSelect = false;
             this.listaVacinas.Name = "listaVacinas";
             this.listaVacinas.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.listaVacinas.RowHeadersVisible = false;
             this.listaVacinas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.listaVacinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listaVacinas.Size = new System.Drawing.Size(836, 412);
+            this.listaVacinas.Size = new System.Drawing.Size(863, 412);
             this.listaVacinas.TabIndex = 4;
             this.listaVacinas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaVacinas_CellDoubleClick);
             this.listaVacinas.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.listaVacinas_ColumnWidthChanged);
@@ -125,9 +107,9 @@ namespace PetShop
             | System.Windows.Forms.AnchorStyles.Right)));
             this.labelPesquisarMarca.AutoSize = true;
             this.labelPesquisarMarca.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPesquisarMarca.Location = new System.Drawing.Point(313, 0);
+            this.labelPesquisarMarca.Location = new System.Drawing.Point(329, 0);
             this.labelPesquisarMarca.Name = "labelPesquisarMarca";
-            this.labelPesquisarMarca.Size = new System.Drawing.Size(219, 21);
+            this.labelPesquisarMarca.Size = new System.Drawing.Size(230, 21);
             this.labelPesquisarMarca.TabIndex = 14;
             this.labelPesquisarMarca.Text = "Pesquisar pela Marca";
             // 
@@ -145,7 +127,7 @@ namespace PetShop
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(535, 21);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(562, 21);
             this.tableLayoutPanel2.TabIndex = 11;
             // 
             // label1
@@ -157,7 +139,7 @@ namespace PetShop
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(296, 21);
+            this.label1.Size = new System.Drawing.Size(312, 21);
             this.label1.TabIndex = 15;
             this.label1.Text = "Pesquisar por tipo de Imunidade";
             // 
@@ -176,7 +158,7 @@ namespace PetShop
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(535, 30);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(562, 30);
             this.tableLayoutPanel1.TabIndex = 10;
             // 
             // txtPesquisarImunidade
@@ -187,7 +169,7 @@ namespace PetShop
             this.txtPesquisarImunidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisarImunidade.Location = new System.Drawing.Point(3, 3);
             this.txtPesquisarImunidade.Name = "txtPesquisarImunidade";
-            this.txtPesquisarImunidade.Size = new System.Drawing.Size(296, 21);
+            this.txtPesquisarImunidade.Size = new System.Drawing.Size(312, 21);
             this.txtPesquisarImunidade.TabIndex = 12;
             this.txtPesquisarImunidade.TextChanged += new System.EventHandler(this.txtPesquisarImunidade_TextChanged);
             // 
@@ -197,9 +179,9 @@ namespace PetShop
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisarFabricante.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarFabricante.Location = new System.Drawing.Point(313, 3);
+            this.txtPesquisarFabricante.Location = new System.Drawing.Point(329, 3);
             this.txtPesquisarFabricante.Name = "txtPesquisarFabricante";
-            this.txtPesquisarFabricante.Size = new System.Drawing.Size(219, 21);
+            this.txtPesquisarFabricante.Size = new System.Drawing.Size(230, 21);
             this.txtPesquisarFabricante.TabIndex = 11;
             this.txtPesquisarFabricante.TextChanged += new System.EventHandler(this.txtPesquisarFabricante_TextChanged);
             // 
@@ -216,7 +198,7 @@ namespace PetShop
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 5);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(848, 84);
+            this.groupBox2.Size = new System.Drawing.Size(875, 84);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             // 
@@ -230,7 +212,7 @@ namespace PetShop
             this.btnExportarLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarLista.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarLista.Image = global::PetShop.Properties.Resources.imprimir_list;
-            this.btnExportarLista.Location = new System.Drawing.Point(771, 19);
+            this.btnExportarLista.Location = new System.Drawing.Point(798, 19);
             this.btnExportarLista.Name = "btnExportarLista";
             this.btnExportarLista.Size = new System.Drawing.Size(71, 57);
             this.btnExportarLista.TabIndex = 13;
@@ -250,7 +232,7 @@ namespace PetShop
             this.btnExcluirVacina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluirVacina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluirVacina.Image = global::PetShop.Properties.Resources.deletar_list;
-            this.btnExcluirVacina.Location = new System.Drawing.Point(704, 19);
+            this.btnExcluirVacina.Location = new System.Drawing.Point(731, 19);
             this.btnExcluirVacina.Name = "btnExcluirVacina";
             this.btnExcluirVacina.Size = new System.Drawing.Size(61, 57);
             this.btnExcluirVacina.TabIndex = 12;
@@ -270,7 +252,7 @@ namespace PetShop
             this.btnEditarVacina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditarVacina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarVacina.Image = global::PetShop.Properties.Resources.editar_list;
-            this.btnEditarVacina.Location = new System.Drawing.Point(643, 19);
+            this.btnEditarVacina.Location = new System.Drawing.Point(670, 19);
             this.btnEditarVacina.Name = "btnEditarVacina";
             this.btnEditarVacina.Size = new System.Drawing.Size(55, 57);
             this.btnEditarVacina.TabIndex = 11;
@@ -289,7 +271,7 @@ namespace PetShop
             this.btnAdicionarVacina.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarVacina.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarVacina.Image = global::PetShop.Properties.Resources.adicionar_list;
-            this.btnAdicionarVacina.Location = new System.Drawing.Point(560, 19);
+            this.btnAdicionarVacina.Location = new System.Drawing.Point(587, 19);
             this.btnAdicionarVacina.Name = "btnAdicionarVacina";
             this.btnAdicionarVacina.Size = new System.Drawing.Size(77, 57);
             this.btnAdicionarVacina.TabIndex = 10;
@@ -303,7 +285,7 @@ namespace PetShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(872, 538);
+            this.ClientSize = new System.Drawing.Size(899, 538);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -314,10 +296,10 @@ namespace PetShop
             this.MinimumSize = new System.Drawing.Size(753, 300);
             this.Name = "PesquisarVacinas";
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de vacinas";
             this.Load += new System.EventHandler(this.PesquisarVacinas_Load);
-            this.Resize += new System.EventHandler(this.PesquisarVacinas_Resize);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);

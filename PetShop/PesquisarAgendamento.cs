@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using ClosedXML.Excel;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -24,11 +25,12 @@ namespace PetShop
             AtualizarLista();
             listaAgendamento.Columns["NomeAnimal"].HeaderText = "Nome do Animal";
             listaAgendamento.Columns["Horario"].HeaderText = "Horário";
-            listaAgendamento.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            listaAgendamento.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            listaAgendamento.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             listaAgendamento.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaAgendamento.Columns[5].DefaultCellStyle.Format = "hh\\:mm";
+            listaAgendamento.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            listaAgendamento.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            listaAgendamento.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            listaAgendamento.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             timer.Interval = 60 * 1000;
             timer.Start();
         }

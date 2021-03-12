@@ -31,8 +31,11 @@ namespace PetShop.Entities
         public Image Fotografia1 { get; set; }
         public Image Fotografia2 { get; set; }
         public Image Fotografia3 { get; set; }
+        public decimal Peso { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string Situacao { get; set; }
 
-        public Animal(string nome, string sexo, int clienteId, string especie, string raca, string identificacao, string fobias, string disponivelTosa, string possuiPedigree, string agressivo, string hiperativo, string antiSocial, string obsessivo, string observacaoComportamental, string observacaoRotina, DateTime dataRegistro, Image fotografia1 = null, Image fotografia2 = null, Image fotografia3 = null)
+        public Animal(string nome, string sexo, int clienteId, string especie, string raca, string identificacao, string fobias, string disponivelTosa, string possuiPedigree, string agressivo, string hiperativo, string antiSocial, string obsessivo, string observacaoComportamental, string observacaoRotina, DateTime dataRegistro, decimal peso, DateTime dataNascimento, string situacao, Image fotografia1 = null, Image fotografia2 = null, Image fotografia3 = null)
         {
             Nome = nome;
             Sexo = sexo;
@@ -50,6 +53,9 @@ namespace PetShop.Entities
             ObservacaoComportamental = observacaoComportamental;
             ObservacaoRotina = observacaoRotina;
             DataRegistro = dataRegistro;
+            Peso = peso;
+            DataNascimento = dataNascimento;
+            Situacao = situacao;
             Fotografia1 = fotografia1;
             Fotografia2 = fotografia2;
             Fotografia3 = fotografia3;
@@ -68,12 +74,12 @@ namespace PetShop.Entities
                 SqlCeCommand command = connection.CreateCommand();
                 if (operacao == TipoOperacao.Adicionar)
                 {
-                    command.CommandText = "INSERT INTO Animal (Nome, Sexo, ClienteId, Especie, Raca, Identificacao, Fobias, Disponivel_tosa, Possui_pedigree, Agressivo, Hiperativo, Anti_social, Obsessivo, Observacao_comportamental, Observacao_rotina, Data_registro, Fotografia1, Fotografia2, Fotografia3) VALUES (@Nome, @Sexo, @ClienteId, @Especie, @Raca, @Identificacao, @Fobias, @Disponivel_tosa, @Possui_pedigree, @Agressivo, @Hiperativo, @Anti_social, @Obsessivo, @Observacao_comportamental, @Observacao_rotina, @Data_registro, @Fotografia1, @Fotografia2, @Fotografia3)";
+                    command.CommandText = "INSERT INTO Animal (Nome, Sexo, ClienteId, Especie, Raca, Identificacao, Fobias, Disponivel_tosa, Possui_pedigree, Agressivo, Hiperativo, Anti_social, Obsessivo, Observacao_comportamental, Observacao_rotina, Data_registro, Peso, DataNascimento, Situacao , Fotografia1, Fotografia2, Fotografia3) VALUES (@Nome, @Sexo, @ClienteId, @Especie, @Raca, @Identificacao, @Fobias, @Disponivel_tosa, @Possui_pedigree, @Agressivo, @Hiperativo, @Anti_social, @Obsessivo, @Observacao_comportamental, @Observacao_rotina, @Data_registro, @Peso, @DataNascimento, @Situacao, @Fotografia1, @Fotografia2, @Fotografia3)";
                     command.Parameters.AddWithValue("@Data_registro", DataRegistro);
                 }
                 else
                 {
-                    command.CommandText = "UPDATE Animal SET Nome = @Nome, Sexo = @Sexo, ClienteId = @ClienteId, Especie = @Especie, Raca = @Raca, Identificacao = @Identificacao, Fobias = @Fobias, Disponivel_tosa = @Disponivel_tosa, Possui_pedigree = @Possui_pedigree, Agressivo = @Agressivo, Hiperativo = @Hiperativo, Anti_social = @Anti_social, Obsessivo = @Obsessivo, Observacao_comportamental = @Observacao_comportamental, Observacao_rotina = @Observacao_rotina, Fotografia1 = @Fotografia1, Fotografia2 = @Fotografia2, Fotografia3 = @Fotografia3 WHERE Id = @Id";
+                    command.CommandText = "UPDATE Animal SET Nome = @Nome, Sexo = @Sexo, ClienteId = @ClienteId, Especie = @Especie, Raca = @Raca, Identificacao = @Identificacao, Fobias = @Fobias, Disponivel_tosa = @Disponivel_tosa, Possui_pedigree = @Possui_pedigree, Agressivo = @Agressivo, Hiperativo = @Hiperativo, Anti_social = @Anti_social, Obsessivo = @Obsessivo, Observacao_comportamental = @Observacao_comportamental, Observacao_rotina = @Observacao_rotina, Peso = @Peso, DataNascimento = @DataNascimento, Situacao = @Situacao, Fotografia1 = @Fotografia1, Fotografia2 = @Fotografia2, Fotografia3 = @Fotografia3 WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", AnimalId);
                 }
                 command.Parameters.AddWithValue("@Nome", Nome);
@@ -91,6 +97,9 @@ namespace PetShop.Entities
                 command.Parameters.AddWithValue("@Obsessivo", Obsessivo);
                 command.Parameters.AddWithValue("@Observacao_comportamental", ObservacaoComportamental);
                 command.Parameters.AddWithValue("Observacao_rotina", ObservacaoRotina);
+                command.Parameters.AddWithValue("@Peso", Peso);
+                command.Parameters.AddWithValue("@DataNascimento", DataNascimento);
+                command.Parameters.AddWithValue("@Situacao", Situacao);
                 if (Fotografia1 == null)
                 {
                     command.Parameters.AddWithValue("@Fotografia1", DBNull.Value);
@@ -139,7 +148,7 @@ namespace PetShop.Entities
             {
                 connection.Open();
                 SqlCeCommand comando = connection.CreateCommand();
-                comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id";
+                comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Peso, Animal.DataNascimento, Animal.Situacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id";
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                 dataadp.Fill(dta);
@@ -162,7 +171,7 @@ namespace PetShop.Entities
             {
                 connection.Open();
                 SqlCeCommand comando = connection.CreateCommand();
-                comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id WHERE Animal.ClienteId = @ClienteId";
+                comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Peso, Animal.DataNascimento, Animal.Situacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id WHERE Animal.ClienteId = @ClienteId";
                 comando.Parameters.AddWithValue("@ClienteId", idCliente);
                 comando.ExecuteNonQuery();
                 SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
@@ -238,25 +247,28 @@ namespace PetShop.Entities
                     while (reader.Read())
                     {
                         AnimalId = (int)reader["Id"];
-                        Nome = reader["Nome"].ToString();
-                        Sexo = reader["Sexo"].ToString();
+                        Nome = (string)reader["Nome"];
+                        Sexo = (string)reader["Sexo"];
                         ClienteId = (int)reader["ClienteId"];
-                        Especie = reader["Especie"].ToString();
-                        Raca = reader["Raca"].ToString();
-                        Identificacao = reader["Identificacao"].ToString();
-                        Fobias = reader["Fobias"].ToString();
+                        Especie = (string)reader["Especie"];
+                        Raca = (string)reader["Raca"];
+                        Identificacao = (string)reader["Identificacao"];
+                        Fobias = (string)reader["Fobias"];
                         DisponivelTosa = reader["Disponivel_tosa"].ToString();
-                        PossuiPedigree = reader["Possui_pedigree"].ToString();
-                        Agressivo = reader["Agressivo"].ToString();
-                        Hiperativo = reader["Hiperativo"].ToString();
-                        AntiSocial = reader["Anti_social"].ToString();
-                        Obsessivo = reader["Obsessivo"].ToString();
-                        ObservacaoComportamental = reader["Observacao_comportamental"].ToString();
-                        ObservacaoRotina = reader["Observacao_rotina"].ToString();
+                        PossuiPedigree = (string)reader["Possui_pedigree"];
+                        Agressivo = (string)reader["Agressivo"];
+                        Hiperativo = (string)reader["Hiperativo"];
+                        AntiSocial = (string)reader["Anti_social"];
+                        Obsessivo = (string)reader["Obsessivo"];
+                        ObservacaoComportamental = (string)reader["Observacao_comportamental"];
+                        ObservacaoRotina = (string)reader["Observacao_rotina"];              
                         DataRegistro = DateTime.Parse(reader["Data_registro"].ToString());
                         Fotografia1 = reader["Fotografia1"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia1"]);
                         Fotografia2 = reader["Fotografia2"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia2"]);
                         Fotografia3 = reader["Fotografia3"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia3"]);
+                        Peso = decimal.Parse(reader["Peso"].ToString());
+                        DataNascimento = DateTime.Parse(reader["DataNascimento"].ToString());
+                        Situacao = (string)reader["Situacao"];
                     }
                 }
             }

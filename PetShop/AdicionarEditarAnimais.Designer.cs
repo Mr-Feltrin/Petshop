@@ -71,6 +71,20 @@
             this.labelRaca = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPeso = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateDataNascimento = new System.Windows.Forms.DateTimePicker();
+            this.combBoxSituacao = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -116,7 +130,7 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 362F));
             this.tableLayoutPanel2.Controls.Add(this.txtNomeDonoAnimal, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.txtDataRegistroAnimal, 0, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 37);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(6, 36);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -127,10 +141,11 @@
             // 
             this.txtNomeDonoAnimal.AllowDrop = true;
             this.txtNomeDonoAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomeDonoAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeDonoAnimal.Location = new System.Drawing.Point(138, 3);
             this.txtNomeDonoAnimal.Name = "txtNomeDonoAnimal";
             this.txtNomeDonoAnimal.ReadOnly = true;
-            this.txtNomeDonoAnimal.Size = new System.Drawing.Size(356, 20);
+            this.txtNomeDonoAnimal.Size = new System.Drawing.Size(356, 22);
             this.txtNomeDonoAnimal.TabIndex = 2;
             this.txtNomeDonoAnimal.TextChanged += new System.EventHandler(this.txtNomeDonoAnimal_TextChanged);
             // 
@@ -139,10 +154,11 @@
             this.txtDataRegistroAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataRegistroAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataRegistroAnimal.Location = new System.Drawing.Point(3, 3);
             this.txtDataRegistroAnimal.Name = "txtDataRegistroAnimal";
             this.txtDataRegistroAnimal.ReadOnly = true;
-            this.txtDataRegistroAnimal.Size = new System.Drawing.Size(117, 20);
+            this.txtDataRegistroAnimal.Size = new System.Drawing.Size(117, 22);
             this.txtDataRegistroAnimal.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -169,9 +185,9 @@
             this.labelNomeDono.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeDono.Location = new System.Drawing.Point(137, 1);
             this.labelNomeDono.Name = "labelNomeDono";
-            this.labelNomeDono.Size = new System.Drawing.Size(266, 20);
+            this.labelNomeDono.Size = new System.Drawing.Size(257, 20);
             this.labelNomeDono.TabIndex = 3;
-            this.labelNomeDono.Text = "Nome do Dono / Proprietário / Cliente*";
+            this.labelNomeDono.Text = "Nome do Dono / Proprietário / Cliente";
             // 
             // btnPesquisarDono
             // 
@@ -193,6 +209,9 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.checkSexoFemea);
             this.groupBox2.Controls.Add(this.checkSexoMacho);
             this.groupBox2.Controls.Add(this.txtNomeAnimal);
@@ -248,16 +267,16 @@
             this.labelNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeAnimal.Location = new System.Drawing.Point(13, 16);
             this.labelNomeAnimal.Name = "labelNomeAnimal";
-            this.labelNomeAnimal.Size = new System.Drawing.Size(108, 17);
+            this.labelNomeAnimal.Size = new System.Drawing.Size(100, 17);
             this.labelNomeAnimal.TabIndex = 0;
-            this.labelNomeAnimal.Text = "Nome do Animal*";
+            this.labelNomeAnimal.Text = "Nome do Animal";
             // 
             // checkDisponivelTosa
             // 
             this.checkDisponivelTosa.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkDisponivelTosa.AutoSize = true;
             this.checkDisponivelTosa.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkDisponivelTosa.Location = new System.Drawing.Point(19, 461);
+            this.checkDisponivelTosa.Location = new System.Drawing.Point(19, 496);
             this.checkDisponivelTosa.Name = "checkDisponivelTosa";
             this.checkDisponivelTosa.Size = new System.Drawing.Size(140, 21);
             this.checkDisponivelTosa.TabIndex = 4;
@@ -269,7 +288,7 @@
             this.checkPossuiPedigree.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkPossuiPedigree.AutoSize = true;
             this.checkPossuiPedigree.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkPossuiPedigree.Location = new System.Drawing.Point(19, 484);
+            this.checkPossuiPedigree.Location = new System.Drawing.Point(19, 519);
             this.checkPossuiPedigree.Name = "checkPossuiPedigree";
             this.checkPossuiPedigree.Size = new System.Drawing.Size(117, 21);
             this.checkPossuiPedigree.TabIndex = 5;
@@ -281,7 +300,7 @@
             this.checkAgressivo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkAgressivo.AutoSize = true;
             this.checkAgressivo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAgressivo.Location = new System.Drawing.Point(19, 506);
+            this.checkAgressivo.Location = new System.Drawing.Point(19, 541);
             this.checkAgressivo.Name = "checkAgressivo";
             this.checkAgressivo.Size = new System.Drawing.Size(81, 21);
             this.checkAgressivo.TabIndex = 8;
@@ -293,7 +312,7 @@
             this.checkHiperativo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkHiperativo.AutoSize = true;
             this.checkHiperativo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkHiperativo.Location = new System.Drawing.Point(162, 461);
+            this.checkHiperativo.Location = new System.Drawing.Point(162, 496);
             this.checkHiperativo.Name = "checkHiperativo";
             this.checkHiperativo.Size = new System.Drawing.Size(83, 21);
             this.checkHiperativo.TabIndex = 9;
@@ -305,7 +324,7 @@
             this.checkAntissocial.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkAntissocial.AutoSize = true;
             this.checkAntissocial.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkAntissocial.Location = new System.Drawing.Point(162, 484);
+            this.checkAntissocial.Location = new System.Drawing.Point(162, 519);
             this.checkAntissocial.Name = "checkAntissocial";
             this.checkAntissocial.Size = new System.Drawing.Size(85, 21);
             this.checkAntissocial.TabIndex = 10;
@@ -317,7 +336,7 @@
             this.checkObcessivo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.checkObcessivo.AutoSize = true;
             this.checkObcessivo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkObcessivo.Location = new System.Drawing.Point(162, 507);
+            this.checkObcessivo.Location = new System.Drawing.Point(162, 542);
             this.checkObcessivo.Name = "checkObcessivo";
             this.checkObcessivo.Size = new System.Drawing.Size(83, 21);
             this.checkObcessivo.TabIndex = 11;
@@ -335,7 +354,7 @@
             this.btnSalvarCadastro.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSalvarCadastro.Image = global::PetShop.Properties.Resources.confirm;
             this.btnSalvarCadastro.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalvarCadastro.Location = new System.Drawing.Point(457, 449);
+            this.btnSalvarCadastro.Location = new System.Drawing.Point(457, 484);
             this.btnSalvarCadastro.Name = "btnSalvarCadastro";
             this.btnSalvarCadastro.Size = new System.Drawing.Size(178, 43);
             this.btnSalvarCadastro.TabIndex = 12;
@@ -355,7 +374,7 @@
             this.btnEmitirFicha.ForeColor = System.Drawing.SystemColors.Control;
             this.btnEmitirFicha.Image = global::PetShop.Properties.Resources.document32x32;
             this.btnEmitirFicha.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEmitirFicha.Location = new System.Drawing.Point(273, 498);
+            this.btnEmitirFicha.Location = new System.Drawing.Point(273, 533);
             this.btnEmitirFicha.Name = "btnEmitirFicha";
             this.btnEmitirFicha.Size = new System.Drawing.Size(178, 43);
             this.btnEmitirFicha.TabIndex = 13;
@@ -372,7 +391,7 @@
             this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
             this.btnSair.Image = global::PetShop.Properties.Resources.close;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSair.Location = new System.Drawing.Point(457, 498);
+            this.btnSair.Location = new System.Drawing.Point(457, 533);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(178, 43);
             this.btnSair.TabIndex = 15;
@@ -473,6 +492,17 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.label11);
+            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.label9);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.combBoxSituacao);
+            this.tabPage1.Controls.Add(this.dateDataNascimento);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.txtPeso);
+            this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.btnRemoverFoto);
             this.tabPage1.Controls.Add(this.btnAvancarFoto);
             this.tabPage1.Controls.Add(this.btnVoltarFoto);
@@ -490,7 +520,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(619, 228);
+            this.tabPage1.Size = new System.Drawing.Size(619, 269);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Informação do Animal";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -581,9 +611,9 @@
             this.labelRaca.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelRaca.Location = new System.Drawing.Point(21, 64);
             this.labelRaca.Name = "labelRaca";
-            this.labelRaca.Size = new System.Drawing.Size(44, 17);
+            this.labelRaca.Size = new System.Drawing.Size(36, 17);
             this.labelRaca.TabIndex = 8;
-            this.labelRaca.Text = "Raça*";
+            this.labelRaca.Text = "Raça";
             // 
             // label4
             // 
@@ -591,9 +621,9 @@
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(22, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Espécie*";
+            this.label4.Text = "Espécie";
             // 
             // tabControl1
             // 
@@ -605,14 +635,170 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 179);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(627, 254);
+            this.tabControl1.Size = new System.Drawing.Size(627, 295);
             this.tabControl1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(22, 208);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 17);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Peso (Kg)";
+            // 
+            // txtPeso
+            // 
+            this.txtPeso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPeso.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPeso.Location = new System.Drawing.Point(24, 230);
+            this.txtPeso.Name = "txtPeso";
+            this.txtPeso.Size = new System.Drawing.Size(185, 22);
+            this.txtPeso.TabIndex = 31;
+            this.txtPeso.TextChanged += new System.EventHandler(this.txtPeso_TextChanged);
+            this.txtPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPeso_KeyPress);
+            this.txtPeso.Validating += new System.ComponentModel.CancelEventHandler(this.txtPeso_Validating);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(218, 208);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(121, 17);
+            this.label2.TabIndex = 32;
+            this.label2.Text = "Data de Nascimento";
+            // 
+            // dateDataNascimento
+            // 
+            this.dateDataNascimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDataNascimento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateDataNascimento.Location = new System.Drawing.Point(221, 230);
+            this.dateDataNascimento.Name = "dateDataNascimento";
+            this.dateDataNascimento.Size = new System.Drawing.Size(185, 22);
+            this.dateDataNascimento.TabIndex = 33;
+            // 
+            // combBoxSituacao
+            // 
+            this.combBoxSituacao.DisplayMember = "0";
+            this.combBoxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxSituacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxSituacao.FormattingEnabled = true;
+            this.combBoxSituacao.Items.AddRange(new object[] {
+            "Ativo",
+            "Inativo",
+            "Falecido"});
+            this.combBoxSituacao.Location = new System.Drawing.Point(418, 229);
+            this.combBoxSituacao.Name = "combBoxSituacao";
+            this.combBoxSituacao.Size = new System.Drawing.Size(185, 25);
+            this.combBoxSituacao.TabIndex = 34;
+            this.combBoxSituacao.ValueMember = "0";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(415, 208);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 17);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "Situação";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(108, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(16, 17);
+            this.label5.TabIndex = 36;
+            this.label5.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(521, 39);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(16, 17);
+            this.label6.TabIndex = 37;
+            this.label6.Text = "*";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(599, 39);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 17);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "*";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(68, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 17);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "*";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(52, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(16, 17);
+            this.label9.TabIndex = 38;
+            this.label9.Text = "*";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.Location = new System.Drawing.Point(79, 208);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(16, 17);
+            this.label10.TabIndex = 39;
+            this.label10.Text = "*";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Red;
+            this.label11.Location = new System.Drawing.Point(334, 208);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(16, 17);
+            this.label11.TabIndex = 40;
+            this.label11.Text = "*";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Red;
+            this.label12.Location = new System.Drawing.Point(466, 208);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(16, 17);
+            this.label12.TabIndex = 41;
+            this.label12.Text = "*";
             // 
             // AdicionarEditarAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(651, 553);
+            this.ClientSize = new System.Drawing.Size(651, 588);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnEmitirFicha);
@@ -698,5 +884,19 @@
         private System.Windows.Forms.Button btnVoltarFoto;
         private System.Windows.Forms.Button btnRemoverFoto;
         private System.Windows.Forms.Button btnAvancarFoto;
+        private System.Windows.Forms.DateTimePicker dateDataNascimento;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPeso;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox combBoxSituacao;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }

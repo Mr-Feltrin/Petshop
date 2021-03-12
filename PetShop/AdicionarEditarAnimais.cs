@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using PetShop.ToolBox;
+using System.Text.RegularExpressions;
 
 namespace PetShop
 {
@@ -51,7 +52,8 @@ namespace PetShop
                 { txtNomeAnimal, "Digite o nome do animal" },
                 { txtEspecie, "Preencha o campo de espécie" },
                 { txtRaca, "Preencha o campo de Raça" },
-                { SexoSelecionado, "Selecione o sexo do animal" }
+                { SexoSelecionado, "Selecione o sexo do animal" },
+                { txtPeso, "Digite o peso do animal" }
             };
             _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha os dados de Cadastro");
             _ToolTip.SetToolTip(btnAdicionarFoto, "Numero máximo de fotos atingido (3)");
@@ -63,6 +65,7 @@ namespace PetShop
                     txtNomeDonoAnimal.Text = cliente.NomeCliente;
                 }
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                combBoxSituacao.SelectedIndex = 0; 
             }
             else if (_Operacao == TipoOperacao.Editar)
             {
@@ -85,6 +88,9 @@ namespace PetShop
                 txtFobias.Text = animal.Fobias;
                 txtObservacaoComportamental.Text = animal.ObservacaoComportamental;
                 txtObservacaoRotina.Text = animal.ObservacaoRotina;
+                txtPeso.Text = animal.Peso.ToString("F2");
+                dateDataNascimento.Value = animal.DataNascimento;
+                combBoxSituacao.SelectedItem = animal.Situacao;
                 if (animal.DisponivelTosa == "Sim")
                 {
                     checkDisponivelTosa.Checked = true;
@@ -173,7 +179,7 @@ namespace PetShop
         {
             if (_Operacao == TipoOperacao.Adicionar)
             {
-                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
+                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), decimal.Parse(txtPeso.Text), dateDataNascimento.Value, combBoxSituacao.Text, Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
                 animal.AdicionarEditarAnimal(_Operacao);
             }
             else
@@ -193,6 +199,9 @@ namespace PetShop
                 animal.Obsessivo = checkObcessivo.Checked ? "Sim" : "Não";
                 animal.ObservacaoComportamental = txtObservacaoComportamental.Text;
                 animal.ObservacaoRotina = txtObservacaoRotina.Text;
+                animal.Peso = decimal.Parse(txtPeso.Text);
+                animal.DataNascimento = dateDataNascimento.Value;
+                animal.Situacao = combBoxSituacao.Text;
                 animal.Fotografia1 = Fotografias.ElementAtOrDefault(0);
                 animal.Fotografia2 = Fotografias.ElementAtOrDefault(1);
                 animal.Fotografia3 = Fotografias.ElementAtOrDefault(2);
@@ -392,5 +401,35 @@ namespace PetShop
             }
         }
 
+        private void txtPeso_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvarCadastro, CamposObrigatorios, _ToolTip);
+        }
+
+        private void txtPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && (sender as TextBox).Text.IndexOf('.') < (sender as TextBox).SelectionStart && (sender as TextBox).Text.Split('.').Length > 1 && (sender as TextBox).Text.Split('.')[1].Length == 2)
+
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtPeso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+            {
+                (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("F2");
+            }
+        }
     }
 }

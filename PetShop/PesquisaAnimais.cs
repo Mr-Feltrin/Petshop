@@ -31,6 +31,10 @@ namespace PetShop
             listaAnimais.Columns["Identificacao"].HeaderText = "Identificação";
             listaAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
             listaAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
+            listaAnimais.Columns["DataNascimento"].HeaderText = "Data de Nascimento";
+            listaAnimais.Columns["Situacao"].HeaderText = "Situação";
+            listaAnimais.Columns["DataNascimento"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            listaAnimais.Columns["Peso"].DefaultCellStyle.Format = "F2";
             listaAnimais.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
@@ -124,6 +128,8 @@ namespace PetShop
                         data.Columns["Identificacao"].ColumnName = "Identificação";
                         data.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
                         data.Columns["Data_registro"].ColumnName = "Data de Registro";
+                        data.Columns["DataNascimento"].ColumnName = "Data de Nascimento";
+                        data.Columns["Situacao"].ColumnName = "Situação";
                         IXLWorksheet worksheet = workbook.Worksheets.Add(data, "Lista de animais");
                         worksheet.ColumnsUsed().AdjustToContents();
                         worksheet.RowsUsed().AdjustToContents();

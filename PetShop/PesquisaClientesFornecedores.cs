@@ -300,5 +300,13 @@ namespace PetShop
         {
             MaximumSize = new System.Drawing.Size(dataGridViewListaClientesFornecedores.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
         }
+
+        private void PesquisaClientesFornecedores_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

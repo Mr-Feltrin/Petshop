@@ -179,5 +179,13 @@ namespace PetShop
         {
             MaximumSize = new System.Drawing.Size(listaAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 50, 100000);
         }
+
+        private void PesquisaAnimais_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

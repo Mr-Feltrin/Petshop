@@ -26,5 +26,13 @@ namespace PetShop
                 MessageBox.Show("O codigo de barras inserido não corresponde a nenhum produto", "Produto não encontrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void PesquisarCodigoBarras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

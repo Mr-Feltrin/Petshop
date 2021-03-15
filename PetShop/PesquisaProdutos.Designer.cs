@@ -452,6 +452,7 @@
             this.Controls.Add(this.groupBox_pesquisar_nome_cliente);
             this.Controls.Add(this.groupBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(998, 280);
@@ -461,6 +462,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa de Produtos";
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PesquisaProdutos_KeyDown);
             this.groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);

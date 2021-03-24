@@ -5,6 +5,8 @@ using PetShop.Entities;
 using System.Collections.Generic;
 using PetShop.ToolBox;
 using System.Linq;
+using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace PetShop
 {
@@ -34,7 +36,9 @@ namespace PetShop
                 {txtDoses, "Digite a quantidade de doses da vacina"},
                 {txtLote, "Digite o lote da vacina"},
                 {txtFabricante, "Digite o nome do fabricante"},
-                {txtQuantidadeEstoque, "Insira a quantidade atual no estoque"}
+                {txtQuantidadeEstoque, "Insira a quantidade atual no estoque"},
+                { txtValorCusto, "Insira o valor de custo da Vacina" },
+                { txtValorProduto, "Insira o valor de venda da Vacina" }
             };
             CombBoxImunologia.DataSource = Vacina.ListarImunologia();
             CombBoxImunologia.DisplayMember = "Imunologia";
@@ -55,6 +59,8 @@ namespace PetShop
                 txtFabricante.Text = _Vacina.Fabricante;
                 DateDataValidade.Value = _Vacina.DataValidade;
                 txtQuantidadeEstoque.Text = _Vacina.Quantidade.ToString();
+                txtValorCusto.Text = _Vacina.ValorMercado.ToString("C2", new CultureInfo("pt-BR"));
+                txtValorProduto.Text = _Vacina.ValorProduto.ToString("C2", new CultureInfo("pt-BR"));
             }
         }
 
@@ -141,7 +147,7 @@ namespace PetShop
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value);
+                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()), decimal.Parse(txtValorProduto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()));
                 _Vacina.AdicionarEditarVacina(Operacao);
             }
             else
@@ -154,6 +160,8 @@ namespace PetShop
                 _Vacina.Fabricante = txtFabricante.Text;
                 _Vacina.DataValidade = DateDataValidade.Value;
                 _Vacina.Quantidade = int.Parse(txtQuantidadeEstoque.Text);
+                _Vacina.ValorMercado = decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
+                _Vacina.ValorProduto = decimal.Parse(txtValorProduto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
                 _Vacina.AdicionarEditarVacina(Operacao);
             }
             if (Application.OpenForms.OfType<PesquisarVacinas>().Count() == 1)
@@ -161,6 +169,84 @@ namespace PetShop
                 Application.OpenForms.OfType<PesquisarVacinas>().First().AtualizarLista();
             }
             Close();
+        }
+
+        private void txtValorCusto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && (sender as TextBox).Text.IndexOf('.') < (sender as TextBox).SelectionStart && (sender as TextBox).Text.Split('.').Length > 1 && (sender as TextBox).Text.Split('.')[1].Length == 2)
+
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtValorProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && (sender as TextBox).Text.IndexOf('.') < (sender as TextBox).SelectionStart && (sender as TextBox).Text.Split('.').Length > 1 && (sender as TextBox).Text.Split('.')[1].Length == 2)
+
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txtValorCusto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+                {
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text.Replace(",",".")), 2).ToString("C2", new CultureInfo("pt-BR"));
+                }
+            }
+        }
+
+        private void txtValorProduto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+                {
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                }
+            }
+        }
+
+        private void txtValorProduto_Enter(object sender, EventArgs e)
+        {
+            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".","").Replace(",",".").Trim();
+        }
+
+        private void txtValorCusto_Enter(object sender, EventArgs e)
+        {
+            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+        }
+
+        private void txtValorCusto_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, toolTip);
+        }
+
+        private void txtValorProduto_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, toolTip);
         }
     }
 }

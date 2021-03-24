@@ -49,7 +49,7 @@ namespace PetShop.Entities
                         }
                     }
                     Command.CommandText = "SELECT Animal.ClienteId FROM Animal WHERE Animal.Id = @Id";
-                    Command.Parameters.AddWithValue("@Id", AnimalId.AnimalId);
+                    Command.Parameters.AddWithValue("@Id", AnimalId.Id);
                     using (SqlCeDataReader reader = Command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -84,7 +84,7 @@ namespace PetShop.Entities
                     }
                     Command.Parameters.AddWithValue("@Data", DataAgendamento);
                     Command.Parameters.AddWithValue("@Procedimento", Procedimento);
-                    Command.Parameters.AddWithValue("@AnimalId", AnimalId.AnimalId);
+                    Command.Parameters.AddWithValue("@AnimalId", AnimalId.Id);
                     if (Command.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("O agendamento foi salvo", "Salvar Agendamento", MessageBoxButtons.OK, MessageBoxIcon.Information);

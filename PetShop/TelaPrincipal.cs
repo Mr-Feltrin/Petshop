@@ -192,5 +192,11 @@ namespace PetShop
             PesquisarVacinas pesquisarVacinas = new PesquisarVacinas();
             pesquisarVacinas.ShowDialog();
         }
+
+        private void btnVacinacao_Click(object sender, EventArgs e)
+        {
+            ListaVacinacoes vacinacoes = new ListaVacinacoes();
+            vacinacoes.ShowDialog();
+        }
     }
 }

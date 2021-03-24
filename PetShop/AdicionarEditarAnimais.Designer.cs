@@ -411,7 +411,8 @@
             this.btnEmitirFicha.Name = "btnEmitirFicha";
             this.btnEmitirFicha.Size = new System.Drawing.Size(178, 43);
             this.btnEmitirFicha.TabIndex = 13;
-            this.btnEmitirFicha.Text = "Emitir Ficha";
+            this.btnEmitirFicha.Text = "   Relatório de Vacinas";
+            this.btnEmitirFicha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmitirFicha.UseVisualStyleBackColor = false;
             // 
             // btnSair

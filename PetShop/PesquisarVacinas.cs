@@ -6,6 +6,7 @@ using System.Data;
 using ClosedXML.Excel;
 using System.Drawing;
 using PetShop.ToolBox;
+using System.Globalization;
 
 namespace PetShop
 {
@@ -36,8 +37,14 @@ namespace PetShop
             listaVacinas.Columns["ConteudoML"].HeaderText = "Conteúdo (ML)";
             listaVacinas.Columns["DataValidade"].HeaderText = "Data de Validade";
             listaVacinas.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            listaVacinas.Columns["ValorMercado"].HeaderText = "Valor de Mercado";
+            listaVacinas.Columns["ValorProduto"].HeaderText = "Valor do Produto";
             listaVacinas.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaVacinas.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            listaVacinas.Columns["ValorMercado"].DefaultCellStyle.Format = "C2";
+            listaVacinas.Columns["ValorMercado"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaVacinas.Columns["ValorProduto"].DefaultCellStyle.Format = "C2";
+            listaVacinas.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
             listaVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             Size = new Size(915, 577);
         }
@@ -129,7 +136,7 @@ namespace PetShop
                         worksheets.ColumnsUsed().AdjustToContents();
                         worksheets.RowsUsed().AdjustToContents();
                         worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
-                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 7, worksheets.LastRowUsed().RowNumber(), 7).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 5, worksheets.LastRowUsed().RowNumber(), 5).Style.DateFormat.Format = "dd/MM/yyyy";
                         worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.DateFormat.Format = "dd/MM/yyyy";
                         try
                         {

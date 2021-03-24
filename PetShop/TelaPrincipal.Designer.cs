@@ -40,6 +40,7 @@
             this.btnConsultar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAnimais = new System.Windows.Forms.ToolStripButton();
+            this.btnVacinacao = new System.Windows.Forms.ToolStripButton();
             this.btnVacinas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -72,6 +73,7 @@
             this.btnConsultar,
             this.toolStripSeparator2,
             this.btnAnimais,
+            this.btnVacinacao,
             this.btnVacinas,
             this.toolStripSeparator3,
             this.toolStripButton2});
@@ -188,6 +190,22 @@
             this.btnAnimais.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnAnimais.ToolTipText = "Animais";
             this.btnAnimais.Click += new System.EventHandler(this.BtnAnimais_Click);
+            // 
+            // btnVacinacao
+            // 
+            this.btnVacinacao.BackColor = System.Drawing.Color.Transparent;
+            this.btnVacinacao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVacinacao.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVacinacao.Image = global::PetShop.Properties.Resources.vacinacao_animal30x30;
+            this.btnVacinacao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnVacinacao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVacinacao.Name = "btnVacinacao";
+            this.btnVacinacao.Size = new System.Drawing.Size(77, 51);
+            this.btnVacinacao.Text = "Vacinação";
+            this.btnVacinacao.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVacinacao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVacinacao.ToolTipText = "Vacinas";
+            this.btnVacinacao.Click += new System.EventHandler(this.btnVacinacao_Click);
             // 
             // btnVacinas
             // 
@@ -419,6 +437,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.Timer TimerAgendamentos;
         private System.Windows.Forms.Timer timerDataAtual;
+        private System.Windows.Forms.ToolStripButton btnVacinacao;
     }
 }
 

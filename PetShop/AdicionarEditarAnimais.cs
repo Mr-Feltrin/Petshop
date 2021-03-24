@@ -426,9 +426,12 @@ namespace PetShop
 
         private void txtPeso_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
             {
-                (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("F2");
+                if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+                {
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("F2");
+                }
             }
         }
     }

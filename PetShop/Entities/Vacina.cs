@@ -8,8 +8,6 @@ namespace PetShop.Entities
 {
     class Vacina
     {
-        //delete
-        //list
         private static SqlCeConnection Connection;
         public int Id { get; set; }
         public string Imunologia { get; set; }
@@ -20,8 +18,10 @@ namespace PetShop.Entities
         public DateTime DataValidade { get; set; }
         public DateTime DataCadastro { get; set; }
         public int Quantidade { get; set; }
+        public decimal ValorMercado { get; set; }
+        public decimal ValorProduto { get; set; }
 
-        public Vacina(string imunologia, int doses, int conteudoML, string lote, string fabricante, DateTime dataValidade, DateTime dataCadastro)
+        public Vacina(string imunologia, int doses, int conteudoML, string lote, string fabricante, DateTime dataValidade, DateTime dataCadastro, int quantidade, decimal valorMercado, decimal valorProduto)
         {
             Imunologia = imunologia;
             Doses = doses;
@@ -30,6 +30,9 @@ namespace PetShop.Entities
             Fabricante = fabricante;
             DataValidade = dataValidade;
             DataCadastro = dataCadastro;
+            Quantidade = quantidade;
+            ValorMercado = valorMercado;
+            ValorProduto = valorProduto;
         }
 
         public Vacina(int id)
@@ -60,6 +63,8 @@ namespace PetShop.Entities
                             DataValidade = (DateTime)reader["DataValidade"];
                             DataCadastro = (DateTime)reader["DataCadastro"];
                             Quantidade = (int)reader["Quantidade"];
+                            ValorMercado = (decimal)reader["ValorMercado"];
+                            ValorProduto = (decimal)reader["ValorProduto"];
                         }
                     }
                 }
@@ -84,11 +89,11 @@ namespace PetShop.Entities
                     SqlCeCommand command = Connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        command.CommandText = "INSERT INTO Vacinas (Doses, ConteudoML, Imunologia, Lote, Fabricante, DataValidade, DataCadastro, Quantidade) VALUES (@Doses, @ConteudoML, @Imunologia, @Lote, @Fabricante, @DataValidade, @DataCadastro, @Quantidade)";
+                        command.CommandText = "INSERT INTO Vacinas (Doses, ConteudoML, Imunologia, Lote, Fabricante, DataValidade, DataCadastro, Quantidade, ValorMercado, ValorProduto) VALUES (@Doses, @ConteudoML, @Imunologia, @Lote, @Fabricante, @DataValidade, @DataCadastro, @Quantidade, @ValorMercado, @ValorProduto)";
                     }
                     else if (operacao == TipoOperacao.Editar)
                     {
-                        command.CommandText = "UPDATE Vacinas SET Doses = @Doses, ConteudoML = @ConteudoML, Imunologia = @Imunologia, Lote = @Lote, Fabricante = @Fabricante, DataValidade = @DataValidade, DataCadastro = @DataCadastro, Quantidade = @Quantidade WHERE Id = @Id";
+                        command.CommandText = "UPDATE Vacinas SET Doses = @Doses, ConteudoML = @ConteudoML, Imunologia = @Imunologia, Lote = @Lote, Fabricante = @Fabricante, DataValidade = @DataValidade, DataCadastro = @DataCadastro, Quantidade = @Quantidade, ValorMercado = @ValorMercado, ValorProduto = @ValorProduto WHERE Id = @Id";
                         command.Parameters.AddWithValue("@Id", Id);
                     }
                     command.Parameters.AddWithValue("@Doses", Doses);
@@ -98,7 +103,9 @@ namespace PetShop.Entities
                     command.Parameters.AddWithValue("@Fabricante", Fabricante);
                     command.Parameters.AddWithValue("@DataValidade", DataValidade);
                     command.Parameters.AddWithValue("@DataCadastro", DataCadastro);
-                    command.Parameters.AddWithValue("Quantidade", Quantidade);
+                    command.Parameters.AddWithValue("@Quantidade", Quantidade);
+                    command.Parameters.AddWithValue("@ValorMercado", ValorMercado);
+                    command.Parameters.AddWithValue("@ValorProduto", ValorProduto);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("A Vacina foi salva", "Salvar Vacina", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -150,7 +157,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade FROM Vacinas";
+                    command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade, ValorMercado, ValorProduto FROM Vacinas";
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

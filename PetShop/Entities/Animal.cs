@@ -11,7 +11,7 @@ namespace PetShop.Entities
     public class Animal
     {
         private static SqlCeConnection connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString);
-        public int AnimalId { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Sexo { get; set; }
         public int ClienteId { get; set; }
@@ -80,7 +80,7 @@ namespace PetShop.Entities
                 else
                 {
                     command.CommandText = "UPDATE Animal SET Nome = @Nome, Sexo = @Sexo, ClienteId = @ClienteId, Especie = @Especie, Raca = @Raca, Identificacao = @Identificacao, Fobias = @Fobias, Disponivel_tosa = @Disponivel_tosa, Possui_pedigree = @Possui_pedigree, Agressivo = @Agressivo, Hiperativo = @Hiperativo, Anti_social = @Anti_social, Obsessivo = @Obsessivo, Observacao_comportamental = @Observacao_comportamental, Observacao_rotina = @Observacao_rotina, Peso = @Peso, DataNascimento = @DataNascimento, Situacao = @Situacao, Fotografia1 = @Fotografia1, Fotografia2 = @Fotografia2, Fotografia3 = @Fotografia3 WHERE Id = @Id";
-                    command.Parameters.AddWithValue("@Id", AnimalId);
+                    command.Parameters.AddWithValue("@Id", Id);
                 }
                 command.Parameters.AddWithValue("@Nome", Nome);
                 command.Parameters.AddWithValue("@Sexo", Sexo);
@@ -246,7 +246,7 @@ namespace PetShop.Entities
                 {
                     while (reader.Read())
                     {
-                        AnimalId = (int)reader["Id"];
+                        Id = (int)reader["Id"];
                         Nome = (string)reader["Nome"];
                         Sexo = (string)reader["Sexo"];
                         ClienteId = (int)reader["ClienteId"];

@@ -43,6 +43,7 @@
             this.btnVacinacao = new System.Windows.Forms.ToolStripButton();
             this.btnVacinas = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnVenda = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus_data_completa = new System.Windows.Forms.ToolStripStatusLabel();
@@ -76,6 +77,7 @@
             this.btnVacinacao,
             this.btnVacinas,
             this.toolStripSeparator3,
+            this.btnVenda,
             this.toolStripButton2});
             this.menu_principal.Location = new System.Drawing.Point(0, 0);
             this.menu_principal.Name = "menu_principal";
@@ -227,6 +229,22 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 54);
+            // 
+            // btnVenda
+            // 
+            this.btnVenda.BackColor = System.Drawing.Color.Transparent;
+            this.btnVenda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVenda.Image = global::PetShop.Properties.Resources.vendas30x30;
+            this.btnVenda.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnVenda.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnVenda.Name = "btnVenda";
+            this.btnVenda.Size = new System.Drawing.Size(51, 51);
+            this.btnVenda.Text = "Venda";
+            this.btnVenda.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnVenda.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnVenda.ToolTipText = "Atender";
+            this.btnVenda.Click += new System.EventHandler(this.btnVenda_Click);
             // 
             // toolStripButton2
             // 
@@ -438,6 +456,7 @@
         private System.Windows.Forms.Timer TimerAgendamentos;
         private System.Windows.Forms.Timer timerDataAtual;
         private System.Windows.Forms.ToolStripButton btnVacinacao;
+        private System.Windows.Forms.ToolStripButton btnVenda;
     }
 }
 

@@ -248,6 +248,9 @@
     <Compile Include="ToolBox\Controls\BotaoNoFocus.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ToolBox\Controls\ComboBoxFlatBordered.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ToolBox\Controls\TextBoxBorderColored.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -255,6 +258,12 @@
     <Compile Include="ToolBox\DataGridViewTools.cs" />
     <Compile Include="ToolBox\PesquisaControlePosicaoMouse.cs" />
     <Compile Include="ToolBox\VerificarCamposObrigatorios.cs" />
+    <Compile Include="LancarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LancarVenda.Designer.cs">
+      <DependentUpon>LancarVenda.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdicionarEditarAgendamento.resx">
       <DependentUpon>AdicionarEditarAgendamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -310,6 +319,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisaClientesFornecedores.resx">
       <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LancarVenda.resx">
+      <DependentUpon>LancarVenda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -412,6 +424,7 @@
     <Content Include="images\caixa30x30.png" />
     <None Include="images\logo_caopanheiro.jpg" />
     <None Include="images\vacinacao_animal30x30.png" />
+    <None Include="images\vendas30x30.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

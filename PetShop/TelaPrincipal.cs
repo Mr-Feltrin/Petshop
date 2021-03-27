@@ -198,5 +198,11 @@ namespace PetShop
             ListaVacinacoes vacinacoes = new ListaVacinacoes();
             vacinacoes.ShowDialog();
         }
+
+        private void btnVenda_Click(object sender, EventArgs e)
+        {
+            LancarVenda venda = new LancarVenda();
+            venda.ShowDialog();
+        }
     }
 }

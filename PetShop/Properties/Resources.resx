@@ -124,11 +124,17 @@
   <data name="information_45x45" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\information_45x45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ok_45x45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\ok_45x45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="horario_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\horario_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="deletar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\deletar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fornecedor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\icons\fornecedorIco.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="document32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\document32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,26 +148,26 @@
   <data name="logo_caopanheiro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\logo_caopanheiro.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="computador_sistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\computador_sistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pesquisar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\pesquisar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agenda_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\icons\agenda_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="codebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\codebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="cancel_25x25" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\cancel_25x25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="vacinacao_animal30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\vacinacao_animal30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8_Browse_Folder_20px_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\icons8_Browse_Folder_20px_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="agenda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\agenda_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="notificacao_agendamento_45x45" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\notificacao_agendamento_45x45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="animal_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\icons\animal_icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,26 +184,23 @@
   <data name="editar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\editar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="adicionar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\add_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="horario_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\horario_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="notificacao_agendamento_45x45" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\notificacao_agendamento_45x45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="imprimir_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\imprimir_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tela_principal_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\tela_principal_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="horario_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\horario_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vacina30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\vacina30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="adicionar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\adicionar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="confirm" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\confirm.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -211,29 +214,29 @@
   <data name="addCliente_32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\addCliente_32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="adicionar_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\adicionar_list_icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="codigo_barras" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\codigo_barras.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="close" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\close.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="codigo_barras2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\codigo_barras2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ok_45x45" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\ok_45x45.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="codigo_barras" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\codigo_barras.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fornecedor_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\icons\fornecedorIco.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="computador_sistema" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\computador_sistema.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="codebar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\codebar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="caixa30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\caixa30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\clientes_icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="usuarios_icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\icons\usuarios.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,13 +247,13 @@
   <data name="export32px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\export32px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="clientes" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\clientes_icone.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tela_principal_background" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\tela_principal_background.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="printer32x32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\printer32x32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="vacinacao_animal30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\images\vacinacao_animal30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="vendas30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\vendas30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

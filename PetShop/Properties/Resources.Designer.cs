@@ -503,6 +503,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap vendas30x30 {
+            get {
+                object obj = ResourceManager.GetObject("vendas30x30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap warning_45x45 {
             get {
                 object obj = ResourceManager.GetObject("warning_45x45", resourceCulture);

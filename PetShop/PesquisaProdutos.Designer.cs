@@ -55,8 +55,8 @@
             this.pictureBoxSemEstoque = new System.Windows.Forms.PictureBox();
             this.groupBoxLegendaCores = new System.Windows.Forms.GroupBox();
             this.groupBoxFiltrar = new System.Windows.Forms.GroupBox();
-            this.comboBoxFiltrarLista = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxFiltrarLista = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
@@ -89,7 +89,7 @@
             this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridListaProdutos.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DataGridListaProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -402,30 +402,13 @@
             // groupBoxFiltrar
             // 
             this.groupBoxFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxFiltrar.Controls.Add(this.comboBoxFiltrarLista);
             this.groupBoxFiltrar.Controls.Add(this.label1);
+            this.groupBoxFiltrar.Controls.Add(this.comboBoxFiltrarLista);
             this.groupBoxFiltrar.Location = new System.Drawing.Point(814, 666);
             this.groupBoxFiltrar.Name = "groupBoxFiltrar";
             this.groupBoxFiltrar.Size = new System.Drawing.Size(327, 39);
             this.groupBoxFiltrar.TabIndex = 20;
             this.groupBoxFiltrar.TabStop = false;
-            // 
-            // comboBoxFiltrarLista
-            // 
-            this.comboBoxFiltrarLista.DisplayMember = "1";
-            this.comboBoxFiltrarLista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFiltrarLista.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFiltrarLista.FormattingEnabled = true;
-            this.comboBoxFiltrarLista.Items.AddRange(new object[] {
-            "Em Estoque",
-            "Baixo Estoque",
-            "Sem Estoque",
-            "Todos os Registros"});
-            this.comboBoxFiltrarLista.Location = new System.Drawing.Point(110, 10);
-            this.comboBoxFiltrarLista.Name = "comboBoxFiltrarLista";
-            this.comboBoxFiltrarLista.Size = new System.Drawing.Size(211, 25);
-            this.comboBoxFiltrarLista.TabIndex = 19;
-            this.comboBoxFiltrarLista.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltrarLista_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -437,10 +420,28 @@
             this.label1.TabIndex = 18;
             this.label1.Text = "Filtrar Lista por:";
             // 
+            // comboBoxFiltrarLista
+            // 
+            this.comboBoxFiltrarLista.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboBoxFiltrarLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBoxFiltrarLista.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFiltrarLista.FormattingEnabled = true;
+            this.comboBoxFiltrarLista.Items.AddRange(new object[] {
+            "Em Estoque",
+            "Baixo Estoque",
+            "Sem Estoque",
+            "Todos os Registros"});
+            this.comboBoxFiltrarLista.Location = new System.Drawing.Point(110, 10);
+            this.comboBoxFiltrarLista.Name = "comboBoxFiltrarLista";
+            this.comboBoxFiltrarLista.Size = new System.Drawing.Size(211, 25);
+            this.comboBoxFiltrarLista.TabIndex = 21;
+            this.comboBoxFiltrarLista.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltrarLista_SelectedIndexChanged);
+            // 
             // PesquisaProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(1153, 716);
             this.Controls.Add(this.groupBoxFiltrar);
             this.Controls.Add(this.groupBoxLegendaCores);
@@ -502,11 +503,11 @@
         private System.Windows.Forms.GroupBox groupBoxLegendaCores;
         private System.Windows.Forms.GroupBox groupBoxFiltrar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxFiltrarLista;
         private System.Windows.Forms.TextBox txtPesquisarNomeProduto;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtPesquisarMarcaProduto;
         private System.Windows.Forms.DataGridView DataGridListaProdutos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private ToolBox.Controls.ComboBoxFlatBordered comboBoxFiltrarLista;
     }
 }

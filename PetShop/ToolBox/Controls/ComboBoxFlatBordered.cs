@@ -7,7 +7,7 @@ namespace PetShop.ToolBox.Controls
     {
         private const int WM_PAINT = 0xF;
         private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
-        Color borderColor = Color.Blue;
+        Color borderColor = Color.FromKnownColor(KnownColor.ControlDarkDark);
         public Color BorderColor
         {
             get { return borderColor; }

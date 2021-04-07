@@ -27,6 +27,7 @@ namespace PetShop
         public void AtualizarLista()
         {
             listaServicos.DataSource = Servico.ListarServicos();
+            listaServicos.ClearSelection();
         }
 
         private void listaServicos_Sorted(object sender, EventArgs e)

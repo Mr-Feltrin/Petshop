@@ -113,12 +113,12 @@
             // btnSelecionar
             // 
             this.btnSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSelecionar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnSelecionar.BackColor = System.Drawing.Color.LightGreen;
             this.btnSelecionar.Enabled = false;
-            this.btnSelecionar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSelecionar.FlatAppearance.BorderColor = System.Drawing.Color.LightGreen;
             this.btnSelecionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSelecionar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSelecionar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSelecionar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSelecionar.Image = global::PetShop.Properties.Resources.confirm;
             this.btnSelecionar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSelecionar.Location = new System.Drawing.Point(544, 583);
@@ -132,12 +132,12 @@
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.BackColor = System.Drawing.Color.LightCoral;
             this.btnSair.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSair.Image = global::PetShop.Properties.Resources.close;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.Location = new System.Drawing.Point(18, 583);
@@ -151,11 +151,11 @@
             // btnNovoClienteAnimal
             // 
             this.btnNovoClienteAnimal.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnNovoClienteAnimal.BackColor = System.Drawing.Color.MidnightBlue;
-            this.btnNovoClienteAnimal.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnNovoClienteAnimal.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnNovoClienteAnimal.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.btnNovoClienteAnimal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovoClienteAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovoClienteAnimal.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnNovoClienteAnimal.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnNovoClienteAnimal.Image = global::PetShop.Properties.Resources.addCliente_32x32;
             this.btnNovoClienteAnimal.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnNovoClienteAnimal.Location = new System.Drawing.Point(281, 583);

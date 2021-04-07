@@ -70,7 +70,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.combBoxSituacao = new System.Windows.Forms.ComboBox();
             this.dateDataNascimento = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.txtPeso = new System.Windows.Forms.TextBox();
@@ -84,6 +83,7 @@
             this.labelIdentificacao = new System.Windows.Forms.Label();
             this.labelRaca = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.combBoxSituacao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -141,6 +141,7 @@
             // 
             this.txtNomeDonoAnimal.AllowDrop = true;
             this.txtNomeDonoAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomeDonoAnimal.BackColor = System.Drawing.SystemColors.Window;
             this.txtNomeDonoAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeDonoAnimal.Location = new System.Drawing.Point(138, 3);
             this.txtNomeDonoAnimal.Name = "txtNomeDonoAnimal";
@@ -154,6 +155,7 @@
             this.txtDataRegistroAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDataRegistroAnimal.BackColor = System.Drawing.SystemColors.Window;
             this.txtDataRegistroAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataRegistroAnimal.Location = new System.Drawing.Point(3, 3);
             this.txtDataRegistroAnimal.Name = "txtDataRegistroAnimal";
@@ -379,12 +381,12 @@
             // btnSalvarCadastro
             // 
             this.btnSalvarCadastro.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSalvarCadastro.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvarCadastro.BackColor = System.Drawing.Color.LightGreen;
             this.btnSalvarCadastro.Enabled = false;
-            this.btnSalvarCadastro.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvarCadastro.FlatAppearance.BorderColor = System.Drawing.Color.LightGreen;
             this.btnSalvarCadastro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvarCadastro.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvarCadastro.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSalvarCadastro.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSalvarCadastro.Image = global::PetShop.Properties.Resources.confirm;
             this.btnSalvarCadastro.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvarCadastro.Location = new System.Drawing.Point(457, 484);
@@ -399,12 +401,12 @@
             // btnEmitirFicha
             // 
             this.btnEmitirFicha.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnEmitirFicha.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnEmitirFicha.BackColor = System.Drawing.Color.LightSkyBlue;
             this.btnEmitirFicha.Enabled = false;
-            this.btnEmitirFicha.FlatAppearance.BorderColor = System.Drawing.Color.MidnightBlue;
+            this.btnEmitirFicha.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
             this.btnEmitirFicha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmitirFicha.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmitirFicha.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnEmitirFicha.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnEmitirFicha.Image = global::PetShop.Properties.Resources.document32x32;
             this.btnEmitirFicha.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEmitirFicha.Location = new System.Drawing.Point(273, 533);
@@ -418,12 +420,12 @@
             // btnSair
             // 
             this.btnSair.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.BackColor = System.Drawing.Color.LightCoral;
             this.btnSair.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSair.Image = global::PetShop.Properties.Resources.close;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.Location = new System.Drawing.Point(457, 533);
@@ -473,6 +475,7 @@
             // pictureBoxFotoAnimal
             // 
             this.pictureBoxFotoAnimal.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBoxFotoAnimal.BackColor = System.Drawing.SystemColors.Window;
             this.pictureBoxFotoAnimal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxFotoAnimal.Location = new System.Drawing.Point(356, 16);
             this.pictureBoxFotoAnimal.Name = "pictureBoxFotoAnimal";
@@ -483,13 +486,13 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.BackColor = System.Drawing.Color.AliceBlue;
             this.tabPage5.Controls.Add(this.txtObservacaoRotina);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(619, 269);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Obs de Rotina";
-            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // txtObservacaoRotina
             // 
@@ -505,13 +508,13 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.AliceBlue;
             this.tabPage4.Controls.Add(this.txtObservacaoComportamental);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(619, 269);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Obs Comportamental";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // txtObservacaoComportamental
             // 
@@ -527,13 +530,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.AliceBlue;
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.label11);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.label9);
             this.tabPage1.Controls.Add(this.label8);
             this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.combBoxSituacao);
             this.tabPage1.Controls.Add(this.dateDataNascimento);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txtPeso);
@@ -552,13 +555,13 @@
             this.tabPage1.Controls.Add(this.txtIdentificacao);
             this.tabPage1.Controls.Add(this.txtRaca);
             this.tabPage1.Controls.Add(this.txtEspecie);
+            this.tabPage1.Controls.Add(this.combBoxSituacao);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(619, 269);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Informação do Animal";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -625,22 +628,6 @@
             this.label3.TabIndex = 35;
             this.label3.Text = "Situação";
             // 
-            // combBoxSituacao
-            // 
-            this.combBoxSituacao.DisplayMember = "0";
-            this.combBoxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxSituacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxSituacao.FormattingEnabled = true;
-            this.combBoxSituacao.Items.AddRange(new object[] {
-            "Ativo",
-            "Inativo",
-            "Falecido"});
-            this.combBoxSituacao.Location = new System.Drawing.Point(418, 229);
-            this.combBoxSituacao.Name = "combBoxSituacao";
-            this.combBoxSituacao.Size = new System.Drawing.Size(185, 25);
-            this.combBoxSituacao.TabIndex = 34;
-            this.combBoxSituacao.ValueMember = "0";
-            // 
             // dateDataNascimento
             // 
             this.dateDataNascimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -685,6 +672,7 @@
             // 
             // btnRemoverFoto
             // 
+            this.btnRemoverFoto.BackColor = System.Drawing.SystemColors.Window;
             this.btnRemoverFoto.Enabled = false;
             this.btnRemoverFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemoverFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -693,11 +681,12 @@
             this.btnRemoverFoto.Size = new System.Drawing.Size(72, 23);
             this.btnRemoverFoto.TabIndex = 29;
             this.btnRemoverFoto.Text = "Remover";
-            this.btnRemoverFoto.UseVisualStyleBackColor = true;
+            this.btnRemoverFoto.UseVisualStyleBackColor = false;
             this.btnRemoverFoto.Click += new System.EventHandler(this.btnRemoverFoto_Click);
             // 
             // btnAvancarFoto
             // 
+            this.btnAvancarFoto.BackColor = System.Drawing.SystemColors.Window;
             this.btnAvancarFoto.Enabled = false;
             this.btnAvancarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAvancarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -706,11 +695,12 @@
             this.btnAvancarFoto.Size = new System.Drawing.Size(23, 23);
             this.btnAvancarFoto.TabIndex = 28;
             this.btnAvancarFoto.Text = "→";
-            this.btnAvancarFoto.UseVisualStyleBackColor = true;
+            this.btnAvancarFoto.UseVisualStyleBackColor = false;
             this.btnAvancarFoto.Click += new System.EventHandler(this.btnAvancarFoto_Click);
             // 
             // btnVoltarFoto
             // 
+            this.btnVoltarFoto.BackColor = System.Drawing.SystemColors.Window;
             this.btnVoltarFoto.Enabled = false;
             this.btnVoltarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -719,11 +709,12 @@
             this.btnVoltarFoto.Size = new System.Drawing.Size(23, 23);
             this.btnVoltarFoto.TabIndex = 27;
             this.btnVoltarFoto.Text = "←";
-            this.btnVoltarFoto.UseVisualStyleBackColor = true;
+            this.btnVoltarFoto.UseVisualStyleBackColor = false;
             this.btnVoltarFoto.Click += new System.EventHandler(this.btnVoltarFoto_Click);
             // 
             // btnAdicionarFoto
             // 
+            this.btnAdicionarFoto.BackColor = System.Drawing.SystemColors.Window;
             this.btnAdicionarFoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionarFoto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionarFoto.Location = new System.Drawing.Point(356, 178);
@@ -731,7 +722,7 @@
             this.btnAdicionarFoto.Size = new System.Drawing.Size(90, 23);
             this.btnAdicionarFoto.TabIndex = 26;
             this.btnAdicionarFoto.Text = "Adicionar Foto";
-            this.btnAdicionarFoto.UseVisualStyleBackColor = true;
+            this.btnAdicionarFoto.UseVisualStyleBackColor = false;
             this.btnAdicionarFoto.Click += new System.EventHandler(this.btnAdicionarFoto_Click);
             // 
             // labelIndexFoto
@@ -783,6 +774,26 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Espécie";
             // 
+            // combBoxSituacao
+            // 
+            this.combBoxSituacao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxSituacao.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxSituacao.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.combBoxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxSituacao.Enabled = false;
+            this.combBoxSituacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxSituacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxSituacao.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.combBoxSituacao.FormattingEnabled = true;
+            this.combBoxSituacao.Items.AddRange(new object[] {
+            "Ativo",
+            "Inativo",
+            "Falecido"});
+            this.combBoxSituacao.Location = new System.Drawing.Point(418, 229);
+            this.combBoxSituacao.Name = "combBoxSituacao";
+            this.combBoxSituacao.Size = new System.Drawing.Size(185, 25);
+            this.combBoxSituacao.TabIndex = 39;
+            // 
             // tabControl1
             // 
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -800,6 +811,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnSair;
             this.ClientSize = new System.Drawing.Size(651, 588);
             this.Controls.Add(this.tabControl1);
@@ -892,7 +904,6 @@
         private System.Windows.Forms.TextBox txtPeso;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox combBoxSituacao;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -901,5 +912,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private ToolBox.Controls.ComboBoxFlatBordered combBoxSituacao;
     }
 }

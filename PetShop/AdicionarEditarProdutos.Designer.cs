@@ -31,11 +31,13 @@ namespace PetShop
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateDataCadastro = new System.Windows.Forms.DateTimePicker();
-            this.CombBoxCategoria = new System.Windows.Forms.ComboBox();
             this.labelCategoriaProduto = new System.Windows.Forms.Label();
-            this.combBoxMarcaProduto = new System.Windows.Forms.ComboBox();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
             this.labelDataCadastroProduto = new System.Windows.Forms.Label();
             this.txtLocalizacao = new System.Windows.Forms.TextBox();
@@ -52,7 +54,10 @@ namespace PetShop
             this.combBoxTipoUnidade = new System.Windows.Forms.ComboBox();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.CombBoxCategoria = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.combBoxMarcaProduto = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtEstoqueAtual = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.txtEstoqueMinimo = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.dateDataValidade = new System.Windows.Forms.DateTimePicker();
@@ -60,6 +65,7 @@ namespace PetShop
             this.labelEstoqueAtual = new System.Windows.Forms.Label();
             this.labelEstoqueMinimo = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.txtPrecoProduto = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.txtValorCusto = new PetShop.ToolBox.Controls.TextBoxBorderColored();
             this.labelPrecoProduto = new System.Windows.Forms.Label();
@@ -80,11 +86,13 @@ namespace PetShop
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.dateDataCadastro);
-            this.groupBox1.Controls.Add(this.CombBoxCategoria);
             this.groupBox1.Controls.Add(this.labelCategoriaProduto);
-            this.groupBox1.Controls.Add(this.combBoxMarcaProduto);
             this.groupBox1.Controls.Add(this.labelMarcaProduto);
             this.groupBox1.Controls.Add(this.labelDataCadastroProduto);
             this.groupBox1.Controls.Add(this.txtLocalizacao);
@@ -97,11 +105,57 @@ namespace PetShop
             this.groupBox1.Controls.Add(this.labelTipoUnidade);
             this.groupBox1.Controls.Add(this.labelCodigoProduto);
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.CombBoxCategoria);
+            this.groupBox1.Controls.Add(this.combBoxMarcaProduto);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(664, 248);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(570, 183);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(19, 21);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(220, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(19, 21);
+            this.label4.TabIndex = 36;
+            this.label4.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(627, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(19, 21);
+            this.label3.TabIndex = 35;
+            this.label3.Text = "*";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(489, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(19, 21);
+            this.label2.TabIndex = 34;
+            this.label2.Text = "*";
             // 
             // label1
             // 
@@ -109,9 +163,9 @@ namespace PetShop
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(542, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 21);
+            this.label1.Size = new System.Drawing.Size(91, 21);
             this.label1.TabIndex = 32;
-            this.label1.Text = "Quantidade*";
+            this.label1.Text = "Quantidade";
             // 
             // dateDataCadastro
             // 
@@ -123,34 +177,15 @@ namespace PetShop
             this.dateDataCadastro.Size = new System.Drawing.Size(151, 22);
             this.dateDataCadastro.TabIndex = 20;
             // 
-            // CombBoxCategoria
-            // 
-            this.CombBoxCategoria.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CombBoxCategoria.FormattingEnabled = true;
-            this.CombBoxCategoria.Location = new System.Drawing.Point(369, 207);
-            this.CombBoxCategoria.Name = "CombBoxCategoria";
-            this.CombBoxCategoria.Size = new System.Drawing.Size(269, 25);
-            this.CombBoxCategoria.TabIndex = 30;
-            this.CombBoxCategoria.TextChanged += new System.EventHandler(this.CombBoxCategoria_TextChanged);
-            // 
             // labelCategoriaProduto
             // 
             this.labelCategoriaProduto.AutoSize = true;
             this.labelCategoriaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCategoriaProduto.Location = new System.Drawing.Point(365, 183);
             this.labelCategoriaProduto.Name = "labelCategoriaProduto";
-            this.labelCategoriaProduto.Size = new System.Drawing.Size(220, 21);
+            this.labelCategoriaProduto.Size = new System.Drawing.Size(211, 21);
             this.labelCategoriaProduto.TabIndex = 29;
-            this.labelCategoriaProduto.Text = "Grupo / Categoria do Produto*";
-            // 
-            // combBoxMarcaProduto
-            // 
-            this.combBoxMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxMarcaProduto.FormattingEnabled = true;
-            this.combBoxMarcaProduto.Location = new System.Drawing.Point(20, 207);
-            this.combBoxMarcaProduto.Name = "combBoxMarcaProduto";
-            this.combBoxMarcaProduto.Size = new System.Drawing.Size(291, 25);
-            this.combBoxMarcaProduto.TabIndex = 28;
+            this.labelCategoriaProduto.Text = "Grupo / Categoria do Produto";
             // 
             // labelMarcaProduto
             // 
@@ -216,7 +251,7 @@ namespace PetShop
             // 
             this.txtNomeProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNomeProduto.BackColor = System.Drawing.SystemColors.Info;
+            this.txtNomeProduto.BackColor = System.Drawing.SystemColors.Window;
             this.txtNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeProduto.Location = new System.Drawing.Point(20, 98);
             this.txtNomeProduto.MaxLength = 500;
@@ -241,9 +276,9 @@ namespace PetShop
             this.labelNomeProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNomeProduto.Location = new System.Drawing.Point(16, 74);
             this.labelNomeProduto.Name = "labelNomeProduto";
-            this.labelNomeProduto.Size = new System.Drawing.Size(219, 21);
+            this.labelNomeProduto.Size = new System.Drawing.Size(210, 21);
             this.labelNomeProduto.TabIndex = 19;
-            this.labelNomeProduto.Text = "Nome / Descrição do Produto*";
+            this.labelNomeProduto.Text = "Nome / Descrição do Produto";
             // 
             // labelTipoUnidade
             // 
@@ -251,9 +286,9 @@ namespace PetShop
             this.labelTipoUnidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTipoUnidade.Location = new System.Drawing.Point(413, 18);
             this.labelTipoUnidade.Name = "labelTipoUnidade";
-            this.labelTipoUnidade.Size = new System.Drawing.Size(92, 21);
+            this.labelTipoUnidade.Size = new System.Drawing.Size(83, 21);
             this.labelTipoUnidade.TabIndex = 17;
-            this.labelTipoUnidade.Text = "Tipo de Un*";
+            this.labelTipoUnidade.Text = "Tipo de Un";
             // 
             // labelCodigoProduto
             // 
@@ -328,7 +363,7 @@ namespace PetShop
             this.txtCodigoBarras.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCodigoBarras.BackColor = System.Drawing.SystemColors.Info;
+            this.txtCodigoBarras.BackColor = System.Drawing.SystemColors.Window;
             this.txtCodigoBarras.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoBarras.Location = new System.Drawing.Point(143, 3);
             this.txtCodigoBarras.MaxLength = 500;
@@ -350,8 +385,40 @@ namespace PetShop
             this.txtCodigo.Size = new System.Drawing.Size(112, 22);
             this.txtCodigo.TabIndex = 7;
             // 
+            // CombBoxCategoria
+            // 
+            this.CombBoxCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CombBoxCategoria.BackColor = System.Drawing.SystemColors.Window;
+            this.CombBoxCategoria.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CombBoxCategoria.Enabled = false;
+            this.CombBoxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CombBoxCategoria.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CombBoxCategoria.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CombBoxCategoria.FormattingEnabled = true;
+            this.CombBoxCategoria.Location = new System.Drawing.Point(369, 207);
+            this.CombBoxCategoria.Name = "CombBoxCategoria";
+            this.CombBoxCategoria.Size = new System.Drawing.Size(269, 25);
+            this.CombBoxCategoria.TabIndex = 22;
+            this.CombBoxCategoria.TextChanged += new System.EventHandler(this.CombBoxCategoria_TextChanged);
+            // 
+            // combBoxMarcaProduto
+            // 
+            this.combBoxMarcaProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxMarcaProduto.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxMarcaProduto.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.combBoxMarcaProduto.Enabled = false;
+            this.combBoxMarcaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxMarcaProduto.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.combBoxMarcaProduto.FormattingEnabled = true;
+            this.combBoxMarcaProduto.Location = new System.Drawing.Point(20, 207);
+            this.combBoxMarcaProduto.Name = "combBoxMarcaProduto";
+            this.combBoxMarcaProduto.Size = new System.Drawing.Size(291, 25);
+            this.combBoxMarcaProduto.TabIndex = 33;
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.txtEstoqueAtual);
             this.groupBox2.Controls.Add(this.txtEstoqueMinimo);
             this.groupBox2.Controls.Add(this.dateDataValidade);
@@ -363,6 +430,17 @@ namespace PetShop
             this.groupBox2.Size = new System.Drawing.Size(325, 138);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(105, 57);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(19, 21);
+            this.label6.TabIndex = 35;
+            this.label6.Text = "*";
             // 
             // txtEstoqueAtual
             // 
@@ -413,9 +491,9 @@ namespace PetShop
             this.labelEstoqueAtual.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelEstoqueAtual.Location = new System.Drawing.Point(6, 57);
             this.labelEstoqueAtual.Name = "labelEstoqueAtual";
-            this.labelEstoqueAtual.Size = new System.Drawing.Size(115, 21);
+            this.labelEstoqueAtual.Size = new System.Drawing.Size(106, 21);
             this.labelEstoqueAtual.TabIndex = 26;
-            this.labelEstoqueAtual.Text = "Estoque Atual*";
+            this.labelEstoqueAtual.Text = "Estoque Atual";
             // 
             // labelEstoqueMinimo
             // 
@@ -429,6 +507,7 @@ namespace PetShop
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Controls.Add(this.txtPrecoProduto);
             this.groupBox3.Controls.Add(this.txtValorCusto);
             this.groupBox3.Controls.Add(this.labelPrecoProduto);
@@ -438,6 +517,17 @@ namespace PetShop
             this.groupBox3.Size = new System.Drawing.Size(325, 138);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(129, 92);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(19, 21);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "*";
             // 
             // txtPrecoProduto
             // 
@@ -472,9 +562,9 @@ namespace PetShop
             this.labelPrecoProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPrecoProduto.Location = new System.Drawing.Point(8, 92);
             this.labelPrecoProduto.Name = "labelPrecoProduto";
-            this.labelPrecoProduto.Size = new System.Drawing.Size(136, 21);
+            this.labelPrecoProduto.Size = new System.Drawing.Size(127, 21);
             this.labelPrecoProduto.TabIndex = 31;
-            this.labelPrecoProduto.Text = "Preço do Produto*";
+            this.labelPrecoProduto.Text = "Preço do Produto";
             // 
             // labelValorCusto
             // 
@@ -508,12 +598,12 @@ namespace PetShop
             // btnSalvar
             // 
             this.btnSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSalvar.BackColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvar.BackColor = System.Drawing.Color.LightGreen;
             this.btnSalvar.Enabled = false;
-            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.DarkGreen;
+            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.LightGreen;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSalvar.Image = global::PetShop.Properties.Resources.confirm;
             this.btnSalvar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalvar.Location = new System.Drawing.Point(513, 632);
@@ -527,12 +617,12 @@ namespace PetShop
             // btnSair
             // 
             this.btnSair.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.BackColor = System.Drawing.Color.LightCoral;
             this.btnSair.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSair.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnSair.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnSair.Image = global::PetShop.Properties.Resources.close;
             this.btnSair.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSair.Location = new System.Drawing.Point(12, 632);
@@ -547,6 +637,7 @@ namespace PetShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnSair;
             this.ClientSize = new System.Drawing.Size(688, 689);
             this.Controls.Add(this.btnSair);
@@ -589,9 +680,7 @@ namespace PetShop
         private System.Windows.Forms.Label labelReferenciaProduto;
         private System.Windows.Forms.TextBox txtNomeProduto;
         private System.Windows.Forms.Label labelNomeProduto;
-        private System.Windows.Forms.ComboBox CombBoxCategoria;
         private System.Windows.Forms.Label labelCategoriaProduto;
-        private System.Windows.Forms.ComboBox combBoxMarcaProduto;
         private System.Windows.Forms.Label labelMarcaProduto;
         private System.Windows.Forms.Label labelDataCadastroProduto;
         private System.Windows.Forms.TextBox txtLocalizacao;
@@ -620,5 +709,13 @@ namespace PetShop
         private ToolBox.Controls.TextBoxBorderColored txtEstoqueAtual;
         private ToolBox.Controls.TextBoxBorderColored txtEstoqueMinimo;
         private System.Windows.Forms.ToolTip toolTipEnabledControls;
+        private ToolBox.Controls.ComboBoxFlatBordered CombBoxCategoria;
+        private ToolBox.Controls.ComboBoxFlatBordered combBoxMarcaProduto;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
     }
 }

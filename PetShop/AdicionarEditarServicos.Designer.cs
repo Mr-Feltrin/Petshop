@@ -94,6 +94,7 @@ namespace PetShop
             // btnSalvar
             // 
             this.btnSalvar.BackColor = System.Drawing.Color.LightGreen;
+            this.btnSalvar.FlatAppearance.BorderColor = System.Drawing.Color.LightGreen;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.ForeColor = System.Drawing.Color.Black;
@@ -111,6 +112,7 @@ namespace PetShop
             // 
             this.btnCancelar.BackColor = System.Drawing.Color.LightCoral;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.FlatAppearance.BorderColor = System.Drawing.Color.LightCoral;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Image = global::PetShop.Properties.Resources.close;

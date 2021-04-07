@@ -63,6 +63,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add32x32 {
+            get {
+                object obj = ResourceManager.GetObject("add32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap addAnimal_32x32 {
             get {
                 object obj = ResourceManager.GetObject("addAnimal_32x32", resourceCulture);
@@ -453,9 +463,29 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap remove16x16 {
+            get {
+                object obj = ResourceManager.GetObject("remove16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap servicos30x30 {
+            get {
+                object obj = ResourceManager.GetObject("servicos30x30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

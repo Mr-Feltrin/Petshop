@@ -37,6 +37,7 @@
             this.botao_agenda = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.botao_produtos = new System.Windows.Forms.ToolStripButton();
+            this.btnServicos = new System.Windows.Forms.ToolStripButton();
             this.btnConsultar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnAnimais = new System.Windows.Forms.ToolStripButton();
@@ -71,6 +72,7 @@
             this.botao_agenda,
             this.toolStripSeparator1,
             this.botao_produtos,
+            this.btnServicos,
             this.btnConsultar,
             this.toolStripSeparator2,
             this.btnAnimais,
@@ -155,6 +157,22 @@
             this.botao_produtos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.botao_produtos.ToolTipText = "Produtos";
             this.botao_produtos.Click += new System.EventHandler(this.Botao_produtos_Click);
+            // 
+            // btnServicos
+            // 
+            this.btnServicos.BackColor = System.Drawing.Color.Transparent;
+            this.btnServicos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnServicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicos.Image = global::PetShop.Properties.Resources.servicos30x30;
+            this.btnServicos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnServicos.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnServicos.Name = "btnServicos";
+            this.btnServicos.Size = new System.Drawing.Size(65, 51);
+            this.btnServicos.Text = "Serviços";
+            this.btnServicos.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnServicos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnServicos.ToolTipText = "Produtos";
+            this.btnServicos.Click += new System.EventHandler(this.btnServicos_Click);
             // 
             // btnConsultar
             // 
@@ -264,6 +282,7 @@
             // status_rodape_principal
             // 
             this.status_rodape_principal.AllowMerge = false;
+            this.status_rodape_principal.BackColor = System.Drawing.SystemColors.Window;
             this.status_rodape_principal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatus_data_completa,
             this.toolStripStatus_agendamentos_atuais,
@@ -278,7 +297,6 @@
             this.status_rodape_principal.Size = new System.Drawing.Size(1184, 27);
             this.status_rodape_principal.SizingGrip = false;
             this.status_rodape_principal.TabIndex = 2;
-            this.status_rodape_principal.Text = "statusStrip1";
             // 
             // toolStripStatus_data_completa
             // 
@@ -457,6 +475,7 @@
         private System.Windows.Forms.Timer timerDataAtual;
         private System.Windows.Forms.ToolStripButton btnVacinacao;
         private System.Windows.Forms.ToolStripButton btnVenda;
+        private System.Windows.Forms.ToolStripButton btnServicos;
     }
 }
 

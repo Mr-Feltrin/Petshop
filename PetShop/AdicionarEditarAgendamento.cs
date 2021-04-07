@@ -4,21 +4,25 @@ using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace PetShop
 {
     public partial class AdicionarEditarAgendamento : Form
     {
+        [DllImport("user32.dll")]
+        private static extern bool HideCaret(IntPtr hWnd);
         ToolTip _toolTip = new ToolTip();
         public Cliente _Cliente { get; set; }
         public Animal _Animal { get; set; }
+        public Servico _Servico { get; set; }
         private Dictionary<object, string> CamposObrigatorios;
         private List<Image> FotosAnimal = new List<Image>();
         private Button BtnPesquisarAnimal;
         private Button BtnPesquisarCliente;
+        private Button BtnPesquisarProcedimento;
         private TipoOperacao Operacao { get; set; }
         private readonly PesquisarAgendamento PesquisaAgendamento;
         private Agenda _Agenda { get; set; }
@@ -35,20 +39,27 @@ namespace PetShop
             _Agenda = new Agenda(idAgendamento);
             _Cliente = _Agenda.ClienteId;
             _Animal = _Agenda.AnimalId;
+            _Servico = _Agenda.ServicoId;
         }
 
         private void AdicionarEditarAgendamento_Load(object sender, EventArgs e)
         {
+            txtCliente.GotFocus += TextBoxGotFocus;
+            txtTipoProcedimento.GotFocus += TextBoxGotFocus;
+            txtNomeAnimal.GotFocus += TextBoxGotFocus;
+            txtSexo.GotFocus += TextBoxGotFocus;
+            txtEspecie.GotFocus += TextBoxGotFocus;
+            txtRaca.GotFocus += TextBoxGotFocus;
             _toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
             CamposObrigatorios = new Dictionary<object, string>()
             {
                 { txtCliente, "Selecione o cliente" },
-                { txtTipoProcedimento, "Preencha o Tipo de Procedimento" },
+                { txtTipoProcedimento, "Selecione o Tipo de Procedimento" },
                 { txtNomeAnimal, "Selecione o animal" }
             };
             tableLayoutPanel4.MouseMove += AdicionarEditarAgendamento_MouseMove;
             tableLayoutPanel6.MouseMove += AdicionarEditarAgendamento_MouseMove;
-            // Criação de botão na textbox txtCliente
+            // Botão de pesquisar Cliente
             BtnPesquisarCliente = new Button();
             BtnPesquisarCliente.Size = new Size(25, txtCliente.ClientSize.Height);
             BtnPesquisarCliente.Dock = DockStyle.Right;
@@ -62,7 +73,7 @@ namespace PetShop
             txtCliente.Controls.Add(BtnPesquisarCliente);
             BtnPesquisarCliente.Click += new EventHandler(btnPesquisarCliente_Click);
             //
-            // Criação de botão na textbox txtNomeAnimal
+            // Botão de pesquisar Animal
             BtnPesquisarAnimal = new Button();
             BtnPesquisarAnimal.Size = new Size(25, txtCliente.ClientSize.Height);
             BtnPesquisarAnimal.Dock = DockStyle.Right;
@@ -79,6 +90,20 @@ namespace PetShop
             _toolTip.SetToolTip(BtnPesquisarAnimal, "Selecione o cliente");
             txtNomeAnimal.MouseMove += AdicionarEditarAgendamento_MouseMove;
             //
+            // Botão de pesquisar procedimento
+            BtnPesquisarProcedimento = new Button();
+            BtnPesquisarProcedimento.Size = new Size(25, txtCliente.ClientSize.Height);
+            BtnPesquisarProcedimento.Dock = DockStyle.Right;
+            BtnPesquisarProcedimento.Cursor = Cursors.Default;
+            BtnPesquisarProcedimento.Image = Properties.Resources.icons8_Browse_Folder_20px_1;
+            BtnPesquisarProcedimento.ImageAlign = ContentAlignment.MiddleCenter;
+            BtnPesquisarProcedimento.FlatStyle = FlatStyle.Flat;
+            BtnPesquisarProcedimento.ForeColor = Color.White;
+            BtnPesquisarProcedimento.BackColor = Color.Transparent;
+            BtnPesquisarProcedimento.FlatAppearance.BorderSize = 0;
+            txtTipoProcedimento.Controls.Add(BtnPesquisarCliente);
+            BtnPesquisarProcedimento.Click += new EventHandler(BtnPesquisarProcedimento_Click);
+            //
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar agendamento";
@@ -91,7 +116,7 @@ namespace PetShop
                 dateDataAgendamento.Value = _Agenda.DataAgendamento;
                 dateHorario.Value = DateTime.Parse(_Agenda.DataAgendamento.ToString("HH:mm"));
                 txtCliente.Text = _Agenda.ClienteId.NomeCliente;
-                txtTipoProcedimento.Text = _Agenda.Procedimento;
+                txtTipoProcedimento.Text = _Servico.NomeServico;
                 txtNomeAnimal.Text = _Agenda.AnimalId.Nome;
                 txtSexo.Text = _Agenda.AnimalId.Sexo;
                 txtEspecie.Text = _Agenda.AnimalId.Especie;
@@ -123,6 +148,12 @@ namespace PetShop
             listaDeClientes.ShowDialog();
         }
 
+        private void BtnPesquisarProcedimento_Click(object sender, EventArgs e)
+        {
+            ListaProcedimentos procedimentos = new ListaProcedimentos(this);
+            procedimentos.ShowDialog();
+        }
+
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
             ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal);
@@ -141,6 +172,11 @@ namespace PetShop
                 txtEspecie.Clear();
                 txtRaca.Clear();
             }
+        }
+
+        private void TextBoxGotFocus(object sender, EventArgs e)
+        {
+            HideCaret((sender as TextBox).Handle);
         }
 
         private void txtTipoProcedimento_TextChanged(object sender, EventArgs e)
@@ -252,14 +288,14 @@ namespace PetShop
 
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Agenda = new Agenda(dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second), txtTipoProcedimento.Text, _Animal, _Cliente);
+                _Agenda = new Agenda(dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second), _Servico, _Animal, _Cliente);
                 _Agenda.AdicionarEditarAgendamento(TipoOperacao.Adicionar);
             }
             else if (Operacao == TipoOperacao.Editar)
             {
                 _Agenda.DataAgendamento = dateDataAgendamento.Value.Date + new TimeSpan(dateHorario.Value.Hour, dateHorario.Value.Minute, dateHorario.Value.Second);
                 _Agenda.ClienteId = _Cliente;
-                _Agenda.Procedimento = txtTipoProcedimento.Text;
+                _Agenda.ServicoId = _Servico;
                 _Agenda.AnimalId = _Animal;
                 _Agenda.AdicionarEditarAgendamento(Operacao);
             }

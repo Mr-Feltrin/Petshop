@@ -1,13 +1,7 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PetShop
@@ -29,13 +23,13 @@ namespace PetShop
             if (_TipoPesquisa == TipoPesquisa.Raca)
             {
                 Text = "Lista de Raças";
-                groupBoxPesquisa.Text = "Pesquisar Raça";
+                labelPesquisar.Text = "Pesquisar Raça";
                 dataListaEspecieRaca.DataSource = Animal.ListarRacas();
             }
             else
             {
                 Text = "Lista de Espécies";
-                groupBoxPesquisa.Text = "Pesquisar Espécie";
+                labelPesquisar.Text = "Pesquisar Espécie";
                 dataListaEspecieRaca.DataSource = Animal.ListarEspecies();
             }
             dataListaEspecieRaca.ClearSelection();

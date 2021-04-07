@@ -191,3 +191,6 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\zh-CHS\Microsoft.Repor
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaVacinacoes.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.LancarVenda.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarServicos.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.ListaProcedimentos.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.PesquisarServicos.resources

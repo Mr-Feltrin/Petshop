@@ -25,6 +25,7 @@ namespace PetShop
             AtualizarLista();
             listaAgendamento.Columns["NomeAnimal"].HeaderText = "Nome do Animal";
             listaAgendamento.Columns["Horario"].HeaderText = "Horário";
+            listaAgendamento.Columns["NomeServico"].HeaderText = "Procedimento";
             listaAgendamento.Columns[1].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaAgendamento.Columns[5].DefaultCellStyle.Format = "hh\\:mm";
             listaAgendamento.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;

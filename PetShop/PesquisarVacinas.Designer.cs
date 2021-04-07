@@ -75,7 +75,7 @@ namespace PetShop
             this.listaVacinas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaVacinas.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.listaVacinas.BackgroundColor = System.Drawing.Color.AliceBlue;
             this.listaVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.listaVacinas.Location = new System.Drawing.Point(6, 13);
             this.listaVacinas.MultiSelect = false;
@@ -279,6 +279,7 @@ namespace PetShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.ClientSize = new System.Drawing.Size(899, 538);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);

@@ -157,7 +157,7 @@ namespace PetShop
                     if (tempoRestante.TotalMinutes <= 5 && tempoRestante.TotalMinutes > 0)
                     {
                         FormNotificacao notificacao = new FormNotificacao();
-                        notificacao.ShowAlert(data["Procedimento"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
+                        notificacao.ShowAlert(data["NomeServico"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
 
 
                          DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
@@ -203,6 +203,12 @@ namespace PetShop
         {
             LancarVenda venda = new LancarVenda();
             venda.ShowDialog();
+        }
+
+        private void btnServicos_Click(object sender, EventArgs e)
+        {
+            PesquisarServicos pesquisarServicos = new PesquisarServicos();
+            pesquisarServicos.ShowDialog();
         }
     }
 }

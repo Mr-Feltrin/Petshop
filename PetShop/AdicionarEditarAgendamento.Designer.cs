@@ -127,6 +127,7 @@
             // 
             this.txtNomeAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNomeAnimal.BackColor = System.Drawing.SystemColors.Window;
             this.txtNomeAnimal.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeAnimal.Location = new System.Drawing.Point(3, 3);
             this.txtNomeAnimal.Name = "txtNomeAnimal";
@@ -182,9 +183,11 @@
             // 
             this.txtTipoProcedimento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTipoProcedimento.BackColor = System.Drawing.SystemColors.Window;
             this.txtTipoProcedimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTipoProcedimento.Location = new System.Drawing.Point(254, 3);
             this.txtTipoProcedimento.Name = "txtTipoProcedimento";
+            this.txtTipoProcedimento.ReadOnly = true;
             this.txtTipoProcedimento.Size = new System.Drawing.Size(200, 25);
             this.txtTipoProcedimento.TabIndex = 1;
             this.txtTipoProcedimento.TextChanged += new System.EventHandler(this.txtTipoProcedimento_TextChanged);
@@ -193,6 +196,7 @@
             // 
             this.txtCliente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCliente.BackColor = System.Drawing.SystemColors.Window;
             this.txtCliente.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.Location = new System.Drawing.Point(3, 3);
             this.txtCliente.Name = "txtCliente";
@@ -367,6 +371,7 @@
             // 
             this.txtRaca.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRaca.BackColor = System.Drawing.SystemColors.Window;
             this.txtRaca.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRaca.Location = new System.Drawing.Point(3, 3);
             this.txtRaca.Name = "txtRaca";
@@ -530,6 +535,7 @@
             // 
             this.txtEspecie.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEspecie.BackColor = System.Drawing.SystemColors.Window;
             this.txtEspecie.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEspecie.Location = new System.Drawing.Point(3, 3);
             this.txtEspecie.Name = "txtEspecie";
@@ -581,6 +587,7 @@
             // 
             this.txtSexo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSexo.BackColor = System.Drawing.SystemColors.Window;
             this.txtSexo.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSexo.Location = new System.Drawing.Point(3, 3);
             this.txtSexo.Name = "txtSexo";
@@ -681,7 +688,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnSair;
             this.ClientSize = new System.Drawing.Size(493, 539);
             this.Controls.Add(this.btnSalvar);

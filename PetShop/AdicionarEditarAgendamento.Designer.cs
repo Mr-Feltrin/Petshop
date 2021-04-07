@@ -746,7 +746,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtTipoProcedimento;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -786,5 +785,6 @@
         private System.Windows.Forms.Label labelIndexFoto;
         public System.Windows.Forms.TextBox txtNomeAnimal;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel15;
+        internal System.Windows.Forms.TextBox txtTipoProcedimento;
     }
 }

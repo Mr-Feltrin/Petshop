@@ -40,6 +40,7 @@ namespace PetShop
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
+            adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
             Close();
         }
 

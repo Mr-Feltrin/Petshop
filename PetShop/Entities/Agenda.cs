@@ -87,7 +87,7 @@ namespace PetShop.Entities
                         Command.Parameters.AddWithValue("@Id", IdAgenda);
                     }
                     Command.Parameters.AddWithValue("@Data", DataAgendamento);
-                    Command.Parameters.AddWithValue("@ServicoId", ServicoId);
+                    Command.Parameters.AddWithValue("@ServicoId", ServicoId.Id);
                     Command.Parameters.AddWithValue("@AnimalId", AnimalId.Id);
                     if (Command.ExecuteNonQuery() > 0)
                     {

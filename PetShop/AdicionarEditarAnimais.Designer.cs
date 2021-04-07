@@ -780,7 +780,6 @@
             this.combBoxSituacao.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxSituacao.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.combBoxSituacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxSituacao.Enabled = false;
             this.combBoxSituacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combBoxSituacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxSituacao.ForeColor = System.Drawing.SystemColors.ControlText;

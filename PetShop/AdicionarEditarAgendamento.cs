@@ -101,7 +101,7 @@ namespace PetShop
             BtnPesquisarProcedimento.ForeColor = Color.White;
             BtnPesquisarProcedimento.BackColor = Color.Transparent;
             BtnPesquisarProcedimento.FlatAppearance.BorderSize = 0;
-            txtTipoProcedimento.Controls.Add(BtnPesquisarCliente);
+            txtTipoProcedimento.Controls.Add(BtnPesquisarProcedimento);
             BtnPesquisarProcedimento.Click += new EventHandler(BtnPesquisarProcedimento_Click);
             //
             if (Operacao == TipoOperacao.Adicionar)

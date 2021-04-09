@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using PetShop.Entities;
-using System.Globalization;
-using System.Data;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
 using PetShop.ToolBox;
+using System;
+using System.Data;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -48,8 +48,9 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                AdicionarEditarServicos editarServicos = new AdicionarEditarServicos(TipoOperacao.Editar, (int)(sender as DataGridView).SelectedRows[0].Cells[0].Value);
-                editarServicos.ShowDialog();
+                adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
+                adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
+                Close();
             }
         }
 
@@ -72,8 +73,10 @@ namespace PetShop
 
         private void btnAdicionarProcedimento_Click(object sender, EventArgs e)
         {
-            AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar);
-            adicionarServico.ShowDialog();
+            using (AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar))
+            {
+                adicionarServico.ShowDialog(this);
+            }
         }
     }
 }

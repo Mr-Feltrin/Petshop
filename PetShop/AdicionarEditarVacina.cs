@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
-using PetShop.Entities;
-using System.Collections.Generic;
 using PetShop.ToolBox;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Globalization;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -213,7 +213,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text.Replace(",",".")), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text.Replace(",", ".")), 2).ToString("C2", new CultureInfo("pt-BR"));
                 }
             }
         }
@@ -231,7 +231,7 @@ namespace PetShop
 
         private void txtValorProduto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".","").Replace(",",".").Trim();
+            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
         }
 
         private void txtValorCusto_Enter(object sender, EventArgs e)

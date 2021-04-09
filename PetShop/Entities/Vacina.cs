@@ -1,8 +1,8 @@
-﻿using System.Data.SqlServerCe;
+﻿using PetShop.Entities.Enums;
 using System;
-using System.Windows.Forms;
-using PetShop.Entities.Enums;
 using System.Data;
+using System.Data.SqlServerCe;
+using System.Windows.Forms;
 
 namespace PetShop.Entities
 {

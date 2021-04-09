@@ -390,7 +390,6 @@ namespace PetShop
             this.CombBoxCategoria.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CombBoxCategoria.BackColor = System.Drawing.SystemColors.Window;
             this.CombBoxCategoria.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CombBoxCategoria.Enabled = false;
             this.CombBoxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CombBoxCategoria.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CombBoxCategoria.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -406,7 +405,6 @@ namespace PetShop
             this.combBoxMarcaProduto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.combBoxMarcaProduto.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxMarcaProduto.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.combBoxMarcaProduto.Enabled = false;
             this.combBoxMarcaProduto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combBoxMarcaProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxMarcaProduto.ForeColor = System.Drawing.SystemColors.ControlText;

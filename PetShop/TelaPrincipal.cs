@@ -1,11 +1,11 @@
-﻿using PetShop.Entities.Enums;
+﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
-using PetShop.Entities;
-using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 
 
 namespace PetShop
@@ -14,7 +14,7 @@ namespace PetShop
     {
         private List<DataRow> ListaAgendamentos { get; set; }
         private DateTime DataAtual { get; set; }
-        private Dictionary<int,TimeSpan> DeployedNotificacao { get; set; }
+        private Dictionary<int, TimeSpan> DeployedNotificacao { get; set; }
 
         public TelaPrincipal()
         {
@@ -80,8 +80,10 @@ namespace PetShop
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(TipoPesquisa.Cliente);
-            pesquisaClientes.ShowDialog();
+            using (PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(TipoPesquisa.Cliente))
+            {
+                pesquisaClientes.ShowDialog(this);
+            }
         }
 
         private void Tela_Principal_KeyDown(object sender, KeyEventArgs e)
@@ -124,26 +126,34 @@ namespace PetShop
 
         private void btnMenuFornecedores_Click(object sender, EventArgs e)
         {
-            PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(TipoPesquisa.Fornecedor);
-            pesquisaFornecedores.ShowDialog();
+            using (PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(TipoPesquisa.Fornecedor))
+            {
+                pesquisaFornecedores.ShowDialog(this);
+            }
         }
 
         private void Botao_produtos_Click(object sender, EventArgs e)
         {
-            PesquisaProdutos pesquisaProdutos = new PesquisaProdutos();
-            pesquisaProdutos.ShowDialog();
+            using (PesquisaProdutos pesquisaProdutos = new PesquisaProdutos())
+            {
+                pesquisaProdutos.ShowDialog(this);
+            }
         }
 
         private void BtnAnimais_Click(object sender, EventArgs e)
         {
-            PesquisaAnimais pesquisaAnimais = new PesquisaAnimais();
-            pesquisaAnimais.ShowDialog();
+            using (PesquisaAnimais pesquisaAnimais = new PesquisaAnimais())
+            {
+                pesquisaAnimais.ShowDialog(this);
+            }
         }
 
         private void Botao_agenda_Click(object sender, EventArgs e)
         {
-            PesquisarAgendamento agenda = new PesquisarAgendamento();
-            agenda.ShowDialog();
+            using (PesquisarAgendamento agenda = new PesquisarAgendamento())
+            {
+                agenda.ShowDialog(this);
+            }
         }
 
         private void TimerAgendamentos_Tick(object sender, EventArgs e)
@@ -160,9 +170,9 @@ namespace PetShop
                         notificacao.ShowAlert(data["NomeServico"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
 
 
-                         DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
+                        DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
                     }
-                }           
+                }
             }
         }
 
@@ -183,32 +193,42 @@ namespace PetShop
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras();
-            pesquisarCodigoBarras.ShowDialog();
+            using (PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras())
+            {
+                pesquisarCodigoBarras.ShowDialog(this);
+            }
         }
 
         private void btnVacinas_Click(object sender, EventArgs e)
         {
-            PesquisarVacinas pesquisarVacinas = new PesquisarVacinas();
-            pesquisarVacinas.ShowDialog();
+            using (PesquisarVacinas pesquisarVacinas = new PesquisarVacinas())
+            {
+                pesquisarVacinas.ShowDialog(this);
+            }
         }
 
         private void btnVacinacao_Click(object sender, EventArgs e)
         {
-            ListaVacinacoes vacinacoes = new ListaVacinacoes();
-            vacinacoes.ShowDialog();
+            using (ListaVacinacoes vacinacoes = new ListaVacinacoes())
+            {
+                vacinacoes.ShowDialog(this);
+            }
         }
 
         private void btnVenda_Click(object sender, EventArgs e)
         {
-            LancarVenda venda = new LancarVenda();
-            venda.ShowDialog();
+            using (LancarVenda venda = new LancarVenda())
+            {
+                venda.ShowDialog(this);
+            }
         }
 
         private void btnServicos_Click(object sender, EventArgs e)
         {
-            PesquisarServicos pesquisarServicos = new PesquisarServicos();
-            pesquisarServicos.ShowDialog();
+            using (PesquisarServicos pesquisarServicos = new PesquisarServicos())
+            {
+                pesquisarServicos.ShowDialog(this);
+            }
         }
     }
 }

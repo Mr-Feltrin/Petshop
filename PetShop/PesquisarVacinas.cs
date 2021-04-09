@@ -1,12 +1,12 @@
-﻿using System;
-using System.Windows.Forms;
-using PetShop.Entities.Enums;
+﻿using ClosedXML.Excel;
 using PetShop.Entities;
-using System.Data;
-using ClosedXML.Excel;
-using System.Drawing;
+using PetShop.Entities.Enums;
 using PetShop.ToolBox;
+using System;
+using System.Data;
+using System.Drawing;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -19,8 +19,10 @@ namespace PetShop
 
         private void btnAdicionarVacina_Click(object sender, EventArgs e)
         {
-            AdicionarEditarVacina adicionarVacina = new AdicionarEditarVacina(TipoOperacao.Adicionar);
-            adicionarVacina.ShowDialog();
+            using (AdicionarEditarVacina adicionarVacina = new AdicionarEditarVacina(TipoOperacao.Adicionar))
+            {
+                adicionarVacina.ShowDialog(this);
+            }
         }
 
         public void AtualizarLista()
@@ -53,8 +55,10 @@ namespace PetShop
         {
             if (listaVacinas.SelectedRows.Count != 0)
             {
-                AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value);
-                editarVacina.ShowDialog();
+                using (AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value))
+                {
+                    editarVacina.ShowDialog(this);
+                }
             }
         }
 
@@ -91,8 +95,10 @@ namespace PetShop
 
         private void btnEditarVacina_Click(object sender, EventArgs e)
         {
-            AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value);
-            editarVacina.ShowDialog();
+            using (AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value))
+            {
+                editarVacina.ShowDialog(this);
+            }
         }
 
         private void btnExcluirVacina_Click(object sender, EventArgs e)

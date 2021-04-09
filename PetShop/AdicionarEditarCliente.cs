@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
-using PetShop.Entities;
-using System.Collections.Generic;
 using PetShop.ToolBox;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -113,12 +113,12 @@ namespace PetShop
             {
                 _PesquisaClientesFornecedores.AtualizarLista();
             }
-            else if (_listaDeCliente != null)
+            if (_listaDeCliente != null)
             {
                 _listaDeCliente.AtualizarLista();
             }
             Close();
-            
+
         }
 
         private void AdicionarEditarCliente_Load(object sender, EventArgs e)

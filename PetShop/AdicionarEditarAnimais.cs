@@ -1,12 +1,12 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using PetShop.ToolBox;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -65,7 +65,7 @@ namespace PetShop
                     txtNomeDonoAnimal.Text = cliente.NomeCliente;
                 }
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");
-                combBoxSituacao.SelectedIndex = 0; 
+                combBoxSituacao.SelectedIndex = 0;
             }
             else if (_Operacao == TipoOperacao.Editar)
             {
@@ -171,8 +171,10 @@ namespace PetShop
 
         private void BtnPesquisarDono_Click(object sender, EventArgs e)
         {
-            ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this);
-            listaDeClientes.ShowDialog();
+            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this))
+            {
+                listaDeClientes.ShowDialog(this);
+            }
         }
 
         private void btnSalvarCadastro_Click(object sender, EventArgs e)
@@ -220,15 +222,18 @@ namespace PetShop
 
         private void btnPesquisarRaca_Click(object sender, EventArgs e)
         {
-            ListaEspecieRacaAnimais listaRaca = new ListaEspecieRacaAnimais(TipoPesquisa.Raca, this);
-            listaRaca.ShowDialog();
-
+            using (ListaEspecieRacaAnimais listaRaca = new ListaEspecieRacaAnimais(TipoPesquisa.Raca, this))
+            {
+                listaRaca.ShowDialog(this);
+            }
         }
 
         private void btnPesquisarEspecie_Click(object sender, EventArgs e)
         {
-            ListaEspecieRacaAnimais listaEspecie = new ListaEspecieRacaAnimais(TipoPesquisa.Especie, this);
-            listaEspecie.ShowDialog();
+            using (ListaEspecieRacaAnimais listaEspecie = new ListaEspecieRacaAnimais(TipoPesquisa.Especie, this))
+            {
+                listaEspecie.ShowDialog(this);
+            }
         }
 
         private void AdicionarEditarAnimais_MouseMove(object sender, MouseEventArgs e)

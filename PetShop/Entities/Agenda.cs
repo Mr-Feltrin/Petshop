@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Enums;
 
 namespace PetShop.Entities
 {
@@ -44,7 +44,7 @@ namespace PetShop.Entities
                         {
                             IdAgenda = (int)Reader["Id"];
                             DataAgendamento = (DateTime)Reader["Data"];
-                            ServicoId =  new Servico((int)Reader["ServicoId"]);
+                            ServicoId = new Servico((int)Reader["ServicoId"]);
                             AnimalId = new Animal((int)Reader["AnimalId"]);
                         }
                     }
@@ -56,7 +56,7 @@ namespace PetShop.Entities
                         {
                             ClienteId = new Cliente((int)reader["ClienteId"]);
                         }
-                    }                   
+                    }
                 }
                 catch (SqlCeException sqlException)
                 {
@@ -165,7 +165,7 @@ namespace PetShop.Entities
                     SqlCeCommand command = Connection.CreateCommand();
                     command.CommandText = "SELECT Agenda.Id, Agenda.Data, Servicos.NomeServico, Clientes.Nome as Cliente, Animal.Nome as NomeAnimal FROM Agenda INNER JOIN Animal ON Agenda.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Servicos ON Agenda.ServicoId = Servicos.Id WHERE Agenda.Data BETWEEN @dataInicial AND @dataFinal";
                     command.Parameters.AddWithValue("@dataInicial", dataInicial.Date);
-                    command.Parameters.AddWithValue("@dataFinal", DataFinal.Date + new TimeSpan(23,59,59));
+                    command.Parameters.AddWithValue("@dataFinal", DataFinal.Date + new TimeSpan(23, 59, 59));
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using PetShop.Entities;
-using System.Globalization;
-using PetShop.ToolBox;
-using System.Data;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
+using System;
+using System.Data;
+using System.Globalization;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -56,14 +56,18 @@ namespace PetShop
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar);
-            adicionarServico.ShowDialog();
+            using (AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar))
+            {
+                adicionarServico.ShowDialog(this);
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value);
-            editarServico.ShowDialog();
+            using (AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value))
+            {
+                editarServico.ShowDialog(this);
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -80,8 +84,18 @@ namespace PetShop
         {
             if (e.RowIndex > -1)
             {
-                AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value);
-                editarServico.ShowDialog();
+                using (AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value))
+                {
+                    editarServico.ShowDialog(this);
+                }
+            }
+        }
+
+        private void PesquisarServicos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
     }

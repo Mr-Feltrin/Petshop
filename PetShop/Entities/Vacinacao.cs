@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Enums;
 
 namespace PetShop.Entities
 {
@@ -56,7 +56,7 @@ namespace PetShop.Entities
                 MessageBox.Show($"Falha na aplicação: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         public void AdicionarEditarVacinacao(TipoOperacao operacao)
         {
             try

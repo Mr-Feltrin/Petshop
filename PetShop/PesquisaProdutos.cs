@@ -1,12 +1,12 @@
-﻿using PetShop.Entities;
+﻿using ClosedXML.Excel;
+using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -74,14 +74,18 @@ namespace PetShop
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar);
-            adicionarProdutos.ShowDialog();
+            using (AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar))
+            {
+                adicionarProdutos.ShowDialog(this);
+            }
         }
 
         private void btnEditarProduto_Click(object sender, EventArgs e)
         {
-            AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
-            editarAgendamento.ShowDialog();
+            using (AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
+            {
+                editarAgendamento.ShowDialog(this);
+            }
         }
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
@@ -98,8 +102,10 @@ namespace PetShop
         {
             if (DataGridListaProdutos.SelectedRows.Count != 0)
             {
-                AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
-                editarProdutos.ShowDialog();
+                using (AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
+                {
+                    editarProdutos.ShowDialog(this);
+                }
             }
         }
 
@@ -209,7 +215,7 @@ namespace PetShop
                         IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Produtos");
                         worksheets.ColumnsUsed().AdjustToContents();
                         worksheets.RowsUsed().AdjustToContents();
-                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;                    
+                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                         worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.DateFormat.Format = "dd/MM/yyyy";
                         worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 13, worksheets.LastRowUsed().RowNumber(), 13).Style.DateFormat.Format = "dd/MM/yyyy";
                         try
@@ -255,8 +261,10 @@ namespace PetShop
 
         private void btnCodigoBarras_Click(object sender, EventArgs e)
         {
-            PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras();
-            pesquisarCodigoBarras.ShowDialog();
+            using (PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras())
+            {
+                pesquisarCodigoBarras.ShowDialog(this);
+            }
         }
 
         private void DataGridListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)

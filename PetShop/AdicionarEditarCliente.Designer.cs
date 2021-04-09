@@ -506,7 +506,6 @@ namespace PetShop
             this.combBoxUf.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.combBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxUf.Enabled = false;
             this.combBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -612,7 +611,6 @@ namespace PetShop
             this.combBoxTipo.BackColor = System.Drawing.SystemColors.Window;
             this.combBoxTipo.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
             this.combBoxTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipo.Enabled = false;
             this.combBoxTipo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.combBoxTipo.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.combBoxTipo.ForeColor = System.Drawing.SystemColors.ControlText;

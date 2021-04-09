@@ -1,11 +1,11 @@
-﻿using PetShop.Entities;
+﻿using ClosedXML.Excel;
+using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -111,13 +111,17 @@ namespace PetShop
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                AdicionarEditarCliente AdicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, this);
-                AdicionarCliente.ShowDialog();
+                using (AdicionarEditarCliente AdicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, this))
+                {
+                    AdicionarCliente.ShowDialog(this);
+                }
             }
             else
             {
-                AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Adicionar);
-                AdicionarFornecedor.ShowDialog();
+                using (AdicionarEditarFornecedor AdicionarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Adicionar))
+                {
+                    AdicionarFornecedor.ShowDialog(this);
+                }
             }
         }
         private void btnExcluirClienteFornecedor_Click(object sender, EventArgs e)
@@ -155,13 +159,17 @@ namespace PetShop
             {
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
-                    EditarCliente.ShowDialog();
+                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    {
+                        EditarCliente.ShowDialog(this);
+                    }
                 }
                 else
                 {
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
-                    EditarFornecedor.ShowDialog();
+                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    {
+                        EditarFornecedor.ShowDialog(this);
+                    }
                 }
 
             }
@@ -201,13 +209,17 @@ namespace PetShop
             {
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
-                    EditarCliente.ShowDialog();
+                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    {
+                        EditarCliente.ShowDialog(this);
+                    }
                 }
                 else
                 {
-                    AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
-                    EditarFornecedor.ShowDialog();
+                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    {
+                        EditarFornecedor.ShowDialog(this);
+                    }
                 }
             }
         }

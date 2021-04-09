@@ -1,10 +1,10 @@
-﻿using System;
+﻿using PetShop.Entities.Enums;
+using PetShop.ToolBox;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
-using System.Windows.Forms;
-using PetShop.Entities.Enums;
 using System.Drawing;
-using PetShop.ToolBox;
+using System.Windows.Forms;
 
 namespace PetShop.Entities
 {
@@ -134,7 +134,7 @@ namespace PetShop.Entities
             {
                 MessageBox.Show("Erro ao salvar as informações do Animal: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
             finally
             {
                 connection.Close();
@@ -261,7 +261,7 @@ namespace PetShop.Entities
                         AntiSocial = (string)reader["Anti_social"];
                         Obsessivo = (string)reader["Obsessivo"];
                         ObservacaoComportamental = (string)reader["Observacao_comportamental"];
-                        ObservacaoRotina = (string)reader["Observacao_rotina"];              
+                        ObservacaoRotina = (string)reader["Observacao_rotina"];
                         DataRegistro = DateTime.Parse(reader["Data_registro"].ToString());
                         Fotografia1 = reader["Fotografia1"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia1"]);
                         Fotografia2 = reader["Fotografia2"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia2"]);

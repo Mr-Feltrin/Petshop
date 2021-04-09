@@ -33,6 +33,12 @@
             this.txtTipoFornecimento = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.enderecos_contato = new System.Windows.Forms.TabPage();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.labelFornecedorCelular = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtCep = new System.Windows.Forms.MaskedTextBox();
@@ -54,6 +60,7 @@
             this.labelFornecedorEndereco = new System.Windows.Forms.Label();
             this.txtApelido = new System.Windows.Forms.TextBox();
             this.labelFornecedorApelido = new System.Windows.Forms.Label();
+            this.CombBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.txtNomeFornecedor = new System.Windows.Forms.TextBox();
@@ -63,13 +70,6 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.CombBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.tabControl.SuspendLayout();
             this.enderecos_contato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
@@ -145,6 +145,72 @@
             this.enderecos_contato.Size = new System.Drawing.Size(657, 282);
             this.enderecos_contato.TabIndex = 0;
             this.enderecos_contato.Text = "Endereço e Contato";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Red;
+            this.label8.Location = new System.Drawing.Point(585, 167);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(20, 21);
+            this.label8.TabIndex = 27;
+            this.label8.Text = "*";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.Location = new System.Drawing.Point(74, 167);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(20, 21);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "*";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(468, 115);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(20, 21);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "*";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(326, 115);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 21);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(57, 115);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 21);
+            this.label4.TabIndex = 23;
+            this.label4.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(78, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 21);
+            this.label3.TabIndex = 22;
+            this.label3.Text = "*";
             // 
             // labelFornecedorCelular
             // 
@@ -372,6 +438,50 @@
             this.labelFornecedorApelido.TabIndex = 0;
             this.labelFornecedorApelido.Text = "Nome Fantasia / Apelido";
             // 
+            // CombBoxUf
+            // 
+            this.CombBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CombBoxUf.BackColor = System.Drawing.SystemColors.Window;
+            this.CombBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CombBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CombBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CombBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CombBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CombBoxUf.FormattingEnabled = true;
+            this.CombBoxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "SB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.CombBoxUf.Location = new System.Drawing.Point(450, 139);
+            this.CombBoxUf.Name = "CombBoxUf";
+            this.CombBoxUf.Size = new System.Drawing.Size(62, 25);
+            this.CombBoxUf.TabIndex = 21;
+            this.CombBoxUf.TextChanged += new System.EventHandler(this.CombBoxUf_TextChanged);
+            // 
             // informacoes_observacoes
             // 
             this.informacoes_observacoes.BackColor = System.Drawing.Color.AliceBlue;
@@ -474,117 +584,6 @@
             this.label2.Size = new System.Drawing.Size(20, 21);
             this.label2.TabIndex = 20;
             this.label2.Text = "*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(78, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 21);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "*";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(57, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 21);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(326, 115);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 21);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "*";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(468, 115);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 21);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "*";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(74, 167);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 21);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "*";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(585, 167);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 21);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "*";
-            // 
-            // CombBoxUf
-            // 
-            this.CombBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CombBoxUf.BackColor = System.Drawing.SystemColors.Window;
-            this.CombBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CombBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CombBoxUf.Enabled = false;
-            this.CombBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CombBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CombBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CombBoxUf.FormattingEnabled = true;
-            this.CombBoxUf.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "SB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.CombBoxUf.Location = new System.Drawing.Point(450, 139);
-            this.CombBoxUf.Name = "CombBoxUf";
-            this.CombBoxUf.Size = new System.Drawing.Size(62, 25);
-            this.CombBoxUf.TabIndex = 21;
-            this.CombBoxUf.TextChanged += new System.EventHandler(this.CombBoxUf_TextChanged);
             // 
             // AdicionarEditarFornecedor
             // 

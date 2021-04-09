@@ -1,12 +1,12 @@
-﻿using PetShop.Entities;
+﻿using ClosedXML.Excel;
+using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -43,8 +43,10 @@ namespace PetShop
 
         private void btnNovoHorario_Click(object sender, EventArgs e)
         {
-            AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this);
-            AdicionarAgendamento.ShowDialog();
+            using (AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this))
+            {
+                AdicionarAgendamento.ShowDialog(this);
+            }
         }
 
         public void AtualizarLista()
@@ -58,8 +60,10 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value);
-                editarAgendamento.ShowDialog();
+                using (AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value))
+                {
+                    editarAgendamento.ShowDialog(this);
+                }
             }
         }
 
@@ -105,8 +109,10 @@ namespace PetShop
         {
             if (listaAgendamento.SelectedRows.Count > 0)
             {
-                AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value);
-                editarAgendamento.ShowDialog();
+                using (AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value))
+                {
+                    editarAgendamento.ShowDialog(this);
+                }
             }
         }
 

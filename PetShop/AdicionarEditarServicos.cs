@@ -1,11 +1,11 @@
-﻿using PetShop.Entities.Enums;
+﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
 using System;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using PetShop.Entities;
-using System.Linq;
 
 namespace PetShop
 {
@@ -13,6 +13,7 @@ namespace PetShop
     {
         private static TipoOperacao Operacao { get; set; }
         private Servico _Servico { get; set; }
+
         public AdicionarEditarServicos(TipoOperacao operacao)
         {
             InitializeComponent();
@@ -86,6 +87,7 @@ namespace PetShop
                 _Servico.Valor = decimal.Parse(txtValor.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
                 _Servico.AdicionarEditarServico(Operacao);
             }
+
             if (Application.OpenForms.OfType<ListaProcedimentos>().Count() == 1)
             {
                 Application.OpenForms.OfType<ListaProcedimentos>().First().AtualizarLista();
@@ -95,6 +97,7 @@ namespace PetShop
                 Application.OpenForms.OfType<PesquisarServicos>().First().AtualizarLista();
             }
             Close();
+            Dispose();
         }
     }
 }

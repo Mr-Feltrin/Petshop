@@ -1,7 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
-using PetShop.Entities;
+﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using System;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -17,8 +17,10 @@ namespace PetShop
             int? id = Produto.BuscarCodigoBarras(txtCodigoBarras.Text);
             if (id != null)
             {
-                AdicionarEditarProdutos produto = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)id);
-                produto.ShowDialog();
+                using (AdicionarEditarProdutos produto = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)id))
+                {
+                    produto.ShowDialog();
+                }
                 Close();
             }
             else

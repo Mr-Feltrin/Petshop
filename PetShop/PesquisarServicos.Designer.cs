@@ -36,11 +36,11 @@ namespace PetShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarServicos));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
             this.txtPesquisarServico = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAdicionar = new System.Windows.Forms.Button();
-            this.btnEditar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.listaServicos = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
@@ -63,45 +63,25 @@ namespace PetShop
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtPesquisarServico
+            // btnExcluir
             // 
-            this.txtPesquisarServico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisarServico.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarServico.Location = new System.Drawing.Point(15, 40);
-            this.txtPesquisarServico.Name = "txtPesquisarServico";
-            this.txtPesquisarServico.Size = new System.Drawing.Size(452, 26);
-            this.txtPesquisarServico.TabIndex = 1;
-            this.txtPesquisarServico.TextChanged += new System.EventHandler(this.txtPesquisarServico_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(11, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(156, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Pesquisar por Serviço";
-            // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdicionar.AutoSize = true;
-            this.btnAdicionar.BackColor = System.Drawing.Color.Transparent;
-            this.btnAdicionar.FlatAppearance.BorderSize = 0;
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.Image = global::PetShop.Properties.Resources.adicionar_list;
-            this.btnAdicionar.Location = new System.Drawing.Point(473, 17);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(77, 57);
-            this.btnAdicionar.TabIndex = 11;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExcluir.AutoSize = true;
+            this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.FlatAppearance.BorderSize = 0;
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Image = global::PetShop.Properties.Resources.deletar_list;
+            this.btnExcluir.Location = new System.Drawing.Point(617, 17);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(61, 57);
+            this.btnExcluir.TabIndex = 13;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnExcluir.UseVisualStyleBackColor = false;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
             // 
@@ -123,25 +103,45 @@ namespace PetShop
             this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
-            // btnExcluir
+            // btnAdicionar
             // 
-            this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExcluir.AutoSize = true;
-            this.btnExcluir.BackColor = System.Drawing.Color.Transparent;
-            this.btnExcluir.Enabled = false;
-            this.btnExcluir.FlatAppearance.BorderSize = 0;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Image = global::PetShop.Properties.Resources.deletar_list;
-            this.btnExcluir.Location = new System.Drawing.Point(617, 17);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(61, 57);
-            this.btnExcluir.TabIndex = 13;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnAdicionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdicionar.AutoSize = true;
+            this.btnAdicionar.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdicionar.FlatAppearance.BorderSize = 0;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Image = global::PetShop.Properties.Resources.adicionar_list;
+            this.btnAdicionar.Location = new System.Drawing.Point(473, 17);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(77, 57);
+            this.btnAdicionar.TabIndex = 11;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
+            // txtPesquisarServico
+            // 
+            this.txtPesquisarServico.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisarServico.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisarServico.Location = new System.Drawing.Point(15, 40);
+            this.txtPesquisarServico.Name = "txtPesquisarServico";
+            this.txtPesquisarServico.Size = new System.Drawing.Size(452, 26);
+            this.txtPesquisarServico.TabIndex = 1;
+            this.txtPesquisarServico.TextChanged += new System.EventHandler(this.txtPesquisarServico_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(156, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Pesquisar por Serviço";
             // 
             // groupBox2
             // 
@@ -212,6 +212,7 @@ namespace PetShop
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PesquisarServicos";
@@ -220,6 +221,7 @@ namespace PetShop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa de Servicos";
             this.Load += new System.EventHandler(this.PesquisarServicos_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PesquisarServicos_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

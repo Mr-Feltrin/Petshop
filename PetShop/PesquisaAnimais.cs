@@ -1,11 +1,11 @@
-﻿using PetShop.Entities;
+﻿using ClosedXML.Excel;
+using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
-using ClosedXML.Excel;
-using PetShop.ToolBox;
 
 namespace PetShop
 {
@@ -19,8 +19,10 @@ namespace PetShop
 
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
         {
-            AdicionarEditarAnimais adicionarEditarAnimais = new AdicionarEditarAnimais(TipoOperacao.Adicionar, this);
-            adicionarEditarAnimais.ShowDialog();
+            using (AdicionarEditarAnimais adicionarEditarAnimais = new AdicionarEditarAnimais(TipoOperacao.Adicionar, this))
+            {
+                adicionarEditarAnimais.ShowDialog(this);
+            }
         }
 
         private void PesquisaAnimais_Load(object sender, EventArgs e)
@@ -65,8 +67,10 @@ namespace PetShop
         {
             if (listaAnimais.SelectedRows.Count != 0)
             {
-                AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
-                editarAnimais.ShowDialog();
+                using (AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value))
+                {
+                    editarAnimais.ShowDialog(this);
+                }
             }
         }
 
@@ -104,8 +108,10 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
-                editarAnimais.ShowDialog();
+                using (AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value))
+                {
+                    editarAnimais.ShowDialog(this);
+                }
             }
         }
 

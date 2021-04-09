@@ -2,9 +2,8 @@
 using PetShop.Entities.Enums;
 using System;
 using System.Data;
-using System.Windows.Forms;
-using PetShop.ToolBox;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -111,7 +110,7 @@ namespace PetShop
                 if (_adicionarEditarAgendamento != null)
                 {
                     dataListaClientesAnimais.DataSource = Animal.ListarAnimais(_adicionarEditarAgendamento._Cliente.ClienteId);
-                    
+
                 }
                 else if (_adicionarEditarAnimais != null)
                 {
@@ -185,13 +184,18 @@ namespace PetShop
         {
             if (_tipoPesquisa == TipoPesquisa.Animal)
             {
-                AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar);
-                adicionarAnimal.Show();
+                using (AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar))
+                {
+                    adicionarAnimal.ShowDialog(this);
+                }
+
             }
             else if (_tipoPesquisa == TipoPesquisa.Cliente)
             {
-                AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this);
-                adicionarCliente.ShowDialog();
+                using (AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this))
+                {
+                    adicionarCliente.ShowDialog();
+                }
             }
         }
 

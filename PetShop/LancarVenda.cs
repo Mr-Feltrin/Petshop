@@ -1,11 +1,10 @@
 ﻿using PetShop.ToolBox;
 using System;
 using System.Drawing;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
-using PetShop.ToolBox.Controls;
-using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -40,7 +39,7 @@ namespace PetShop
             btnPesquisarCliente.ForeColor = Color.White;
             btnPesquisarCliente.BackColor = Color.Transparent;
             btnPesquisarCliente.FlatAppearance.BorderSize = 0;
-            txtNomeCliente.Controls.Add(btnPesquisarCliente);           
+            txtNomeCliente.Controls.Add(btnPesquisarCliente);
             listaProdutos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
@@ -88,7 +87,7 @@ namespace PetShop
                 var y = e.CellBounds.Top + (e.CellBounds.Height - h) / 2;
                 e.Graphics.DrawImage(Properties.Resources.remove16x16, new Rectangle(x, y, w, h));
                 e.Handled = true;
-            }           
+            }
         }
 
         private void listaProdutos_CellClick(object sender, DataGridViewCellEventArgs e)

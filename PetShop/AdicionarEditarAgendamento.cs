@@ -144,20 +144,26 @@ namespace PetShop
 
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente);
-            listaDeClientes.ShowDialog();
+            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente))
+            {
+                listaDeClientes.ShowDialog(this);
+            }
         }
 
         private void BtnPesquisarProcedimento_Click(object sender, EventArgs e)
         {
-            ListaProcedimentos procedimentos = new ListaProcedimentos(this);
-            procedimentos.ShowDialog();
+            using (ListaProcedimentos procedimentos = new ListaProcedimentos(this))
+            {
+                procedimentos.ShowDialog(this);
+            }
         }
 
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
-            ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal);
-            listaDeAnimais.ShowDialog();
+            using (ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal))
+            {
+                listaDeAnimais.ShowDialog(this);
+            }
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)

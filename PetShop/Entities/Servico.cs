@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using PetShop.Entities.Enums;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PetShop.Entities.Enums;
 
 namespace PetShop.Entities
 {

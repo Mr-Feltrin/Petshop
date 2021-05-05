@@ -98,6 +98,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll</HintPath>
     </Reference>
@@ -171,6 +172,8 @@
     <Compile Include="Entities\Servico.cs" />
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Entities\Vacinacao.cs" />
+    <Compile Include="Entities\Venda.cs" />
+    <Compile Include="Entities\VendaProduto.cs" />
     <Compile Include="FormNotificacao.cs">
       <SubType>Form</SubType>
     </Compile>

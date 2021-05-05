@@ -11,7 +11,8 @@ namespace PetShop
     {
         public AdicionarEditarAgendamento _adicionarEditarAgendamento { get; private set; }
         private AdicionarEditarAnimais _adicionarEditarAnimais { get; set; }
-        private TipoPesquisa _tipoPesquisa { get; set; }
+        private TipoPesquisa _TipoPesquisa { get; set; }
+        private LancarVenda _LancarVenda { get; set; }
         private ListaDeClientesAnimais()
         {
             InitializeComponent();
@@ -20,12 +21,18 @@ namespace PetShop
         public ListaDeClientesAnimais(AdicionarEditarAgendamento adicionarEditarAgendamento, TipoPesquisa tipoPesquisa) : this()
         {
             _adicionarEditarAgendamento = adicionarEditarAgendamento;
-            _tipoPesquisa = tipoPesquisa;
+            _TipoPesquisa = tipoPesquisa;
         }
 
         public ListaDeClientesAnimais(AdicionarEditarAnimais adicionarEditarAnimais) : this()
         {
             _adicionarEditarAnimais = adicionarEditarAnimais;
+        }
+
+        public ListaDeClientesAnimais(LancarVenda lancarVenda, TipoPesquisa tipoPesquisa) : this()
+        {
+            _LancarVenda = lancarVenda;
+            _TipoPesquisa = tipoPesquisa;
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -35,7 +42,7 @@ namespace PetShop
 
         private void Selecionar()
         {
-            if (_tipoPesquisa == TipoPesquisa.Cliente)
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 if (_adicionarEditarAgendamento != null)
                 {
@@ -47,8 +54,12 @@ namespace PetShop
                     _adicionarEditarAnimais.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
                     _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
                 }
+                else if (_LancarVenda != null)
+                {
+                    _LancarVenda.InserirCliente(new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value));
+                }
             }
-            else if (_tipoPesquisa == TipoPesquisa.Animal)
+            else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
                 if (_adicionarEditarAgendamento != null)
                 {
@@ -66,7 +77,7 @@ namespace PetShop
 
         public void AtualizarLista()
         {
-            if (_tipoPesquisa == TipoPesquisa.Cliente)
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 dataListaClientesAnimais.DataSource = Cliente.ListarClientes();
                 foreach (DataGridViewRow row in dataListaClientesAnimais.Rows)
@@ -105,7 +116,7 @@ namespace PetShop
                     }
                 }
             }
-            else if (_tipoPesquisa == TipoPesquisa.Animal)
+            else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
                 if (_adicionarEditarAgendamento != null)
                 {
@@ -142,7 +153,7 @@ namespace PetShop
         private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
         {
             AtualizarLista();
-            if (_tipoPesquisa == TipoPesquisa.Cliente)
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 Text = "Lista de Clientes";
                 dataListaClientesAnimais.Columns["Endereco"].HeaderText = "Endereço";
@@ -153,7 +164,7 @@ namespace PetShop
                 dataListaClientesAnimais.Columns["Cnpj"].HeaderText = "CNPJ";
                 dataListaClientesAnimais.Columns["Observacoes"].HeaderText = "Observações";
             }
-            else if (_tipoPesquisa == TipoPesquisa.Animal)
+            else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
                 Text = "Lista de Animais";
                 Icon = Properties.Resources.animal_icon;
@@ -182,7 +193,7 @@ namespace PetShop
 
         private void btnNovoClienteAnimal_Click(object sender, EventArgs e)
         {
-            if (_tipoPesquisa == TipoPesquisa.Animal)
+            if (_TipoPesquisa == TipoPesquisa.Animal)
             {
                 using (AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar))
                 {
@@ -190,7 +201,7 @@ namespace PetShop
                 }
 
             }
-            else if (_tipoPesquisa == TipoPesquisa.Cliente)
+            else if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
                 using (AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this))
                 {

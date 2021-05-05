@@ -50,11 +50,6 @@ namespace PetShop.Entities
             BuscarProduto(id);
         }
 
-        public Produto()
-        {
-
-        }
-
         private void BuscarProduto(int id)
         {
             try

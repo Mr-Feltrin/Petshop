@@ -166,7 +166,6 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\pt\Microsoft.ReportVie
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csprojAssemblyReference.cache
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarAgendamento.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.AdicionarEditarCliente.resources
@@ -194,3 +193,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCom
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.pdb
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.AssemblyReference.cache

@@ -95,8 +95,7 @@ namespace PetShop
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtTeste = new System.Windows.Forms.TextBox();
             this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox1.SuspendLayout();
@@ -363,8 +362,11 @@ namespace PetShop
             this.listaProdutos.Size = new System.Drawing.Size(939, 235);
             this.listaProdutos.TabIndex = 2;
             this.listaProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaProdutos_CellClick);
+            this.listaProdutos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaProdutos_CellEndEdit);
+            this.listaProdutos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaProdutos_CellEnter);
             this.listaProdutos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.CellPaintingButton);
             this.listaProdutos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.ColumnWidthChanged);
+            this.listaProdutos.CurrentCellDirtyStateChanged += new System.EventHandler(this.listaProdutos_CurrentCellDirtyStateChanged);
             this.listaProdutos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.listaProdutos_EditingControlShowing);
             this.listaProdutos.VisibleChanged += new System.EventHandler(this.GridVisibleChange);
             // 
@@ -787,25 +789,12 @@ namespace PetShop
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // txtTeste
             // 
-            this.button1.Location = new System.Drawing.Point(191, 614);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(341, 613);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.txtTeste.Location = new System.Drawing.Point(135, 604);
+            this.txtTeste.Name = "txtTeste";
+            this.txtTeste.Size = new System.Drawing.Size(251, 20);
+            this.txtTeste.TabIndex = 13;
             // 
             // combBoxFormaPagamento
             // 
@@ -851,8 +840,7 @@ namespace PetShop
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnCancelar;
             this.ClientSize = new System.Drawing.Size(969, 683);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.txtTeste);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnConcluir);
             this.Controls.Add(this.groupBox2);
@@ -879,6 +867,7 @@ namespace PetShop
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -928,7 +917,6 @@ namespace PetShop
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaQuantidade;
         private System.Windows.Forms.DataGridViewButtonColumn VacinaRemover;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBarras;
         private System.Windows.Forms.DataGridViewComboBoxColumn NomeProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Volume;
@@ -937,6 +925,6 @@ namespace PetShop
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
         private System.Windows.Forms.DataGridViewButtonColumn RemoverProduto;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtTeste;
     }
 }

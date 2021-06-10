@@ -41,12 +41,15 @@ namespace PetShop
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).DataSource = Produto.ListarProdutos();
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).DisplayMember = "Nome";
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).ValueMember = "Id";
+            (listaProdutos.Columns["RemoverProduto"] as DataGridViewButtonColumn).DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.Transparent);
             ((DataGridViewComboBoxColumn)listaServicos.Columns["NomeServico"]).DataSource = Servico.ListarServicos();
             ((DataGridViewComboBoxColumn)listaServicos.Columns["NomeServico"]).DisplayMember = "NomeServico";
             ((DataGridViewComboBoxColumn)listaServicos.Columns["NomeServico"]).ValueMember = "Id";
+            (listaServicos.Columns["RemoverServico"] as DataGridViewButtonColumn).DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.Transparent);
             ((DataGridViewComboBoxColumn)listaVacinas.Columns["VacinaImunologia"]).DataSource = Vacina.ListarVacinas();
             ((DataGridViewComboBoxColumn)listaVacinas.Columns["VacinaImunologia"]).DisplayMember = "Imunologia";
             ((DataGridViewComboBoxColumn)listaVacinas.Columns["VacinaImunologia"]).ValueMember = "Id";
+            (listaVacinas.Columns["VacinaRemover"] as DataGridViewButtonColumn).DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.Transparent);
             txtNomeCliente.GotFocus += TextBoxGotFocus;
             txtNumeroVenda.GotFocus += TextBoxGotFocus;
             txtDataVenda.GotFocus += TextBoxGotFocus;
@@ -68,9 +71,12 @@ namespace PetShop
             btnPesquisarCliente.FlatAppearance.BorderSize = 0;
             txtNomeCliente.Controls.Add(btnPesquisarCliente);
             btnPesquisarCliente.Click += btnPesquisarCliente_Click;
-            listaProdutos.Rows.Add(2);
-
+            listaProdutos.ClearSelection();
+            listaVacinas.ClearSelection();
+            listaServicos.ClearSelection();
         }
+
+        // Arrumar o evento de quando as setas são pressionadas e o combobox sai, e quando a tecla é pressionada e o texto é string.empty resultando no valor da celula null
 
         private void combBoxTipoCartao_EnabledChanged(object sender, EventArgs e)
         {
@@ -254,6 +260,12 @@ namespace PetShop
             }
         }
 
+        private void DataGridEnter(object sender, EventArgs e)
+        {
+            (sender as DataGridView).CurrentCell = null;
+            (sender as DataGridView).ClearSelection();
+        }
+
         private void listaProdutos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
             e.Control.KeyPress -= new KeyPressEventHandler(ProdutosColumnQuantidade_KeyPress);
@@ -273,24 +285,34 @@ namespace PetShop
                     return;
                 }
                 combo.DropDownStyle = ComboBoxStyle.DropDown;
+                combo.Enter += new EventHandler(ComboEnter);
+                e.CellStyle.BackColor = listaProdutos.DefaultCellStyle.BackColor;
                 combo.KeyDown += new KeyEventHandler(ComboKeyDown);
-                combo.LostFocus += new EventHandler(ComboLostFocus);
-
-                void ComboLostFocus(object obj, EventArgs args)
-                {
-                    if (string.IsNullOrWhiteSpace((listaProdutos.EditingControl as DataGridViewComboBoxEditingControl).Text))
-                    {
-                        listaProdutos.CurrentCell.Value = null;
-                    }
-                }
-
+                
                 void ComboKeyDown(object obj, KeyEventArgs args)
                 {
                     if (args.KeyCode == Keys.Down || args.KeyCode == Keys.Up)
                     {
                         args.Handled = true;
                     }
-                }             
+                }
+
+                void ComboEnter(object obj, EventArgs args)
+                {
+                    if (listaProdutos.CurrentCell.FormattedValue.ToString() == listaProdutos.CurrentCell.EditedFormattedValue.ToString())
+                    {
+                        combo.TextUpdate += new EventHandler(ComboTextUpdate);
+                    }
+
+                }
+
+                void ComboTextUpdate(object obj, EventArgs args)
+                {
+                    if (string.IsNullOrWhiteSpace(listaProdutos.CurrentCell.EditedFormattedValue.ToString()) && (int?)combo.SelectedValue != -1)
+                    {
+                        listaProdutos.CurrentCell.Value = null;
+                    }
+                }
             }
         }
 
@@ -301,6 +323,12 @@ namespace PetShop
                 e.Handled = true;
             }
         }
+        private void DataGridLeave(object sender, EventArgs e)
+        {
+            (sender as DataGridView).EndEdit();
+            (sender as DataGridView).CurrentCell = null;
+            (sender as DataGridView).ClearSelection();
+        }
 
         private void RadioButtonCheckChanged(object sender, EventArgs e)
         {
@@ -309,6 +337,7 @@ namespace PetShop
                 if ((sender as RadioButton).Name == radioBtnProdutos.Name)
                 {
                     listaProdutos.Visible = true;
+                    listaProdutos.ClearSelection();
                     listaServicos.Visible = false;
                     listaVacinas.Visible = false;
                     labelLista.Text = "Lista de Produtos";
@@ -316,6 +345,7 @@ namespace PetShop
                 else if ((sender as RadioButton).Name == radioBtnServicos.Name)
                 {
                     listaServicos.Visible = true;
+                    listaServicos.ClearSelection();
                     listaProdutos.Visible = false;
                     listaVacinas.Visible = false;
                     labelLista.Text = "Lista de Serviços";
@@ -323,16 +353,12 @@ namespace PetShop
                 else if ((sender as RadioButton).Name == radioBtnVacinas.Name)
                 {
                     listaVacinas.Visible = true;
+                    listaVacinas.ClearSelection();
                     listaProdutos.Visible = false;
                     listaServicos.Visible = false;
                     labelLista.Text = "Lista de Vacinas";
                 }
             }
-        }
-
-        private void listaProdutos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void listaServicos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
@@ -405,26 +431,6 @@ namespace PetShop
             }
         }
 
-        private void listaProdutos_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show(((DataGridViewComboBoxCell)listaProdutos.Rows[0].Cells[1]).ParseFormattedValue);
-            //MessageBox.Show(((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"])..ToString());
-        }
-
-        private void listaProdutos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void listaProdutos_CurrentCellDirtyStateChanged(object sender, EventArgs e)
         {
             if (listaProdutos.IsCurrentCellDirty && listaProdutos.CurrentCell.ColumnIndex == 1)
@@ -435,16 +441,8 @@ namespace PetShop
                 }
                 catch
                 {
-                    (listaProdutos.EditingControl as ComboBox).SelectedValue = -1;             
+                    (listaProdutos.EditingControl as ComboBox).SelectedValue = -1;
                 }
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["NomeProduto"].Index)
-            {
-                listaProdutos.CurrentCell.Value = null;
             }
         }
 
@@ -458,22 +456,61 @@ namespace PetShop
                 {
                     (listaProdutos.EditingControl as ComboBox).SelectedIndex = -1;
                 }
-                else
-                {
-                    (listaProdutos.EditingControl as ComboBox).SelectedValue = cellValue;
-                }
                 (listaProdutos.EditingControl as ComboBox).DroppedDown = true;
+
             }
         }
 
-        private void listaProdutos_Leave(object sender, EventArgs e)
+        private void listaProdutos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            listaProdutos.ClearSelection();
+            if (listaProdutos.Rows.Count > 0)
+            {
+                if (listaProdutos.Rows[listaProdutos.Rows.GetLastRow(DataGridViewElementStates.None)].Cells[1].Value != null)
+                {
+                    listaProdutos.Rows.Add(1);
+                }
+                if (listaProdutos.Rows.Cast<DataGridViewRow>().All(r => r.Cells[1].Value == null))
+                {
+                    btnConcluir.Enabled = false;
+                }
+                else
+                {
+                    btnConcluir.Enabled = true;
+                }
+            }
         }
 
-        private void listaProdutos_Enter(object sender, EventArgs e)
+        private void listaProdutos_KeyDown(object sender, KeyEventArgs e)
         {
-            listaProdutos.ClearSelection();
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (listaProdutos.CurrentRow.Index == listaProdutos.Rows.Count - 1 && listaProdutos.CurrentRow.Cells[1].Value != null)
+                {
+                    listaProdutos.Rows.Add(1);
+                }
+            }
+        }
+
+        private void listaServicos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (listaProdutos.CurrentRow.Index == listaProdutos.Rows.Count - 1 && listaProdutos.CurrentRow.Cells[1].Value != null)
+                {
+                    listaProdutos.Rows.Add(1);
+                }
+            }
+        }
+
+        private void listaVacinas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (listaProdutos.CurrentRow.Index == listaProdutos.Rows.Count - 1 && listaProdutos.CurrentRow.Cells[1].Value != null)
+                {
+                    listaProdutos.Rows.Add(1);
+                }
+            }
         }
     }
 }

@@ -19,14 +19,14 @@ namespace PetShop.Entities
         public DateTime DataCadastro { get; set; }
         public string Marca { get; set; }
         public string Categoria { get; set; }
-        public float? EstoqueMinimo { get; set; }
-        public float EstoqueAtual { get; set; }
+        public int? EstoqueMinimo { get; set; }
+        public int EstoqueAtual { get; set; }
         public DateTime DataValidade { get; set; }
         public decimal ValorCusto { get; set; }
         public decimal ValorProduto { get; set; }
         public string Observacoes { get; set; }
 
-        public Produto(string nomeProduto, string codigoBarras, string tipoUnidade, int quantidade, string referencia, string localizacao, DateTime dataCadastro, string marca, string categoria, float estoqueMinimo, float estoqueAtual, DateTime dataValidade, decimal valorCusto, decimal valorProduto, string observacoes)
+        public Produto(string nomeProduto, string codigoBarras, string tipoUnidade, int quantidade, string referencia, string localizacao, DateTime dataCadastro, string marca, string categoria, int estoqueMinimo, int estoqueAtual, DateTime dataValidade, decimal valorCusto, decimal valorProduto, string observacoes)
         {
             NomeProduto = nomeProduto;
             CodigoBarras = codigoBarras;
@@ -74,8 +74,8 @@ namespace PetShop.Entities
                             DataCadastro = (DateTime)reader["DataCadastro"];
                             Marca = reader["Marca"].ToString();
                             Categoria = reader["Categoria"].ToString();
-                            EstoqueMinimo = (float)reader.GetDouble(reader.GetOrdinal("EstoqueMinimo"));
-                            EstoqueAtual = (float)reader.GetDouble(reader.GetOrdinal("EstoqueAtual"));
+                            EstoqueMinimo = (int)reader.GetInt64(reader.GetOrdinal("EstoqueMinimo"));
+                            EstoqueAtual = (int)reader.GetInt64(reader.GetOrdinal("EstoqueAtual"));
                             DataValidade = (DateTime)reader["DataValidade"];
                             ValorCusto = (decimal)reader["ValorCusto"];
                             ValorProduto = (decimal)reader["ValorProduto"];

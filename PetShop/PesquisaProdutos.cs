@@ -133,15 +133,15 @@ namespace PetShop
         {
             foreach (DataGridViewRow row in DataGridListaProdutos.Rows)
             {
-                if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > float.Parse(row.Cells["EstoqueMinimo"].Value.ToString()) && float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0)
+                if (int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > int.Parse(row.Cells["EstoqueMinimo"].Value.ToString()) && int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0)
                 {
                     row.DefaultCellStyle.BackColor = Color.FromArgb(172, 234, 105);
                 }
-                else if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0 && float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) <= float.Parse(row.Cells["EstoqueMinimo"].Value.ToString()))
+                else if (int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0 && int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) <= int.Parse(row.Cells["EstoqueMinimo"].Value.ToString()))
                 {
                     row.DefaultCellStyle.BackColor = Color.FromArgb(255, 255, 128);
                 }
-                else if (float.Parse(row.Cells["EstoqueAtual"].Value.ToString()) == 0)
+                else if (int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) == 0)
                 {
                     row.DefaultCellStyle.BackColor = Color.FromArgb(249, 115, 97);
                 }

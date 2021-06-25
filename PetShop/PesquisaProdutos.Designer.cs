@@ -423,6 +423,7 @@
             // comboBoxFiltrarLista
             // 
             this.comboBoxFiltrarLista.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboBoxFiltrarLista.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltrarLista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.comboBoxFiltrarLista.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxFiltrarLista.FormattingEnabled = true;

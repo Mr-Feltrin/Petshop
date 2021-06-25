@@ -128,7 +128,7 @@ namespace PetShop
         {
             using (PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(TipoPesquisa.Fornecedor))
             {
-                pesquisaFornecedores.ShowDialog(this);
+                pesquisaFornecedores.ShowDialog();
             }
         }
 
@@ -136,7 +136,7 @@ namespace PetShop
         {
             using (PesquisaProdutos pesquisaProdutos = new PesquisaProdutos())
             {
-                pesquisaProdutos.ShowDialog(this);
+                pesquisaProdutos.ShowDialog();
             }
         }
 
@@ -144,7 +144,7 @@ namespace PetShop
         {
             using (PesquisaAnimais pesquisaAnimais = new PesquisaAnimais())
             {
-                pesquisaAnimais.ShowDialog(this);
+                pesquisaAnimais.ShowDialog();
             }
         }
 
@@ -152,7 +152,7 @@ namespace PetShop
         {
             using (PesquisarAgendamento agenda = new PesquisarAgendamento())
             {
-                agenda.ShowDialog(this);
+                agenda.ShowDialog();
             }
         }
 
@@ -195,7 +195,7 @@ namespace PetShop
         {
             using (PesquisarCodigoBarras pesquisarCodigoBarras = new PesquisarCodigoBarras())
             {
-                pesquisarCodigoBarras.ShowDialog(this);
+                pesquisarCodigoBarras.ShowDialog();
             }
         }
 
@@ -203,7 +203,7 @@ namespace PetShop
         {
             using (PesquisarVacinas pesquisarVacinas = new PesquisarVacinas())
             {
-                pesquisarVacinas.ShowDialog(this);
+                pesquisarVacinas.ShowDialog();
             }
         }
 
@@ -211,7 +211,7 @@ namespace PetShop
         {
             using (ListaVacinacoes vacinacoes = new ListaVacinacoes())
             {
-                vacinacoes.ShowDialog(this);
+                vacinacoes.ShowDialog();
             }
         }
 
@@ -219,7 +219,7 @@ namespace PetShop
         {
             using (LancarVenda venda = new LancarVenda())
             {
-                venda.ShowDialog(this);
+                venda.ShowDialog();
             }
         }
 
@@ -227,7 +227,7 @@ namespace PetShop
         {
             using (PesquisarServicos pesquisarServicos = new PesquisarServicos())
             {
-                pesquisarServicos.ShowDialog(this);
+                pesquisarServicos.ShowDialog();
             }
         }
     }

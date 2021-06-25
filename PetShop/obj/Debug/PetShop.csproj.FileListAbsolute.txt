@@ -111,7 +111,7 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Microsoft.ReportViewer
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Microsoft.SqlServer.Types.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.Data.SqlServerCe.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.IO.FileSystem.Primitives.dll
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.IO.Packaging.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\EnvDTE.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
@@ -125,6 +125,7 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ClosedXML.pdb
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ClosedXML.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\DocumentFormat.OpenXml.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\ExcelNumberFormat.xml
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\System.IO.Packaging.xml
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\de\Microsoft.ReportViewer.Common.resources.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Debug\es\Microsoft.ReportViewer.Common.resources.dll

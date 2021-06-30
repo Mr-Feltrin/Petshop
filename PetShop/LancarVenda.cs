@@ -57,6 +57,8 @@ namespace PetShop
             listaProdutos.Columns["ValorTotal"].ValueType = typeof(double);
             listaProdutos.Columns["ValorTotal"].DefaultCellStyle.Format = "C2";
             listaProdutos.Columns["ValorTotal"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaProdutos.Columns["Quantidade"].ValueType = typeof(int);
+            listaProdutos.Columns["EstoqueAtualProduto"].ValueType = typeof(int);
             txtNomeCliente.GotFocus += TextBoxGotFocus;
             txtNumeroVenda.GotFocus += TextBoxGotFocus;
             txtDataVenda.GotFocus += TextBoxGotFocus;
@@ -281,6 +283,7 @@ namespace PetShop
                 {
                     tb.KeyPress += new KeyPressEventHandler(ProdutosColumnQuantidade_KeyPress);
                     tb.TextChanged += new EventHandler(ProdutosColumnQuantidade_TextChanged);
+                    tb.Leave += new EventHandler(ProdutosColumnQuantidade_Leave);
                 }
             }
             else if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["NomeProduto"].Index)
@@ -291,10 +294,11 @@ namespace PetShop
                     return;
                 }
                 combo.DropDownStyle = ComboBoxStyle.DropDown;
-                combo.Enter += new EventHandler(ProdutosColumnNomeProduto_Enter);
                 e.CellStyle.BackColor = listaProdutos.DefaultCellStyle.BackColor;
-                combo.KeyDown += new KeyEventHandler(ProdutosColumnNomeProduto_KeyDown);            
-            }
+                combo.Enter += new EventHandler(ProdutosColumnNomeProduto_Enter);
+                combo.KeyDown += new KeyEventHandler(ProdutosColumnNomeProduto_KeyDown);
+                combo.Leave += new EventHandler(ProdutosColumnNomeProduto_Leave);
+            }           
             else if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["CodigoBarras"].Index)
             {
                 if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["CodigoBarras"].Index)
@@ -304,7 +308,7 @@ namespace PetShop
                         listaProdutos.EditingControl.Text = string.Empty;
                     }
                 }
-            }
+            }         
         }
 
         private void ProdutosColumnQuantidade_KeyPress(object sender, KeyPressEventArgs e)
@@ -315,8 +319,15 @@ namespace PetShop
             }
         }
 
-        private void ProdutosColumnQuantidade_TextChanged(object sender, EventArgs e)
+        private void ProdutosColumnQuantidade_Leave(object sender, EventArgs e)
         {
+            (sender as TextBox).KeyPress -= ProdutosColumnQuantidade_KeyPress;
+            (sender as TextBox).TextChanged -= ProdutosColumnQuantidade_TextChanged;
+            (sender as TextBox).Leave -= ProdutosColumnQuantidade_Leave;
+        }
+
+        private void ProdutosColumnQuantidade_TextChanged(object sender, EventArgs e)
+        {          
             if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
             {
                 if (int.Parse((sender as TextBox).Text) > (int)listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["EstoqueAtualProduto"].Value)
@@ -332,6 +343,13 @@ namespace PetShop
             }
         }
 
+        private void ProdutosColumnNomeProduto_Leave(object sender, EventArgs e)
+        {
+            (sender as ComboBox).Enter -= ProdutosColumnNomeProduto_Enter;
+            (sender as ComboBox).KeyDown -= ProdutosColumnNomeProduto_KeyDown;
+            (sender as ComboBox).Leave -= ProdutosColumnNomeProduto_Leave;
+        }
+
         private void ProdutosColumnNomeProduto_TextUpdate(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(listaProdutos.CurrentCell.EditedFormattedValue.ToString()) && (int?)(sender as ComboBox).SelectedValue != -1)
@@ -339,6 +357,7 @@ namespace PetShop
                 listaProdutos.CurrentCell.Value = null;
             }
         }
+        
 
         private void ProdutosColumnNomeProduto_Enter(object sender, EventArgs e)
         {
@@ -471,6 +490,7 @@ namespace PetShop
                 try
                 {
                     listaProdutos.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                    listaProdutos.Refresh();
                 }
                 catch
                 {
@@ -509,7 +529,7 @@ namespace PetShop
                         listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value = (decimal)Row["ValorProduto"];
                         listaProdutos.Rows[e.RowIndex].Cells["EstoqueAtualProduto"].Value = Row["EstoqueAtual"];
                         listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value = 1;
-                        listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, new CultureInfo("pt-BR"));
+                        listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, new CultureInfo("pt-BR"));
                         listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].ReadOnly = false;
                         listaProdutos.CurrentCell = listaProdutos.Rows[e.RowIndex].Cells["Quantidade"];
                         listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
@@ -530,12 +550,11 @@ namespace PetShop
                     {
                         if (listaProdutos.Rows[listaProdutos.Rows.GetLastRow(DataGridViewElementStates.None)].Cells[e.ColumnIndex].Value != null)
                         {
-                            listaProdutos.CellValueChanged -= listaProdutos_CellValueChanged;
                             listaProdutos.Rows.Add(1);
-                            listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
                         }           
                     }
                 }
+                /*
                 else if (e.ColumnIndex == listaProdutos.Columns["CodigoBarras"].Index)
                 {
                     if (listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null && listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "N.D")
@@ -550,6 +569,7 @@ namespace PetShop
                         }
                     }
                 }
+                */
                 else if (e.ColumnIndex == listaProdutos.Columns["Quantidade"].Index)
                 {
                     if (listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || string.IsNullOrWhiteSpace(listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))

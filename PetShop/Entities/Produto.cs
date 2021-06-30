@@ -74,8 +74,8 @@ namespace PetShop.Entities
                             DataCadastro = (DateTime)reader["DataCadastro"];
                             Marca = reader["Marca"].ToString();
                             Categoria = reader["Categoria"].ToString();
-                            EstoqueMinimo = (int)reader.GetInt64(reader.GetOrdinal("EstoqueMinimo"));
-                            EstoqueAtual = (int)reader.GetInt64(reader.GetOrdinal("EstoqueAtual"));
+                            EstoqueMinimo = (int)reader["EstoqueMinimo"];
+                            EstoqueAtual = (int)reader["EstoqueAtual"];
                             DataValidade = (DateTime)reader["DataValidade"];
                             ValorCusto = (decimal)reader["ValorCusto"];
                             ValorProduto = (decimal)reader["ValorProduto"];

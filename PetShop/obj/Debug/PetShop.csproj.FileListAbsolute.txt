@@ -194,4 +194,3 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CoreCom
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.pdb
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Debug\PetShop.csproj.AssemblyReference.cache

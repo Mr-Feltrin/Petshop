@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace PetShop.ToolBox.Controls
 {
-    class TextBoxBorderColored : TextBox
+    public class TextBoxBorderColored : TextBox
     {
         const int WM_NCPAINT = 0x85;
         const uint RDW_INVALIDATE = 0x1;

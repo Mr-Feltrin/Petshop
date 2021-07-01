@@ -3,10 +3,10 @@ using System.Windows.Forms;
 
 namespace PetShop.ToolBox.Controls
 {
-    class ComboBoxFlatBordered : ComboBox
+    public class ComboBoxFlatBordered : ComboBox
     {
         private const int WM_PAINT = 0xF;
-        private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
+        //private int buttonWidth = SystemInformation.HorizontalScrollBarArrowWidth;
         Color borderColor = Color.FromKnownColor(KnownColor.ControlDarkDark);
         public Color BorderColor
         {

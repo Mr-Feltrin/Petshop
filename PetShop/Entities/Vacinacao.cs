@@ -49,11 +49,13 @@ namespace PetShop.Entities
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao buscar por Vacinação: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Falha na aplicação: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Falha na aplicação ao buscar por Vacinação: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
             }
         }
 

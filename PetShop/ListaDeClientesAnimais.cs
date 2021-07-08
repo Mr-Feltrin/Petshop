@@ -46,25 +46,55 @@ namespace PetShop
             {
                 if (_adicionarEditarAgendamento != null)
                 {
-                    _adicionarEditarAgendamento._Cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                    _adicionarEditarAgendamento.txtCliente.Text = _adicionarEditarAgendamento._Cliente.NomeCliente;
+                    try
+                    {
+                        _adicionarEditarAgendamento._Cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        _adicionarEditarAgendamento.txtCliente.Text = _adicionarEditarAgendamento._Cliente.NomeCliente;
+                    }
+                    catch
+                    {
+                        _adicionarEditarAgendamento._Cliente = null;
+                        _adicionarEditarAgendamento.txtCliente.Text = null;
+                    }
                 }
                 else if (_adicionarEditarAnimais != null)
                 {
-                    _adicionarEditarAnimais.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                    _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
+                    try
+                    {
+                        _adicionarEditarAnimais.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
+                    }
+                    catch (Exception)
+                    {
+                        _adicionarEditarAnimais.cliente = null;
+                        _adicionarEditarAnimais.txtNomeDonoAnimal.Text = null;
+                    }
                 }
                 else if (_LancarVenda != null)
                 {
-                    _LancarVenda.InserirCliente(new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value));
+                    try
+                    {
+                        _LancarVenda.InserirCliente(new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value));
+                    }
+                    catch
+                    {
+                    }                   
                 }
             }
             else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
                 if (_adicionarEditarAgendamento != null)
                 {
-                    _adicionarEditarAgendamento._Animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                    _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento._Animal.Nome;
+                    try
+                    {
+                        _adicionarEditarAgendamento._Animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento._Animal.Nome;
+                    }
+                    catch (Exception)
+                    {
+                        _adicionarEditarAgendamento._Animal = null;
+                        _adicionarEditarAgendamento.txtNomeAnimal.Text = null;
+                    }
                 }
             }
             Close();

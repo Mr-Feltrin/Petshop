@@ -76,7 +76,7 @@ namespace PetShop
         {
             using (AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar))
             {
-                adicionarProdutos.ShowDialog(this);
+                adicionarProdutos.ShowDialog();
             }
         }
 
@@ -84,7 +84,7 @@ namespace PetShop
         {
             using (AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
             {
-                editarAgendamento.ShowDialog(this);
+                editarAgendamento.ShowDialog();
             }
         }
 
@@ -104,7 +104,7 @@ namespace PetShop
             {
                 using (AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
                 {
-                    editarProdutos.ShowDialog(this);
+                    editarProdutos.ShowDialog();
                 }
             }
         }

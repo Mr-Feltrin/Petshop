@@ -44,13 +44,15 @@ namespace PetShop.Entities
                         }
                     }
                 }
-                catch (SqlCeException sqlException)
+                catch (SqlCeException e)
                 {
-                    MessageBox.Show($"Falha no banco de dados: {sqlException.Message}");
+                    MessageBox.Show($"Falha ao buscar Serviço no banco de dados: {e.Message}");
+                    throw e;
                 }
-                catch (Exception x)
+                catch (Exception e)
                 {
-                    MessageBox.Show($"Falha na aplicação: {x.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Falha na aplicação ao buscar Serviço: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw e;
                 }
             }
         }

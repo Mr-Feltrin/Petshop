@@ -22,7 +22,15 @@ namespace PetShop
 
         public AdicionarEditarServicos(TipoOperacao operacao, int idServico) : this(operacao)
         {
-            _Servico = new Servico(idServico);
+            try
+            {
+                _Servico = new Servico(idServico);
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         private void AdicionarEditarServicos_Load(object sender, EventArgs e)

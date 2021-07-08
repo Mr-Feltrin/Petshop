@@ -172,6 +172,7 @@
       <DependentUpon>AdicionarEditarVacina.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Enums\TipoNotificacao.cs" />
+    <Compile Include="Entities\Exceptions\SqlCeResultException.cs" />
     <Compile Include="Entities\Servico.cs" />
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Entities\Vacinacao.cs" />

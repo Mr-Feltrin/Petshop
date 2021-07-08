@@ -36,10 +36,18 @@ namespace PetShop
 
         public AdicionarEditarAgendamento(TipoOperacao operacao, PesquisarAgendamento agenda, int idAgendamento) : this(operacao, agenda)
         {
-            _Agenda = new Agenda(idAgendamento);
-            _Cliente = _Agenda.ClienteId;
-            _Animal = _Agenda.AnimalId;
-            _Servico = _Agenda.ServicoId;
+            try
+            {
+                _Agenda = new Agenda(idAgendamento);
+                _Cliente = _Agenda.ClienteId;
+                _Animal = _Agenda.AnimalId;
+                _Servico = _Agenda.ServicoId;
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         private void AdicionarEditarAgendamento_Load(object sender, EventArgs e)

@@ -20,10 +20,20 @@ namespace PetShop
             InitializeComponent();
             Operacao = operacao;
         }
+
         public AdicionarEditarFornecedor(TipoOperacao operacao, int idFornecedor) : this(operacao)
         {
-            _Fornecedor = new Fornecedor(idFornecedor);
+            try
+            {
+                _Fornecedor = new Fornecedor(idFornecedor);
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
+
         private void AdicionarEditarFornecedor_Load(object sender, EventArgs e)
         {
             CamposOpcionais = new List<MaskedTextBox>() { txtCep, txtCelular, txtCnpj };

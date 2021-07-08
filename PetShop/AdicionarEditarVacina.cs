@@ -24,7 +24,15 @@ namespace PetShop
 
         public AdicionarEditarVacina(TipoOperacao operacao, int idVacina) : this(operacao)
         {
-            _Vacina = new Vacina(idVacina);
+            try
+            {
+                _Vacina = new Vacina(idVacina);
+            }
+            catch
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         private void AdicionarEditarVacina_Load(object sender, EventArgs e)

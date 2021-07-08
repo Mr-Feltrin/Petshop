@@ -31,8 +31,16 @@ namespace PetShop
 
         public AdicionarEditarAnimais(TipoOperacao operacao, PesquisaAnimais pesquisaAnimais, int IdAnimal) : this(operacao, pesquisaAnimais)
         {
-            animal = new Animal(IdAnimal);
-            cliente = new Cliente(animal.ClienteId);
+            try
+            {
+                animal = new Animal(IdAnimal);
+                cliente = new Cliente(animal.ClienteId);
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         public AdicionarEditarAnimais(ListaDeClientesAnimais listaDeClientesAnimais, TipoOperacao operacao)

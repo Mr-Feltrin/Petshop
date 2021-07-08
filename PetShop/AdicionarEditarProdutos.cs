@@ -29,7 +29,15 @@ namespace PetShop
 
         public AdicionarEditarProdutos(TipoOperacao operacao, int idProduto) : this(operacao)
         {
-            _Produto = new Produto(idProduto);
+            try
+            {
+                _Produto = new Produto(idProduto);
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         private void AdicionarEditarProdutos_Load(object sender, EventArgs e)
@@ -63,12 +71,12 @@ namespace PetShop
                 txtNomeProduto.Text = _Produto.NomeProduto;
                 txtReferencia.Text = _Produto.Referencia;
                 txtLocalizacao.Text = _Produto.Localizacao;
-                dateDataCadastro.Value = _Produto.DataCadastro;
+                //dateDataCadastro.Value = _Produto.DataCadastro;
                 combBoxMarcaProduto.Text = _Produto.Marca;
                 CombBoxCategoria.Text = _Produto.Categoria;
                 txtEstoqueMinimo.Text = _Produto.EstoqueMinimo.ToString();
                 txtEstoqueAtual.Text = _Produto.EstoqueAtual.ToString();
-                dateDataValidade.Value = _Produto.DataValidade;
+                //dateDataValidade.Value = _Produto.DataValidade;
                 txtValorCusto.Text = _Produto.ValorCusto.ToString("C2", new CultureInfo("pt-BR"));
                 txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", new CultureInfo("pt-BR"));
                 txtObservacoes.Text = _Produto.Observacoes;

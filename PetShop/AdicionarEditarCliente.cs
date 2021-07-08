@@ -25,7 +25,15 @@ namespace PetShop
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, int idCliente) : this(operacao, pesquisaClientesFornecedores)
         {
-            _Cliente = new Cliente(idCliente);
+            try
+            {
+                _Cliente = new Cliente(idCliente);
+            }
+            catch (Exception)
+            {
+                Load += (s, e) => Close();
+                return;
+            }
         }
 
         public AdicionarEditarCliente(TipoOperacao operacao, ListaDeClientesAnimais listaDeClientes)

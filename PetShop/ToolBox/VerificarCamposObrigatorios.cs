@@ -48,7 +48,7 @@ namespace PetShop.ToolBox
                         toolTip.SetToolTip(button, null);
                     }
                 }
-                else if (objeto.Key.GetType() == typeof(ComboBox))
+                else if (objeto.Key.GetType() == typeof(ComboBox) || objeto.Key.GetType() == typeof(ComboBoxFlatBordered))
                 {
                     if (string.IsNullOrWhiteSpace((objeto.Key as ComboBox).Text))
                     {

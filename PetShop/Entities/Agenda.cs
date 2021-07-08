@@ -58,13 +58,16 @@ namespace PetShop.Entities
                         }
                     }
                 }
-                catch (SqlCeException sqlException)
+                catch (SqlCeException e)
                 {
-                    MessageBox.Show($"Falha no banco de dados: {sqlException.Message}");
+                    MessageBox.Show($"Falha no banco de dados ao buscar Agendamento: {e.Message}");
+                    throw e;
+
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Ocorreu um erro na aplicação ao buscar por Agendamento: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw e;
                 }
             }
         }

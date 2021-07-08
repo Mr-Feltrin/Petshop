@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -60,37 +61,52 @@ namespace PetShop.Entities
                     SqlCeCommand command = Connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Produtos WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", id);
-                    using (SqlCeDataReader reader = command.ExecuteReader())
+                    using (SqlCeDataReader reader = command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            ProdutoId = (int)reader["Id"];
-                            NomeProduto = reader["Nome"].ToString();
-                            CodigoBarras = reader["CodigoBarras"].ToString();
-                            TipoUnidade = reader["TipoUnidade"].ToString();
-                            Quantidade = (int)reader["Quantidade"];
-                            Referencia = reader["Referencia"].ToString();
-                            Localizacao = reader["Localizacao"].ToString();
-                            DataCadastro = (DateTime)reader["DataCadastro"];
-                            Marca = reader["Marca"].ToString();
-                            Categoria = reader["Categoria"].ToString();
-                            EstoqueMinimo = (int)reader["EstoqueMinimo"];
-                            EstoqueAtual = (int)reader["EstoqueAtual"];
-                            DataValidade = (DateTime)reader["DataValidade"];
-                            ValorCusto = (decimal)reader["ValorCusto"];
-                            ValorProduto = (decimal)reader["ValorProduto"];
-                            Observacoes = reader["Observacoes"].ToString();
+                            while (reader.Read())
+                            {
+                                ProdutoId = (int)reader["Id"];
+                                NomeProduto = reader["Nome"].ToString();
+                                CodigoBarras = reader["CodigoBarras"].ToString();
+                                TipoUnidade = reader["TipoUnidade"].ToString();
+                                Quantidade = (int)reader["Quantidade"];
+                                Referencia = reader["Referencia"].ToString();
+                                Localizacao = reader["Localizacao"].ToString();
+                                DataCadastro = (DateTime)reader["DataCadastro"];
+                                Marca = reader["Marca"].ToString();
+                                Categoria = reader["Categoria"].ToString();
+                                EstoqueMinimo = (int)reader["EstoqueMinimo"];
+                                EstoqueAtual = (int)reader["EstoqueAtual"];
+                                DataValidade = (DateTime)reader["DataValidade"];
+                                ValorCusto = (decimal)reader["ValorCusto"];
+                                ValorProduto = (decimal)reader["ValorProduto"];
+                                Observacoes = reader["Observacoes"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
+
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao buscar por Produto: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
             }
-            catch (Exception x)
+            catch (SqlCeResultException e)
             {
-                MessageBox.Show($"Falha na aplicação: {x.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao buscar por Produto: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Falha na aplicação ao buscar por Produto: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
             }
         }
 

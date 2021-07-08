@@ -39,8 +39,16 @@ namespace PetShop
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
-            adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
+            try
+            {
+                adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
+                adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
+            }
+            catch (Exception)
+            {
+                adicionarEditarAgendamento._Servico = null;
+                adicionarEditarAgendamento.txtTipoProcedimento.Text = null;
+            }
             Close();
         }
 
@@ -48,8 +56,16 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
-                adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
+                try
+                {
+                    adicionarEditarAgendamento._Servico = new Servico((int)listaProcedimento.SelectedRows[0].Cells[0].Value);
+                    adicionarEditarAgendamento.txtTipoProcedimento.Text = adicionarEditarAgendamento._Servico.NomeServico;
+                }
+                catch (Exception)
+                {
+                    adicionarEditarAgendamento._Servico = null;
+                    adicionarEditarAgendamento.txtTipoProcedimento.Text = null;
+                }
                 Close();
             }
         }

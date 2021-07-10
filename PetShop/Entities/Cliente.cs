@@ -2,8 +2,8 @@
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -150,32 +150,44 @@ namespace PetShop.Entities
                     SqlCeCommand command = connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Clientes WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", idCliente);
-                    using (var reader = command.ExecuteReader())
+                    using (var reader = command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            ClienteId = (int)reader["Id"];
-                            NomeCliente = reader["Nome"].ToString();
-                            Tipo = reader["Tipo"].ToString();
-                            Apelido = reader["Apelido"].ToString();
-                            Endereco = reader["Endereco"].ToString();
-                            Bairro = reader["Bairro"].ToString();
-                            Cidade = reader["Cidade"].ToString();
-                            Uf = reader["Estado"].ToString();
-                            Cep = reader["Cep"].ToString();
-                            TelefonePrimario = reader["Telefone_Principal"].ToString();
-                            TelefoneSecundario = reader["Telefone_Secundario"].ToString();
-                            Celular = reader["Celular"].ToString();
-                            Complemento = reader["Complemento"].ToString();
-                            Email = reader["Email"].ToString();
-                            Cpf = reader["Cpf"].ToString();
-                            Cnpj = reader["Cnpj"].ToString();
-                            Observacoes = reader["Observacoes"].ToString();
+                            while (reader.Read())
+                            {
+                                ClienteId = (int)reader["Id"];
+                                NomeCliente = reader["Nome"].ToString();
+                                Tipo = reader["Tipo"].ToString();
+                                Apelido = reader["Apelido"].ToString();
+                                Endereco = reader["Endereco"].ToString();
+                                Bairro = reader["Bairro"].ToString();
+                                Cidade = reader["Cidade"].ToString();
+                                Uf = reader["Estado"].ToString();
+                                Cep = reader["Cep"].ToString();
+                                TelefonePrimario = reader["Telefone_Principal"].ToString();
+                                TelefoneSecundario = reader["Telefone_Secundario"].ToString();
+                                Celular = reader["Celular"].ToString();
+                                Complemento = reader["Complemento"].ToString();
+                                Email = reader["Email"].ToString();
+                                Cpf = reader["Cpf"].ToString();
+                                Cnpj = reader["Cnpj"].ToString();
+                                Observacoes = reader["Observacoes"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
             }
             catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro ao buscar Cliente no banco de dados: {e.Message}", "Erro ao buscar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
+            }
+            catch (SqlCeResultException e)
             {
                 MessageBox.Show($"Erro ao buscar Cliente no banco de dados: {e.Message}", "Erro ao buscar Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw e;

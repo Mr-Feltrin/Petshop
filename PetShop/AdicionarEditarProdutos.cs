@@ -7,16 +7,13 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PetShop
 {
     public partial class AdicionarEditarProdutos : Form
     {
-        private decimal LastValorCusto;
-        private decimal LastPrecoProduto;
-        private int LastEstoqueMinimo;
-        private int LastEstoqueAtual;
         private Dictionary<object, string> CamposObrigatorios;
         private readonly TipoOperacao _TipoOperacao;
         private Produto _Produto;
@@ -48,7 +45,8 @@ namespace PetShop
                 {txtQuantidade, "Digite a quantidade do produto"},
                 {txtNomeProduto, "Insira o nome do produto"},
                 {CombBoxCategoria, "Insira a categoria do produto"},
-                {txtEstoqueAtual, "Digite a quantidade atual no estoque"}
+                {txtEstoqueAtual, "Digite a quantidade atual no estoque"},
+                {txtPrecoProduto, "Digite o preço do produto"}
             };
             combBoxMarcaProduto.DataSource = Produto.ListarMarcas();
             combBoxMarcaProduto.DisplayMember = "Marca";
@@ -71,33 +69,15 @@ namespace PetShop
                 txtNomeProduto.Text = _Produto.NomeProduto;
                 txtReferencia.Text = _Produto.Referencia;
                 txtLocalizacao.Text = _Produto.Localizacao;
-                //dateDataCadastro.Value = _Produto.DataCadastro;
+                dateDataCadastro.Value = _Produto.DataCadastro;
                 combBoxMarcaProduto.Text = _Produto.Marca;
                 CombBoxCategoria.Text = _Produto.Categoria;
                 txtEstoqueMinimo.Text = _Produto.EstoqueMinimo.ToString();
                 txtEstoqueAtual.Text = _Produto.EstoqueAtual.ToString();
-                //dateDataValidade.Value = _Produto.DataValidade;
+                dateDataValidade.Value = _Produto.DataValidade;
                 txtValorCusto.Text = _Produto.ValorCusto.ToString("C2", new CultureInfo("pt-BR"));
                 txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", new CultureInfo("pt-BR"));
                 txtObservacoes.Text = _Produto.Observacoes;
-            }
-            LastValorCusto = decimal.Parse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CreateSpecificCulture("pt-BR").NumberFormat);
-            LastPrecoProduto = decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CreateSpecificCulture("pt-BR").NumberFormat);
-            try
-            {
-                LastEstoqueMinimo = int.Parse(txtEstoqueMinimo.Text);
-            }
-            catch (FormatException)
-            {
-                LastEstoqueMinimo = 0;
-            }
-            try
-            {
-                LastEstoqueAtual = int.Parse(txtEstoqueAtual.Text);
-            }
-            catch (FormatException)
-            {
-                LastEstoqueAtual = default;
             }
         }
 
@@ -116,7 +96,16 @@ namespace PetShop
 
         private void ValorCustoProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && (sender as TextBox).Text.IndexOf('.') < (sender as TextBox).SelectionStart && (sender as TextBox).Text.Split('.').Length > 1 && (sender as TextBox).Text.Split('.')[1].Length == 2)
+
             {
                 e.Handled = true;
             }
@@ -124,7 +113,16 @@ namespace PetShop
 
         private void txtPrecoProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.') && (e.KeyChar != ','))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
+            {
+                e.Handled = true;
+            }
+            if (!char.IsControl(e.KeyChar) && (sender as TextBox).Text.IndexOf('.') < (sender as TextBox).SelectionStart && (sender as TextBox).Text.Split('.').Length > 1 && (sender as TextBox).Text.Split('.')[1].Length == 2)
+
             {
                 e.Handled = true;
             }
@@ -161,28 +159,7 @@ namespace PetShop
 
         private void txtValorCusto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "");
-            (sender as TextBox).Text = (sender as TextBox).Text.Trim();
-        }
-
-        private void CurrencyDoubleValidation(object control, ref decimal LastValor)
-        {
-            if (double.TryParse((control as TextBox).Text.Replace(',', '.'), out double value))
-            {
-                (control as TextBox).Text = value.ToString("C2", new CultureInfo("pt-BR"));
-                LastValor = decimal.Parse((control as TextBox).Text, NumberStyles.Currency, new CultureInfo("pt-BR").NumberFormat);
-                if ((control as TextBoxBorderColored).BorderColor == Color.Red)
-                {
-                    (control as TextBoxBorderColored).BorderColor = SystemColors.GrayText;
-                    toolTip.SetToolTip(control as TextBoxBorderColored, null);
-                }
-            }
-            else
-            {
-                (control as TextBoxBorderColored).BorderColor = Color.Red;
-                toolTip.SetToolTip(control as TextBoxBorderColored, "O formato anterior não é monetário");
-                (control as TextBoxBorderColored).Text = LastValor.ToString("C2", new CultureInfo("pt-BR"));
-            }
+            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
         }
 
         private void EstoqueIntValidation(object control, ref int LastValor)
@@ -207,12 +184,24 @@ namespace PetShop
 
         private void txtPrecoProduto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            CurrencyDoubleValidation(sender, ref LastPrecoProduto);
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+                {
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                }
+            }
         }
 
         private void txtValorCusto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            CurrencyDoubleValidation(sender, ref LastValorCusto);
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
+                {
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                }
+            }
         }
 
         private void AdicionarEditarProdutos_MouseMove(object sender, MouseEventArgs e)
@@ -272,7 +261,7 @@ namespace PetShop
         {
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
-                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim()), decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim()), txtObservacoes.Text);
+                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim(), out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim()), txtObservacoes.Text);
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
@@ -286,10 +275,10 @@ namespace PetShop
                 _Produto.DataCadastro = dateDataCadastro.Value;
                 _Produto.Marca = combBoxMarcaProduto.Text;
                 _Produto.Categoria = CombBoxCategoria.Text;
-                _Produto.EstoqueMinimo = int.Parse(txtEstoqueMinimo.Text);
+                _Produto.EstoqueMinimo = int.TryParse(txtEstoqueMinimo.Text, out int estoquemin) ? estoquemin : default;
                 _Produto.EstoqueAtual = int.Parse(txtEstoqueAtual.Text);
                 _Produto.DataValidade = dateDataValidade.Value;
-                _Produto.ValorCusto = decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim());
+                _Produto.ValorCusto = decimal.TryParse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim(), out decimal valorcusto) ? valorcusto : default;
                 _Produto.ValorProduto = decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim());
                 _Produto.Observacoes = txtObservacoes.Text;
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
@@ -301,14 +290,9 @@ namespace PetShop
             Close();
         }
 
-        private void txtEstoqueMinimo_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtPrecoProduto_TextChanged(object sender, EventArgs e)
         {
-            EstoqueIntValidation(sender, ref LastEstoqueMinimo);
-        }
-
-        private void txtEstoqueAtual_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            EstoqueIntValidation(sender, ref LastEstoqueAtual);
+            VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, toolTip);
         }
     }
 }

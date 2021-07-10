@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -34,17 +35,29 @@ namespace PetShop.Entities
                     SqlCeCommand Command = Connection.CreateCommand();
                     Command.CommandText = "SELECT * FROM Servicos WHERE Id = @Id";
                     Command.Parameters.AddWithValue("@Id", id);
-                    using (SqlCeDataReader Reader = Command.ExecuteReader())
+                    using (SqlCeDataReader Reader = Command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (Reader.Read())
+                        if (Reader.HasRows)
                         {
-                            Id = (int)Reader["Id"];
-                            NomeServico = (string)Reader["NomeServico"];
-                            Valor = (decimal)Reader["Valor"];
+                            while (Reader.Read())
+                            {
+                                Id = (int)Reader["Id"];
+                                NomeServico = (string)Reader["NomeServico"];
+                                Valor = (decimal)Reader["Valor"];
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
                 catch (SqlCeException e)
+                {
+                    MessageBox.Show($"Falha ao buscar Serviço no banco de dados: {e.Message}");
+                    throw e;
+                }
+                catch (SqlCeResultException e)
                 {
                     MessageBox.Show($"Falha ao buscar Serviço no banco de dados: {e.Message}");
                     throw e;

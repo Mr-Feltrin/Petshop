@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -38,23 +39,37 @@ namespace PetShop.Entities
                     SqlCeCommand Command = Connection.CreateCommand();
                     Command.CommandText = "SELECT * FROM Agenda WHERE Id = @Id";
                     Command.Parameters.AddWithValue("@Id", id);
-                    using (SqlCeDataReader Reader = Command.ExecuteReader())
+                    using (SqlCeDataReader Reader = Command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (Reader.Read())
+                        if (Reader.HasRows)
                         {
-                            IdAgenda = (int)Reader["Id"];
-                            DataAgendamento = (DateTime)Reader["Data"];
-                            ServicoId = new Servico((int)Reader["ServicoId"]);
-                            AnimalId = new Animal((int)Reader["AnimalId"]);
+                            while (Reader.Read())
+                            {
+                                IdAgenda = (int)Reader["Id"];
+                                DataAgendamento = (DateTime)Reader["Data"];
+                                ServicoId = new Servico((int)Reader["ServicoId"]);
+                                AnimalId = new Animal((int)Reader["AnimalId"]);
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                     Command.CommandText = "SELECT Animal.ClienteId FROM Animal WHERE Animal.Id = @Id";
                     Command.Parameters.AddWithValue("@Id", AnimalId.Id);
-                    using (SqlCeDataReader reader = Command.ExecuteReader())
+                    using (SqlCeDataReader reader = Command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            ClienteId = new Cliente((int)reader["ClienteId"]);
+                            while (reader.Read())
+                            {
+                                ClienteId = new Cliente((int)reader["ClienteId"]);
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
@@ -63,6 +78,11 @@ namespace PetShop.Entities
                     MessageBox.Show($"Falha no banco de dados ao buscar Agendamento: {e.Message}");
                     throw e;
 
+                }
+                catch (SqlCeResultException e)
+                {
+                    MessageBox.Show($"Falha no banco de dados ao buscar Agendamento: {e.Message}");
+                    throw e;
                 }
                 catch (Exception e)
                 {

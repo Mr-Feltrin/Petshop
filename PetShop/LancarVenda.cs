@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -10,7 +9,7 @@ using System.Linq;
 using PetShop.Entities.Enums;
 using System.Data;
 using System.ComponentModel;
-using System.Reflection;
+using System.Timers;
 
 namespace PetShop
 {
@@ -23,6 +22,7 @@ namespace PetShop
         private DataTable TableProdutos { get; set; }
         private DataTable TableServicos { get; set; }
         private DataTable TableVacinas { get; set; }
+        private System.Timers.Timer TimerHorario;
 
 
         public LancarVenda()
@@ -32,6 +32,8 @@ namespace PetShop
 
         private void Venda_Load(object sender, EventArgs e)
         {
+            TimerHorario = new System.Timers.Timer(10000);
+            TimerHorario.Elapsed += new ElapsedEventHandler(TimerHorario_Elapsed);
             listaProdutos.AutoGenerateColumns = false;
             listaProdutos.Rows.Add(1);
             listaServicos.Rows.Add(1);
@@ -84,6 +86,11 @@ namespace PetShop
             listaVacinas.ClearSelection();
             listaServicos.ClearSelection();
             listaProdutos.CellValueChanged += new DataGridViewCellEventHandler(listaProdutos_CellValueChanged);
+        }
+
+        private void TimerHorario_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            txtHorario.Text = DateTime.Now.ToString("HH:mm");
         }
 
         private void combBoxTipoCartao_EnabledChanged(object sender, EventArgs e)
@@ -207,7 +214,6 @@ namespace PetShop
                 e.Handled = true;
             }
             if (e.KeyChar == '.' && (sender as TextBox).Text.IndexOf('.') > -1)
-
             {
                 e.Handled = true;
             }
@@ -554,7 +560,6 @@ namespace PetShop
                         }           
                     }
                 }
-                /*
                 else if (e.ColumnIndex == listaProdutos.Columns["CodigoBarras"].Index)
                 {
                     if (listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null && listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString() != "N.D")
@@ -569,7 +574,6 @@ namespace PetShop
                         }
                     }
                 }
-                */
                 else if (e.ColumnIndex == listaProdutos.Columns["Quantidade"].Index)
                 {
                     if (listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || string.IsNullOrWhiteSpace(listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))

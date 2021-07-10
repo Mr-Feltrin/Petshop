@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -50,26 +51,38 @@ namespace PetShop.Entities
                     SqlCeCommand command = Connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Vacinas WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", id);
-                    using (SqlCeDataReader reader = command.ExecuteReader())
+                    using (SqlCeDataReader reader = command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            Id = (int)reader["Id"];
-                            Imunologia = (string)reader["Imunologia"];
-                            Doses = (int)reader["Doses"];
-                            ConteudoML = (int)reader["ConteudoML"];
-                            Lote = (string)reader["Lote"];
-                            Fabricante = (string)reader["Fabricante"];
-                            DataValidade = (DateTime)reader["DataValidade"];
-                            DataCadastro = (DateTime)reader["DataCadastro"];
-                            Quantidade = (int)reader["Quantidade"];
-                            ValorMercado = (decimal)reader["ValorMercado"];
-                            ValorProduto = (decimal)reader["ValorProduto"];
+                            while (reader.Read())
+                            {
+                                Id = (int)reader["Id"];
+                                Imunologia = (string)reader["Imunologia"];
+                                Doses = (int)reader["Doses"];
+                                ConteudoML = (int)reader["ConteudoML"];
+                                Lote = (string)reader["Lote"];
+                                Fabricante = (string)reader["Fabricante"];
+                                DataValidade = (DateTime)reader["DataValidade"];
+                                DataCadastro = (DateTime)reader["DataCadastro"];
+                                Quantidade = (int)reader["Quantidade"];
+                                ValorMercado = (decimal)reader["ValorMercado"];
+                                ValorProduto = (decimal)reader["ValorProduto"];
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
             }
             catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao buscar por Vacina: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
+            }
+            catch (SqlCeResultException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao buscar por Vacina: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw e;

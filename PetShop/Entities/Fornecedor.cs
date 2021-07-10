@@ -3,6 +3,7 @@ using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -80,25 +81,32 @@ namespace PetShop.Entities
                     SqlCeCommand command = connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Fornecedor WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", idFornecedor);
-                    using (SqlCeDataReader reader = command.ExecuteReader())
+                    using (SqlCeDataReader reader = command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            IdFornecedor = (int)reader["Id"];
-                            Nome = reader["Nome"].ToString();
-                            Tipo_Fornecimento = reader["Tipo_Fornecimento"].ToString();
-                            Apelido = reader["Apelido"].ToString();
-                            Endereco = reader["Endereco"].ToString();
-                            Bairro = reader["Bairro"].ToString();
-                            Cidade = reader["Cidade"].ToString();
-                            Estado = reader["Estado"].ToString();
-                            Cep = reader["Cep"].ToString();
-                            Telefone = reader["Telefone"].ToString();
-                            Celular = reader["Celular"].ToString();
-                            Cnpj = reader["Cnpj"].ToString();
-                            Cpf = reader["Cpf"].ToString();
-                            Email = reader["Email"].ToString();
-                            Observacoes = reader["Observacoes"].ToString();
+                            while (reader.Read())
+                            {
+                                IdFornecedor = (int)reader["Id"];
+                                Nome = reader["Nome"].ToString();
+                                Tipo_Fornecimento = reader["Tipo_Fornecimento"].ToString();
+                                Apelido = reader["Apelido"].ToString();
+                                Endereco = reader["Endereco"].ToString();
+                                Bairro = reader["Bairro"].ToString();
+                                Cidade = reader["Cidade"].ToString();
+                                Estado = reader["Estado"].ToString();
+                                Cep = reader["Cep"].ToString();
+                                Telefone = reader["Telefone"].ToString();
+                                Celular = reader["Celular"].ToString();
+                                Cnpj = reader["Cnpj"].ToString();
+                                Cpf = reader["Cpf"].ToString();
+                                Email = reader["Email"].ToString();
+                                Observacoes = reader["Observacoes"].ToString();
+                            }
+                        }
+                        else
+                        {
+                            throw new SqlCeResultException();
                         }
                     }
                 }
@@ -106,8 +114,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao buscar Fornecedor: {e.Message}", "Erro ao buscar Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;               
+            }
+            catch (SqlCeResultException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao buscar Fornecedor: {e.Message}", "Erro ao buscar Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw e;
-                
             }
             catch (Exception e)
             {

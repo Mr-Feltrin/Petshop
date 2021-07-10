@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -249,38 +250,50 @@ namespace PetShop.Entities
                     SqlCeCommand command = connection.CreateCommand();
                     command.CommandText = "SELECT * FROM Animal WHERE Id = @Id";
                     command.Parameters.AddWithValue("@Id", id);
-                    using (SqlCeDataReader reader = command.ExecuteReader())
+                    using (SqlCeDataReader reader = command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
-                        while (reader.Read())
+                        if (reader.HasRows)
                         {
-                            Id = (int)reader["Id"];
-                            Nome = (string)reader["Nome"];
-                            Sexo = (string)reader["Sexo"];
-                            ClienteId = (int)reader["ClienteId"];
-                            Especie = (string)reader["Especie"];
-                            Raca = (string)reader["Raca"];
-                            Identificacao = (string)reader["Identificacao"];
-                            Fobias = (string)reader["Fobias"];
-                            DisponivelTosa = reader["Disponivel_tosa"].ToString();
-                            PossuiPedigree = (string)reader["Possui_pedigree"];
-                            Agressivo = (string)reader["Agressivo"];
-                            Hiperativo = (string)reader["Hiperativo"];
-                            AntiSocial = (string)reader["Anti_social"];
-                            Obsessivo = (string)reader["Obsessivo"];
-                            ObservacaoComportamental = (string)reader["Observacao_comportamental"];
-                            ObservacaoRotina = (string)reader["Observacao_rotina"];
-                            DataRegistro = DateTime.Parse(reader["Data_registro"].ToString());
-                            Fotografia1 = reader["Fotografia1"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia1"]);
-                            Fotografia2 = reader["Fotografia2"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia2"]);
-                            Fotografia3 = reader["Fotografia3"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia3"]);
-                            Peso = decimal.Parse(reader["Peso"].ToString());
-                            DataNascimento = DateTime.Parse(reader["DataNascimento"].ToString());
-                            Situacao = (string)reader["Situacao"];
+                            while (reader.Read())
+                            {
+                                Id = (int)reader["Id"];
+                                Nome = (string)reader["Nome"];
+                                Sexo = (string)reader["Sexo"];
+                                ClienteId = (int)reader["ClienteId"];
+                                Especie = (string)reader["Especie"];
+                                Raca = (string)reader["Raca"];
+                                Identificacao = (string)reader["Identificacao"];
+                                Fobias = (string)reader["Fobias"];
+                                DisponivelTosa = reader["Disponivel_tosa"].ToString();
+                                PossuiPedigree = (string)reader["Possui_pedigree"];
+                                Agressivo = (string)reader["Agressivo"];
+                                Hiperativo = (string)reader["Hiperativo"];
+                                AntiSocial = (string)reader["Anti_social"];
+                                Obsessivo = (string)reader["Obsessivo"];
+                                ObservacaoComportamental = (string)reader["Observacao_comportamental"];
+                                ObservacaoRotina = (string)reader["Observacao_rotina"];
+                                DataRegistro = DateTime.Parse(reader["Data_registro"].ToString());
+                                Fotografia1 = reader["Fotografia1"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia1"]);
+                                Fotografia2 = reader["Fotografia2"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia2"]);
+                                Fotografia3 = reader["Fotografia3"] is DBNull ? null : ConversorImagemByte.RetrieveImage((byte[])reader["Fotografia3"]);
+                                Peso = decimal.Parse(reader["Peso"].ToString());
+                                DataNascimento = DateTime.Parse(reader["DataNascimento"].ToString());
+                                Situacao = (string)reader["Situacao"];
+                            }
                         }
+                        else
+                        {
+                            throw new SqlCeResultException();
+                        }                      
                     }
                 }                  
             }
             catch (SqlCeException e)
+            {
+                MessageBox.Show("Falha no banco de dados ao localizar animal: " + e.Message, "Não foi possível localizar o animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                throw e;
+            }
+            catch (SqlCeResultException e)
             {
                 MessageBox.Show("Falha no banco de dados ao localizar animal: " + e.Message, "Não foi possível localizar o animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 throw e;

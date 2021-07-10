@@ -87,7 +87,6 @@ namespace PetShop
             {
                 _Servico = new Servico(txtNomeServico.Text, decimal.Parse(txtValor.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()));
                 _Servico.AdicionarEditarServico(Operacao);
-
             }
             else
             {
@@ -105,7 +104,6 @@ namespace PetShop
                 Application.OpenForms.OfType<PesquisarServicos>().First().AtualizarLista();
             }
             Close();
-            Dispose();
         }
     }
 }

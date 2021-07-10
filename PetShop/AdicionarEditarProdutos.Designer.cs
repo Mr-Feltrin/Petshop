@@ -450,7 +450,6 @@ namespace PetShop
             this.txtEstoqueAtual.TabIndex = 32;
             this.txtEstoqueAtual.TextChanged += new System.EventHandler(this.txtEstoqueAtual_TextChanged);
             this.txtEstoqueAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueAtual_KeyPress);
-            this.txtEstoqueAtual.Validating += new System.ComponentModel.CancelEventHandler(this.txtEstoqueAtual_Validating);
             // 
             // txtEstoqueMinimo
             // 
@@ -461,7 +460,6 @@ namespace PetShop
             this.txtEstoqueMinimo.Size = new System.Drawing.Size(164, 22);
             this.txtEstoqueMinimo.TabIndex = 13;
             this.txtEstoqueMinimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueMinimo_KeyPress);
-            this.txtEstoqueMinimo.Validating += new System.ComponentModel.CancelEventHandler(this.txtEstoqueMinimo_Validating);
             // 
             // dateDataValidade
             // 
@@ -535,7 +533,7 @@ namespace PetShop
             this.txtPrecoProduto.Name = "txtPrecoProduto";
             this.txtPrecoProduto.Size = new System.Drawing.Size(143, 22);
             this.txtPrecoProduto.TabIndex = 32;
-            this.txtPrecoProduto.Text = "R$ 0,00";
+            this.txtPrecoProduto.TextChanged += new System.EventHandler(this.txtPrecoProduto_TextChanged);
             this.txtPrecoProduto.Enter += new System.EventHandler(this.txtValorCusto_Enter);
             this.txtPrecoProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecoProduto_KeyPress);
             this.txtPrecoProduto.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrecoProduto_Validating);
@@ -548,7 +546,6 @@ namespace PetShop
             this.txtValorCusto.Name = "txtValorCusto";
             this.txtValorCusto.Size = new System.Drawing.Size(143, 22);
             this.txtValorCusto.TabIndex = 12;
-            this.txtValorCusto.Text = "R$ 0,00";
             this.toolTip.SetToolTip(this.txtValorCusto, "teste\r\n");
             this.txtValorCusto.Enter += new System.EventHandler(this.txtValorCusto_Enter);
             this.txtValorCusto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ValorCustoProduto_KeyPress);

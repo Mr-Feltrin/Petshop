@@ -201,14 +201,41 @@ namespace PetShop.Entities
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao retornar lista de produtos: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocorreu um erro na aplicação ao retornar a lista de produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return data;
         }
+
+        public static DataTable ListarProdutosEmEstoque()
+        {
+            DataTable data = new DataTable();
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT * FROM Produtos WHERE EstoqueAtual > 0";
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    dataAdapter.Fill(data);
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao retornar lista de produtos: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao retornar a lista de produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return data;
+        }
+
 
         public static DataTable ListarMarcas()
         {

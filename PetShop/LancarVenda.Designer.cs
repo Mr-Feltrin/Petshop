@@ -29,23 +29,23 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LancarVenda));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
@@ -56,10 +56,6 @@ namespace PetShop
             this.label3 = new System.Windows.Forms.Label();
             this.txtDataVenda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtNumeroVenda = new System.Windows.Forms.TextBox();
-            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
-            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioBtnVacinas = new System.Windows.Forms.RadioButton();
             this.radioBtnServicos = new System.Windows.Forms.RadioButton();
@@ -100,6 +96,10 @@ namespace PetShop
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.txtNumeroVenda = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaServicos)).BeginInit();
@@ -220,65 +220,6 @@ namespace PetShop
             this.label2.TabIndex = 2;
             this.label2.Text = "Data da Venda";
             // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(20, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Número da Venda";
-            // 
-            // txtNumeroVenda
-            // 
-            this.txtNumeroVenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtNumeroVenda.BackColor = System.Drawing.SystemColors.Window;
-            this.txtNumeroVenda.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumeroVenda.Location = new System.Drawing.Point(19, 53);
-            this.txtNumeroVenda.Name = "txtNumeroVenda";
-            this.txtNumeroVenda.ReadOnly = true;
-            this.txtNumeroVenda.Size = new System.Drawing.Size(157, 29);
-            this.txtNumeroVenda.TabIndex = 5;
-            // 
-            // combBoxFormaPagamento
-            // 
-            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxFormaPagamento.FormattingEnabled = true;
-            this.combBoxFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "Cartão",
-            "Boleto"});
-            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
-            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
-            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
-            this.combBoxFormaPagamento.TabIndex = 8;
-            this.combBoxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedValueChanged);
-            // 
-            // combBoxTipoCartao
-            // 
-            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipoCartao.Enabled = false;
-            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxTipoCartao.FormattingEnabled = true;
-            this.combBoxTipoCartao.Items.AddRange(new object[] {
-            "Crédito",
-            "Débito"});
-            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
-            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
-            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
-            this.combBoxTipoCartao.TabIndex = 9;
-            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -288,9 +229,9 @@ namespace PetShop
             this.groupBox2.Controls.Add(this.radioBtnServicos);
             this.groupBox2.Controls.Add(this.labelLista);
             this.groupBox2.Controls.Add(this.radioBtnProdutos);
+            this.groupBox2.Controls.Add(this.listaProdutos);
             this.groupBox2.Controls.Add(this.listaServicos);
             this.groupBox2.Controls.Add(this.listaVacinas);
-            this.groupBox2.Controls.Add(this.listaProdutos);
             this.groupBox2.Location = new System.Drawing.Point(12, 219);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(945, 284);
@@ -351,58 +292,56 @@ namespace PetShop
             this.listaServicos.AllowUserToAddRows = false;
             this.listaServicos.AllowUserToDeleteRows = false;
             this.listaServicos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listaServicos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listaServicos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle8;
             this.listaServicos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listaServicos.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaServicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaServicos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.listaServicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.listaServicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NomeServico,
             this.PrecoServico,
             this.RemoverServico});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaServicos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.listaServicos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaServicos.DefaultCellStyle = dataGridViewCellStyle10;
+            this.listaServicos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaServicos.Location = new System.Drawing.Point(3, 43);
             this.listaServicos.MultiSelect = false;
             this.listaServicos.Name = "listaServicos";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaServicos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaServicos.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.listaServicos.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaServicos.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaServicos.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.listaServicos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.listaServicos.Size = new System.Drawing.Size(939, 235);
             this.listaServicos.TabIndex = 5;
             this.listaServicos.Visible = false;
             this.listaServicos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaServicos_CellClick);
-            this.listaServicos.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaServicos_CellEnter);
             this.listaServicos.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.CellPaintingButton);
             this.listaServicos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.ColumnWidthChanged);
             this.listaServicos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.listaServicos_EditingControlShowing);
             this.listaServicos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.Listas_RowsRemoved);
-            this.listaServicos.SelectionChanged += new System.EventHandler(this.listaServicos_SelectionChanged);
             this.listaServicos.VisibleChanged += new System.EventHandler(this.GridVisibleChange);
             this.listaServicos.Enter += new System.EventHandler(this.DataGridEnter);
             this.listaServicos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listaServicos_KeyDown);
@@ -441,19 +380,19 @@ namespace PetShop
             this.listaVacinas.AllowUserToAddRows = false;
             this.listaVacinas.AllowUserToDeleteRows = false;
             this.listaVacinas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listaVacinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listaVacinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
             this.listaVacinas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listaVacinas.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
             this.listaVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.listaVacinas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.VacinaImunologia,
@@ -464,28 +403,28 @@ namespace PetShop
             this.VacinaValor,
             this.VacinaQuantidade,
             this.VacinaRemover});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaVacinas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaVacinas.DefaultCellStyle = dataGridViewCellStyle15;
             this.listaVacinas.Location = new System.Drawing.Point(3, 43);
             this.listaVacinas.MultiSelect = false;
             this.listaVacinas.Name = "listaVacinas";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.listaVacinas.RowHeadersVisible = false;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle17;
             this.listaVacinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.listaVacinas.Size = new System.Drawing.Size(939, 235);
             this.listaVacinas.TabIndex = 6;
@@ -565,20 +504,20 @@ namespace PetShop
             this.listaProdutos.AllowUserToAddRows = false;
             this.listaProdutos.AllowUserToDeleteRows = false;
             this.listaProdutos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listaProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listaProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.listaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listaProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.listaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.listaProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoBarras,
@@ -590,29 +529,29 @@ namespace PetShop
             this.ValorTotal,
             this.RemoverProduto,
             this.EstoqueAtualProduto});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaProdutos.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaProdutos.DefaultCellStyle = dataGridViewCellStyle5;
             this.listaProdutos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
             this.listaProdutos.Location = new System.Drawing.Point(3, 43);
             this.listaProdutos.MultiSelect = false;
             this.listaProdutos.Name = "listaProdutos";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.listaProdutos.RowHeadersVisible = false;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.listaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.listaProdutos.Size = new System.Drawing.Size(939, 235);
             this.listaProdutos.TabIndex = 4;
@@ -659,8 +598,8 @@ namespace PetShop
             // 
             // ValorUnidade
             // 
-            dataGridViewCellStyle13.NullValue = null;
-            this.ValorUnidade.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle3.NullValue = null;
+            this.ValorUnidade.DefaultCellStyle = dataGridViewCellStyle3;
             this.ValorUnidade.HeaderText = "Valor Unit.";
             this.ValorUnidade.MinimumWidth = 100;
             this.ValorUnidade.Name = "ValorUnidade";
@@ -668,8 +607,8 @@ namespace PetShop
             // 
             // Quantidade
             // 
-            dataGridViewCellStyle14.NullValue = null;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
             this.Quantidade.HeaderText = "Quantidade";
             this.Quantidade.MinimumWidth = 90;
             this.Quantidade.Name = "Quantidade";
@@ -855,6 +794,65 @@ namespace PetShop
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
+            // combBoxFormaPagamento
+            // 
+            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxFormaPagamento.FormattingEnabled = true;
+            this.combBoxFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "Cartão",
+            "Boleto"});
+            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
+            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
+            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
+            this.combBoxFormaPagamento.TabIndex = 8;
+            this.combBoxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedValueChanged);
+            // 
+            // combBoxTipoCartao
+            // 
+            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxTipoCartao.Enabled = false;
+            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxTipoCartao.FormattingEnabled = true;
+            this.combBoxTipoCartao.Items.AddRange(new object[] {
+            "Crédito",
+            "Débito"});
+            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
+            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
+            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
+            this.combBoxTipoCartao.TabIndex = 9;
+            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
+            // 
+            // txtNumeroVenda
+            // 
+            this.txtNumeroVenda.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtNumeroVenda.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNumeroVenda.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumeroVenda.Location = new System.Drawing.Point(19, 53);
+            this.txtNumeroVenda.Name = "txtNumeroVenda";
+            this.txtNumeroVenda.ReadOnly = true;
+            this.txtNumeroVenda.Size = new System.Drawing.Size(157, 29);
+            this.txtNumeroVenda.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(20, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(155, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Número da Venda";
+            // 
             // LancarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -900,8 +898,6 @@ namespace PetShop
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDataVenda;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtNumeroVenda;
         private ToolBox.Controls.ComboBoxFlatBordered combBoxFormaPagamento;
         private ToolBox.Controls.ComboBoxFlatBordered combBoxTipoCartao;
         private System.Windows.Forms.TextBox txtNomeCliente;
@@ -946,5 +942,7 @@ namespace PetShop
         private System.Windows.Forms.DataGridViewComboBoxColumn NomeServico;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoServico;
         private System.Windows.Forms.DataGridViewButtonColumn RemoverServico;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNumeroVenda;
     }
 }

@@ -23,8 +23,6 @@ namespace PetShop
         private DataTable TableServicos { get; set; }
         private DataTable TableVacinas { get; set; }
         private System.Timers.Timer TimerHorario;
-        private bool ServicosFirstAccess = true;
-        private bool VacinasFirstAccess = true;
 
 
         public LancarVenda()
@@ -83,7 +81,6 @@ namespace PetShop
             btnPesquisarCliente.FlatAppearance.BorderSize = 0;
             txtNomeCliente.Controls.Add(btnPesquisarCliente);
             btnPesquisarCliente.Click += btnPesquisarCliente_Click;
-            listaProdutos.FirstDisplayedCell.Selected = false;
             listaProdutos.CellValueChanged += new DataGridViewCellEventHandler(listaProdutos_CellValueChanged);
         }
 
@@ -128,18 +125,26 @@ namespace PetShop
         {
             if ((sender as DataGridView).Visible)
             {
+                (sender as DataGridView).CurrentCell = null;
+                (sender as DataGridView).FirstDisplayedCell = null;
                 MaximumSize = new Size((sender as DataGridView).Columns.GetColumnsWidth(DataGridViewElementStates.None) + 49, 100000);
-                if ((sender as DataGridView).Name == listaServicos.Name)
-                {
-
-                }
             }
+            //else
+            //{
+            //    if ((sender as DataGridView).EditingControl != null)
+            //    {
+            //        (sender as DataGridView).EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+            //        (sender as DataGridView).EndEdit();
+            //        (sender as DataGridView).ClearSelection();
+            //        (sender as DataGridView).EditMode = DataGridViewEditMode.EditOnEnter;
+            //    }
+            //}
         }
 
         private void DataGridEnter(object sender, EventArgs e)
         {
+            (sender as DataGridView).CurrentCell = null;
             (sender as DataGridView).FirstDisplayedCell = null;
-            
         }
 
         private void combBoxFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
@@ -290,9 +295,9 @@ namespace PetShop
                 TextBox tb = e.Control as TextBox;
                 if (tb != null)
                 {
-                    tb.KeyPress += new KeyPressEventHandler(ProdutosColumnQuantidade_KeyPress);
-                    tb.TextChanged += new EventHandler(ProdutosColumnQuantidade_TextChanged);
-                    tb.LostFocus += new EventHandler(ProdutosColumnQuantidade_LostFocus);
+                    tb.KeyPress += ProdutosColumnQuantidade_KeyPress;
+                    tb.TextChanged += ProdutosColumnQuantidade_TextChanged;
+                    tb.Leave += ProdutosColumnQuantidade_Leave;
                 }
             }
             else if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["NomeProduto"].Index)
@@ -305,6 +310,7 @@ namespace PetShop
                     combo.Enter += ProdutosColumnNomeProduto_Enter;
                     combo.KeyDown += ProdutosColumnNomeProduto_KeyDown;
                     combo.LostFocus += ProdutosColumnNomeProduto_LostFocus;
+                    combo.Leave += ProdutosColumnNomeProduto_Leave;
                 }
             }
             else if (listaProdutos.CurrentCell.ColumnIndex == listaProdutos.Columns["CodigoBarras"].Index)
@@ -321,10 +327,6 @@ namespace PetShop
 
         private void ProdutosColumnNomeProduto_LostFocus(object sender, EventArgs e)
         {
-            (sender as DataGridViewComboBoxEditingControl).Enter -= ProdutosColumnNomeProduto_Enter;
-            (sender as DataGridViewComboBoxEditingControl).KeyDown -= ProdutosColumnNomeProduto_KeyDown;
-            (sender as DataGridViewComboBoxEditingControl).TextUpdate -= ProdutosColumnNomeProduto_TextUpdate;
-            (sender as DataGridViewComboBoxEditingControl).LostFocus -= ProdutosColumnNomeProduto_LostFocus;
             if (!string.IsNullOrWhiteSpace((sender as DataGridViewComboBoxEditingControl).Text))
             {
                 (sender as DataGridViewComboBoxEditingControl).SelectedIndex = (sender as DataGridViewComboBoxEditingControl).FindString((sender as DataGridViewComboBoxEditingControl).Text);
@@ -343,14 +345,14 @@ namespace PetShop
             }
         }
 
-        private void ProdutosColumnQuantidade_LostFocus(object sender, EventArgs e)
+        private void ProdutosColumnQuantidade_Leave(object sender, EventArgs e)
         {
             (sender as TextBox).KeyPress -= ProdutosColumnQuantidade_KeyPress;
             (sender as TextBox).TextChanged -= ProdutosColumnQuantidade_TextChanged;
-            (sender as TextBox).LostFocus -= ProdutosColumnQuantidade_LostFocus;
+            (sender as TextBox).Leave -= ProdutosColumnQuantidade_Leave;
         }
 
-        private void ProdutosColumnQuantidade_TextChanged(object sender, EventArgs e)
+    private void ProdutosColumnQuantidade_TextChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
             {
@@ -369,8 +371,11 @@ namespace PetShop
 
         private void ProdutosColumnNomeProduto_Leave(object sender, EventArgs e)
         {
-            MessageBox.Show("Leaving");
-
+            (sender as DataGridViewComboBoxEditingControl).Enter -= ProdutosColumnNomeProduto_Enter;
+            (sender as DataGridViewComboBoxEditingControl).KeyDown -= ProdutosColumnNomeProduto_KeyDown;
+            (sender as DataGridViewComboBoxEditingControl).TextUpdate -= ProdutosColumnNomeProduto_TextUpdate;
+            (sender as DataGridViewComboBoxEditingControl).LostFocus -= ProdutosColumnNomeProduto_LostFocus;
+            (sender as DataGridViewComboBoxEditingControl).Leave -= ProdutosColumnNomeProduto_Leave;
         }
 
         private void ProdutosColumnNomeProduto_TextUpdate(object sender, EventArgs e)
@@ -405,13 +410,9 @@ namespace PetShop
 
         private void DataGridLeave(object sender, EventArgs e)
         {
-            if ((sender as DataGridView).EditingControl != null || (sender as DataGridView).CurrentCell != null)
-            {
-                (sender as DataGridView).EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-                (sender as DataGridView).EndEdit();
-                (sender as DataGridView).ClearSelection();
-                (sender as DataGridView).EditMode = DataGridViewEditMode.EditOnEnter;
-            }
+            
+            (sender as DataGridView).EndEdit();
+            (sender as DataGridView).CurrentCell = null;          
         }
 
         private void RadioButtonCheckChanged(object sender, EventArgs e)
@@ -806,17 +807,6 @@ namespace PetShop
                 return;
             }
         }
-
-        private void listaServicos_CellEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            string test;
-        }
-
-        private void listaServicos_SelectionChanged(object sender, EventArgs e)
-        {
-            string test;
-        }
-
 
     }
 }

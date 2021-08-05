@@ -18,6 +18,7 @@ namespace PetShop
 
         public TelaPrincipal()
         {
+            Application.EnableVisualStyles();
             InitializeComponent();
         }
 
@@ -227,7 +228,14 @@ namespace PetShop
         {
             using (PesquisarServicos pesquisarServicos = new PesquisarServicos())
             {
-                pesquisarServicos.ShowDialog();
+                try
+                {
+                    pesquisarServicos.ShowDialog();
+                }
+                catch
+                {
+                    return;
+                }
             }
         }
     }

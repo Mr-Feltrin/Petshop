@@ -184,7 +184,7 @@ namespace PetShop.Entities
             }
         }
 
-        public static DataTable ListarProdutos()
+        public static DataTable ListarProdutos(bool apenasEmEstoque = false)
         {
             DataTable data = new DataTable();
             try
@@ -193,7 +193,14 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Produtos";
+                    if (apenasEmEstoque)
+                    {
+                        command.CommandText = "SELECT * FROM Produtos WHERE EstoqueAtual > 0";
+                    }
+                    else
+                    {
+                        command.CommandText = "SELECT * FROM Produtos";
+                    }
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);
@@ -209,33 +216,6 @@ namespace PetShop.Entities
             }
             return data;
         }
-
-        public static DataTable ListarProdutosEmEstoque()
-        {
-            DataTable data = new DataTable();
-            try
-            {
-                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
-                {
-                    Connection.Open();
-                    SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Produtos WHERE EstoqueAtual > 0";
-                    command.ExecuteNonQuery();
-                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
-                    dataAdapter.Fill(data);
-                }
-            }
-            catch (SqlCeException e)
-            {
-                MessageBox.Show($"Erro no banco de dados ao retornar lista de produtos: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show($"Ocorreu um erro na aplicação ao retornar a lista de produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return data;
-        }
-
 
         public static DataTable ListarMarcas()
         {

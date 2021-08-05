@@ -163,7 +163,7 @@ namespace PetShop.Entities
             }
         }
 
-        public static DataTable ListarVacinas()
+        public static DataTable ListarVacinas(bool apenasEmEstoque = false)
         {
             DataTable data = new DataTable();
             try
@@ -172,7 +172,15 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade, ValorMercado, ValorProduto FROM Vacinas";
+                    if (apenasEmEstoque)
+                    {
+                        command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade, ValorMercado, ValorProduto FROM Vacinas WHERE Quantidade > 0";
+                    }
+                    else
+                    {
+                        command.CommandText = "SELECT Id, Imunologia, ConteudoML, Doses, DataCadastro, Lote, Fabricante, DataValidade, Quantidade, ValorMercado, ValorProduto FROM Vacinas";
+
+                    }
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);
@@ -188,6 +196,7 @@ namespace PetShop.Entities
             }
             return data;
         }
+
 
         public static DataTable ListarImunologia()
         {

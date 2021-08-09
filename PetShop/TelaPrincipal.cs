@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
 
 
@@ -215,12 +216,19 @@ namespace PetShop
                 vacinacoes.ShowDialog();
             }
         }
-
+        [HandleProcessCorruptedStateExceptions]
         private void btnVenda_Click(object sender, EventArgs e)
         {
             using (LancarVenda venda = new LancarVenda())
             {
-                venda.ShowDialog();
+                try
+                {
+                    venda.ShowDialog();
+                }
+                catch (AccessViolationException except)
+                {
+                    MessageBox.Show($"Ocorreu um erro na tela de vendas: {except.Message}");
+                }
             }
         }
 
@@ -228,14 +236,7 @@ namespace PetShop
         {
             using (PesquisarServicos pesquisarServicos = new PesquisarServicos())
             {
-                try
-                {
-                    pesquisarServicos.ShowDialog();
-                }
-                catch
-                {
-                    return;
-                }
+                pesquisarServicos.ShowDialog();
             }
         }
     }

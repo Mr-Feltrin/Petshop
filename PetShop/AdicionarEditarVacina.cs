@@ -39,12 +39,11 @@ namespace PetShop
         {
             CamposObrigatorios = new Dictionary<object, string>()
             {
-                {CombBoxImunologia, "Selecione o tipo de Imunologia"},
-                {txtConteudoML, "Digite o conteúdo da vacina"},
-                {txtDoses, "Digite a quantidade de doses da vacina"},
-                {txtLote, "Digite o lote da vacina"},
-                {txtFabricante, "Digite o nome do fabricante"},
-                {txtQuantidadeEstoque, "Insira a quantidade atual no estoque"},
+                { CombBoxImunologia, "Selecione o tipo de Imunologia" },
+                { txtConteudoML, "Digite o conteúdo da vacina" },
+                { txtDoses, "Digite a quantidade de doses da vacina"} ,
+                { txtFabricante, "Digite o nome do fabricante" },
+                { txtQuantidadeEstoque, "Insira a quantidade atual no estoque" },
                 { txtValorCusto, "Insira o valor de custo da Vacina" },
                 { txtValorProduto, "Insira o valor de venda da Vacina" }
             };

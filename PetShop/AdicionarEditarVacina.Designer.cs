@@ -59,7 +59,6 @@ namespace PetShop
             this.txtLote = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.DateDataValidade = new System.Windows.Forms.DateTimePicker();
             this.labelDataValidade = new System.Windows.Forms.Label();
             this.labelFabricante = new System.Windows.Forms.Label();
@@ -249,7 +248,6 @@ namespace PetShop
             this.groupBox2.Controls.Add(this.txtLote);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label12);
-            this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.DateDataValidade);
             this.groupBox2.Controls.Add(this.labelDataValidade);
             this.groupBox2.Controls.Add(this.labelFabricante);
@@ -403,17 +401,6 @@ namespace PetShop
             this.label12.TabIndex = 0;
             this.label12.Text = "*";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Red;
-            this.label11.Location = new System.Drawing.Point(48, 22);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(19, 21);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "*";
-            // 
             // DateDataValidade
             // 
             this.DateDataValidade.CustomFormat = "dd/MM/yyyy";
@@ -532,7 +519,6 @@ namespace PetShop
         private System.Windows.Forms.Label labelDataValidade;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.DateTimePicker DateDataValidade;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;

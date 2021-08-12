@@ -66,8 +66,8 @@ namespace PetShop
                 txtFabricante.Text = _Vacina.Fabricante;
                 DateDataValidade.Value = _Vacina.DataValidade;
                 txtQuantidadeEstoque.Text = _Vacina.Quantidade.ToString();
-                txtValorCusto.Text = _Vacina.ValorMercado.ToString("C2", new CultureInfo("pt-BR"));
-                txtValorProduto.Text = _Vacina.ValorProduto.ToString("C2", new CultureInfo("pt-BR"));
+                txtValorCusto.Text = _Vacina.ValorMercado.ToString("C2", CultureInfo.CurrentCulture);
+                txtValorProduto.Text = _Vacina.ValorProduto.ToString("C2", CultureInfo.CurrentCulture);
             }
         }
 
@@ -154,7 +154,7 @@ namespace PetShop
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()), decimal.Parse(txtValorProduto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()));
+                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.Parse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), decimal.Parse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
                 _Vacina.AdicionarEditarVacina(Operacao);
             }
             else
@@ -167,8 +167,8 @@ namespace PetShop
                 _Vacina.Fabricante = txtFabricante.Text;
                 _Vacina.DataValidade = DateDataValidade.Value;
                 _Vacina.Quantidade = int.Parse(txtQuantidadeEstoque.Text);
-                _Vacina.ValorMercado = decimal.Parse(txtValorCusto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
-                _Vacina.ValorProduto = decimal.Parse(txtValorProduto.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
+                _Vacina.ValorMercado = decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal resultValorMercado) ? resultValorMercado : default;
+                _Vacina.ValorProduto = decimal.TryParse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal resultValorProduto) ? resultValorProduto : default;
                 _Vacina.AdicionarEditarVacina(Operacao);
             }
             if (Application.OpenForms.OfType<PesquisarVacinas>().Count() == 1)
@@ -220,7 +220,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text.Replace(",", ".")), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -231,19 +231,19 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
 
         private void txtValorProduto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+            (sender as TextBox).Text = decimal.TryParse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal result) ? result.ToString() : default;
         }
 
         private void txtValorCusto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+            (sender as TextBox).Text = decimal.TryParse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal result) ? result.ToString() : default;
         }
 
         private void txtValorCusto_TextChanged(object sender, EventArgs e)

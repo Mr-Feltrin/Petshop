@@ -298,6 +298,7 @@ namespace PetShop
             this.txtValorProduto.Name = "txtValorProduto";
             this.txtValorProduto.Size = new System.Drawing.Size(197, 22);
             this.txtValorProduto.TabIndex = 7;
+            this.txtValorProduto.Text = "0,00";
             this.txtValorProduto.TextChanged += new System.EventHandler(this.txtValorProduto_TextChanged);
             this.txtValorProduto.Enter += new System.EventHandler(this.txtValorProduto_Enter);
             this.txtValorProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorProduto_KeyPress);

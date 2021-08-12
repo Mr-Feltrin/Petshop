@@ -76,7 +76,7 @@ namespace PetShop
                 txtEstoqueAtual.Text = _Produto.EstoqueAtual.ToString();
                 dateDataValidade.Value = _Produto.DataValidade;
                 txtValorCusto.Text = _Produto.ValorCusto.ToString("C2", new CultureInfo("pt-BR"));
-                txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", new CultureInfo("pt-BR"));
+                txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", CultureInfo.CurrentCulture);
                 txtObservacoes.Text = _Produto.Observacoes;
             }
         }
@@ -159,27 +159,7 @@ namespace PetShop
 
         private void txtValorCusto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
-        }
-
-        private void EstoqueIntValidation(object control, ref int LastValor)
-        {
-            if (int.TryParse((control as TextBox).Text, out int value))
-            {
-                (control as TextBox).Text = value.ToString();
-                LastValor = value;
-                if ((control as TextBoxBorderColored).BorderColor == Color.Red)
-                {
-                    (control as TextBoxBorderColored).BorderColor = SystemColors.GrayText;
-                    toolTipEnabledControls.SetToolTip(control as TextBoxBorderColored, null);
-                }
-            }
-            else
-            {
-                (control as TextBoxBorderColored).BorderColor = Color.Red;
-                toolTipEnabledControls.SetToolTip(control as TextBoxBorderColored, "O formato anterior não é válido");
-                (control as TextBoxBorderColored).Text = LastValor.ToString();
-            }
+            (sender as TextBox).Text = decimal.Parse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat).ToString();
         }
 
         private void txtPrecoProduto_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -188,7 +168,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -199,7 +179,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -261,7 +241,7 @@ namespace PetShop
         {
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
-                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim(), out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim()), txtObservacoes.Text);
+                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), txtObservacoes.Text);
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
@@ -278,8 +258,8 @@ namespace PetShop
                 _Produto.EstoqueMinimo = int.TryParse(txtEstoqueMinimo.Text, out int estoquemin) ? estoquemin : default;
                 _Produto.EstoqueAtual = int.Parse(txtEstoqueAtual.Text);
                 _Produto.DataValidade = dateDataValidade.Value;
-                _Produto.ValorCusto = decimal.TryParse(txtValorCusto.Text.Replace("R$", "").Replace(",", ".").Trim(), out decimal valorcusto) ? valorcusto : default;
-                _Produto.ValorProduto = decimal.Parse(txtPrecoProduto.Text.Replace("R$", "").Replace(",", ".").Trim());
+                _Produto.ValorCusto = decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorcusto) ? valorcusto : default;
+                _Produto.ValorProduto = decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
                 _Produto.Observacoes = txtObservacoes.Text;
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }

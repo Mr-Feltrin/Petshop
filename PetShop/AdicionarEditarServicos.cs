@@ -43,7 +43,7 @@ namespace PetShop
             {
                 Text = "Editar Serviço";
                 txtNomeServico.Text = _Servico.NomeServico;
-                txtValor.Text = _Servico.Valor.ToString("C2", new CultureInfo("pt-BR"));
+                txtValor.Text = _Servico.Valor.ToString("C2", CultureInfo.CurrentCulture);
             }
         }
 
@@ -71,27 +71,27 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
 
         private void txtValor_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+            (sender as TextBox).Text = decimal.Parse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat).ToString();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Servico = new Servico(txtNomeServico.Text, decimal.Parse(txtValor.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim()));
+                _Servico = new Servico(txtNomeServico.Text, decimal.Parse(txtValor.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
                 _Servico.AdicionarEditarServico(Operacao);
             }
             else
             {
                 _Servico.NomeServico = txtNomeServico.Text;
-                _Servico.Valor = decimal.Parse(txtValor.Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim());
+                _Servico.Valor = decimal.Parse(txtValor.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
                 _Servico.AdicionarEditarServico(Operacao);
             }
 

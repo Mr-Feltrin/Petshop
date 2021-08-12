@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Threading;
 
 namespace PetShop
 {
@@ -11,6 +13,10 @@ namespace PetShop
         [STAThread]
         static void Main()
         {
+            CultureInfo Culture = (CultureInfo)CultureInfo.GetCultureInfo("pt-BR").Clone();
+            Culture.NumberFormat.NumberDecimalSeparator = ".";
+            Thread.CurrentThread.CurrentCulture = Culture;
+            Thread.CurrentThread.CurrentUICulture = Culture;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new TelaPrincipal());

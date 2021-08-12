@@ -24,6 +24,9 @@ namespace PetShop
         private DataTable TableServicos { get; set; }
         private DataTable TableVacinas { get; set; }
         private System.Timers.Timer TimerHorario;
+        private VScrollBar listaProdutosScrollBar;
+        private VScrollBar listaServicosScrollBar;
+        private VScrollBar listaVacinasScrollBar;
 
 
         public LancarVenda()
@@ -42,6 +45,12 @@ namespace PetShop
             TableProdutos = Produto.ListarProdutos(true);
             TableServicos = Servico.ListarServicos();
             TableVacinas = Vacina.ListarVacinas(true);
+            listaProdutosScrollBar = listaProdutos.Controls.OfType<VScrollBar>().First();
+            listaServicosScrollBar = listaServicos.Controls.OfType<VScrollBar>().First();
+            listaVacinasScrollBar = listaVacinas.Controls.OfType<VScrollBar>().First();
+            listaProdutosScrollBar.VisibleChanged += new EventHandler(DataGridViewScrollBar_VisibleChanged);
+            listaServicosScrollBar.VisibleChanged += new EventHandler(DataGridViewScrollBar_VisibleChanged);
+            listaVacinasScrollBar.VisibleChanged += new EventHandler(DataGridViewScrollBar_VisibleChanged);
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).DataSource = TableProdutos;
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).DisplayMember = "Nome";
             ((DataGridViewComboBoxColumn)listaProdutos.Columns["NomeProduto"]).ValueMember = "Id";
@@ -56,15 +65,15 @@ namespace PetShop
             (listaVacinas.Columns["VacinaRemover"] as DataGridViewButtonColumn).DefaultCellStyle.ForeColor = Color.FromKnownColor(KnownColor.Transparent);
             listaProdutos.Columns["ValorUnidade"].ValueType = typeof(double);
             listaProdutos.Columns["ValorUnidade"].DefaultCellStyle.Format = "C2";
-            listaProdutos.Columns["ValorUnidade"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaProdutos.Columns["ValorUnidade"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             listaProdutos.Columns["ValorTotal"].ValueType = typeof(double);
             listaProdutos.Columns["ValorTotal"].DefaultCellStyle.Format = "C2";
-            listaProdutos.Columns["ValorTotal"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaProdutos.Columns["ValorTotal"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             listaProdutos.Columns["EstoqueAtualProduto"].ValueType = typeof(int);
             listaServicos.Columns["PrecoServico"].DefaultCellStyle.Format = "C2";
-            listaServicos.Columns["PrecoServico"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaServicos.Columns["PrecoServico"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             listaVacinas.Columns["VacinaValor"].DefaultCellStyle.Format = "C2";
-            listaVacinas.Columns["VacinaValor"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
+            listaVacinas.Columns["VacinaValor"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             txtNomeCliente.GotFocus += TextBoxGotFocus;
             txtNumeroVenda.GotFocus += TextBoxGotFocus;
             txtDataVenda.GotFocus += TextBoxGotFocus;
@@ -89,6 +98,11 @@ namespace PetShop
             listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
             listaServicos.CellValueChanged += listaServicos_CellValueChanged;
             listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
+        }
+
+        private void DataGridViewScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            MaximumFormSize((sender as Control).Parent as DataGridView);
         }
 
         private void TimerHorario_Elapsed(object sender, ElapsedEventArgs e)
@@ -122,9 +136,21 @@ namespace PetShop
 
         private void ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            if ((sender as DataGridView).Visible)
+            MaximumFormSize(sender as DataGridView);
+        }
+
+        private void MaximumFormSize(DataGridView dataGridView)
+        {
+            if (dataGridView.Visible)
             {
-                MaximumSize = new Size((sender as DataGridView).Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 49, 100000);
+                if (dataGridView.Controls.OfType<VScrollBar>().Any(s => s.Visible))
+                {
+                    MaximumSize = new Size(dataGridView.Controls.OfType<VScrollBar>().Where(s => s.Visible).First().Width + dataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 49, 100000);
+                }
+                else
+                {
+                    MaximumSize = new Size(dataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 49, 100000);
+                }
             }
         }
 
@@ -134,7 +160,7 @@ namespace PetShop
             {
                 (sender as DataGridView).CurrentCell = null;
                 (sender as DataGridView).FirstDisplayedCell = null;
-                MaximumSize = new Size((sender as DataGridView).Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 49, 100000);
+                MaximumFormSize(sender as DataGridView);
             }
         }
 
@@ -234,7 +260,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -259,12 +285,12 @@ namespace PetShop
 
         private void txtValorPago_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+            (sender as TextBox).Text = decimal.Parse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat).ToString();
         }
 
         private void txtDesconto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = (sender as TextBox).Text.Replace("R$", "").Replace(".", "").Replace(",", ".").Trim();
+            (sender as TextBox).Text = decimal.Parse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat).ToString();
         }
 
         private void txtDesconto_Validating(object sender, CancelEventArgs e)
@@ -273,7 +299,7 @@ namespace PetShop
             {
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
-                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", new CultureInfo("pt-BR"));
+                    (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
         }
@@ -351,7 +377,7 @@ namespace PetShop
                     (sender as TextBox).Text = listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["EstoqueAtualProduto"].Value.ToString();
                     MessageBox.Show($"Quantidade máxima em estoque ultrapassada ({listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["EstoqueAtualProduto"].Value})");
                 }
-                listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["ValorTotal"].Value = int.Parse((sender as TextBox).Text) * decimal.Parse(listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, new CultureInfo("pt-BR"));
+                listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["ValorTotal"].Value = int.Parse((sender as TextBox).Text) * decimal.Parse(listaProdutos.Rows[listaProdutos.CurrentCell.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
             }
             else
             {
@@ -708,7 +734,15 @@ namespace PetShop
                         listaVacinas.Rows[e.RowIndex].Cells["VacinaQuantidade"].ReadOnly = true;
                         ChecarCompra();
                     }
-                }          
+                }
+                else if (e.ColumnIndex == listaVacinas.Columns["VacinaQuantidade"].Index)
+                {
+                    if (listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || string.IsNullOrWhiteSpace(listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                    {
+                        listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+                    }
+                    ChecarQuantidades();
+                }
             }
         }
 
@@ -759,7 +793,7 @@ namespace PetShop
                         listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value = (decimal)Row["ValorProduto"];
                         listaProdutos.Rows[e.RowIndex].Cells["EstoqueAtualProduto"].Value = Row["EstoqueAtual"];
                         listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value = 1;
-                        listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, new CultureInfo("pt-BR"));
+                        listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
                         listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].ReadOnly = false;
                         listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
                         ChecarCompra();
@@ -808,6 +842,7 @@ namespace PetShop
                         listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = 0;
                     }
                     ChecarQuantidades();
+                    AtualizarTotalCompra();
                 }
             }
         }
@@ -970,6 +1005,14 @@ namespace PetShop
         private void listaVacinas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             listaVacinas.Rows[e.RowIndex].Cells["VacinaQuantidade"].ReadOnly = true;
+        }
+
+        private void AtualizarTotalCompra()
+        {
+            /// testar
+            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["ValorUnidade"].Value != null).Select(v => decimal.Parse(v.Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum();
+            MessageBox.Show(totalVenda.ToString());
+
         }
     }
 }

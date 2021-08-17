@@ -99,4 +99,3 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CoreC
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.pdb
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache

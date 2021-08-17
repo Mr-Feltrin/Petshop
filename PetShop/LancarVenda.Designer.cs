@@ -58,8 +58,6 @@ namespace PetShop
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroVenda = new System.Windows.Forms.TextBox();
-            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
-            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioBtnVacinas = new System.Windows.Forms.RadioButton();
             this.radioBtnServicos = new System.Windows.Forms.RadioButton();
@@ -99,6 +97,8 @@ namespace PetShop
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaProdutos)).BeginInit();
@@ -240,43 +240,6 @@ namespace PetShop
             this.txtNumeroVenda.ReadOnly = true;
             this.txtNumeroVenda.Size = new System.Drawing.Size(157, 29);
             this.txtNumeroVenda.TabIndex = 5;
-            // 
-            // combBoxFormaPagamento
-            // 
-            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
-            this.combBoxFormaPagamento.FormattingEnabled = true;
-            this.combBoxFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "Cartão",
-            "Boleto"});
-            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
-            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
-            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
-            this.combBoxFormaPagamento.TabIndex = 8;
-            this.combBoxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedValueChanged);
-            // 
-            // combBoxTipoCartao
-            // 
-            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipoCartao.Enabled = false;
-            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
-            this.combBoxTipoCartao.FormattingEnabled = true;
-            this.combBoxTipoCartao.Items.AddRange(new object[] {
-            "Crédito",
-            "Débito"});
-            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
-            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
-            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
-            this.combBoxTipoCartao.TabIndex = 9;
-            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
             // 
             // groupBox2
             // 
@@ -868,6 +831,43 @@ namespace PetShop
             this.btnCancelar.Text = "    Cancelar";
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // combBoxFormaPagamento
+            // 
+            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
+            this.combBoxFormaPagamento.FormattingEnabled = true;
+            this.combBoxFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "Cartão",
+            "Boleto"});
+            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
+            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
+            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
+            this.combBoxFormaPagamento.TabIndex = 8;
+            this.combBoxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedValueChanged);
+            // 
+            // combBoxTipoCartao
+            // 
+            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxTipoCartao.Enabled = false;
+            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
+            this.combBoxTipoCartao.FormattingEnabled = true;
+            this.combBoxTipoCartao.Items.AddRange(new object[] {
+            "Crédito",
+            "Débito"});
+            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
+            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
+            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
+            this.combBoxTipoCartao.TabIndex = 9;
+            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
             // 
             // LancarVenda
             // 

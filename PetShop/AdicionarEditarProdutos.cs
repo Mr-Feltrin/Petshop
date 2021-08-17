@@ -159,7 +159,7 @@ namespace PetShop
 
         private void txtValorCusto_Enter(object sender, EventArgs e)
         {
-            (sender as TextBox).Text = decimal.Parse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat).ToString();
+            (sender as TextBox).Text = decimal.TryParse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal result) ? result.ToString() : default;
         }
 
         private void txtPrecoProduto_Validating(object sender, System.ComponentModel.CancelEventArgs e)

@@ -431,7 +431,6 @@ namespace PetShop
                 try
                 {
                     listaProdutos.CommitEdit(DataGridViewDataErrorContexts.Commit);
-                    listaProdutos.EndEdit();
                 }
                 catch
                 {
@@ -701,27 +700,35 @@ namespace PetShop
                 {
                     if (listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        int rowIndex = e.RowIndex;
-                        DataRow Row = TableVacinas.Rows.Cast<DataRow>().Where(c => c.Field<int>("Id") == (int)listaVacinas.Rows[e.RowIndex].Cells["VacinaImunologia"].Value).First();
-                        listaVacinas.CellValueChanged -= listaVacinas_CellValueChanged;
-                        listaVacinas.Rows[rowIndex].Cells["VacinaConteudoML"].Value = (int)Row["ConteudoML"];
-                        listaVacinas.Rows[rowIndex].Cells["VacinaDoses"].Value = (int)Row["Doses"];
-                        listaVacinas.Rows[rowIndex].Cells["VacinaFabricante"].Value = (string)Row["Fabricante"];
-                        listaVacinas.Rows[rowIndex].Cells["VacinaValor"].Value = (decimal)Row["ValorProduto"];
-                        listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].Value = 1;
-                        listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].ReadOnly = false;
-                        listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
-                        ChecarCompra();
-                        if (!listaVacinas.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["VacinaImunologia"].Value == null))
+                        if (listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Count(r => (int)r.Cells["VacinaImunologia"].Value == (int)listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 1)
                         {
-                            listaVacinas.Rows.Add(1);
+                            MessageBox.Show("A vacina selecionada ja foi adicionado a lista.", "Vacinas similares inseridas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = null;
                         }
-                        listaVacinas.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-                        listaVacinas.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
-                        listaVacinas.CurrentCell = null;
-                        Thread.Sleep(260);
-                        listaVacinas.CurrentCell = listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"];
-                        listaVacinas.EditMode = DataGridViewEditMode.EditOnEnter;
+                        else
+                        {
+                            int rowIndex = e.RowIndex;
+                            DataRow Row = TableVacinas.Rows.Cast<DataRow>().Where(c => c.Field<int>("Id") == (int)listaVacinas.Rows[e.RowIndex].Cells["VacinaImunologia"].Value).First();
+                            listaVacinas.CellValueChanged -= listaVacinas_CellValueChanged;
+                            listaVacinas.Rows[rowIndex].Cells["VacinaConteudoML"].Value = (int)Row["ConteudoML"];
+                            listaVacinas.Rows[rowIndex].Cells["VacinaDoses"].Value = (int)Row["Doses"];
+                            listaVacinas.Rows[rowIndex].Cells["VacinaFabricante"].Value = (string)Row["Fabricante"];
+                            listaVacinas.Rows[rowIndex].Cells["VacinaValor"].Value = (decimal)Row["ValorProduto"];
+                            listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].Value = 1;
+                            listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].ReadOnly = false;
+                            listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
+                            ChecarCompra();
+                            if (!listaVacinas.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["VacinaImunologia"].Value == null))
+                            {
+                                listaVacinas.Rows.Add(1);
+                            }
+                            listaVacinas.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                            listaVacinas.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
+                            listaVacinas.CurrentCell = null;
+                            Thread.Sleep(260);
+                            listaVacinas.CurrentCell = listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"];
+                            listaVacinas.EditMode = DataGridViewEditMode.EditOnEnter;
+                        }
                     }
                     else
                     {
@@ -784,29 +791,37 @@ namespace PetShop
                 {
                     if (listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        int rowIndex = e.RowIndex;
-                        DataRow Row = TableProdutos.Rows.Cast<DataRow>().Where(c => c.Field<int>("Id") == (int)listaProdutos.Rows[e.RowIndex].Cells[listaProdutos.Columns["NomeProduto"].Index].Value).First();
-                        listaProdutos.CellValueChanged -= listaProdutos_CellValueChanged;
-                        listaProdutos.Rows[e.RowIndex].Cells["CodigoBarras"].Value = !string.IsNullOrEmpty(Row["CodigoBarras"].ToString()) ? Row["CodigoBarras"].ToString() : "N.D";
-                        listaProdutos.Rows[e.RowIndex].Cells["Marca"].Value = !string.IsNullOrEmpty(Row["Marca"].ToString()) ? Row["Marca"].ToString() : "N.D";
-                        listaProdutos.Rows[e.RowIndex].Cells["Volume"].Value = $"{Row["Quantidade"]} {Row["TipoUnidade"]}";
-                        listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value = (decimal)Row["ValorProduto"];
-                        listaProdutos.Rows[e.RowIndex].Cells["EstoqueAtualProduto"].Value = Row["EstoqueAtual"];
-                        listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value = 1;
-                        listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
-                        listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].ReadOnly = false;
-                        listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
-                        ChecarCompra();
-                        if (!listaProdutos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeProduto"].Value == null))
+                        if (listaProdutos.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["NomeProduto"].Value != null).Count(r => (int)r.Cells["NomeProduto"].Value == (int)listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 1)
                         {
-                            listaProdutos.Rows.Add(1);
+                            MessageBox.Show("O produto selecionado ja foi adicionado a lista.", "Produtos similares inseridos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            listaProdutos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = null;
                         }
-                        listaProdutos.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-                        listaProdutos.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
-                        listaProdutos.CurrentCell = null;
-                        Thread.Sleep(260);
-                        listaProdutos.CurrentCell = listaProdutos.Rows[rowIndex].Cells["Quantidade"];
-                        listaProdutos.EditMode = DataGridViewEditMode.EditOnEnter;
+                        else
+                        {
+                            int rowIndex = e.RowIndex;
+                            DataRow Row = TableProdutos.Rows.Cast<DataRow>().Where(c => c.Field<int>("Id") == (int)listaProdutos.Rows[e.RowIndex].Cells[listaProdutos.Columns["NomeProduto"].Index].Value).First();
+                            listaProdutos.CellValueChanged -= listaProdutos_CellValueChanged;
+                            listaProdutos.Rows[e.RowIndex].Cells["CodigoBarras"].Value = !string.IsNullOrEmpty(Row["CodigoBarras"].ToString()) ? Row["CodigoBarras"].ToString() : "N.D";
+                            listaProdutos.Rows[e.RowIndex].Cells["Marca"].Value = !string.IsNullOrEmpty(Row["Marca"].ToString()) ? Row["Marca"].ToString() : "N.D";
+                            listaProdutos.Rows[e.RowIndex].Cells["Volume"].Value = $"{Row["Quantidade"]} {Row["TipoUnidade"]}";
+                            listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value = (decimal)Row["ValorProduto"];
+                            listaProdutos.Rows[e.RowIndex].Cells["EstoqueAtualProduto"].Value = Row["EstoqueAtual"];
+                            listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value = 1;
+                            listaProdutos.Rows[e.RowIndex].Cells["ValorTotal"].Value = int.Parse(listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].Value.ToString()) * decimal.Parse(listaProdutos.Rows[e.RowIndex].Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
+                            listaProdutos.Rows[e.RowIndex].Cells["Quantidade"].ReadOnly = false;
+                            listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
+                            ChecarCompra();
+                            if (!listaProdutos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeProduto"].Value == null))
+                            {
+                                listaProdutos.Rows.Add(1);
+                            }
+                            listaProdutos.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                            listaProdutos.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
+                            listaProdutos.CurrentCell = null;
+                            Thread.Sleep(260);
+                            listaProdutos.CurrentCell = listaProdutos.Rows[rowIndex].Cells["Quantidade"];
+                            listaProdutos.EditMode = DataGridViewEditMode.EditOnEnter;
+                        }
                     }
                     else
                     {
@@ -1010,9 +1025,8 @@ namespace PetShop
         private void AtualizarTotalCompra()
         {
             /// testar
-            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["ValorUnidade"].Value != null).Select(v => decimal.Parse(v.Cells["ValorUnidade"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum();
-            MessageBox.Show(totalVenda.ToString());
-
+            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null).Select(v => decimal.Parse(v.Cells["ValorTotal"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null).Select(v => decimal.Parse(v.Cells["PrecoServico"].Value.ToString())).Sum();
+            MessageBox.Show(totalVenda.ToString("C2"));
         }
     }
 }

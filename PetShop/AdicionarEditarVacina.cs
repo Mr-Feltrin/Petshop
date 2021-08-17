@@ -44,7 +44,6 @@ namespace PetShop
                 { txtDoses, "Digite a quantidade de doses da vacina"} ,
                 { txtFabricante, "Digite o nome do fabricante" },
                 { txtQuantidadeEstoque, "Insira a quantidade atual no estoque" },
-                { txtValorCusto, "Insira o valor de custo da Vacina" },
                 { txtValorProduto, "Insira o valor de venda da Vacina" }
             };
             CombBoxImunologia.DataSource = Vacina.ListarImunologia();
@@ -154,7 +153,7 @@ namespace PetShop
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.Parse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), decimal.Parse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
+                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCustoResult) ? valorCustoResult : default, decimal.Parse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
                 _Vacina.AdicionarEditarVacina(Operacao);
             }
             else

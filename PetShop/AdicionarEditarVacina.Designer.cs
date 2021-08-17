@@ -47,7 +47,6 @@ namespace PetShop
             this.labelLote = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtValorProduto = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -236,7 +235,6 @@ namespace PetShop
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtValorProduto);
             this.groupBox2.Controls.Add(this.label1);
@@ -269,17 +267,6 @@ namespace PetShop
             this.label9.Size = new System.Drawing.Size(19, 21);
             this.label9.TabIndex = 10;
             this.label9.Text = "*";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(117, 130);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(19, 21);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "*";
             // 
             // label3
             // 
@@ -532,7 +519,6 @@ namespace PetShop
         private System.Windows.Forms.TextBox txtQuantidadeEstoque;
         private System.Windows.Forms.ToolTip toolTip;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtValorProduto;
         private System.Windows.Forms.Label label1;

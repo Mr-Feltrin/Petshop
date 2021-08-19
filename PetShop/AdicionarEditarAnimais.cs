@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -36,8 +37,9 @@ namespace PetShop
                 animal = new Animal(IdAnimal);
                 cliente = new Cliente(animal.ClienteId);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorLogger.CreateErrorLog(ex);
                 Load += (s, e) => Close();
                 return;
             }

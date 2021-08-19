@@ -1,5 +1,6 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -228,6 +229,7 @@ namespace PetShop
                 catch (AccessViolationException except)
                 {
                     MessageBox.Show($"Ocorreu um erro na tela de vendas: {except.Message}");
+                    ErrorLogger.CreateErrorLog(except);
                 }
             }
         }

@@ -4,6 +4,7 @@ using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -29,8 +30,9 @@ namespace PetShop
             {
                 _Cliente = new Cliente(idCliente);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorLogger.CreateErrorLog(ex);
                 Load += (s, e) => Close();
                 return;
             }

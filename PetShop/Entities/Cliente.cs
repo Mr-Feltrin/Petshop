@@ -68,9 +68,15 @@ namespace PetShop.Entities
                     dataadp.Fill(dta);
                 }
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return dta;
         }
@@ -114,9 +120,10 @@ namespace PetShop.Entities
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show("Erro ao salvar as informações do Cliente: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao salvar as informações do Cliente: " + e.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 
@@ -134,9 +141,10 @@ namespace PetShop.Entities
                     MessageBox.Show("Cliente removido", "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show("Erro ao remover Cliente: " + ex.Message, "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao remover Cliente: " + e.Message, "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 

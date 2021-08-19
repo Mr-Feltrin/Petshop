@@ -133,9 +133,15 @@ namespace PetShop.Entities
                     }
                 }                   
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show("Erro ao salvar as informações do Animal: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao salvar as informações do Animal: " + e.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao salvar as informações do Animal: " + e.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 
@@ -157,6 +163,12 @@ namespace PetShop.Entities
             catch (SqlCeException ex)
             {
                 MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(ex);
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return dta;
         }
@@ -177,13 +189,15 @@ namespace PetShop.Entities
                     dataadp.Fill(dta);
                 }                  
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Falha na listagem de animais: {e.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return dta;
         }
@@ -203,13 +217,15 @@ namespace PetShop.Entities
                     dataAdapter.Fill(table);
                 }                 
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados ao exibir os dados na lista: {ex.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao exibir os dados na lista: {e.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Erro na aplicação ao exibir dados na lista: {e.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return table;
         }
@@ -229,13 +245,15 @@ namespace PetShop.Entities
                     dataAdapter.Fill(table);
                 }                  
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados ao exibir os dados na lista: {ex.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao exibir os dados na lista: {e.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Erro na aplicação ao exibir os dados na lista: {e.Message}", "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return table;
         }
@@ -319,6 +337,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show("Erro ao remover Animal: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao remover Animal: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             finally
             {

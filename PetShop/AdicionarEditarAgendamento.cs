@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -43,8 +44,9 @@ namespace PetShop
                 _Animal = _Agenda.AnimalId;
                 _Servico = _Agenda.ServicoId;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorLogger.CreateErrorLog(ex);
                 Load += (s, e) => Close();
                 return;
             }

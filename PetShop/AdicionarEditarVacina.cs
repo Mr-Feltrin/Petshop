@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -28,8 +29,9 @@ namespace PetShop
             {
                 _Vacina = new Vacina(idVacina);
             }
-            catch
+            catch (Exception ex)
             {
+                ErrorLogger.CreateErrorLog(ex);
                 Load += (s, e) => Close();
                 return;
             }

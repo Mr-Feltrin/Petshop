@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PetShop.Entities.Exceptions
 {
-    class SqlCeResultException : Exception
+    public class SqlCeResultException : Exception
     {
         public override string Message
         {

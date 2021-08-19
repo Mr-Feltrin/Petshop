@@ -1,8 +1,4 @@
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\Data\PetShopDb.sdf
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\SqlServerTypes\x64\msvcr120.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\SqlServerTypes\x64\SqlServerSpatial140.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\SqlServerTypes\x86\msvcr120.dll
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\SqlServerTypes\x86\SqlServerSpatial140.dll
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.exe.config
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.pdb
@@ -99,3 +95,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CoreC
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.pdb
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache

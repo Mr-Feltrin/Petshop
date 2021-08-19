@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -27,8 +28,9 @@ namespace PetShop
             {
                 _Fornecedor = new Fornecedor(idFornecedor);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ErrorLogger.CreateErrorLog(ex);
                 Load += (s, e) => Close();
                 return;
             }

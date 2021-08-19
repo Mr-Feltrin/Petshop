@@ -54,6 +54,7 @@ namespace PetShop.Entities
                         else
                         {
                             throw new SqlCeResultException();
+                            
                         }
                     }
                     Command.CommandText = "SELECT Animal.ClienteId FROM Animal WHERE Animal.Id = @Id";
@@ -77,7 +78,6 @@ namespace PetShop.Entities
                 {
                     MessageBox.Show($"Falha no banco de dados ao buscar Agendamento: {e.Message}");
                     throw e;
-
                 }
                 catch (SqlCeResultException e)
                 {
@@ -120,6 +120,7 @@ namespace PetShop.Entities
                 catch (SqlCeException e)
                 {
                     MessageBox.Show($"Erro ao inserir no banco de dados: {e.Message}");
+                    ErrorLogger.CreateErrorLog(e);
                 }
             }
         }
@@ -143,10 +144,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Falha ao acessar o banco de dados: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Falha na aplicação: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 
@@ -173,6 +176,7 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro ao acessar o banco de dados: {e.Message},", "Erro ao exibir agendamentos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return data;
         }
@@ -202,10 +206,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Falha ao listar agendamentos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Erro na aplicação: {e.Message}", "Ocorreu um erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return data;
         }

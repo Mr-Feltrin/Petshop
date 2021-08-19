@@ -64,9 +64,15 @@ namespace PetShop.Entities
                     dataadp.Fill(dta);
                 }
             }
-            catch (SqlCeException ex)
+            catch (SqlCeException e)
             {
-                MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return dta;
         }
@@ -165,9 +171,10 @@ namespace PetShop.Entities
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show("Erro ao salvar as informações do fornecedor: " + ex.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao salvar as informações do fornecedor: " + e.Message, "Falha no cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 
@@ -190,11 +197,11 @@ namespace PetShop.Entities
                         MessageBox.Show("Nenhum dado foi modificado, verifique o banco de dados", "Não houve alterações", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
-
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                MessageBox.Show("Erro ao remover fornecedor: " + ex.Message, "Remover fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao remover fornecedor: " + e.Message, "Remover fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
     }

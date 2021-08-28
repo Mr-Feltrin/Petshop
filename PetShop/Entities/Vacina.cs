@@ -7,7 +7,7 @@ using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
-    class Vacina
+    public class Vacina
     {
         private static SqlCeConnection Connection;
         public int Id { get; set; }

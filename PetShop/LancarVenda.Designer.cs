@@ -29,11 +29,7 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -46,6 +42,11 @@ namespace PetShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LancarVenda));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
@@ -58,19 +59,13 @@ namespace PetShop
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumeroVenda = new System.Windows.Forms.TextBox();
+            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioBtnVacinas = new System.Windows.Forms.RadioButton();
             this.radioBtnServicos = new System.Windows.Forms.RadioButton();
             this.labelLista = new System.Windows.Forms.Label();
             this.radioBtnProdutos = new System.Windows.Forms.RadioButton();
-            this.listaVacinas = new System.Windows.Forms.DataGridView();
-            this.VacinaImunologia = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.VacinaConteudoML = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VacinaDoses = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VacinaFabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VacinaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VacinaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VacinaRemover = new System.Windows.Forms.DataGridViewButtonColumn();
             this.listaProdutos = new System.Windows.Forms.DataGridView();
             this.CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeProduto = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -84,7 +79,17 @@ namespace PetShop
             this.listaServicos = new System.Windows.Forms.DataGridView();
             this.NomeServico = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.PrecoServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemoverServico = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.listaVacinas = new System.Windows.Forms.DataGridView();
+            this.VacinaImunologia = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.VacinaConteudoML = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VacinaDoses = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VacinaFabricante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VacinaValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VacinaQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VacinaRemover = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.VacinaEstoqueDisponivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewButtonColumn1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -97,13 +102,12 @@ namespace PetShop
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.combBoxFormaPagamento = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
-            this.combBoxTipoCartao = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaServicos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -241,6 +245,44 @@ namespace PetShop
             this.txtNumeroVenda.Size = new System.Drawing.Size(157, 29);
             this.txtNumeroVenda.TabIndex = 5;
             // 
+            // combBoxFormaPagamento
+            // 
+            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
+            this.combBoxFormaPagamento.FormattingEnabled = true;
+            this.combBoxFormaPagamento.Items.AddRange(new object[] {
+            "Dinheiro",
+            "Cartão",
+            "Boleto"});
+            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
+            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
+            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
+            this.combBoxFormaPagamento.TabIndex = 8;
+            this.combBoxFormaPagamento.SelectedIndexChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedIndexChanged);
+            // 
+            // combBoxTipoCartao
+            // 
+            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxTipoCartao.Enabled = false;
+            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
+            this.combBoxTipoCartao.FormattingEnabled = true;
+            this.combBoxTipoCartao.Items.AddRange(new object[] {
+            "Crédito",
+            "Débito"});
+            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
+            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
+            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
+            this.combBoxTipoCartao.TabIndex = 9;
+            this.combBoxTipoCartao.SelectedIndexChanged += new System.EventHandler(this.combBoxTipoCartao_SelectedIndexChanged);
+            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -307,134 +349,6 @@ namespace PetShop
             this.radioBtnProdutos.Text = "Produtos";
             this.radioBtnProdutos.UseVisualStyleBackColor = true;
             this.radioBtnProdutos.CheckedChanged += new System.EventHandler(this.RadioButtonCheckChanged);
-            // 
-            // listaVacinas
-            // 
-            this.listaVacinas.AllowUserToAddRows = false;
-            this.listaVacinas.AllowUserToDeleteRows = false;
-            this.listaVacinas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.listaVacinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
-            this.listaVacinas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listaVacinas.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
-            this.listaVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.listaVacinas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.VacinaImunologia,
-            this.VacinaConteudoML,
-            this.VacinaDoses,
-            this.VacinaFabricante,
-            this.VacinaValor,
-            this.VacinaQuantidade,
-            this.VacinaRemover});
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.listaVacinas.DefaultCellStyle = dataGridViewCellStyle15;
-            this.listaVacinas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.listaVacinas.Location = new System.Drawing.Point(3, 43);
-            this.listaVacinas.MultiSelect = false;
-            this.listaVacinas.Name = "listaVacinas";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.listaVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.listaVacinas.RowHeadersVisible = false;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle17;
-            this.listaVacinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.listaVacinas.ShowCellErrors = false;
-            this.listaVacinas.ShowCellToolTips = false;
-            this.listaVacinas.ShowEditingIcon = false;
-            this.listaVacinas.ShowRowErrors = false;
-            this.listaVacinas.Size = new System.Drawing.Size(939, 235);
-            this.listaVacinas.TabIndex = 6;
-            this.listaVacinas.Visible = false;
-            this.listaVacinas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaVacinas_CellClick);
-            this.listaVacinas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.CellPaintingButton);
-            this.listaVacinas.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.ColumnWidthChanged);
-            this.listaVacinas.CurrentCellDirtyStateChanged += new System.EventHandler(this.listaVacinas_CurrentCellDirtyStateChanged);
-            this.listaVacinas.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.listaVacinas_EditingControlShowing);
-            this.listaVacinas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.listaVacinas_RowsAdded);
-            this.listaVacinas.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.Listas_RowsRemoved);
-            this.listaVacinas.VisibleChanged += new System.EventHandler(this.GridVisibleChange);
-            this.listaVacinas.Enter += new System.EventHandler(this.DataGridEnter);
-            this.listaVacinas.Leave += new System.EventHandler(this.DataGridLeave);
-            // 
-            // VacinaImunologia
-            // 
-            this.VacinaImunologia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VacinaImunologia.HeaderText = "Imunologia";
-            this.VacinaImunologia.MinimumWidth = 257;
-            this.VacinaImunologia.Name = "VacinaImunologia";
-            this.VacinaImunologia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.VacinaImunologia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.VacinaImunologia.Width = 337;
-            // 
-            // VacinaConteudoML
-            // 
-            this.VacinaConteudoML.HeaderText = "Conteúdo (ML)";
-            this.VacinaConteudoML.MinimumWidth = 120;
-            this.VacinaConteudoML.Name = "VacinaConteudoML";
-            this.VacinaConteudoML.ReadOnly = true;
-            this.VacinaConteudoML.Width = 120;
-            // 
-            // VacinaDoses
-            // 
-            this.VacinaDoses.HeaderText = "Doses";
-            this.VacinaDoses.MinimumWidth = 110;
-            this.VacinaDoses.Name = "VacinaDoses";
-            this.VacinaDoses.ReadOnly = true;
-            this.VacinaDoses.Width = 110;
-            // 
-            // VacinaFabricante
-            // 
-            this.VacinaFabricante.HeaderText = "Fabricante";
-            this.VacinaFabricante.MinimumWidth = 97;
-            this.VacinaFabricante.Name = "VacinaFabricante";
-            this.VacinaFabricante.ReadOnly = true;
-            this.VacinaFabricante.Width = 97;
-            // 
-            // VacinaValor
-            // 
-            this.VacinaValor.HeaderText = "Preço";
-            this.VacinaValor.MinimumWidth = 99;
-            this.VacinaValor.Name = "VacinaValor";
-            this.VacinaValor.ReadOnly = true;
-            this.VacinaValor.Width = 99;
-            // 
-            // VacinaQuantidade
-            // 
-            this.VacinaQuantidade.HeaderText = "Quantidade";
-            this.VacinaQuantidade.MinimumWidth = 103;
-            this.VacinaQuantidade.Name = "VacinaQuantidade";
-            this.VacinaQuantidade.ReadOnly = true;
-            this.VacinaQuantidade.Width = 103;
-            // 
-            // VacinaRemover
-            // 
-            this.VacinaRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.VacinaRemover.HeaderText = "Remover";
-            this.VacinaRemover.MinimumWidth = 70;
-            this.VacinaRemover.Name = "VacinaRemover";
-            this.VacinaRemover.Width = 70;
             // 
             // listaProdutos
             // 
@@ -606,6 +520,7 @@ namespace PetShop
             this.listaServicos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.NomeServico,
             this.PrecoServico,
+            this.QuantidadeServico,
             this.RemoverServico});
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
@@ -643,6 +558,7 @@ namespace PetShop
             this.listaServicos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.ColumnWidthChanged);
             this.listaServicos.CurrentCellDirtyStateChanged += new System.EventHandler(this.listaServicos_CurrentCellDirtyStateChanged);
             this.listaServicos.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.listaServicos_EditingControlShowing);
+            this.listaServicos.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.listaServicos_RowsAdded);
             this.listaServicos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.Listas_RowsRemoved);
             this.listaServicos.VisibleChanged += new System.EventHandler(this.GridVisibleChange);
             this.listaServicos.Enter += new System.EventHandler(this.DataGridEnter);
@@ -653,18 +569,26 @@ namespace PetShop
             this.NomeServico.FillWeight = 72F;
             this.NomeServico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NomeServico.HeaderText = "Nome do Serviço";
-            this.NomeServico.MinimumWidth = 647;
+            this.NomeServico.MinimumWidth = 100;
             this.NomeServico.Name = "NomeServico";
             this.NomeServico.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.NomeServico.Width = 647;
+            this.NomeServico.Width = 594;
             // 
             // PrecoServico
             // 
             this.PrecoServico.HeaderText = "Preço";
-            this.PrecoServico.MinimumWidth = 200;
+            this.PrecoServico.MinimumWidth = 150;
             this.PrecoServico.Name = "PrecoServico";
             this.PrecoServico.ReadOnly = true;
-            this.PrecoServico.Width = 200;
+            this.PrecoServico.Width = 150;
+            // 
+            // QuantidadeServico
+            // 
+            this.QuantidadeServico.HeaderText = "Quantidade";
+            this.QuantidadeServico.MinimumWidth = 103;
+            this.QuantidadeServico.Name = "QuantidadeServico";
+            this.QuantidadeServico.ReadOnly = true;
+            this.QuantidadeServico.Width = 103;
             // 
             // RemoverServico
             // 
@@ -676,6 +600,142 @@ namespace PetShop
             this.RemoverServico.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.RemoverServico.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.RemoverServico.Width = 89;
+            // 
+            // listaVacinas
+            // 
+            this.listaVacinas.AllowUserToAddRows = false;
+            this.listaVacinas.AllowUserToDeleteRows = false;
+            this.listaVacinas.AllowUserToResizeRows = false;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.listaVacinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.listaVacinas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.listaVacinas.BackgroundColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            this.listaVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.listaVacinas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.VacinaImunologia,
+            this.VacinaConteudoML,
+            this.VacinaDoses,
+            this.VacinaFabricante,
+            this.VacinaValor,
+            this.VacinaQuantidade,
+            this.VacinaRemover,
+            this.VacinaEstoqueDisponivel});
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.listaVacinas.DefaultCellStyle = dataGridViewCellStyle15;
+            this.listaVacinas.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.listaVacinas.Location = new System.Drawing.Point(3, 43);
+            this.listaVacinas.MultiSelect = false;
+            this.listaVacinas.Name = "listaVacinas";
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listaVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.listaVacinas.RowHeadersVisible = false;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listaVacinas.RowsDefaultCellStyle = dataGridViewCellStyle17;
+            this.listaVacinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.listaVacinas.ShowCellErrors = false;
+            this.listaVacinas.ShowCellToolTips = false;
+            this.listaVacinas.ShowEditingIcon = false;
+            this.listaVacinas.ShowRowErrors = false;
+            this.listaVacinas.Size = new System.Drawing.Size(939, 235);
+            this.listaVacinas.TabIndex = 6;
+            this.listaVacinas.Visible = false;
+            this.listaVacinas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaVacinas_CellClick);
+            this.listaVacinas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.CellPaintingButton);
+            this.listaVacinas.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.ColumnWidthChanged);
+            this.listaVacinas.CurrentCellDirtyStateChanged += new System.EventHandler(this.listaVacinas_CurrentCellDirtyStateChanged);
+            this.listaVacinas.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.listaVacinas_EditingControlShowing);
+            this.listaVacinas.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.listaVacinas_RowsAdded);
+            this.listaVacinas.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.Listas_RowsRemoved);
+            this.listaVacinas.VisibleChanged += new System.EventHandler(this.GridVisibleChange);
+            this.listaVacinas.Enter += new System.EventHandler(this.DataGridEnter);
+            this.listaVacinas.Leave += new System.EventHandler(this.DataGridLeave);
+            // 
+            // VacinaImunologia
+            // 
+            this.VacinaImunologia.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VacinaImunologia.HeaderText = "Imunologia";
+            this.VacinaImunologia.MinimumWidth = 257;
+            this.VacinaImunologia.Name = "VacinaImunologia";
+            this.VacinaImunologia.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.VacinaImunologia.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.VacinaImunologia.Width = 337;
+            // 
+            // VacinaConteudoML
+            // 
+            this.VacinaConteudoML.HeaderText = "Conteúdo (ML)";
+            this.VacinaConteudoML.MinimumWidth = 120;
+            this.VacinaConteudoML.Name = "VacinaConteudoML";
+            this.VacinaConteudoML.ReadOnly = true;
+            this.VacinaConteudoML.Width = 120;
+            // 
+            // VacinaDoses
+            // 
+            this.VacinaDoses.HeaderText = "Doses";
+            this.VacinaDoses.MinimumWidth = 110;
+            this.VacinaDoses.Name = "VacinaDoses";
+            this.VacinaDoses.ReadOnly = true;
+            this.VacinaDoses.Width = 110;
+            // 
+            // VacinaFabricante
+            // 
+            this.VacinaFabricante.HeaderText = "Fabricante";
+            this.VacinaFabricante.MinimumWidth = 97;
+            this.VacinaFabricante.Name = "VacinaFabricante";
+            this.VacinaFabricante.ReadOnly = true;
+            this.VacinaFabricante.Width = 97;
+            // 
+            // VacinaValor
+            // 
+            this.VacinaValor.HeaderText = "Preço";
+            this.VacinaValor.MinimumWidth = 99;
+            this.VacinaValor.Name = "VacinaValor";
+            this.VacinaValor.ReadOnly = true;
+            this.VacinaValor.Width = 99;
+            // 
+            // VacinaQuantidade
+            // 
+            this.VacinaQuantidade.HeaderText = "Quantidade";
+            this.VacinaQuantidade.MinimumWidth = 103;
+            this.VacinaQuantidade.Name = "VacinaQuantidade";
+            this.VacinaQuantidade.ReadOnly = true;
+            this.VacinaQuantidade.Width = 103;
+            // 
+            // VacinaRemover
+            // 
+            this.VacinaRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.VacinaRemover.HeaderText = "Remover";
+            this.VacinaRemover.MinimumWidth = 70;
+            this.VacinaRemover.Name = "VacinaRemover";
+            this.VacinaRemover.Width = 70;
+            // 
+            // VacinaEstoqueDisponivel
+            // 
+            this.VacinaEstoqueDisponivel.HeaderText = "Estoque";
+            this.VacinaEstoqueDisponivel.Name = "VacinaEstoqueDisponivel";
+            this.VacinaEstoqueDisponivel.ReadOnly = true;
+            this.VacinaEstoqueDisponivel.Visible = false;
             // 
             // dataGridViewButtonColumn1
             // 
@@ -832,43 +892,6 @@ namespace PetShop
             this.btnCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnCancelar.UseVisualStyleBackColor = false;
             // 
-            // combBoxFormaPagamento
-            // 
-            this.combBoxFormaPagamento.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxFormaPagamento.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxFormaPagamento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxFormaPagamento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
-            this.combBoxFormaPagamento.FormattingEnabled = true;
-            this.combBoxFormaPagamento.Items.AddRange(new object[] {
-            "Dinheiro",
-            "Cartão",
-            "Boleto"});
-            this.combBoxFormaPagamento.Location = new System.Drawing.Point(561, 54);
-            this.combBoxFormaPagamento.Name = "combBoxFormaPagamento";
-            this.combBoxFormaPagamento.Size = new System.Drawing.Size(183, 29);
-            this.combBoxFormaPagamento.TabIndex = 8;
-            this.combBoxFormaPagamento.SelectedValueChanged += new System.EventHandler(this.combBoxFormaPagamento_SelectedValueChanged);
-            // 
-            // combBoxTipoCartao
-            // 
-            this.combBoxTipoCartao.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxTipoCartao.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxTipoCartao.BorderColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.combBoxTipoCartao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxTipoCartao.Enabled = false;
-            this.combBoxTipoCartao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxTipoCartao.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F);
-            this.combBoxTipoCartao.FormattingEnabled = true;
-            this.combBoxTipoCartao.Items.AddRange(new object[] {
-            "Crédito",
-            "Débito"});
-            this.combBoxTipoCartao.Location = new System.Drawing.Point(789, 53);
-            this.combBoxTipoCartao.Name = "combBoxTipoCartao";
-            this.combBoxTipoCartao.Size = new System.Drawing.Size(133, 29);
-            this.combBoxTipoCartao.TabIndex = 9;
-            this.combBoxTipoCartao.EnabledChanged += new System.EventHandler(this.combBoxTipoCartao_EnabledChanged);
-            // 
             // LancarVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -892,13 +915,14 @@ namespace PetShop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venda";
             this.Load += new System.EventHandler(this.Venda_Load);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LancarVenda_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaProdutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.listaServicos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
@@ -940,9 +964,6 @@ namespace PetShop
         private System.Windows.Forms.DataGridView listaVacinas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtNumeroVenda;
-        private System.Windows.Forms.DataGridViewComboBoxColumn NomeServico;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecoServico;
-        private System.Windows.Forms.DataGridViewButtonColumn RemoverServico;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBarras;
         private System.Windows.Forms.DataGridViewComboBoxColumn NomeProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Marca;
@@ -952,6 +973,11 @@ namespace PetShop
         private System.Windows.Forms.DataGridViewTextBoxColumn ValorTotal;
         private System.Windows.Forms.DataGridViewButtonColumn RemoverProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn EstoqueAtualProduto;
+        private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.DataGridViewComboBoxColumn NomeServico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecoServico;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeServico;
+        private System.Windows.Forms.DataGridViewButtonColumn RemoverServico;
         private System.Windows.Forms.DataGridViewComboBoxColumn VacinaImunologia;
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaConteudoML;
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaDoses;
@@ -959,5 +985,6 @@ namespace PetShop
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaValor;
         private System.Windows.Forms.DataGridViewTextBoxColumn VacinaQuantidade;
         private System.Windows.Forms.DataGridViewButtonColumn VacinaRemover;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VacinaEstoqueDisponivel;
     }
 }

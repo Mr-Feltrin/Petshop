@@ -1,26 +1,26 @@
-﻿using PetShop.Entities.Exceptions;
-using System;
+﻿using System;
+using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using System.Data;
+using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
-    public class VendaProduto
+    public class VendaVacina
     {
         private static SqlCeConnection Connection;
-        public int VendaId  { get; set; }
-        public int ProdutoId { get; set; }
+        public int VendaId { get; set; }
+        public int VacinaId { get; set; }
         public int Quantidade { get; set; }
 
-        public VendaProduto(int vendaId, int produtoId, int quantidade)
+        public VendaVacina(int vendaId, int vacinaId, int quantidade)
         {
             VendaId = vendaId;
-            ProdutoId = produtoId;
+            VacinaId = vacinaId;
             Quantidade = quantidade;
         }
 
-        public void SalvarVendaProduto()
+        public void SalvarVendaVacina()
         {
             using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
             {
@@ -28,18 +28,18 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "INSERT INTO Vendas_Produtos (VendasId, ProdutosId, Quantidade) VALUES (@VendasId, @ProdutosId, @Quantidade)";
+                    command.CommandText = "INSERT INTO Vendas_Vacinas (VendasId, VacinasId, Quantidade) VALUES (@VendasId, @VacinasId, @Quantidade)";
                     command.Parameters.AddWithValue("@VendasId", VendaId);
-                    command.Parameters.AddWithValue("@ProdutosId", ProdutoId);
+                    command.Parameters.AddWithValue("@VacinasId", VacinaId);
                     command.Parameters.AddWithValue("@Quantidade", Quantidade);
                     if (!(command.ExecuteNonQuery() > 0))
                     {
                         throw new SqlCeQueryException();
                     }
                     command.Parameters.Clear();
-                    command.CommandText = "UPDATE Produtos SET EstoqueAtual = EstoqueAtual - @Quantidade WHERE Id = @ProdutoId";
+                    command.CommandText = "UPDATE Vacinas SET Quantidade = Quantidade - @Quantidade WHERE Id = @VacinaId";
                     command.Parameters.AddWithValue("@Quantidade", Quantidade);
-                    command.Parameters.AddWithValue("@ProdutoId", ProdutoId);
+                    command.Parameters.AddWithValue("@VacinaId", VacinaId);
                     if (!(command.ExecuteNonQuery() > 0))
                     {
                         throw new SqlCeQueryException();
@@ -47,20 +47,20 @@ namespace PetShop.Entities
                 }
                 catch (SqlCeException e)
                 {
-                    MessageBox.Show($"Erro no banco de dados ao salvar venda de produto: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro no banco de dados ao salvar venda de vacina: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ErrorLogger.CreateErrorLog(e);
                     throw e;
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Erro na aplicação ao salvar venda de produto: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro na aplicação ao salvar venda de vacinas: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ErrorLogger.CreateErrorLog(e);
                     throw e;
                 }
             }
         }
 
-        public static DataTable BuscarProdutosVenda(int vendaId)
+        public static DataTable BuscarVacinasVenda(int vendaId)
         {
             DataTable produtosVenda = new DataTable();
             using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
@@ -69,7 +69,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Vendas_Produtos WHERE VendasId = @VendasId";
+                    command.CommandText = "SELECT * FROM Vendas_Vacinas WHERE VendasId = @VendasId";
                     command.Parameters.AddWithValue("@VendasId", vendaId);
                     command.ExecuteNonQuery();
                     using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))
@@ -79,12 +79,12 @@ namespace PetShop.Entities
                 }
                 catch (SqlCeException e)
                 {
-                    MessageBox.Show($"Erro no banco de dados ao procurar produtos de venda: {e.Message}", "Erro ao buscar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro no banco de dados ao buscar por venda de vacinas: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ErrorLogger.CreateErrorLog(e);
                 }
                 catch (Exception e)
                 {
-                    MessageBox.Show($"Erro na aplicação ao buscar produtos de venda: {e.Message}", "Erro ao buscar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Erro na aplicação ao buscar por venda de vacinas: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ErrorLogger.CreateErrorLog(e);
                 }
             }

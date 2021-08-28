@@ -11,6 +11,8 @@ using System.Data;
 using System.ComponentModel;
 using System.Timers;
 using System.Threading;
+using PetShop.ToolBox;
+using System.Collections.Generic;
 
 namespace PetShop
 {
@@ -98,6 +100,7 @@ namespace PetShop
             listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
             listaServicos.CellValueChanged += listaServicos_CellValueChanged;
             listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
+
         }
 
         private void DataGridViewScrollBar_VisibleChanged(object sender, EventArgs e)
@@ -168,19 +171,6 @@ namespace PetShop
         {
             (sender as DataGridView).CurrentCell = null;
             (sender as DataGridView).FirstDisplayedCell = null;
-        }
-
-        private void combBoxFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (((sender as ComboBox).SelectedIndex == 1))
-            {
-                combBoxTipoCartao.Enabled = true;
-            }
-            else
-            {
-                combBoxTipoCartao.Enabled = false;
-                combBoxTipoCartao.SelectedIndex = -1;
-            }
         }
 
         private void CellPaintingButton(object sender, DataGridViewCellPaintingEventArgs e)
@@ -482,7 +472,16 @@ namespace PetShop
 
         private void listaServicos_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (listaServicos.CurrentCell.ColumnIndex == listaServicos.Columns["NomeServico"].Index && listaServicos.CurrentCell != null)
+            if (listaServicos.CurrentCell.ColumnIndex == listaServicos.Columns["QuantidadeServico"].Index)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += ServicosColumnQuantidadeServico_KeyPress;
+                    tb.Leave += ServicosColumnQuantidadeServico_Leave;
+                }
+            }
+            else if (listaServicos.CurrentCell.ColumnIndex == listaServicos.Columns["NomeServico"].Index)
             {
                 DataGridViewComboBoxEditingControl combo = e.Control as DataGridViewComboBoxEditingControl;
                 if (combo != null)
@@ -494,6 +493,20 @@ namespace PetShop
                     combo.LostFocus += ServicosColumnNomeServico_LostFocus;
                     combo.Leave += ServicosCulumnNomeServico_Leave;
                 }
+            }
+        }
+
+        private void ServicosColumnQuantidadeServico_Leave(object sender, EventArgs e)
+        {
+            (sender as TextBox).KeyPress -= ServicosColumnQuantidadeServico_KeyPress;
+            (sender as TextBox).Leave -= ServicosColumnQuantidadeServico_Leave;
+        }
+
+        private void ServicosColumnQuantidadeServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
@@ -556,21 +569,33 @@ namespace PetShop
                 {
                     if (listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                     {
-                        DataRow row = TableServicos.Rows.Cast<DataRow>().Where(v => v.Field<int>("Id") == (int)listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).First();
-                        listaServicos.CellValueChanged -= listaServicos_CellValueChanged;
-                        listaServicos.Rows[e.RowIndex].Cells["PrecoServico"].Value = row.Field<decimal>("Valor");
-                        listaServicos.CellValueChanged += listaServicos_CellValueChanged;
-                        ChecarCompra();
-                        AtualizarTotalCompra();
-                        if (!listaServicos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeServico"].Value == null))
+                        if (listaServicos.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["NomeServico"].Value != null).Count(r => (int)r.Cells["NomeServico"].Value == (int)listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 1)
                         {
-                            listaServicos.Rows.Add(1);
+                            MessageBox.Show("O Serviço selecionado ja foi adicionado a lista.", "Serviços similares inseridos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = null;
                         }
-                        listaServicos.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
-                        listaServicos.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
-                        listaServicos.CurrentCell = null;
-                        Thread.Sleep(260);
-                        listaServicos.EditMode = DataGridViewEditMode.EditOnEnter;
+                        else
+                        {
+                            int rowIndex = e.RowIndex;
+                            DataRow row = TableServicos.Rows.Cast<DataRow>().Where(v => v.Field<int>("Id") == (int)listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).First();
+                            listaServicos.CellValueChanged -= listaServicos_CellValueChanged;
+                            listaServicos.Rows[e.RowIndex].Cells["PrecoServico"].Value = (decimal)row["Valor"];
+                            listaServicos.Rows[e.RowIndex].Cells["QuantidadeServico"].Value = 1;
+                            listaServicos.Rows[e.RowIndex].Cells["QuantidadeServico"].ReadOnly = false;
+                            listaServicos.CellValueChanged += listaServicos_CellValueChanged;
+                            ChecarCompra();
+                            AtualizarTotalCompra();
+                            if (!listaServicos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeServico"].Value == null))
+                            {
+                                listaServicos.Rows.Add(1);
+                            }
+                            listaServicos.EditMode = DataGridViewEditMode.EditOnKeystrokeOrF2;
+                            listaServicos.EndEdit(DataGridViewDataErrorContexts.LeaveControl);
+                            listaServicos.CurrentCell = null;
+                            Thread.Sleep(260);
+                            listaServicos.CurrentCell = listaServicos.Rows[rowIndex].Cells["QuantidadeServico"];
+                            listaServicos.EditMode = DataGridViewEditMode.EditOnEnter;
+                        }
                     }
                     else
                     {
@@ -580,9 +605,19 @@ namespace PetShop
                             cell.Value = null;
                         }
                         listaServicos.CellValueChanged += listaServicos_CellValueChanged;
+                        listaServicos.Rows[e.RowIndex].Cells["QuantidadeServico"].ReadOnly = true;
                         ChecarCompra();
                         AtualizarTotalCompra();
                     }
+                }
+                else if (e.ColumnIndex == listaServicos.Columns["QuantidadeServico"].Index)
+                {
+                    if (listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value == null || string.IsNullOrWhiteSpace(listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()))
+                    {
+                        listaServicos.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = 0;
+                    }
+                    ChecarQuantidades();
+                    AtualizarTotalCompra();
                 }
             }
         }
@@ -608,7 +643,17 @@ namespace PetShop
 
         private void listaVacinas_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
         {
-            if (listaVacinas.CurrentCell.ColumnIndex == listaVacinas.Columns["VacinaImunologia"].Index)
+            if (listaVacinas.CurrentCell.ColumnIndex == listaVacinas.Columns["VacinaQuantidade"].Index)
+            {
+                TextBox tb = e.Control as TextBox;
+                if (tb != null)
+                {
+                    tb.KeyPress += VacinasColumnVacinaQuantidade_KeyPress;
+                    tb.TextChanged += VacinasColumnQuantidade_TextChanged;
+                    tb.Leave += VacinasColumnVacinaQuantidade_Leave;
+                }
+            }
+            else if (listaVacinas.CurrentCell.ColumnIndex == listaVacinas.Columns["VacinaImunologia"].Index)
             {
                 ComboBox combo = e.Control as ComboBox;
                 if (combo == null)
@@ -621,6 +666,32 @@ namespace PetShop
                 combo.KeyDown += VacinasColumnVacinaImunologia_KeyDown;
                 combo.LostFocus += VacinasColumnVacinaImunologia_LostFocus;
                 combo.Leave += VacinaColumnVacinaImunologia_Leave;
+            }
+        }
+
+        private void VacinasColumnQuantidade_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (int.Parse((sender as TextBox).Text) > (int)listaVacinas.Rows[listaVacinas.CurrentCell.RowIndex].Cells["VacinaEstoqueDisponivel"].Value)
+                {
+                    (sender as TextBox).Text = listaVacinas.Rows[listaVacinas.CurrentCell.RowIndex].Cells["VacinaEstoqueDisponivel"].Value.ToString();
+                    MessageBox.Show($"Quantidade máxima em estoque ultrapassada ({listaVacinas.Rows[listaVacinas.CurrentCell.RowIndex].Cells["VacinaEstoqueDisponivel"].Value})");
+                }
+            }
+        }
+
+        private void VacinasColumnVacinaQuantidade_Leave(object sender, EventArgs e)
+        {
+            (sender as TextBox).KeyPress -= VacinasColumnVacinaQuantidade_KeyPress;
+            (sender as TextBox).Leave -= VacinasColumnVacinaQuantidade_Leave;
+        }
+
+        private void VacinasColumnVacinaQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
             }
         }
 
@@ -703,7 +774,7 @@ namespace PetShop
                     {
                         if (listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Count(r => (int)r.Cells["VacinaImunologia"].Value == (int)listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value) > 1)
                         {
-                            MessageBox.Show("A vacina selecionada ja foi adicionado a lista.", "Vacinas similares inseridas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("A vacina selecionada ja foi adicionada na lista.", "Vacinas similares inseridas", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             listaVacinas.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = null;
                         }
                         else
@@ -716,6 +787,7 @@ namespace PetShop
                             listaVacinas.Rows[rowIndex].Cells["VacinaFabricante"].Value = (string)Row["Fabricante"];
                             listaVacinas.Rows[rowIndex].Cells["VacinaValor"].Value = (decimal)Row["ValorProduto"];
                             listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].Value = 1;
+                            listaVacinas.Rows[rowIndex].Cells["VacinaEstoqueDisponivel"].Value = (int)Row["Quantidade"];
                             listaVacinas.Rows[rowIndex].Cells["VacinaQuantidade"].ReadOnly = false;
                             listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
                             ChecarCompra();
@@ -873,22 +945,52 @@ namespace PetShop
             if (listaProdutos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeProduto"].Value != null) || listaServicos.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["NomeServico"].Value != null) || listaVacinas.Rows.Cast<DataGridViewRow>().Any(v => v.Cells["VacinaImunologia"].Value != null))
             {
                 btnConcluir.Enabled = true;
+                toolTip.SetToolTip(btnConcluir, string.Empty);
             }
             else
             {
                 btnConcluir.Enabled = false;
+                toolTip.SetToolTip(btnConcluir, "Não existem produtos ou serviços adicionados na compra");
+                return;
             }
+            ChecarTipoPagamento();
         }
 
         private void ChecarQuantidades()
         {
-            if (listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null && v.Cells["Quantidade"].Value != null).Any(v => int.Parse(v.Cells["Quantidade"].Value.ToString()) > 0) || listaVacinas.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["VacinaImunologia"].Value != null && v.Cells["VacinaQuantidade"].Value != null).Any(v => int.Parse(v.Cells["VacinaQuantidade"].Value.ToString()) > 0))
+            if (listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null && v.Cells["Quantidade"].Value != null).Any(v => int.Parse(v.Cells["Quantidade"].Value.ToString()) > 0) || listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null && v.Cells["QuantidadeServico"].Value != null).Any(v => int.Parse(v.Cells["QuantidadeServico"].Value.ToString()) > 0) || listaVacinas.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["VacinaImunologia"].Value != null && v.Cells["VacinaQuantidade"].Value != null).Any(v => int.Parse(v.Cells["VacinaQuantidade"].Value.ToString()) > 0))
             {
                 btnConcluir.Enabled = true;
+                toolTip.SetToolTip(btnConcluir, string.Empty);
             }
             else
             {
                 btnConcluir.Enabled = false;
+                toolTip.SetToolTip(btnConcluir, "Os produtos inseridos não estão na quantidade mínima para se concluir a compra");
+                return;
+            }
+            ChecarTipoPagamento();
+        }
+
+        private void ChecarTipoPagamento()
+        {
+            if (combBoxFormaPagamento.SelectedIndex != -1)
+            {
+                if (combBoxFormaPagamento.SelectedIndex == 1 && combBoxTipoCartao.SelectedIndex == -1)
+                {
+                    btnConcluir.Enabled = false;
+                    toolTip.SetToolTip(btnConcluir, "Selecione o tipo de cartão para pagamento");
+                }
+                else
+                {
+                    btnConcluir.Enabled = true;
+                    toolTip.SetToolTip(btnConcluir, string.Empty);
+                }
+            }
+            else
+            {
+                btnConcluir.Enabled = false;
+                toolTip.SetToolTip(btnConcluir, "Selecione a forma de pagamento");
             }
         }
 
@@ -974,7 +1076,7 @@ namespace PetShop
                         {
                             if (!string.IsNullOrWhiteSpace(listaVacinas.EditingControl.Text))
                             {
-                                if (listaVacinas.Rows.Cast<DataGridViewRow>().Any(r=> r.Cells["VacinaImunologia"].Value == null))
+                                if (listaVacinas.Rows.Cast<DataGridViewRow>().Any(r => r.Cells["VacinaImunologia"].Value == null))
                                 {
                                     listaVacinas.CurrentCell = listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value == null).Select(r => r.Cells["VacinaImunologia"]).FirstOrDefault();
                                 }
@@ -1070,6 +1172,87 @@ namespace PetShop
             {
                 return;
             }
+            else
+            {
+
+                List<VendaProduto> vendaProdutos = new List<VendaProduto>();
+                List<VendaServico> vendaServicos = new List<VendaServico>();
+                List<VendaVacina> vendaVacinas = new List<VendaVacina>();
+                int? idCliente = null;
+                if (_Cliente != null)
+                {
+                    idCliente = _Cliente.ClienteId;
+                }
+                Venda venda = new Venda(DateTime.Now, idCliente, combBoxFormaPagamento.SelectedItem.ToString(), decimal.TryParse(txtDesconto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal txtDescontoResult) ? txtDescontoResult : default, combBoxTipoCartao.Text);
+                try
+                {
+                    venda.AdicionarVenda();
+                }
+                catch
+                {
+                    return;
+                }
+                if (listaProdutos.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["NomeProduto"].Value != null))
+                {
+                    foreach (DataGridViewRow row in listaProdutos.Rows)
+                    {
+                        if (row.Cells["NomeProduto"].Value != null)
+                        {
+                            vendaProdutos.Add(new VendaProduto(venda.Id, (int)row.Cells["NomeProduto"].Value, Convert.ToInt32(row.Cells["Quantidade"].Value)));
+                        }
+                    }
+                }
+                if (listaServicos.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["NomeServico"].Value != null))
+                {
+                    foreach (DataGridViewRow row in listaServicos.Rows)
+                    {
+                        if (row.Cells["NomeServico"].Value != null)
+                        {
+                            vendaServicos.Add(new VendaServico(venda.Id, (int)row.Cells["NomeServico"].Value, (int)row.Cells["QuantidadeServico"].Value));
+                        }
+                    }
+                }
+                if (listaVacinas.Rows.Cast<DataGridViewRow>().Any(row => row.Cells["VacinaImunologia"].Value != null))
+                {
+                    foreach (DataGridViewRow row in listaVacinas.Rows)
+                    {
+                        if (row.Cells["VacinaImunologia"].Value != null)
+                        {
+                            vendaVacinas.Add(new VendaVacina(venda.Id, (int)row.Cells["VacinaImunologia"].Value, (int)row.Cells["VacinaQuantidade"].Value));
+                        }
+                    }
+                }
+                try
+                {
+                    if (vendaProdutos.Any())
+                    {
+                        foreach (VendaProduto produto in vendaProdutos)
+                        {
+                            produto.SalvarVendaProduto();
+                        }
+                    }
+                    if (vendaServicos.Any())
+                    {
+                        foreach (VendaServico servico in vendaServicos)
+                        {
+                            servico.SalvarVendaServico();
+                        }
+                    }
+                    if (vendaVacinas.Any())
+                    {
+                        foreach (VendaVacina vacina in vendaVacinas)
+                        {
+                            vacina.SalvarVendaVacina();
+                        }
+                    }
+                    MessageBox.Show("Venda Concluida", string.Empty, MessageBoxButtons.OK, MessageBoxIcon.None);
+                    Close();
+                }
+                catch
+                {
+                    return;
+                }
+            }
         }
 
         private void listaVacinas_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -1079,8 +1262,56 @@ namespace PetShop
 
         private void AtualizarTotalCompra()
         {
-            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null).Select(v => decimal.Parse(v.Cells["ValorTotal"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null).Select(v => decimal.Parse(v.Cells["PrecoServico"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Select(v => decimal.Parse(v.Cells["VacinaValor"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["VacinaQuantidade"].Value.ToString())).Sum();
+            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null).Select(v => decimal.Parse(v.Cells["ValorTotal"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null).Select(v => decimal.Parse(v.Cells["PrecoServico"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["QuantidadeServico"].Value.ToString())).Sum() + listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Select(v => decimal.Parse(v.Cells["VacinaValor"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["VacinaQuantidade"].Value.ToString())).Sum();
             txtTotalVenda.Text = totalVenda.ToString("C2", CultureInfo.CurrentCulture);
+        }
+
+        private void LancarVenda_MouseMove(object sender, MouseEventArgs e)
+        {
+            Control control = PesquisaControlePosicaoMouse.EncontrarControleNoCursor(this);
+            if (control != null && !control.Enabled)
+            {
+                if (!toolTip.Active)
+                {
+                    toolTip.Active = true;
+                    toolTip.Show(toolTip.GetToolTip(control), control, control.Width / 2, control.Height / 2);
+                }
+            }
+            else
+            {
+                if (toolTip.Active)
+                {
+                    toolTip.Active = false;
+                }
+            }
+        }
+
+        private void combBoxTipoCartao_SelectedValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void combBoxFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (((sender as ComboBox).SelectedIndex == 1))
+            {
+                combBoxTipoCartao.Enabled = true;
+            }
+            else
+            {
+                combBoxTipoCartao.Enabled = false;
+                combBoxTipoCartao.SelectedIndex = -1;
+            }
+            ChecarCompra();
+        }
+
+        private void combBoxTipoCartao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ChecarCompra();
+        }
+
+        private void listaServicos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            listaServicos.Rows[e.RowIndex].Cells["QuantidadeServico"].ReadOnly = true;
         }
     }
 }

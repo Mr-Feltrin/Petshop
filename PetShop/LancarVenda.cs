@@ -25,6 +25,7 @@ namespace PetShop
         private DataTable TableProdutos { get; set; }
         private DataTable TableServicos { get; set; }
         private DataTable TableVacinas { get; set; }
+        private decimal ValorTotalVenda { get; set; }
         private System.Timers.Timer TimerHorario;
         private VScrollBar listaProdutosScrollBar;
         private VScrollBar listaServicosScrollBar;
@@ -99,8 +100,7 @@ namespace PetShop
             btnPesquisarCliente.Click += btnPesquisarCliente_Click;
             listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
             listaServicos.CellValueChanged += listaServicos_CellValueChanged;
-            listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
-
+            listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;          
         }
 
         private void DataGridViewScrollBar_VisibleChanged(object sender, EventArgs e)
@@ -253,6 +253,10 @@ namespace PetShop
                     (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
                 }
             }
+            else
+            {
+                (sender as TextBox).Text = "R$ 0,00";
+            }
         }
 
         private void txtDesconto_KeyPress(object sender, KeyPressEventArgs e)
@@ -290,7 +294,12 @@ namespace PetShop
                 if (!Regex.IsMatch((sender as TextBox).Text, @"^[0-9]{,5}\.[0-9]{2}$"))
                 {
                     (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("C2", CultureInfo.CurrentCulture);
+
                 }
+            }
+            else
+            {
+                (sender as TextBox).Text = "R$ 0,00";
             }
         }
 
@@ -1262,8 +1271,8 @@ namespace PetShop
 
         private void AtualizarTotalCompra()
         {
-            decimal totalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null).Select(v => decimal.Parse(v.Cells["ValorTotal"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null).Select(v => decimal.Parse(v.Cells["PrecoServico"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["QuantidadeServico"].Value.ToString())).Sum() + listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Select(v => decimal.Parse(v.Cells["VacinaValor"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["VacinaQuantidade"].Value.ToString())).Sum();
-            txtTotalVenda.Text = totalVenda.ToString("C2", CultureInfo.CurrentCulture);
+            ValorTotalVenda = listaProdutos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeProduto"].Value != null).Select(v => decimal.Parse(v.Cells["ValorTotal"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat)).Sum() + listaServicos.Rows.Cast<DataGridViewRow>().Where(v => v.Cells["NomeServico"].Value != null).Select(v => decimal.Parse(v.Cells["PrecoServico"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["QuantidadeServico"].Value.ToString())).Sum() + listaVacinas.Rows.Cast<DataGridViewRow>().Where(r => r.Cells["VacinaImunologia"].Value != null).Select(v => decimal.Parse(v.Cells["VacinaValor"].Value.ToString(), NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat) * int.Parse(v.Cells["VacinaQuantidade"].Value.ToString())).Sum();
+            txtTotalVenda.Text = ValorTotalVenda.ToString("C2", CultureInfo.CurrentCulture);
         }
 
         private void LancarVenda_MouseMove(object sender, MouseEventArgs e)
@@ -1312,6 +1321,41 @@ namespace PetShop
         private void listaServicos_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             listaServicos.Rows[e.RowIndex].Cells["QuantidadeServico"].ReadOnly = true;
+        }
+
+        private void txtDesconto_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                txtTotalVenda.Text = (decimal.TryParse((sender as TextBox).Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal result) ? ValorTotalVenda - result : default).ToString("C2", CultureInfo.CurrentCulture);
+            }
+            else
+            {
+                txtTotalVenda.Text = ValorTotalVenda.ToString("C2", CultureInfo.CurrentCulture);
+            }   
+        }
+
+        private void txtValorPago_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace((sender as TextBox).Text))
+            {
+                if (decimal.Parse(txtValorPago.Text, NumberStyles.Currency, CultureInfo.CurrentCulture) > decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture))
+                {
+                    txtTroco.Text = (decimal.Parse(txtValorPago.Text, NumberStyles.Currency, CultureInfo.CurrentCulture) - decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture)).ToString("C2", CultureInfo.CurrentCulture);
+                }
+                else
+                {
+                    txtTroco.Text = "R$ 0,00";
+                }
+            }
+        }
+
+        private void txtTotalVenda_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(txtValorPago.Text) && decimal.Parse(txtValorPago.Text, NumberStyles.Currency, CultureInfo.CurrentCulture) > 0)
+            {
+                txtTroco.Text = (decimal.Parse(txtValorPago.Text, NumberStyles.Currency, CultureInfo.CurrentCulture) - decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture)).ToString("C2", CultureInfo.CurrentCulture);
+            }
         }
     }
 }

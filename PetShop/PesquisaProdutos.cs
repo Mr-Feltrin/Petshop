@@ -129,7 +129,7 @@ namespace PetShop
             ColoracaoListaProdutos();
         }
 
-        internal void ColoracaoListaProdutos()
+        private void ColoracaoListaProdutos()
         {
             foreach (DataGridViewRow row in DataGridListaProdutos.Rows)
             {

@@ -51,7 +51,6 @@ namespace PetShop
             this.labelCodigoProduto = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
-            this.combBoxTipoUnidade = new System.Windows.Forms.ComboBox();
             this.txtCodigoBarras = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.CombBoxCategoria = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
@@ -76,6 +75,7 @@ namespace PetShop
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipEnabledControls = new System.Windows.Forms.ToolTip(this.components);
+            this.combBoxTipoUnidade = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -312,8 +312,8 @@ namespace PetShop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 98F));
-            this.tableLayoutPanel1.Controls.Add(this.txtQuantidade, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.combBoxTipoUnidade, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtQuantidade, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtCodigoBarras, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.txtCodigo, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(17, 39);
@@ -337,26 +337,6 @@ namespace PetShop
             this.txtQuantidade.TabIndex = 32;
             this.txtQuantidade.TextChanged += new System.EventHandler(this.txtQuantidade_TextChanged);
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
-            // 
-            // combBoxTipoUnidade
-            // 
-            this.combBoxTipoUnidade.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.combBoxTipoUnidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxTipoUnidade.FormattingEnabled = true;
-            this.combBoxTipoUnidade.Items.AddRange(new object[] {
-            "Kg",
-            "Mg",
-            "g",
-            "L",
-            "Ml",
-            "Granel"});
-            this.combBoxTipoUnidade.Location = new System.Drawing.Point(400, 3);
-            this.combBoxTipoUnidade.Name = "combBoxTipoUnidade";
-            this.combBoxTipoUnidade.Size = new System.Drawing.Size(94, 25);
-            this.combBoxTipoUnidade.TabIndex = 20;
-            this.combBoxTipoUnidade.TextChanged += new System.EventHandler(this.combBoxTipoUnidade_TextChanged);
             // 
             // txtCodigoBarras
             // 
@@ -628,6 +608,25 @@ namespace PetShop
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // combBoxTipoUnidade
+            // 
+            this.combBoxTipoUnidade.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.combBoxTipoUnidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxTipoUnidade.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxTipoUnidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxTipoUnidade.FormattingEnabled = true;
+            this.combBoxTipoUnidade.Items.AddRange(new object[] {
+            "Kg",
+            "Mg",
+            "g",
+            "L",
+            "Ml",
+            "Granel"});
+            this.combBoxTipoUnidade.Location = new System.Drawing.Point(400, 3);
+            this.combBoxTipoUnidade.Name = "combBoxTipoUnidade";
+            this.combBoxTipoUnidade.Size = new System.Drawing.Size(94, 25);
+            this.combBoxTipoUnidade.TabIndex = 22;
+            // 
             // AdicionarEditarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,7 +692,6 @@ namespace PetShop
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtQuantidade;
-        private System.Windows.Forms.ComboBox combBoxTipoUnidade;
         private System.Windows.Forms.TextBox txtCodigoBarras;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Button btnSalvar;
@@ -712,5 +710,6 @@ namespace PetShop
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private ToolBox.Controls.ComboBoxFlatBordered combBoxTipoUnidade;
     }
 }

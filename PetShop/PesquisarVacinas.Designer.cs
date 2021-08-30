@@ -45,11 +45,19 @@ namespace PetShop
             this.btnExcluirVacina = new System.Windows.Forms.Button();
             this.btnEditarVacina = new System.Windows.Forms.Button();
             this.btnAdicionarVacina = new System.Windows.Forms.Button();
+            this.groupBoxLegendaCores = new System.Windows.Forms.GroupBox();
+            this.labelEmEstoque = new System.Windows.Forms.Label();
+            this.pictureBoxSemEstoque = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmEstoque = new System.Windows.Forms.PictureBox();
+            this.labelSemEstoque = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listaVacinas)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBoxLegendaCores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -90,6 +98,7 @@ namespace PetShop
             this.listaVacinas.TabIndex = 4;
             this.listaVacinas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaVacinas_CellDoubleClick);
             this.listaVacinas.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.listaVacinas_ColumnWidthChanged);
+            this.listaVacinas.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.listaVacinas_RowPrePaint);
             this.listaVacinas.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaVacinas_RowStateChanged);
             this.listaVacinas.SelectionChanged += new System.EventHandler(this.listaVacinas_SelectionChanged);
             this.listaVacinas.Sorted += new System.EventHandler(this.listaVacinas_Sorted);
@@ -275,12 +284,68 @@ namespace PetShop
             this.btnAdicionarVacina.UseVisualStyleBackColor = false;
             this.btnAdicionarVacina.Click += new System.EventHandler(this.btnAdicionarVacina_Click);
             // 
+            // groupBoxLegendaCores
+            // 
+            this.groupBoxLegendaCores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBoxLegendaCores.Controls.Add(this.labelEmEstoque);
+            this.groupBoxLegendaCores.Controls.Add(this.pictureBoxSemEstoque);
+            this.groupBoxLegendaCores.Controls.Add(this.pictureBoxEmEstoque);
+            this.groupBoxLegendaCores.Controls.Add(this.labelSemEstoque);
+            this.groupBoxLegendaCores.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBoxLegendaCores.Location = new System.Drawing.Point(12, 532);
+            this.groupBoxLegendaCores.Name = "groupBoxLegendaCores";
+            this.groupBoxLegendaCores.Size = new System.Drawing.Size(265, 39);
+            this.groupBoxLegendaCores.TabIndex = 20;
+            this.groupBoxLegendaCores.TabStop = false;
+            this.groupBoxLegendaCores.Text = "Legenda";
+            // 
+            // labelEmEstoque
+            // 
+            this.labelEmEstoque.AutoSize = true;
+            this.labelEmEstoque.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelEmEstoque.Location = new System.Drawing.Point(6, 13);
+            this.labelEmEstoque.Name = "labelEmEstoque";
+            this.labelEmEstoque.Size = new System.Drawing.Size(89, 20);
+            this.labelEmEstoque.TabIndex = 11;
+            this.labelEmEstoque.Text = "Em Estoque:";
+            // 
+            // pictureBoxSemEstoque
+            // 
+            this.pictureBoxSemEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(115)))), ((int)(((byte)(97)))));
+            this.pictureBoxSemEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxSemEstoque.Location = new System.Drawing.Point(234, 16);
+            this.pictureBoxSemEstoque.Name = "pictureBoxSemEstoque";
+            this.pictureBoxSemEstoque.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxSemEstoque.TabIndex = 18;
+            this.pictureBoxSemEstoque.TabStop = false;
+            // 
+            // pictureBoxEmEstoque
+            // 
+            this.pictureBoxEmEstoque.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(172)))), ((int)(((byte)(234)))), ((int)(((byte)(105)))));
+            this.pictureBoxEmEstoque.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxEmEstoque.Location = new System.Drawing.Point(103, 16);
+            this.pictureBoxEmEstoque.Name = "pictureBoxEmEstoque";
+            this.pictureBoxEmEstoque.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxEmEstoque.TabIndex = 14;
+            this.pictureBoxEmEstoque.TabStop = false;
+            // 
+            // labelSemEstoque
+            // 
+            this.labelSemEstoque.AutoSize = true;
+            this.labelSemEstoque.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelSemEstoque.Location = new System.Drawing.Point(130, 13);
+            this.labelSemEstoque.Name = "labelSemEstoque";
+            this.labelSemEstoque.Size = new System.Drawing.Size(98, 20);
+            this.labelSemEstoque.TabIndex = 17;
+            this.labelSemEstoque.Text = "Sem Estoque:";
+            // 
             // PesquisarVacinas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(899, 538);
+            this.ClientSize = new System.Drawing.Size(899, 582);
+            this.Controls.Add(this.groupBoxLegendaCores);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -305,6 +370,10 @@ namespace PetShop
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBoxLegendaCores.ResumeLayout(false);
+            this.groupBoxLegendaCores.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -323,5 +392,10 @@ namespace PetShop
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPesquisarImunidade;
         private System.Windows.Forms.DataGridView listaVacinas;
+        private System.Windows.Forms.GroupBox groupBoxLegendaCores;
+        private System.Windows.Forms.Label labelEmEstoque;
+        private System.Windows.Forms.PictureBox pictureBoxSemEstoque;
+        private System.Windows.Forms.PictureBox pictureBoxEmEstoque;
+        private System.Windows.Forms.Label labelSemEstoque;
     }
 }

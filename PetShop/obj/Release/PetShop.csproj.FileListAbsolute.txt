@@ -98,3 +98,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.PesquisarVac
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.PesquisarAnimais.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.PesquisarProdutos.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.PesquisarClientesFornecedores.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.ListaVacinacoes.resources

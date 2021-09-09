@@ -164,7 +164,7 @@ namespace PetShop
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             Vacinacao vacinacao = new Vacinacao(AnimalId, VacinaId, DateTime.Now.Date);
-            vacinacao.AdicionarEditarVacinacao();
+            vacinacao.AdicionarVacinacao();
             if (Application.OpenForms.OfType<PesquisarVacinacoes>().Count() == 1)
             {
                 Application.OpenForms.OfType<PesquisarVacinacoes>().First().AtualizarListaVacinacoes();

@@ -441,6 +441,7 @@
             this.MinimumSize = new System.Drawing.Size(1137, 250);
             this.Name = "PesquisarAgendamento";
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda";
             this.Load += new System.EventHandler(this.Agenda_Load);

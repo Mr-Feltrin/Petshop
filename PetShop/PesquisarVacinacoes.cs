@@ -42,7 +42,7 @@ namespace PetShop
 
         internal void AtualizarListaVacinacoes()
         {
-            listaVacinacao.DataSource = Vacinacao.ListarVacinacoes(dateDataInicial.Value.Date, dateDataFinal.Value.Date);
+            listaVacinacao.DataSource = Vacinacao.ListarVacinacoes(dataInicial: dateDataInicial.Value.Date, dataFinal: dateDataFinal.Value.Date);
             if (listaVacinacao.Rows.Count > 0)
             {
                 listaVacinacao.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);

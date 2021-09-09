@@ -203,6 +203,12 @@
     <Compile Include="ListaProcedimentos.Designer.cs">
       <DependentUpon>ListaProcedimentos.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListaVacinacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListaVacinacoes.Designer.cs">
+      <DependentUpon>ListaVacinacoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListaVacinas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ListaProcedimentos.resx">
       <DependentUpon>ListaProcedimentos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListaVacinacoes.resx">
+      <DependentUpon>ListaVacinacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListaVacinas.resx">
       <DependentUpon>ListaVacinas.cs</DependentUpon>

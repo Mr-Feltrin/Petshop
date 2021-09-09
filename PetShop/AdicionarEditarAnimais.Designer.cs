@@ -44,7 +44,7 @@
             this.checkAntissocial = new System.Windows.Forms.CheckBox();
             this.checkObcessivo = new System.Windows.Forms.CheckBox();
             this.btnSalvarCadastro = new System.Windows.Forms.Button();
-            this.btnEmitirFicha = new System.Windows.Forms.Button();
+            this.btnRelatorioVacinas = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.txtEspecie = new System.Windows.Forms.TextBox();
             this.txtRaca = new System.Windows.Forms.TextBox();
@@ -287,24 +287,25 @@
             this.btnSalvarCadastro.Click += new System.EventHandler(this.btnSalvarCadastro_Click);
             this.btnSalvarCadastro.MouseEnter += new System.EventHandler(this.btnSalvarCadastro_MouseEnter);
             // 
-            // btnEmitirFicha
+            // btnRelatorioVacinas
             // 
-            this.btnEmitirFicha.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnEmitirFicha.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.btnEmitirFicha.Enabled = false;
-            this.btnEmitirFicha.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.btnEmitirFicha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEmitirFicha.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEmitirFicha.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnEmitirFicha.Image = global::PetShop.Properties.Resources.document32x32;
-            this.btnEmitirFicha.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEmitirFicha.Location = new System.Drawing.Point(273, 533);
-            this.btnEmitirFicha.Name = "btnEmitirFicha";
-            this.btnEmitirFicha.Size = new System.Drawing.Size(178, 43);
-            this.btnEmitirFicha.TabIndex = 13;
-            this.btnEmitirFicha.Text = "   Relatório de Vacinas";
-            this.btnEmitirFicha.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmitirFicha.UseVisualStyleBackColor = false;
+            this.btnRelatorioVacinas.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnRelatorioVacinas.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnRelatorioVacinas.Enabled = false;
+            this.btnRelatorioVacinas.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
+            this.btnRelatorioVacinas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRelatorioVacinas.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRelatorioVacinas.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRelatorioVacinas.Image = global::PetShop.Properties.Resources.document32x32;
+            this.btnRelatorioVacinas.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRelatorioVacinas.Location = new System.Drawing.Point(273, 533);
+            this.btnRelatorioVacinas.Name = "btnRelatorioVacinas";
+            this.btnRelatorioVacinas.Size = new System.Drawing.Size(178, 43);
+            this.btnRelatorioVacinas.TabIndex = 13;
+            this.btnRelatorioVacinas.Text = "   Relatório de Vacinas";
+            this.btnRelatorioVacinas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRelatorioVacinas.UseVisualStyleBackColor = false;
+            this.btnRelatorioVacinas.Click += new System.EventHandler(this.btnRelatorioVacinas_Click);
             // 
             // btnSair
             // 
@@ -764,7 +765,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(497, 25);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(497, 26);
             this.tableLayoutPanel2.TabIndex = 6;
             // 
             // txtNomeDonoAnimal
@@ -815,7 +816,7 @@
             this.ClientSize = new System.Drawing.Size(651, 588);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.btnEmitirFicha);
+            this.Controls.Add(this.btnRelatorioVacinas);
             this.Controls.Add(this.btnSalvarCadastro);
             this.Controls.Add(this.checkObcessivo);
             this.Controls.Add(this.checkAntissocial);
@@ -865,7 +866,7 @@
         private System.Windows.Forms.CheckBox checkAntissocial;
         private System.Windows.Forms.CheckBox checkObcessivo;
         private System.Windows.Forms.Button btnSalvarCadastro;
-        private System.Windows.Forms.Button btnEmitirFicha;
+        private System.Windows.Forms.Button btnRelatorioVacinas;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.RichTextBox txtObservacaoRotina;

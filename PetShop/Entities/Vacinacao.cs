@@ -72,7 +72,7 @@ namespace PetShop.Entities
             }
         }
 
-        public void AdicionarEditarVacinacao()
+        public void AdicionarVacinacao()
         {
             try
             {
@@ -100,7 +100,7 @@ namespace PetShop.Entities
             }
         }
 
-        public static DataTable ListarVacinacoes(DateTime? dataInicial = null, DateTime? dataFinal = null)
+        public static DataTable ListarVacinacoes(int? animalId = null, DateTime? dataInicial = null, DateTime? dataFinal = null)
         {
             DataTable data = new DataTable();
             try
@@ -114,6 +114,11 @@ namespace PetShop.Entities
                         command.CommandText = "SELECT Vacinacao.Id, Vacinas.Imunologia, Vacinacao.DataVacina, Animal.Nome as NomeAnimal, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Sexo FROM Vacinacao INNER JOIN Animal ON Vacinacao.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Vacinas ON Vacinacao.VacinaId = Vacinas.Id WHERE Vacinacao.DataVacina BETWEEN @dataInicial AND @dataFinal";
                         command.Parameters.AddWithValue("dataInicial", Convert.ToDateTime(dataInicial).Date);
                         command.Parameters.AddWithValue("dataFinal", Convert.ToDateTime(dataFinal).Date + new TimeSpan(23, 59, 59));
+                    }
+                    else if (animalId != null)
+                    {
+                        command.CommandText = "SELECT Vacinacao.Id, Vacinas.Imunologia, Vacinacao.DataVacina, Animal.Nome as NomeAnimal, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Sexo FROM Vacinacao INNER JOIN Animal ON Vacinacao.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Vacinas ON Vacinacao.VacinaId = Vacinas.Id WHERE Animal.Id = @AnimalId";
+                        command.Parameters.AddWithValue("@AnimalId", animalId);
                     }
                     else
                     {

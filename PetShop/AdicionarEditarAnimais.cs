@@ -148,6 +148,7 @@ namespace PetShop
                     ControleBotoesFotografia();
                 }
                 SexoSelecionado.Checked = true;
+                btnRelatorioVacinas.Enabled = true;
             }
 
             // Criação de botão de pesquisa no campo txtEspecie
@@ -451,6 +452,14 @@ namespace PetShop
                 {
                     (sender as TextBox).Text = Math.Round(double.Parse((sender as TextBox).Text), 2).ToString("F2");
                 }
+            }
+        }
+
+        private void btnRelatorioVacinas_Click(object sender, EventArgs e)
+        {
+            using (ListaVacinacoes listaVacinacoes = new ListaVacinacoes(AnimalId.Id))
+            {
+                listaVacinacoes.ShowDialog();
             }
         }
     }

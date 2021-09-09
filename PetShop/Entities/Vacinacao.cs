@@ -72,7 +72,7 @@ namespace PetShop.Entities
             }
         }
 
-        public void AdicionarEditarVacinacao(TipoOperacao operacao)
+        public void AdicionarEditarVacinacao()
         {
             try
             {
@@ -80,24 +80,13 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    if (operacao == TipoOperacao.Adicionar)
-                    {
-                        command.CommandText = "INSERT INTO Vacinacao (AnimalId, VacinaId, DataVacina) VALUES (@AnimalId, @VacinaId, @DataVacina)";
-                    }
-                    else if (operacao == TipoOperacao.Editar)
-                    {
-                        command.CommandText = "UPDATE Vacinacao SET AnimalId = @AnimalId, VacinaId = @VacinaId, DataVacina = @DataVacina WHERE Id = @Id";
-                        command.Parameters.AddWithValue("@Id", Id);
-                    }
+                    command.CommandText = "INSERT INTO Vacinacao (AnimalId, VacinaId, DataVacina) VALUES (@AnimalId, @VacinaId, @DataVacina)";
                     command.Parameters.AddWithValue("@AnimalId", AnimalId.Id);
                     command.Parameters.AddWithValue("@VacinaId", VacinaId.Id);
                     command.Parameters.AddWithValue("@DataVacina", DataVacina);
                     if (command.ExecuteNonQuery() > 0)
                     {
-                        if (operacao == TipoOperacao.Editar)
-                        {
-                            MessageBox.Show("Os dados de vacinação foram modificados", "Editar Vacinação", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        MessageBox.Show("Os dados de vacinação foram salvos", "Adicionar Vacinação", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -111,7 +100,7 @@ namespace PetShop.Entities
             }
         }
 
-        public static DataTable ListarVacinacoes()
+        public static DataTable ListarVacinacoes(DateTime? dataInicial = null, DateTime? dataFinal = null)
         {
             DataTable data = new DataTable();
             try
@@ -120,7 +109,16 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Vacinacao.Id, Vacinas.Imunologia, Vacinacao.DataVacina, Animal.Nome as NomeAnimal, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Sexo FROM Vacinacao INNER JOIN Animal ON Vacinacao.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Vacinas ON Vacinacao.VacinaId = Vacinas.Id";
+                    if (dataInicial != null && dataFinal != null)
+                    {
+                        command.CommandText = "SELECT Vacinacao.Id, Vacinas.Imunologia, Vacinacao.DataVacina, Animal.Nome as NomeAnimal, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Sexo FROM Vacinacao INNER JOIN Animal ON Vacinacao.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Vacinas ON Vacinacao.VacinaId = Vacinas.Id WHERE Vacinacao.DataVacina BETWEEN @dataInicial AND @dataFinal";
+                        command.Parameters.AddWithValue("dataInicial", Convert.ToDateTime(dataInicial).Date);
+                        command.Parameters.AddWithValue("dataFinal", Convert.ToDateTime(dataFinal).Date + new TimeSpan(23, 59, 59));
+                    }
+                    else
+                    {
+                        command.CommandText = "SELECT Vacinacao.Id, Vacinas.Imunologia, Vacinacao.DataVacina, Animal.Nome as NomeAnimal, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Sexo FROM Vacinacao INNER JOIN Animal ON Vacinacao.AnimalId = Animal.Id INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id INNER JOIN Vacinas ON Vacinacao.VacinaId = Vacinas.Id";
+                    }
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

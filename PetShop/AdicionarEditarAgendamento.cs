@@ -154,7 +154,7 @@ namespace PetShop
 
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente))
+            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente, _Cliente))
             {
                 listaDeClientes.ShowDialog(this);
             }
@@ -170,7 +170,7 @@ namespace PetShop
 
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
-            using (ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal))
+            using (ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal, _Cliente))
             {
                 listaDeAnimais.ShowDialog(this);
             }

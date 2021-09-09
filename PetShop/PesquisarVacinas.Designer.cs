@@ -97,7 +97,6 @@ namespace PetShop
             this.listaVacinas.Size = new System.Drawing.Size(863, 412);
             this.listaVacinas.TabIndex = 4;
             this.listaVacinas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaVacinas_CellDoubleClick);
-            this.listaVacinas.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.listaVacinas_ColumnWidthChanged);
             this.listaVacinas.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.listaVacinas_RowPrePaint);
             this.listaVacinas.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaVacinas_RowStateChanged);
             this.listaVacinas.SelectionChanged += new System.EventHandler(this.listaVacinas_SelectionChanged);

@@ -174,6 +174,12 @@
     <Compile Include="AdicionarEditarVacina.Designer.cs">
       <DependentUpon>AdicionarEditarVacina.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdicionarVacinacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdicionarVacinacao.Designer.cs">
+      <DependentUpon>AdicionarVacinacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\Enums\TipoNotificacao.cs" />
     <Compile Include="Entities\Exceptions\ErrorLogger.cs" />
     <Compile Include="Entities\Exceptions\SqlCeQueryException.cs" />
@@ -197,11 +203,17 @@
     <Compile Include="ListaProcedimentos.Designer.cs">
       <DependentUpon>ListaProcedimentos.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListaVacinacoes.cs">
+    <Compile Include="ListaVacinas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ListaVacinacoes.Designer.cs">
-      <DependentUpon>ListaVacinacoes.cs</DependentUpon>
+    <Compile Include="ListaVacinas.Designer.cs">
+      <DependentUpon>ListaVacinas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PesquisarVacinacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PesquisarVacinacoes.Designer.cs">
+      <DependentUpon>PesquisarVacinacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="PesquisarAgendamento.cs">
       <SubType>Form</SubType>
@@ -228,17 +240,17 @@
     <Compile Include="ListaEspecieRacaAnimais.Designer.cs">
       <DependentUpon>ListaEspecieRacaAnimais.cs</DependentUpon>
     </Compile>
-    <Compile Include="PesquisaAnimais.cs">
+    <Compile Include="PesquisarAnimais.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisaAnimais.designer.cs">
-      <DependentUpon>PesquisaAnimais.cs</DependentUpon>
+    <Compile Include="PesquisarAnimais.designer.cs">
+      <DependentUpon>PesquisarAnimais.cs</DependentUpon>
     </Compile>
-    <Compile Include="PesquisaProdutos.cs">
+    <Compile Include="PesquisarProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisaProdutos.Designer.cs">
-      <DependentUpon>PesquisaProdutos.cs</DependentUpon>
+    <Compile Include="PesquisarProdutos.Designer.cs">
+      <DependentUpon>PesquisarProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="PesquisarCodigoBarras.cs">
       <SubType>Form</SubType>
@@ -271,11 +283,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PesquisaClientesFornecedores.cs">
+    <Compile Include="PesquisarClientesFornecedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisaClientesFornecedores.Designer.cs">
-      <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
+    <Compile Include="PesquisarClientesFornecedores.Designer.cs">
+      <DependentUpon>PesquisarClientesFornecedores.cs</DependentUpon>
     </Compile>
     <Compile Include="ToolBox\Controls\BotaoNoFocus.cs">
       <SubType>Component</SubType>
@@ -317,14 +329,20 @@
     <EmbeddedResource Include="AdicionarEditarVacina.resx">
       <DependentUpon>AdicionarEditarVacina.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdicionarVacinacao.resx">
+      <DependentUpon>AdicionarVacinacao.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNotificacao.resx">
       <DependentUpon>FormNotificacao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListaProcedimentos.resx">
       <DependentUpon>ListaProcedimentos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ListaVacinacoes.resx">
-      <DependentUpon>ListaVacinacoes.cs</DependentUpon>
+    <EmbeddedResource Include="ListaVacinas.resx">
+      <DependentUpon>ListaVacinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PesquisarVacinacoes.resx">
+      <DependentUpon>PesquisarVacinacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisarAgendamento.resx">
       <DependentUpon>PesquisarAgendamento.cs</DependentUpon>
@@ -335,11 +353,11 @@
     <EmbeddedResource Include="ListaEspecieRacaAnimais.resx">
       <DependentUpon>ListaEspecieRacaAnimais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisaAnimais.resx">
-      <DependentUpon>PesquisaAnimais.cs</DependentUpon>
+    <EmbeddedResource Include="PesquisarAnimais.resx">
+      <DependentUpon>PesquisarAnimais.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisaProdutos.resx">
-      <DependentUpon>PesquisaProdutos.cs</DependentUpon>
+    <EmbeddedResource Include="PesquisarProdutos.resx">
+      <DependentUpon>PesquisarProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisarCodigoBarras.resx">
       <DependentUpon>PesquisarCodigoBarras.cs</DependentUpon>
@@ -358,8 +376,8 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisaClientesFornecedores.resx">
-      <DependentUpon>PesquisaClientesFornecedores.cs</DependentUpon>
+    <EmbeddedResource Include="PesquisarClientesFornecedores.resx">
+      <DependentUpon>PesquisarClientesFornecedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LancarVenda.resx">
       <DependentUpon>LancarVenda.cs</DependentUpon>

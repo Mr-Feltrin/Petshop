@@ -264,9 +264,9 @@ namespace PetShop
                 _Produto.Observacoes = txtObservacoes.Text;
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
-            if (Application.OpenForms.OfType<PesquisaProdutos>().Count() == 1)
+            if (Application.OpenForms.OfType<PesquisarProdutos>().Count() == 1)
             {
-                Application.OpenForms.OfType<PesquisaProdutos>().First().AtualizarLista();
+                Application.OpenForms.OfType<PesquisarProdutos>().First().AtualizarLista();
             }
             Close();
         }

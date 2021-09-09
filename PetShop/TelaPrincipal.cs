@@ -83,7 +83,7 @@ namespace PetShop
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            using (PesquisaClientesFornecedores pesquisaClientes = new PesquisaClientesFornecedores(TipoPesquisa.Cliente))
+            using (PesquisarClientesFornecedores pesquisaClientes = new PesquisarClientesFornecedores(TipoPesquisa.Cliente))
             {
                 pesquisaClientes.ShowDialog(this);
             }
@@ -129,7 +129,7 @@ namespace PetShop
 
         private void btnMenuFornecedores_Click(object sender, EventArgs e)
         {
-            using (PesquisaClientesFornecedores pesquisaFornecedores = new PesquisaClientesFornecedores(TipoPesquisa.Fornecedor))
+            using (PesquisarClientesFornecedores pesquisaFornecedores = new PesquisarClientesFornecedores(TipoPesquisa.Fornecedor))
             {
                 pesquisaFornecedores.ShowDialog();
             }
@@ -137,7 +137,7 @@ namespace PetShop
 
         private void Botao_produtos_Click(object sender, EventArgs e)
         {
-            using (PesquisaProdutos pesquisaProdutos = new PesquisaProdutos())
+            using (PesquisarProdutos pesquisaProdutos = new PesquisarProdutos())
             {
                 pesquisaProdutos.ShowDialog();
             }
@@ -145,7 +145,7 @@ namespace PetShop
 
         private void BtnAnimais_Click(object sender, EventArgs e)
         {
-            using (PesquisaAnimais pesquisaAnimais = new PesquisaAnimais())
+            using (PesquisarAnimais pesquisaAnimais = new PesquisarAnimais())
             {
                 pesquisaAnimais.ShowDialog();
             }
@@ -212,7 +212,7 @@ namespace PetShop
 
         private void btnVacinacao_Click(object sender, EventArgs e)
         {
-            using (ListaVacinacoes vacinacoes = new ListaVacinacoes())
+            using (PesquisarVacinacoes vacinacoes = new PesquisarVacinacoes())
             {
                 vacinacoes.ShowDialog();
             }

@@ -11,20 +11,20 @@ namespace PetShop
     public partial class AdicionarEditarCliente : Form
     {
         private readonly TipoOperacao Operacao;
-        private readonly PesquisaClientesFornecedores _PesquisaClientesFornecedores;
+        private readonly PesquisarClientesFornecedores _PesquisaClientesFornecedores;
         private Cliente _Cliente { get; set; }
         private ListaDeClientesAnimais _listaDeCliente { get; set; }
         private Dictionary<object, string> CamposObrigatorios { get; set; }
         List<MaskedTextBox> CamposMaskedOpcionais { get; set; }
 
-        public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores)
+        public AdicionarEditarCliente(TipoOperacao operacao, PesquisarClientesFornecedores pesquisaClientesFornecedores)
         {
             InitializeComponent();
             Operacao = operacao;
             _PesquisaClientesFornecedores = pesquisaClientesFornecedores;
         }
 
-        public AdicionarEditarCliente(TipoOperacao operacao, PesquisaClientesFornecedores pesquisaClientesFornecedores, int idCliente) : this(operacao, pesquisaClientesFornecedores)
+        public AdicionarEditarCliente(TipoOperacao operacao, PesquisarClientesFornecedores pesquisaClientesFornecedores, int idCliente) : this(operacao, pesquisaClientesFornecedores)
         {
             try
             {

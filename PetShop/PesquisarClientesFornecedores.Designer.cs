@@ -1,6 +1,6 @@
 ﻿namespace PetShop
 {
-    partial class PesquisaClientesFornecedores
+    partial class PesquisarClientesFornecedores
     {
         /// <summary>
         /// Required designer variable.

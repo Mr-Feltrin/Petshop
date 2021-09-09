@@ -45,11 +45,12 @@ namespace PetShop
             listaVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             listaVacinasVerticalScrollBar = listaVacinas.Controls.OfType<VScrollBar>().First();
             listaVacinasVerticalScrollBar.VisibleChanged += listaVacinasVerticalScrollBar_VisibleChanged;
+            listaVacinas.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaVacinas_ColumnWidthChanged);
         }
 
         private void listaVacinasVerticalScrollBar_VisibleChanged(object sender, EventArgs e)
         {
-            MaximumFormSize();
+            DataGridViewTools.MaximumFormSize(listaVacinas, this);
         }
 
         public void AtualizarLista()
@@ -192,7 +193,7 @@ namespace PetShop
 
         private void listaVacinas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            MaximumFormSize();
+            DataGridViewTools.MaximumFormSize(listaVacinas, this);         
         }
 
         private void PesquisarVacinas_KeyDown(object sender, KeyEventArgs e)
@@ -206,18 +207,6 @@ namespace PetShop
         private void listaVacinas_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             ColoracaoListaVacinas();
-        }
-
-        private void MaximumFormSize()
-        {
-            if (listaVacinas.Controls.OfType<VScrollBar>().Any(scrollBar => scrollBar.Visible))
-            {
-                MaximumSize = new Size(listaVacinas.Controls.OfType<VScrollBar>().Where(s => s.Visible).First().Width + listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
-            }
-            else
-            {
-                MaximumSize = new Size(listaVacinas.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
-            }
-        }
+        }     
     }
 }

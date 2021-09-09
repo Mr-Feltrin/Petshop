@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PetShop
 {
-    public partial class PesquisaProdutos : Form
+    public partial class PesquisarProdutos : Form
     {
-        public PesquisaProdutos()
+        public PesquisarProdutos()
         {
             InitializeComponent();
         }
@@ -41,7 +41,7 @@ namespace PetShop
             DataGridListaProdutos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
         }
 
-        public void AtualizarLista()
+        internal void AtualizarLista()
         {
             DataGridListaProdutos.DataSource = Produto.ListarProdutos();
             foreach (DataGridViewRow row in DataGridListaProdutos.Rows)

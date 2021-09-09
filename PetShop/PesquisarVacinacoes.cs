@@ -5,31 +5,44 @@ using PetShop.ToolBox;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PetShop
 {
-    public partial class ListaVacinacoes : Form
+    public partial class PesquisarVacinacoes : Form
     {
-        public ListaVacinacoes()
+        private VScrollBar ListaVacinacaoScrollBar;
+        public PesquisarVacinacoes()
         {
             InitializeComponent();
         }
 
         private void ListaVacinacoes_Load(object sender, EventArgs e)
         {
-            dateDataInicial.Value = new DateTime(DateTime.Now.Year, 01, 01);
-            ListarVacinacoes();
+            dateDataInicial.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            dateDataFinal.Value = dateDataInicial.Value.AddMonths(1);
+            AtualizarListaVacinacoes();
             listaVacinacao.Columns["DataVacina"].HeaderText = "Data da Vacinação";
             listaVacinacao.Columns["NomeAnimal"].HeaderText = "Nome do Animal";
             listaVacinacao.Columns["NomeCliente"].HeaderText = "Nome do Cliente";
             listaVacinacao.Columns["Especie"].HeaderText = "Espécie";
             listaVacinacao.Columns["Raca"].HeaderText = "Raça";
+            listaVacinacao.Columns["DataVacina"].DefaultCellStyle.Format = string.Format("dd/MM/yyyy");
             listaVacinacao.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            ListaVacinacaoScrollBar = listaVacinacao.Controls.OfType<VScrollBar>().First();
+            ListaVacinacaoScrollBar.VisibleChanged += new EventHandler(listaVacinacaoScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(listaVacinacao, this);
+            listaVacinacao.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaVacinacao_ColumnWidthChanged);
         }
 
-        private void ListarVacinacoes()
+        private void listaVacinacaoScrollBar_VisibleChanged(object sender, EventArgs e)
         {
-            listaVacinacao.DataSource = Vacinacao.ListarVacinacoes();
+            DataGridViewTools.MaximumFormSize(listaVacinacao, this);
+        }
+
+        internal void AtualizarListaVacinacoes()
+        {
+            listaVacinacao.DataSource = Vacinacao.ListarVacinacoes(dateDataInicial.Value.Date, dateDataFinal.Value.Date);
             if (listaVacinacao.Rows.Count > 0)
             {
                 listaVacinacao.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
@@ -39,7 +52,7 @@ namespace PetShop
 
         private void listaVacinacao_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            MaximumSize = new System.Drawing.Size(listaVacinacao.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + (Size.Width - listaVacinacao.Size.Width), 100000);
+            DataGridViewTools.MaximumFormSize(listaVacinacao, this);
         }
 
         private void listaVacinacao_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -77,6 +90,7 @@ namespace PetShop
             if (confirmarDelete == DialogResult.Yes)
             {
                 Vacinacao.ExcluirVacinacao((int)listaVacinacao.SelectedRows[0].Cells[0].Value);
+                AtualizarListaVacinacoes();
             }
         }
 
@@ -99,8 +113,6 @@ namespace PetShop
                         data.Columns["NomeCliente"].ColumnName = "Nome do Cliente";
                         data.Columns["Especie"].ColumnName = "Espécie";
                         data.Columns["Raca"].ColumnName = "Raça";
-                        data.Columns["DataValidade"].ColumnName = "Data de Validade";
-                        data.Columns["DataCadastro"].ColumnName = "Data de Cadastro";
                         IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Vacinação");
                         worksheets.ColumnsUsed().AdjustToContents();
                         worksheets.RowsUsed().AdjustToContents();
@@ -119,6 +131,36 @@ namespace PetShop
                     }
                 }
             }
+        }
+
+        private void btnAdicionarVacinacao_Click(object sender, EventArgs e)
+        {
+            using (AdicionarEditarVacinacao adicionarVacinacao = new AdicionarEditarVacinacao())
+            {
+                adicionarVacinacao.ShowDialog();
+            }
+        }
+
+        private void dateDataInicial_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarListaVacinacoes();
+        }
+
+        private void dateDataFinal_ValueChanged(object sender, EventArgs e)
+        {
+            AtualizarListaVacinacoes();
+        }
+
+        private void txtPesquisarAnimal_TextChanged(object sender, EventArgs e)
+        {
+            (listaVacinacao.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeAnimal LIKE '%" + txtPesquisarAnimal.Text + "%'");
+
+        }
+
+        private void txtPesquisarCliente_TextChanged(object sender, EventArgs e)
+        {
+            (listaVacinacao.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeCliente LIKE '%" + txtPesquisarCliente.Text + "%'");
+
         }
     }
 }

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 namespace PetShop
 {
 
-    public partial class PesquisaClientesFornecedores : Form
+    public partial class PesquisarClientesFornecedores : Form
     {
         private readonly TipoPesquisa _TipoPesquisa;
-        public PesquisaClientesFornecedores(TipoPesquisa tipoPesquisa)
+        public PesquisarClientesFornecedores(TipoPesquisa tipoPesquisa)
         {
             InitializeComponent();
             _TipoPesquisa = tipoPesquisa;

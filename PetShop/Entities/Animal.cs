@@ -154,7 +154,7 @@ namespace PetShop.Entities
                 {
                     connection.Open();
                     SqlCeCommand comando = connection.CreateCommand();
-                    comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as Dono, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Peso, Animal.DataNascimento, Animal.Situacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id";
+                    comando.CommandText = "SELECT Animal.Id, Animal.Nome, Animal.Sexo, Clientes.Nome as NomeCliente, Animal.Especie, Animal.Raca, Animal.Identificacao, Animal.Peso, Animal.DataNascimento, Animal.Situacao, Animal.Fobias, Animal.Agressivo, Animal.Hiperativo, Animal.Observacao_rotina, Animal.Data_registro FROM Animal INNER JOIN Clientes ON Animal.ClienteId = Clientes.Id";
                     comando.ExecuteNonQuery();
                     SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                     dataadp.Fill(dta);

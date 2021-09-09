@@ -1,6 +1,6 @@
 ﻿namespace PetShop
 {
-    partial class PesquisaProdutos
+    partial class PesquisarProdutos
     {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisaProdutos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarProdutos));
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
@@ -438,7 +438,7 @@
             this.comboBoxFiltrarLista.TabIndex = 21;
             this.comboBoxFiltrarLista.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltrarLista_SelectedIndexChanged);
             // 
-            // PesquisaProdutos
+            // PesquisarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -458,7 +458,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(998, 280);
-            this.Name = "PesquisaProdutos";
+            this.Name = "PesquisarProdutos";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

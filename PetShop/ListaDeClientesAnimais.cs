@@ -4,35 +4,77 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using PetShop.ToolBox;
 
 namespace PetShop
 {
     public partial class ListaDeClientesAnimais : Form
     {
-        public AdicionarEditarAgendamento _adicionarEditarAgendamento { get; private set; }
-        private AdicionarEditarAnimais _adicionarEditarAnimais { get; set; }
+        public AdicionarEditarAgendamento FormAdicionarEditarAgendamento { get; private set; }
+        private AdicionarEditarAnimais FormAdicionarEditarAnimais;
+        private AdicionarEditarVacinacao FormAdicionarEditarVacinacao;
         private TipoPesquisa _TipoPesquisa { get; set; }
-        private LancarVenda _LancarVenda { get; set; }
-        private ListaDeClientesAnimais()
+        private LancarVenda FormLancarVenda { get; set; }
+
+        public ListaDeClientesAnimais(AdicionarEditarAgendamento adicionarEditarAgendamento, TipoPesquisa tipoPesquisa, Cliente cliente)
         {
             InitializeComponent();
-        }
-
-        public ListaDeClientesAnimais(AdicionarEditarAgendamento adicionarEditarAgendamento, TipoPesquisa tipoPesquisa) : this()
-        {
-            _adicionarEditarAgendamento = adicionarEditarAgendamento;
+            FormAdicionarEditarAgendamento = adicionarEditarAgendamento;
             _TipoPesquisa = tipoPesquisa;
         }
 
-        public ListaDeClientesAnimais(AdicionarEditarAnimais adicionarEditarAnimais) : this()
+        public ListaDeClientesAnimais(AdicionarEditarAnimais adicionarEditarAnimais)
         {
-            _adicionarEditarAnimais = adicionarEditarAnimais;
+            InitializeComponent();
+            FormAdicionarEditarAnimais = adicionarEditarAnimais;
         }
 
-        public ListaDeClientesAnimais(LancarVenda lancarVenda, TipoPesquisa tipoPesquisa) : this()
+        public ListaDeClientesAnimais(LancarVenda lancarVenda, TipoPesquisa tipoPesquisa)
         {
-            _LancarVenda = lancarVenda;
+            InitializeComponent();
+            FormLancarVenda = lancarVenda;
             _TipoPesquisa = tipoPesquisa;
+        }
+
+        public ListaDeClientesAnimais(AdicionarEditarVacinacao adicionarEditarVacinacao)
+        {
+            InitializeComponent();
+            FormAdicionarEditarVacinacao = adicionarEditarVacinacao;
+            _TipoPesquisa = TipoPesquisa.Animal;
+        }
+
+        private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
+        {
+            AtualizarLista();
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
+            {
+                Text = "Lista de Clientes";
+                DGVClientesAnimais.Columns["Endereco"].HeaderText = "Endereço";
+                DGVClientesAnimais.Columns["Cep"].HeaderText = "CEP";
+                DGVClientesAnimais.Columns["Telefone_Principal"].HeaderText = "Telefone Principal";
+                DGVClientesAnimais.Columns["Telefone_Secundario"].HeaderText = "Telefone Secundário";
+                DGVClientesAnimais.Columns["Cpf"].HeaderText = "CPF";
+                DGVClientesAnimais.Columns["Cnpj"].HeaderText = "CNPJ";
+                DGVClientesAnimais.Columns["Observacoes"].HeaderText = "Observações";
+                label2.Visible = false;
+                txtPesquisarAnimal.Visible = false;
+                tableLayoutPanel2.ColumnStyles[1].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.ColumnStyles[1].Width = 0;
+                tableLayoutPanel2.ColumnStyles[2].SizeType = SizeType.Absolute;
+                tableLayoutPanel2.ColumnStyles[2].Width = 0;
+                
+            }
+            else if (_TipoPesquisa == TipoPesquisa.Animal)
+            {
+                Text = "Lista de Animais";
+                Icon = Properties.Resources.animal_icon;
+                btnNovoClienteAnimal.Image = Properties.Resources.addAnimal_32x32;
+                DGVClientesAnimais.Columns["Especie"].HeaderText = "Espécie";
+                DGVClientesAnimais.Columns["Raca"].HeaderText = "Raça";
+                DGVClientesAnimais.Columns["Identificacao"].HeaderText = "Identificação";
+                DGVClientesAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
+                DGVClientesAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
+            }
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -44,56 +86,68 @@ namespace PetShop
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                if (_adicionarEditarAgendamento != null)
+                if (FormAdicionarEditarAgendamento != null)
                 {
                     try
                     {
-                        _adicionarEditarAgendamento._Cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                        _adicionarEditarAgendamento.txtCliente.Text = _adicionarEditarAgendamento._Cliente.NomeCliente;
+                        FormAdicionarEditarAgendamento._Cliente = new Cliente((int)DGVClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        FormAdicionarEditarAgendamento.txtCliente.Text = FormAdicionarEditarAgendamento._Cliente.NomeCliente;
                     }
                     catch
                     {
-                        _adicionarEditarAgendamento._Cliente = null;
-                        _adicionarEditarAgendamento.txtCliente.Text = null;
+                        FormAdicionarEditarAgendamento._Cliente = null;
+                        FormAdicionarEditarAgendamento.txtCliente.Text = null;
                     }
                 }
-                else if (_adicionarEditarAnimais != null)
+                else if (FormAdicionarEditarAnimais != null)
                 {
                     try
                     {
-                        _adicionarEditarAnimais.cliente = new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                        _adicionarEditarAnimais.txtNomeDonoAnimal.Text = _adicionarEditarAnimais.cliente.NomeCliente;
+                        FormAdicionarEditarAnimais.ClienteId = new Cliente((int)DGVClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        FormAdicionarEditarAnimais.txtNomeDonoAnimal.Text = FormAdicionarEditarAnimais.ClienteId.NomeCliente;
                     }
                     catch (Exception)
                     {
-                        _adicionarEditarAnimais.cliente = null;
-                        _adicionarEditarAnimais.txtNomeDonoAnimal.Text = null;
+                        FormAdicionarEditarAnimais.ClienteId = null;
+                        FormAdicionarEditarAnimais.txtNomeDonoAnimal.Text = null;
                     }
                 }
-                else if (_LancarVenda != null)
+                else if (FormLancarVenda != null)
                 {
                     try
                     {
-                        _LancarVenda.InserirCliente(new Cliente((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value));
+                        FormLancarVenda.InserirCliente(new Cliente((int)DGVClientesAnimais.SelectedRows[0].Cells[0].Value));
                     }
                     catch
                     {
+                        FormLancarVenda.InserirCliente(null);
                     }                   
                 }
             }
             else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
-                if (_adicionarEditarAgendamento != null)
+                if (FormAdicionarEditarAgendamento != null)
                 {
                     try
                     {
-                        _adicionarEditarAgendamento._Animal = new Animal((int)dataListaClientesAnimais.SelectedRows[0].Cells[0].Value);
-                        _adicionarEditarAgendamento.txtNomeAnimal.Text = _adicionarEditarAgendamento._Animal.Nome;
+                        FormAdicionarEditarAgendamento._Animal = new Animal((int)DGVClientesAnimais.SelectedRows[0].Cells[0].Value);
+                        FormAdicionarEditarAgendamento.txtNomeAnimal.Text = FormAdicionarEditarAgendamento._Animal.Nome;
                     }
-                    catch (Exception)
+                    catch
                     {
-                        _adicionarEditarAgendamento._Animal = null;
-                        _adicionarEditarAgendamento.txtNomeAnimal.Text = null;
+                        FormAdicionarEditarAgendamento._Animal = null;
+                        FormAdicionarEditarAgendamento.txtNomeAnimal.Text = null;
+                    }
+                }
+                else if (FormAdicionarEditarVacinacao != null)
+                {
+                    try
+                    {
+                        FormAdicionarEditarVacinacao.AddAnimal(new Animal((int)DGVClientesAnimais.SelectedRows[0].Cells[0].Value));
+                    }
+                    catch
+                    {
+                        FormAdicionarEditarVacinacao.AddAnimal(null);
                     }
                 }
             }
@@ -109,8 +163,8 @@ namespace PetShop
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                dataListaClientesAnimais.DataSource = Cliente.ListarClientes();
-                foreach (DataGridViewRow row in dataListaClientesAnimais.Rows)
+                DGVClientesAnimais.DataSource = Cliente.ListarClientes();
+                foreach (DataGridViewRow row in DGVClientesAnimais.Rows)
                 {
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Apelido"].Value))
                     {
@@ -148,16 +202,15 @@ namespace PetShop
             }
             else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
-                if (_adicionarEditarAgendamento != null)
+                if (FormAdicionarEditarAgendamento != null)
                 {
-                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais(_adicionarEditarAgendamento._Cliente.ClienteId);
-
+                    DGVClientesAnimais.DataSource = Animal.ListarAnimais(FormAdicionarEditarAgendamento._Cliente.ClienteId);
                 }
-                else if (_adicionarEditarAnimais != null)
+                else
                 {
-                    dataListaClientesAnimais.DataSource = Animal.ListarAnimais();
+                    DGVClientesAnimais.DataSource = Animal.ListarAnimais();
                 }
-                foreach (DataGridViewRow row in dataListaClientesAnimais.Rows)
+                foreach (DataGridViewRow row in DGVClientesAnimais.Rows)
                 {
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Identificacao"].Value))
                     {
@@ -173,39 +226,8 @@ namespace PetShop
                     }
                 }
             }
-            dataListaClientesAnimais.ClearSelection();
-            foreach (DataGridViewColumn column in dataListaClientesAnimais.Columns)
-            {
-                column.Width = column.GetPreferredWidth(DataGridViewAutoSizeColumnMode.AllCells, true);
-            }
-        }
-
-        private void ListaDeClientesAnimais_Load(object sender, EventArgs e)
-        {
-            AtualizarLista();
-            if (_TipoPesquisa == TipoPesquisa.Cliente)
-            {
-                Text = "Lista de Clientes";
-                dataListaClientesAnimais.Columns["Endereco"].HeaderText = "Endereço";
-                dataListaClientesAnimais.Columns["Cep"].HeaderText = "CEP";
-                dataListaClientesAnimais.Columns["Telefone_Principal"].HeaderText = "Telefone Principal";
-                dataListaClientesAnimais.Columns["Telefone_Secundario"].HeaderText = "Telefone Secundário";
-                dataListaClientesAnimais.Columns["Cpf"].HeaderText = "CPF";
-                dataListaClientesAnimais.Columns["Cnpj"].HeaderText = "CNPJ";
-                dataListaClientesAnimais.Columns["Observacoes"].HeaderText = "Observações";
-            }
-            else if (_TipoPesquisa == TipoPesquisa.Animal)
-            {
-                Text = "Lista de Animais";
-                Icon = Properties.Resources.animal_icon;
-                btnNovoClienteAnimal.Image = Properties.Resources.addAnimal_32x32;
-                labelPesquisarClienteAnimal.Text = "Pesquisar nome do Animal";
-                dataListaClientesAnimais.Columns["Especie"].HeaderText = "Espécie";
-                dataListaClientesAnimais.Columns["Raca"].HeaderText = "Raça";
-                dataListaClientesAnimais.Columns["Identificacao"].HeaderText = "Identificação";
-                dataListaClientesAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
-                dataListaClientesAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
-            }
+            DGVClientesAnimais.ClearSelection();
+            DGVClientesAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         private void dataListaClientesAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -216,24 +238,28 @@ namespace PetShop
             }
         }
 
-        private void dataListaClientesAnimais_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            btnSelecionar.Enabled = true;
-        }
-
         private void btnNovoClienteAnimal_Click(object sender, EventArgs e)
         {
             if (_TipoPesquisa == TipoPesquisa.Animal)
             {
-                using (AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar))
+                if (FormAdicionarEditarAgendamento != null)
                 {
-                    adicionarAnimal.ShowDialog(this);
+                    using (AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar, FormAdicionarEditarAgendamento._Cliente))
+                    {
+                        adicionarAnimal.ShowDialog();
+                    }
                 }
-
+                else
+                {
+                    using (AdicionarEditarAnimais adicionarAnimal = new AdicionarEditarAnimais(this, TipoOperacao.Adicionar))
+                    {
+                        adicionarAnimal.ShowDialog();
+                    }
+                }
             }
             else if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                using (AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, listaDeClientes: this))
+                using (AdicionarEditarCliente adicionarCliente = new AdicionarEditarCliente(TipoOperacao.Adicionar, this))
                 {
                     adicionarCliente.ShowDialog();
                 }
@@ -243,24 +269,49 @@ namespace PetShop
         private void dataListaClientesAnimais_Sorted(object sender, EventArgs e)
         {
             btnSelecionar.Enabled = false;
-            dataListaClientesAnimais.ClearSelection();
-        }
-
-        private void txtPesquisarClienteAnimal_TextChanged(object sender, EventArgs e)
-        {
-            (dataListaClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarClienteAnimal.Text + "%'");
+            DGVClientesAnimais.ClearSelection();
         }
 
         private void ListaDeClientesAnimais_Resize(object sender, EventArgs e)
         {
-            MaximumSize = new Size(dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
+            MaximumSize = new Size(DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
         }
 
         private void dataListaClientesAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            if (dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) < dataListaClientesAnimais.Size.Width)
+            if (DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) < DGVClientesAnimais.Size.Width)
             {
-                Size = new Size(dataListaClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
+                Size = new Size(DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
+            }
+        }
+
+        private void txtPesquisarCliente_TextChanged(object sender, EventArgs e)
+        {
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
+            {
+                (DGVClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarCliente.Text + "%'");
+
+            }
+            else
+            {
+                (DGVClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeCliente LIKE '%" + txtPesquisarCliente.Text + "%'");
+            }
+        }
+
+        private void txtPesquisarAnimal_TextChanged(object sender, EventArgs e)
+        {
+            (DGVClientesAnimais.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarAnimal.Text + "%'");
+        }
+
+        private void DGVClientesAnimais_SelectionChanged(object sender, EventArgs e)
+        {
+            if ((sender as DataGridView).SelectedRows.Count > 0)
+            {
+                btnSelecionar.Enabled = true;
+            }
+            else
+            {
+                btnSelecionar.Enabled = false;
             }
         }
     }

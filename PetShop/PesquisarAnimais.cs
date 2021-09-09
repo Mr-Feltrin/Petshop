@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace PetShop
 {
-    public partial class PesquisaAnimais : Form
+    public partial class PesquisarAnimais : Form
     {
 
-        public PesquisaAnimais()
+        public PesquisarAnimais()
         {
             InitializeComponent();
         }

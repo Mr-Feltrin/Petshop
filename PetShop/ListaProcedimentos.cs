@@ -91,7 +91,7 @@ namespace PetShop
         {
             using (AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar))
             {
-                adicionarServico.ShowDialog(this);
+                adicionarServico.ShowDialog();
             }
         }
     }

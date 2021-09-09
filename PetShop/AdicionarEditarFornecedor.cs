@@ -111,9 +111,9 @@ namespace PetShop
                 _Fornecedor.Observacoes = txtObservacoes.Text;
                 _Fornecedor.AdicionarEditarFornecedor(Operacao);
             }
-            if (Application.OpenForms.OfType<PesquisaClientesFornecedores>().Count() == 1)
+            if (Application.OpenForms.OfType<PesquisarClientesFornecedores>().Count() == 1)
             {
-                Application.OpenForms.OfType<PesquisaClientesFornecedores>().First().AtualizarLista();
+                Application.OpenForms.OfType<PesquisarClientesFornecedores>().First().AtualizarLista();
             }
             Close();
         }

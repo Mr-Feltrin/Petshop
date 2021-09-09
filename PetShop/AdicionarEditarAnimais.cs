@@ -13,29 +13,29 @@ namespace PetShop
 {
     public partial class AdicionarEditarAnimais : Form
     {
-        public Cliente cliente { get; set; }
-        readonly PesquisaAnimais _PesquisaAnimais;
-        readonly ListaDeClientesAnimais _ListaDeClientesAnimais;
-        readonly TipoOperacao _Operacao;
-        Animal animal;
-        ToolTip _ToolTip = new ToolTip();
-        List<Image> Fotografias = new List<Image>();
-        Dictionary<object, string> CamposObrigatorios;
-        CheckBox SexoSelecionado = new CheckBox();
+        public Cliente ClienteId { get; set; }
+        private readonly PesquisarAnimais FormPesquisaAnimais;
+        private readonly ListaDeClientesAnimais FormListaDeClientesAnimais;
+        private readonly TipoOperacao Operacao;
+        private Animal AnimalId;
+        private ToolTip _ToolTip = new ToolTip();
+        private List<Image> Fotografias = new List<Image>();
+        private Dictionary<object, string> CamposObrigatorios;
+        private CheckBox SexoSelecionado = new CheckBox();
 
-        public AdicionarEditarAnimais(TipoOperacao operacao, PesquisaAnimais pesquisaAnimais)
+        public AdicionarEditarAnimais(TipoOperacao operacao, PesquisarAnimais pesquisaAnimais)
         {
             InitializeComponent();
-            _Operacao = operacao;
-            _PesquisaAnimais = pesquisaAnimais;
+            Operacao = operacao;
+            FormPesquisaAnimais = pesquisaAnimais;
         }
 
-        public AdicionarEditarAnimais(TipoOperacao operacao, PesquisaAnimais pesquisaAnimais, int IdAnimal) : this(operacao, pesquisaAnimais)
+        public AdicionarEditarAnimais(TipoOperacao operacao, PesquisarAnimais pesquisaAnimais, int IdAnimal) : this(operacao, pesquisaAnimais)
         {
             try
             {
-                animal = new Animal(IdAnimal);
-                cliente = new Cliente(animal.ClienteId);
+                AnimalId = new Animal(IdAnimal);
+                ClienteId = new Cliente(AnimalId.ClienteId);
             }
             catch (Exception ex)
             {
@@ -48,8 +48,13 @@ namespace PetShop
         public AdicionarEditarAnimais(ListaDeClientesAnimais listaDeClientesAnimais, TipoOperacao operacao)
         {
             InitializeComponent();
-            _ListaDeClientesAnimais = listaDeClientesAnimais;
-            _Operacao = operacao;
+            FormListaDeClientesAnimais = listaDeClientesAnimais;
+            Operacao = operacao;
+        }
+
+        public AdicionarEditarAnimais(ListaDeClientesAnimais listaDeClientesAnimais, TipoOperacao operacao, Cliente cliente) : this(listaDeClientesAnimais, operacao)
+        {
+            ClienteId = cliente;
         }
 
         private void AdicionarEditarAnimais_Load(object sender, EventArgs e)
@@ -67,75 +72,74 @@ namespace PetShop
             };
             _ToolTip.SetToolTip(btnSalvarCadastro, "Preencha os dados de Cadastro");
             _ToolTip.SetToolTip(btnAdicionarFoto, "Numero máximo de fotos atingido (3)");
-            if (_Operacao == TipoOperacao.Adicionar)
+            if (Operacao == TipoOperacao.Adicionar)
             {
-                if (_ListaDeClientesAnimais != null)
+                if (ClienteId != null)
                 {
-                    cliente = (_ListaDeClientesAnimais._adicionarEditarAgendamento._Cliente);
-                    txtNomeDonoAnimal.Text = cliente.NomeCliente;
+                    txtNomeDonoAnimal.Text = ClienteId.NomeCliente;
                 }
                 txtDataRegistroAnimal.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 combBoxSituacao.SelectedIndex = 0;
             }
-            else if (_Operacao == TipoOperacao.Editar)
+            else if (Operacao == TipoOperacao.Editar)
             {
                 Text = "Editar Animal";
-                txtDataRegistroAnimal.Text = animal.DataRegistro.ToString("dd/MM/yyyy");
-                txtNomeDonoAnimal.Text = cliente.NomeCliente;
-                txtNomeAnimal.Text = animal.Nome;
-                if (string.Equals(animal.Sexo.Trim(), checkSexoMacho.Text))
+                txtDataRegistroAnimal.Text = AnimalId.DataRegistro.ToString("dd/MM/yyyy");
+                txtNomeDonoAnimal.Text = ClienteId.NomeCliente;
+                txtNomeAnimal.Text = AnimalId.Nome;
+                if (string.Equals(AnimalId.Sexo.Trim(), checkSexoMacho.Text))
                 {
                     checkSexoMacho.Checked = true;
                 }
-                else if (string.Equals(animal.Sexo.Trim(), checkSexoFemea.Text))
+                else if (string.Equals(AnimalId.Sexo.Trim(), checkSexoFemea.Text))
                 {
                     checkSexoFemea.Checked = true;
                 }
                 SexoSelecionado.Checked = true;
-                txtEspecie.Text = animal.Especie;
-                txtRaca.Text = animal.Raca;
-                txtIdentificacao.Text = animal.Identificacao;
-                txtFobias.Text = animal.Fobias;
-                txtObservacaoComportamental.Text = animal.ObservacaoComportamental;
-                txtObservacaoRotina.Text = animal.ObservacaoRotina;
-                txtPeso.Text = animal.Peso.ToString("F2");
-                dateDataNascimento.Value = animal.DataNascimento;
-                combBoxSituacao.SelectedItem = animal.Situacao;
-                if (animal.DisponivelTosa == "Sim")
+                txtEspecie.Text = AnimalId.Especie;
+                txtRaca.Text = AnimalId.Raca;
+                txtIdentificacao.Text = AnimalId.Identificacao;
+                txtFobias.Text = AnimalId.Fobias;
+                txtObservacaoComportamental.Text = AnimalId.ObservacaoComportamental;
+                txtObservacaoRotina.Text = AnimalId.ObservacaoRotina;
+                txtPeso.Text = AnimalId.Peso.ToString("F2");
+                dateDataNascimento.Value = AnimalId.DataNascimento;
+                combBoxSituacao.SelectedItem = AnimalId.Situacao;
+                if (AnimalId.DisponivelTosa == "Sim")
                 {
                     checkDisponivelTosa.Checked = true;
                 }
-                if (animal.PossuiPedigree == "Sim")
+                if (AnimalId.PossuiPedigree == "Sim")
                 {
                     checkPossuiPedigree.Checked = true;
                 }
-                if (animal.Agressivo == "Sim")
+                if (AnimalId.Agressivo == "Sim")
                 {
                     checkAgressivo.Checked = true;
                 }
-                if (animal.Hiperativo == "Sim")
+                if (AnimalId.Hiperativo == "Sim")
                 {
                     checkHiperativo.Checked = true;
                 }
-                if (animal.AntiSocial == "Sim")
+                if (AnimalId.AntiSocial == "Sim")
                 {
                     checkAntissocial.Checked = true;
                 }
-                if (animal.Obsessivo == "Sim")
+                if (AnimalId.Obsessivo == "Sim")
                 {
                     checkObcessivo.Checked = true;
                 }
-                if (animal.Fotografia1 != null)
+                if (AnimalId.Fotografia1 != null)
                 {
-                    Fotografias.Add(animal.Fotografia1);
+                    Fotografias.Add(AnimalId.Fotografia1);
                 }
-                if (animal.Fotografia2 != null)
+                if (AnimalId.Fotografia2 != null)
                 {
-                    Fotografias.Add(animal.Fotografia2);
+                    Fotografias.Add(AnimalId.Fotografia2);
                 }
-                if (animal.Fotografia3 != null)
+                if (AnimalId.Fotografia3 != null)
                 {
-                    Fotografias.Add(animal.Fotografia3);
+                    Fotografias.Add(AnimalId.Fotografia3);
                 }
                 if (Fotografias.Count > 0)
                 {
@@ -189,43 +193,43 @@ namespace PetShop
 
         private void btnSalvarCadastro_Click(object sender, EventArgs e)
         {
-            if (_Operacao == TipoOperacao.Adicionar)
+            if (Operacao == TipoOperacao.Adicionar)
             {
-                animal = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, cliente.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), decimal.Parse(txtPeso.Text), dateDataNascimento.Value, combBoxSituacao.Text, Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
-                animal.AdicionarEditarAnimal(_Operacao);
+                AnimalId = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, ClienteId.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), decimal.Parse(txtPeso.Text), dateDataNascimento.Value, combBoxSituacao.Text, Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
+                AnimalId.AdicionarEditarAnimal(Operacao);
             }
             else
             {
-                animal.Nome = txtNomeAnimal.Text;
-                animal.Sexo = checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text;
-                animal.ClienteId = cliente.ClienteId;
-                animal.Especie = txtEspecie.Text;
-                animal.Raca = txtRaca.Text;
-                animal.Identificacao = txtIdentificacao.Text;
-                animal.Fobias = txtFobias.Text;
-                animal.DisponivelTosa = checkDisponivelTosa.Checked ? "Sim" : "Não";
-                animal.PossuiPedigree = checkPossuiPedigree.Checked ? "Sim" : "Não";
-                animal.Agressivo = checkAgressivo.Checked ? "Sim" : "Não";
-                animal.Hiperativo = checkHiperativo.Checked ? "Sim" : "Não";
-                animal.AntiSocial = checkAntissocial.Checked ? "Sim" : "Não";
-                animal.Obsessivo = checkObcessivo.Checked ? "Sim" : "Não";
-                animal.ObservacaoComportamental = txtObservacaoComportamental.Text;
-                animal.ObservacaoRotina = txtObservacaoRotina.Text;
-                animal.Peso = decimal.Parse(txtPeso.Text);
-                animal.DataNascimento = dateDataNascimento.Value;
-                animal.Situacao = combBoxSituacao.Text;
-                animal.Fotografia1 = Fotografias.ElementAtOrDefault(0);
-                animal.Fotografia2 = Fotografias.ElementAtOrDefault(1);
-                animal.Fotografia3 = Fotografias.ElementAtOrDefault(2);
-                animal.AdicionarEditarAnimal(_Operacao);
+                AnimalId.Nome = txtNomeAnimal.Text;
+                AnimalId.Sexo = checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text;
+                AnimalId.ClienteId = ClienteId.ClienteId;
+                AnimalId.Especie = txtEspecie.Text;
+                AnimalId.Raca = txtRaca.Text;
+                AnimalId.Identificacao = txtIdentificacao.Text;
+                AnimalId.Fobias = txtFobias.Text;
+                AnimalId.DisponivelTosa = checkDisponivelTosa.Checked ? "Sim" : "Não";
+                AnimalId.PossuiPedigree = checkPossuiPedigree.Checked ? "Sim" : "Não";
+                AnimalId.Agressivo = checkAgressivo.Checked ? "Sim" : "Não";
+                AnimalId.Hiperativo = checkHiperativo.Checked ? "Sim" : "Não";
+                AnimalId.AntiSocial = checkAntissocial.Checked ? "Sim" : "Não";
+                AnimalId.Obsessivo = checkObcessivo.Checked ? "Sim" : "Não";
+                AnimalId.ObservacaoComportamental = txtObservacaoComportamental.Text;
+                AnimalId.ObservacaoRotina = txtObservacaoRotina.Text;
+                AnimalId.Peso = decimal.Parse(txtPeso.Text);
+                AnimalId.DataNascimento = dateDataNascimento.Value;
+                AnimalId.Situacao = combBoxSituacao.Text;
+                AnimalId.Fotografia1 = Fotografias.ElementAtOrDefault(0);
+                AnimalId.Fotografia2 = Fotografias.ElementAtOrDefault(1);
+                AnimalId.Fotografia3 = Fotografias.ElementAtOrDefault(2);
+                AnimalId.AdicionarEditarAnimal(Operacao);
             }
-            if (_PesquisaAnimais != null)
+            if (FormPesquisaAnimais != null)
             {
-                _PesquisaAnimais.AtualizarLista();
+                FormPesquisaAnimais.AtualizarLista();
             }
-            if (_ListaDeClientesAnimais != null)
+            if (FormListaDeClientesAnimais != null)
             {
-                _ListaDeClientesAnimais.AtualizarLista();
+                FormListaDeClientesAnimais.AtualizarLista();
             }
             Close();
         }

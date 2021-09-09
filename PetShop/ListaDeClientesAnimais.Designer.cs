@@ -112,9 +112,9 @@
             this.DGVClientesAnimais.Size = new System.Drawing.Size(688, 468);
             this.DGVClientesAnimais.TabIndex = 1;
             this.DGVClientesAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaClientesAnimais_CellDoubleClick);
-            this.DGVClientesAnimais.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataListaClientesAnimais_ColumnWidthChanged);
             this.DGVClientesAnimais.SelectionChanged += new System.EventHandler(this.DGVClientesAnimais_SelectionChanged);
             this.DGVClientesAnimais.Sorted += new System.EventHandler(this.dataListaClientesAnimais_Sorted);
+            this.DGVClientesAnimais.Enter += new System.EventHandler(this.DGVClientesAnimais_Enter);
             // 
             // label2
             // 

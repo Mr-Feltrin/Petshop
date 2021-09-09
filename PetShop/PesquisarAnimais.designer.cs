@@ -282,12 +282,12 @@
             this.listaAnimais.Size = new System.Drawing.Size(1003, 602);
             this.listaAnimais.TabIndex = 2;
             this.listaAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellDoubleClick);
-            this.listaAnimais.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.listaAnimais_ColumnWidthChanged);
             this.listaAnimais.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaAnimais_RowStateChanged);
             this.listaAnimais.SelectionChanged += new System.EventHandler(this.listaAnimais_SelectionChanged);
             this.listaAnimais.Sorted += new System.EventHandler(this.listaAnimais_Sorted);
+            this.listaAnimais.Enter += new System.EventHandler(this.listaAnimais_Enter);
             // 
-            // PesquisaAnimais
+            // PesquisarAnimais
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -304,7 +304,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(805, 226);
-            this.Name = "PesquisaAnimais";
+            this.Name = "PesquisarAnimais";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

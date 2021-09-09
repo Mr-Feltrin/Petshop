@@ -204,6 +204,7 @@ namespace PetShop
             this.listaServicos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaServicos_CellDoubleClick);
             this.listaServicos.SelectionChanged += new System.EventHandler(this.listaServicos_SelectionChanged);
             this.listaServicos.Sorted += new System.EventHandler(this.listaServicos_Sorted);
+            this.listaServicos.Enter += new System.EventHandler(this.listaServicos_Enter);
             // 
             // PesquisarServicos
             // 

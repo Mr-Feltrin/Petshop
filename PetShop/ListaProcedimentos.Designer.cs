@@ -129,6 +129,7 @@ namespace PetShop
             this.listaProcedimento.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaProcedimento_CellDoubleClick);
             this.listaProcedimento.SelectionChanged += new System.EventHandler(this.listaProcedimento_SelectionChanged);
             this.listaProcedimento.Sorted += new System.EventHandler(this.listaProcedimento_Sorted);
+            this.listaProcedimento.Enter += new System.EventHandler(this.listaProcedimento_Enter);
             // 
             // groupBox2
             // 

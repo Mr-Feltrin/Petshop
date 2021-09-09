@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PetShop
 {
@@ -13,20 +14,55 @@ namespace PetShop
     public partial class PesquisarClientesFornecedores : Form
     {
         private readonly TipoPesquisa _TipoPesquisa;
+        private VScrollBar DGVScrollBar;
+
         public PesquisarClientesFornecedores(TipoPesquisa tipoPesquisa)
         {
             InitializeComponent();
             _TipoPesquisa = tipoPesquisa;
         }
 
+        private void PesquisaClientesFornecedores_Load(object sender, EventArgs e)
+        {
+            AtualizarLista();
+            if (_TipoPesquisa == TipoPesquisa.Cliente)
+            {
+                Text = "Lista de clientes";
+                Icon = Properties.Resources.usuarios_icon;
+                DGVListaClientesFornecedores.Columns["Telefone_Principal"].HeaderText = "Telefone Principal";
+                DGVListaClientesFornecedores.Columns["Telefone_Secundario"].HeaderText = "Telefone Secundário";
+            }
+            else if (_TipoPesquisa == TipoPesquisa.Fornecedor)
+            {
+                Text = "Lista de fornecedores";
+                Icon = Properties.Resources.fornecedor_icon;
+                DGVListaClientesFornecedores.Columns["Tipo_Fornecimento"].HeaderText = "Tipo de Fornecimento";
+            }
+            DGVListaClientesFornecedores.Columns["Observacoes"].HeaderText = "Observações";
+            DGVListaClientesFornecedores.Columns["Cpf"].HeaderText = "CPF";
+            DGVListaClientesFornecedores.Columns["Cnpj"].HeaderText = "CNPJ";
+            DGVListaClientesFornecedores.Columns["Cep"].HeaderText = "CEP";
+            DGVListaClientesFornecedores.Columns["Endereco"].HeaderText = "Endereço";
+            DGVListaClientesFornecedores.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVListaClientesFornecedores.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(DGVListaClientesFornecedores, this);
+            DGVListaClientesFornecedores.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVListaClientesFornecedores_ColumnWidthChanged);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVListaClientesFornecedores, this);
+        }
+
         public void AtualizarLista()
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
             {
-                dataGridViewListaClientesFornecedores.DataSource = Cliente.ListarClientes();
-                dataGridViewListaClientesFornecedores.ClearSelection();
-                dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
-                foreach (DataGridViewRow row in dataGridViewListaClientesFornecedores.Rows)
+                DGVListaClientesFornecedores.DataSource = Cliente.ListarClientes();
+                DGVListaClientesFornecedores.ClearSelection();
+                DGVListaClientesFornecedores.Sort(DGVListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
+                foreach (DataGridViewRow row in DGVListaClientesFornecedores.Rows)
                 {
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Apelido"].Value))
                     {
@@ -64,8 +100,8 @@ namespace PetShop
             }
             else
             {
-                dataGridViewListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
-                foreach (DataGridViewRow row in dataGridViewListaClientesFornecedores.Rows)
+                DGVListaClientesFornecedores.DataSource = Fornecedor.ListarFornecedores();
+                foreach (DataGridViewRow row in DGVListaClientesFornecedores.Rows)
                 {
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Apelido"].Value))
                     {
@@ -97,14 +133,17 @@ namespace PetShop
                     }
                 }
             }
-            dataGridViewListaClientesFornecedores.Sort(dataGridViewListaClientesFornecedores.Columns[0], ListSortDirection.Descending);
-            dataGridViewListaClientesFornecedores.ClearSelection();
-            dataGridViewListaClientesFornecedores.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            DGVListaClientesFornecedores.ClearSelection();
+            if (DGVListaClientesFornecedores.Rows.Count > 0)
+            {
+                DGVListaClientesFornecedores.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+
+            }
         }
 
         public void BuscarLista()
         {
-            (dataGridViewListaClientesFornecedores.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + textBoxPesquisarPeloNome.Text + "%'");
+            (DGVListaClientesFornecedores.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + textBoxPesquisarPeloNome.Text + "%'");
         }
 
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
@@ -127,14 +166,14 @@ namespace PetShop
         private void btnExcluirClienteFornecedor_Click(object sender, EventArgs e)
         {
 
-            if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
+            if (DGVListaClientesFornecedores.SelectedRows.Count != 0)
             {
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este cliente?", "Remover Cliente", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        Cliente.ExcluirCliente((int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                        Cliente.ExcluirCliente((int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                         AtualizarLista();
                     }
                 }
@@ -143,7 +182,7 @@ namespace PetShop
                     DialogResult confirmar_delete = MessageBox.Show("Tem certeza que deseja remover este Fornecedor?", "Remover Fornecedor", MessageBoxButtons.YesNo);
                     if (confirmar_delete == DialogResult.Yes)
                     {
-                        Fornecedor.ExcluirFornecedor((int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
+                        Fornecedor.ExcluirFornecedor((int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value);
                         AtualizarLista();
                     }
                 }
@@ -155,18 +194,18 @@ namespace PetShop
         }
         private void btnEditarClienteFornecedor_Click(object sender, EventArgs e)
         {
-            if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
+            if (DGVListaClientesFornecedores.SelectedRows.Count != 0)
             {
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
                     {
                         EditarCliente.ShowDialog(this);
                     }
                 }
                 else
                 {
-                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
                     {
                         EditarFornecedor.ShowDialog(this);
                     }
@@ -179,44 +218,20 @@ namespace PetShop
             }
         }
 
-        private void PesquisaClientesFornecedores_Load(object sender, EventArgs e)
-        {
-            AtualizarLista();
-            if (_TipoPesquisa == TipoPesquisa.Cliente)
-            {
-                Text = "Lista de clientes";
-                Icon = Properties.Resources.usuarios_icon;
-                dataGridViewListaClientesFornecedores.Columns["Telefone_Principal"].HeaderText = "Telefone Principal";
-                dataGridViewListaClientesFornecedores.Columns["Telefone_Secundario"].HeaderText = "Telefone Secundário";
-            }
-            else if (_TipoPesquisa == TipoPesquisa.Fornecedor)
-            {
-                Text = "Lista de fornecedores";
-                Icon = Properties.Resources.fornecedor_icon;
-                dataGridViewListaClientesFornecedores.Columns["Tipo_Fornecimento"].HeaderText = "Tipo de Fornecimento";
-            }
-            dataGridViewListaClientesFornecedores.Columns["Observacoes"].HeaderText = "Observações";
-            dataGridViewListaClientesFornecedores.Columns["Cpf"].HeaderText = "CPF";
-            dataGridViewListaClientesFornecedores.Columns["Cnpj"].HeaderText = "CNPJ";
-            dataGridViewListaClientesFornecedores.Columns["Cep"].HeaderText = "CEP";
-            dataGridViewListaClientesFornecedores.Columns["Endereco"].HeaderText = "Endereço";
-            dataGridViewListaClientesFornecedores.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
-        }
-
         private void DataGridViewListaClientesFornecedores_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridViewListaClientesFornecedores.SelectedRows.Count != 0)
+            if (DGVListaClientesFornecedores.SelectedRows.Count != 0)
             {
                 if (_TipoPesquisa == TipoPesquisa.Cliente)
                 {
-                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    using (AdicionarEditarCliente EditarCliente = new AdicionarEditarCliente(TipoOperacao.Editar, this, (int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
                     {
                         EditarCliente.ShowDialog(this);
                     }
                 }
                 else
                 {
-                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)dataGridViewListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
+                    using (AdicionarEditarFornecedor EditarFornecedor = new AdicionarEditarFornecedor(TipoOperacao.Editar, (int)DGVListaClientesFornecedores.SelectedRows[0].Cells[0].Value))
                     {
                         EditarFornecedor.ShowDialog(this);
                     }
@@ -231,12 +246,12 @@ namespace PetShop
 
         private void dataGridViewListaClientesFornecedores_Sorted(object sender, EventArgs e)
         {
-            dataGridViewListaClientesFornecedores.ClearSelection();
+            DGVListaClientesFornecedores.ClearSelection();
         }
 
         private void dataGridViewListaClientesFornecedores_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (dataGridViewListaClientesFornecedores.Rows.Count > 0)
+            if (DGVListaClientesFornecedores.Rows.Count > 0)
             {
                 btnExportarClienteFornecedor.Enabled = true;
             }
@@ -248,7 +263,7 @@ namespace PetShop
 
         private void dataGridViewListaClientesFornecedores_SelectionChanged(object sender, EventArgs e)
         {
-            if (dataGridViewListaClientesFornecedores.SelectedRows.Count > 0)
+            if (DGVListaClientesFornecedores.SelectedRows.Count > 0)
             {
                 btnEditarClienteFornecedor.Enabled = true;
                 btnExcluirClienteFornecedor.Enabled = true;
@@ -273,7 +288,7 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (dataGridViewListaClientesFornecedores.DataSource as DataTable).Copy();
+                        DataTable data = (DGVListaClientesFornecedores.DataSource as DataTable).Copy();
                         if (_TipoPesquisa == TipoPesquisa.Cliente)
                         {
                             data.Columns["Telefone_Principal"].ColumnName = "Telefone";
@@ -308,9 +323,9 @@ namespace PetShop
             }
         }
 
-        private void dataGridViewListaClientesFornecedores_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        private void DGVListaClientesFornecedores_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            MaximumSize = new System.Drawing.Size(dataGridViewListaClientesFornecedores.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
+            DataGridViewTools.MaximumFormSize(DGVListaClientesFornecedores, this);
         }
 
         private void PesquisaClientesFornecedores_KeyDown(object sender, KeyEventArgs e)
@@ -319,6 +334,12 @@ namespace PetShop
             {
                 Close();
             }
+        }
+
+        private void DGVListaClientesFornecedores_Enter(object sender, EventArgs e)
+        {
+            DGVListaClientesFornecedores.CurrentCell = null;
+            DGVListaClientesFornecedores.FirstDisplayedCell = null;
         }
     }
 }

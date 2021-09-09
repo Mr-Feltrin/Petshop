@@ -3,13 +3,16 @@ using PetShop.Entities.Enums;
 using System;
 using System.Data;
 using System.Windows.Forms;
+using PetShop.ToolBox;
+using System.Linq;
 
 namespace PetShop
 {
     public partial class ListaEspecieRacaAnimais : Form
     {
-        private AdicionarEditarAnimais _AdicionarEditarAnimais { get; set; }
-        private TipoPesquisa _TipoPesquisa { get; set; }
+        private AdicionarEditarAnimais _AdicionarEditarAnimais;
+        private TipoPesquisa _TipoPesquisa;
+        private VScrollBar DGVScrollBar;
 
         public ListaEspecieRacaAnimais(TipoPesquisa tipoPesquisa, AdicionarEditarAnimais adicionarEditarAnimais)
         {
@@ -24,27 +27,41 @@ namespace PetShop
             {
                 Text = "Lista de Raças";
                 labelPesquisar.Text = "Pesquisar Raça";
-                dataListaEspecieRaca.DataSource = Animal.ListarRacas();
+                DGVListaEspecieRaca.DataSource = Animal.ListarRacas();
             }
             else
             {
                 Text = "Lista de Espécies";
                 labelPesquisar.Text = "Pesquisar Espécie";
-                dataListaEspecieRaca.DataSource = Animal.ListarEspecies();
+                DGVListaEspecieRaca.DataSource = Animal.ListarEspecies();
             }
-            dataListaEspecieRaca.ClearSelection();
+            DGVListaEspecieRaca.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVScrollBar = DGVListaEspecieRaca.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(DGVListaEspecieRaca, this);
+            DGVListaEspecieRaca.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVListaEspecieRaca_ColumnWidthChanged);
+        }
+
+        private void DGVListaEspecieRaca_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVListaEspecieRaca, this);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVListaEspecieRaca, this);
         }
 
         private void PesquisarEspecieRaca()
         {
             if (_TipoPesquisa == TipoPesquisa.Especie)
             {
-                (dataListaEspecieRaca.DataSource as DataTable).DefaultView.RowFilter = string.Format("Espécie LIKE '%" + txtPesquisar.Text + "%'");
+                (DGVListaEspecieRaca.DataSource as DataTable).DefaultView.RowFilter = string.Format("Espécie LIKE '%" + txtPesquisar.Text + "%'");
 
             }
             else if (_TipoPesquisa == TipoPesquisa.Raca)
             {
-                (dataListaEspecieRaca.DataSource as DataTable).DefaultView.RowFilter = string.Format("Raça LIKE '%" + txtPesquisar.Text + "%'");
+                (DGVListaEspecieRaca.DataSource as DataTable).DefaultView.RowFilter = string.Format("Raça LIKE '%" + txtPesquisar.Text + "%'");
             }
         }
 
@@ -57,11 +74,11 @@ namespace PetShop
         {
             if (_TipoPesquisa == TipoPesquisa.Raca)
             {
-                _AdicionarEditarAnimais.txtRaca.Text = dataListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
+                _AdicionarEditarAnimais.txtRaca.Text = DGVListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
             }
             else if (_TipoPesquisa == TipoPesquisa.Especie)
             {
-                _AdicionarEditarAnimais.txtEspecie.Text = dataListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
+                _AdicionarEditarAnimais.txtEspecie.Text = DGVListaEspecieRaca.SelectedRows[0].Cells[0].Value.ToString();
             }
             Close();
         }
@@ -86,13 +103,26 @@ namespace PetShop
 
         private void dataListaEspecieRaca_Sorted(object sender, EventArgs e)
         {
-            dataListaEspecieRaca.ClearSelection();
+            DGVListaEspecieRaca.ClearSelection();
             btnSelecionar.Enabled = false;
         }
 
-        private void dataListaEspecieRaca_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DGVListaEspecieRaca_SelectionChanged(object sender, EventArgs e)
         {
-            btnSelecionar.Enabled = true;
+            if (DGVListaEspecieRaca.SelectedRows.Count > 0)
+            {
+                btnSelecionar.Enabled = true;
+            }
+            else
+            {
+                btnSelecionar.Enabled = false;
+            }
+        }
+
+        private void DGVListaEspecieRaca_Enter(object sender, EventArgs e)
+        {
+            DGVListaEspecieRaca.CurrentCell = null;
+            DGVListaEspecieRaca.FirstDisplayedCell = null;
         }
     }
 }

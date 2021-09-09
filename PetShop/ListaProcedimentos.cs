@@ -5,12 +5,14 @@ using System;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PetShop
 {
     public partial class ListaProcedimentos : Form
     {
         private readonly AdicionarEditarAgendamento adicionarEditarAgendamento;
+        private VScrollBar DGVScrollBar;
 
         public ListaProcedimentos(AdicionarEditarAgendamento agendamento)
         {
@@ -18,18 +20,33 @@ namespace PetShop
             adicionarEditarAgendamento = agendamento;
         }
 
-        public void AtualizarLista()
+        private void ListaProcedimentos_Load(object sender, EventArgs e)
         {
-            listaProcedimento.DataSource = Servico.ListarServicos();
+            AtualizarLista();
             listaProcedimento.Columns["NomeServico"].HeaderText = "Nome do Serviço";
             listaProcedimento.Columns["Valor"].DefaultCellStyle.FormatProvider = new CultureInfo("pt-BR");
             listaProcedimento.Columns["Valor"].DefaultCellStyle.Format = string.Format("C2");
             listaProcedimento.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVScrollBar = listaProcedimento.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(listaProcedimento, this);
+            listaProcedimento.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaProcedimento_ColumnWidthChanged);
         }
 
-        private void ListaProcedimentos_Load(object sender, EventArgs e)
+        public void AtualizarLista()
         {
-            AtualizarLista();
+            listaProcedimento.DataSource = Servico.ListarServicos();
+            listaProcedimento.ClearSelection();
+        }
+
+        private void listaProcedimento_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(listaProcedimento, this);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(listaProcedimento, this);
         }
 
         private void txtPesquisarProcedimento_TextChanged(object sender, EventArgs e)
@@ -93,6 +110,12 @@ namespace PetShop
             {
                 adicionarServico.ShowDialog();
             }
+        }
+
+        private void listaProcedimento_Enter(object sender, EventArgs e)
+        {
+            listaProcedimento.CurrentCell = null;
+            listaProcedimento.FirstDisplayedCell = null;
         }
     }
 }

@@ -5,16 +5,18 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using PetShop.ToolBox;
+using System.Linq;
 
 namespace PetShop
 {
     public partial class ListaDeClientesAnimais : Form
     {
-        public AdicionarEditarAgendamento FormAdicionarEditarAgendamento { get; private set; }
-        private AdicionarEditarAnimais FormAdicionarEditarAnimais;
-        private AdicionarEditarVacinacao FormAdicionarEditarVacinacao;
-        private TipoPesquisa _TipoPesquisa { get; set; }
-        private LancarVenda FormLancarVenda { get; set; }
+        public AdicionarEditarAgendamento FormAdicionarEditarAgendamento;
+        private readonly AdicionarEditarAnimais FormAdicionarEditarAnimais;
+        private readonly AdicionarEditarVacinacao FormAdicionarEditarVacinacao;
+        private readonly LancarVenda FormLancarVenda;
+        private TipoPesquisa _TipoPesquisa;
+        private VScrollBar DGVScrollBar;
 
         public ListaDeClientesAnimais(AdicionarEditarAgendamento adicionarEditarAgendamento, TipoPesquisa tipoPesquisa, Cliente cliente)
         {
@@ -75,6 +77,15 @@ namespace PetShop
                 DGVClientesAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
                 DGVClientesAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
             }
+            DGVClientesAnimais.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVScrollBar = DGVClientesAnimais.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DGVClientesAnimais.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVClientesAnimais_ColumnWidthChanged);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVClientesAnimais, this);
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -226,8 +237,11 @@ namespace PetShop
                     }
                 }
             }
+            if (DGVClientesAnimais.Rows.Count > 0)
+            {
+                DGVClientesAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            }
             DGVClientesAnimais.ClearSelection();
-            DGVClientesAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
         }
 
         private void dataListaClientesAnimais_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -277,14 +291,6 @@ namespace PetShop
             MaximumSize = new Size(DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, 100000);
         }
 
-        private void dataListaClientesAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
-        {
-            if (DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) < DGVClientesAnimais.Size.Width)
-            {
-                Size = new Size(DGVClientesAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 52, Size.Height);
-            }
-        }
-
         private void txtPesquisarCliente_TextChanged(object sender, EventArgs e)
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)
@@ -313,6 +319,17 @@ namespace PetShop
             {
                 btnSelecionar.Enabled = false;
             }
+        }
+
+        private void DGVClientesAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVClientesAnimais, this);
+        }
+
+        private void DGVClientesAnimais_Enter(object sender, EventArgs e)
+        {
+            DGVClientesAnimais.CurrentCell = null;
+            DGVClientesAnimais.FirstDisplayedCell = null;
         }
     }
 }

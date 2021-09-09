@@ -39,6 +39,7 @@ namespace PetShop
             DGVVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             ListaVacinasScrollBar = DGVVacinas.Controls.OfType<VScrollBar>().First();
             ListaVacinasScrollBar.VisibleChanged += new EventHandler(ListaVacinasScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(DGVVacinas, this);
             DGVVacinas.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVVacinas_ColumnWidthChanged);
         }
 

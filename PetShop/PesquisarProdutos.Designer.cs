@@ -34,7 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PesquisarProdutos));
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.DataGridListaProdutos = new System.Windows.Forms.DataGridView();
+            this.DGVListaProdutos = new System.Windows.Forms.DataGridView();
             this.groupBox_pesquisar_nome_cliente = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.labelMarcaProduto = new System.Windows.Forms.Label();
@@ -58,7 +58,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxFiltrarLista = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVListaProdutos)).BeginInit();
             this.groupBox_pesquisar_nome_cliente.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -74,22 +74,22 @@
             this.groupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox.Controls.Add(this.DataGridListaProdutos);
+            this.groupBox.Controls.Add(this.DGVListaProdutos);
             this.groupBox.Location = new System.Drawing.Point(12, 89);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1129, 571);
             this.groupBox.TabIndex = 0;
             this.groupBox.TabStop = false;
             // 
-            // DataGridListaProdutos
+            // DGVListaProdutos
             // 
-            this.DataGridListaProdutos.AllowUserToAddRows = false;
-            this.DataGridListaProdutos.AllowUserToDeleteRows = false;
-            this.DataGridListaProdutos.AllowUserToResizeRows = false;
-            this.DataGridListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DGVListaProdutos.AllowUserToAddRows = false;
+            this.DGVListaProdutos.AllowUserToDeleteRows = false;
+            this.DGVListaProdutos.AllowUserToResizeRows = false;
+            this.DGVListaProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataGridListaProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.DGVListaProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -97,8 +97,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataGridListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DGVListaProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVListaProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -106,11 +106,11 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
-            this.DataGridListaProdutos.Location = new System.Drawing.Point(6, 11);
-            this.DataGridListaProdutos.MultiSelect = false;
-            this.DataGridListaProdutos.Name = "DataGridListaProdutos";
-            this.DataGridListaProdutos.ReadOnly = true;
+            this.DGVListaProdutos.DefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVListaProdutos.Location = new System.Drawing.Point(6, 11);
+            this.DGVListaProdutos.MultiSelect = false;
+            this.DGVListaProdutos.Name = "DGVListaProdutos";
+            this.DGVListaProdutos.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -118,19 +118,19 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DataGridListaProdutos.RowHeadersVisible = false;
+            this.DGVListaProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVListaProdutos.RowHeadersVisible = false;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DataGridListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DataGridListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataGridListaProdutos.Size = new System.Drawing.Size(1117, 554);
-            this.DataGridListaProdutos.TabIndex = 3;
-            this.DataGridListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
-            this.DataGridListaProdutos.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.DataGridListaProdutos_ColumnWidthChanged);
-            this.DataGridListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
-            this.DataGridListaProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DataGridListaProdutos_RowStateChanged);
-            this.DataGridListaProdutos.SelectionChanged += new System.EventHandler(this.DataGridListaProdutos_SelectionChanged);
-            this.DataGridListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
+            this.DGVListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.DGVListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVListaProdutos.Size = new System.Drawing.Size(1117, 554);
+            this.DGVListaProdutos.TabIndex = 3;
+            this.DGVListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
+            this.DGVListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
+            this.DGVListaProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DataGridListaProdutos_RowStateChanged);
+            this.DGVListaProdutos.SelectionChanged += new System.EventHandler(this.DataGridListaProdutos_SelectionChanged);
+            this.DGVListaProdutos.Sorted += new System.EventHandler(this.DataGridListaProdutos_Sorted);
+            this.DGVListaProdutos.Enter += new System.EventHandler(this.DGVListaProdutos_Enter);
             // 
             // groupBox_pesquisar_nome_cliente
             // 
@@ -466,7 +466,7 @@
             this.Load += new System.EventHandler(this.PesquisaProdutos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PesquisaProdutos_KeyDown);
             this.groupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridListaProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVListaProdutos)).EndInit();
             this.groupBox_pesquisar_nome_cliente.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -507,7 +507,7 @@
         private System.Windows.Forms.TextBox txtPesquisarNomeProduto;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TextBox txtPesquisarMarcaProduto;
-        private System.Windows.Forms.DataGridView DataGridListaProdutos;
+        private System.Windows.Forms.DataGridView DGVListaProdutos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private ToolBox.Controls.ComboBoxFlatBordered comboBoxFiltrarLista;
     }

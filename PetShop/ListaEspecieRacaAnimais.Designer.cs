@@ -32,14 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListaEspecieRacaAnimais));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataListaEspecieRaca = new System.Windows.Forms.DataGridView();
+            this.DGVListaEspecieRaca = new System.Windows.Forms.DataGridView();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.groupBoxPesquisa = new System.Windows.Forms.GroupBox();
             this.labelPesquisar = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListaEspecieRaca)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVListaEspecieRaca)).BeginInit();
             this.groupBoxPesquisa.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,40 +48,41 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.dataListaEspecieRaca);
+            this.groupBox1.Controls.Add(this.DGVListaEspecieRaca);
             this.groupBox1.Location = new System.Drawing.Point(12, 90);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(700, 498);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
-            // dataListaEspecieRaca
+            // DGVListaEspecieRaca
             // 
-            this.dataListaEspecieRaca.AllowUserToAddRows = false;
-            this.dataListaEspecieRaca.AllowUserToDeleteRows = false;
-            this.dataListaEspecieRaca.AllowUserToResizeColumns = false;
-            this.dataListaEspecieRaca.AllowUserToResizeRows = false;
+            this.DGVListaEspecieRaca.AllowUserToAddRows = false;
+            this.DGVListaEspecieRaca.AllowUserToDeleteRows = false;
+            this.DGVListaEspecieRaca.AllowUserToResizeColumns = false;
+            this.DGVListaEspecieRaca.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataListaEspecieRaca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataListaEspecieRaca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DGVListaEspecieRaca.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVListaEspecieRaca.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataListaEspecieRaca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataListaEspecieRaca.BackgroundColor = System.Drawing.Color.AliceBlue;
-            this.dataListaEspecieRaca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataListaEspecieRaca.Location = new System.Drawing.Point(6, 13);
-            this.dataListaEspecieRaca.MultiSelect = false;
-            this.dataListaEspecieRaca.Name = "dataListaEspecieRaca";
-            this.dataListaEspecieRaca.ReadOnly = true;
-            this.dataListaEspecieRaca.RowHeadersVisible = false;
+            this.DGVListaEspecieRaca.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVListaEspecieRaca.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.DGVListaEspecieRaca.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DGVListaEspecieRaca.Location = new System.Drawing.Point(6, 13);
+            this.DGVListaEspecieRaca.MultiSelect = false;
+            this.DGVListaEspecieRaca.Name = "DGVListaEspecieRaca";
+            this.DGVListaEspecieRaca.ReadOnly = true;
+            this.DGVListaEspecieRaca.RowHeadersVisible = false;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataListaEspecieRaca.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataListaEspecieRaca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataListaEspecieRaca.Size = new System.Drawing.Size(688, 479);
-            this.dataListaEspecieRaca.TabIndex = 1;
-            this.dataListaEspecieRaca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellClick);
-            this.dataListaEspecieRaca.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellDoubleClick);
-            this.dataListaEspecieRaca.Sorted += new System.EventHandler(this.dataListaEspecieRaca_Sorted);
+            this.DGVListaEspecieRaca.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVListaEspecieRaca.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVListaEspecieRaca.Size = new System.Drawing.Size(688, 479);
+            this.DGVListaEspecieRaca.TabIndex = 1;
+            this.DGVListaEspecieRaca.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaEspecieRaca_CellDoubleClick);
+            this.DGVListaEspecieRaca.SelectionChanged += new System.EventHandler(this.DGVListaEspecieRaca_SelectionChanged);
+            this.DGVListaEspecieRaca.Sorted += new System.EventHandler(this.dataListaEspecieRaca_Sorted);
+            this.DGVListaEspecieRaca.Enter += new System.EventHandler(this.DGVListaEspecieRaca_Enter);
             // 
             // btnSair
             // 
@@ -172,7 +173,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.ListaEspecieRacaAnimais_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataListaEspecieRaca)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVListaEspecieRaca)).EndInit();
             this.groupBoxPesquisa.ResumeLayout(false);
             this.groupBoxPesquisa.PerformLayout();
             this.ResumeLayout(false);
@@ -182,7 +183,7 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dataListaEspecieRaca;
+        private System.Windows.Forms.DataGridView DGVListaEspecieRaca;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.TextBox txtPesquisar;

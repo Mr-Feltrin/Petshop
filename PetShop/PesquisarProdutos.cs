@@ -7,11 +7,14 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PetShop
 {
     public partial class PesquisarProdutos : Form
     {
+        private VScrollBar DGVScrollBar;
+
         public PesquisarProdutos()
         {
             InitializeComponent();
@@ -21,30 +24,39 @@ namespace PetShop
         {
             AtualizarLista();
             comboBoxFiltrarLista.SelectedIndex = 3;
-            DataGridListaProdutos.Columns["CodigoBarras"].HeaderText = "Código de Barras";
-            DataGridListaProdutos.Columns["TipoUnidade"].HeaderText = "Tipo de Unidade";
-            DataGridListaProdutos.Columns["Referencia"].HeaderText = "Referência";
-            DataGridListaProdutos.Columns["Localizacao"].HeaderText = "Localização";
-            DataGridListaProdutos.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
-            DataGridListaProdutos.Columns["EstoqueMinimo"].HeaderText = "Estoque Mínimo";
-            DataGridListaProdutos.Columns["EstoqueAtual"].HeaderText = "Estoque Atual";
-            DataGridListaProdutos.Columns["DataValidade"].HeaderText = "Data de Validade";
-            DataGridListaProdutos.Columns["ValorCusto"].HeaderText = "Valor de Custo";
-            DataGridListaProdutos.Columns["ValorProduto"].HeaderText = "Valor do Produto";
-            DataGridListaProdutos.Columns["observacoes"].HeaderText = "Observações";
-            DataGridListaProdutos.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridListaProdutos.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridListaProdutos.Columns["ValorCusto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
-            DataGridListaProdutos.Columns["ValorCusto"].DefaultCellStyle.Format = string.Format("C2");
-            DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
-            DataGridListaProdutos.Columns["ValorProduto"].DefaultCellStyle.Format = string.Format("C2");
-            DataGridListaProdutos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVListaProdutos.Columns["CodigoBarras"].HeaderText = "Código de Barras";
+            DGVListaProdutos.Columns["TipoUnidade"].HeaderText = "Tipo de Unidade";
+            DGVListaProdutos.Columns["Referencia"].HeaderText = "Referência";
+            DGVListaProdutos.Columns["Localizacao"].HeaderText = "Localização";
+            DGVListaProdutos.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            DGVListaProdutos.Columns["EstoqueMinimo"].HeaderText = "Estoque Mínimo";
+            DGVListaProdutos.Columns["EstoqueAtual"].HeaderText = "Estoque Atual";
+            DGVListaProdutos.Columns["DataValidade"].HeaderText = "Data de Validade";
+            DGVListaProdutos.Columns["ValorCusto"].HeaderText = "Valor de Custo";
+            DGVListaProdutos.Columns["ValorProduto"].HeaderText = "Valor do Produto";
+            DGVListaProdutos.Columns["observacoes"].HeaderText = "Observações";
+            DGVListaProdutos.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DGVListaProdutos.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DGVListaProdutos.Columns["ValorCusto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            DGVListaProdutos.Columns["ValorCusto"].DefaultCellStyle.Format = string.Format("C2");
+            DGVListaProdutos.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
+            DGVListaProdutos.Columns["ValorProduto"].DefaultCellStyle.Format = string.Format("C2");
+            DGVListaProdutos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVScrollBar = DGVListaProdutos.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(DGVListaProdutos, this);
+            DGVListaProdutos.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVListaProdutos_ColumnWidthChanged);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(DGVListaProdutos, this);
         }
 
         internal void AtualizarLista()
         {
-            DataGridListaProdutos.DataSource = Produto.ListarProdutos();
-            foreach (DataGridViewRow row in DataGridListaProdutos.Rows)
+            DGVListaProdutos.DataSource = Produto.ListarProdutos();
+            foreach (DataGridViewRow row in DGVListaProdutos.Rows)
             {
                 if (string.IsNullOrEmpty((string)row.Cells["CodigoBarras"].Value))
                 {
@@ -67,9 +79,12 @@ namespace PetShop
                     row.Cells["Observacoes"].Value = "Não Definido";
                 }
             }
-            DataGridListaProdutos.ClearSelection();
-            DataGridListaProdutos.Sort(DataGridListaProdutos.Columns["EstoqueAtual"], System.ComponentModel.ListSortDirection.Descending);
-            DataGridListaProdutos.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            DGVListaProdutos.ClearSelection();
+            DGVListaProdutos.Sort(DGVListaProdutos.Columns["EstoqueAtual"], System.ComponentModel.ListSortDirection.Descending);
+            if (DGVListaProdutos.Rows.Count > 0)
+            {
+                DGVListaProdutos.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            }
         }
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
@@ -82,7 +97,7 @@ namespace PetShop
 
         private void btnEditarProduto_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
+            using (AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value))
             {
                 editarAgendamento.ShowDialog();
             }
@@ -93,16 +108,16 @@ namespace PetShop
             DialogResult confirmarDelete = MessageBox.Show("Tem certeza que quer remover este produto?", "Remover produto", MessageBoxButtons.YesNo);
             if (confirmarDelete == DialogResult.Yes)
             {
-                Produto.RemoverProduto((int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value);
+                Produto.RemoverProduto((int)DGVListaProdutos.SelectedRows[0].Cells[0].Value);
                 AtualizarLista();
             }
         }
 
         private void DataGridListaProdutos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (DataGridListaProdutos.SelectedRows.Count != 0)
+            if (DGVListaProdutos.SelectedRows.Count != 0)
             {
-                using (AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DataGridListaProdutos.SelectedRows[0].Cells[0].Value))
+                using (AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value))
                 {
                     editarProdutos.ShowDialog();
                 }
@@ -111,17 +126,17 @@ namespace PetShop
 
         private void DataGridListaProdutos_Sorted(object sender, EventArgs e)
         {
-            DataGridListaProdutos.ClearSelection();
+            DGVListaProdutos.ClearSelection();
         }
 
         private void txtPesquisarNomeProduto_TextChanged(object sender, EventArgs e)
         {
-            (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarNomeProduto.Text + "%'");
+            (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Nome LIKE '%" + txtPesquisarNomeProduto.Text + "%'");
         }
 
         private void txtPesquisarMarcaProduto_TextChanged(object sender, EventArgs e)
         {
-            (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Marca LIKE '%" + txtPesquisarMarcaProduto.Text + "%'");
+            (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Format("Marca LIKE '%" + txtPesquisarMarcaProduto.Text + "%'");
         }
 
         private void DataGridListaProdutos_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -131,7 +146,7 @@ namespace PetShop
 
         private void ColoracaoListaProdutos()
         {
-            foreach (DataGridViewRow row in DataGridListaProdutos.Rows)
+            foreach (DataGridViewRow row in DGVListaProdutos.Rows)
             {
                 if (int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > int.Parse(row.Cells["EstoqueMinimo"].Value.ToString()) && int.Parse(row.Cells["EstoqueAtual"].Value.ToString()) > 0)
                 {
@@ -152,25 +167,25 @@ namespace PetShop
         {
             if ((sender as ComboBox).SelectedIndex == 0)
             {
-                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0";
-                DataGridListaProdutos.ClearSelection();
+                (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0";
+                DGVListaProdutos.ClearSelection();
             }
             else if ((sender as ComboBox).SelectedIndex == 1)
             {
-                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0 AND EstoqueAtual < EstoqueMinimo";
-                DataGridListaProdutos.ClearSelection();
+                (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual > 0 AND EstoqueAtual < EstoqueMinimo";
+                DGVListaProdutos.ClearSelection();
             }
             else if ((sender as ComboBox).SelectedIndex == 2)
             {
-                (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual <= 0";
-                DataGridListaProdutos.ClearSelection();
+                (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = "EstoqueAtual <= 0";
+                DGVListaProdutos.ClearSelection();
             }
             else if ((sender as ComboBox).SelectedIndex == 3)
             {
-                if ((DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter != null)
+                if ((DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter != null)
                 {
-                    (DataGridListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
-                    DataGridListaProdutos.ClearSelection();
+                    (DGVListaProdutos.DataSource as DataTable).DefaultView.RowFilter = string.Empty;
+                    DGVListaProdutos.ClearSelection();
                 }
             }
         }
@@ -188,7 +203,7 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (DataGridListaProdutos.DataSource as DataTable).Copy();
+                        DataTable data = (DGVListaProdutos.DataSource as DataTable).Copy();
                         data.Columns["CodigoBarras"].ColumnName = "Codigo de Barras";
                         data.Columns["TipoUnidade"].ColumnName = "Tipo de Unidade";
                         data.Columns["Referencia"].ColumnName = "Referência";
@@ -235,7 +250,7 @@ namespace PetShop
 
         private void DataGridListaProdutos_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
         {
-            if (DataGridListaProdutos.Rows.Count > 0)
+            if (DGVListaProdutos.Rows.Count > 0)
             {
                 btnImprimirLista.Enabled = true;
             }
@@ -247,7 +262,7 @@ namespace PetShop
 
         private void DataGridListaProdutos_SelectionChanged(object sender, EventArgs e)
         {
-            if (DataGridListaProdutos.SelectedRows.Count > 0)
+            if (DGVListaProdutos.SelectedRows.Count > 0)
             {
                 btnEditarProduto.Enabled = true;
                 btnExcluirProduto.Enabled = true;
@@ -267,9 +282,9 @@ namespace PetShop
             }
         }
 
-        private void DataGridListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        private void DGVListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            MaximumSize = new Size(DataGridListaProdutos.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 52, 100000);
+            DataGridViewTools.MaximumFormSize(DGVListaProdutos, this);
         }
 
         private void PesquisaProdutos_KeyDown(object sender, KeyEventArgs e)
@@ -278,6 +293,12 @@ namespace PetShop
             {
                 Close();
             }
+        }
+
+        private void DGVListaProdutos_Enter(object sender, EventArgs e)
+        {
+            DGVListaProdutos.CurrentCell = null;
+            DGVListaProdutos.FirstDisplayedCell = null;
         }
     }
 }

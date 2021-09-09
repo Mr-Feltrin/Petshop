@@ -6,11 +6,13 @@ using System;
 using System.ComponentModel;
 using System.Data;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace PetShop
 {
     public partial class PesquisarAnimais : Form
     {
+        private VScrollBar DGVScrollBar;
 
         public PesquisarAnimais()
         {
@@ -38,6 +40,15 @@ namespace PetShop
             listaAnimais.Columns["DataNascimento"].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaAnimais.Columns["Peso"].DefaultCellStyle.Format = "F2";
             listaAnimais.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
+            DGVScrollBar = listaAnimais.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
+            DataGridViewTools.MaximumFormSize(listaAnimais, this);
+            listaAnimais.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaAnimais_ColumnWidthChanged);
+        }
+
+        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
+        {
+            DataGridViewTools.MaximumFormSize(listaAnimais, this);
         }
 
         public void AtualizarLista()
@@ -60,7 +71,10 @@ namespace PetShop
                 }
             }
             listaAnimais.ClearSelection();
-            listaAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            if (listaAnimais.Rows.Count > 0)
+            {
+                listaAnimais.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
+            }
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -183,7 +197,7 @@ namespace PetShop
 
         private void listaAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            MaximumSize = new System.Drawing.Size(listaAnimais.Columns.GetColumnsWidth(DataGridViewElementStates.None) + 3 + 50, 100000);
+            DataGridViewTools.MaximumFormSize(listaAnimais, this);
         }
 
         private void PesquisaAnimais_KeyDown(object sender, KeyEventArgs e)
@@ -192,6 +206,12 @@ namespace PetShop
             {
                 Close();
             }
+        }
+
+        private void listaAnimais_Enter(object sender, EventArgs e)
+        {
+            listaAnimais.CurrentCell = null;
+            listaAnimais.FirstDisplayedCell = null;
         }
     }
 }

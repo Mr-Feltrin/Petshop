@@ -28,14 +28,14 @@ namespace PetShop
             DGVListaProdutos.Columns["TipoUnidade"].HeaderText = "Tipo de Unidade";
             DGVListaProdutos.Columns["Referencia"].HeaderText = "Referência";
             DGVListaProdutos.Columns["Localizacao"].HeaderText = "Localização";
-            DGVListaProdutos.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            DGVListaProdutos.Columns["DataAtualizacao"].HeaderText = "Data de Atualização";
             DGVListaProdutos.Columns["EstoqueMinimo"].HeaderText = "Estoque Mínimo";
             DGVListaProdutos.Columns["EstoqueAtual"].HeaderText = "Estoque Atual";
             DGVListaProdutos.Columns["DataValidade"].HeaderText = "Data de Validade";
             DGVListaProdutos.Columns["ValorCusto"].HeaderText = "Valor de Custo";
             DGVListaProdutos.Columns["ValorProduto"].HeaderText = "Valor do Produto";
-            DGVListaProdutos.Columns["observacoes"].HeaderText = "Observações";
-            DGVListaProdutos.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DGVListaProdutos.Columns["Observacoes"].HeaderText = "Observações";
+            DGVListaProdutos.Columns["DataAtualizacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             DGVListaProdutos.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
             DGVListaProdutos.Columns["ValorCusto"].DefaultCellStyle.FormatProvider = CultureInfo.GetCultureInfo("pt-BR");
             DGVListaProdutos.Columns["ValorCusto"].DefaultCellStyle.Format = string.Format("C2");
@@ -208,13 +208,13 @@ namespace PetShop
                         data.Columns["TipoUnidade"].ColumnName = "Tipo de Unidade";
                         data.Columns["Referencia"].ColumnName = "Referência";
                         data.Columns["Localizacao"].ColumnName = "Localização";
-                        data.Columns["DataCadastro"].ColumnName = "Data de Cadastro";
                         data.Columns["EstoqueMinimo"].ColumnName = "Estoque Mínimo";
                         data.Columns["EstoqueAtual"].ColumnName = "Estoque Atual";
                         data.Columns["DataValidade"].ColumnName = "Data de Validade";
                         data.Columns["ValorCusto"].ColumnName = "Valor de Custo";
                         data.Columns["ValorProduto"].ColumnName = "Valor do Produto";
                         data.Columns["Observacoes"].ColumnName = "Observações";
+                        data.Columns["DataAtualizacao"].ColumnName = "Data de Atualização";
                         if (comboBoxFiltrarLista.SelectedIndex == 0)
                         {
                             data = data.Select("EstoqueAtual > 0").CopyToDataTable();

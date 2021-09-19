@@ -76,7 +76,7 @@
             this.dataInicial.Location = new System.Drawing.Point(10, 38);
             this.dataInicial.Name = "dataInicial";
             this.dataInicial.Size = new System.Drawing.Size(109, 25);
-            this.dataInicial.TabIndex = 1;
+            this.dataInicial.TabIndex = 3;
             this.dataInicial.Value = new System.DateTime(2020, 11, 30, 0, 0, 0, 0);
             this.dataInicial.ValueChanged += new System.EventHandler(this.dataInicial_ValueChanged);
             // 
@@ -88,7 +88,7 @@
             this.labelDataInicial.Location = new System.Drawing.Point(6, 16);
             this.labelDataInicial.Name = "labelDataInicial";
             this.labelDataInicial.Size = new System.Drawing.Size(83, 20);
-            this.labelDataInicial.TabIndex = 1;
+            this.labelDataInicial.TabIndex = 0;
             this.labelDataInicial.Text = "Data Inicial";
             // 
             // dataFinal
@@ -98,7 +98,7 @@
             this.dataFinal.Location = new System.Drawing.Point(142, 38);
             this.dataFinal.Name = "dataFinal";
             this.dataFinal.Size = new System.Drawing.Size(109, 25);
-            this.dataFinal.TabIndex = 2;
+            this.dataFinal.TabIndex = 4;
             this.dataFinal.ValueChanged += new System.EventHandler(this.dataFinal_ValueChanged);
             // 
             // labelDataFinal
@@ -109,7 +109,7 @@
             this.labelDataFinal.Location = new System.Drawing.Point(138, 16);
             this.labelDataFinal.Name = "labelDataFinal";
             this.labelDataFinal.Size = new System.Drawing.Size(76, 20);
-            this.labelDataFinal.TabIndex = 2;
+            this.labelDataFinal.TabIndex = 1;
             this.labelDataFinal.Text = "Data Final";
             // 
             // pesquisaNomeDono
@@ -120,7 +120,7 @@
             this.pesquisaNomeDono.Location = new System.Drawing.Point(28, 3);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
             this.pesquisaNomeDono.Size = new System.Drawing.Size(216, 25);
-            this.pesquisaNomeDono.TabIndex = 3;
+            this.pesquisaNomeDono.TabIndex = 0;
             this.pesquisaNomeDono.TextChanged += new System.EventHandler(this.pesquisaNomeDono_TextChanged);
             // 
             // labelPesquisarPeloNomeDono
@@ -134,7 +134,7 @@
             this.labelPesquisarPeloNomeDono.Location = new System.Drawing.Point(26, 0);
             this.labelPesquisarPeloNomeDono.Name = "labelPesquisarPeloNomeDono";
             this.labelPesquisarPeloNomeDono.Size = new System.Drawing.Size(218, 32);
-            this.labelPesquisarPeloNomeDono.TabIndex = 3;
+            this.labelPesquisarPeloNomeDono.TabIndex = 0;
             this.labelPesquisarPeloNomeDono.Text = "Pesquisar pelo Nome do Dono";
             // 
             // pesquisaNomeAnimal
@@ -145,7 +145,7 @@
             this.pesquisaNomeAnimal.Location = new System.Drawing.Point(275, 3);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
             this.pesquisaNomeAnimal.Size = new System.Drawing.Size(217, 25);
-            this.pesquisaNomeAnimal.TabIndex = 4;
+            this.pesquisaNomeAnimal.TabIndex = 1;
             this.pesquisaNomeAnimal.TextChanged += new System.EventHandler(this.pesquisaNomeAnimal_TextChanged);
             // 
             // labelPesquisarPeloNomeAnimal
@@ -159,7 +159,7 @@
             this.labelPesquisarPeloNomeAnimal.Location = new System.Drawing.Point(274, 0);
             this.labelPesquisarPeloNomeAnimal.Name = "labelPesquisarPeloNomeAnimal";
             this.labelPesquisarPeloNomeAnimal.Size = new System.Drawing.Size(218, 32);
-            this.labelPesquisarPeloNomeAnimal.TabIndex = 4;
+            this.labelPesquisarPeloNomeAnimal.TabIndex = 1;
             this.labelPesquisarPeloNomeAnimal.Text = "Pesquisar pelo Nome do Animal";
             // 
             // btnNovoHorario
@@ -269,7 +269,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(495, 20);
-            this.tableLayoutPanel2.TabIndex = 4;
+            this.tableLayoutPanel2.TabIndex = 2;
             // 
             // tableLayoutPanel1
             // 
@@ -287,7 +287,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(495, 32);
-            this.tableLayoutPanel1.TabIndex = 3;
+            this.tableLayoutPanel1.TabIndex = 5;
             // 
             // groupBox2
             // 
@@ -298,7 +298,7 @@
             this.groupBox2.Location = new System.Drawing.Point(12, 126);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1104, 518);
-            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             // 
             // listaAgendamento
@@ -345,7 +345,7 @@
             this.listaAgendamento.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.listaAgendamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaAgendamento.Size = new System.Drawing.Size(1092, 500);
-            this.listaAgendamento.TabIndex = 2;
+            this.listaAgendamento.TabIndex = 0;
             this.listaAgendamento.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAgendamento_CellDoubleClick);
             this.listaAgendamento.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.listaAgendamento_RowPrePaint);
             this.listaAgendamento.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaAgendamento_RowStateChanged);
@@ -369,7 +369,7 @@
             this.label1.Location = new System.Drawing.Point(18, 100);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 20);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 5;
             this.label1.Text = "Próximos:";
             // 
             // label2
@@ -380,7 +380,7 @@
             this.label2.Location = new System.Drawing.Point(134, 100);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 20);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 6;
             this.label2.Text = "Em andamento:";
             // 
             // pictureBox2
@@ -400,7 +400,7 @@
             this.label3.Location = new System.Drawing.Point(287, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 20);
-            this.label3.TabIndex = 10;
+            this.label3.TabIndex = 7;
             this.label3.Text = "Concluídos:";
             // 
             // pictureBox3

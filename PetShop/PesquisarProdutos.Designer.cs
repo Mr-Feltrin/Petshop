@@ -78,7 +78,7 @@
             this.groupBox.Location = new System.Drawing.Point(12, 89);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1129, 571);
-            this.groupBox.TabIndex = 0;
+            this.groupBox.TabIndex = 6;
             this.groupBox.TabStop = false;
             // 
             // DGVListaProdutos
@@ -124,7 +124,7 @@
             this.DGVListaProdutos.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DGVListaProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVListaProdutos.Size = new System.Drawing.Size(1117, 554);
-            this.DGVListaProdutos.TabIndex = 3;
+            this.DGVListaProdutos.TabIndex = 0;
             this.DGVListaProdutos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridListaProdutos_CellDoubleClick);
             this.DGVListaProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DataGridListaProdutos_RowPrePaint);
             this.DGVListaProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DataGridListaProdutos_RowStateChanged);
@@ -141,7 +141,7 @@
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(12, 12);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(752, 71);
-            this.groupBox_pesquisar_nome_cliente.TabIndex = 8;
+            this.groupBox_pesquisar_nome_cliente.TabIndex = 0;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
             // tableLayoutPanel3
@@ -159,7 +159,7 @@
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(741, 21);
-            this.tableLayoutPanel3.TabIndex = 4;
+            this.tableLayoutPanel3.TabIndex = 0;
             // 
             // labelMarcaProduto
             // 
@@ -171,7 +171,7 @@
             this.labelMarcaProduto.Location = new System.Drawing.Point(446, 0);
             this.labelMarcaProduto.Name = "labelMarcaProduto";
             this.labelMarcaProduto.Size = new System.Drawing.Size(292, 21);
-            this.labelMarcaProduto.TabIndex = 9;
+            this.labelMarcaProduto.TabIndex = 1;
             this.labelMarcaProduto.Text = "Pesquisar Marca do Produto";
             // 
             // labelPesquisarProduto
@@ -182,7 +182,7 @@
             this.labelPesquisarProduto.Location = new System.Drawing.Point(3, 0);
             this.labelPesquisarProduto.Name = "labelPesquisarProduto";
             this.labelPesquisarProduto.Size = new System.Drawing.Size(189, 20);
-            this.labelPesquisarProduto.TabIndex = 8;
+            this.labelPesquisarProduto.TabIndex = 0;
             this.labelPesquisarProduto.Text = "Pesquisar Nome do Produto";
             // 
             // tableLayoutPanel1
@@ -210,7 +210,7 @@
             this.txtPesquisarMarcaProduto.Location = new System.Drawing.Point(446, 3);
             this.txtPesquisarMarcaProduto.Name = "txtPesquisarMarcaProduto";
             this.txtPesquisarMarcaProduto.Size = new System.Drawing.Size(291, 21);
-            this.txtPesquisarMarcaProduto.TabIndex = 11;
+            this.txtPesquisarMarcaProduto.TabIndex = 1;
             this.txtPesquisarMarcaProduto.TextChanged += new System.EventHandler(this.txtPesquisarMarcaProduto_TextChanged);
             // 
             // txtPesquisarNomeProduto
@@ -221,7 +221,7 @@
             this.txtPesquisarNomeProduto.Location = new System.Drawing.Point(3, 3);
             this.txtPesquisarNomeProduto.Name = "txtPesquisarNomeProduto";
             this.txtPesquisarNomeProduto.Size = new System.Drawing.Size(429, 21);
-            this.txtPesquisarNomeProduto.TabIndex = 10;
+            this.txtPesquisarNomeProduto.TabIndex = 0;
             this.txtPesquisarNomeProduto.TextChanged += new System.EventHandler(this.txtPesquisarNomeProduto_TextChanged);
             // 
             // btnAdicionarProduto
@@ -236,7 +236,7 @@
             this.btnAdicionarProduto.Location = new System.Drawing.Point(853, 24);
             this.btnAdicionarProduto.Name = "btnAdicionarProduto";
             this.btnAdicionarProduto.Size = new System.Drawing.Size(77, 57);
-            this.btnAdicionarProduto.TabIndex = 9;
+            this.btnAdicionarProduto.TabIndex = 2;
             this.btnAdicionarProduto.Text = "Adicionar";
             this.btnAdicionarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -256,7 +256,7 @@
             this.btnEditarProduto.Location = new System.Drawing.Point(936, 24);
             this.btnEditarProduto.Name = "btnEditarProduto";
             this.btnEditarProduto.Size = new System.Drawing.Size(55, 57);
-            this.btnEditarProduto.TabIndex = 10;
+            this.btnEditarProduto.TabIndex = 3;
             this.btnEditarProduto.Text = "Editar";
             this.btnEditarProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -276,7 +276,7 @@
             this.btnExcluirProduto.Location = new System.Drawing.Point(997, 24);
             this.btnExcluirProduto.Name = "btnExcluirProduto";
             this.btnExcluirProduto.Size = new System.Drawing.Size(61, 57);
-            this.btnExcluirProduto.TabIndex = 11;
+            this.btnExcluirProduto.TabIndex = 4;
             this.btnExcluirProduto.Text = "Excluir";
             this.btnExcluirProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluirProduto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -296,7 +296,7 @@
             this.btnImprimirLista.Location = new System.Drawing.Point(1064, 24);
             this.btnImprimirLista.Name = "btnImprimirLista";
             this.btnImprimirLista.Size = new System.Drawing.Size(71, 57);
-            this.btnImprimirLista.TabIndex = 12;
+            this.btnImprimirLista.TabIndex = 5;
             this.btnImprimirLista.Text = "Exportar";
             this.btnImprimirLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -315,7 +315,7 @@
             this.btnCodigoBarras.Location = new System.Drawing.Point(770, 24);
             this.btnCodigoBarras.Name = "btnCodigoBarras";
             this.btnCodigoBarras.Size = new System.Drawing.Size(84, 57);
-            this.btnCodigoBarras.TabIndex = 13;
+            this.btnCodigoBarras.TabIndex = 1;
             this.btnCodigoBarras.Text = "CodBarras";
             this.btnCodigoBarras.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCodigoBarras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -339,7 +339,7 @@
             this.labelEmEstoque.Location = new System.Drawing.Point(6, 13);
             this.labelEmEstoque.Name = "labelEmEstoque";
             this.labelEmEstoque.Size = new System.Drawing.Size(89, 20);
-            this.labelEmEstoque.TabIndex = 11;
+            this.labelEmEstoque.TabIndex = 0;
             this.labelEmEstoque.Text = "Em Estoque:";
             // 
             // labelBaixoEstoque
@@ -349,7 +349,7 @@
             this.labelBaixoEstoque.Location = new System.Drawing.Point(140, 13);
             this.labelBaixoEstoque.Name = "labelBaixoEstoque";
             this.labelBaixoEstoque.Size = new System.Drawing.Size(105, 20);
-            this.labelBaixoEstoque.TabIndex = 15;
+            this.labelBaixoEstoque.TabIndex = 1;
             this.labelBaixoEstoque.Text = "Baixo Estoque:";
             // 
             // pictureBoxBaixoEstoque
@@ -369,7 +369,7 @@
             this.labelSemEstoque.Location = new System.Drawing.Point(296, 13);
             this.labelSemEstoque.Name = "labelSemEstoque";
             this.labelSemEstoque.Size = new System.Drawing.Size(98, 20);
-            this.labelSemEstoque.TabIndex = 17;
+            this.labelSemEstoque.TabIndex = 2;
             this.labelSemEstoque.Text = "Sem Estoque:";
             // 
             // pictureBoxSemEstoque
@@ -395,7 +395,7 @@
             this.groupBoxLegendaCores.Location = new System.Drawing.Point(12, 666);
             this.groupBoxLegendaCores.Name = "groupBoxLegendaCores";
             this.groupBoxLegendaCores.Size = new System.Drawing.Size(428, 39);
-            this.groupBoxLegendaCores.TabIndex = 19;
+            this.groupBoxLegendaCores.TabIndex = 7;
             this.groupBoxLegendaCores.TabStop = false;
             this.groupBoxLegendaCores.Text = "Legenda";
             // 
@@ -407,7 +407,7 @@
             this.groupBoxFiltrar.Location = new System.Drawing.Point(814, 666);
             this.groupBoxFiltrar.Name = "groupBoxFiltrar";
             this.groupBoxFiltrar.Size = new System.Drawing.Size(327, 39);
-            this.groupBoxFiltrar.TabIndex = 20;
+            this.groupBoxFiltrar.TabIndex = 8;
             this.groupBoxFiltrar.TabStop = false;
             // 
             // label1
@@ -417,7 +417,7 @@
             this.label1.Location = new System.Drawing.Point(6, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(93, 17);
-            this.label1.TabIndex = 18;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Filtrar Lista por:";
             // 
             // comboBoxFiltrarLista
@@ -435,7 +435,7 @@
             this.comboBoxFiltrarLista.Location = new System.Drawing.Point(110, 10);
             this.comboBoxFiltrarLista.Name = "comboBoxFiltrarLista";
             this.comboBoxFiltrarLista.Size = new System.Drawing.Size(211, 25);
-            this.comboBoxFiltrarLista.TabIndex = 21;
+            this.comboBoxFiltrarLista.TabIndex = 1;
             this.comboBoxFiltrarLista.SelectedIndexChanged += new System.EventHandler(this.comboBoxFiltrarLista_SelectedIndexChanged);
             // 
             // PesquisarProdutos

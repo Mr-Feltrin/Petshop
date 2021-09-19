@@ -241,5 +241,13 @@ namespace PetShop
                 pesquisarServicos.ShowDialog();
             }
         }
+
+        private void btnRelatorioVendas_Click(object sender, EventArgs e)
+        {
+            using (RelatorioVendas relatorioVendas = new RelatorioVendas())
+            {
+                relatorioVendas.ShowDialog();
+            }
+        }
     }
 }

@@ -17,7 +17,6 @@ namespace PetShop.Entities
         public int Quantidade { get; set; }
         public string Referencia { get; set; }
         public string Localizacao { get; set; }
-        public DateTime DataCadastro { get; set; }
         public string Marca { get; set; }
         public string Categoria { get; set; }
         public int? EstoqueMinimo { get; set; }
@@ -26,8 +25,9 @@ namespace PetShop.Entities
         public decimal ValorCusto { get; set; }
         public decimal ValorProduto { get; set; }
         public string Observacoes { get; set; }
+        public DateTime DataAtualizacao { get; set; }
 
-        public Produto(string nomeProduto, string codigoBarras, string tipoUnidade, int quantidade, string referencia, string localizacao, DateTime dataCadastro, string marca, string categoria, int estoqueMinimo, int estoqueAtual, DateTime dataValidade, decimal valorCusto, decimal valorProduto, string observacoes)
+        public Produto(string nomeProduto, string codigoBarras, string tipoUnidade, int quantidade, string referencia, string localizacao, string marca, string categoria, int estoqueMinimo, int estoqueAtual, DateTime dataValidade, decimal valorCusto, decimal valorProduto, string observacoes, DateTime dataAtualizacao)
         {
             NomeProduto = nomeProduto;
             CodigoBarras = codigoBarras;
@@ -35,7 +35,6 @@ namespace PetShop.Entities
             Quantidade = quantidade;
             Referencia = referencia;
             Localizacao = localizacao;
-            DataCadastro = dataCadastro;
             Marca = marca;
             Categoria = categoria;
             EstoqueMinimo = estoqueMinimo;
@@ -44,6 +43,7 @@ namespace PetShop.Entities
             ValorCusto = valorCusto;
             ValorProduto = valorProduto;
             Observacoes = observacoes;
+            DataAtualizacao = dataAtualizacao;
         }
 
         public Produto(int id)
@@ -74,7 +74,6 @@ namespace PetShop.Entities
                                 Quantidade = (int)reader["Quantidade"];
                                 Referencia = reader["Referencia"].ToString();
                                 Localizacao = reader["Localizacao"].ToString();
-                                DataCadastro = (DateTime)reader["DataCadastro"];
                                 Marca = reader["Marca"].ToString();
                                 Categoria = reader["Categoria"].ToString();
                                 EstoqueMinimo = (int)reader["EstoqueMinimo"];
@@ -83,6 +82,7 @@ namespace PetShop.Entities
                                 ValorCusto = (decimal)reader["ValorCusto"];
                                 ValorProduto = (decimal)reader["ValorProduto"];
                                 Observacoes = reader["Observacoes"].ToString();
+                                DataAtualizacao = (DateTime)reader["DataAtualizacao"];
                             }
                         }
                         else
@@ -120,11 +120,11 @@ namespace PetShop.Entities
                     SqlCeCommand command = Connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        command.CommandText = "INSERT INTO Produtos (Nome, CodigoBarras, TipoUnidade, Quantidade, Referencia, Localizacao, DataCadastro, Marca, Categoria, EstoqueMinimo, EstoqueAtual, DataValidade, ValorCusto, ValorProduto, Observacoes) VALUES (@Nome, @CodigoBarras, @TipoUnidade, @quantidade, @Referencia, @Localizacao, @DataCadastro, @Marca, @Categoria, @EstoqueMinimo, @EstoqueAtual, @DataValidade, @ValorCusto, @ValorProduto, @Observacoes)";
+                        command.CommandText = "INSERT INTO Produtos (Nome, CodigoBarras, TipoUnidade, Quantidade, Referencia, Localizacao, Marca, Categoria, EstoqueMinimo, EstoqueAtual, DataValidade, ValorCusto, ValorProduto, Observacoes, DataAtualizacao) VALUES (@Nome, @CodigoBarras, @TipoUnidade, @quantidade, @Referencia, @Localizacao, @Marca, @Categoria, @EstoqueMinimo, @EstoqueAtual, @DataValidade, @ValorCusto, @ValorProduto, @Observacoes, @DataAtualizacao)";
                     }
                     else if (operacao == TipoOperacao.Editar)
                     {
-                        command.CommandText = "UPDATE Produtos SET Nome = @Nome, CodigoBarras = @CodigoBarras, TipoUnidade = @TipoUnidade, Quantidade = @Quantidade, Referencia = @Referencia, Localizacao = @Localizacao, DataCadastro = @DataCadastro, Marca = @Marca, Categoria = @Categoria, EstoqueMinimo = @EstoqueMinimo, EstoqueAtual = @EstoqueAtual, DataValidade = @DataValidade, ValorCusto = @ValorCusto, ValorProduto = @ValorProduto, Observacoes = @Observacoes WHERE Id = @Id";
+                        command.CommandText = "UPDATE Produtos SET Nome = @Nome, CodigoBarras = @CodigoBarras, TipoUnidade = @TipoUnidade, Quantidade = @Quantidade, Referencia = @Referencia, Localizacao = @Localizacao, Marca = @Marca, Categoria = @Categoria, EstoqueMinimo = @EstoqueMinimo, EstoqueAtual = @EstoqueAtual, DataValidade = @DataValidade, ValorCusto = @ValorCusto, ValorProduto = @ValorProduto, Observacoes = @Observacoes, DataAtualizacao = @DataAtualizacao WHERE Id = @Id";
                         command.Parameters.AddWithValue("@Id", ProdutoId);
                     }
                     command.Parameters.AddWithValue("@Nome", NomeProduto);
@@ -133,7 +133,6 @@ namespace PetShop.Entities
                     command.Parameters.AddWithValue("@Quantidade", Quantidade);
                     command.Parameters.AddWithValue("@Referencia", Referencia);
                     command.Parameters.AddWithValue("@Localizacao", Localizacao);
-                    command.Parameters.AddWithValue("@DataCadastro", DataCadastro);
                     command.Parameters.AddWithValue("@Marca", Marca);
                     command.Parameters.AddWithValue("@Categoria", Categoria);
                     command.Parameters.AddWithValue("EstoqueMinimo", EstoqueMinimo);
@@ -142,6 +141,7 @@ namespace PetShop.Entities
                     command.Parameters.AddWithValue("@ValorCusto", ValorCusto);
                     command.Parameters.AddWithValue("@ValorProduto", ValorProduto);
                     command.Parameters.AddWithValue("@Observacoes", Observacoes);
+                    command.Parameters.AddWithValue("@DataAtualizacao", DataAtualizacao);
                     if (command.ExecuteNonQuery() > 0)
                     {
                         MessageBox.Show("O Produto foi salvo", "Salvar Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -4,6 +4,7 @@
     {
         Adicionar,
         Editar,
-        Excluir
+        Excluir,
+        Visualizar
     }
 }

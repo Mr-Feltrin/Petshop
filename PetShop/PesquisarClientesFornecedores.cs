@@ -44,7 +44,7 @@ namespace PetShop
             DGVListaClientesFornecedores.Columns["Cep"].HeaderText = "CEP";
             DGVListaClientesFornecedores.Columns["Endereco"].HeaderText = "Endereço";
             DGVListaClientesFornecedores.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
-            DGVListaClientesFornecedores.Controls.OfType<VScrollBar>().First();
+            DGVScrollBar = DGVListaClientesFornecedores.Controls.OfType<VScrollBar>().First();
             DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
             DataGridViewTools.MaximumFormSize(DGVListaClientesFornecedores, this);
             DGVListaClientesFornecedores.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVListaClientesFornecedores_ColumnWidthChanged);

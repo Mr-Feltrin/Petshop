@@ -56,7 +56,7 @@
             this.groupBox_tabela_usuarios.Location = new System.Drawing.Point(12, 75);
             this.groupBox_tabela_usuarios.Name = "groupBox_tabela_usuarios";
             this.groupBox_tabela_usuarios.Size = new System.Drawing.Size(910, 480);
-            this.groupBox_tabela_usuarios.TabIndex = 0;
+            this.groupBox_tabela_usuarios.TabIndex = 5;
             this.groupBox_tabela_usuarios.TabStop = false;
             // 
             // DGVListaClientesFornecedores
@@ -120,7 +120,7 @@
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(12, 12);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(622, 61);
-            this.groupBox_pesquisar_nome_cliente.TabIndex = 7;
+            this.groupBox_pesquisar_nome_cliente.TabIndex = 0;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
             // textBoxPesquisarPeloNome
@@ -130,7 +130,7 @@
             this.textBoxPesquisarPeloNome.Location = new System.Drawing.Point(6, 35);
             this.textBoxPesquisarPeloNome.Name = "textBoxPesquisarPeloNome";
             this.textBoxPesquisarPeloNome.Size = new System.Drawing.Size(610, 20);
-            this.textBoxPesquisarPeloNome.TabIndex = 9;
+            this.textBoxPesquisarPeloNome.TabIndex = 1;
             this.textBoxPesquisarPeloNome.TextChanged += new System.EventHandler(this.textBoxPesquisarPeloNome_TextChanged);
             // 
             // Label_pesquisar_cliente_nome
@@ -140,7 +140,7 @@
             this.Label_pesquisar_cliente_nome.Location = new System.Drawing.Point(6, 12);
             this.Label_pesquisar_cliente_nome.Name = "Label_pesquisar_cliente_nome";
             this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(146, 20);
-            this.Label_pesquisar_cliente_nome.TabIndex = 8;
+            this.Label_pesquisar_cliente_nome.TabIndex = 0;
             this.Label_pesquisar_cliente_nome.Text = "Pesquisar pelo Nome";
             // 
             // btnExportarClienteFornecedor
@@ -196,7 +196,7 @@
             this.btnEditarClienteFornecedor.Location = new System.Drawing.Point(725, 14);
             this.btnEditarClienteFornecedor.Name = "btnEditarClienteFornecedor";
             this.btnEditarClienteFornecedor.Size = new System.Drawing.Size(56, 59);
-            this.btnEditarClienteFornecedor.TabIndex = 3;
+            this.btnEditarClienteFornecedor.TabIndex = 2;
             this.btnEditarClienteFornecedor.Text = "Editar";
             this.btnEditarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditarClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -215,7 +215,7 @@
             this.btnAdicionarClienteFornecedor.Location = new System.Drawing.Point(640, 14);
             this.btnAdicionarClienteFornecedor.Name = "btnAdicionarClienteFornecedor";
             this.btnAdicionarClienteFornecedor.Size = new System.Drawing.Size(79, 59);
-            this.btnAdicionarClienteFornecedor.TabIndex = 2;
+            this.btnAdicionarClienteFornecedor.TabIndex = 1;
             this.btnAdicionarClienteFornecedor.Text = "Adicionar";
             this.btnAdicionarClienteFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionarClienteFornecedor.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;

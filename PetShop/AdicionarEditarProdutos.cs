@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using PetShop.Entities.Exceptions;
+using System.Runtime.InteropServices;
 
 namespace PetShop
 {
@@ -17,6 +18,8 @@ namespace PetShop
         private Dictionary<object, string> CamposObrigatorios;
         private readonly TipoOperacao _TipoOperacao;
         private Produto _Produto;
+        [DllImport("user32.dll")]
+        private static extern bool HideCaret(IntPtr hWnd);
 
         public AdicionarEditarProdutos(TipoOperacao operacao)
         {
@@ -53,6 +56,8 @@ namespace PetShop
             combBoxMarcaProduto.DisplayMember = "Marca";
             CombBoxCategoria.DataSource = Produto.ListarCategorias();
             CombBoxCategoria.DisplayMember = "Categoria";
+            txtDataAtualizacao.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            txtDataAtualizacao.GotFocus += new EventHandler(txtDataAtualizacao_GotFocus);
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
                 toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
@@ -70,7 +75,6 @@ namespace PetShop
                 txtNomeProduto.Text = _Produto.NomeProduto;
                 txtReferencia.Text = _Produto.Referencia;
                 txtLocalizacao.Text = _Produto.Localizacao;
-                dateDataCadastro.Value = _Produto.DataCadastro;
                 combBoxMarcaProduto.Text = _Produto.Marca;
                 CombBoxCategoria.Text = _Produto.Categoria;
                 txtEstoqueMinimo.Text = _Produto.EstoqueMinimo.ToString();
@@ -80,6 +84,11 @@ namespace PetShop
                 txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", CultureInfo.CurrentCulture);
                 txtObservacoes.Text = _Produto.Observacoes;
             }
+        }
+
+        private void txtDataAtualizacao_GotFocus(object sender, EventArgs e)
+        {
+            HideCaret((sender as TextBox).Handle);
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -242,7 +251,7 @@ namespace PetShop
         {
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
-                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, dateDataCadastro.Value, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), txtObservacoes.Text);
+                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), txtObservacoes.Text, DateTime.Parse(txtDataAtualizacao.Text));
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
@@ -253,7 +262,6 @@ namespace PetShop
                 _Produto.Quantidade = int.Parse(txtQuantidade.Text);
                 _Produto.Referencia = txtReferencia.Text;
                 _Produto.Localizacao = txtLocalizacao.Text;
-                _Produto.DataCadastro = dateDataCadastro.Value;
                 _Produto.Marca = combBoxMarcaProduto.Text;
                 _Produto.Categoria = CombBoxCategoria.Text;
                 _Produto.EstoqueMinimo = int.TryParse(txtEstoqueMinimo.Text, out int estoquemin) ? estoquemin : default;
@@ -262,6 +270,7 @@ namespace PetShop
                 _Produto.ValorCusto = decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorcusto) ? valorcusto : default;
                 _Produto.ValorProduto = decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
                 _Produto.Observacoes = txtObservacoes.Text;
+                _Produto.DataAtualizacao = DateTime.Parse(txtDataAtualizacao.Text);
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
             }
             if (Application.OpenForms.OfType<PesquisarProdutos>().Count() == 1)

@@ -1192,7 +1192,7 @@ namespace PetShop
                 {
                     idCliente = _Cliente.ClienteId;
                 }
-                Venda venda = new Venda(DateTime.Now, idCliente, combBoxFormaPagamento.SelectedItem.ToString(), decimal.TryParse(txtDesconto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal txtDescontoResult) ? txtDescontoResult : default, combBoxTipoCartao.Text);
+                Venda venda = new Venda(DateTime.Now, idCliente, combBoxFormaPagamento.SelectedItem.ToString(), decimal.TryParse(txtDesconto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal txtDescontoResult) ? txtDescontoResult : default, combBoxTipoCartao.Text, decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
                 try
                 {
                     venda.AdicionarVenda();

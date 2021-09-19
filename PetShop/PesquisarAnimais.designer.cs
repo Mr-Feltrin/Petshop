@@ -63,7 +63,7 @@
             this.groupBox_pesquisar_nome_cliente.Location = new System.Drawing.Point(14, 11);
             this.groupBox_pesquisar_nome_cliente.Name = "groupBox_pesquisar_nome_cliente";
             this.groupBox_pesquisar_nome_cliente.Size = new System.Drawing.Size(705, 65);
-            this.groupBox_pesquisar_nome_cliente.TabIndex = 13;
+            this.groupBox_pesquisar_nome_cliente.TabIndex = 0;
             this.groupBox_pesquisar_nome_cliente.TabStop = false;
             // 
             // tableLayoutPanel2
@@ -81,7 +81,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(695, 19);
-            this.tableLayoutPanel2.TabIndex = 3;
+            this.tableLayoutPanel2.TabIndex = 0;
             // 
             // Label_pesquisar_cliente_nome
             // 
@@ -92,7 +92,7 @@
             this.Label_pesquisar_cliente_nome.Location = new System.Drawing.Point(3, 0);
             this.Label_pesquisar_cliente_nome.Name = "Label_pesquisar_cliente_nome";
             this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(324, 19);
-            this.Label_pesquisar_cliente_nome.TabIndex = 8;
+            this.Label_pesquisar_cliente_nome.TabIndex = 0;
             this.Label_pesquisar_cliente_nome.Text = "Pesquisar pelo Nome do Dono";
             // 
             // labelPesquisaNomeAnimal
@@ -104,7 +104,7 @@
             this.labelPesquisaNomeAnimal.Location = new System.Drawing.Point(341, 0);
             this.labelPesquisaNomeAnimal.Name = "labelPesquisaNomeAnimal";
             this.labelPesquisaNomeAnimal.Size = new System.Drawing.Size(351, 19);
-            this.labelPesquisaNomeAnimal.TabIndex = 9;
+            this.labelPesquisaNomeAnimal.TabIndex = 1;
             this.labelPesquisaNomeAnimal.Text = "Pesquisar pelo Nome do Animal";
             // 
             // tableLayoutPanel1
@@ -132,7 +132,7 @@
             this.pesquisaNomeDono.Location = new System.Drawing.Point(3, 3);
             this.pesquisaNomeDono.Name = "pesquisaNomeDono";
             this.pesquisaNomeDono.Size = new System.Drawing.Size(323, 20);
-            this.pesquisaNomeDono.TabIndex = 9;
+            this.pesquisaNomeDono.TabIndex = 0;
             this.pesquisaNomeDono.TextChanged += new System.EventHandler(this.pesquisaNomeDono_TextChanged);
             // 
             // pesquisaNomeAnimal
@@ -142,7 +142,7 @@
             this.pesquisaNomeAnimal.Location = new System.Drawing.Point(340, 3);
             this.pesquisaNomeAnimal.Name = "pesquisaNomeAnimal";
             this.pesquisaNomeAnimal.Size = new System.Drawing.Size(350, 20);
-            this.pesquisaNomeAnimal.TabIndex = 10;
+            this.pesquisaNomeAnimal.TabIndex = 1;
             this.pesquisaNomeAnimal.TextChanged += new System.EventHandler(this.pesquisaNomeAnimal_TextChanged);
             // 
             // btnImprimir
@@ -157,7 +157,7 @@
             this.btnImprimir.Location = new System.Drawing.Point(951, 17);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(76, 63);
-            this.btnImprimir.TabIndex = 12;
+            this.btnImprimir.TabIndex = 4;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -177,7 +177,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(884, 17);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(65, 63);
-            this.btnExcluir.TabIndex = 10;
+            this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -197,7 +197,7 @@
             this.btnEditar.Location = new System.Drawing.Point(822, 17);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(60, 63);
-            this.btnEditar.TabIndex = 11;
+            this.btnEditar.TabIndex = 2;
             this.btnEditar.Text = "Editar";
             this.btnEditar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnEditar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -216,7 +216,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(735, 17);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(83, 63);
-            this.btnAdicionar.TabIndex = 9;
+            this.btnAdicionar.TabIndex = 1;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAdicionar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -232,7 +232,7 @@
             this.groupBox_tabela_usuarios.Location = new System.Drawing.Point(12, 86);
             this.groupBox_tabela_usuarios.Name = "groupBox_tabela_usuarios";
             this.groupBox_tabela_usuarios.Size = new System.Drawing.Size(1015, 618);
-            this.groupBox_tabela_usuarios.TabIndex = 8;
+            this.groupBox_tabela_usuarios.TabIndex = 5;
             this.groupBox_tabela_usuarios.TabStop = false;
             // 
             // listaAnimais
@@ -280,7 +280,7 @@
             this.listaAnimais.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.listaAnimais.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listaAnimais.Size = new System.Drawing.Size(1003, 602);
-            this.listaAnimais.TabIndex = 2;
+            this.listaAnimais.TabIndex = 0;
             this.listaAnimais.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaAnimais_CellDoubleClick);
             this.listaAnimais.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.listaAnimais_RowStateChanged);
             this.listaAnimais.SelectionChanged += new System.EventHandler(this.listaAnimais_SelectionChanged);

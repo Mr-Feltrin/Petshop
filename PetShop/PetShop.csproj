@@ -281,6 +281,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelatorioVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioVendas.Designer.cs">
+      <DependentUpon>RelatorioVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +319,12 @@
     </Compile>
     <Compile Include="LancarVenda.Designer.cs">
       <DependentUpon>LancarVenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="VisualizarVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualizarVenda.Designer.cs">
+      <DependentUpon>VisualizarVenda.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AdicionarEditarAgendamento.resx">
       <DependentUpon>AdicionarEditarAgendamento.cs</DependentUpon>
@@ -377,6 +389,9 @@
     <EmbeddedResource Include="PesquisarVacinas.resx">
       <DependentUpon>PesquisarVacinas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioVendas.resx">
+      <DependentUpon>RelatorioVendas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TelaPrincipal.resx">
       <DependentUpon>TelaPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -390,6 +405,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LancarVenda.resx">
       <DependentUpon>LancarVenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VisualizarVenda.resx">
+      <DependentUpon>VisualizarVenda.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
@@ -491,11 +509,14 @@
     </Content>
     <Content Include="images\add32x32.png" />
     <Content Include="images\caixa30x30.png" />
+    <Content Include="images\VisualizarDocumento32x32.png" />
     <None Include="images\logo_caopanheiro.jpg" />
     <None Include="images\vacinacao_animal30x30.png" />
     <None Include="images\vendas30x30.png" />
+    <Content Include="images\icons\caixa.ico" />
     <Content Include="images\icons\servicos_icon.ico" />
     <Content Include="images\remove16x16.png" />
+    <Content Include="images\report30x30.png" />
     <Content Include="images\servicos30x30.png" />
     <None Include="images\warning_45x45.png" />
     <None Include="images\ok_45x45.png" />

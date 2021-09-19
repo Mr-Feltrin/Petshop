@@ -473,6 +473,16 @@ namespace PetShop.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap report30x30 {
+            get {
+                object obj = ResourceManager.GetObject("report30x30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -536,6 +546,16 @@ namespace PetShop.Properties {
         internal static System.Drawing.Bitmap vendas30x30 {
             get {
                 object obj = ResourceManager.GetObject("vendas30x30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap VisualizarDocumento32x32 {
+            get {
+                object obj = ResourceManager.GetObject("VisualizarDocumento32x32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

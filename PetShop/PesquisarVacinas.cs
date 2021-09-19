@@ -45,6 +45,7 @@ namespace PetShop
             listaVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             listaVacinasVerticalScrollBar = listaVacinas.Controls.OfType<VScrollBar>().First();
             listaVacinasVerticalScrollBar.VisibleChanged += listaVacinasVerticalScrollBar_VisibleChanged;
+            DataGridViewTools.MaximumFormSize(listaVacinas, this);
             listaVacinas.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaVacinas_ColumnWidthChanged);
         }
 
@@ -193,7 +194,7 @@ namespace PetShop
 
         private void listaVacinas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(listaVacinas, this);         
+            DataGridViewTools.MaximumFormSize(listaVacinas, this, listaVacinas_ColumnWidthChanged);         
         }
 
         private void PesquisarVacinas_KeyDown(object sender, KeyEventArgs e)

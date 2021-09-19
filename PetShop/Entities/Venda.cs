@@ -3,6 +3,8 @@ using System;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Data;
+using System.Runtime.InteropServices;
 
 namespace PetShop.Entities
 {
@@ -15,14 +17,16 @@ namespace PetShop.Entities
         public string Pagamento { get; set; }
         public decimal Desconto { get; set; }
         public string TipoCartao { get; set; }
+        public decimal TotalVenda { get; set; }
 
-        public Venda(DateTime dataVenda, int? clienteId, string pagamento, decimal desconto, string tipoCartao)
+        public Venda(DateTime dataVenda, int? clienteId, string pagamento, decimal desconto, string tipoCartao, decimal totalVenda)
         {
             DataVenda = dataVenda;
             ClienteId = clienteId;
             Pagamento = pagamento;
             Desconto = desconto;
             TipoCartao = tipoCartao;
+            TotalVenda = totalVenda;
         }
         
         public Venda(int id)
@@ -52,6 +56,7 @@ namespace PetShop.Entities
                                 Pagamento = (string)reader["Pagamento"];
                                 Desconto = (decimal)reader["Desconto"];
                                 TipoCartao = (string)reader["TipoCartao"];
+                                TotalVenda = (decimal)reader["TotalVenda"];
                             }
                         }
                         else
@@ -86,7 +91,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "INSERT INTO Vendas (DataVenda, ClienteId, Pagamento, Desconto, TipoCartao) VALUES (@DataVenda, @ClienteId, @Pagamento, @Desconto, @TipoCartao)";
+                    command.CommandText = "INSERT INTO Vendas (DataVenda, ClienteId, Pagamento, Desconto, TipoCartao, TotalVenda) VALUES (@DataVenda, @ClienteId, @Pagamento, @Desconto, @TipoCartao, @TotalVenda)";
                     command.Parameters.AddWithValue("@DataVenda", DataVenda);
                     if (ClienteId != null)
                     {
@@ -99,6 +104,7 @@ namespace PetShop.Entities
                     command.Parameters.AddWithValue("@Pagamento", Pagamento);
                     command.Parameters.AddWithValue("@Desconto", Desconto);
                     command.Parameters.AddWithValue("@TipoCartao", TipoCartao);
+                    command.Parameters.AddWithValue("@TotalVenda", TotalVenda);
                     if (!(command.ExecuteNonQuery() > 0))
                     {
                         throw new SqlCeQueryException();
@@ -153,5 +159,36 @@ namespace PetShop.Entities
                 return null;
             }
         }
+
+        public static DataTable ListarVendas(DateTime dataInicial, DateTime dataFinal)
+        {
+            DataTable data = new DataTable();
+            using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+            {
+                try
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT Vendas.Id, Vendas.DataVenda, Clientes.Nome as NomeCliente, COUNT(Vendas_Produtos.VendasId) + COUNT(Vendas_Servicos.VendasId) + COUNT(Vendas_Vacinas.VendasId) as NumeroItens, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda FROM Vendas LEFT JOIN Clientes ON (Vendas.ClienteId = Clientes.Id) LEFT JOIN Vendas_Produtos ON (Vendas.Id = Vendas_Produtos.VendasId) LEFT JOIN Vendas_Servicos ON (Vendas.Id = Vendas_Servicos.VendasId) LEFT JOIN Vendas_Vacinas ON (Vendas.Id = Vendas_Vacinas.VendasId) WHERE Vendas.DataVenda BETWEEN @DataInicial AND @DataFinal GROUP BY Vendas.Id, Vendas.DataVenda, Clientes.Nome, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda";
+                    command.Parameters.AddWithValue("@DataInicial", dataInicial.Date);
+                    command.Parameters.AddWithValue("@DataFinal", dataFinal.Date);
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
+                    dataAdapter.Fill(data);
+                }
+                catch (SqlCeException e)
+                {
+                    MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao obter lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
+            }
+            return data;
+        }
+
     }
 }

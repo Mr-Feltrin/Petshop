@@ -160,7 +160,6 @@ namespace PetShop
         private void txtPesquisarCliente_TextChanged(object sender, EventArgs e)
         {
             (listaVacinacao.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeCliente LIKE '%" + txtPesquisarCliente.Text + "%'");
-
         }
     }
 }

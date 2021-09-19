@@ -1,0 +1,20 @@
+=============Error Logging ===========
+===========Start============= 14/09/2021 00:55:34
+Error Message: In aggregate and grouping expressions, the SELECT clause can contain only aggregates and grouping expressions. [ Select clause = Vendas,Id ]
+Stack Trace:    em System.Data.SqlServerCe.SqlCeCommand.ProcessResults(Int32 hr)
+   em System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   em System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   em System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   em PetShop.Entities.Venda.ListarVendas(DateTime dataInicial, DateTime dataFinal) na C:\Users\rasou\Documents\GitHub\Petshop\PetShop\Entities\Venda.cs:linha 175
+===========End============= 14/09/2021 00:55:34
+
+=============Error Logging ===========
+===========Start============= 17/09/2021 17:20:50
+Error Message: There was an error parsing the query. [ Token line number = 1,Token line offset = 648,Token in error = WHERE ]
+Stack Trace:    em System.Data.SqlServerCe.SqlCeCommand.ProcessResults(Int32 hr)
+   em System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   em System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   em System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   em PetShop.Entities.Venda.ListarVendas(DateTime dataInicial, DateTime dataFinal) na C:\Users\rasou\Documents\GitHub\Petshop\PetShop\Entities\Venda.cs:linha 175
+===========End============= 17/09/2021 17:20:51
+

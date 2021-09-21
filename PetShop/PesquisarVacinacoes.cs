@@ -161,5 +161,13 @@ namespace PetShop
         {
             (listaVacinacao.DataSource as DataTable).DefaultView.RowFilter = string.Format("NomeCliente LIKE '%" + txtPesquisarCliente.Text + "%'");
         }
+
+        private void PesquisarVacinacoes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                Close();
+            }
+        }
     }
 }

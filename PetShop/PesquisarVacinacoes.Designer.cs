@@ -346,6 +346,7 @@ namespace PetShop
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(873, 231);
@@ -355,6 +356,7 @@ namespace PetShop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Vacinações";
             this.Load += new System.EventHandler(this.ListaVacinacoes_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PesquisarVacinacoes_KeyPress);
             this.groupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.listaVacinacao)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

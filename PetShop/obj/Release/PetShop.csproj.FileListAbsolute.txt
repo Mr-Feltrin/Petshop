@@ -1,4 +1,3 @@
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\Data\PetShopDb.sdf
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.exe.config
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\PetShop.pdb
@@ -101,3 +100,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.pdb
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.VisualizarVenda.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\Data\PetShopDb.sdf

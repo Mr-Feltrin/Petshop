@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using ClosedXML.Excel;
+using PetShop.Entities;
+using PetShop.Entities.Enums;
+using PetShop.ToolBox;
+using System;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using PetShop.Entities;
-using PetShop.ToolBox;
 using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -117,6 +115,78 @@ namespace PetShop
         private void DGVListaVendas_Sorted(object sender, EventArgs e)
         {
             DGVListaVendas.ClearSelection();
+        }
+
+        private void btnVisualizar_Click(object sender, EventArgs e)
+        {
+            if (DGVListaVendas.SelectedRows.Count > 0)
+            {
+                using (VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value))
+                {
+                    visualizarVenda.ShowDialog();
+                }
+            }
+        }
+
+        private void RelatorioVendas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                Close();
+            }
+        }
+
+        private void DGVListaVendas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            using (VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value))
+            {
+                visualizarVenda.ShowDialog();
+            }
+        }
+
+        private void btnImprimirLista_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Planilha do Excel (*xlsx)|*xlsx";
+                saveFileDialog.FilterIndex = 2;
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.AddExtension = true;
+                saveFileDialog.DefaultExt = "xlsx";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        DataTable data = (DGVListaVendas.DataSource as DataTable).Copy();
+                        data.Columns["DataVenda"].ColumnName = "Data da Venda";
+                        data.Columns["NomeCliente"].ColumnName = "Nome do Cliente";
+                        data.Columns["NumeroItens"].ColumnName = "N° de Itens na Compra";
+                        data.Columns["TipoCartao"].ColumnName = "Tipo de Cartão";
+                        data.Columns["TotalVenda"].ColumnName = "Total da Venda";
+                        IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Relatório de Produtos");
+                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        worksheets.CellsUsed().Style.Font.FontName = "Arial";
+                        worksheets.CellsUsed().Style.Font.FontSize = 12;
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 2, worksheets.LastRowUsed().RowNumber(), 2).Style.DateFormat.Format = "dd/MM/yyyy HH:mm:ss";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 6, worksheets.LastRowUsed().RowNumber(), 6).DataType = XLDataType.Number;
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 6, worksheets.LastRowUsed().RowNumber(), 6).Style.NumberFormat.SetFormat("R$ #,##0.00");
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.NumberFormat.SetFormat("R$ #,##0.00");
+                        worksheets.ColumnsUsed().AdjustToContents();
+                        worksheets.RowsUsed().AdjustToContents();
+                        try
+                        {
+                            workbook.SaveAs(saveFileDialog.FileName);
+                            FormNotificacao notificacao = new FormNotificacao();
+                            notificacao.ShowAlert("A lista foi exportada", TipoNotificacao.Confirmar);
+                        }
+                        catch (System.IO.IOException)
+                        {
+                            MessageBox.Show("Não foi possível salvar o arquivo pois ele está em uso, feche o arquivo aberto e tente novamente", "Não Foi possível salvar o arquivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+                    }
+                }
+            }
         }
     }
 }

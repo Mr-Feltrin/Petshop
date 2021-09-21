@@ -69,7 +69,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Vendas_Produtos WHERE VendasId = @VendasId";
+                    command.CommandText = "SELECT Produtos.CodigoBarras, Produtos.Nome, Produtos.Marca, CAST(Produtos.Quantidade AS NVARCHAR) + ' ' + Produtos.TipoUnidade as Volume, Produtos.ValorProduto, Vendas_Produtos.Quantidade, Vendas_Produtos.Quantidade * Produtos.ValorProduto AS ValorTotal FROM Vendas_Produtos INNER JOIN Vendas ON (Vendas_Produtos.VendasId = Vendas.Id) INNER JOIN Produtos ON (Vendas_Produtos.ProdutosId = Produtos.Id) WHERE Vendas_Produtos.VendasId = @VendasId";
                     command.Parameters.AddWithValue("@VendasId", vendaId);
                     command.ExecuteNonQuery();
                     using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))

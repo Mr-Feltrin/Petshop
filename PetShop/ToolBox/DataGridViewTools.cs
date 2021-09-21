@@ -59,7 +59,7 @@ namespace PetShop.ToolBox
                 {
                     foreach (DataGridViewColumn column in dataGridView.Columns)
                     {
-                        column.Width += 2;
+                        column.Width += 1;
                     }
                 }
                 MaxSize = new Size(dataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 3 + (form.Size.Width - dataGridView.Size.Width), 100000);

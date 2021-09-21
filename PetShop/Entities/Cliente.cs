@@ -10,7 +10,7 @@ namespace PetShop.Entities
     public class Cliente
     {
         private static SqlCeConnection connection;
-        public int ClienteId { get; set; }
+        public int Id { get; set; }
         public string NomeCliente { get; set; }
         public string Tipo { get; set; }
         public string Apelido { get; set; }
@@ -96,7 +96,7 @@ namespace PetShop.Entities
                     else
                     {
                         command.CommandText = "UPDATE Clientes SET Nome = @Nome, Tipo = @Tipo, Apelido = @Apelido, Endereco = @Endereco, Bairro = @Bairro, Cidade = @Cidade, Estado = @Estado, Cep = @Cep, Telefone_Principal = @Telefone_Principal, Telefone_Secundario = @Telefone_Secundario, Celular = @Celular, Complemento = @Complemento, Email = @Email, Cpf = @Cpf, Cnpj = @Cnpj, Observacoes = @Observacoes WHERE Id = @Id";
-                        command.Parameters.AddWithValue("@Id", ClienteId);
+                        command.Parameters.AddWithValue("@Id", Id);
                     }
                     command.Parameters.AddWithValue("@Nome", NomeCliente);
                     command.Parameters.AddWithValue("@Tipo", Tipo);
@@ -164,7 +164,7 @@ namespace PetShop.Entities
                         {
                             while (reader.Read())
                             {
-                                ClienteId = (int)reader["Id"];
+                                Id = (int)reader["Id"];
                                 NomeCliente = reader["Nome"].ToString();
                                 Tipo = reader["Tipo"].ToString();
                                 Apelido = reader["Apelido"].ToString();

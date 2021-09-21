@@ -192,6 +192,7 @@ namespace PetShop
             this.btnVisualizar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnVisualizar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnVisualizar.UseVisualStyleBackColor = false;
+            this.btnVisualizar.Click += new System.EventHandler(this.btnVisualizar_Click);
             // 
             // btnImprimirLista
             // 
@@ -211,6 +212,7 @@ namespace PetShop
             this.btnImprimirLista.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnImprimirLista.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnImprimirLista.UseVisualStyleBackColor = false;
+            this.btnImprimirLista.Click += new System.EventHandler(this.btnImprimirLista_Click);
             // 
             // groupBox2
             // 
@@ -272,6 +274,7 @@ namespace PetShop
             this.DGVListaVendas.ShowEditingIcon = false;
             this.DGVListaVendas.Size = new System.Drawing.Size(947, 485);
             this.DGVListaVendas.TabIndex = 0;
+            this.DGVListaVendas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVListaVendas_CellDoubleClick);
             this.DGVListaVendas.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DGVListaVendas_RowStateChanged);
             this.DGVListaVendas.SelectionChanged += new System.EventHandler(this.DGVListaVendas_SelectionChanged);
             this.DGVListaVendas.Sorted += new System.EventHandler(this.DGVListaVendas_Sorted);
@@ -285,6 +288,7 @@ namespace PetShop
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(699, 60);
@@ -294,6 +298,7 @@ namespace PetShop
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de Vendas";
             this.Load += new System.EventHandler(this.RelatorioVendas_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RelatorioVendas_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

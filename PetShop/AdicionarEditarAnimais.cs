@@ -196,14 +196,14 @@ namespace PetShop
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                AnimalId = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, ClienteId.ClienteId, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), decimal.Parse(txtPeso.Text), dateDataNascimento.Value, combBoxSituacao.Text, Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
+                AnimalId = new Animal(txtNomeAnimal.Text, checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text, ClienteId.Id, txtEspecie.Text, txtRaca.Text, txtIdentificacao.Text, txtFobias.Text, checkDisponivelTosa.Checked ? "Sim" : "Não", checkPossuiPedigree.Checked ? "Sim" : "Não", checkAgressivo.Checked ? "Sim" : "Não", checkHiperativo.Checked ? "Sim" : "Não", checkAntissocial.Checked ? "Sim" : "Não", checkObcessivo.Checked ? "Sim" : "Não", txtObservacaoComportamental.Text, txtObservacaoRotina.Text, DateTime.Parse(txtDataRegistroAnimal.Text), decimal.Parse(txtPeso.Text), dateDataNascimento.Value, combBoxSituacao.Text, Fotografias.ElementAtOrDefault(0), Fotografias.ElementAtOrDefault(1), Fotografias.ElementAtOrDefault(3));
                 AnimalId.AdicionarEditarAnimal(Operacao);
             }
             else
             {
                 AnimalId.Nome = txtNomeAnimal.Text;
                 AnimalId.Sexo = checkSexoFemea.Checked ? checkSexoFemea.Text : checkSexoMacho.Text;
-                AnimalId.ClienteId = ClienteId.ClienteId;
+                AnimalId.ClienteId = ClienteId.Id;
                 AnimalId.Especie = txtEspecie.Text;
                 AnimalId.Raca = txtRaca.Text;
                 AnimalId.Identificacao = txtIdentificacao.Text;

@@ -180,7 +180,7 @@ namespace PetShop
         {
             VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, _toolTip);
             BtnPesquisarAnimal.Enabled = true;
-            if (_Animal != null && _Animal.ClienteId != _Cliente.ClienteId)
+            if (_Animal != null && _Animal.ClienteId != _Cliente.Id)
             {
                 _Animal = null;
                 txtNomeAnimal.Clear();

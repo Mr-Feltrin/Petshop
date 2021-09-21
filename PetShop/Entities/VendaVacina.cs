@@ -69,7 +69,7 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT * FROM Vendas_Vacinas WHERE VendasId = @VendasId";
+                    command.CommandText = "SELECT Vacinas.Imunologia, Vacinas.ConteudoML, Vacinas.Doses, Vacinas.Fabricante, Vacinas.ValorProduto, Vendas_Vacinas.Quantidade FROM Vendas_Vacinas INNER JOIN Vacinas ON (Vendas_Vacinas.VacinasId = Vacinas.Id) WHERE Vendas_Vacinas.VendasId = @VendasId";
                     command.Parameters.AddWithValue("@VendasId", vendaId);
                     command.ExecuteNonQuery();
                     using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command))

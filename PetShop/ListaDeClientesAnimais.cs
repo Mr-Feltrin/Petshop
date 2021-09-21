@@ -215,7 +215,7 @@ namespace PetShop
             {
                 if (FormAdicionarEditarAgendamento != null)
                 {
-                    DGVClientesAnimais.DataSource = Animal.ListarAnimais(FormAdicionarEditarAgendamento._Cliente.ClienteId);
+                    DGVClientesAnimais.DataSource = Animal.ListarAnimais(FormAdicionarEditarAgendamento._Cliente.Id);
                 }
                 else
                 {

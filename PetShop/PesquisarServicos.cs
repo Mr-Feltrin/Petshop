@@ -5,13 +5,11 @@ using System;
 using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace PetShop
 {
     public partial class PesquisarServicos : Form
     {
-        private VScrollBar DGVScrollBar;
 
         public PesquisarServicos()
         {
@@ -25,8 +23,6 @@ namespace PetShop
             listaServicos.Columns["Valor"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             listaServicos.Columns["Valor"].DefaultCellStyle.Format = string.Format("C2");
             listaServicos.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
-            DGVScrollBar = listaServicos.Controls.OfType<VScrollBar>().First();
-            DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
             DataGridViewTools.MaximumFormSize(listaServicos, this);
             listaServicos.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaServicos_ColumnWidthChanged);
         }
@@ -36,19 +32,10 @@ namespace PetShop
             DataGridViewTools.MaximumFormSize(listaServicos, this);
         }
 
-        private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
-        {
-            DataGridViewTools.MaximumFormSize(listaServicos, this);
-        }
-
         public void AtualizarLista()
         {
             listaServicos.DataSource = Servico.ListarServicos();
             listaServicos.ClearSelection();
-            if (listaServicos.Rows.Count > 0)
-            {
-                listaServicos.SetColumnsWidth(DataGridViewAutoSizeColumnMode.AllCells);
-            }
         }
 
         private void listaServicos_Sorted(object sender, EventArgs e)

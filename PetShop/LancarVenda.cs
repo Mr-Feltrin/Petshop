@@ -1187,12 +1187,7 @@ namespace PetShop
                 List<VendaProduto> vendaProdutos = new List<VendaProduto>();
                 List<VendaServico> vendaServicos = new List<VendaServico>();
                 List<VendaVacina> vendaVacinas = new List<VendaVacina>();
-                int? idCliente = null;
-                if (_Cliente != null)
-                {
-                    idCliente = _Cliente.ClienteId;
-                }
-                Venda venda = new Venda(DateTime.Now, idCliente, combBoxFormaPagamento.SelectedItem.ToString(), decimal.TryParse(txtDesconto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal txtDescontoResult) ? txtDescontoResult : default, combBoxTipoCartao.Text, decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
+                Venda venda = new Venda(DateTime.Now, _Cliente, combBoxFormaPagamento.SelectedItem.ToString(), decimal.TryParse(txtDesconto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal txtDescontoResult) ? txtDescontoResult : default, combBoxTipoCartao.Text, decimal.Parse(txtTotalVenda.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
                 try
                 {
                     venda.AdicionarVenda();

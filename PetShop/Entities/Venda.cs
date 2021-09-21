@@ -13,13 +13,13 @@ namespace PetShop.Entities
         private static SqlCeConnection Connection;
         public int Id { get; set; }
         public DateTime DataVenda { get; set; }
-        public int? ClienteId { get; set; }
+        public Cliente ClienteId { get; set; }
         public string Pagamento { get; set; }
         public decimal Desconto { get; set; }
         public string TipoCartao { get; set; }
         public decimal TotalVenda { get; set; }
 
-        public Venda(DateTime dataVenda, int? clienteId, string pagamento, decimal desconto, string tipoCartao, decimal totalVenda)
+        public Venda(DateTime dataVenda, Cliente clienteId, string pagamento, decimal desconto, string tipoCartao, decimal totalVenda)
         {
             DataVenda = dataVenda;
             ClienteId = clienteId;
@@ -52,7 +52,11 @@ namespace PetShop.Entities
                             {
                                 Id = (int)reader["Id"];
                                 DataVenda = (DateTime)reader["DataVenda"];
-                                ClienteId = (int)reader["ClienteId"];
+                                if (!reader.IsDBNull(reader.GetOrdinal("ClienteId")))
+                                {
+                                    ClienteId = new Cliente((int)reader["ClienteId"]);
+                                }
+                                var type = reader["ClienteId"].GetType();
                                 Pagamento = (string)reader["Pagamento"];
                                 Desconto = (decimal)reader["Desconto"];
                                 TipoCartao = (string)reader["TipoCartao"];
@@ -95,7 +99,7 @@ namespace PetShop.Entities
                     command.Parameters.AddWithValue("@DataVenda", DataVenda);
                     if (ClienteId != null)
                     {
-                        command.Parameters.AddWithValue("@ClienteId", ClienteId);
+                        command.Parameters.AddWithValue("@ClienteId", ClienteId.Id);
                     }
                     else
                     {

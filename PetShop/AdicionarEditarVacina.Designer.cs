@@ -41,7 +41,6 @@ namespace PetShop
             this.label4 = new System.Windows.Forms.Label();
             this.labelConteudo = new System.Windows.Forms.Label();
             this.labelDataCadastro = new System.Windows.Forms.Label();
-            this.dateDataCadastro = new System.Windows.Forms.DateTimePicker();
             this.CombBoxImunologia = new System.Windows.Forms.ComboBox();
             this.labelImunologia = new System.Windows.Forms.Label();
             this.labelLote = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@ namespace PetShop
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.txtDataModificacao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -72,6 +72,7 @@ namespace PetShop
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtDataModificacao);
             this.groupBox1.Controls.Add(this.txtDoses);
             this.groupBox1.Controls.Add(this.txtConteudoML);
             this.groupBox1.Controls.Add(this.label7);
@@ -81,7 +82,6 @@ namespace PetShop
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.labelConteudo);
             this.groupBox1.Controls.Add(this.labelDataCadastro);
-            this.groupBox1.Controls.Add(this.dateDataCadastro);
             this.groupBox1.Controls.Add(this.CombBoxImunologia);
             this.groupBox1.Controls.Add(this.labelImunologia);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,7 +162,7 @@ namespace PetShop
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(142, 22);
+            this.label4.Location = new System.Drawing.Point(160, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 21);
             this.label4.TabIndex = 0;
@@ -184,19 +184,9 @@ namespace PetShop
             this.labelDataCadastro.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelDataCadastro.Location = new System.Drawing.Point(15, 22);
             this.labelDataCadastro.Name = "labelDataCadastro";
-            this.labelDataCadastro.Size = new System.Drawing.Size(129, 21);
+            this.labelDataCadastro.Size = new System.Drawing.Size(151, 21);
             this.labelDataCadastro.TabIndex = 0;
-            this.labelDataCadastro.Text = "Data de Cadastro";
-            // 
-            // dateDataCadastro
-            // 
-            this.dateDataCadastro.CustomFormat = "dd/MM/yyyy";
-            this.dateDataCadastro.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDataCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateDataCadastro.Location = new System.Drawing.Point(19, 46);
-            this.dateDataCadastro.Name = "dateDataCadastro";
-            this.dateDataCadastro.Size = new System.Drawing.Size(197, 22);
-            this.dateDataCadastro.TabIndex = 1;
+            this.labelDataCadastro.Text = "Data de Modificação";
             // 
             // CombBoxImunologia
             // 
@@ -346,6 +336,7 @@ namespace PetShop
             this.txtQuantidadeEstoque.TabIndex = 4;
             this.txtQuantidadeEstoque.TextChanged += new System.EventHandler(this.txtQuantidadeEstoque_TextChanged);
             this.txtQuantidadeEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidadeEstoque_KeyPress);
+            this.txtQuantidadeEstoque.Validated += new System.EventHandler(this.txtQuantidadeEstoque_Validated);
             // 
             // txtFabricante
             // 
@@ -458,6 +449,16 @@ namespace PetShop
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // txtDataModificacao
+            // 
+            this.txtDataModificacao.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDataModificacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataModificacao.Location = new System.Drawing.Point(19, 46);
+            this.txtDataModificacao.Name = "txtDataModificacao";
+            this.txtDataModificacao.ReadOnly = true;
+            this.txtDataModificacao.Size = new System.Drawing.Size(197, 22);
+            this.txtDataModificacao.TabIndex = 5;
+            // 
             // AdicionarEditarVacina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -501,7 +502,6 @@ namespace PetShop
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label labelConteudo;
         private System.Windows.Forms.Label labelDataCadastro;
-        private System.Windows.Forms.DateTimePicker dateDataCadastro;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelFabricante;
         private System.Windows.Forms.Label labelDataValidade;
@@ -523,5 +523,6 @@ namespace PetShop
         private System.Windows.Forms.TextBox txtValorProduto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtValorCusto;
+        private System.Windows.Forms.TextBox txtDataModificacao;
     }
 }

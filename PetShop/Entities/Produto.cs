@@ -207,8 +207,8 @@ namespace PetShop.Entities
                         Connection.Open();
                         SqlCeCommand command = Connection.CreateCommand();
                         command.CommandText = "INSERT INTO Produtos_Abastecimento (ProdutoId, Quantidade) VALUES (@ProdutoId, @Quantidade)";
-                        command.Parameters.AddWithValue("ProdutoId", Id);
-                        command.Parameters.AddWithValue("Quantidade", quantidade);
+                        command.Parameters.AddWithValue("@ProdutoId", Id);
+                        command.Parameters.AddWithValue("@Quantidade", quantidade);
                         if (command.ExecuteNonQuery() > 0 == false)
                         {
                             throw new SqlCeQueryException();

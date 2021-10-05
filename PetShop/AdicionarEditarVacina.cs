@@ -8,14 +8,21 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using PetShop.Entities.Exceptions;
+using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace PetShop
 {
     public partial class AdicionarEditarVacina : Form
     {
+        [DllImport("user32.dll")]
+        private static extern bool HideCaret(IntPtr hWnd);
         private readonly TipoOperacao Operacao;
         private Vacina _Vacina { get; set; }
         private Dictionary<object, string> CamposObrigatorios;
+        private int EstoqueAtual;
+        private int EstoqueAnterior;
+        private Button BtnLockEstoque;
 
         public AdicionarEditarVacina(TipoOperacao operacao)
         {
@@ -50,6 +57,7 @@ namespace PetShop
             };
             CombBoxImunologia.DataSource = Vacina.ListarImunologia();
             CombBoxImunologia.DisplayMember = "Imunologia";
+            txtDataModificacao.Text = DateTime.Now.Date.ToString("dd/MM/yyyy");
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar vacina";
@@ -58,8 +66,8 @@ namespace PetShop
             }
             else
             {
+
                 Text = "Editar vacina";
-                dateDataCadastro.Value = _Vacina.DataCadastro;
                 CombBoxImunologia.Text = _Vacina.Imunologia;
                 txtConteudoML.Text = _Vacina.ConteudoML.ToString();
                 txtDoses.Text = _Vacina.Doses.ToString();
@@ -69,7 +77,44 @@ namespace PetShop
                 txtQuantidadeEstoque.Text = _Vacina.Quantidade.ToString();
                 txtValorCusto.Text = _Vacina.ValorMercado.ToString("C2", CultureInfo.CurrentCulture);
                 txtValorProduto.Text = _Vacina.ValorProduto.ToString("C2", CultureInfo.CurrentCulture);
+                BtnLockEstoque = new Button();
+                BtnLockEstoque.Size = new Size(25, txtQuantidadeEstoque.Height);
+                BtnLockEstoque.Dock = DockStyle.Right;
+                BtnLockEstoque.Cursor = Cursors.Default;
+                BtnLockEstoque.Image = Properties.Resources.lock16x16;
+                BtnLockEstoque.ImageAlign = ContentAlignment.MiddleCenter;
+                BtnLockEstoque.FlatStyle = FlatStyle.Flat;
+                BtnLockEstoque.ForeColor = Color.White;
+                BtnLockEstoque.BackColor = Color.Transparent;
+                BtnLockEstoque.FlatAppearance.BorderSize = 0;
+                txtQuantidadeEstoque.Controls.Add(BtnLockEstoque);
+                txtQuantidadeEstoque.BackColor = Color.FromKnownColor(KnownColor.Window);
+                BtnLockEstoque.Click += new EventHandler(BtnLockEstoque_Click);
+                EstoqueAnterior = int.TryParse(txtQuantidadeEstoque.Text, out int estoqueAnteriorResult) ? estoqueAnteriorResult : default;
+                EstoqueAtual = int.TryParse(txtQuantidadeEstoque.Text, out int estoqueAtualResult) ? estoqueAtualResult : default;
+                txtQuantidadeEstoque.ReadOnly = true;
             }
+        }
+
+        private void BtnLockEstoque_Click(object sender, EventArgs e)
+        {
+            if (txtQuantidadeEstoque.ReadOnly)
+            {
+                txtQuantidadeEstoque.ReadOnly = false;
+                BtnLockEstoque.Image = Properties.Resources.unlock16x16;
+                BtnLockEstoque.GotFocus -= new EventHandler(txtEstoqueAtual_GotFocus);
+            }
+            else
+            {
+                txtQuantidadeEstoque.ReadOnly = true;
+                BtnLockEstoque.Image = Properties.Resources.lock16x16;
+                txtQuantidadeEstoque.GotFocus += new EventHandler(txtEstoqueAtual_GotFocus);
+            }
+        }
+
+        private void txtEstoqueAtual_GotFocus(object sender, EventArgs e)
+        {
+            HideCaret((sender as TextBox).Handle);
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -155,12 +200,12 @@ namespace PetShop
         {
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, dateDataCadastro.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCustoResult) ? valorCustoResult : default, decimal.Parse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat));
+                _Vacina = new Vacina(CombBoxImunologia.Text, int.Parse(txtDoses.Text), int.Parse(txtConteudoML.Text), txtLote.Text, txtFabricante.Text, DateDataValidade.Value, int.Parse(txtQuantidadeEstoque.Text), decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCustoResult) ? valorCustoResult : default, decimal.Parse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), DateTime.Now);
                 _Vacina.AdicionarEditarVacina(Operacao);
+                _Vacina.InserirAbastecimentoVacina(_Vacina.Quantidade);
             }
             else
             {
-                _Vacina.DataCadastro = dateDataCadastro.Value;
                 _Vacina.Imunologia = CombBoxImunologia.Text;
                 _Vacina.ConteudoML = int.Parse(txtConteudoML.Text);
                 _Vacina.Doses = int.Parse(txtDoses.Text);
@@ -170,7 +215,12 @@ namespace PetShop
                 _Vacina.Quantidade = int.Parse(txtQuantidadeEstoque.Text);
                 _Vacina.ValorMercado = decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal resultValorMercado) ? resultValorMercado : default;
                 _Vacina.ValorProduto = decimal.TryParse(txtValorProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal resultValorProduto) ? resultValorProduto : default;
+                _Vacina.DataModificacao = DateTime.Now;
                 _Vacina.AdicionarEditarVacina(Operacao);
+                if (EstoqueAnterior != EstoqueAtual)
+                {
+                    _Vacina.InserirAbastecimentoVacina(EstoqueAtual - EstoqueAnterior);
+                }
             }
             if (Application.OpenForms.OfType<PesquisarVacinas>().Count() == 1)
             {
@@ -255,6 +305,11 @@ namespace PetShop
         private void txtValorProduto_TextChanged(object sender, EventArgs e)
         {
             VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, toolTip);
+        }
+
+        private void txtQuantidadeEstoque_Validated(object sender, EventArgs e)
+        {
+            EstoqueAtual = int.TryParse(txtQuantidadeEstoque.Text, out int EstoqueAtualResult) ? EstoqueAtualResult : default;
         }
     }
 }

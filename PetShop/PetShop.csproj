@@ -293,6 +293,12 @@
     <Compile Include="RelatorioProdutos.Designer.cs">
       <DependentUpon>RelatorioProdutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="RelatorioVacinas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioVacinas.Designer.cs">
+      <DependentUpon>RelatorioVacinas.cs</DependentUpon>
+    </Compile>
     <Compile Include="RelatorioVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioProdutos.resx">
       <DependentUpon>RelatorioProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioVacinas.resx">
+      <DependentUpon>RelatorioVacinas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioVendas.resx">
       <DependentUpon>RelatorioVendas.cs</DependentUpon>

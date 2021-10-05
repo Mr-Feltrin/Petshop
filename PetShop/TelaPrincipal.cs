@@ -257,5 +257,13 @@ namespace PetShop
                 relatorioProdutos.ShowDialog();
             }
         }
+
+        private void btnRelatorioVacinas_Click(object sender, EventArgs e)
+        {
+            using (RelatorioVacinas relatorioVacinas = new RelatorioVacinas())
+            {
+                relatorioVacinas.ShowDialog();
+            }
+        }
     }
 }

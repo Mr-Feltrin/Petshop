@@ -98,8 +98,9 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CoreC
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.pdb
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.VisualizarVenda.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\bin\Release\Data\PetShopDb.sdf
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.RelatorioProdutos.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.AbastecimentoProduto.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.RelatorioVacinas.resources
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache

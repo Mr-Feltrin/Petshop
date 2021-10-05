@@ -33,10 +33,10 @@ namespace PetShop
             AtualizarLista();
             listaVacinas.Columns["ConteudoML"].HeaderText = "Conteúdo (ML)";
             listaVacinas.Columns["DataValidade"].HeaderText = "Data de Validade";
-            listaVacinas.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            listaVacinas.Columns["DataModificacao"].HeaderText = "Data de Modificação";
             listaVacinas.Columns["ValorMercado"].HeaderText = "Valor de Mercado";
             listaVacinas.Columns["ValorProduto"].HeaderText = "Valor do Produto";
-            listaVacinas.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            listaVacinas.Columns["DataModificacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaVacinas.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
             listaVacinas.Columns["ValorMercado"].DefaultCellStyle.Format = "C2";
             listaVacinas.Columns["ValorMercado"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
@@ -170,7 +170,7 @@ namespace PetShop
                         DataTable data = (listaVacinas.DataSource as DataTable).Copy();
                         data.Columns["ConteudoML"].ColumnName = "Conteúdo (ML)";
                         data.Columns["DataValidade"].ColumnName = "Data de Validade";
-                        data.Columns["DataCadastro"].ColumnName = "Data de Cadastro";
+                        data.Columns["DataModificacao"].ColumnName = "Data de Modificação";
                         IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Produtos");
                         worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
                         worksheets.CellsUsed().Style.Font.FontName = "Arial";

@@ -61,6 +61,7 @@
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
             this.TimerAgendamentos = new System.Windows.Forms.Timer(this.components);
             this.timerDataAtual = new System.Windows.Forms.Timer(this.components);
+            this.btnRelatorioVacinas = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -279,7 +280,8 @@
             this.btnRelatorios.BackColor = System.Drawing.Color.Transparent;
             this.btnRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnRelatorioVendas,
-            this.btnRelatorioProdutos});
+            this.btnRelatorioProdutos,
+            this.btnRelatorioVacinas});
             this.btnRelatorios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorios.Image = global::PetShop.Properties.Resources.report30x30;
             this.btnRelatorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -450,6 +452,15 @@
             this.timerDataAtual.Interval = 3600000;
             this.timerDataAtual.Tick += new System.EventHandler(this.timerDataAtual_Tick);
             // 
+            // btnRelatorioVacinas
+            // 
+            this.btnRelatorioVacinas.Image = global::PetShop.Properties.Resources.vacina30x30;
+            this.btnRelatorioVacinas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRelatorioVacinas.Name = "btnRelatorioVacinas";
+            this.btnRelatorioVacinas.Size = new System.Drawing.Size(228, 36);
+            this.btnRelatorioVacinas.Text = "Relatório de Vacinas";
+            this.btnRelatorioVacinas.Click += new System.EventHandler(this.btnRelatorioVacinas_Click);
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -509,6 +520,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioVendas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioProdutos;
+        private System.Windows.Forms.ToolStripMenuItem btnRelatorioVacinas;
     }
 }
 

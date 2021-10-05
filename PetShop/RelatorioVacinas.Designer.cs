@@ -1,7 +1,7 @@
 ﻿
 namespace PetShop
 {
-    partial class RelatorioProdutos
+    partial class RelatorioVacinas
     {
         /// <summary>
         /// Required designer variable.
@@ -34,13 +34,12 @@ namespace PetShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatorioProdutos));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RelatorioVacinas));
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dateDataInicial = new System.Windows.Forms.DateTimePicker();
-            this.txtPesquisarProduto = new System.Windows.Forms.TextBox();
+            this.txtPesquisarImunologia = new System.Windows.Forms.TextBox();
             this.dateDataFinal = new System.Windows.Forms.DateTimePicker();
-            this.comboFiltrarEntradaSaida = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,21 +47,35 @@ namespace PetShop
             this.label1 = new System.Windows.Forms.Label();
             this.btnImprimirLista = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.DGVRelatorioProdutos = new System.Windows.Forms.DataGridView();
+            this.DGVRelatorioVacinas = new System.Windows.Forms.DataGridView();
             this.groupBoxLegendaCores = new System.Windows.Forms.GroupBox();
             this.labelEmEstoque = new System.Windows.Forms.Label();
             this.pictureBoxSemEstoque = new System.Windows.Forms.PictureBox();
             this.pictureBoxEmEstoque = new System.Windows.Forms.PictureBox();
             this.labelSemEstoque = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.comboFiltrarEntradaSaida = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVRelatorioProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVRelatorioVacinas)).BeginInit();
             this.groupBoxLegendaCores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmEstoque)).BeginInit();
             this.SuspendLayout();
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
+            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox1.Controls.Add(this.btnImprimirLista);
+            this.groupBox1.Location = new System.Drawing.Point(12, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(912, 80);
+            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabStop = false;
             // 
             // tableLayoutPanel1
             // 
@@ -77,7 +90,7 @@ namespace PetShop
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.23841F));
             this.tableLayoutPanel1.Controls.Add(this.dateDataInicial, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarProduto, 6, 0);
+            this.tableLayoutPanel1.Controls.Add(this.txtPesquisarImunologia, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.dateDataFinal, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.comboFiltrarEntradaSaida, 4, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(5, 35);
@@ -98,15 +111,15 @@ namespace PetShop
             this.dateDataInicial.TabIndex = 0;
             this.dateDataInicial.ValueChanged += new System.EventHandler(this.dateDataInicial_ValueChanged);
             // 
-            // txtPesquisarProduto
+            // txtPesquisarImunologia
             // 
-            this.txtPesquisarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPesquisarProduto.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarProduto.Location = new System.Drawing.Point(484, 6);
-            this.txtPesquisarProduto.Name = "txtPesquisarProduto";
-            this.txtPesquisarProduto.Size = new System.Drawing.Size(328, 25);
-            this.txtPesquisarProduto.TabIndex = 3;
-            this.txtPesquisarProduto.TextChanged += new System.EventHandler(this.txtPesquisarProduto_TextChanged);
+            this.txtPesquisarImunologia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPesquisarImunologia.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisarImunologia.Location = new System.Drawing.Point(484, 6);
+            this.txtPesquisarImunologia.Name = "txtPesquisarImunologia";
+            this.txtPesquisarImunologia.Size = new System.Drawing.Size(328, 25);
+            this.txtPesquisarImunologia.TabIndex = 3;
+            this.txtPesquisarImunologia.TextChanged += new System.EventHandler(this.txtPesquisarImunologia_TextChanged);
             // 
             // dateDataFinal
             // 
@@ -118,37 +131,6 @@ namespace PetShop
             this.dateDataFinal.Size = new System.Drawing.Size(137, 25);
             this.dateDataFinal.TabIndex = 1;
             this.dateDataFinal.ValueChanged += new System.EventHandler(this.dateDataFinal_ValueChanged);
-            // 
-            // comboFiltrarEntradaSaida
-            // 
-            this.comboFiltrarEntradaSaida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboFiltrarEntradaSaida.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.comboFiltrarEntradaSaida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboFiltrarEntradaSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboFiltrarEntradaSaida.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboFiltrarEntradaSaida.FormattingEnabled = true;
-            this.comboFiltrarEntradaSaida.Items.AddRange(new object[] {
-            "Entrada",
-            "Saída",
-            "Todos"});
-            this.comboFiltrarEntradaSaida.Location = new System.Drawing.Point(329, 4);
-            this.comboFiltrarEntradaSaida.Name = "comboFiltrarEntradaSaida";
-            this.comboFiltrarEntradaSaida.Size = new System.Drawing.Size(129, 28);
-            this.comboFiltrarEntradaSaida.TabIndex = 2;
-            this.comboFiltrarEntradaSaida.SelectedIndexChanged += new System.EventHandler(this.comboFiltrarEntradaSaida_SelectedIndexChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.tableLayoutPanel1);
-            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox1.Controls.Add(this.btnImprimirLista);
-            this.groupBox1.Location = new System.Drawing.Point(12, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(912, 80);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
             // 
             // tableLayoutPanel2
             // 
@@ -182,7 +164,7 @@ namespace PetShop
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(321, 20);
             this.label4.TabIndex = 3;
-            this.label4.Text = "Pesquisar Nome do Produto";
+            this.label4.Text = "Pesquisar por Imunologia";
             // 
             // label3
             // 
@@ -242,24 +224,24 @@ namespace PetShop
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.DGVRelatorioProdutos);
+            this.groupBox2.Controls.Add(this.DGVRelatorioVacinas);
             this.groupBox2.Location = new System.Drawing.Point(12, 92);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(912, 447);
+            this.groupBox2.Size = new System.Drawing.Size(912, 494);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
-            // DGVRelatorioProdutos
+            // DGVRelatorioVacinas
             // 
-            this.DGVRelatorioProdutos.AllowUserToAddRows = false;
-            this.DGVRelatorioProdutos.AllowUserToDeleteRows = false;
-            this.DGVRelatorioProdutos.AllowUserToResizeRows = false;
+            this.DGVRelatorioVacinas.AllowUserToAddRows = false;
+            this.DGVRelatorioVacinas.AllowUserToDeleteRows = false;
+            this.DGVRelatorioVacinas.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DGVRelatorioProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGVRelatorioProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DGVRelatorioVacinas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVRelatorioVacinas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVRelatorioProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
+            this.DGVRelatorioVacinas.BackgroundColor = System.Drawing.Color.AliceBlue;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -267,8 +249,8 @@ namespace PetShop
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVRelatorioProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.DGVRelatorioProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DGVRelatorioVacinas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVRelatorioVacinas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -276,11 +258,11 @@ namespace PetShop
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVRelatorioProdutos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DGVRelatorioProdutos.Location = new System.Drawing.Point(6, 12);
-            this.DGVRelatorioProdutos.MultiSelect = false;
-            this.DGVRelatorioProdutos.Name = "DGVRelatorioProdutos";
-            this.DGVRelatorioProdutos.ReadOnly = true;
+            this.DGVRelatorioVacinas.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVRelatorioVacinas.Location = new System.Drawing.Point(6, 14);
+            this.DGVRelatorioVacinas.MultiSelect = false;
+            this.DGVRelatorioVacinas.Name = "DGVRelatorioVacinas";
+            this.DGVRelatorioVacinas.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -288,18 +270,18 @@ namespace PetShop
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVRelatorioProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.DGVRelatorioProdutos.RowHeadersVisible = false;
+            this.DGVRelatorioVacinas.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DGVRelatorioVacinas.RowHeadersVisible = false;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DGVRelatorioProdutos.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.DGVRelatorioProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVRelatorioProdutos.ShowCellToolTips = false;
-            this.DGVRelatorioProdutos.ShowEditingIcon = false;
-            this.DGVRelatorioProdutos.Size = new System.Drawing.Size(900, 429);
-            this.DGVRelatorioProdutos.TabIndex = 1;
-            this.DGVRelatorioProdutos.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DGVRelatorioProdutos_RowPrePaint);
-            this.DGVRelatorioProdutos.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DGVRelatorioProdutos_RowStateChanged);
-            this.DGVRelatorioProdutos.Sorted += new System.EventHandler(this.DGVRelatorioProdutos_Sorted);
+            this.DGVRelatorioVacinas.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.DGVRelatorioVacinas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVRelatorioVacinas.ShowCellToolTips = false;
+            this.DGVRelatorioVacinas.ShowEditingIcon = false;
+            this.DGVRelatorioVacinas.Size = new System.Drawing.Size(900, 474);
+            this.DGVRelatorioVacinas.TabIndex = 0;
+            this.DGVRelatorioVacinas.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DGVRelatorioVacinas_RowPrePaint);
+            this.DGVRelatorioVacinas.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.DGVRelatorioVacinas_RowStateChanged);
+            this.DGVRelatorioVacinas.Sorted += new System.EventHandler(this.DGVRelatorioVacinas_Sorted);
             // 
             // groupBoxLegendaCores
             // 
@@ -309,10 +291,10 @@ namespace PetShop
             this.groupBoxLegendaCores.Controls.Add(this.pictureBoxEmEstoque);
             this.groupBoxLegendaCores.Controls.Add(this.labelSemEstoque);
             this.groupBoxLegendaCores.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxLegendaCores.Location = new System.Drawing.Point(12, 545);
+            this.groupBoxLegendaCores.Location = new System.Drawing.Point(13, 592);
             this.groupBoxLegendaCores.Name = "groupBoxLegendaCores";
             this.groupBoxLegendaCores.Size = new System.Drawing.Size(201, 44);
-            this.groupBoxLegendaCores.TabIndex = 8;
+            this.groupBoxLegendaCores.TabIndex = 2;
             this.groupBoxLegendaCores.TabStop = false;
             this.groupBoxLegendaCores.Text = "Legenda";
             // 
@@ -353,15 +335,33 @@ namespace PetShop
             this.labelSemEstoque.Location = new System.Drawing.Point(112, 17);
             this.labelSemEstoque.Name = "labelSemEstoque";
             this.labelSemEstoque.Size = new System.Drawing.Size(50, 20);
-            this.labelSemEstoque.TabIndex = 2;
+            this.labelSemEstoque.TabIndex = 1;
             this.labelSemEstoque.Text = "Saída:";
             // 
-            // RelatorioProdutos
+            // comboFiltrarEntradaSaida
+            // 
+            this.comboFiltrarEntradaSaida.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboFiltrarEntradaSaida.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboFiltrarEntradaSaida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboFiltrarEntradaSaida.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboFiltrarEntradaSaida.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboFiltrarEntradaSaida.FormattingEnabled = true;
+            this.comboFiltrarEntradaSaida.Items.AddRange(new object[] {
+            "Entrada",
+            "Saída",
+            "Todos"});
+            this.comboFiltrarEntradaSaida.Location = new System.Drawing.Point(329, 4);
+            this.comboFiltrarEntradaSaida.Name = "comboFiltrarEntradaSaida";
+            this.comboFiltrarEntradaSaida.Size = new System.Drawing.Size(129, 28);
+            this.comboFiltrarEntradaSaida.TabIndex = 2;
+            this.comboFiltrarEntradaSaida.SelectedIndexChanged += new System.EventHandler(this.comboFiltrarEntradaSaida_SelectedIndexChanged);
+            // 
+            // RelatorioVacinas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(936, 598);
+            this.ClientSize = new System.Drawing.Size(936, 646);
             this.Controls.Add(this.groupBoxLegendaCores);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -369,22 +369,22 @@ namespace PetShop
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(856, 283);
-            this.Name = "RelatorioProdutos";
+            this.MinimumSize = new System.Drawing.Size(878, 275);
+            this.Name = "RelatorioVacinas";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Relatório de Produtos";
-            this.Load += new System.EventHandler(this.RelatorioProdutos_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RelatorioProdutos_KeyPress);
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Text = "Relatório de Vacinas";
+            this.Load += new System.EventHandler(this.RelatorioVacinas_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RelatorioVacinas_KeyPress);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.DGVRelatorioProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVRelatorioVacinas)).EndInit();
             this.groupBoxLegendaCores.ResumeLayout(false);
             this.groupBoxLegendaCores.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSemEstoque)).EndInit();
@@ -395,11 +395,11 @@ namespace PetShop
 
         #endregion
 
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DateTimePicker dateDataInicial;
+        private System.Windows.Forms.TextBox txtPesquisarImunologia;
         private System.Windows.Forms.DateTimePicker dateDataFinal;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtPesquisarProduto;
         private ToolBox.Controls.ComboBoxFlatBordered comboFiltrarEntradaSaida;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label4;
@@ -408,11 +408,11 @@ namespace PetShop
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnImprimirLista;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridView DGVRelatorioVacinas;
         private System.Windows.Forms.GroupBox groupBoxLegendaCores;
         private System.Windows.Forms.Label labelEmEstoque;
         private System.Windows.Forms.PictureBox pictureBoxSemEstoque;
         private System.Windows.Forms.PictureBox pictureBoxEmEstoque;
         private System.Windows.Forms.Label labelSemEstoque;
-        private System.Windows.Forms.DataGridView DGVRelatorioProdutos;
     }
 }

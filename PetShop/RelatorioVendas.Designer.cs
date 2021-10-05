@@ -291,7 +291,7 @@ namespace PetShop
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(699, 60);
+            this.MinimumSize = new System.Drawing.Size(844, 228);
             this.Name = "RelatorioVendas";
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;

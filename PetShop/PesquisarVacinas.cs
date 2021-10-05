@@ -172,11 +172,15 @@ namespace PetShop
                         data.Columns["DataValidade"].ColumnName = "Data de Validade";
                         data.Columns["DataCadastro"].ColumnName = "Data de Cadastro";
                         IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Produtos");
-                        worksheets.ColumnsUsed().AdjustToContents();
-                        worksheets.RowsUsed().AdjustToContents();
                         worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        worksheets.CellsUsed().Style.Font.FontName = "Arial";
+                        worksheets.CellsUsed().Style.Font.FontSize = 12;
                         worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 5, worksheets.LastRowUsed().RowNumber(), 5).Style.DateFormat.Format = "dd/MM/yyyy";
                         worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 10, worksheets.LastRowUsed().RowNumber(), 10).Style.NumberFormat.SetFormat("R$ #,##0.00");
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 11, worksheets.LastRowUsed().RowNumber(), 11).Style.NumberFormat.SetFormat("R$ #,##0.00");
+                        worksheets.ColumnsUsed().AdjustToContents();
+                        worksheets.RowsUsed().AdjustToContents();
                         try
                         {
                             workbook.SaveAs(dialog.FileName);

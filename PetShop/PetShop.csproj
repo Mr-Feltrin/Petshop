@@ -132,6 +132,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbastecimentoProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbastecimentoProduto.Designer.cs">
+      <DependentUpon>AbastecimentoProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdicionarEditarAgendamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +287,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RelatorioProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RelatorioProdutos.Designer.cs">
+      <DependentUpon>RelatorioProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="RelatorioVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +338,9 @@
     <Compile Include="VisualizarVenda.Designer.cs">
       <DependentUpon>VisualizarVenda.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AbastecimentoProduto.resx">
+      <DependentUpon>AbastecimentoProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdicionarEditarAgendamento.resx">
       <DependentUpon>AdicionarEditarAgendamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -388,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PesquisarVacinas.resx">
       <DependentUpon>PesquisarVacinas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RelatorioProdutos.resx">
+      <DependentUpon>RelatorioProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RelatorioVendas.resx">
       <DependentUpon>RelatorioVendas.cs</DependentUpon>
@@ -509,6 +527,8 @@
     </Content>
     <Content Include="images\add32x32.png" />
     <Content Include="images\caixa30x30.png" />
+    <Content Include="images\lock16x16.png" />
+    <Content Include="images\unlock16x16.png" />
     <Content Include="images\VisualizarDocumento32x32.png" />
     <None Include="images\logo_caopanheiro.jpg" />
     <None Include="images\vacinacao_animal30x30.png" />

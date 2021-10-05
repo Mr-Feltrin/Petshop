@@ -228,11 +228,15 @@ namespace PetShop
                             data = data.Select("EstoqueAtual <= 0").CopyToDataTable();
                         }
                         IXLWorksheet worksheets = workbook.Worksheets.Add(data, "Produtos");
+                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
+                        worksheets.CellsUsed().Style.Font.FontName = "Arial";
+                        worksheets.CellsUsed().Style.Font.FontSize = 12;
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 12, worksheets.LastRowUsed().RowNumber(), 12).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 16, worksheets.LastRowUsed().RowNumber(), 16).Style.DateFormat.Format = "dd/MM/yyyy";
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 13, worksheets.LastRowUsed().RowNumber(), 13).Style.NumberFormat.SetFormat("R$ #,##0.00");
+                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 14, worksheets.LastRowUsed().RowNumber(), 14).Style.NumberFormat.SetFormat("R$ #,##0.00");
                         worksheets.ColumnsUsed().AdjustToContents();
                         worksheets.RowsUsed().AdjustToContents();
-                        worksheets.CellsUsed().Style.Border.OutsideBorder = XLBorderStyleValues.Thin;
-                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 8, worksheets.LastRowUsed().RowNumber(), 8).Style.DateFormat.Format = "dd/MM/yyyy";
-                        worksheets.Range(worksheets.FirstRowUsed().RowBelow().RowNumber(), 13, worksheets.LastRowUsed().RowNumber(), 13).Style.DateFormat.Format = "dd/MM/yyyy";
                         try
                         {
                             workbook.SaveAs(dialog.FileName);
@@ -284,7 +288,7 @@ namespace PetShop
 
         private void DGVListaProdutos_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(DGVListaProdutos, this);
+            DataGridViewTools.MaximumFormSize(DGVListaProdutos, this, DGVListaProdutos_ColumnWidthChanged);
         }
 
         private void PesquisaProdutos_KeyDown(object sender, KeyEventArgs e)

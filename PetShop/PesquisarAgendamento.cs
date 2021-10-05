@@ -41,6 +41,12 @@ namespace PetShop
             LegendaColoracaoLista();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
+        }
+
         private void btnNovoHorario_Click(object sender, EventArgs e)
         {
             using (AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this))

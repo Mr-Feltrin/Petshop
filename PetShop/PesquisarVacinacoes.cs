@@ -40,6 +40,12 @@ namespace PetShop
             DataGridViewTools.MaximumFormSize(listaVacinacao, this);
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
+        }
+
         internal void AtualizarListaVacinacoes()
         {
             listaVacinacao.DataSource = Vacinacao.ListarVacinacoes(dataInicial: dateDataInicial.Value.Date, dataFinal: dateDataFinal.Value.Date);
@@ -52,7 +58,7 @@ namespace PetShop
 
         private void listaVacinacao_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(listaVacinacao, this);
+            DataGridViewTools.MaximumFormSize(listaVacinacao, this, listaVacinacao_ColumnWidthChanged);
         }
 
         private void listaVacinacao_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)

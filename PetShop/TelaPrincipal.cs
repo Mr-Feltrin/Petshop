@@ -249,5 +249,13 @@ namespace PetShop
                 relatorioVendas.ShowDialog();
             }
         }
+
+        private void btnRelatorioProdutos_Click(object sender, EventArgs e)
+        {
+            using (RelatorioProdutos relatorioProdutos = new RelatorioProdutos())
+            {
+                relatorioProdutos.ShowDialog();
+            }
+        }
     }
 }

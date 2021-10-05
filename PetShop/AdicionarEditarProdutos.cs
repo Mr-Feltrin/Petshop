@@ -20,6 +20,10 @@ namespace PetShop
         private Produto _Produto;
         [DllImport("user32.dll")]
         private static extern bool HideCaret(IntPtr hWnd);
+        private Button BtnEstoqueAtualLock;
+        private int EstoqueAnterior;
+        private int EstoqueAtual;
+
 
         public AdicionarEditarProdutos(TipoOperacao operacao)
         {
@@ -68,7 +72,7 @@ namespace PetShop
             else if (_TipoOperacao == TipoOperacao.Editar)
             {
                 Text = "Editar produto";
-                txtCodigo.Text = _Produto.ProdutoId.ToString();
+                txtCodigo.Text = _Produto.Id.ToString();
                 txtCodigoBarras.Text = _Produto.CodigoBarras;
                 combBoxTipoUnidade.Text = _Produto.TipoUnidade;
                 txtQuantidade.Text = _Produto.Quantidade.ToString();
@@ -83,7 +87,46 @@ namespace PetShop
                 txtValorCusto.Text = _Produto.ValorCusto.ToString("C2", new CultureInfo("pt-BR"));
                 txtPrecoProduto.Text = _Produto.ValorProduto.ToString("C2", CultureInfo.CurrentCulture);
                 txtObservacoes.Text = _Produto.Observacoes;
+                txtEstoqueAtual.ReadOnly = true;
+                txtEstoqueAtual.BackColor = Color.FromKnownColor(KnownColor.Window);
+                txtEstoqueAtual.GotFocus += new EventHandler(txtEstoqueAtual_GotFocus);
+                btnAbastecer.Enabled = true;
+                BtnEstoqueAtualLock = new Button();
+                BtnEstoqueAtualLock.Size = new Size(25, txtEstoqueAtual.Height);
+                BtnEstoqueAtualLock.Dock = DockStyle.Right;
+                BtnEstoqueAtualLock.Cursor = Cursors.Default;
+                BtnEstoqueAtualLock.Image = Properties.Resources.lock16x16;
+                BtnEstoqueAtualLock.ImageAlign = ContentAlignment.MiddleCenter;
+                BtnEstoqueAtualLock.FlatStyle = FlatStyle.Flat;
+                BtnEstoqueAtualLock.ForeColor = Color.White;
+                BtnEstoqueAtualLock.BackColor = Color.Transparent;
+                BtnEstoqueAtualLock.FlatAppearance.BorderSize = 0;
+                txtEstoqueAtual.Controls.Add(BtnEstoqueAtualLock);
+                BtnEstoqueAtualLock.Click += new EventHandler(BtnEstoqueAtualLock_Click);
+                EstoqueAnterior = _Produto.EstoqueAtual;
+                EstoqueAtual = _Produto.EstoqueAtual;
             }
+        }
+
+        private void BtnEstoqueAtualLock_Click(object sender, EventArgs e)
+        {
+            if (txtEstoqueAtual.ReadOnly)
+            {
+                txtEstoqueAtual.ReadOnly = false;
+                BtnEstoqueAtualLock.Image = Properties.Resources.unlock16x16;
+                txtEstoqueAtual.GotFocus -= new EventHandler(txtEstoqueAtual_GotFocus);
+            }
+            else
+            {
+                txtEstoqueAtual.ReadOnly = true;
+                BtnEstoqueAtualLock.Image = Properties.Resources.lock16x16;
+                txtEstoqueAtual.GotFocus += new EventHandler(txtEstoqueAtual_GotFocus);
+            }
+        }
+
+        private void txtEstoqueAtual_GotFocus(object sender, EventArgs e)
+        {
+            HideCaret((sender as TextBox).Handle);
         }
 
         private void txtDataAtualizacao_GotFocus(object sender, EventArgs e)
@@ -251,8 +294,9 @@ namespace PetShop
         {
             if (_TipoOperacao == TipoOperacao.Adicionar)
             {
-                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), txtObservacoes.Text, DateTime.Parse(txtDataAtualizacao.Text));
+                _Produto = new Produto(txtNomeProduto.Text, txtCodigoBarras.Text, combBoxTipoUnidade.Text, int.Parse(txtQuantidade.Text), txtReferencia.Text, txtLocalizacao.Text, combBoxMarcaProduto.Text, CombBoxCategoria.Text, int.TryParse(txtEstoqueMinimo.Text, out int minval) ? minval : default, int.TryParse(txtEstoqueAtual.Text, out int value) ? value : default, dateDataValidade.Value, decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorCusto) ? valorCusto : default, decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat), txtObservacoes.Text, DateTime.Now);
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
+                _Produto.InserirAbastecimento(_Produto.EstoqueAtual);
             }
             else if (_TipoOperacao == TipoOperacao.Editar)
             {
@@ -270,8 +314,12 @@ namespace PetShop
                 _Produto.ValorCusto = decimal.TryParse(txtValorCusto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat, out decimal valorcusto) ? valorcusto : default;
                 _Produto.ValorProduto = decimal.Parse(txtPrecoProduto.Text, NumberStyles.Currency, CultureInfo.CurrentCulture.NumberFormat);
                 _Produto.Observacoes = txtObservacoes.Text;
-                _Produto.DataAtualizacao = DateTime.Parse(txtDataAtualizacao.Text);
+                _Produto.DataAtualizacao = DateTime.Now;
                 _Produto.AdicionarEditarProduto(_TipoOperacao);
+                if (EstoqueAnterior != EstoqueAtual)
+                {
+                    _Produto.InserirAbastecimento(EstoqueAtual - EstoqueAnterior);
+                }
             }
             if (Application.OpenForms.OfType<PesquisarProdutos>().Count() == 1)
             {
@@ -283,6 +331,29 @@ namespace PetShop
         private void txtPrecoProduto_TextChanged(object sender, EventArgs e)
         {
             VerificarCamposObrigatorios.ChecarCampos(btnSalvar, CamposObrigatorios, toolTip);
+        }
+
+        private void btnAbastecer_Click(object sender, EventArgs e)
+        {
+            using (AbastecimentoProduto abastecimentoProduto = new AbastecimentoProduto(this))
+            {
+                abastecimentoProduto.ShowDialog(this);
+                if (abastecimentoProduto.IsDisposed)
+                {
+                    txtEstoqueAtual.Text = EstoqueAtual.ToString();
+                }
+            }
+        }
+
+        public void AbastecerEstoque(int quantidade)
+        {
+            EstoqueAtual = int.TryParse(txtEstoqueAtual.Text, out int result) ? result + quantidade : default;
+            txtEstoqueAtual.Text = EstoqueAtual.ToString();
+        }
+
+        private void txtEstoqueAtual_Validated(object sender, EventArgs e)
+        {
+            EstoqueAtual = int.TryParse((sender as TextBox).Text, out int result) ? result : default;
         }
     }
 }

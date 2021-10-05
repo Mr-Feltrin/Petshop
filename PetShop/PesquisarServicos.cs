@@ -43,6 +43,12 @@ namespace PetShop
             (sender as DataGridView).ClearSelection();
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
+        }
+
         private void listaServicos_SelectionChanged(object sender, EventArgs e)
         {
             if (listaServicos.SelectedRows.Count > 0)

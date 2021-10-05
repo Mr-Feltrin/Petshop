@@ -43,12 +43,18 @@ namespace PetShop
 
         private void DGVListaVendas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(DGVListaVendas, this);
+            DataGridViewTools.MaximumFormSize(DGVListaVendas, this, DGVListaVendas_ColumnWidthChanged);
         }
 
         private void DGVScrollbar_VisibleChanged(object sender, EventArgs e)
         {
             DataGridViewTools.MaximumFormSize(DGVListaVendas, this);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
         }
 
         private void AtualizarLista()
@@ -183,7 +189,6 @@ namespace PetShop
                         {
                             MessageBox.Show("Não foi possível salvar o arquivo pois ele está em uso, feche o arquivo aberto e tente novamente", "Não Foi possível salvar o arquivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
                     }
                 }
             }

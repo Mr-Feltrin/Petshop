@@ -76,6 +76,7 @@ namespace PetShop
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipEnabledControls = new System.Windows.Forms.ToolTip(this.components);
+            this.btnAbastecer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -449,6 +450,7 @@ namespace PetShop
             this.txtEstoqueAtual.TabIndex = 32;
             this.txtEstoqueAtual.TextChanged += new System.EventHandler(this.txtEstoqueAtual_TextChanged);
             this.txtEstoqueAtual.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoqueAtual_KeyPress);
+            this.txtEstoqueAtual.Validated += new System.EventHandler(this.txtEstoqueAtual_Validated);
             // 
             // txtEstoqueMinimo
             // 
@@ -627,6 +629,25 @@ namespace PetShop
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // btnAbastecer
+            // 
+            this.btnAbastecer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAbastecer.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.btnAbastecer.Enabled = false;
+            this.btnAbastecer.FlatAppearance.BorderColor = System.Drawing.Color.LightGreen;
+            this.btnAbastecer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbastecer.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAbastecer.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAbastecer.Image = global::PetShop.Properties.Resources.add32x32;
+            this.btnAbastecer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAbastecer.Location = new System.Drawing.Point(254, 632);
+            this.btnAbastecer.Name = "btnAbastecer";
+            this.btnAbastecer.Size = new System.Drawing.Size(180, 45);
+            this.btnAbastecer.TabIndex = 12;
+            this.btnAbastecer.Text = "Abastecer";
+            this.btnAbastecer.UseVisualStyleBackColor = false;
+            this.btnAbastecer.Click += new System.EventHandler(this.btnAbastecer_Click);
+            // 
             // AdicionarEditarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -634,6 +655,7 @@ namespace PetShop
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnSair;
             this.ClientSize = new System.Drawing.Size(688, 689);
+            this.Controls.Add(this.btnAbastecer);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.labelObservacoes);
@@ -711,5 +733,6 @@ namespace PetShop
         private System.Windows.Forms.Label label7;
         private ToolBox.Controls.ComboBoxFlatBordered combBoxTipoUnidade;
         private System.Windows.Forms.TextBox txtDataAtualizacao;
+        private System.Windows.Forms.Button btnAbastecer;
     }
 }

@@ -55,6 +55,12 @@ namespace PetShop
             DataGridViewTools.MaximumFormSize(DGVListaClientesFornecedores, this);
         }
 
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
+        }
+
         public void AtualizarLista()
         {
             if (_TipoPesquisa == TipoPesquisa.Cliente)

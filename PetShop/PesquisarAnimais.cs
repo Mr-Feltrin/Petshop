@@ -33,6 +33,7 @@ namespace PetShop
             listaAnimais.Columns["Especie"].HeaderText = "Espécie";
             listaAnimais.Columns["Raca"].HeaderText = "Raça";
             listaAnimais.Columns["Identificacao"].HeaderText = "Identificação";
+            listaAnimais.Columns["NomeCliente"].HeaderText = "Nome do Dono";
             listaAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
             listaAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
             listaAnimais.Columns["DataNascimento"].HeaderText = "Data de Nascimento";
@@ -44,6 +45,12 @@ namespace PetShop
             DGVScrollBar.VisibleChanged += new EventHandler(DGVScrollBar_VisibleChanged);
             DataGridViewTools.MaximumFormSize(listaAnimais, this);
             listaAnimais.ColumnWidthChanged += new DataGridViewColumnEventHandler(listaAnimais_ColumnWidthChanged);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
         }
 
         private void DGVScrollBar_VisibleChanged(object sender, EventArgs e)
@@ -146,6 +153,7 @@ namespace PetShop
                         data.Columns["Especie"].ColumnName = "Espécie";
                         data.Columns["Raca"].ColumnName = "Raça";
                         data.Columns["Identificacao"].ColumnName = "Identificação";
+                        data.Columns["NomeCliente"].ColumnName = "Nome do Dono";
                         data.Columns["Observacao_rotina"].ColumnName = "Observação de Rotina";
                         data.Columns["Data_registro"].ColumnName = "Data de Registro";
                         data.Columns["DataNascimento"].ColumnName = "Data de Nascimento";
@@ -197,7 +205,7 @@ namespace PetShop
 
         private void listaAnimais_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(listaAnimais, this);
+            DataGridViewTools.MaximumFormSize(listaAnimais, this, listaAnimais_ColumnWidthChanged);
         }
 
         private void PesquisaAnimais_KeyDown(object sender, KeyEventArgs e)

@@ -10,7 +10,7 @@ namespace PetShop.Entities
     public class Produto
     {
         private static SqlCeConnection Connection;
-        public int ProdutoId { get; set; }
+        public int? Id { get; set; }
         public string NomeProduto { get; set; }
         public string CodigoBarras { get; set; }
         public string TipoUnidade { get; set; }
@@ -67,7 +67,7 @@ namespace PetShop.Entities
                         {
                             while (reader.Read())
                             {
-                                ProdutoId = (int)reader["Id"];
+                                Id = (int)reader["Id"];
                                 NomeProduto = reader["Nome"].ToString();
                                 CodigoBarras = reader["CodigoBarras"].ToString();
                                 TipoUnidade = reader["TipoUnidade"].ToString();
@@ -96,16 +96,19 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao buscar por Produto: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
                 throw e;
             }
             catch (SqlCeResultException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao buscar por Produto: {e.Message}", "Falha nos dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
                 throw e;
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Falha na aplicação ao buscar por Produto: {e.Message}", "Erro no programa", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
                 throw e;
             }
         }
@@ -125,7 +128,7 @@ namespace PetShop.Entities
                     else if (operacao == TipoOperacao.Editar)
                     {
                         command.CommandText = "UPDATE Produtos SET Nome = @Nome, CodigoBarras = @CodigoBarras, TipoUnidade = @TipoUnidade, Quantidade = @Quantidade, Referencia = @Referencia, Localizacao = @Localizacao, Marca = @Marca, Categoria = @Categoria, EstoqueMinimo = @EstoqueMinimo, EstoqueAtual = @EstoqueAtual, DataValidade = @DataValidade, ValorCusto = @ValorCusto, ValorProduto = @ValorProduto, Observacoes = @Observacoes, DataAtualizacao = @DataAtualizacao WHERE Id = @Id";
-                        command.Parameters.AddWithValue("@Id", ProdutoId);
+                        command.Parameters.AddWithValue("@Id", Id);
                     }
                     command.Parameters.AddWithValue("@Nome", NomeProduto);
                     command.Parameters.AddWithValue("@CodigoBarras", CodigoBarras);
@@ -146,15 +149,22 @@ namespace PetShop.Entities
                     {
                         MessageBox.Show("O Produto foi salvo", "Salvar Produto", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+                    if (operacao == TipoOperacao.Adicionar)
+                    {
+                        command.CommandText = "SELECT @@IDENTITY";
+                        Id = Convert.ToInt32(command.ExecuteScalar());
+                    }
                 }
             }
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
 
@@ -177,10 +187,44 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public void InserirAbastecimento(int quantidade)
+        {
+            if (Id != null)
+            {
+                try
+                {
+                    using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                    {
+                        Connection.Open();
+                        SqlCeCommand command = Connection.CreateCommand();
+                        command.CommandText = "INSERT INTO Produtos_Abastecimento (ProdutoId, Quantidade) VALUES (@ProdutoId, @Quantidade)";
+                        command.Parameters.AddWithValue("ProdutoId", Id);
+                        command.Parameters.AddWithValue("Quantidade", quantidade);
+                        if (command.ExecuteNonQuery() > 0 == false)
+                        {
+                            throw new SqlCeQueryException();
+                        }
+                    }
+                }
+                catch (SqlCeException e)
+                {
+                    MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
             }
         }
 
@@ -209,10 +253,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao retornar lista de produtos: {e.Message}", "Erro ao exibir dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação ao retornar a lista de produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return data;
         }
@@ -235,10 +281,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return data;
         }
@@ -261,10 +309,12 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
             return data;
         }
@@ -293,13 +343,45 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Ocorreu um erro no banco de dados: {e.Message}", "Erro no banco de dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
                 return null;
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro na aplicação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
                 return null;
             }
+        }
+
+        public static DataTable RelatorioEntradaSaidaProdutos(DateTime dataInicial, DateTime dataFinal)
+        {
+            DataTable data = new DataTable();
+            using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+            {
+                try
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "SELECT Produtos.Id, Produtos.DataAtualizacao AS DataMovimentacao, CASE WHEN Produtos_Abastecimento.Quantidade > 0 THEN 'Entrada' ELSE 'Saída' END AS TipoMovimentacao, Produtos_Abastecimento.Quantidade AS Quantidade,'Abastecimento' AS TipoOperacao, Produtos.Nome AS NomeProduto, CAST(Produtos.Quantidade AS NVARCHAR) + ' ' + Produtos.TipoUnidade as Volume, Produtos.Categoria, Produtos.ValorProduto FROM Produtos_Abastecimento INNER JOIN Produtos ON (Produtos_Abastecimento.ProdutoId = Produtos.Id) WHERE Produtos.DataAtualizacao BETWEEN @DataInicial AND @DataFinal UNION SELECT Produtos.Id, Vendas.DataVenda AS DataMovimentacao, 'Saída' AS TipoMovimentacao, Vendas_Produtos.Quantidade * -1 AS Quantidade, 'Venda' AS TipoOperacao, Produtos.Nome AS NomeProduto, CAST(Produtos.Quantidade AS NVARCHAR) + ' ' + Produtos.TipoUnidade as Volume, Produtos.Categoria, Produtos.ValorProduto FROM Vendas_Produtos INNER JOIN Produtos ON (Vendas_Produtos.ProdutosId = Produtos.Id) INNER JOIN Vendas ON (Vendas_Produtos.VendasId = Vendas.Id) WHERE Vendas.DataVenda BETWEEN @DataInicial AND @DataFinal";
+                    command.Parameters.AddWithValue("@DataInicial", dataInicial.Date);
+                    command.Parameters.AddWithValue("@DataFinal", dataFinal);
+                    command.ExecuteNonQuery();
+                    SqlCeDataAdapter sqlCeDataAdapter = new SqlCeDataAdapter(command);
+                    sqlCeDataAdapter.Fill(data);
+                }
+                catch (SqlCeException e)
+                {
+                    MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao obter lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    ErrorLogger.CreateErrorLog(e);
+                }
+            }
+            return data;
         }
     }
 }

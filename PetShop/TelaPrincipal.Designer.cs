@@ -48,6 +48,7 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.btnRelatorios = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnRelatorioVendas = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRelatorioProdutos = new System.Windows.Forms.ToolStripMenuItem();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus_data_completa = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_agendamentos_atuais = new System.Windows.Forms.ToolStripStatusLabel();
@@ -277,7 +278,8 @@
             // 
             this.btnRelatorios.BackColor = System.Drawing.Color.Transparent;
             this.btnRelatorios.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRelatorioVendas});
+            this.btnRelatorioVendas,
+            this.btnRelatorioProdutos});
             this.btnRelatorios.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRelatorios.Image = global::PetShop.Properties.Resources.report30x30;
             this.btnRelatorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -294,9 +296,18 @@
             this.btnRelatorioVendas.Image = global::PetShop.Properties.Resources.caixa30x30;
             this.btnRelatorioVendas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btnRelatorioVendas.Name = "btnRelatorioVendas";
-            this.btnRelatorioVendas.Size = new System.Drawing.Size(218, 36);
+            this.btnRelatorioVendas.Size = new System.Drawing.Size(228, 36);
             this.btnRelatorioVendas.Text = "Relatório de Vendas";
             this.btnRelatorioVendas.Click += new System.EventHandler(this.btnRelatorioVendas_Click);
+            // 
+            // btnRelatorioProdutos
+            // 
+            this.btnRelatorioProdutos.Image = global::PetShop.Properties.Resources.produtos30x30;
+            this.btnRelatorioProdutos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRelatorioProdutos.Name = "btnRelatorioProdutos";
+            this.btnRelatorioProdutos.Size = new System.Drawing.Size(228, 36);
+            this.btnRelatorioProdutos.Text = "Relatório de Produtos";
+            this.btnRelatorioProdutos.Click += new System.EventHandler(this.btnRelatorioProdutos_Click);
             // 
             // status_rodape_principal
             // 
@@ -497,6 +508,7 @@
         private System.Windows.Forms.ToolStripDropDownButton btnRelatorios;
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioVendas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripMenuItem btnRelatorioProdutos;
     }
 }
 

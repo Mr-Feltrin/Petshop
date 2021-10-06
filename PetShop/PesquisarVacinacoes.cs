@@ -113,7 +113,11 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (listaVacinacao.DataSource as DataTable).Copy();
+                        DataTable data = (listaVacinacao.DataSource as DataTable).Clone();
+                        foreach (DataGridViewRow row in listaVacinacao.Rows)
+                        {
+                            data.ImportRow(((DataRowView)row.DataBoundItem).Row);
+                        }
                         data.Columns["DataVacina"].ColumnName = "Data da Vacinação";
                         data.Columns["NomeAnimal"].ColumnName = "Nome do Animal";
                         data.Columns["NomeCliente"].ColumnName = "Nome do Cliente";

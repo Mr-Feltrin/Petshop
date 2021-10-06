@@ -203,7 +203,11 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (DGVListaProdutos.DataSource as DataTable).Copy();
+                        DataTable data = (DGVListaProdutos.DataSource as DataTable).Clone();
+                        foreach (DataGridViewRow row in DGVListaProdutos.Rows)
+                        {
+                            data.ImportRow(((DataRowView)row.DataBoundItem).Row);
+                        }
                         data.Columns["CodigoBarras"].ColumnName = "Codigo de Barras";
                         data.Columns["TipoUnidade"].ColumnName = "Tipo de Unidade";
                         data.Columns["Referencia"].ColumnName = "Referência";

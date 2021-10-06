@@ -163,7 +163,11 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (DGVListaVendas.DataSource as DataTable).Copy();
+                        DataTable data = (DGVListaVendas.DataSource as DataTable).Clone();
+                        foreach (DataGridViewRow row in DGVListaVendas.Rows)
+                        {
+                            data.ImportRow(((DataRowView)row.DataBoundItem).Row);
+                        }
                         data.Columns["DataVenda"].ColumnName = "Data da Venda";
                         data.Columns["NomeCliente"].ColumnName = "Nome do Cliente";
                         data.Columns["NumeroItens"].ColumnName = "N° de Itens na Compra";

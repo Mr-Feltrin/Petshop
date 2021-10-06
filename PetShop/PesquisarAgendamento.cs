@@ -161,7 +161,11 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (listaAgendamento.DataSource as DataTable).Copy();
+                        DataTable data = (listaAgendamento.DataSource as DataTable).Clone();
+                        foreach (DataGridViewRow row in listaAgendamento.Rows)
+                        {
+                            data.ImportRow(((DataRowView)row.DataBoundItem).Row);
+                        }
                         data.Columns["NomeAnimal"].ColumnName = "Nome do Animal";
                         data.Columns["Horario"].ColumnName = "Horário";
                         IXLWorksheet worksheet = workbook.Worksheets.Add(data, "Agendamentos");

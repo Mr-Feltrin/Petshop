@@ -294,7 +294,11 @@ namespace PetShop
                 {
                     using (XLWorkbook workbook = new XLWorkbook())
                     {
-                        DataTable data = (DGVListaClientesFornecedores.DataSource as DataTable).Copy();
+                        DataTable data = (DGVListaClientesFornecedores.DataSource as DataTable).Clone();
+                        foreach (DataGridViewRow row in DGVListaClientesFornecedores.Rows)
+                        {
+                            data.ImportRow(((DataRowView)row.DataBoundItem).Row);
+                        }
                         if (_TipoPesquisa == TipoPesquisa.Cliente)
                         {
                             data.Columns["Telefone_Principal"].ColumnName = "Telefone";

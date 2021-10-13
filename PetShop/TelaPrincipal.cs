@@ -265,5 +265,13 @@ namespace PetShop
                 relatorioVacinas.ShowDialog();
             }
         }
+
+        private void btnOpcoes_Click(object sender, EventArgs e)
+        {
+            using (Opcoes opcoes = new Opcoes())
+            {
+                opcoes.ShowDialog();
+            }
+        }
     }
 }

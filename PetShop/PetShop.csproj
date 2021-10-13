@@ -221,6 +221,12 @@
     <Compile Include="ListaVacinas.Designer.cs">
       <DependentUpon>ListaVacinas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Opcoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Opcoes.Designer.cs">
+      <DependentUpon>Opcoes.cs</DependentUpon>
+    </Compile>
     <Compile Include="PesquisarVacinacoes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -383,6 +389,9 @@
     <EmbeddedResource Include="ListaVacinas.resx">
       <DependentUpon>ListaVacinas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Opcoes.resx">
+      <DependentUpon>Opcoes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PesquisarVacinacoes.resx">
       <DependentUpon>PesquisarVacinacoes.cs</DependentUpon>
     </EmbeddedResource>
@@ -536,7 +545,11 @@
     </Content>
     <Content Include="images\add32x32.png" />
     <Content Include="images\caixa30x30.png" />
+    <Content Include="images\clearDb16x16.png" />
+    <Content Include="images\icons\settings.ico" />
     <Content Include="images\lock16x16.png" />
+    <Content Include="images\restoreDb16x16.png" />
+    <Content Include="images\settings30x30.png" />
     <Content Include="images\unlock16x16.png" />
     <Content Include="images\VisualizarDocumento32x32.png" />
     <None Include="images\logo_caopanheiro.jpg" />

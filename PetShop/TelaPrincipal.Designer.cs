@@ -49,6 +49,9 @@
             this.btnRelatorios = new System.Windows.Forms.ToolStripDropDownButton();
             this.btnRelatorioVendas = new System.Windows.Forms.ToolStripMenuItem();
             this.btnRelatorioProdutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRelatorioVacinas = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnOpcoes = new System.Windows.Forms.ToolStripButton();
             this.status_rodape_principal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatus_data_completa = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatus_agendamentos_atuais = new System.Windows.Forms.ToolStripStatusLabel();
@@ -61,7 +64,6 @@
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
             this.TimerAgendamentos = new System.Windows.Forms.Timer(this.components);
             this.timerDataAtual = new System.Windows.Forms.Timer(this.components);
-            this.btnRelatorioVacinas = new System.Windows.Forms.ToolStripMenuItem();
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -85,7 +87,9 @@
             this.toolStripSeparator3,
             this.btnVenda,
             this.toolStripSeparator4,
-            this.btnRelatorios});
+            this.btnRelatorios,
+            this.toolStripSeparator5,
+            this.btnOpcoes});
             this.menu_principal.Location = new System.Drawing.Point(0, 0);
             this.menu_principal.Name = "menu_principal";
             this.menu_principal.ShowItemToolTips = false;
@@ -311,6 +315,36 @@
             this.btnRelatorioProdutos.Text = "Relatório de Produtos";
             this.btnRelatorioProdutos.Click += new System.EventHandler(this.btnRelatorioProdutos_Click);
             // 
+            // btnRelatorioVacinas
+            // 
+            this.btnRelatorioVacinas.Image = global::PetShop.Properties.Resources.vacina30x30;
+            this.btnRelatorioVacinas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnRelatorioVacinas.Name = "btnRelatorioVacinas";
+            this.btnRelatorioVacinas.Size = new System.Drawing.Size(228, 36);
+            this.btnRelatorioVacinas.Text = "Relatório de Vacinas";
+            this.btnRelatorioVacinas.Click += new System.EventHandler(this.btnRelatorioVacinas_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 54);
+            // 
+            // btnOpcoes
+            // 
+            this.btnOpcoes.BackColor = System.Drawing.Color.Transparent;
+            this.btnOpcoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnOpcoes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpcoes.Image = global::PetShop.Properties.Resources.settings30x30;
+            this.btnOpcoes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnOpcoes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnOpcoes.Name = "btnOpcoes";
+            this.btnOpcoes.Size = new System.Drawing.Size(59, 51);
+            this.btnOpcoes.Text = "Opções";
+            this.btnOpcoes.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnOpcoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOpcoes.ToolTipText = "Opções";
+            this.btnOpcoes.Click += new System.EventHandler(this.btnOpcoes_Click);
+            // 
             // status_rodape_principal
             // 
             this.status_rodape_principal.AllowMerge = false;
@@ -452,15 +486,6 @@
             this.timerDataAtual.Interval = 3600000;
             this.timerDataAtual.Tick += new System.EventHandler(this.timerDataAtual_Tick);
             // 
-            // btnRelatorioVacinas
-            // 
-            this.btnRelatorioVacinas.Image = global::PetShop.Properties.Resources.vacina30x30;
-            this.btnRelatorioVacinas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnRelatorioVacinas.Name = "btnRelatorioVacinas";
-            this.btnRelatorioVacinas.Size = new System.Drawing.Size(228, 36);
-            this.btnRelatorioVacinas.Text = "Relatório de Vacinas";
-            this.btnRelatorioVacinas.Click += new System.EventHandler(this.btnRelatorioVacinas_Click);
-            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -521,6 +546,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioProdutos;
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioVacinas;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton btnOpcoes;
     }
 }
 

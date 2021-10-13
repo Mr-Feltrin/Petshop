@@ -95,7 +95,6 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.PesquisarCli
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.LancarVenda.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.GenerateResource.cache
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CoreCompileInputs.cache
-C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.CopyComplete
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.exe
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.pdb
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.VisualizarVenda.resources
@@ -104,3 +103,4 @@ C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.RelatorioPro
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.AbastecimentoProduto.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.RelatorioVacinas.resources
 C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.csproj.AssemblyReference.cache
+C:\Users\rasou\Documents\GitHub\Petshop\PetShop\obj\Release\PetShop.Opcoes.resources

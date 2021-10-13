@@ -351,5 +351,18 @@ namespace PetShop
             DGVListaClientesFornecedores.CurrentCell = null;
             DGVListaClientesFornecedores.FirstDisplayedCell = null;
         }
+
+        private void txtPesquisarId_TextChanged(object sender, EventArgs e)
+        {
+            (DGVListaClientesFornecedores.DataSource as DataTable).DefaultView.RowFilter = string.Format("Id LIKE '%" + txtPesquisarId.Text + "%'");
+        }
+
+        private void txtPesquisarId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

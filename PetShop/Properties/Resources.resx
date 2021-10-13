@@ -277,4 +277,13 @@
   <data name="unlock16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\images\unlock16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="settings30x30" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\settings30x30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clearDb16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\cleardb16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restoreDb16x16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\images\restoredb16x16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

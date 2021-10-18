@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Linq;
 
 namespace PetShop
 {
@@ -169,7 +169,7 @@ namespace PetShop
             {
                 Application.OpenForms.OfType<PesquisarVacinacoes>().First().AtualizarListaVacinacoes();
             }
-            Close();           
+            Close();
         }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -25,8 +25,9 @@ namespace PetShop.Entities
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string Observacoes { get; set; }
+        public DateTime DataCadastro { get; set; }
 
-        public Fornecedor(string nome, string tipo_Fornecimento, string apelido, string endereco, string bairro, string cidade, string estado, string cep, string telefone, string celular, string cnpj, string cpf, string email, string observacoes)
+        public Fornecedor(string nome, string tipo_Fornecimento, string apelido, string endereco, string bairro, string cidade, string estado, string cep, string telefone, string celular, string cnpj, string cpf, string email, string observacoes, DateTime dataCadastro)
         {
             Nome = nome;
             Tipo_Fornecimento = tipo_Fornecimento;
@@ -42,6 +43,7 @@ namespace PetShop.Entities
             Cpf = cpf;
             Email = email;
             Observacoes = observacoes;
+            DataCadastro = dataCadastro;
         }
 
         public Fornecedor(int idFornecedor)
@@ -120,7 +122,7 @@ namespace PetShop.Entities
             catch (SqlCeException e)
             {
                 MessageBox.Show($"Erro no banco de dados ao buscar Fornecedor: {e.Message}", "Erro ao buscar Fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                throw e;               
+                throw e;
             }
             catch (SqlCeResultException e)
             {
@@ -144,7 +146,8 @@ namespace PetShop.Entities
                     SqlCeCommand command = connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        command.CommandText = "INSERT INTO Fornecedor (Nome, Tipo_Fornecimento, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone, Celular, Cnpj, Cpf, Email, Observacoes) VALUES (@Nome, @Tipo_Fornecimento, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone, @Celular, @Cnpj, @Cpf, @Email, @Observacoes)";
+                        command.CommandText = "INSERT INTO Fornecedor (Nome, Tipo_Fornecimento, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone, Celular, Cnpj, Cpf, Email, Observacoes, DataCadastro) VALUES (@Nome, @Tipo_Fornecimento, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone, @Celular, @Cnpj, @Cpf, @Email, @Observacoes, @DataCadastro)";
+                        command.Parameters.AddWithValue("@DataCadastro", DataCadastro);
                     }
                     else
                     {
@@ -201,6 +204,53 @@ namespace PetShop.Entities
             catch (Exception e)
             {
                 MessageBox.Show("Erro ao remover fornecedor: " + e.Message, "Remover fornecedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void ExcluirFornecedor(DateTime data)
+        {
+            try
+            {
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Fornecedor WHERE DataCadastro < @Data";
+                    comando.Parameters.AddWithValue("@Data", data);
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Fornecedores foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Fornecedor");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao limpar tabela de Fornecedor: " + e.Message, "Limpar Fornecedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void ExcluirFornecedor()
+        {
+            try
+            {
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Fornecedor";
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Fornecedores foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Fornecedor");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao limpar tabela de Fornecedor: " + e.Message, "Limpar Fornecedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
             }
         }

@@ -5,8 +5,8 @@ using PetShop.ToolBox;
 using System;
 using System.ComponentModel;
 using System.Data;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -21,10 +21,8 @@ namespace PetShop
 
         private void btnAdicionarClienteFornecedor_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarAnimais adicionarEditarAnimais = new AdicionarEditarAnimais(TipoOperacao.Adicionar, this))
-            {
-                adicionarEditarAnimais.ShowDialog(this);
-            }
+            AdicionarEditarAnimais adicionarEditarAnimais = new AdicionarEditarAnimais(TipoOperacao.Adicionar, this);
+            adicionarEditarAnimais.Show(this);
         }
 
         private void PesquisaAnimais_Load(object sender, EventArgs e)
@@ -88,10 +86,8 @@ namespace PetShop
         {
             if (listaAnimais.SelectedRows.Count != 0)
             {
-                using (AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value))
-                {
-                    editarAnimais.ShowDialog(this);
-                }
+                AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
+                editarAnimais.Show(this);
             }
         }
 
@@ -129,10 +125,8 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                using (AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value))
-                {
-                    editarAnimais.ShowDialog(this);
-                }
+                AdicionarEditarAnimais editarAnimais = new AdicionarEditarAnimais(TipoOperacao.Editar, this, (int)listaAnimais.SelectedRows[0].Cells[0].Value);
+                editarAnimais.Show(this);
             }
         }
 

@@ -1,15 +1,15 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
-using System.Runtime.InteropServices;
 
 namespace PetShop
 {
@@ -335,13 +335,11 @@ namespace PetShop
 
         private void btnAbastecer_Click(object sender, EventArgs e)
         {
-            using (AbastecimentoProduto abastecimentoProduto = new AbastecimentoProduto(this))
+            AbastecimentoProduto abastecimentoProduto = new AbastecimentoProduto(this);
+            abastecimentoProduto.Show(this);
+            if (abastecimentoProduto.IsDisposed)
             {
-                abastecimentoProduto.ShowDialog(this);
-                if (abastecimentoProduto.IsDisposed)
-                {
-                    txtEstoqueAtual.Text = EstoqueAtual.ToString();
-                }
+                txtEstoqueAtual.Text = EstoqueAtual.ToString();
             }
         }
 

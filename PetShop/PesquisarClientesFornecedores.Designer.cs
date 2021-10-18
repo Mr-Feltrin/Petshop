@@ -135,7 +135,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.18963F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.81038F));
             this.tableLayoutPanel1.Controls.Add(this.txtPesquisarId, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxPesquisarPeloNome, 0, 0);
@@ -150,9 +150,9 @@
             // 
             this.txtPesquisarId.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPesquisarId.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisarId.Location = new System.Drawing.Point(402, 3);
+            this.txtPesquisarId.Location = new System.Drawing.Point(397, 3);
             this.txtPesquisarId.Name = "txtPesquisarId";
-            this.txtPesquisarId.Size = new System.Drawing.Size(183, 25);
+            this.txtPesquisarId.Size = new System.Drawing.Size(188, 25);
             this.txtPesquisarId.TabIndex = 2;
             this.txtPesquisarId.TextChanged += new System.EventHandler(this.txtPesquisarId_TextChanged);
             this.txtPesquisarId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisarId_KeyPress);
@@ -163,7 +163,7 @@
             this.textBoxPesquisarPeloNome.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxPesquisarPeloNome.Location = new System.Drawing.Point(3, 3);
             this.textBoxPesquisarPeloNome.Name = "textBoxPesquisarPeloNome";
-            this.textBoxPesquisarPeloNome.Size = new System.Drawing.Size(364, 25);
+            this.textBoxPesquisarPeloNome.Size = new System.Drawing.Size(373, 25);
             this.textBoxPesquisarPeloNome.TabIndex = 1;
             this.textBoxPesquisarPeloNome.TextChanged += new System.EventHandler(this.textBoxPesquisarPeloNome_TextChanged);
             // 
@@ -173,7 +173,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel2.ColumnCount = 3;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.07143F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 18F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.92857F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.Label_pesquisar_cliente_nome, 0, 0);
@@ -189,9 +189,9 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(400, 1);
+            this.label1.Location = new System.Drawing.Point(397, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 20);
+            this.label1.Size = new System.Drawing.Size(188, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Pesquisar por Id";
             // 
@@ -202,7 +202,7 @@
             this.Label_pesquisar_cliente_nome.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_pesquisar_cliente_nome.Location = new System.Drawing.Point(3, 1);
             this.Label_pesquisar_cliente_nome.Name = "Label_pesquisar_cliente_nome";
-            this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(363, 20);
+            this.Label_pesquisar_cliente_nome.Size = new System.Drawing.Size(370, 20);
             this.Label_pesquisar_cliente_nome.TabIndex = 0;
             this.Label_pesquisar_cliente_nome.Text = "Pesquisar por Nome";
             // 

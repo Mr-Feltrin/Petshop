@@ -1,11 +1,11 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.ToolBox;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
-using PetShop.ToolBox;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -58,13 +58,16 @@ namespace PetShop
                 DGVClientesAnimais.Columns["Cpf"].HeaderText = "CPF";
                 DGVClientesAnimais.Columns["Cnpj"].HeaderText = "CNPJ";
                 DGVClientesAnimais.Columns["Observacoes"].HeaderText = "Observações";
+                DGVClientesAnimais.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+                DGVClientesAnimais.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+
                 label2.Visible = false;
                 txtPesquisarAnimal.Visible = false;
                 tableLayoutPanel2.ColumnStyles[1].SizeType = SizeType.Absolute;
                 tableLayoutPanel2.ColumnStyles[1].Width = 0;
                 tableLayoutPanel2.ColumnStyles[2].SizeType = SizeType.Absolute;
                 tableLayoutPanel2.ColumnStyles[2].Width = 0;
-                
+
             }
             else if (_TipoPesquisa == TipoPesquisa.Animal)
             {
@@ -76,6 +79,8 @@ namespace PetShop
                 DGVClientesAnimais.Columns["Identificacao"].HeaderText = "Identificação";
                 DGVClientesAnimais.Columns["Observacao_rotina"].HeaderText = "Observação de Rotina";
                 DGVClientesAnimais.Columns["Data_registro"].HeaderText = "Data de Registro";
+                DGVClientesAnimais.Columns["DataNascimento"].HeaderText = "Data de Nascimento";
+                DGVClientesAnimais.Columns["DataNascimento"].DefaultCellStyle.Format = "dd/MM/yyyy";
             }
             DGVClientesAnimais.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             DGVScrollBar = DGVClientesAnimais.Controls.OfType<VScrollBar>().First();
@@ -132,7 +137,7 @@ namespace PetShop
                     catch
                     {
                         FormLancarVenda.InserirCliente(null);
-                    }                   
+                    }
                 }
             }
             else if (_TipoPesquisa == TipoPesquisa.Animal)

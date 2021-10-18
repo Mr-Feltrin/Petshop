@@ -49,10 +49,8 @@ namespace PetShop
 
         private void btnNovoHorario_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this))
-            {
-                AdicionarAgendamento.ShowDialog(this);
-            }
+            AdicionarEditarAgendamento AdicionarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Adicionar, this);
+            AdicionarAgendamento.Show(this);
         }
 
         public void AtualizarLista()
@@ -66,10 +64,8 @@ namespace PetShop
         {
             if (e.RowIndex != -1)
             {
-                using (AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value))
-                {
-                    editarAgendamento.ShowDialog(this);
-                }
+                AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value);
+                editarAgendamento.Show(this);
             }
         }
 
@@ -115,10 +111,8 @@ namespace PetShop
         {
             if (listaAgendamento.SelectedRows.Count > 0)
             {
-                using (AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value))
-                {
-                    editarAgendamento.ShowDialog(this);
-                }
+                AdicionarEditarAgendamento editarAgendamento = new AdicionarEditarAgendamento(TipoOperacao.Editar, this, (int)listaAgendamento.SelectedRows[0].Cells[0].Value);
+                editarAgendamento.Show(this);
             }
         }
 

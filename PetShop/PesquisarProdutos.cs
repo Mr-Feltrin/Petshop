@@ -6,8 +6,8 @@ using System;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -89,18 +89,14 @@ namespace PetShop
 
         private void btnAdicionarProduto_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar))
-            {
-                adicionarProdutos.ShowDialog();
-            }
+            AdicionarEditarProdutos adicionarProdutos = new AdicionarEditarProdutos(TipoOperacao.Adicionar);
+            adicionarProdutos.Show(this);
         }
 
         private void btnEditarProduto_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value))
-            {
-                editarAgendamento.ShowDialog();
-            }
+            AdicionarEditarProdutos editarAgendamento = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value);
+            editarAgendamento.Show(this);
         }
 
         private void btnExcluirProduto_Click(object sender, EventArgs e)
@@ -117,10 +113,8 @@ namespace PetShop
         {
             if (DGVListaProdutos.SelectedRows.Count != 0)
             {
-                using (AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value))
-                {
-                    editarProdutos.ShowDialog();
-                }
+                AdicionarEditarProdutos editarProdutos = new AdicionarEditarProdutos(TipoOperacao.Editar, (int)DGVListaProdutos.SelectedRows[0].Cells[0].Value);
+                editarProdutos.Show(this);
             }
         }
 

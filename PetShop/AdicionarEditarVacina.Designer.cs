@@ -32,6 +32,7 @@ namespace PetShop
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdicionarEditarVacina));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtDataModificacao = new System.Windows.Forms.TextBox();
             this.txtDoses = new System.Windows.Forms.TextBox();
             this.txtConteudoML = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,7 +64,6 @@ namespace PetShop
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.txtDataModificacao = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -91,6 +91,16 @@ namespace PetShop
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // txtDataModificacao
+            // 
+            this.txtDataModificacao.BackColor = System.Drawing.SystemColors.Window;
+            this.txtDataModificacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDataModificacao.Location = new System.Drawing.Point(19, 46);
+            this.txtDataModificacao.Name = "txtDataModificacao";
+            this.txtDataModificacao.ReadOnly = true;
+            this.txtDataModificacao.Size = new System.Drawing.Size(197, 22);
+            this.txtDataModificacao.TabIndex = 5;
+            // 
             // txtDoses
             // 
             this.txtDoses.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -117,7 +127,7 @@ namespace PetShop
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(322, 77);
+            this.label7.Location = new System.Drawing.Point(323, 77);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(19, 21);
             this.label7.TabIndex = 0;
@@ -128,7 +138,7 @@ namespace PetShop
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(119, 77);
+            this.label6.Location = new System.Drawing.Point(120, 77);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 21);
             this.label6.TabIndex = 0;
@@ -140,7 +150,7 @@ namespace PetShop
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(348, 22);
+            this.label5.Location = new System.Drawing.Point(349, 22);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 21);
             this.label5.TabIndex = 0;
@@ -162,7 +172,7 @@ namespace PetShop
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(160, 22);
+            this.label4.Location = new System.Drawing.Point(161, 22);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(19, 21);
             this.label4.TabIndex = 0;
@@ -252,7 +262,7 @@ namespace PetShop
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Red;
-            this.label9.Location = new System.Drawing.Point(386, 130);
+            this.label9.Location = new System.Drawing.Point(388, 130);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(19, 21);
             this.label9.TabIndex = 10;
@@ -309,7 +319,7 @@ namespace PetShop
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(438, 77);
+            this.label2.Location = new System.Drawing.Point(439, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 21);
             this.label2.TabIndex = 0;
@@ -362,7 +372,7 @@ namespace PetShop
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.Red;
-            this.label13.Location = new System.Drawing.Point(138, 77);
+            this.label13.Location = new System.Drawing.Point(139, 77);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(19, 21);
             this.label13.TabIndex = 0;
@@ -374,7 +384,7 @@ namespace PetShop
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.Red;
-            this.label12.Location = new System.Drawing.Point(345, 22);
+            this.label12.Location = new System.Drawing.Point(346, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(19, 21);
             this.label12.TabIndex = 0;
@@ -448,16 +458,6 @@ namespace PetShop
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            // 
-            // txtDataModificacao
-            // 
-            this.txtDataModificacao.BackColor = System.Drawing.SystemColors.Window;
-            this.txtDataModificacao.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDataModificacao.Location = new System.Drawing.Point(19, 46);
-            this.txtDataModificacao.Name = "txtDataModificacao";
-            this.txtDataModificacao.ReadOnly = true;
-            this.txtDataModificacao.Size = new System.Drawing.Size(197, 22);
-            this.txtDataModificacao.TabIndex = 5;
             // 
             // AdicionarEditarVacina
             // 

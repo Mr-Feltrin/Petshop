@@ -1,5 +1,6 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -154,26 +154,26 @@ namespace PetShop
 
         private void btnPesquisarCliente_Click(object sender, EventArgs e)
         {
-            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente, _Cliente))
-            {
-                listaDeClientes.ShowDialog(this);
-            }
+            ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this, TipoPesquisa.Cliente, _Cliente);
+            listaDeClientes.Show(this);
         }
 
         private void BtnPesquisarProcedimento_Click(object sender, EventArgs e)
         {
-            using (ListaProcedimentos procedimentos = new ListaProcedimentos(this))
-            {
-                procedimentos.ShowDialog(this);
-            }
+            ListaProcedimentos procedimentos = new ListaProcedimentos(this);
+            procedimentos.Show(this);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ActiveControl = null;
         }
 
         private void btnPesquisarAnimal_Click(object sender, EventArgs e)
         {
-            using (ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal, _Cliente))
-            {
-                listaDeAnimais.ShowDialog(this);
-            }
+            ListaDeClientesAnimais listaDeAnimais = new ListaDeClientesAnimais(this, TipoPesquisa.Animal, _Cliente);
+            listaDeAnimais.Show(this);
         }
 
         private void txtCliente_TextChanged(object sender, EventArgs e)

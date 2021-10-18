@@ -32,5 +32,29 @@ namespace PetShop.Properties {
                 return ((string)(this["PetShopDbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DbBackUpLocation {
+            get {
+                return ((string)(this["DbBackUpLocation"]));
+            }
+            set {
+                this["DbBackUpLocation"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("00:00:00")]
+        public global::System.TimeSpan DbBackUpPeriod {
+            get {
+                return ((global::System.TimeSpan)(this["DbBackUpPeriod"]));
+            }
+            set {
+                this["DbBackUpPeriod"] = value;
+            }
+        }
     }
 }

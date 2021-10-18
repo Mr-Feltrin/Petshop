@@ -70,18 +70,14 @@ namespace PetShop
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar))
-            {
-                adicionarServico.ShowDialog(this);
-            }
+            AdicionarEditarServicos adicionarServico = new AdicionarEditarServicos(TipoOperacao.Adicionar);
+            adicionarServico.Show(this);
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value))
-            {
-                editarServico.ShowDialog(this);
-            }
+            AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value);
+            editarServico.Show(this);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -98,10 +94,8 @@ namespace PetShop
         {
             if (e.RowIndex > -1)
             {
-                using (AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value))
-                {
-                    editarServico.ShowDialog(this);
-                }
+                AdicionarEditarServicos editarServico = new AdicionarEditarServicos(TipoOperacao.Editar, (int)listaServicos.SelectedRows[0].Cells[0].Value);
+                editarServico.Show(this);
             }
         }
 

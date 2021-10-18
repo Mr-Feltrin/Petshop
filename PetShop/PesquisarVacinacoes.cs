@@ -4,8 +4,8 @@ using PetShop.Entities.Enums;
 using PetShop.ToolBox;
 using System;
 using System.Data;
-using System.Windows.Forms;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -145,10 +145,8 @@ namespace PetShop
 
         private void btnAdicionarVacinacao_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarVacinacao adicionarVacinacao = new AdicionarEditarVacinacao())
-            {
-                adicionarVacinacao.ShowDialog();
-            }
+            AdicionarEditarVacinacao adicionarVacinacao = new AdicionarEditarVacinacao();
+            adicionarVacinacao.Show();
         }
 
         private void dateDataInicial_ValueChanged(object sender, EventArgs e)

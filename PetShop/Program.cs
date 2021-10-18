@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Globalization;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace PetShop
 {

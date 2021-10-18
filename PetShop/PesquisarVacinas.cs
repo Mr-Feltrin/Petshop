@@ -21,10 +21,8 @@ namespace PetShop
 
         private void btnAdicionarVacina_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarVacina adicionarVacina = new AdicionarEditarVacina(TipoOperacao.Adicionar))
-            {
-                adicionarVacina.ShowDialog(this);
-            }
+            AdicionarEditarVacina adicionarVacina = new AdicionarEditarVacina(TipoOperacao.Adicionar);
+            adicionarVacina.Show(this);
         }
 
         private void PesquisarVacinas_Load(object sender, EventArgs e)
@@ -88,10 +86,8 @@ namespace PetShop
         {
             if (listaVacinas.SelectedRows.Count != 0)
             {
-                using (AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value))
-                {
-                    editarVacina.ShowDialog(this);
-                }
+                AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value);
+                editarVacina.Show(this);
             }
         }
 
@@ -128,10 +124,8 @@ namespace PetShop
 
         private void btnEditarVacina_Click(object sender, EventArgs e)
         {
-            using (AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value))
-            {
-                editarVacina.ShowDialog(this);
-            }
+            AdicionarEditarVacina editarVacina = new AdicionarEditarVacina(TipoOperacao.Editar, (int)listaVacinas.SelectedRows[0].Cells[0].Value);
+            editarVacina.Show(this);
         }
 
         private void btnExcluirVacina_Click(object sender, EventArgs e)
@@ -202,7 +196,7 @@ namespace PetShop
 
         private void listaVacinas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
-            DataGridViewTools.MaximumFormSize(listaVacinas, this, listaVacinas_ColumnWidthChanged);         
+            DataGridViewTools.MaximumFormSize(listaVacinas, this, listaVacinas_ColumnWidthChanged);
         }
 
         private void PesquisarVacinas_KeyDown(object sender, KeyEventArgs e)
@@ -216,6 +210,6 @@ namespace PetShop
         private void listaVacinas_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             ColoracaoListaVacinas();
-        }     
+        }
     }
 }

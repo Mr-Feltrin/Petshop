@@ -64,6 +64,7 @@
             this.horario_atual = new System.Windows.Forms.Timer(this.components);
             this.TimerAgendamentos = new System.Windows.Forms.Timer(this.components);
             this.timerDataAtual = new System.Windows.Forms.Timer(this.components);
+            this.timerBackup = new System.Windows.Forms.Timer(this.components);
             this.menu_principal.SuspendLayout();
             this.status_rodape_principal.SuspendLayout();
             this.SuspendLayout();
@@ -486,6 +487,12 @@
             this.timerDataAtual.Interval = 3600000;
             this.timerDataAtual.Tick += new System.EventHandler(this.timerDataAtual_Tick);
             // 
+            // timerBackup
+            // 
+            this.timerBackup.Enabled = true;
+            this.timerBackup.Interval = 1800000;
+            this.timerBackup.Tick += new System.EventHandler(this.timerBackup_Tick);
+            // 
             // TelaPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +555,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnRelatorioVacinas;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnOpcoes;
+        private System.Windows.Forms.Timer timerBackup;
     }
 }
 

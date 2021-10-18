@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.ExceptionServices;
 using System.Windows.Forms;
@@ -20,7 +21,6 @@ namespace PetShop
 
         public TelaPrincipal()
         {
-            Application.EnableVisualStyles();
             InitializeComponent();
         }
 
@@ -83,10 +83,8 @@ namespace PetShop
 
         private void btnMenuPesquisaClientes_Click(object sender, EventArgs e)
         {
-            using (PesquisarClientesFornecedores pesquisaClientes = new PesquisarClientesFornecedores(TipoPesquisa.Cliente))
-            {
-                pesquisaClientes.ShowDialog(this);
-            }
+            PesquisarClientesFornecedores pesquisaClientes = new PesquisarClientesFornecedores(TipoPesquisa.Cliente);
+            pesquisaClientes.Show(this);
         }
 
         private void Tela_Principal_KeyDown(object sender, KeyEventArgs e)
@@ -137,10 +135,8 @@ namespace PetShop
 
         private void Botao_produtos_Click(object sender, EventArgs e)
         {
-            using (PesquisarProdutos pesquisaProdutos = new PesquisarProdutos())
-            {
-                pesquisaProdutos.ShowDialog();
-            }
+            PesquisarProdutos pesquisaProdutos = new PesquisarProdutos();
+            pesquisaProdutos.Show(this);
         }
 
         private void BtnAnimais_Click(object sender, EventArgs e)
@@ -153,10 +149,8 @@ namespace PetShop
 
         private void Botao_agenda_Click(object sender, EventArgs e)
         {
-            using (PesquisarAgendamento agenda = new PesquisarAgendamento())
-            {
-                agenda.ShowDialog();
-            }
+            PesquisarAgendamento agenda = new PesquisarAgendamento();
+            agenda.Show(this);
         }
 
         private void TimerAgendamentos_Tick(object sender, EventArgs e)
@@ -268,9 +262,40 @@ namespace PetShop
 
         private void btnOpcoes_Click(object sender, EventArgs e)
         {
-            using (Opcoes opcoes = new Opcoes())
+            Opcoes opcoes = new Opcoes();
+            opcoes.Show(this);
+        }
+
+        private void timerBackup_Tick(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.DbBackUpLocation) && Properties.Settings.Default.DbBackUpPeriod > new TimeSpan(0))
             {
-                opcoes.ShowDialog();
+                if (!File.Exists($@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf"))
+                {
+                    File.Copy($@"{AppDomain.CurrentDomain.BaseDirectory}Data\PetShopDb.sdf", $@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf");
+                }
+                try
+                {
+                    if (File.GetLastWriteTime(Properties.Settings.Default.DbBackUpLocation).Add(Properties.Settings.Default.DbBackUpPeriod) < DateTime.Now)
+                    {
+                        File.Copy($@"{AppDomain.CurrentDomain.BaseDirectory}Data\PetShopDb.sdf", $@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf", true);
+                        File.SetLastWriteTime($@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf", DateTime.Now);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao realizar o backup do banco de dados: {ex.Message}", "Erro no backup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Properties.Settings.Default.DbBackUpLocation = null;
+                    Properties.Settings.Default.DbBackUpPeriod = new TimeSpan(0);
+                    ErrorLogger.CreateErrorLog(ex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocorreu um erro ao realizar o backup do banco de dados: {ex.Message}", "Erro no backup", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Properties.Settings.Default.DbBackUpLocation = null;
+                    Properties.Settings.Default.DbBackUpPeriod = new TimeSpan(0);
+                    ErrorLogger.CreateErrorLog(ex);
+                }
             }
         }
     }

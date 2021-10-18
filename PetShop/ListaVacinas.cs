@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows.Forms;
-using PetShop.Entities;
-using System.Globalization;
+﻿using PetShop.Entities;
 using PetShop.ToolBox;
-using System.Linq;
+using System;
 using System.Data;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -27,11 +27,11 @@ namespace PetShop
             AtualizarListaVacinas();
             DGVVacinas.Columns["ConteudoML"].HeaderText = "Conteúdo (ML)";
             DGVVacinas.Columns["DataValidade"].HeaderText = "Data de Validade";
-            DGVVacinas.Columns["DataCadastro"].HeaderText = "Data de Cadastro";
+            DGVVacinas.Columns["DataModificacao"].HeaderText = "Data de Cadastro";
             DGVVacinas.Columns["ValorMercado"].HeaderText = "Valor de Mercado";
             DGVVacinas.Columns["ValorProduto"].HeaderText = "Valor do Produto";
             DGVVacinas.Columns["DataValidade"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DGVVacinas.Columns["DataCadastro"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DGVVacinas.Columns["DataModificacao"].DefaultCellStyle.Format = "dd/MM/yyyy";
             DGVVacinas.Columns["ValorMercado"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
             DGVVacinas.Columns["ValorMercado"].DefaultCellStyle.Format = string.Format("C2");
             DGVVacinas.Columns["ValorProduto"].DefaultCellStyle.FormatProvider = CultureInfo.CurrentCulture;
@@ -98,7 +98,7 @@ namespace PetShop
             {
                 FormAdicionarVacinacao.AddVacina(new Vacina((int)DGVVacinas.SelectedRows[0].Cells[0].Value));
             }
-            catch 
+            catch
             {
                 FormAdicionarVacinacao.AddVacina(null);
             }

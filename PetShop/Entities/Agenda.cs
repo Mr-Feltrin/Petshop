@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -54,11 +54,11 @@ namespace PetShop.Entities
                         else
                         {
                             throw new SqlCeResultException();
-                            
+
                         }
                     }
                     Command.CommandText = "SELECT Animal.ClienteId FROM Animal WHERE Animal.Id = @Id";
-                    Command.Parameters.AddWithValue("@Id", AnimalId.Id);
+                    Command.Parameters["@Id"].Value = AnimalId.Id;
                     using (SqlCeDataReader reader = Command.ExecuteResultSet(ResultSetOptions.Scrollable))
                     {
                         if (reader.HasRows)
@@ -149,6 +149,63 @@ namespace PetShop.Entities
             catch (Exception e)
             {
                 MessageBox.Show($"Falha na aplicação: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void RemoverAgendamento()
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Agenda";
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Agenda foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Agenda");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Falha ao acessar o banco de dados: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Falha na aplicação: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void RemoverAgendamento(DateTime data)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Agenda WHERE Data < @Data";
+                    command.Parameters.AddWithValue("@Data", data);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Agenda foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Agenda");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Ocorreu um erro no banco de dados ao limpar os agendamentos: {e.Message}");
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao limpar os agendamentos: {e.Message}");
                 ErrorLogger.CreateErrorLog(e);
             }
         }

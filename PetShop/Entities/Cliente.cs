@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -27,8 +27,9 @@ namespace PetShop.Entities
         public string Cpf { get; set; }
         public string Cnpj { get; set; }
         public string Observacoes { get; set; }
+        public DateTime DataCadastro { get; set; }
 
-        public Cliente(string nomeCliente, string tipo, string apelido, string endereco, string bairro, string cidade, string uf, string cep, string telefonePrimario, string telefoneSecundario, string celular, string complemento, string email, string cpf, string cnpj, string observacoes)
+        public Cliente(string nomeCliente, string tipo, string apelido, string endereco, string bairro, string cidade, string uf, string cep, string telefonePrimario, string telefoneSecundario, string celular, string complemento, string email, string cpf, string cnpj, string observacoes, DateTime dataCadastro)
         {
             NomeCliente = nomeCliente;
             Tipo = tipo;
@@ -46,6 +47,7 @@ namespace PetShop.Entities
             Cpf = cpf;
             Cnpj = cnpj;
             Observacoes = observacoes;
+            DataCadastro = dataCadastro;
         }
 
         public Cliente(int idCliente)
@@ -91,7 +93,8 @@ namespace PetShop.Entities
                     SqlCeCommand command = connection.CreateCommand();
                     if (operacao == TipoOperacao.Adicionar)
                     {
-                        command.CommandText = "INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes)";
+                        command.CommandText = "INSERT INTO Clientes (Nome, Tipo, Apelido, Endereco, Bairro, Cidade, Estado, Cep, Telefone_Principal, Telefone_Secundario, Celular, Complemento, Email, Cpf, Cnpj, Observacoes, DataCadastro) VALUES (@Nome, @Tipo, @Apelido, @Endereco, @Bairro, @Cidade, @Estado, @Cep, @Telefone_Principal, @Telefone_Secundario, @Celular, @Complemento, @Email, @Cpf, @Cnpj, @Observacoes, @DataCadastro)";
+                        command.Parameters.AddWithValue("@DataCadastro", DataCadastro);
                     }
                     else
                     {
@@ -144,6 +147,53 @@ namespace PetShop.Entities
             catch (Exception e)
             {
                 MessageBox.Show("Erro ao remover Cliente: " + e.Message, "Remover Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void ExcluirCliente(DateTime data)
+        {
+            try
+            {
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Clientes WHERE DataCadastro < @Data";
+                    comando.Parameters.AddWithValue("@Data", data);
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Clientes foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Clientes");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao Limpar tabela de Clientes: " + e.Message, "Limpar Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void ExcluirCliente()
+        {
+            try
+            {
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Clientes";
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Clientes foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Clientes");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro ao Limpar tabela de Clientes: " + e.Message, "Limpar Clientes", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
             }
         }

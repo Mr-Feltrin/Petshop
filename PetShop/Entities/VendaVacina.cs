@@ -1,8 +1,8 @@
-﻿using System;
+﻿using PetShop.Entities.Exceptions;
+using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {

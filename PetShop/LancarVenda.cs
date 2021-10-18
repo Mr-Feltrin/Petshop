@@ -1,18 +1,18 @@
-﻿using System;
+﻿using PetShop.Entities;
+using PetShop.Entities.Enums;
+using PetShop.ToolBox;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
-using PetShop.Entities;
-using System.Linq;
-using PetShop.Entities.Enums;
-using System.Data;
-using System.ComponentModel;
-using System.Timers;
 using System.Threading;
-using PetShop.ToolBox;
-using System.Collections.Generic;
+using System.Timers;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -100,7 +100,7 @@ namespace PetShop
             btnPesquisarCliente.Click += btnPesquisarCliente_Click;
             listaProdutos.CellValueChanged += listaProdutos_CellValueChanged;
             listaServicos.CellValueChanged += listaServicos_CellValueChanged;
-            listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;          
+            listaVacinas.CellValueChanged += listaVacinas_CellValueChanged;
         }
 
         private void DataGridViewScrollBar_VisibleChanged(object sender, EventArgs e)
@@ -1327,7 +1327,7 @@ namespace PetShop
             else
             {
                 txtTotalVenda.Text = ValorTotalVenda.ToString("C2", CultureInfo.CurrentCulture);
-            }   
+            }
         }
 
         private void txtValorPago_TextChanged(object sender, EventArgs e)

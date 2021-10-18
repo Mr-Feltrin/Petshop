@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -193,11 +193,64 @@ namespace PetShop.Entities
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados ao remover vacina: {e.Message}", "Erro ao remover vacina", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception e)
             {
-                MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocorreu um erro na aplicação ao remover a vacina: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void ExcluirVacina(DateTime data)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Vacinas WHERE DataModificacao < @Data";
+                    command.Parameters.AddWithValue("@Data", data);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Vacinas foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Vacinas");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao remover vacina: {e.Message}", "Erro ao remover vacina", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao remover a vacina: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void ExcluirVacina()
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Vacinas";
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Vacinas foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Vacinas");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao remover vacina: {e.Message}", "Erro ao remover vacina", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao remover a vacina: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -262,7 +315,7 @@ namespace PetShop.Entities
                     ErrorLogger.CreateErrorLog(e);
                 }
             }
-                return data;
+            return data;
         }
 
         public static DataTable ListarImunologia()

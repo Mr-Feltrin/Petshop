@@ -1,15 +1,15 @@
 ﻿using PetShop.Entities.Exceptions;
 using System;
+using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using System.Data;
 
 namespace PetShop.Entities
 {
     public class VendaProduto
     {
         private static SqlCeConnection Connection;
-        public int VendaId  { get; set; }
+        public int VendaId { get; set; }
         public int ProdutoId { get; set; }
         public int Quantidade { get; set; }
 

@@ -1,11 +1,11 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -131,7 +131,7 @@ namespace PetShop.Entities
                     {
                         MessageBox.Show("Os dados do Animal foram salvos.", "Cadastro de Animal", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }                   
+                }
             }
             catch (SqlCeException e)
             {
@@ -158,14 +158,14 @@ namespace PetShop.Entities
                     comando.ExecuteNonQuery();
                     SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                     dataadp.Fill(dta);
-                }                  
+                }
             }
             catch (SqlCeException ex)
             {
                 MessageBox.Show("Erro ao exibir os dados na lista: " + ex.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(ex);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show("Erro na aplicação ao exibir os dados na lista: " + e.Message, "Erro de exibição da lista", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
@@ -187,7 +187,7 @@ namespace PetShop.Entities
                     comando.ExecuteNonQuery();
                     SqlCeDataAdapter dataadp = new SqlCeDataAdapter(comando);
                     dataadp.Fill(dta);
-                }                  
+                }
             }
             catch (SqlCeException e)
             {
@@ -215,7 +215,7 @@ namespace PetShop.Entities
                     comando.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(comando);
                     dataAdapter.Fill(table);
-                }                 
+                }
             }
             catch (SqlCeException e)
             {
@@ -243,7 +243,7 @@ namespace PetShop.Entities
                     comando.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(comando);
                     dataAdapter.Fill(table);
-                }                  
+                }
             }
             catch (SqlCeException e)
             {
@@ -302,9 +302,9 @@ namespace PetShop.Entities
                         else
                         {
                             throw new SqlCeResultException();
-                        }                      
+                        }
                     }
-                }                  
+                }
             }
             catch (SqlCeException e)
             {
@@ -327,12 +327,15 @@ namespace PetShop.Entities
         {
             try
             {
-                connection.Open();
-                SqlCeCommand comando = connection.CreateCommand();
-                comando.CommandText = "DELETE FROM Animal WHERE Id = @Id";
-                comando.Parameters.AddWithValue("@Id", id);
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Animal removido", "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Animal WHERE Id = @Id";
+                    comando.Parameters.AddWithValue("@Id", id);
+                    comando.ExecuteNonQuery();
+                    MessageBox.Show("Animal removido", "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (SqlCeException e)
             {
@@ -344,11 +347,65 @@ namespace PetShop.Entities
                 MessageBox.Show("Erro na aplicação ao remover Animal: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
             }
-            finally
+        }
+
+        public static void ExcluirAnimal(DateTime data)
+        {
+            try
             {
-                connection.Close();
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Animal WHERE Data_Registro < @Data";
+                    comando.Parameters.AddWithValue("@Data", data);
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Animais foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Animais");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show("Erro no banco de dados ao limpar registros de animais: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao limpar registros de animais: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void ExcluirAnimal()
+        {
+            try
+            {
+                using (connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    connection.Open();
+                    SqlCeCommand comando = connection.CreateCommand();
+                    comando.CommandText = "DELETE FROM Animal";
+                    if (comando.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Animais foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Animais");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show("Erro no banco de dados ao limpar registros de animais: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na aplicação ao limpar registros de animais: " + e.Message, "Remover Animal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
             }
         }
     }
 }
+
 

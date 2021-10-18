@@ -1,9 +1,9 @@
 ﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop.Entities
 {
@@ -186,12 +186,69 @@ namespace PetShop.Entities
             }
             catch (SqlCeException e)
             {
-                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao salvar dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Erro no banco de dados: {e.Message}", "Erro ao remover produto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
             }
             catch (Exception e)
             {
                 MessageBox.Show($"Ocorreu um erro na aplicação: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void RemoverProduto(DateTime data)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Produtos WHERE DataAtualizacao < @Data";
+                    command.Parameters.AddWithValue("@Data", data);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Produtos foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Produtos");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro ao limpar tabela de Produtos: {e.Message}", "Erro ao limpar Produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao limpar tabela de Produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+        }
+
+        public static void RemoverProduto()
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Produtos";
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Produtos foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Produtos");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro ao limpar tabela de Produtos: {e.Message}", "Erro ao limpar Produtos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ErrorLogger.CreateErrorLog(e);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao limpar tabela de Produtos: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ErrorLogger.CreateErrorLog(e);
             }
         }

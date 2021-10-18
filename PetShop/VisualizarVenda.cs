@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using PetShop.Entities;
-using PetShop.ToolBox;
+﻿using PetShop.Entities;
 using PetShop.Entities.Exceptions;
+using PetShop.ToolBox;
+using System;
 using System.Globalization;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace PetShop
 {
@@ -102,7 +95,7 @@ namespace PetShop
             DGVVacinas.ClearSelection();
             DGVVacinas.ColumnMinimumWidthSize(DataGridViewAutoSizeColumnMode.ColumnHeader);
             DGVVacinas.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVColumnWidthChanged);
-            
+
         }
 
         private void DGVColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)

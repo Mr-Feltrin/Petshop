@@ -1,12 +1,12 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {

@@ -33,12 +33,6 @@
             this.txtTipoFornecimento = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.enderecos_contato = new System.Windows.Forms.TabPage();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.labelFornecedorCelular = new System.Windows.Forms.Label();
             this.txtCelular = new System.Windows.Forms.MaskedTextBox();
             this.txtCep = new System.Windows.Forms.MaskedTextBox();
@@ -68,8 +62,6 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnAdicionarEditarFornecedor = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl.SuspendLayout();
             this.enderecos_contato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
@@ -81,9 +73,9 @@
             this.labelTipoFornecimento.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTipoFornecimento.Location = new System.Drawing.Point(416, 23);
             this.labelTipoFornecimento.Name = "labelTipoFornecimento";
-            this.labelTipoFornecimento.Size = new System.Drawing.Size(166, 21);
+            this.labelTipoFornecimento.Size = new System.Drawing.Size(176, 21);
             this.labelTipoFornecimento.TabIndex = 1;
-            this.labelTipoFornecimento.Text = "Tipo de Fornecimento";
+            this.labelTipoFornecimento.Text = "Tipo de Fornecimento*";
             // 
             // txtTipoFornecimento
             // 
@@ -111,12 +103,6 @@
             // enderecos_contato
             // 
             this.enderecos_contato.BackColor = System.Drawing.Color.AliceBlue;
-            this.enderecos_contato.Controls.Add(this.label8);
-            this.enderecos_contato.Controls.Add(this.label7);
-            this.enderecos_contato.Controls.Add(this.label6);
-            this.enderecos_contato.Controls.Add(this.label5);
-            this.enderecos_contato.Controls.Add(this.label4);
-            this.enderecos_contato.Controls.Add(this.label3);
             this.enderecos_contato.Controls.Add(this.labelFornecedorCelular);
             this.enderecos_contato.Controls.Add(this.txtCelular);
             this.enderecos_contato.Controls.Add(this.txtCep);
@@ -145,72 +131,6 @@
             this.enderecos_contato.Size = new System.Drawing.Size(657, 282);
             this.enderecos_contato.TabIndex = 0;
             this.enderecos_contato.Text = "Endereço e Contato";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(585, 167);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 21);
-            this.label8.TabIndex = 27;
-            this.label8.Text = "*";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Red;
-            this.label7.Location = new System.Drawing.Point(74, 167);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(20, 21);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "*";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(468, 115);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 21);
-            this.label6.TabIndex = 25;
-            this.label6.Text = "*";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Red;
-            this.label5.Location = new System.Drawing.Point(326, 115);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(20, 21);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "*";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(57, 115);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 21);
-            this.label4.TabIndex = 23;
-            this.label4.Text = "*";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
-            this.label3.Location = new System.Drawing.Point(78, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 21);
-            this.label3.TabIndex = 22;
-            this.label3.Text = "*";
             // 
             // labelFornecedorCelular
             // 
@@ -302,9 +222,9 @@
             this.labelFornecedorCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCpf.Location = new System.Drawing.Point(533, 168);
             this.labelFornecedorCpf.Name = "labelFornecedorCpf";
-            this.labelFornecedorCpf.Size = new System.Drawing.Size(57, 20);
+            this.labelFornecedorCpf.Size = new System.Drawing.Size(66, 20);
             this.labelFornecedorCpf.TabIndex = 18;
-            this.labelFornecedorCpf.Text = "N° CPF";
+            this.labelFornecedorCpf.Text = "N° CPF*";
             // 
             // txtEmail
             // 
@@ -331,9 +251,9 @@
             this.labelFornecedorTelefone.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorTelefone.Location = new System.Drawing.Point(14, 168);
             this.labelFornecedorTelefone.Name = "labelFornecedorTelefone";
-            this.labelFornecedorTelefone.Size = new System.Drawing.Size(65, 20);
+            this.labelFornecedorTelefone.Size = new System.Drawing.Size(74, 20);
             this.labelFornecedorTelefone.TabIndex = 12;
-            this.labelFornecedorTelefone.Text = "Telefone";
+            this.labelFornecedorTelefone.Text = "Telefone*";
             // 
             // labelFornecedorCep
             // 
@@ -351,9 +271,9 @@
             this.labelFornecedorUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorUf.Location = new System.Drawing.Point(447, 116);
             this.labelFornecedorUf.Name = "labelFornecedorUf";
-            this.labelFornecedorUf.Size = new System.Drawing.Size(26, 20);
+            this.labelFornecedorUf.Size = new System.Drawing.Size(35, 20);
             this.labelFornecedorUf.TabIndex = 8;
-            this.labelFornecedorUf.Text = "UF";
+            this.labelFornecedorUf.Text = "UF*";
             // 
             // txtCidade
             // 
@@ -372,9 +292,9 @@
             this.labelFornecedorCidade.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCidade.Location = new System.Drawing.Point(277, 116);
             this.labelFornecedorCidade.Name = "labelFornecedorCidade";
-            this.labelFornecedorCidade.Size = new System.Drawing.Size(54, 20);
+            this.labelFornecedorCidade.Size = new System.Drawing.Size(63, 20);
             this.labelFornecedorCidade.TabIndex = 6;
-            this.labelFornecedorCidade.Text = "Cidade";
+            this.labelFornecedorCidade.Text = "Cidade*";
             // 
             // txtBairro
             // 
@@ -393,9 +313,9 @@
             this.labelFornecedorBairro.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorBairro.Location = new System.Drawing.Point(14, 116);
             this.labelFornecedorBairro.Name = "labelFornecedorBairro";
-            this.labelFornecedorBairro.Size = new System.Drawing.Size(48, 20);
+            this.labelFornecedorBairro.Size = new System.Drawing.Size(57, 20);
             this.labelFornecedorBairro.TabIndex = 4;
-            this.labelFornecedorBairro.Text = "Bairro";
+            this.labelFornecedorBairro.Text = "Bairro*";
             // 
             // txtEndereco
             // 
@@ -414,9 +334,9 @@
             this.labelFornecedorEndereco.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorEndereco.Location = new System.Drawing.Point(14, 63);
             this.labelFornecedorEndereco.Name = "labelFornecedorEndereco";
-            this.labelFornecedorEndereco.Size = new System.Drawing.Size(69, 20);
+            this.labelFornecedorEndereco.Size = new System.Drawing.Size(78, 20);
             this.labelFornecedorEndereco.TabIndex = 2;
-            this.labelFornecedorEndereco.Text = "Endereço";
+            this.labelFornecedorEndereco.Text = "Endereço*";
             // 
             // txtApelido
             // 
@@ -521,9 +441,9 @@
             this.labelNome.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelNome.Location = new System.Drawing.Point(25, 23);
             this.labelNome.Name = "labelNome";
-            this.labelNome.Size = new System.Drawing.Size(162, 21);
+            this.labelNome.Size = new System.Drawing.Size(172, 21);
             this.labelNome.TabIndex = 0;
-            this.labelNome.Text = "Nome do Fornecedor";
+            this.labelNome.Text = "Nome do Fornecedor*";
             // 
             // btnSair
             // 
@@ -563,28 +483,6 @@
             this.btnAdicionarEditarFornecedor.UseVisualStyleBackColor = false;
             this.btnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Red;
-            this.label1.Location = new System.Drawing.Point(181, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(20, 21);
-            this.label1.TabIndex = 19;
-            this.label1.Text = "*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(576, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 21);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "*";
-            // 
             // AdicionarEditarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -592,8 +490,6 @@
             this.BackColor = System.Drawing.Color.AliceBlue;
             this.CancelButton = this.btnSair;
             this.ClientSize = new System.Drawing.Size(719, 459);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAdicionarEditarFornecedor);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.labelTipoFornecimento);
@@ -656,14 +552,6 @@
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnAdicionarEditarFornecedor;
         private System.Windows.Forms.ToolTip toolTip;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private ToolBox.Controls.ComboBoxFlatBordered CombBoxUf;
     }
 }

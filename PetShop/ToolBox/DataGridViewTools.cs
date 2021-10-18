@@ -1,7 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
 using System.Linq;
-using System.Drawing;
-using System;
+using System.Windows.Forms;
 
 namespace PetShop.ToolBox
 {
@@ -38,14 +37,14 @@ namespace PetShop.ToolBox
         /// </summary>
         /// <param name="dataGridView"></param>
         /// <param name="form"></param>
-        public static void MaximumFormSize(DataGridView dataGridView, Form form, DataGridViewColumnEventHandler eventHandler = null )
+        public static void MaximumFormSize(DataGridView dataGridView, Form form, DataGridViewColumnEventHandler eventHandler = null)
         {
             Size MaxSize = new Size(dataGridView.Columns.GetColumnsWidth(DataGridViewElementStates.Visible) + 3 + (form.Size.Width - dataGridView.Size.Width), 100000);
             if (form.MinimumSize.Width < MaxSize.Width)
             {
                 if (dataGridView.Controls.OfType<VScrollBar>().Any(s => s.Visible))
                 {
-                    MaxSize.Width += dataGridView.Controls.OfType<VScrollBar>().First().Width;                      
+                    MaxSize.Width += dataGridView.Controls.OfType<VScrollBar>().First().Width;
                 }
                 form.MaximumSize = new Size(MaxSize.Width, MaxSize.Height);
             }

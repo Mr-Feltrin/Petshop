@@ -31,20 +31,20 @@ namespace PetShop
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Opcoes));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.btnRestaurar = new System.Windows.Forms.Button();
+            this.txtRestauracaoDb = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBoxFlatBordered1 = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtEnderecoBackup = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBoxFlatBordered3 = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.btnLimparDb = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxFlatBordered2 = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.comboLimparDados = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.comboNomeTabela = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
+            this.comboTempoBackup = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -53,13 +53,13 @@ namespace PetShop
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.btnRestaurar);
+            this.groupBox1.Controls.Add(this.txtRestauracaoDb);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBoxFlatBordered1);
+            this.groupBox1.Controls.Add(this.comboTempoBackup);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtEnderecoBackup);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -69,30 +69,32 @@ namespace PetShop
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "BackUp e Restauração";
             // 
-            // button1
+            // btnRestaurar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Window;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::PetShop.Properties.Resources.restoreDb16x16;
-            this.button1.Location = new System.Drawing.Point(441, 106);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 42);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Restaurar";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRestaurar.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRestaurar.Enabled = false;
+            this.btnRestaurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRestaurar.Image = global::PetShop.Properties.Resources.restoreDb16x16;
+            this.btnRestaurar.Location = new System.Drawing.Point(441, 108);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(119, 42);
+            this.btnRestaurar.TabIndex = 7;
+            this.btnRestaurar.Text = "Restaurar";
+            this.btnRestaurar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnRestaurar.UseVisualStyleBackColor = false;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
             // 
-            // textBox2
+            // txtRestauracaoDb
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtRestauracaoDb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(14, 116);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(402, 26);
-            this.textBox2.TabIndex = 7;
+            this.txtRestauracaoDb.BackColor = System.Drawing.SystemColors.Window;
+            this.txtRestauracaoDb.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRestauracaoDb.Location = new System.Drawing.Point(14, 116);
+            this.txtRestauracaoDb.Name = "txtRestauracaoDb";
+            this.txtRestauracaoDb.ReadOnly = true;
+            this.txtRestauracaoDb.Size = new System.Drawing.Size(402, 26);
+            this.txtRestauracaoDb.TabIndex = 6;
             // 
             // label4
             // 
@@ -101,27 +103,8 @@ namespace PetShop
             this.label4.Location = new System.Drawing.Point(10, 92);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(232, 21);
-            this.label4.TabIndex = 6;
+            this.label4.TabIndex = 5;
             this.label4.Text = "Restauração do Banco de Dados";
-            // 
-            // comboBoxFlatBordered1
-            // 
-            this.comboBoxFlatBordered1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxFlatBordered1.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.comboBoxFlatBordered1.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFlatBordered1.FormattingEnabled = true;
-            this.comboBoxFlatBordered1.Items.AddRange(new object[] {
-            "1 Hora",
-            "5 Horas",
-            "10 Horas",
-            "15 Horas",
-            "Diariamente",
-            "Semanalmente",
-            "Não Definido"});
-            this.comboBoxFlatBordered1.Location = new System.Drawing.Point(401, 51);
-            this.comboBoxFlatBordered1.Name = "comboBoxFlatBordered1";
-            this.comboBoxFlatBordered1.Size = new System.Drawing.Size(159, 25);
-            this.comboBoxFlatBordered1.TabIndex = 4;
             // 
             // label3
             // 
@@ -130,7 +113,7 @@ namespace PetShop
             this.label3.Location = new System.Drawing.Point(397, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 21);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 1;
             this.label3.Text = "Tempo de Backup";
             // 
             // label2
@@ -142,17 +125,17 @@ namespace PetShop
             this.label2.Size = new System.Drawing.Size(0, 21);
             this.label2.TabIndex = 2;
             // 
-            // textBox1
+            // txtEnderecoBackup
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtEnderecoBackup.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.SystemColors.Window;
-            this.textBox1.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(14, 51);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(358, 26);
-            this.textBox1.TabIndex = 1;
+            this.txtEnderecoBackup.BackColor = System.Drawing.SystemColors.Window;
+            this.txtEnderecoBackup.Font = new System.Drawing.Font("Franklin Gothic Medium", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEnderecoBackup.Location = new System.Drawing.Point(14, 51);
+            this.txtEnderecoBackup.Name = "txtEnderecoBackup";
+            this.txtEnderecoBackup.ReadOnly = true;
+            this.txtEnderecoBackup.Size = new System.Drawing.Size(358, 26);
+            this.txtEnderecoBackup.TabIndex = 3;
             // 
             // label1
             // 
@@ -168,11 +151,11 @@ namespace PetShop
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.comboBoxFlatBordered3);
+            this.groupBox2.Controls.Add(this.btnLimparDb);
+            this.groupBox2.Controls.Add(this.comboLimparDados);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.comboBoxFlatBordered2);
+            this.groupBox2.Controls.Add(this.comboNomeTabela);
             this.groupBox2.Font = new System.Drawing.Font("Franklin Gothic Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 185);
             this.groupBox2.Name = "groupBox2";
@@ -181,37 +164,20 @@ namespace PetShop
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Limpeza do Banco de Dados";
             // 
-            // button2
+            // btnLimparDb
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.Window;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Image = global::PetShop.Properties.Resources.clearDb16x16;
-            this.button2.Location = new System.Drawing.Point(456, 42);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(104, 42);
-            this.button2.TabIndex = 9;
-            this.button2.Text = "Limpar";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // comboBoxFlatBordered3
-            // 
-            this.comboBoxFlatBordered3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxFlatBordered3.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.comboBoxFlatBordered3.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFlatBordered3.FormattingEnabled = true;
-            this.comboBoxFlatBordered3.Items.AddRange(new object[] {
-            "1 Hora",
-            "5 Horas",
-            "10 Horas",
-            "15 Horas",
-            "Diariamente",
-            "Semanalmente",
-            "Não Definido"});
-            this.comboBoxFlatBordered3.Location = new System.Drawing.Point(226, 53);
-            this.comboBoxFlatBordered3.Name = "comboBoxFlatBordered3";
-            this.comboBoxFlatBordered3.Size = new System.Drawing.Size(201, 28);
-            this.comboBoxFlatBordered3.TabIndex = 8;
+            this.btnLimparDb.BackColor = System.Drawing.SystemColors.Window;
+            this.btnLimparDb.Enabled = false;
+            this.btnLimparDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimparDb.Image = global::PetShop.Properties.Resources.clearDb16x16;
+            this.btnLimparDb.Location = new System.Drawing.Point(456, 46);
+            this.btnLimparDb.Name = "btnLimparDb";
+            this.btnLimparDb.Size = new System.Drawing.Size(104, 42);
+            this.btnLimparDb.TabIndex = 4;
+            this.btnLimparDb.Text = "Limpar";
+            this.btnLimparDb.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnLimparDb.UseVisualStyleBackColor = false;
+            this.btnLimparDb.Click += new System.EventHandler(this.btnLimparDb_Click);
             // 
             // label6
             // 
@@ -220,7 +186,7 @@ namespace PetShop
             this.label6.Location = new System.Drawing.Point(222, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(197, 21);
-            this.label6.TabIndex = 7;
+            this.label6.TabIndex = 1;
             this.label6.Text = "Limpar dados mais antigos";
             // 
             // label5
@@ -230,16 +196,61 @@ namespace PetShop
             this.label5.Location = new System.Drawing.Point(10, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(123, 21);
-            this.label5.TabIndex = 6;
+            this.label5.TabIndex = 0;
             this.label5.Text = "Nome da Tabela";
             // 
-            // comboBoxFlatBordered2
+            // comboLimparDados
             // 
-            this.comboBoxFlatBordered2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBoxFlatBordered2.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.comboBoxFlatBordered2.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxFlatBordered2.FormattingEnabled = true;
-            this.comboBoxFlatBordered2.Items.AddRange(new object[] {
+            this.comboLimparDados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboLimparDados.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboLimparDados.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboLimparDados.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboLimparDados.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboLimparDados.FormattingEnabled = true;
+            this.comboLimparDados.Items.AddRange(new object[] {
+            "2 Anos",
+            "1 Ano",
+            "5 Meses",
+            "1 Mês",
+            "1 Semana",
+            "Todos"});
+            this.comboLimparDados.Location = new System.Drawing.Point(226, 53);
+            this.comboLimparDados.Name = "comboLimparDados";
+            this.comboLimparDados.Size = new System.Drawing.Size(201, 28);
+            this.comboLimparDados.TabIndex = 3;
+            this.comboLimparDados.SelectedIndexChanged += new System.EventHandler(this.comboLimparDados_SelectedIndexChanged);
+            // 
+            // comboNomeTabela
+            // 
+            this.comboNomeTabela.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboNomeTabela.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboNomeTabela.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboNomeTabela.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboNomeTabela.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboNomeTabela.FormattingEnabled = true;
+            this.comboNomeTabela.Items.AddRange(new object[] {
+            "Agenda",
+            "Animais",
+            "Clientes",
+            "Fornecedores",
+            "Produtos",
+            "Vacinas",
+            "Vendas"});
+            this.comboNomeTabela.Location = new System.Drawing.Point(14, 53);
+            this.comboNomeTabela.Name = "comboNomeTabela";
+            this.comboNomeTabela.Size = new System.Drawing.Size(189, 28);
+            this.comboNomeTabela.TabIndex = 2;
+            this.comboNomeTabela.SelectedIndexChanged += new System.EventHandler(this.comboNomeTabela_SelectedIndexChanged);
+            // 
+            // comboTempoBackup
+            // 
+            this.comboTempoBackup.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboTempoBackup.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.comboTempoBackup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboTempoBackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboTempoBackup.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboTempoBackup.FormattingEnabled = true;
+            this.comboTempoBackup.Items.AddRange(new object[] {
             "1 Hora",
             "5 Horas",
             "10 Horas",
@@ -247,10 +258,10 @@ namespace PetShop
             "Diariamente",
             "Semanalmente",
             "Não Definido"});
-            this.comboBoxFlatBordered2.Location = new System.Drawing.Point(14, 53);
-            this.comboBoxFlatBordered2.Name = "comboBoxFlatBordered2";
-            this.comboBoxFlatBordered2.Size = new System.Drawing.Size(189, 28);
-            this.comboBoxFlatBordered2.TabIndex = 5;
+            this.comboTempoBackup.Location = new System.Drawing.Point(401, 52);
+            this.comboTempoBackup.Name = "comboTempoBackup";
+            this.comboTempoBackup.Size = new System.Drawing.Size(159, 25);
+            this.comboTempoBackup.TabIndex = 4;
             // 
             // Opcoes
             // 
@@ -265,7 +276,11 @@ namespace PetShop
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Opcoes";
+            this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Opções";
+            this.Load += new System.EventHandler(this.Opcoes_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -277,19 +292,19 @@ namespace PetShop
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button btnRestaurar;
+        private System.Windows.Forms.TextBox txtRestauracaoDb;
         private System.Windows.Forms.Label label4;
-        private ToolBox.Controls.ComboBoxFlatBordered comboBoxFlatBordered1;
+        private ToolBox.Controls.ComboBoxFlatBordered comboTempoBackup;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtEnderecoBackup;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
-        private ToolBox.Controls.ComboBoxFlatBordered comboBoxFlatBordered3;
+        private System.Windows.Forms.Button btnLimparDb;
+        private ToolBox.Controls.ComboBoxFlatBordered comboLimparDados;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private ToolBox.Controls.ComboBoxFlatBordered comboBoxFlatBordered2;
+        private ToolBox.Controls.ComboBoxFlatBordered comboNomeTabela;
     }
 }

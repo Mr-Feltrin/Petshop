@@ -127,10 +127,8 @@ namespace PetShop
         {
             if (DGVListaVendas.SelectedRows.Count > 0)
             {
-                using (VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value))
-                {
-                    visualizarVenda.ShowDialog();
-                }
+                VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value);
+                visualizarVenda.Show(this);
             }
         }
 
@@ -144,10 +142,8 @@ namespace PetShop
 
         private void DGVListaVendas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            using (VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value))
-            {
-                visualizarVenda.ShowDialog();
-            }
+            VisualizarVenda visualizarVenda = new VisualizarVenda((int)DGVListaVendas.SelectedRows[0].Cells[0].Value);
+            visualizarVenda.Show(this);
         }
 
         private void btnImprimirLista_Click(object sender, EventArgs e)

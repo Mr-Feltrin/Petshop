@@ -1,11 +1,11 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -90,7 +90,7 @@ namespace PetShop
             VerificarCamposObrigatorios.LimparCamposOpcionais(CamposOpcionais);
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Fornecedor = new Fornecedor(txtNomeFornecedor.Text, txtTipoFornecimento.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, CombBoxUf.Text, txtCep.Text, txtTelefone.Text, txtCelular.Text, txtCnpj.Text, txtCpf.Text, txtEmail.Text, txtObservacoes.Text);
+                _Fornecedor = new Fornecedor(txtNomeFornecedor.Text, txtTipoFornecimento.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, CombBoxUf.Text, txtCep.Text, txtTelefone.Text, txtCelular.Text, txtCnpj.Text, txtCpf.Text, txtEmail.Text, txtObservacoes.Text, DateTime.Now);
                 _Fornecedor.AdicionarEditarFornecedor(Operacao);
             }
             else

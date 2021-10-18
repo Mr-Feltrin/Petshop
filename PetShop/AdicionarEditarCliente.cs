@@ -1,10 +1,10 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -96,7 +96,7 @@ namespace PetShop
 
             if (Operacao == TipoOperacao.Adicionar)
             {
-                _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text);
+                _Cliente = new Cliente(txtNomeCompleto.Text, combBoxTipo.Text, txtApelido.Text, txtEndereco.Text, txtBairro.Text, txtCidade.Text, combBoxUf.Text, txtCep.Text, txtTelefonePrimario.Text, txtTelefoneSecundario.Text, txtCelular.Text, txtComplemento.Text, txtEmail.Text, txtCpf.Text, txtCnpj.Text, observacoes.Text, DateTime.Now);
                 _Cliente.AdicionarEditarCliente(Operacao);
             }
             else if (Operacao == TipoOperacao.Editar && _PesquisaClientesFornecedores != null)

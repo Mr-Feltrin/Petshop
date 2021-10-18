@@ -1,5 +1,6 @@
 ﻿using PetShop.Entities;
 using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using PetShop.ToolBox;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using PetShop.Entities.Exceptions;
 
 namespace PetShop
 {
@@ -186,10 +186,8 @@ namespace PetShop
 
         private void BtnPesquisarDono_Click(object sender, EventArgs e)
         {
-            using (ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this))
-            {
-                listaDeClientes.ShowDialog(this);
-            }
+            ListaDeClientesAnimais listaDeClientes = new ListaDeClientesAnimais(this);
+            listaDeClientes.Show(this);
         }
 
         private void btnSalvarCadastro_Click(object sender, EventArgs e)
@@ -237,18 +235,14 @@ namespace PetShop
 
         private void btnPesquisarRaca_Click(object sender, EventArgs e)
         {
-            using (ListaEspecieRacaAnimais listaRaca = new ListaEspecieRacaAnimais(TipoPesquisa.Raca, this))
-            {
-                listaRaca.ShowDialog(this);
-            }
+            ListaEspecieRacaAnimais listaRaca = new ListaEspecieRacaAnimais(TipoPesquisa.Raca, this);
+            listaRaca.Show(this);
         }
 
         private void btnPesquisarEspecie_Click(object sender, EventArgs e)
         {
-            using (ListaEspecieRacaAnimais listaEspecie = new ListaEspecieRacaAnimais(TipoPesquisa.Especie, this))
-            {
-                listaEspecie.ShowDialog(this);
-            }
+            ListaEspecieRacaAnimais listaEspecie = new ListaEspecieRacaAnimais(TipoPesquisa.Especie, this);
+            listaEspecie.Show(this);
         }
 
         private void AdicionarEditarAnimais_MouseMove(object sender, MouseEventArgs e)

@@ -1,10 +1,9 @@
-﻿using PetShop.Entities.Exceptions;
+﻿using PetShop.Entities.Enums;
+using PetShop.Entities.Exceptions;
 using System;
+using System.Data;
 using System.Data.SqlServerCe;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Data;
-using System.Runtime.InteropServices;
 
 namespace PetShop.Entities
 {
@@ -28,7 +27,7 @@ namespace PetShop.Entities
             TipoCartao = tipoCartao;
             TotalVenda = totalVenda;
         }
-        
+
         public Venda(int id)
         {
             BuscarVenda(id);
@@ -194,5 +193,57 @@ namespace PetShop.Entities
             return data;
         }
 
+        public static void RemoverVendas()
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Vendas";
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Vendas foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Vendas");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao limpar tabela de vendas: {e.Message}", "Erro ao limpar vendas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao limpar tabela de vendas: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void RemoverVendas(DateTime data)
+        {
+            try
+            {
+                using (Connection = new SqlCeConnection(Properties.Settings.Default.PetShopDbConnectionString))
+                {
+                    Connection.Open();
+                    SqlCeCommand command = Connection.CreateCommand();
+                    command.CommandText = "DELETE FROM Vendas WHERE DataVenda < @Data";
+                    command.Parameters.AddWithValue("@Data", data);
+                    if (command.ExecuteNonQuery() > 0)
+                    {
+                        FormNotificacao formNotificacao = new FormNotificacao();
+                        formNotificacao.ShowAlert("Os registros de Vendas foram limpos", TipoNotificacao.Confirmar, "Limpar tabela de Vendas");
+                    }
+                }
+            }
+            catch (SqlCeException e)
+            {
+                MessageBox.Show($"Erro no banco de dados ao limpar tabela de vendas: {e.Message}", "Erro ao limpar vendas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Ocorreu um erro na aplicação ao limpar tabela de vendas: {e.Message}", "Erro no aplicativo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

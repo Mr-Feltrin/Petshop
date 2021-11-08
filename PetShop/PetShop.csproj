@@ -77,6 +77,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>animal_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ClosedXML, Version=0.95.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ClosedXML.0.95.4\lib\net46\ClosedXML.dll</HintPath>
@@ -545,6 +548,7 @@
     <None Include="images\icons\agenda_icon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="animal_icon.ico" />
     <Content Include="Data\PetShopDb.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

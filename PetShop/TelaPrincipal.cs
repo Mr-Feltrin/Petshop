@@ -155,21 +155,30 @@ namespace PetShop
 
         private void TimerAgendamentos_Tick(object sender, EventArgs e)
         {
-            foreach (DataRow data in ListaAgendamentos)
+            try
             {
-                if (!DeployedNotificacao.ContainsKey((int)data["Id"]))
+
+
+                foreach (DataRow data in ListaAgendamentos)
                 {
-                    string dateString = $"{data["Data"]:dd/MM/yyyy} {data["Horario"]}";
-                    TimeSpan tempoRestante = DateTime.Parse(dateString) - DateTime.Now;
-                    if (tempoRestante.TotalMinutes <= 5 && tempoRestante.TotalMinutes > 0)
+                    if (!DeployedNotificacao.ContainsKey((int)data["Id"]))
                     {
-                        FormNotificacao notificacao = new FormNotificacao();
-                        notificacao.ShowAlert(data["NomeServico"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
+                        string dateString = $"{data["Data"]:dd/MM/yyyy} {data["Horario"]}";
+                        TimeSpan tempoRestante = DateTime.Parse(dateString) - DateTime.Now;
+                        if (tempoRestante.TotalMinutes <= 5 && tempoRestante.TotalMinutes > 0)
+                        {
+                            FormNotificacao notificacao = new FormNotificacao();
+                            notificacao.ShowAlert(data["NomeServico"].ToString(), TipoNotificacao.Agendamento, $"Novo agendamento às {((TimeSpan)data["Horario"]).ToString(@"hh\:mm")}:");
 
 
-                        DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
+                            DeployedNotificacao.Add((int)data["Id"], (TimeSpan)data["Horario"]);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
         }
 
@@ -270,12 +279,12 @@ namespace PetShop
         {
             if (!string.IsNullOrWhiteSpace(Properties.Settings.Default.DbBackUpLocation) && Properties.Settings.Default.DbBackUpPeriod > new TimeSpan(0))
             {
-                if (!File.Exists($@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf"))
-                {
-                    File.Copy($@"{AppDomain.CurrentDomain.BaseDirectory}Data\PetShopDb.sdf", $@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf");
-                }
                 try
                 {
+                    if (!File.Exists($@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf"))
+                    {
+                        File.Copy($@"{AppDomain.CurrentDomain.BaseDirectory}Data\PetShopDb.sdf", $@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf");
+                    }
                     if (File.GetLastWriteTime(Properties.Settings.Default.DbBackUpLocation).Add(Properties.Settings.Default.DbBackUpPeriod) < DateTime.Now)
                     {
                         File.Copy($@"{AppDomain.CurrentDomain.BaseDirectory}Data\PetShopDb.sdf", $@"{Properties.Settings.Default.DbBackUpLocation}\PetShopDb.sdf", true);

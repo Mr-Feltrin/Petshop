@@ -561,6 +561,27 @@
     <Content Include="images\settings30x30.png" />
     <Content Include="images\unlock16x16.png" />
     <Content Include="images\VisualizarDocumento32x32.png" />
+    <Content Include="sqlceca40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlcecompact40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlceer40EN.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlceme40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlceoledb40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlceqp40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sqlcese40.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="images\logo_caopanheiro.jpg" />
     <None Include="images\vacinacao_animal30x30.png" />
     <None Include="images\vendas30x30.png" />

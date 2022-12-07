@@ -98,7 +98,6 @@ namespace PetShop
             this.dateDataInicial.Name = "dateDataInicial";
             this.dateDataInicial.Size = new System.Drawing.Size(169, 26);
             this.dateDataInicial.TabIndex = 0;
-            this.dateDataInicial.ValueChanged += new System.EventHandler(this.dateDataInicial_ValueChanged);
             // 
             // dateDataFinal
             // 
@@ -109,7 +108,6 @@ namespace PetShop
             this.dateDataFinal.Name = "dateDataFinal";
             this.dateDataFinal.Size = new System.Drawing.Size(166, 26);
             this.dateDataFinal.TabIndex = 1;
-            this.dateDataFinal.ValueChanged += new System.EventHandler(this.dateDataFinal_ValueChanged);
             // 
             // txtPesquisarCliente
             // 

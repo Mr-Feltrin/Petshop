@@ -249,6 +249,11 @@ namespace PetShop
                 toolTip.Active = false;
             }
         }
+
+        private void combBoxUf_SelectedValueChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
+        }
     }
 }
 

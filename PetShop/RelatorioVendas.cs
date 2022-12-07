@@ -39,6 +39,8 @@ namespace PetShop
             DGVScrollbar.VisibleChanged += new EventHandler(DGVScrollbar_VisibleChanged);
             DataGridViewTools.MaximumFormSize(DGVListaVendas, this);
             DGVListaVendas.ColumnWidthChanged += new DataGridViewColumnEventHandler(DGVListaVendas_ColumnWidthChanged);
+            dateDataInicial.ValueChanged += dateDataInicial_ValueChanged;
+            dateDataFinal.ValueChanged += dateDataFinal_ValueChanged;
         }
 
         private void DGVListaVendas_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
@@ -59,7 +61,7 @@ namespace PetShop
 
         private void AtualizarLista()
         {
-            DGVListaVendas.DataSource = Venda.ListarVendas(dateDataInicial.Value.Date, dateDataFinal.Value.Date);
+            DGVListaVendas.DataSource = Venda.ListarVendas(dateDataInicial.Value.Date, dateDataFinal.Value);
             foreach (DataGridViewRow row in DGVListaVendas.Rows)
             {
                 if (string.IsNullOrWhiteSpace(row.Cells["NomeCliente"].Value.ToString()))

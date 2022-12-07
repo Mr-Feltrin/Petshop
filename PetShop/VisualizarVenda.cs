@@ -199,5 +199,10 @@ namespace PetShop
                 DataGridViewTools.MaximumFormSize(sender as DataGridView, this, DGVColumnWidthChanged);
             }
         }
+
+        private void btnConcluir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -172,9 +172,9 @@ namespace PetShop.Entities
                 {
                     Connection.Open();
                     SqlCeCommand command = Connection.CreateCommand();
-                    command.CommandText = "SELECT Vendas.Id, Vendas.DataVenda, Clientes.Nome as NomeCliente, COUNT(Vendas_Produtos.VendasId) + COUNT(Vendas_Servicos.VendasId) + COUNT(Vendas_Vacinas.VendasId) as NumeroItens, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda FROM Vendas LEFT JOIN Clientes ON (Vendas.ClienteId = Clientes.Id) LEFT JOIN Vendas_Produtos ON (Vendas.Id = Vendas_Produtos.VendasId) LEFT JOIN Vendas_Servicos ON (Vendas.Id = Vendas_Servicos.VendasId) LEFT JOIN Vendas_Vacinas ON (Vendas.Id = Vendas_Vacinas.VendasId) WHERE Vendas.DataVenda BETWEEN @DataInicial AND @DataFinal GROUP BY Vendas.Id, Vendas.DataVenda, Clientes.Nome, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda";
+                    command.CommandText = "SELECT Vendas.Id, Vendas.DataVenda, Clientes.Nome as NomeCliente, COUNT(Vendas_Produtos.VendasId) + COUNT(Vendas_Servicos.VendasId) + COUNT(Vendas_Vacinas.VendasId) as NumeroItens, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda FROM Vendas LEFT JOIN Clientes ON (Vendas.ClienteId = Clientes.Id) LEFT JOIN Vendas_Produtos ON (Vendas.Id = Vendas_Produtos.VendasId) LEFT JOIN Vendas_Servicos ON (Vendas.Id = Vendas_Servicos.VendasId) LEFT JOIN Vendas_Vacinas ON (Vendas.Id = Vendas_Vacinas.VendasId) WHERE Vendas.DataVenda >= @DataInicial AND Vendas.DataVenda <= @DataFinal GROUP BY Vendas.Id, Vendas.DataVenda, Clientes.Nome, Vendas.Pagamento, Vendas.Desconto, Vendas.TipoCartao, Vendas.TotalVenda";
                     command.Parameters.AddWithValue("@DataInicial", dataInicial.Date);
-                    command.Parameters.AddWithValue("@DataFinal", dataFinal.Date);
+                    command.Parameters.AddWithValue("@DataFinal", dataFinal);
                     command.ExecuteNonQuery();
                     SqlCeDataAdapter dataAdapter = new SqlCeDataAdapter(command);
                     dataAdapter.Fill(data);

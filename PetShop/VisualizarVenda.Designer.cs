@@ -29,6 +29,11 @@ namespace PetShop
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -39,11 +44,6 @@ namespace PetShop
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisualizarVenda));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtTipoCartao = new System.Windows.Forms.TextBox();
@@ -67,15 +67,15 @@ namespace PetShop
             this.radioBtnServicos = new System.Windows.Forms.RadioButton();
             this.labelLista = new System.Windows.Forms.Label();
             this.radioBtnProdutos = new System.Windows.Forms.RadioButton();
+            this.DGVProdutos = new System.Windows.Forms.DataGridView();
             this.DGVServicos = new System.Windows.Forms.DataGridView();
             this.DGVVacinas = new System.Windows.Forms.DataGridView();
-            this.DGVProdutos = new System.Windows.Forms.DataGridView();
             this.btnConcluir = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVServicos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVVacinas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -355,6 +355,59 @@ namespace PetShop
             this.radioBtnProdutos.UseVisualStyleBackColor = true;
             this.radioBtnProdutos.CheckedChanged += new System.EventHandler(this.RadioButtonCheckChanged);
             // 
+            // DGVProdutos
+            // 
+            this.DGVProdutos.AllowUserToAddRows = false;
+            this.DGVProdutos.AllowUserToDeleteRows = false;
+            this.DGVProdutos.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.DGVProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVProdutos.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVProdutos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.DGVProdutos.Location = new System.Drawing.Point(3, 43);
+            this.DGVProdutos.MultiSelect = false;
+            this.DGVProdutos.Name = "DGVProdutos";
+            this.DGVProdutos.ReadOnly = true;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.DGVProdutos.RowHeadersVisible = false;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGVProdutos.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.DGVProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVProdutos.ShowCellErrors = false;
+            this.DGVProdutos.ShowCellToolTips = false;
+            this.DGVProdutos.ShowEditingIcon = false;
+            this.DGVProdutos.ShowRowErrors = false;
+            this.DGVProdutos.Size = new System.Drawing.Size(939, 305);
+            this.DGVProdutos.TabIndex = 4;
+            this.DGVProdutos.VisibleChanged += new System.EventHandler(this.DGVVisibleChanged);
+            // 
             // DGVServicos
             // 
             this.DGVServicos.AllowUserToAddRows = false;
@@ -463,59 +516,6 @@ namespace PetShop
             this.DGVVacinas.Visible = false;
             this.DGVVacinas.VisibleChanged += new System.EventHandler(this.DGVVisibleChanged);
             // 
-            // DGVProdutos
-            // 
-            this.DGVProdutos.AllowUserToAddRows = false;
-            this.DGVProdutos.AllowUserToDeleteRows = false;
-            this.DGVProdutos.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.DGVProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGVProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVProdutos.BackgroundColor = System.Drawing.Color.AliceBlue;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVProdutos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.DGVProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGVProdutos.DefaultCellStyle = dataGridViewCellStyle3;
-            this.DGVProdutos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.DGVProdutos.Location = new System.Drawing.Point(3, 43);
-            this.DGVProdutos.MultiSelect = false;
-            this.DGVProdutos.Name = "DGVProdutos";
-            this.DGVProdutos.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVProdutos.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.DGVProdutos.RowHeadersVisible = false;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DGVProdutos.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.DGVProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVProdutos.ShowCellErrors = false;
-            this.DGVProdutos.ShowCellToolTips = false;
-            this.DGVProdutos.ShowEditingIcon = false;
-            this.DGVProdutos.ShowRowErrors = false;
-            this.DGVProdutos.Size = new System.Drawing.Size(939, 305);
-            this.DGVProdutos.TabIndex = 4;
-            this.DGVProdutos.VisibleChanged += new System.EventHandler(this.DGVVisibleChanged);
-            // 
             // btnConcluir
             // 
             this.btnConcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -533,6 +533,7 @@ namespace PetShop
             this.btnConcluir.Text = "    Concluir";
             this.btnConcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnConcluir.UseVisualStyleBackColor = false;
+            this.btnConcluir.Click += new System.EventHandler(this.btnConcluir_Click);
             // 
             // VisualizarVenda
             // 
@@ -559,9 +560,9 @@ namespace PetShop
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVServicos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGVVacinas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DGVProdutos)).EndInit();
             this.ResumeLayout(false);
 
         }

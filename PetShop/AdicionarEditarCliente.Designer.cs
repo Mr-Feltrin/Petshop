@@ -462,6 +462,7 @@ namespace PetShop
             this.combBoxUf.Name = "combBoxUf";
             this.combBoxUf.Size = new System.Drawing.Size(62, 25);
             this.combBoxUf.TabIndex = 18;
+            this.combBoxUf.SelectedValueChanged += new System.EventHandler(this.combBoxUf_SelectedValueChanged);
             this.combBoxUf.Click += new System.EventHandler(this.combBoxUf_Click);
             // 
             // informacoes_observacoes

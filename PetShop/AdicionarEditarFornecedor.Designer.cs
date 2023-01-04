@@ -54,7 +54,6 @@
             this.labelFornecedorEndereco = new System.Windows.Forms.Label();
             this.txtApelido = new System.Windows.Forms.TextBox();
             this.labelFornecedorApelido = new System.Windows.Forms.Label();
-            this.CombBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
             this.txtObservacoes = new System.Windows.Forms.RichTextBox();
             this.txtNomeFornecedor = new System.Windows.Forms.TextBox();
@@ -62,6 +61,7 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.btnAdicionarEditarFornecedor = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.CombBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.tabControl.SuspendLayout();
             this.enderecos_contato.SuspendLayout();
             this.informacoes_observacoes.SuspendLayout();
@@ -138,9 +138,9 @@
             this.labelFornecedorCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCelular.Location = new System.Drawing.Point(191, 168);
             this.labelFornecedorCelular.Name = "labelFornecedorCelular";
-            this.labelFornecedorCelular.Size = new System.Drawing.Size(55, 20);
+            this.labelFornecedorCelular.Size = new System.Drawing.Size(73, 20);
             this.labelFornecedorCelular.TabIndex = 14;
-            this.labelFornecedorCelular.Text = "Celular";
+            this.labelFornecedorCelular.Text = "Celular**";
             // 
             // txtCelular
             // 
@@ -152,7 +152,9 @@
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(125, 22);
             this.txtCelular.TabIndex = 15;
+            this.txtCelular.Tag = "obrigatorioAlternativa";
             this.txtCelular.Click += new System.EventHandler(this.CadastroFornecedorCelular_Click);
+            this.txtCelular.TextChanged += new System.EventHandler(this.txtCelular_TextChanged);
             // 
             // txtCep
             // 
@@ -177,6 +179,7 @@
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(125, 22);
             this.txtTelefone.TabIndex = 13;
+            this.txtTelefone.Tag = "obrigatorioAlternativa";
             this.txtTelefone.Click += new System.EventHandler(this.CadastroFornecedorTelefone_Click);
             this.txtTelefone.TextChanged += new System.EventHandler(this.txtTelefone_TextChanged);
             // 
@@ -222,9 +225,9 @@
             this.labelFornecedorCpf.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorCpf.Location = new System.Drawing.Point(533, 168);
             this.labelFornecedorCpf.Name = "labelFornecedorCpf";
-            this.labelFornecedorCpf.Size = new System.Drawing.Size(66, 20);
+            this.labelFornecedorCpf.Size = new System.Drawing.Size(57, 20);
             this.labelFornecedorCpf.TabIndex = 18;
-            this.labelFornecedorCpf.Text = "N° CPF*";
+            this.labelFornecedorCpf.Text = "N° CPF";
             // 
             // txtEmail
             // 
@@ -251,9 +254,9 @@
             this.labelFornecedorTelefone.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelFornecedorTelefone.Location = new System.Drawing.Point(14, 168);
             this.labelFornecedorTelefone.Name = "labelFornecedorTelefone";
-            this.labelFornecedorTelefone.Size = new System.Drawing.Size(74, 20);
+            this.labelFornecedorTelefone.Size = new System.Drawing.Size(83, 20);
             this.labelFornecedorTelefone.TabIndex = 12;
-            this.labelFornecedorTelefone.Text = "Telefone*";
+            this.labelFornecedorTelefone.Text = "Telefone**";
             // 
             // labelFornecedorCep
             // 
@@ -358,50 +361,6 @@
             this.labelFornecedorApelido.TabIndex = 0;
             this.labelFornecedorApelido.Text = "Nome Fantasia / Apelido";
             // 
-            // CombBoxUf
-            // 
-            this.CombBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.CombBoxUf.BackColor = System.Drawing.SystemColors.Window;
-            this.CombBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.CombBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CombBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CombBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CombBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.CombBoxUf.FormattingEnabled = true;
-            this.CombBoxUf.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "SB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.CombBoxUf.Location = new System.Drawing.Point(450, 139);
-            this.CombBoxUf.Name = "CombBoxUf";
-            this.CombBoxUf.Size = new System.Drawing.Size(62, 25);
-            this.CombBoxUf.TabIndex = 21;
-            this.CombBoxUf.TextChanged += new System.EventHandler(this.CombBoxUf_TextChanged);
-            // 
             // informacoes_observacoes
             // 
             this.informacoes_observacoes.BackColor = System.Drawing.Color.AliceBlue;
@@ -483,6 +442,50 @@
             this.btnAdicionarEditarFornecedor.UseVisualStyleBackColor = false;
             this.btnAdicionarEditarFornecedor.Click += new System.EventHandler(this.BtnAdicionarEditarFornecedor_Click);
             // 
+            // CombBoxUf
+            // 
+            this.CombBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.CombBoxUf.BackColor = System.Drawing.SystemColors.Window;
+            this.CombBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CombBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CombBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CombBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CombBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.CombBoxUf.FormattingEnabled = true;
+            this.CombBoxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "SB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.CombBoxUf.Location = new System.Drawing.Point(450, 139);
+            this.CombBoxUf.Name = "CombBoxUf";
+            this.CombBoxUf.Size = new System.Drawing.Size(62, 25);
+            this.CombBoxUf.TabIndex = 21;
+            this.CombBoxUf.TextChanged += new System.EventHandler(this.CombBoxUf_TextChanged);
+            // 
             // AdicionarEditarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -497,7 +500,6 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.txtNomeFornecedor);
             this.Controls.Add(this.labelNome);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AdicionarEditarFornecedor";

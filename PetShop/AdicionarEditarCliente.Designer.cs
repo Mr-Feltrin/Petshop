@@ -61,12 +61,12 @@ namespace PetShop
             this.labelEndereco = new System.Windows.Forms.Label();
             this.txtApelido = new System.Windows.Forms.TextBox();
             this.labelApelido = new System.Windows.Forms.Label();
-            this.combBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.informacoes_observacoes = new System.Windows.Forms.TabPage();
             this.observacoes = new System.Windows.Forms.RichTextBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.combBoxUf = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.combBoxTipo = new PetShop.ToolBox.Controls.ComboBoxFlatBordered();
             this.tabDadosCliente.SuspendLayout();
             this.enderecosContato.SuspendLayout();
@@ -176,7 +176,9 @@ namespace PetShop
             this.txtCelular.Name = "txtCelular";
             this.txtCelular.Size = new System.Drawing.Size(125, 22);
             this.txtCelular.TabIndex = 17;
+            this.txtCelular.Tag = "obrigatorioAlternativa";
             this.txtCelular.Click += new System.EventHandler(this.Cadastro_cliente_celular_Click);
+            this.txtCelular.TextChanged += new System.EventHandler(this.txtCelular_TextChanged);
             // 
             // txtTelefoneSecundario
             // 
@@ -201,6 +203,7 @@ namespace PetShop
             this.txtTelefonePrimario.Name = "txtTelefonePrimario";
             this.txtTelefonePrimario.Size = new System.Drawing.Size(125, 22);
             this.txtTelefonePrimario.TabIndex = 13;
+            this.txtTelefonePrimario.Tag = "obrigatorioAlternativa";
             this.txtTelefonePrimario.Click += new System.EventHandler(this.Cadastro_cliente_telefone_primario_Click);
             this.txtTelefonePrimario.TextChanged += new System.EventHandler(this.txtTelefonePrimario_TextChanged);
             // 
@@ -293,9 +296,9 @@ namespace PetShop
             this.labelCelular.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCelular.Location = new System.Drawing.Point(324, 168);
             this.labelCelular.Name = "labelCelular";
-            this.labelCelular.Size = new System.Drawing.Size(77, 20);
+            this.labelCelular.Size = new System.Drawing.Size(95, 20);
             this.labelCelular.TabIndex = 16;
-            this.labelCelular.Text = "N° Celular";
+            this.labelCelular.Text = "N° Celular**";
             // 
             // labelTelefoneSecundario
             // 
@@ -313,9 +316,9 @@ namespace PetShop
             this.labelTelefonePrimario.Font = new System.Drawing.Font("Franklin Gothic Medium", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTelefonePrimario.Location = new System.Drawing.Point(14, 168);
             this.labelTelefonePrimario.Name = "labelTelefonePrimario";
-            this.labelTelefonePrimario.Size = new System.Drawing.Size(96, 20);
+            this.labelTelefonePrimario.Size = new System.Drawing.Size(105, 20);
             this.labelTelefonePrimario.TabIndex = 12;
-            this.labelTelefonePrimario.Text = "1° Telefone*";
+            this.labelTelefonePrimario.Text = "1° Telefone**";
             // 
             // labelCep
             // 
@@ -420,51 +423,6 @@ namespace PetShop
             this.labelApelido.TabIndex = 0;
             this.labelApelido.Text = "Nome Fantasia / Apelido";
             // 
-            // combBoxUf
-            // 
-            this.combBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.combBoxUf.BackColor = System.Drawing.SystemColors.Window;
-            this.combBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.combBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.combBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.combBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.combBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.combBoxUf.FormattingEnabled = true;
-            this.combBoxUf.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AP",
-            "AM",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MT",
-            "MS",
-            "MG",
-            "PA",
-            "SB",
-            "PR",
-            "PE",
-            "PI",
-            "RJ",
-            "RN",
-            "RS",
-            "RO",
-            "RR",
-            "SC",
-            "SP",
-            "SE",
-            "TO"});
-            this.combBoxUf.Location = new System.Drawing.Point(450, 139);
-            this.combBoxUf.Name = "combBoxUf";
-            this.combBoxUf.Size = new System.Drawing.Size(62, 25);
-            this.combBoxUf.TabIndex = 18;
-            this.combBoxUf.SelectedValueChanged += new System.EventHandler(this.combBoxUf_SelectedValueChanged);
-            this.combBoxUf.Click += new System.EventHandler(this.combBoxUf_Click);
-            // 
             // informacoes_observacoes
             // 
             this.informacoes_observacoes.Controls.Add(this.observacoes);
@@ -526,6 +484,51 @@ namespace PetShop
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.cadastro_cliente_cancelar_Click);
             // 
+            // combBoxUf
+            // 
+            this.combBoxUf.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.combBoxUf.BackColor = System.Drawing.SystemColors.Window;
+            this.combBoxUf.BorderColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.combBoxUf.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.combBoxUf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.combBoxUf.Font = new System.Drawing.Font("Franklin Gothic Medium", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.combBoxUf.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.combBoxUf.FormattingEnabled = true;
+            this.combBoxUf.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AP",
+            "AM",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MT",
+            "MS",
+            "MG",
+            "PA",
+            "SB",
+            "PR",
+            "PE",
+            "PI",
+            "RJ",
+            "RN",
+            "RS",
+            "RO",
+            "RR",
+            "SC",
+            "SP",
+            "SE",
+            "TO"});
+            this.combBoxUf.Location = new System.Drawing.Point(450, 139);
+            this.combBoxUf.Name = "combBoxUf";
+            this.combBoxUf.Size = new System.Drawing.Size(62, 25);
+            this.combBoxUf.TabIndex = 18;
+            this.combBoxUf.SelectedValueChanged += new System.EventHandler(this.combBoxUf_SelectedValueChanged);
+            this.combBoxUf.Click += new System.EventHandler(this.combBoxUf_Click);
+            // 
             // combBoxTipo
             // 
             this.combBoxTipo.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -546,7 +549,7 @@ namespace PetShop
             this.combBoxTipo.Name = "combBoxTipo";
             this.combBoxTipo.Size = new System.Drawing.Size(243, 25);
             this.combBoxTipo.TabIndex = 17;
-            this.combBoxTipo.Click += new System.EventHandler(this.combBoxTipo_Click);
+            this.combBoxTipo.SelectedIndexChanged += new System.EventHandler(this.combBoxTipo_SelectedIndexChanged_1);
             // 
             // AdicionarEditarCliente
             // 

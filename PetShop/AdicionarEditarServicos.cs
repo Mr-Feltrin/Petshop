@@ -40,6 +40,7 @@ namespace PetShop
             if (Operacao == TipoOperacao.Adicionar)
             {
                 Text = "Adicionar Serviço";
+                btnSalvar.Enabled = false;
             }
             else
             {
@@ -106,6 +107,18 @@ namespace PetShop
                 Application.OpenForms.OfType<PesquisarServicos>().First().AtualizarLista();
             }
             Close();
+        }
+
+        private void txtNomeServico_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNomeServico.Text))
+            {
+                btnSalvar.Enabled = false;
+            }
+            else
+            {
+                btnSalvar.Enabled = true;
+            }
         }
     }
 }

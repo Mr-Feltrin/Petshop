@@ -14,8 +14,9 @@ namespace PetShop
         private readonly PesquisarClientesFornecedores _PesquisaClientesFornecedores;
         private Cliente _Cliente { get; set; }
         private ListaDeClientesAnimais _listaDeCliente { get; set; }
-        private Dictionary<object, string> CamposObrigatorios { get; set; }
+        private Dictionary<Control, string> CamposObrigatorios { get; set; }
         List<MaskedTextBox> CamposMaskedOpcionais { get; set; }
+
 
         public AdicionarEditarCliente(TipoOperacao operacao, PesquisarClientesFornecedores pesquisaClientesFornecedores)
         {
@@ -133,7 +134,7 @@ namespace PetShop
 
         private void AdicionarEditarCliente_Load(object sender, EventArgs e)
         {
-            CamposObrigatorios = new Dictionary<object, string>
+            CamposObrigatorios = new Dictionary<Control, string>
             {
                 { txtNomeCompleto, "Preencha o nome do cliente" },
                 { combBoxTipo, "Selecione o tipo de cliente" },
@@ -142,9 +143,10 @@ namespace PetShop
                 { txtCidade, "Preencha o campo de cidade" },
                 { combBoxUf, "Selecione o estado" },
                 { txtCep, "Preencha o campo de CEP" },
-                { txtTelefonePrimario, "Preencha o campo de telefone" }
+                { txtTelefonePrimario, "Preencha o campo de telefone Primário ou de Celular" },
+                { txtCelular, "Preencha o campo de Telefone Primário ou de Celular" }
             };
-            CamposMaskedOpcionais = new List<MaskedTextBox>() { txtTelefoneSecundario, txtCelular, txtCpf, txtCnpj };
+            CamposMaskedOpcionais = new List<MaskedTextBox>() {txtTelefonePrimario, txtTelefoneSecundario, txtTelefoneSecundario, txtCpf, txtCnpj };
             toolTip.SetToolTip(btnAdicionar, "Preencha todos os campos obrigatórios");
             if (Operacao == TipoOperacao.Adicionar)
             {
@@ -251,6 +253,16 @@ namespace PetShop
         }
 
         private void combBoxUf_SelectedValueChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
+        }
+
+        private void combBoxTipo_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
+        }
+
+        private void txtCelular_TextChanged(object sender, EventArgs e)
         {
             VerificarCamposObrigatorios.ChecarCampos(btnAdicionar, CamposObrigatorios, toolTip);
         }

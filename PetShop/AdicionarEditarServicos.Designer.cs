@@ -56,6 +56,7 @@ namespace PetShop
             this.txtNomeServico.Name = "txtNomeServico";
             this.txtNomeServico.Size = new System.Drawing.Size(271, 26);
             this.txtNomeServico.TabIndex = 1;
+            this.txtNomeServico.TextChanged += new System.EventHandler(this.txtNomeServico_TextChanged);
             // 
             // groupBox1
             // 

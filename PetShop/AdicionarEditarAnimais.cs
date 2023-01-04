@@ -20,7 +20,7 @@ namespace PetShop
         private Animal AnimalId;
         private ToolTip _ToolTip = new ToolTip();
         private List<Image> Fotografias = new List<Image>();
-        private Dictionary<object, string> CamposObrigatorios;
+        private Dictionary<Control, string> CamposObrigatorios;
         private CheckBox SexoSelecionado = new CheckBox();
 
         public AdicionarEditarAnimais(TipoOperacao operacao, PesquisarAnimais pesquisaAnimais)
@@ -61,7 +61,7 @@ namespace PetShop
         {
             tabPage1.MouseMove += AdicionarEditarAnimais_MouseMove;
             tabControl1.MouseMove += AdicionarEditarAnimais_MouseMove;
-            CamposObrigatorios = new Dictionary<object, string>()
+            CamposObrigatorios = new Dictionary<Control, string>()
             {
                 { txtNomeDonoAnimal, "Selecione o dono do animal" },
                 { txtNomeAnimal, "Digite o nome do animal" },

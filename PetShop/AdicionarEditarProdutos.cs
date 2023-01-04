@@ -15,7 +15,7 @@ namespace PetShop
 {
     public partial class AdicionarEditarProdutos : Form
     {
-        private Dictionary<object, string> CamposObrigatorios;
+        private Dictionary<Control, string> CamposObrigatorios;
         private readonly TipoOperacao _TipoOperacao;
         private Produto _Produto;
         [DllImport("user32.dll")]
@@ -47,7 +47,7 @@ namespace PetShop
 
         private void AdicionarEditarProdutos_Load(object sender, EventArgs e)
         {
-            CamposObrigatorios = new Dictionary<object, string>()
+            CamposObrigatorios = new Dictionary<Control, string>()
             {
                 {combBoxTipoUnidade, "Selecione o tipo de unidade do produto"},
                 {txtQuantidade, "Digite a quantidade do produto"},

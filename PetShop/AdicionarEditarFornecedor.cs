@@ -14,7 +14,7 @@ namespace PetShop
         private readonly TipoOperacao Operacao;
         private Fornecedor _Fornecedor { get; set; }
         private List<MaskedTextBox> CamposOpcionais { get; set; }
-        private Dictionary<object, string> CamposObrigatorios { get; set; }
+        private Dictionary<Control, string> CamposObrigatorios { get; set; }
 
         public AdicionarEditarFornecedor(TipoOperacao operacao)
         {
@@ -38,8 +38,8 @@ namespace PetShop
 
         private void AdicionarEditarFornecedor_Load(object sender, EventArgs e)
         {
-            CamposOpcionais = new List<MaskedTextBox>() { txtCep, txtCelular, txtCnpj };
-            CamposObrigatorios = new Dictionary<object, string>()
+            CamposOpcionais = new List<MaskedTextBox>() { txtCep, txtTelefone, txtCelular, txtCnpj, txtCpf };
+            CamposObrigatorios = new Dictionary<Control, string>()
             {
                 {txtNomeFornecedor, "Preencha o Nome do Fornecedor"},
                 {txtTipoFornecimento, "Preencha o Tipo de Fornecimento"},
@@ -47,8 +47,8 @@ namespace PetShop
                 {txtBairro, "Preencha o campo de Bairro"},
                 {txtCidade, "Preencha o campo de Cidade"},
                 {CombBoxUf, "Selecione o Estado"},
-                {txtTelefone, "Preencha o campo de Telefone"},
-                {txtCpf, "Preencha o campo de CPF"}
+                {txtTelefone, "Preencha o campo de Telefone ou Celular"},
+                {txtCelular, "Preencha o campo de Telefone ou Celular"}
             };
             if (Operacao == TipoOperacao.Adicionar)
             {
@@ -204,6 +204,11 @@ namespace PetShop
         }
 
         private void txtCpf_TextChanged(object sender, EventArgs e)
+        {
+            VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
+        }
+
+        private void txtCelular_TextChanged(object sender, EventArgs e)
         {
             VerificarCamposObrigatorios.ChecarCampos(btnAdicionarEditarFornecedor, CamposObrigatorios, toolTip);
         }

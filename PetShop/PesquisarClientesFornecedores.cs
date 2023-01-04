@@ -75,6 +75,10 @@ namespace PetShop
                     {
                         row.Cells["Apelido"].Value = "Nenhum";
                     }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Telefone_Principal"].Value))
+                    {
+                        row.Cells["Telefone_Principal"].Value = "Não Definido";
+                    }
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Telefone_Secundario"].Value))
                     {
                         row.Cells["Telefone_Secundario"].Value = "Não Definido";
@@ -117,6 +121,10 @@ namespace PetShop
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Cep"].Value))
                     {
                         row.Cells["Cep"].Value = "Não Definido";
+                    }
+                    if (string.IsNullOrWhiteSpace((string)row.Cells["Telefone"].Value))
+                    {
+                        row.Cells["Telefone"].Value = "Não Definido";
                     }
                     if (string.IsNullOrWhiteSpace((string)row.Cells["Celular"].Value))
                     {

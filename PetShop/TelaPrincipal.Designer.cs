@@ -377,7 +377,7 @@
             this.toolStripStatus_data_completa.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_data_completa.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.toolStripStatus_data_completa.Name = "toolStripStatus_data_completa";
-            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(785, 22);
+            this.toolStripStatus_data_completa.Size = new System.Drawing.Size(742, 22);
             this.toolStripStatus_data_completa.Spring = true;
             this.toolStripStatus_data_completa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -467,8 +467,8 @@
             this.toolStripStatus_nome_sistema.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenInner;
             this.toolStripStatus_nome_sistema.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolStripStatus_nome_sistema.Name = "toolStripStatus_nome_sistema";
-            this.toolStripStatus_nome_sistema.Size = new System.Drawing.Size(97, 22);
-            this.toolStripStatus_nome_sistema.Text = "Pet Shop 1.0";
+            this.toolStripStatus_nome_sistema.Size = new System.Drawing.Size(109, 22);
+            this.toolStripStatus_nome_sistema.Text = "Pet Shop 1.0.2";
             this.toolStripStatus_nome_sistema.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // horario_atual

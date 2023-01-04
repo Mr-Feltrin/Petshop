@@ -19,7 +19,7 @@ namespace PetShop
         public Cliente _Cliente { get; set; }
         public Animal _Animal { get; set; }
         public Servico _Servico { get; set; }
-        private Dictionary<object, string> CamposObrigatorios;
+        private Dictionary<Control, string> CamposObrigatorios;
         private List<Image> FotosAnimal = new List<Image>();
         private Button BtnPesquisarAnimal;
         private Button BtnPesquisarCliente;
@@ -61,7 +61,7 @@ namespace PetShop
             txtEspecie.GotFocus += TextBoxGotFocus;
             txtRaca.GotFocus += TextBoxGotFocus;
             _toolTip.SetToolTip(btnSalvar, "Preencha todos os campos obrigatórios");
-            CamposObrigatorios = new Dictionary<object, string>()
+            CamposObrigatorios = new Dictionary<Control, string>()
             {
                 { txtCliente, "Selecione o cliente" },
                 { txtTipoProcedimento, "Selecione o Tipo de Procedimento" },

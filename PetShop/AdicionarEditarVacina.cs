@@ -19,7 +19,7 @@ namespace PetShop
         private static extern bool HideCaret(IntPtr hWnd);
         private readonly TipoOperacao Operacao;
         private Vacina _Vacina { get; set; }
-        private Dictionary<object, string> CamposObrigatorios;
+        private Dictionary<Control, string> CamposObrigatorios;
         private int EstoqueAtual;
         private int EstoqueAnterior;
         private Button BtnLockEstoque;
@@ -46,7 +46,7 @@ namespace PetShop
 
         private void AdicionarEditarVacina_Load(object sender, EventArgs e)
         {
-            CamposObrigatorios = new Dictionary<object, string>()
+            CamposObrigatorios = new Dictionary<Control, string>()
             {
                 { CombBoxImunologia, "Selecione o tipo de Imunologia" },
                 { txtConteudoML, "Digite o conteúdo da vacina" },
